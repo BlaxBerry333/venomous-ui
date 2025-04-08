@@ -74,13 +74,13 @@ export const Default: Story = {
 };
 
 export const Text: Story = {
-  name: 'TextButton',
+  name: 'Text',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => <Button text="Abc" />,
 };
 
-export const Icon: Story = {
-  name: 'IconButton',
+export const WithIcon: Story = {
+  name: 'WithIcon',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => (
     <>
@@ -92,7 +92,7 @@ export const Icon: Story = {
 };
 
 export const Circle: Story = {
-  name: 'CircleButton',
+  name: 'Circle',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => <Button isCircle icon="mdi:home" iconWidth={20} />,
 };

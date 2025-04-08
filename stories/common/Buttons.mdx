@@ -1,27 +1,29 @@
 import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
-import * as Buttons from './Buttons.stories';
+import * as Stories from './Buttons.stories';
 
-<Meta of={Buttons} />
+<Meta of={Stories} />
 
 # Button
 
 ```tsx
-import { Button } from 'venomous-ui/common/Button';
+import { Button } from 'venomous-ui';
 ```
 
-#### TextButton
+## Examples
 
-<Canvas of={Buttons.Text} />
+#### Text
 
-#### IconButton
+<Canvas of={Stories.Text} sourceState="shown" />
 
-<Canvas of={Buttons.Icon} />
+#### WithIcon
 
-#### CircleButton
+<Canvas of={Stories.WithIcon} sourceState="shown" />
 
-<Canvas of={Buttons.Circle} />
+#### Circle
+
+<Canvas of={Stories.Circle} sourceState="shown" />
 
 ## Props
 
 <Controls />
-<Canvas of={Buttons.Default} />
+<Canvas of={Stories.Default} />

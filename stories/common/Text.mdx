@@ -1,0 +1,25 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Text.stories';
+
+<Meta of={Stories} />
+
+# Text
+
+```tsx
+import { Text } from 'venomous-ui';
+```
+
+## Examples
+
+#### Title
+
+<Canvas of={Stories.Title} sourceState="shown" />
+
+#### Ellipsis
+
+<Canvas of={Stories.Ellipsis} sourceState="shown" />
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} />

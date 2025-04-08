@@ -29,10 +29,19 @@ const meta = {
         defaultValue: { summary: '20' },
       },
     },
+    color: {
+      description: 'Icon color',
+      control: 'select',
+      options: ['primary', 'error', 'auto'],
+      table: {
+        defaultValue: { summary: 'auto' },
+      },
+    },
   },
   args: {
     icon: 'mdi:home',
     width: 20,
+    color: 'auto',
   },
 } satisfies Meta<typeof Icon>;
 
@@ -42,4 +51,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: 'DefaultIcon',
+};
+
+export const SolarIcon: Story = {
+  name: 'SolarIcon',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: (_) => (
+    <>
+      <Icon icon="solar:folder-favourite-bookmark-bold" width={40} />
+      <Icon icon="solar:folder-favourite-bookmark-bold-duotone" width={40} />
+      <Icon icon="solar:folder-favourite-bookmark-broken" width={40} />
+      <Icon icon="solar:folder-favourite-bookmark-line-duotone" width={40} />
+      <Icon icon="solar:folder-favourite-bookmark-linear" width={40} />
+      <Icon icon="solar:folder-favourite-bookmark-linear" width={40} color="error" />
+      <Icon icon="solar:folder-favourite-bookmark-linear" width={40} color="primary" />
+    </>
+  ),
 };

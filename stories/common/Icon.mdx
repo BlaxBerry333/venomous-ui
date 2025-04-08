@@ -1,18 +1,21 @@
 import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
-import * as Icon from './Icon.stories';
+import * as Stories from './Icon.stories';
 
-<Meta of={Icon} />
+<Meta of={Stories} />
 
 # Icon
 
 ```tsx
-import { Icon } from 'venous-ui/common';
+import { Icon } from 'venomous-ui';
 ```
 
-#### DefaultIcon
+## Examples
 
-<Canvas of={Icon.Default} />
+#### Solar
+
+<Canvas of={Stories.SolarIcon} sourceState="shown" />
 
 ## Props
 
 <Controls />
+<Canvas of={Stories.Default} />
