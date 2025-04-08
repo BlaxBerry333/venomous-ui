@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false
+  },
+  "include": ["packages/**/*.ts", "packages/**/*.tsx"],
+  "exclude": [
+    "packages/**/*.stories.ts",
+    "packages/**/*.stories.tsx",
+    "packages/**/*.test.ts",
+    "packages/**/*.test.tsx",
+    "node_modules",
+    "dist"
+  ]
+}
