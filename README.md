@@ -1,6 +1,5 @@
 # Venomous UI
 
 ```shell
-% yarn build:libs
-% yarn build:types
+% yarn build:libs && yarn build:types
 ```

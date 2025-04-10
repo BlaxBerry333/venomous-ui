@@ -25,7 +25,8 @@ export default defineConfig({
       name: 'venomous-ui',
       entry: path.resolve(__dirname, 'packages/index.ts'),
       fileName: 'index',
-    },
+    },  
+    copyPublicDir: false,
     rollupOptions: {
       output: {
         globals: {

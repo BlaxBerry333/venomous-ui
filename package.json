@@ -78,8 +78,9 @@
     "url": "https://github.com/BlaxBerry333/venomous-ui/issues"
   },
   "files": [
-    "dist",
-    "README.md"
+    "dist/*.js",
+    "dist/*.cjs",
+    "dist/types"
   ],
   "sideEffects": [
     "**/*.css",
@@ -87,12 +88,14 @@
     "**/*.sass"
   ],
   "main": "./dist/index.umd.cjs",
-  "types": "./dist/index.d.ts",
   "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "require": "./dist/index.umd.cjs",
+      "default": "./dist/index.js"
     }
   }
 }
