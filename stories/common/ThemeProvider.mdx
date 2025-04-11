@@ -1,17 +1,98 @@
-import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import { Meta, Canvas, Primary, Story } from '@storybook/blocks';
 import * as Stories from './ThemeProvider.stories';
 
 <Meta of={Stories} />
 
 # ThemeProvider
 
-<Canvas of={Stories.Default} />
+```tsx
+import { ThemeProvider } from 'venomous-ui';
+```
 
-## Props
+## Examples
 
-<Controls />
+#### ThemeMode
 
-{/* ## Samples */}
-{/* ### DefaultSample */}
-{/* <Story of={UIThemeProvider.DefaultSample} /> */}
-{/* <Story of={UIThemeProvider.Secondary} /> */}
+<Canvas
+  of={Stories.ThemeMode}
+  source={{
+    code: [
+      "import { Icon, Space } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const { isDarkMode, themeMode, toggleThemeMode, setThemeMode } = useThemeMode();',
+      '',
+      '  return (',
+      '    <ThemeProvider>',
+      '      <Text text={themeMode} />',
+      '',
+      '      <Space>',
+      '        <Button',
+      '          text={`change to ${isDarkMode ? "Light" : "Dark"}`}',
+      '          onClick={toggleThemeMode}',
+      '        />',
+      '        <Button',
+      '          text={`change to "Dark"`}',
+      '          disabled={isDarkMode}',
+      '          onClick={() => setThemeMode("dark")}',
+      '        />',
+      '        <Button',
+      '          text={`change to "Light"`}',
+      '          disabled={!isDarkMode}',
+      '          onClick={() => setThemeMode("light")}',
+      '        />',
+      '      </Space>',
+      '    </ThemeProvider>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### ThemePalette
+
+<Canvas
+  of={Stories.ThemePalette}
+  source={{
+    code: [
+      "import { Icon, Space } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const {',
+      '    themePaletteName,',
+      '    themePalette,',
+      '    setThemePaletteName,',
+      '    allPaletteNames,',
+      '    allPaletteMainColors,',
+      '  } = useThemePalette();',
+      '',
+      '  return (',
+      '    <ThemeProvider>',
+      '      <Space row>',
+      '        {allPaletteNames.map((name) => (',
+      '          <Button',
+      '            key={name}',
+      '            text={name}',
+      '            bgcolor={allPaletteMainColors[name]}',
+      '            disabled={name === themePaletteName}',
+      '            onClick={() => setThemePaletteName(name)}',
+      '          />',
+      '        ))}',
+      '      </Space>',
+      '',
+      '      <Text text={themePaletteName} />',
+      '',
+      '      <Space>',
+      '        {Object.entries(themePalette).map(([name, color]) => (',
+      '          <Space row key={name}>',
+      '            <Text isLabel text={name} bgcolor={color} width={120} height={20} border={1} />',
+      '            <Text isLabel text={color} />',
+      '          </Space>',
+      '        ))}',
+      '      </Space>',
+      '    </ThemeProvider>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

@@ -4,12 +4,12 @@ import { memo, useMemo, type JSX } from 'react';
 import type { TextComponentType } from './Text.types';
 
 const Text: TextComponentType = memo(
-  ({ text, isTitle = false, titleLevel = 'h5', ellipsis = false, sx, ...props }) => {
+  ({ text, isLabel, isTitle = false, titleLevel = 'h5', ellipsis = false, sx, ...props }) => {
     const TextComponent = useMemo<JSX.Element>(
       () => (
         <MuiTypography
           component="div"
-          variant={isTitle ? titleLevel : 'body1'}
+          variant={isTitle ? titleLevel : isLabel ? 'caption' : 'body1'}
           noWrap={ellipsis}
           sx={{
             fontWeight: isTitle ? 'bold' : 'normal',

@@ -1,6 +1,7 @@
-import React from 'react';
-
+import MuiPaper from '@mui/material/Paper';
 import type { Preview } from '@storybook/react';
+import React from 'react';
+import { ThemeProvider } from '../packages/common';
 
 const preview: Preview = {
   parameters: {},
@@ -10,7 +11,20 @@ const preview: Preview = {
     (Story) => {
       return (
         <React.Fragment>
-          <Story />
+          <ThemeProvider>
+            <MuiPaper
+              sx={{
+                minHeight: '200px',
+                width: '100vw',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Story />
+            </MuiPaper>
+          </ThemeProvider>
         </React.Fragment>
       );
     },

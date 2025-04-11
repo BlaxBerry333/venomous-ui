@@ -19,6 +19,10 @@ const meta = {
     },
     closeModal: {
       description: 'Close the modal',
+      table: {
+        category: 'Events',
+        type: { summary: '() => void' },
+      },
     },
     isPrevented: {
       description: 'Whether the modal is prevented from closing by click outside、esc',
@@ -38,9 +42,17 @@ const meta = {
     },
     onSubmit: {
       description: 'Callback function when the confirm button is clicked',
+      table: {
+        category: 'Events',
+        type: { summary: '() => void' },
+      },
     },
     onClose: {
       description: 'Callback function when the modal is closed',
+      table: {
+        category: 'Events',
+        type: { summary: '() => void' },
+      },
     },
     children: {
       description: 'Custom content',

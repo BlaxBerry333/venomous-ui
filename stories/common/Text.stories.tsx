@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Text } from '@packages/common';
+import { Space, Text } from '@packages/common';
 
 const meta = {
   title: 'Common Components/Text',
@@ -14,6 +14,14 @@ const meta = {
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' },
+      },
+    },
+    isLabel: {
+      description: 'Is label',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
     isTitle: {
@@ -44,6 +52,7 @@ const meta = {
   },
   args: {
     text: 'Xxxxxxxxxx',
+    isLabel: false,
     isTitle: false,
     titleLevel: 'h3',
     ellipsis: false,
@@ -59,18 +68,20 @@ export const Default: Story = {
   render: (args) => <Text {...args} />,
 };
 
-export const Title: Story = {
-  name: 'Title',
+export const Levels: Story = {
+  name: 'Levels',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => (
-    <>
-      <Text isTitle titleLevel="h1" text="h1. Heading" />
-      <Text isTitle titleLevel="h2" text="h2. Heading" />
-      <Text isTitle titleLevel="h3" text="h3. Heading" />
-      <Text isTitle titleLevel="h4" text="h4. Heading" />
-      <Text isTitle titleLevel="h5" text="h5. Heading" />
-      <Text isTitle titleLevel="h6" text="h6. Heading" />
-    </>
+    <Space gap={2}>
+      <Text isTitle titleLevel="h1" text="h1.Heading" />
+      <Text isTitle titleLevel="h2" text="h2.Heading" />
+      <Text isTitle titleLevel="h3" text="h3.Heading" />
+      <Text isTitle titleLevel="h4" text="h4.Heading" />
+      <Text isTitle titleLevel="h5" text="h5.Heading" />
+      <Text isTitle titleLevel="h6" text="h6.Heading" />
+      <Text text="body.Heading" />
+      <Text isLabel text="label.Heading" />
+    </Space>
   ),
 };
 
@@ -78,11 +89,9 @@ export const Ellipsis: Story = {
   name: 'Ellipsis',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => (
-    <div style={{ width: '200px', background: 'pink' }}>
-      <Text
-        ellipsis
-        text="1ABCDEFGHIJKLMNOPQRSTUVWXYZ2ABCDEFGHIJKLMNOPQRSTUVWXYZ3ABCDEFGHIJKLMNOPQRSTUVWXYZ4ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-      />
-    </div>
+    <Space sx={{ width: '200px', background: 'pink' }}>
+      <Text text="ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+      <Text ellipsis text="ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+    </Space>
   ),
 };

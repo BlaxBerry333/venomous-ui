@@ -9,17 +9,57 @@ import * as Stories from './Text.stories';
 import { Text } from 'venomous-ui';
 ```
 
-## Examples
-
-#### Title
-
-<Canvas of={Stories.Title} sourceState="shown" />
-
-#### Ellipsis
-
-<Canvas of={Stories.Ellipsis} sourceState="shown" />
-
 ## Props
 
 <Controls />
 <Canvas of={Stories.Default} />
+
+## Examples
+
+#### Levels
+
+<Canvas
+  of={Stories.Levels}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Text, Space } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Space gap={2}>',
+      '      <Text isTitle titleLevel="h1" text="h1.Heading" />',
+      '      <Text isTitle titleLevel="h2" text="h2.Heading" />',
+      '      <Text isTitle titleLevel="h3" text="h3.Heading" />',
+      '      <Text isTitle titleLevel="h4" text="h4.Heading" />',
+      '      <Text isTitle titleLevel="h5" text="h5.Heading" />',
+      '      <Text isTitle titleLevel="h6" text="h6.Heading" />',
+      '      <Text text="body.Heading" />',
+      '      <Text isLabel text="label.Heading" />',
+      '    </Space>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### Ellipsis
+
+<Canvas
+  of={Stories.Ellipsis}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Text, Space } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Space sx={{ width: "200px", background: "pink" }}>',
+      '      <Text text="ABCDEFGHIJKLMNOPQRSTUVWXYZ" />',
+      '      <Text text="ABCDEFGHIJKLMNOPQRSTUVWXYZ" ellipsis />',
+      '    </Space>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

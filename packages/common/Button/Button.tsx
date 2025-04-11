@@ -5,15 +5,16 @@ import type { ButtonComponentType } from './Button.types';
 
 const Button: ButtonComponentType = memo(
   ({
-    sx,
+    text,
     loading,
     disabled,
     isCircle,
     icon,
     iconWidth,
     iconPosition = undefined,
-    text,
+    bgcolor,
     onClick,
+    sx,
     ...props
   }) => {
     const ButtonIcon = useMemo<JSX.Element | null>(() => {
@@ -29,6 +30,7 @@ const Button: ButtonComponentType = memo(
         endIcon={iconPosition === 'end' && ButtonIcon}
         sx={{
           minWidth: 'unset',
+          minHeight: '38px',
           width: isCircle ? '40px' : 'unset',
           height: isCircle ? '40px' : 'unset',
           textTransform: 'none',
@@ -38,6 +40,7 @@ const Button: ButtonComponentType = memo(
           cursor: loading ? 'wait !important' : disabled ? 'not-allowed !important' : 'pointer',
           pointerEvents: 'auto !important' as 'auto',
           transition: 'background-color 0s, background-image 0s',
+          backgroundColor: bgcolor,
           '& .MuiButton-startIcon': { svg: { color: 'inherit' } },
           '& .MuiButton-endIcon': { svg: { color: 'inherit' } },
           ...sx,

@@ -8,6 +8,7 @@ export type ButtonProps = Omit<MuiButtonProps, 'children'> & {
   icon?: IconProps['icon'];
   iconWidth?: IconProps['width'];
   iconPosition?: 'start' | 'end';
+  bgcolor?: string;
 };
 
 export type ButtonComponentType = NamedExoticComponent<ButtonProps>;

@@ -9,21 +9,41 @@ import * as Stories from './Buttons.stories';
 import { Button } from 'venomous-ui';
 ```
 
-## Examples
-
-#### Text
-
-<Canvas of={Stories.Text} sourceState="shown" />
-
-#### WithIcon
-
-<Canvas of={Stories.WithIcon} sourceState="shown" />
-
-#### Circle
-
-<Canvas of={Stories.Circle} sourceState="shown" />
-
 ## Props
 
 <Controls />
 <Canvas of={Stories.Default} />
+
+## Examples
+
+#### Text
+
+<Canvas of={Stories.Text} sourceState="shown"
+
+/>
+
+#### WithIcon
+
+<Canvas
+  of={Stories.WithIcon}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Icon, Space } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Space row gap={2}>',
+      '      <Button text="Abc" icon="mdi:home" iconWidth={20} iconPosition="start" />',
+      '      <Button icon="mdi:home" iconWidth={20} />',
+      '      <Button text="Abc" icon="mdi:home" iconWidth={20} iconPosition="end" />',
+      '    </Space>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### Circle
+
+<Canvas of={Stories.Circle} sourceState="shown" />

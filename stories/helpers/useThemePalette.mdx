@@ -1,0 +1,50 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+
+# useThemePalette
+
+```tsx
+import { useThemePalette } from 'venomous-ui';
+```
+
+## Examples
+
+```tsx
+import { Space, Button, Text, ThemeProvider, useThemePalette } from 'venomous-ui';
+
+function Component() {
+  const {
+    themePaletteName,
+    themePalette,
+    setThemePaletteName,
+    allPaletteNames,
+    allPaletteMainColors,
+  } = useThemePalette();
+
+  return (
+    <ThemeProvider>
+      <Space row>
+        {allPaletteNames.map((name) => (
+          <Button
+            key={name}
+            text={name}
+            bgcolor={allPaletteMainColors[name]}
+            disabled={name === themePaletteName}
+            onClick={() => setThemePaletteName(name)}
+          />
+        ))}
+      </Space>
+
+      <Text text={themePaletteName} />
+
+      <Space>
+        {Object.entries(themePalette).map(([name, color]) => (
+          <Space row key={name}>
+            <Text isLabel text={name} bgcolor={color} width={120} height={20} border={1} />
+            <Text isLabel text={color} />
+          </Space>
+        ))}
+      </Space>
+    </ThemeProvider>
+  );
+}
+```

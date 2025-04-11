@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from '@packages/common';
+import { Button, Space } from '@packages/common';
 import IconMeta from './Icon.stories';
 
 const meta = {
@@ -52,6 +52,14 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    bgcolor: {
+      description: 'Button background color overrided',
+      control: 'color',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '""' },
+      },
+    },
   },
   args: {
     loading: false,
@@ -61,6 +69,7 @@ const meta = {
     icon: IconMeta.args.icon,
     iconWidth: IconMeta.args.width,
     iconPosition: undefined,
+    bgcolor: '',
   },
 } satisfies Meta<typeof Button>;
 
@@ -83,11 +92,11 @@ export const WithIcon: Story = {
   name: 'WithIcon',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => (
-    <>
+    <Space row gap={2}>
       <Button text="Abc" icon="mdi:home" iconWidth={20} iconPosition="start" />
-      <Button icon="mdi:home" iconWidth={20} sx={{ mx: '8px' }} />
+      <Button icon="mdi:home" iconWidth={20} />
       <Button text="Abc" icon="mdi:home" iconWidth={20} iconPosition="end" />
-    </>
+    </Space>
   ),
 };
 

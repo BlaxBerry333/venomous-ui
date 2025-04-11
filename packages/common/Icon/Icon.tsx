@@ -1,6 +1,5 @@
 import { Icon as Iconify } from '@iconify/react';
 import MuiMuiBox from '@mui/material/Box';
-
 import { memo } from 'react';
 import type { IconComponentType } from './Icon.types';
 

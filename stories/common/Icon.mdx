@@ -9,13 +9,35 @@ import * as Stories from './Icon.stories';
 import { Icon } from 'venomous-ui';
 ```
 
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
 ## Examples
 
 #### Solar
 
-<Canvas of={Stories.SolarIcon} sourceState="shown" />
-
-## Props
-
-<Controls />
-<Canvas of={Stories.Default} />
+<Canvas
+  of={Stories.SolarIcon}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Icon, Space } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Space row gap={2}>',
+      '      <Icon icon="solar:folder-favourite-bookmark-bold" width={40} />',
+      '      <Icon icon="solar:folder-favourite-bookmark-bold-duotone" width={40} />',
+      '      <Icon icon="solar:folder-favourite-bookmark-broken" width={40} />',
+      '      <Icon icon="solar:folder-favourite-bookmark-line-duotone" width={40} />',
+      '      <Icon icon="solar:folder-favourite-bookmark-linear" width={40} />',
+      '      <Icon icon="solar:folder-favourite-bookmark-linear" width={40} color="error" />',
+      '      <Icon icon="solar:folder-favourite-bookmark-linear" width={40} color="primary" />',
+      '    </Space>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
