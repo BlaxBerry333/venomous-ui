@@ -7,4 +7,4 @@ export {
   type ThemePaletteType,
 } from './useThemePalette';
 
-export { default as useThemeBreakpoint } from './useThemeBreakPoint';
+export { default as useThemeBreakpoint } from './useThemeBreakpoint';

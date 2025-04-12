@@ -1,5 +1,5 @@
 export default function useModal(): {
     isOpen: boolean;
-    openModal: VoidFunction;
-    closeModal: VoidFunction;
+    openModal: () => void;
+    closeModal: () => void;
 };

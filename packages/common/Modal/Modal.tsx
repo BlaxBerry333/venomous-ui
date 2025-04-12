@@ -50,7 +50,7 @@ const Modal: ModalComponentType = memo(
               text={cancelButtonText}
               onClick={closeModal}
               disabled={cancelButtonIsDisabled || isSubmitting}
-              variant="outlined"
+              isGhost
             />
             <Button
               text={confirmButtonText}
