@@ -6,3 +6,5 @@ export {
   default as useThemePalette,
   type ThemePaletteType,
 } from './useThemePalette';
+
+export { default as useThemeBreakpoint } from './useThemeBreakPoint';

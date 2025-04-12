@@ -8,6 +8,7 @@ const Button: ButtonComponentType = memo(
     text,
     loading,
     disabled,
+    isGhost,
     isCircle,
     icon,
     iconWidth,
@@ -23,7 +24,7 @@ const Button: ButtonComponentType = memo(
 
     return (
       <MuiButton
-        variant="contained"
+        variant={isGhost ? 'text' : 'contained'}
         loading={loading}
         disabled={disabled}
         startIcon={iconPosition === 'start' && ButtonIcon}

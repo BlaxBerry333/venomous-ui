@@ -1,0 +1,26 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+
+# useThemeBreakpoint
+
+```tsx
+import { useThemeBreakpoint } from 'venomous-ui';
+```
+
+## Examples
+
+```tsx
+import { useThemeBreakpoint } from 'venomous-ui';
+
+function Component() {
+  const { isXs, isSm, isMd, isLg } = useThemeBreakpoint();
+
+  return (
+    <div>
+      <p>isXs: {isXs.toString()}</p>
+      <p>isSm: {isSm.toString()}</p>
+      <p>isMd: {isMd.toString()}</p>
+      <p>isLg: {isLg.toString()}</p>
+    </div>
+  );
+}
+```

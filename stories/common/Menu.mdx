@@ -1,0 +1,76 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Menu.stories';
+
+<Meta of={Stories} />
+
+# Menu
+
+```tsx
+import { Menu } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas
+  of={Stories.Default}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Menu, type MenuProps, MenuItem } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const menuItems: MenuProps["items"] = [',
+      '    { label: "Item 1", icon: "solar:box-minimalistic-bold-duotone" },',
+      '    { label: "Item 2", icon: "solar:box-minimalistic-bold-duotone" },',
+      '  ];',
+      '',
+      '  return (',
+      '    <Menu',
+      '      height={200}',
+      '      width={200}',
+      '      items={menuItems}',
+      '      renderItem={(item) => <MenuItem {...item} />}',
+      '    />',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### Virtualized
+
+<Canvas
+  of={Stories.Virtualized}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Menu, type MenuProps, Space } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const menuItems: MenuProps["items"] = Array.from({ length: 100 }, (_, index) => ({',
+      '    label: `Item ${index + 1}`,',
+      '    onClick: () => console.log(`Clicked Item ${index}`),',
+      '  }));',
+      '',
+      '  return (',
+      '    <Menu',
+      '      height={300}',
+      '      width={300}',
+      '      items={menuItems}',
+      '      renderItem={(item, index) => (',
+      '        <Space row>',
+      '          {index + 1} - {item.label}',
+      '        </Space>',
+      '      )}',
+      '    />',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

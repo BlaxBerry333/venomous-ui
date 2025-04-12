@@ -52,6 +52,14 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    isGhost: {
+      description: 'Button is ghost',
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     bgcolor: {
       description: 'Button background color overrided',
       control: 'color',
@@ -65,6 +73,7 @@ const meta = {
     loading: false,
     disabled: false,
     isCircle: false,
+    isGhost: false,
     text: 'Xxx',
     icon: IconMeta.args.icon,
     iconWidth: IconMeta.args.width,
