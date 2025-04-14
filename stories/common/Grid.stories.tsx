@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Flex, Grid } from '@packages/common';
+import { Grid, Paper } from '@packages/common';
 
 const meta = {
   title: 'Common Components/Grid',
@@ -91,9 +91,7 @@ export const Virtualized: Story = {
         cols={{ xs: 1, sm: 1, md: 2, lg: 3, xl: 4 }}
         items={Array.from({ length: 100 }, (_, index) => index)}
         renderGridItem={(_, index) => (
-          <Flex height={100} width="100%" border={1} borderColor="divider">
-            {`Item ${index + 1}`}
-          </Flex>
+          <Paper sx={{ height: 100, width: '100%' }}>{`Item ${index + 1}`}</Paper>
         )}
       />
     );

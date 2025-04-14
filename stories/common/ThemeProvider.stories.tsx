@@ -23,9 +23,8 @@ export const ThemeMode: Story = {
 
     return (
       <ThemeProvider>
-        <Text text={themeMode} />
-
         <Flex>
+          <Text text={themeMode} />
           <Button text={`change to ${isDarkMode ? 'Light' : 'Dark'}`} onClick={toggleThemeMode} />
           <Button
             text={`change to "Dark"`}
@@ -60,7 +59,7 @@ export const ThemePalette: Story = {
           {allPaletteNames.map((name) => (
             <Button
               key={name}
-              text={name}
+              text={''}
               bgcolor={allPaletteMainColors[name]}
               disabled={name === themePaletteName}
               onClick={() => setThemePaletteName(name)}

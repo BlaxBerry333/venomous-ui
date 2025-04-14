@@ -12,7 +12,7 @@ const Toast: ToastComponentType = memo(({ position = 'bottom-right' }) => {
       invert={isDarkMode}
       visibleToasts={3}
       position={position}
-      gap={2}
+      gap={6}
     />
   );
 });

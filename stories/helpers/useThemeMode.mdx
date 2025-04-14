@@ -9,7 +9,7 @@ import { useThemeMode } from 'venomous-ui';
 ## Examples
 
 ```tsx
-import { Space, Button, Text, ThemeProvider, useThemeMode } from 'venomous-ui';
+import { ThemeProvider, useThemeMode, Button, Text, Flex } from 'venomous-ui';
 
 function App() {
   return (
@@ -23,23 +23,20 @@ function Component() {
   const { isDarkMode, themeMode, toggleThemeMode, setThemeMode } = useThemeMode();
 
   return (
-    <>
+    <Space>
       <Text text={themeMode} />
-
-      <Space>
-        <Button text={`change to ${isDarkMode ? 'Light' : 'Dark'}`} onClick={toggleThemeMode} />
-        <Button
-          text={`change to "Dark"`}
-          disabled={isDarkMode}
-          onClick={() => setThemeMode('dark')}
-        />
-        <Button
-          text={`change to "Light"`}
-          disabled={!isDarkMode}
-          onClick={() => setThemeMode('light')}
-        />
-      </Space>
-    </>
+      <Button text={`change to ${isDarkMode ? 'Light' : 'Dark'}`} onClick={toggleThemeMode} />
+      <Button
+        text={`change to "Dark"`}
+        disabled={isDarkMode}
+        onClick={() => setThemeMode('dark')}
+      />
+      <Button
+        text={`change to "Light"`}
+        disabled={!isDarkMode}
+        onClick={() => setThemeMode('light')}
+      />
+    </Space>
   );
 }
 ```

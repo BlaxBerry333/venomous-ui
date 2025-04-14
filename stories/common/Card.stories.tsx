@@ -40,6 +40,15 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    disabled: {
+      description: 'Is disabled',
+      if: { arg: 'clickable' },
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     onClick: {
       description: 'Callback function when the modal is closed',
       if: { arg: 'clickable' },
@@ -54,6 +63,7 @@ const meta = {
     title: 'CardTitle',
     subtitle: 'CardSubtitle',
     clickable: false,
+    disabled: false,
     onClick: () => alert('Clicked'),
   },
 } satisfies Meta<typeof Card>;

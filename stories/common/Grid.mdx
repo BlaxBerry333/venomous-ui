@@ -22,7 +22,7 @@ import { Grid } from 'venomous-ui';
   sourceState="shown"
   source={{
     code: [
-      "import { Grid, Flex } from 'venomous-ui';",
+      "import { Grid, Paper } from 'venomous-ui';",
       '',
       'function App() {',
       '  return (',
@@ -32,9 +32,9 @@ import { Grid } from 'venomous-ui';
       '      cols={{ xs: 1, sm: 1, md: 2, lg: 3, xl: 4 }}',
       '      items={Array.from({ length: 100 }, (_, index) => index)}',
       '      renderGridItem={(_, index) => (',
-      '        <Flex height={100} width="100%" border={1} borderColor="divider">',
+      '        <Paper sx={{ height: 100, width: "100%" }}>',
       '          {`Item ${index + 1}`}',
-      '        </Flex>',
+      '        </Paper>',
       '      )}',
       '    />',
       '  );',

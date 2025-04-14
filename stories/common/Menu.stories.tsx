@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Flex, Menu, MenuItem, type MenuProps } from '@packages/common';
+import { Flex, Menu, MenuItem, type MenuProps, Text } from '@packages/common';
 
 const meta = {
   title: 'Common Components/Menu',
@@ -86,7 +86,8 @@ export const Virtualized: Story = {
         items={menuItems}
         renderItem={(item, index) => (
           <Flex row>
-            {index + 1} - {item.label}
+            <Text text={`${index + 1}`} width={20} />
+            <Text text={item.label} />
           </Flex>
         )}
       />
