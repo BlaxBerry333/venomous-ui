@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Space } from '@packages/common';
+import { Button, Flex } from '@packages/common';
 import IconMeta from './Icon.stories';
 
 const meta = {
@@ -52,6 +52,14 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    isOutlined: {
+      description: 'Button is outlined',
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     isGhost: {
       description: 'Button is ghost',
       control: { type: 'boolean' },
@@ -73,6 +81,7 @@ const meta = {
     loading: false,
     disabled: false,
     isCircle: false,
+    isOutlined: false,
     isGhost: false,
     text: 'Xxx',
     icon: IconMeta.args.icon,
@@ -94,18 +103,24 @@ export const Default: Story = {
 export const Text: Story = {
   name: 'Text',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_) => <Button text="Abc" />,
+  render: (_) => (
+    <Flex row gap={2}>
+      <Button text="Abc" />
+      <Button text="Abc" isGhost />
+      <Button text="Abc" isOutlined />
+    </Flex>
+  ),
 };
 
 export const WithIcon: Story = {
   name: 'WithIcon',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => (
-    <Space row gap={2}>
+    <Flex row gap={2}>
       <Button text="Abc" icon="mdi:home" iconWidth={20} iconPosition="start" />
       <Button icon="mdi:home" iconWidth={20} />
       <Button text="Abc" icon="mdi:home" iconWidth={20} iconPosition="end" />
-    </Space>
+    </Flex>
   ),
 };
 

@@ -33,6 +33,7 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM',
           'react-router-dom': 'ReactRouterDOM',
+          'react/jsx-runtime': 'jsxRuntime',
           // "@emotion/react": "emotionReact",
           // "@emotion/styled": "emotionStyled",
           // "@mui/material": "MaterialUI",

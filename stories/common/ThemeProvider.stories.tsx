@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Space, Text, ThemeProvider } from '@packages/common';
+import { Button, Flex, Text, ThemeProvider } from '@packages/common';
 import { useThemeMode, useThemePalette } from '@packages/helpers';
 
 const meta = {
@@ -25,7 +25,7 @@ export const ThemeMode: Story = {
       <ThemeProvider>
         <Text text={themeMode} />
 
-        <Space>
+        <Flex>
           <Button text={`change to ${isDarkMode ? 'Light' : 'Dark'}`} onClick={toggleThemeMode} />
           <Button
             text={`change to "Dark"`}
@@ -37,7 +37,7 @@ export const ThemeMode: Story = {
             disabled={!isDarkMode}
             onClick={() => setThemeMode('light')}
           />
-        </Space>
+        </Flex>
       </ThemeProvider>
     );
   },
@@ -56,7 +56,7 @@ export const ThemePalette: Story = {
 
     return (
       <ThemeProvider>
-        <Space row>
+        <Flex row>
           {allPaletteNames.map((name) => (
             <Button
               key={name}
@@ -66,18 +66,18 @@ export const ThemePalette: Story = {
               onClick={() => setThemePaletteName(name)}
             />
           ))}
-        </Space>
+        </Flex>
 
         <Text text={themePaletteName} />
 
-        <Space>
+        <Flex>
           {Object.entries(themePalette).map(([name, color]) => (
-            <Space row key={name}>
+            <Flex row key={name}>
               <Text isLabel text={name} bgcolor={color} width={120} height={20} border={1} />
               <Text isLabel text={color} />
-            </Space>
+            </Flex>
           ))}
-        </Space>
+        </Flex>
       </ThemeProvider>
     );
   },

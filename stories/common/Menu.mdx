@@ -50,7 +50,7 @@ import { Menu } from 'venomous-ui';
   sourceState="shown"
   source={{
     code: [
-      "import { Menu, type MenuProps, Space } from 'venomous-ui';",
+      "import { Menu, type MenuProps, Flex } from 'venomous-ui';",
       '',
       'function App() {',
       '  const menuItems: MenuProps["items"] = Array.from({ length: 100 }, (_, index) => ({',
@@ -64,9 +64,9 @@ import { Menu } from 'venomous-ui';
       '      width={300}',
       '      items={menuItems}',
       '      renderItem={(item, index) => (',
-      '        <Space row>',
+      '        <Flex row>',
       '          {index + 1} - {item.label}',
-      '        </Space>',
+      '        </Flex>',
       '      )}',
       '    />',
       '  );',

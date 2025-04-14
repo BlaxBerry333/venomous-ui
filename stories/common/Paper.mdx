@@ -1,0 +1,37 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Paper.stories';
+
+<Meta of={Stories} />
+
+# Paper
+
+```tsx
+import { Paper } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+### Examples
+
+#### Default
+
+<Canvas
+  of={Stories.Default}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Paper } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Paper>',
+      '      Hello World',
+      '    </Paper>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

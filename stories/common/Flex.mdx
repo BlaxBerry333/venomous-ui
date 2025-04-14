@@ -1,0 +1,61 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Flex.stories';
+
+<Meta of={Stories} />
+
+# Flex
+
+```tsx
+import { Flex } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+### Examples
+
+#### Column
+
+<Canvas
+  of={Stories.Column}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Flex, Paper } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Flex>',
+      '      <Paper>1</Paper>',
+      '      <Paper>2</Paper>',
+      '      <Paper>3</Paper>',
+      '    </Flex>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### Row
+
+<Canvas
+  of={Stories.Row}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Flex, Paper } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Flex row>',
+      '      <Paper>1</Paper>',
+      '      <Paper>2</Paper>',
+      '      <Paper>3</Paper>',
+      '    </Flex>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

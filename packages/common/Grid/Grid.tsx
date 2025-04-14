@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import { VirtuosoGrid } from 'react-virtuoso';
-import { Space } from '../Space';
+import { Flex } from '../Flex';
 import { DEFAULT_COLS, DEFAULT_ITEMS, type GridProps } from './Grid.types';
 import useGridComponents from './useGridComponents';
 
@@ -17,14 +17,14 @@ const Grid = <T,>({
   const { gridComponents } = useGridComponents({ gridStyle, gridItemStyle, cols });
 
   return (
-    <Space style={{ height: height || '100%', width: width || '100%' }}>
+    <Flex style={{ height: height || '100%', width: width || '100%' }}>
       <VirtuosoGrid
         style={{ height: '100%' }}
         totalCount={items.length}
         components={gridComponents}
         itemContent={(index) => renderGridItem(items[index], index)}
       />
-    </Space>
+    </Flex>
   );
 };
 

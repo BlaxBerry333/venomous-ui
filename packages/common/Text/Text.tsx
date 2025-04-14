@@ -4,7 +4,16 @@ import { memo, useMemo, type JSX } from 'react';
 import type { TextComponentType } from './Text.types';
 
 const Text: TextComponentType = memo(
-  ({ text, isLabel, isTitle = false, titleLevel = 'h5', ellipsis = false, sx, ...props }) => {
+  ({
+    text,
+    isLabel,
+    isTitle = false,
+    titleLevel = 'h5',
+    ellipsis = false,
+    color,
+    sx,
+    ...props
+  }) => {
     const TextComponent = useMemo<JSX.Element>(
       () => (
         <MuiTypography
@@ -13,6 +22,14 @@ const Text: TextComponentType = memo(
           noWrap={ellipsis}
           sx={{
             fontWeight: isTitle ? 'bold' : 'normal',
+            color: (theme) =>
+              color === 'error'
+                ? theme.palette.error.main
+                : color === 'primary'
+                  ? theme.palette.primary.main
+                  : color === 'success'
+                    ? theme.palette.success.main
+                    : 'inherit',
             ...sx,
           }}
           {...props}

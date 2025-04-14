@@ -1,0 +1,115 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Popper.stories';
+
+<Meta of={Stories} />
+
+# Popper
+
+```tsx
+import { Popper } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+#### MultipleToggleHover
+
+When switching between multiple Poppers, each Popper requires a unique `id` props to ensure proper state management.
+
+<Canvas
+  of={Stories.MultipleToggleHover}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Popper, Button, Flex } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Flex row>',
+      '      <Popper',
+      '        id="AAA" // This is required',
+      '        position="bottom"',
+      '        renderPopperHandler={({ isOpen, openPopper }) => (',
+      '          <MenuItem',
+      '            label="AAA"',
+      '            isActive={isOpen}',
+      '            clickable',
+      '            onClick={openPopper}',
+      '            onMouseEnter={openPopper}',
+      '          />',
+      '        )}',
+      '      >',
+      '        AAA',
+      '      </Popper>',
+      '',
+      '      <Popper',
+      '        id="BBB" // This is required',
+      '        position="bottom"',
+      '        renderPopperHandler={({ isOpen, openPopper }) => (',
+      '          <MenuItem',
+      '            label="BBB"',
+      '            isActive={isOpen}',
+      '            clickable',
+      '            onClick={openPopper}',
+      '            onMouseEnter={openPopper}',
+      '          />',
+      '        )}',
+      '      >',
+      '        BBB',
+      '      </Popper>',
+      '    </Flex>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### Nested
+
+<Canvas
+  of={Stories.Nested}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Button, Popper } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Popper',
+      '      position="bottom"',
+      '      renderPopperHandler={(parent) => (',
+      '        <MenuItem',
+      '          label="AAA"',
+      '          isActive={parent.isOpen}',
+      '          clickable',
+      '          onClick={parent.openPopper}',
+      '          onMouseEnter={parent.openPopper}',
+      '        />',
+      '      )}',
+      '      sx={{ py: 0, px: "8px }}',
+      '    >',
+      '      <Popper',
+      '        position="right"',
+      '        renderPopperHandler={(child) => (',
+      '          <MenuItem',
+      '            label="BBB"',
+      '            isActive={child.isOpen}',
+      '            clickable',
+      '            onClick={child.openPopper}',
+      '            onMouseEnter={child.openPopper}',
+      '          />',
+      '        )}',
+      '      >',
+      '        Hello World',
+      '        <Button text="Hello" onClick={() => alert("Hello World")} />',
+      '      </Popper>',
+      '    </Popper>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

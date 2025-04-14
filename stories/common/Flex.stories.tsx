@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Space } from '@packages/common';
+import { Flex, Paper } from '@packages/common';
 
 const meta = {
-  title: 'Common Components/Space',
-  component: Space,
+  title: 'Common Components/Flex',
+  component: Flex,
   parameters: { layout: 'centered' },
   tags: ['!autodocs', '!dev'],
   argTypes: {
@@ -29,7 +29,7 @@ const meta = {
     row: false,
     gap: 1,
   },
-} satisfies Meta<typeof Space>;
+} satisfies Meta<typeof Flex>;
 
 export default meta;
 
@@ -38,13 +38,39 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   name: 'Default',
   render: (args) => (
-    <Space {...args}>
+    <Flex {...args}>
       {Array.from({ length: 3 }).map((_, i) => (
         // eslint-disable-next-line react-x/no-array-index-key
-        <div key={i} style={{ background: 'pink', width: '50px', height: '50px' }}>
-          {i}
-        </div>
+        <Paper key={i}>{i + 1}</Paper>
       ))}
-    </Space>
+    </Flex>
   ),
+};
+
+export const Column: Story = {
+  name: 'Column',
+  render: function RenderStory() {
+    return (
+      <Flex>
+        {Array.from({ length: 3 }).map((_, i) => (
+          // eslint-disable-next-line react-x/no-array-index-key
+          <Paper key={i}>{i + 1}</Paper>
+        ))}
+      </Flex>
+    );
+  },
+};
+
+export const Row: Story = {
+  name: 'Row',
+  render: function RenderStory() {
+    return (
+      <Flex row>
+        {Array.from({ length: 3 }).map((_, i) => (
+          // eslint-disable-next-line react-x/no-array-index-key
+          <Paper key={i}>{i + 1}</Paper>
+        ))}
+      </Flex>
+    );
+  },
 };

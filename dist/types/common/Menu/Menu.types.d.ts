@@ -4,7 +4,9 @@ export interface MenuItemProps {
     icon?: string;
     clickable?: boolean;
     disabled?: boolean;
-    onClick?: () => void;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
+    onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
     isActive?: boolean;
 }
 export interface MenuProps {

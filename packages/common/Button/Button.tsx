@@ -8,6 +8,7 @@ const Button: ButtonComponentType = memo(
     text,
     loading,
     disabled,
+    isOutlined,
     isGhost,
     isCircle,
     icon,
@@ -24,13 +25,13 @@ const Button: ButtonComponentType = memo(
 
     return (
       <MuiButton
-        variant={isGhost ? 'text' : 'contained'}
+        variant={isGhost ? 'text' : isOutlined ? 'outlined' : 'contained'}
         loading={loading}
         disabled={disabled}
         startIcon={iconPosition === 'start' && ButtonIcon}
         endIcon={iconPosition === 'end' && ButtonIcon}
         sx={{
-          minWidth: 'unset',
+          minWidth: '50px',
           minHeight: '38px',
           width: isCircle ? '40px' : 'unset',
           height: isCircle ? '40px' : 'unset',

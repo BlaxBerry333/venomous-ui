@@ -1,8 +1,8 @@
 import MuiMuiBox from '@mui/material/Box';
 import { memo } from 'react';
-import type { SpaceComponentType } from './Space.types';
+import type { FlexComponentType } from './Flex.types';
 
-const Space: SpaceComponentType = memo(
+const Flex: FlexComponentType = memo(
   ({ children, row, alignItems, justifyContent, gap = 1, sx, ...props }) => {
     return (
       <MuiMuiBox
@@ -27,5 +27,5 @@ const Space: SpaceComponentType = memo(
   },
 );
 
-Space.displayName = 'Space';
-export default Space;
+Flex.displayName = 'Flex';
+export default Flex;

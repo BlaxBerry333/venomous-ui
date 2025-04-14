@@ -1,0 +1,39 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Card.stories';
+
+<Meta of={Stories} />
+
+# Card
+
+```tsx
+import { Card } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} />
+
+## Examples
+
+#### CustomContent
+
+<Canvas
+  of={Stories.CustomContent}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Card, Text } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Card>',
+      '      <Text text="Custom content" />',
+      '      <Text text="Custom content" />',
+      '      <Text text="Custom content" />',
+      '    </Card>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

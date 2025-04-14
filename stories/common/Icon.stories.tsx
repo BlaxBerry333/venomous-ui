@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Icon, Space } from '@packages/common';
+import { Flex, Icon } from '@packages/common';
 
 const meta = {
   title: 'Common Components/Icon',
@@ -57,7 +57,7 @@ export const SolarIcon: Story = {
   name: 'SolarIcon',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => (
-    <Space row gap={1}>
+    <Flex row gap={1}>
       <Icon icon="solar:folder-favourite-bookmark-bold" width={40} />
       <Icon icon="solar:folder-favourite-bookmark-bold-duotone" width={40} />
       <Icon icon="solar:folder-favourite-bookmark-broken" width={40} />
@@ -65,6 +65,6 @@ export const SolarIcon: Story = {
       <Icon icon="solar:folder-favourite-bookmark-linear" width={40} />
       <Icon icon="solar:folder-favourite-bookmark-linear" width={40} color="error" />
       <Icon icon="solar:folder-favourite-bookmark-linear" width={40} color="primary" />
-    </Space>
+    </Flex>
   ),
 };

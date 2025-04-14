@@ -11,6 +11,14 @@ import { useThemePalette } from 'venomous-ui';
 ```tsx
 import { Space, Button, Text, ThemeProvider, useThemePalette } from 'venomous-ui';
 
+function App() {
+  return (
+    <ThemeProvider>
+      <Component />
+    </ThemeProvider>
+  );
+}
+
 function Component() {
   const {
     themePaletteName,
@@ -21,7 +29,7 @@ function Component() {
   } = useThemePalette();
 
   return (
-    <ThemeProvider>
+    <>
       <Space row>
         {allPaletteNames.map((name) => (
           <Button
@@ -44,7 +52,7 @@ function Component() {
           </Space>
         ))}
       </Space>
-    </ThemeProvider>
+    </>
   );
 }
 ```

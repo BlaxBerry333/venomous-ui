@@ -1,0 +1,60 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Toast.stories';
+
+<Meta of={Stories} />
+
+# Paper
+
+```tsx
+import { Toast, useToast } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas of={Stories.Default} sourceState="shown"
+
+source={{
+    code: [
+      "import { Toast, useToast, ThemeProvider, Button, Flex } from 'venomous-ui';",
+      '',
+      'function Demo() {',
+      '  const toast = useToast();',
+      '',
+      '  return (',
+      '    <Flex row>',
+      '      <Button',
+      '        color="success',
+      '        text="Success"',
+      '        onClick={() => toast({ type: "success", title: "Success", description: "xxxx"  })}',
+      '      />',
+      '      <Button',
+      '        color="error',
+      '        text="Error"',
+      '        onClick={() => toast({ type: "error", title: "Error", description: "xxxx"  })}',
+      '      /> ',
+      '      <Button',
+      '        color="primary',
+      '        text="Infomation"',
+      '        onClick={() => toast({ type: "info", title: "Infomation", description: "xxxx"  })}',
+      '      /> ',
+      '    </Flex>',
+      '  );',
+      '}',
+            '',
+      'function App() {',
+      '  return (',
+      '    <ThemeProvider>',
+      '      <Toast position="bottom-right" />',
+      '      <Demo />',
+      '    </ThemeProvider>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

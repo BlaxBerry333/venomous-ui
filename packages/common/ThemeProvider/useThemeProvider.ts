@@ -20,12 +20,12 @@ export default function useThemeProvider() {
     });
   }, [themeMode, themePalette]);
 
-  useSetThemePaletteForScollbar(themePalette);
+  useSetThemePaletteForHTML(themePalette);
 
   return { theme };
 }
 
-function useSetThemePaletteForScollbar(themePalette: ThemePaletteType) {
+function useSetThemePaletteForHTML(themePalette: ThemePaletteType) {
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = `

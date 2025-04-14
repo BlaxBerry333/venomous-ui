@@ -23,11 +23,11 @@ import { Text } from 'venomous-ui';
   sourceState="shown"
   source={{
     code: [
-      "import { Text, Space } from 'venomous-ui';",
+      "import { Text, Flex } from 'venomous-ui';",
       '',
       'function App() {',
       '  return (',
-      '    <Space gap={2}>',
+      '    <Flex gap={2}>',
       '      <Text isTitle titleLevel="h1" text="h1.Heading" />',
       '      <Text isTitle titleLevel="h2" text="h2.Heading" />',
       '      <Text isTitle titleLevel="h3" text="h3.Heading" />',
@@ -36,7 +36,7 @@ import { Text } from 'venomous-ui';
       '      <Text isTitle titleLevel="h6" text="h6.Heading" />',
       '      <Text text="body.Heading" />',
       '      <Text isLabel text="label.Heading" />',
-      '    </Space>',
+      '    </Flex>',
       '  );',
       '}',
     ].join('\n'),
@@ -50,14 +50,14 @@ import { Text } from 'venomous-ui';
   sourceState="shown"
   source={{
     code: [
-      "import { Text, Space } from 'venomous-ui';",
+      "import { Text, Flex } from 'venomous-ui';",
       '',
       'function App() {',
       '  return (',
-      '    <Space sx={{ width: "200px", background: "pink" }}>',
+      '    <Flex sx={{ width: "200px", background: "pink" }}>',
       '      <Text text="ABCDEFGHIJKLMNOPQRSTUVWXYZ" />',
       '      <Text text="ABCDEFGHIJKLMNOPQRSTUVWXYZ" ellipsis />',
-      '    </Space>',
+      '    </Flex>',
       '  );',
       '}',
     ].join('\n'),

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Space, Text } from '@packages/common';
+import { Flex, Text } from '@packages/common';
 
 const meta = {
   title: 'Common Components/Text',
@@ -72,7 +72,7 @@ export const Levels: Story = {
   name: 'Levels',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => (
-    <Space gap={2}>
+    <Flex gap={2}>
       <Text isTitle titleLevel="h1" text="h1.Heading" />
       <Text isTitle titleLevel="h2" text="h2.Heading" />
       <Text isTitle titleLevel="h3" text="h3.Heading" />
@@ -81,7 +81,7 @@ export const Levels: Story = {
       <Text isTitle titleLevel="h6" text="h6.Heading" />
       <Text text="body.Heading" />
       <Text isLabel text="label.Heading" />
-    </Space>
+    </Flex>
   ),
 };
 
@@ -89,9 +89,9 @@ export const Ellipsis: Story = {
   name: 'Ellipsis',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: (_) => (
-    <Space sx={{ width: '200px', background: 'pink' }}>
+    <Flex sx={{ width: '200px', background: 'pink' }}>
       <Text text="ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
       <Text ellipsis text="ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
-    </Space>
+    </Flex>
   ),
 };

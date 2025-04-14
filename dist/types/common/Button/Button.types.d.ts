@@ -3,6 +3,7 @@ import type { NamedExoticComponent } from 'react';
 import type { IconProps } from '../Icon';
 export type ButtonProps = Omit<MuiButtonProps, 'children' | 'variant' | 'startIcon' | 'endIcon'> & {
     isCircle?: boolean;
+    isOutlined?: boolean;
     isGhost?: boolean;
     text?: string;
     icon?: IconProps['icon'];

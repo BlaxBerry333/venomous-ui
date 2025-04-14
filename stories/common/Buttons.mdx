@@ -18,8 +18,24 @@ import { Button } from 'venomous-ui';
 
 #### Text
 
-<Canvas of={Stories.Text} sourceState="shown"
-
+<Canvas
+  of={Stories.WithIcon}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Icon, Flex } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Flex row gap={2}>',
+      '      <Button text="Abc" />',
+      '      <Button text="Abc" isGhost />',
+      '      <Button text="Abc" isOutlined />',
+      '    </Flex>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
 />
 
 #### WithIcon
@@ -29,15 +45,15 @@ import { Button } from 'venomous-ui';
   sourceState="shown"
   source={{
     code: [
-      "import { Icon, Space } from 'venomous-ui';",
+      "import { Icon, Flex } from 'venomous-ui';",
       '',
       'function App() {',
       '  return (',
-      '    <Space row gap={2}>',
+      '    <Flex row gap={2}>',
       '      <Button text="Abc" icon="mdi:home" iconWidth={20} iconPosition="start" />',
       '      <Button icon="mdi:home" iconWidth={20} />',
       '      <Button text="Abc" icon="mdi:home" iconWidth={20} iconPosition="end" />',
-      '    </Space>',
+      '    </Flex>',
       '  );',
       '}',
     ].join('\n'),

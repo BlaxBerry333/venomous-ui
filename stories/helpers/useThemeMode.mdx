@@ -11,11 +11,19 @@ import { useThemeMode } from 'venomous-ui';
 ```tsx
 import { Space, Button, Text, ThemeProvider, useThemeMode } from 'venomous-ui';
 
+function App() {
+  return (
+    <ThemeProvider>
+      <Component />
+    </ThemeProvider>
+  );
+}
+
 function Component() {
   const { isDarkMode, themeMode, toggleThemeMode, setThemeMode } = useThemeMode();
 
   return (
-    <ThemeProvider>
+    <>
       <Text text={themeMode} />
 
       <Space>
@@ -31,7 +39,7 @@ function Component() {
           onClick={() => setThemeMode('light')}
         />
       </Space>
-    </ThemeProvider>
+    </>
   );
 }
 ```
