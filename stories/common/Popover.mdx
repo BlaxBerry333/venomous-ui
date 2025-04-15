@@ -1,0 +1,41 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Popover.stories';
+
+<Meta of={Stories} />
+
+# Popover
+
+```tsx
+import { Popover } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas
+  of={Stories.Default}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Popover, Button } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Popover',
+      '      renderPopoverHandler={({ isOpen, openPopover }) => (',
+      '        <Button text={isOpen ? "Opened" : "Open"} onClick={openPopover} />',
+      '      )}',
+      '    >',
+      '      Hello World',
+      '    </Popover>',
+      '    </Flex>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

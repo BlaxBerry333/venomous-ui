@@ -45,37 +45,32 @@ export const ThemeMode: Story = {
 export const ThemePalette: Story = {
   name: 'ThemePalette',
   render: function RenderStory() {
-    const {
-      themePaletteName,
-      themePalette,
-      setThemePaletteName,
-      allPaletteNames,
-      allPaletteMainColors,
-    } = useThemePalette();
+    const { themePalette, setThemePaletteName, allPaletteNames, allPaletteMainColors } =
+      useThemePalette();
 
     return (
       <ThemeProvider>
-        <Flex row>
-          {allPaletteNames.map((name) => (
-            <Button
-              key={name}
-              text={''}
-              bgcolor={allPaletteMainColors[name]}
-              disabled={name === themePaletteName}
-              onClick={() => setThemePaletteName(name)}
-            />
-          ))}
-        </Flex>
-
-        <Text text={themePaletteName} />
-
-        <Flex>
-          {Object.entries(themePalette).map(([name, color]) => (
-            <Flex row key={name}>
-              <Text isLabel text={name} bgcolor={color} width={120} height={20} border={1} />
-              <Text isLabel text={color} />
-            </Flex>
-          ))}
+        <Flex gap={2}>
+          <Flex row>
+            {allPaletteNames.map((name) => (
+              <Button
+                key={name}
+                text={name}
+                // disabled={name === themePaletteName}
+                onClick={() => setThemePaletteName(name)}
+                sx={{ width: 100, backgroundColor: allPaletteMainColors[name] }}
+              />
+            ))}
+          </Flex>
+          <Flex>
+            {Object.entries(themePalette).map(([name, color]) => (
+              <Flex row key={name}>
+                <Text isLabel text={''} bgcolor={color} width={50} height={20} border={1} />
+                <Text isLabel text={`primary.${name}`} width={200} />
+                <Text isLabel text={color} />
+              </Flex>
+            ))}
+          </Flex>
         </Flex>
       </ThemeProvider>
     );

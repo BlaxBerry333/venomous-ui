@@ -29,30 +29,28 @@ function Component() {
   } = useThemePalette();
 
   return (
-    <>
-      <Space row>
+    <Flex gap={2}>
+      <Flex row>
         {allPaletteNames.map((name) => (
           <Button
             key={name}
             text={name}
-            bgcolor={allPaletteMainColors[name]}
-            disabled={name === themePaletteName}
+            // disabled={name === themePaletteName}
             onClick={() => setThemePaletteName(name)}
+            sx={{ width: 100, backgroundColor: allPaletteMainColors[name] }}
           />
         ))}
-      </Space>
-
-      <Text text={themePaletteName} />
-
-      <Space>
+      </Flex>
+      <Flex>
         {Object.entries(themePalette).map(([name, color]) => (
-          <Space row key={name}>
-            <Text isLabel text={name} bgcolor={color} width={120} height={20} border={1} />
+          <Flex row key={name}>
+            <Text isLabel text={''} bgcolor={color} width={50} height={20} border={1} />
+            <Text isLabel text={`primary.${name}`} width={200} />
             <Text isLabel text={color} />
-          </Space>
+          </Flex>
         ))}
-      </Space>
-    </>
+      </Flex>
+    </Flex>
   );
 }
 ```

@@ -45,24 +45,24 @@ const meta = {
       description: 'Number of columns',
       control: 'object',
       table: {
-        type: { summary: 'object' },
-        defaultValue: { summary: '{xs: 1, sm: 1, md: 2, lg: 3, xl: 4}' },
+        type: { summary: '{ xs: number; sm: number; md: number; lg: number; xl: number; }' },
+        defaultValue: { summary: '{ xs: 1, sm: 1, md: 2, lg: 3, xl: 4 }' },
       },
     },
     width: {
       description: 'Width of the menu',
-      control: { type: 'number' },
+      control: { type: 'text' },
       table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '200' },
+        type: { summary: 'number|string' },
+        defaultValue: { summary: '"100%"' },
       },
     },
     height: {
       description: 'Height of the menu',
-      control: { type: 'number' },
+      control: { type: 'text' },
       table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '200' },
+        type: { summary: 'number|string' },
+        defaultValue: { summary: '"100%"' },
       },
     },
   },

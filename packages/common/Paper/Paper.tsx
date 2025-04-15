@@ -5,6 +5,7 @@ import type { PaperComponentType } from './Paper.types';
 const Paper: PaperComponentType = memo(({ isOutlined, children, sx, ...props }) => {
   return (
     <MuiPaper
+      id="VenomousUI-Paper"
       variant={isOutlined ? 'outlined' : 'elevation'}
       elevation={isOutlined ? 0 : 3}
       square

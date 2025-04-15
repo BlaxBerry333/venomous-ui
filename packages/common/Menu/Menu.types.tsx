@@ -1,4 +1,5 @@
 import type { NamedExoticComponent, ReactNode } from 'react';
+import type { FlexProps } from '../Flex';
 
 export interface MenuItemProps {
   label: string;
@@ -11,6 +12,7 @@ export interface MenuItemProps {
   onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
 
   isActive?: boolean;
+  sx?: FlexProps['sx'];
 }
 
 export interface MenuProps {
@@ -18,6 +20,7 @@ export interface MenuProps {
   height?: string | number;
   items?: MenuItemProps[];
   renderItem?: (item: MenuItemProps, index: number) => ReactNode;
+  sx?: FlexProps['sx'];
 }
 
 export type MenuItemComponentType = NamedExoticComponent<MenuItemProps>;

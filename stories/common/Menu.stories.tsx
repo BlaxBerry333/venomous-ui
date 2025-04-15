@@ -25,18 +25,18 @@ const meta = {
     },
     width: {
       description: 'Width of the menu',
-      control: { type: 'number' },
+      control: { type: 'text' },
       table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '200' },
+        type: { summary: 'number|string' },
+        defaultValue: { summary: '"100%"' },
       },
     },
     height: {
       description: 'Height of the menu',
-      control: { type: 'number' },
+      control: { type: 'text' },
       table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '200' },
+        type: { summary: 'number|string' },
+        defaultValue: { summary: '"100%"' },
       },
     },
   },

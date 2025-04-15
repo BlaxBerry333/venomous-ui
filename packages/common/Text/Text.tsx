@@ -8,28 +8,22 @@ const Text: TextComponentType = memo(
     text,
     isLabel,
     isTitle = false,
-    titleLevel = 'h5',
+    titleLevel = 'h6',
     ellipsis = false,
-    color,
+    textColor = 'inherit',
     sx,
     ...props
   }) => {
     const TextComponent = useMemo<JSX.Element>(
       () => (
         <MuiTypography
+          id="VenomousUI-Text"
           component="div"
           variant={isTitle ? titleLevel : isLabel ? 'caption' : 'body1'}
           noWrap={ellipsis}
           sx={{
-            fontWeight: isTitle ? 'bold' : 'normal',
-            color: (theme) =>
-              color === 'error'
-                ? theme.palette.error.main
-                : color === 'primary'
-                  ? theme.palette.primary.main
-                  : color === 'success'
-                    ? theme.palette.success.main
-                    : 'inherit',
+            fontWeight: isTitle || isLabel ? 'bold' : 'normal',
+            color: textColor,
             ...sx,
           }}
           {...props}

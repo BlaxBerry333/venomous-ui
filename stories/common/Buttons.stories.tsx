@@ -11,16 +11,21 @@ const meta = {
   argTypes: {
     text: {
       description: 'Icon text',
+      if: { arg: 'isCircle', truthy: false },
       control: 'text',
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'React.ReactNode' },
         defaultValue: { summary: '' },
       },
     },
     icon: IconMeta.argTypes.icon,
-    iconWidth: IconMeta.argTypes.width,
+    iconWidth: {
+      ...IconMeta.argTypes.width,
+      if: { arg: 'icon', neq: undefined },
+    },
     iconPosition: {
       description: 'Icon position',
+      if: { arg: 'icon', neq: undefined },
       control: 'select',
       options: ['start', 'end', undefined],
       table: {
@@ -54,6 +59,7 @@ const meta = {
     },
     isOutlined: {
       description: 'Button is outlined',
+      if: { arg: 'isGhost', truthy: false },
       control: { type: 'boolean' },
       table: {
         type: { summary: 'boolean' },
@@ -62,18 +68,20 @@ const meta = {
     },
     isGhost: {
       description: 'Button is ghost',
+      if: { arg: 'isOutlined', truthy: false },
       control: { type: 'boolean' },
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },
-    bgcolor: {
-      description: 'Button background color overrided',
-      control: 'color',
+    color: {
+      description: 'Button background color',
+      control: 'select',
+      options: ['auto', 'primary', 'error', 'success', 'grey'],
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '""' },
+        type: { summary: '"auto" | "primary" | "error" | "success" | "grey"' },
+        defaultValue: { summary: 'primary' },
       },
     },
   },
@@ -87,7 +95,7 @@ const meta = {
     icon: IconMeta.args.icon,
     iconWidth: IconMeta.args.width,
     iconPosition: undefined,
-    bgcolor: '',
+    color: 'primary',
   },
 } satisfies Meta<typeof Button>;
 
@@ -97,7 +105,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: 'DefaultButton',
-  render: (args) => <Button {...args} />,
 };
 
 export const Text: Story = {
@@ -127,5 +134,11 @@ export const WithIcon: Story = {
 export const Circle: Story = {
   name: 'Circle',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  render: (_) => <Button isCircle icon="mdi:home" iconWidth={20} />,
+  render: (_) => (
+    <Flex row gap={2}>
+      <Button isCircle icon="mdi:home" iconWidth={20} />
+      <Button isCircle isGhost icon="mdi:home" iconWidth={20} />
+      <Button isCircle isOutlined icon="mdi:home" iconWidth={20} />
+    </Flex>
+  ),
 };

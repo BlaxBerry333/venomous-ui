@@ -1,0 +1,42 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Drawer.stories';
+
+<Meta of={Stories} />
+
+# Drawer
+
+```tsx
+import { Drawer, DrawerHeader, useDrawer } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas
+  of={Stories.Default}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Drawer, DrawerHeader, useDrawer, Button } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const { isOpen, openDrawer, closeDrawer } = useDrawer();',
+      '',
+      '  return (',
+      '    <>',
+      '      <Button text="Open" onClick={openDrawer} />',
+      '      <Drawer width={300} position="right" isOpen={isOpen} closeDrawer={closeDrawer}>',
+      '        <DrawerHeader title="Drawer Title" closeDrawer={closeDrawer} />',
+      '        Drawer content',
+      '      </Drawer>',
+      '    </>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

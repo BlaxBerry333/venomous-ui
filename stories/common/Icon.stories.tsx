@@ -12,6 +12,7 @@ const meta = {
       description: 'Icon name',
       control: 'select',
       options: [
+        undefined,
         'solar:box-minimalistic-bold-duotone',
         'solar:filters-bold-duotone',
         'devicon:google',
@@ -32,8 +33,9 @@ const meta = {
     color: {
       description: 'Icon color',
       control: 'select',
-      options: ['primary', 'error', 'auto'],
+      options: ['auto', 'primary', 'error', 'success', 'grey'],
       table: {
+        type: { summary: '"auto" | "primary" | "error" | "success" | "grey"' },
         defaultValue: { summary: 'auto' },
       },
     },

@@ -20,7 +20,10 @@ const meta = {
         'bottom-right',
       ],
       table: {
-        type: { summary: 'string' },
+        type: {
+          summary:
+            '"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"',
+        },
         defaultValue: { summary: 'bottom' },
       },
     },
@@ -54,9 +57,9 @@ export const Default: Story = {
             onClick={() => toast({ type: 'error', title: 'Error', description: 'xxxx' })}
           />
           <Button
-            color="primary"
+            color="grey"
             text="Infomation"
-            onClick={() => toast({ type: 'info', title: 'Infomation', description: 'xxxx' })}
+            onClick={() => toast({ type: 'info', title: 'Infomation' })}
           />
         </Flex>
       </>

@@ -47,7 +47,7 @@ function getToastColor(type: Parameters<ToastHandlerType>[0]['type']): IconProps
     case 'error':
       return 'error';
     case 'info':
-      return 'primary';
+      return 'grey';
     default:
       return 'auto';
   }

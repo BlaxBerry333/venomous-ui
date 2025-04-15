@@ -17,7 +17,17 @@ const Grid = <T,>({
   const { gridComponents } = useGridComponents({ gridStyle, gridItemStyle, cols });
 
   return (
-    <Flex style={{ height: height || '100%', width: width || '100%' }}>
+    <Flex
+      id="VenomousUI-Grid"
+      sx={{
+        height: height || '100%',
+        width: width || '100%',
+        '& > *': {
+          flex: 'unset',
+          width: '100%',
+        },
+      }}
+    >
       <VirtuosoGrid
         style={{ height: '100%' }}
         totalCount={items.length}

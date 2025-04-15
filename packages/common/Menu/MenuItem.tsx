@@ -6,29 +6,47 @@ import { Text } from '../Text';
 import type { MenuItemComponentType } from './Menu.types';
 
 const MenuItem: MenuItemComponentType = memo(
-  ({ icon = '', label, clickable, disabled, onClick, onMouseEnter, onMouseLeave, isActive }) => {
+  ({
+    icon = '',
+    label,
+    clickable,
+    disabled,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    isActive,
+    sx,
+  }) => {
     if (clickable) {
       return (
         <Button
+          id="VenomousUI-MenuItem"
           isGhost
-          text={label}
+          text={<Text text={label} ellipsis />}
           icon={icon}
           iconWidth={28}
           iconPosition="start"
-          sx={{ py: 1, px: 2, my: 1 }}
           onClick={onClick}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           disabled={disabled}
-          color={isActive ? 'primary' : 'inherit'}
+          color={isActive ? 'primary' : 'auto'}
+          sx={{
+            py: 1,
+            px: 2,
+            transition: 'background-color 0.2s ease; color 0.2s ease',
+            backgroundColor: isActive ? 'divider' : 'transparent',
+            '&:hover': { backgroundColor: 'divider' },
+            ...sx,
+          }}
         />
       );
     }
 
     return (
-      <Flex row py={1} px={2} my={1}>
+      <Flex row py={1} px={2} my={1} sx={{ ...sx }} id="VenomousUI-MenuItem">
         <Icon icon={icon} width={28} color={isActive ? 'primary' : 'auto'} />
-        <Text text={label} ellipsis flex={1} color={isActive ? 'primary' : 'auto'} />
+        <Text text={label} ellipsis flex={1} bgcolor={isActive ? 'primary' : 'auto'} />
       </Flex>
     );
   },

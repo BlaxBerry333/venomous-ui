@@ -50,7 +50,7 @@ const Modal: ModalComponentType = memo(
               text={cancelButtonText}
               onClick={closeModal}
               disabled={cancelButtonIsDisabled || isSubmitting}
-              isGhost
+              isOutlined
             />
             <Button
               text={confirmButtonText}
@@ -82,6 +82,7 @@ const Modal: ModalComponentType = memo(
 
     return (
       <MuiDialog
+        id="VenomousUI-Modal"
         open={isOpen}
         onClose={!isPrevented ? closeModal : undefined}
         scroll="paper"

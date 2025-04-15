@@ -16,16 +16,9 @@ const meta = {
         defaultValue: { summary: '' },
       },
     },
-    isLabel: {
-      description: 'Is label',
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
     isTitle: {
       description: 'Is title',
+      if: { arg: 'isLabel', truthy: false },
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
@@ -34,11 +27,21 @@ const meta = {
     },
     titleLevel: {
       description: 'Title level',
+      if: { arg: 'isTitle', truthy: true },
       control: 'select',
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'h3' },
+        defaultValue: { summary: 'h6' },
+      },
+    },
+    isLabel: {
+      description: 'Is label',
+      if: { arg: 'isTitle', truthy: false },
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
     ellipsis: {
@@ -49,13 +52,23 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    textColor: {
+      description: 'Text color',
+      control: 'select',
+      options: ['auto', 'primary', 'error', 'success', 'grey'],
+      table: {
+        type: { summary: '"auto" | "primary" | "error" | "success" | "grey"' },
+        defaultValue: { summary: 'auto' },
+      },
+    },
   },
   args: {
     text: 'Xxxxxxxxxx',
-    isLabel: false,
     isTitle: false,
-    titleLevel: 'h3',
+    titleLevel: 'h6',
+    isLabel: false,
     ellipsis: false,
+    textColor: 'auto',
   },
 } satisfies Meta<typeof Text>;
 

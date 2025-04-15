@@ -11,15 +11,30 @@ import { useThemeBreakpoint } from 'venomous-ui';
 ```tsx
 import { useThemeBreakpoint } from 'venomous-ui';
 
-function Component() {
-  const { isXs, isSm, isMd, isLg } = useThemeBreakpoint();
+function App() {
+  const { isXs, isSm, isMd, isLg, isXl, breakpoints } = useThemeBreakpoint();
+  const { values, current, unit } = breakpoints;
 
   return (
     <div>
-      <p>isXs: {isXs.toString()}</p>
-      <p>isSm: {isSm.toString()}</p>
-      <p>isMd: {isMd.toString()}</p>
-      <p>isLg: {isLg.toString()}</p>
+      <p>current: {current}</p>
+      <p>unit: {unit}</p>
+      <br />
+      <p>
+        isXs: {isXs.toString()} {`${values['xs']}${unit}`}
+      </p>
+      <p>
+        isSm: {isSm.toString()} {`${values['sm']}${unit}`}
+      </p>
+      <p>
+        isMd: {isMd.toString()} {`${values['md']}${unit}`}
+      </p>
+      <p>
+        isLg: {isLg.toString()} {`${values['lg']}${unit}`}
+      </p>
+      <p>
+        isXl: {isLg.toString()} {`${values['xl']}${unit}`}
+      </p>
     </div>
   );
 }

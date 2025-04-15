@@ -3,9 +3,9 @@ import { Virtuoso } from 'react-virtuoso';
 import { Flex } from '../Flex';
 import type { MenuComponentType } from './Menu.types';
 
-const Menu: MenuComponentType = memo(({ height, width, items, renderItem }) => {
+const Menu: MenuComponentType = memo(({ height, width, items, renderItem, sx }) => {
   return (
-    <Flex style={{ height: height || '100%', width: width || '100%' }}>
+    <Flex id="VenomousUI-Menu" sx={{ height: height || '100%', width: width || '100%', ...sx }}>
       <Virtuoso
         style={{ height: '100%', width: '100%' }}
         totalCount={items?.length}

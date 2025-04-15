@@ -13,7 +13,7 @@ const meta = {
       control: 'select',
       options: ['bottom', 'left', 'right', 'top'],
       table: {
-        type: { summary: 'string' },
+        type: { summary: '"bottom" | "left" | "right" | "top"' },
         defaultValue: { summary: 'bottom' },
       },
     },

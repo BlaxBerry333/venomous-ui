@@ -1,11 +1,12 @@
 import { Icon as Iconify } from '@iconify/react';
-import MuiMuiBox from '@mui/material/Box';
+import MuiBox from '@mui/material/Box';
 import { memo } from 'react';
 import type { IconComponentType } from './Icon.types';
 
 const Icon: IconComponentType = memo(({ ref, icon, width = 20, color = 'auto', sx, ...props }) => {
   return (
-    <MuiMuiBox
+    <MuiBox
+      id="VenomousUI-Icon"
       ssr
       ref={ref}
       component={Iconify}
@@ -22,7 +23,9 @@ const Icon: IconComponentType = memo(({ ref, icon, width = 20, color = 'auto', s
               ? theme.palette.primary.main
               : color === 'success'
                 ? theme.palette.success.main
-                : 'inherit',
+                : color === 'grey'
+                  ? theme.palette.text.secondary
+                  : 'inherit',
         ...sx,
       }}
       {...props}
@@ -30,5 +33,5 @@ const Icon: IconComponentType = memo(({ ref, icon, width = 20, color = 'auto', s
   );
 });
 
-Icon.displayName = 'Button';
+Icon.displayName = 'Icon';
 export default Icon;

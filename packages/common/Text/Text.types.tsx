@@ -1,8 +1,9 @@
 import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import type { NamedExoticComponent } from 'react';
 
-export type TextProps = Omit<MuiTypographyProps, 'children' | 'variant' | 'noWrap'> & {
+export type TextProps = Omit<MuiTypographyProps, 'children' | 'variant' | 'noWrap' | 'color'> & {
   text: string;
+  textColor?: string;
 
   isLabel?: boolean;
 
