@@ -1217,10 +1217,15 @@
     browser-assert "^1.2.1"
     ts-dedent "^2.0.0"
 
-"@storybook/components@8.6.12":
+"@storybook/components@8.6.12", "@storybook/components@^8.0.0":
   version "8.6.12"
   resolved "https://registry.npmjs.org/@storybook/components/-/components-8.6.12.tgz"
   integrity sha512-FiaE8xvCdvKC2arYusgtlDNZ77b8ysr8njAYQZwwaIHjy27TbR2tEpLDCmUwSbANNmivtc/xGEiDDwcNppMWlQ==
+
+"@storybook/core-events@^8.0.0":
+  version "8.6.12"
+  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-8.6.12.tgz#dda61eece638faf95d4dfc30b40489911faa5fdd"
+  integrity sha512-j2MUlSfYOhTsjlruRWTqSVwYreJGFIsWeqHFAhCdtmXe3qpFBM/LuxTKuaM1uWvs6vEAyGEzDw8+DXwuO6uISg==
 
 "@storybook/core@8.6.12":
   version "8.6.12"
@@ -1258,7 +1263,7 @@
   resolved "https://registry.npmjs.org/@storybook/global/-/global-5.0.0.tgz"
   integrity sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==
 
-"@storybook/icons@^1.2.12":
+"@storybook/icons@^1.2.12", "@storybook/icons@^1.2.5":
   version "1.4.0"
   resolved "https://registry.npmjs.org/@storybook/icons/-/icons-1.4.0.tgz"
   integrity sha512-Td73IeJxOyalzvjQL+JXx72jlIYHgs+REaHiREOqfpo3A2AYYG71AUbcv+lg7mEDIweKVCxsMQ0UKo634c8XeA==
@@ -1271,7 +1276,7 @@
     "@storybook/global" "^5.0.0"
     "@vitest/utils" "^2.1.1"
 
-"@storybook/manager-api@8.6.12", "@storybook/manager-api@^8.6.12":
+"@storybook/manager-api@8.6.12", "@storybook/manager-api@^8.0.0", "@storybook/manager-api@^8.6.12":
   version "8.6.12"
   resolved "https://registry.yarnpkg.com/@storybook/manager-api/-/manager-api-8.6.12.tgz#a9169a3fb8de97ba406ed83314112d5c47d035ad"
   integrity sha512-O0SpISeJLNTQvhSBOsWzzkCgs8vCjOq1578rwqHlC6jWWm4QmtfdyXqnv7rR1Hk08kQ+Dzqh0uhwHx0nfwy4nQ==
@@ -1326,7 +1331,7 @@
     "@vitest/expect" "2.0.5"
     "@vitest/spy" "2.0.5"
 
-"@storybook/theming@8.6.12", "@storybook/theming@^8.6.12":
+"@storybook/theming@8.6.12", "@storybook/theming@^8.0.0", "@storybook/theming@^8.6.12":
   version "8.6.12"
   resolved "https://registry.npmjs.org/@storybook/theming/-/theming-8.6.12.tgz"
   integrity sha512-6VjZg8HJ2Op7+KV7ihJpYrDnFtd9D1jrQnUS8LckcpuBXrIEbaut5+34ObY8ssQnSqkk2GwIZBBBQYQBCVvkOw==
@@ -3803,6 +3808,20 @@ source-map@~0.6.1:
   version "0.6.1"
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+
+storybook-dark-mode@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/storybook-dark-mode/-/storybook-dark-mode-4.0.2.tgz#2536d1a229ac050172d37aa50bd9f6f7cdad0425"
+  integrity sha512-zjcwwQ01R5t1VsakA6alc2JDIRVtavryW8J3E3eKLDIlAMcvsgtpxlelWkZs2cuNspk6Z10XzhQVrUWtYc3F0w==
+  dependencies:
+    "@storybook/components" "^8.0.0"
+    "@storybook/core-events" "^8.0.0"
+    "@storybook/global" "^5.0.0"
+    "@storybook/icons" "^1.2.5"
+    "@storybook/manager-api" "^8.0.0"
+    "@storybook/theming" "^8.0.0"
+    fast-deep-equal "^3.1.3"
+    memoizerific "^1.11.3"
 
 storybook@^8.6.12:
   version "8.6.12"

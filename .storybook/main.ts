@@ -17,7 +17,19 @@ const config: StorybookConfig = {
 
   staticDirs: [{ from: '../public', to: '/' }],
 
-  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false,
+        outline: false,
+        measure: false,
+        viewport: false,
+      },
+    },
+    '@storybook/addon-interactions',
+    'storybook-dark-mode',
+  ],
 };
 
 export default config;
