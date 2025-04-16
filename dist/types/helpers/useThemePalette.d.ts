@@ -2,7 +2,7 @@ export declare enum ThemePaletteName {
     Skyblue = "Skyblue",
     Teal = "Teal"
 }
-declare function generateThemePalette(name: ThemePaletteName): {
+export declare function generateThemePalette(name: ThemePaletteName): {
     main: string;
     light: string;
     dark: string;
@@ -17,4 +17,3 @@ export default function useThemePalette(): {
     themePalette: ThemePaletteType;
     setThemePaletteName: (themePaletteName: ThemePaletteName) => void;
 };
-export {};

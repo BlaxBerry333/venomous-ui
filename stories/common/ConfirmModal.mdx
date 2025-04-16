@@ -1,0 +1,58 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './ConfirmModal.stories';
+
+<Meta of={Stories} />
+
+# ConfirmModal
+
+```tsx
+import { ConfirmModal, useModal } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas
+  of={Stories.Default}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { useState } from 'react';",
+      "import { ConfirmModal, useModal, Button } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const { isOpen, openModal, closeModal } = useModal();',
+      '',
+      '  const [isLoading, setIsLoading] = useState(false);',
+      '  const handleConfirm = async () => {',
+      '    setIsLoading(true);',
+      '    await new Promise((resolve) => setTimeout(resolve, 2000));',
+      '    setIsLoading(false);',
+      '  };',
+      '',
+      '',
+      '  return (',
+      '    <>',
+      '      <Button text="Open Modal" onClick={openModal} />',
+      '      <ConfirmModal',
+      '        isOpen={isOpen}',
+      '        onClose={closeModal}',
+      '        isSubmitting={isLoading}',
+      '        onSubmit={handleConfirm}',
+      '        onClose={() => alert("closed")}',
+      '        title="Are You Sure?"',
+      '        contentMessage="Are you sure you want to do something? This action cannot be undone."',
+      '        cancelButtonText="No"',
+      '        confirmButtonText="Yes"',
+      '      />',
+      '    </>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

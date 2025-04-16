@@ -13,3 +13,39 @@ import { MenuItem } from 'venomous-ui';
 
 <Controls />
 <Canvas of={Stories.Default} />
+
+## Examples
+
+#### Default
+
+It is not recommended to use it directly, the width defaults to `100%` of the parent element's width.
+
+Prefer to place it in a parent element ( for example `<Menu/>` ) with a specified width
+
+<Canvas
+  of={Stories.WithParent}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Menu, type MenuProps, MenuItem } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <>',
+      '      <MenuItem label="Without Parent" sx={{ background: "pink" }} />',
+      '',
+      '      <div style={{ width: 250 }}>',
+      '        <MenuItem label="Inside Custom Element" sx={{ background: "pink" }} />',
+      '      </div>',
+      '',
+      '      <Menu',
+      '        width={250}',
+      '        items={[{ label: "Inside Menu Component" }]}',
+      '        renderItem={(item) => <MenuItem label={item.label} sx={{ background: "pink" }} />}',
+      '      />',
+      '    </> ',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

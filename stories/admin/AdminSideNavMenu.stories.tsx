@@ -22,7 +22,7 @@ const meta = {
       control: 'number',
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: '200' },
+        defaultValue: { summary: '220' },
       },
     },
     menuItems: {
@@ -56,7 +56,7 @@ const meta = {
   },
   args: {
     menuHeaderHeight: 50,
-    menuWidth: 200,
+    menuWidth: 220,
     menuItems: [],
     activedItemUrl: '',
     logoSrc:

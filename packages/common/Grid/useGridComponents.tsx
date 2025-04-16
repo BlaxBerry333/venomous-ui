@@ -5,9 +5,8 @@ import { DEFAULT_COLS, type GridProps, type VirtuosoGridComponentsType } from '.
 
 export default function useGridComponents({
   gridStyle,
-  gridItemStyle,
   cols,
-}: Pick<GridProps, 'gridStyle' | 'gridItemStyle' | 'cols'>) {
+}: Pick<GridProps, 'gridStyle' | 'cols'>) {
   const { isXs, isSm, isMd, isLg } = useThemeBreakpoint();
 
   const itemWidth = useMemo<string>(() => {
@@ -41,8 +40,6 @@ export default function useGridComponents({
               boxSizing: 'border-box',
               flex: 'none',
               alignContent: 'stretch',
-              padding: '0.5rem',
-              ...gridItemStyle,
             }}
           >
             {children}
@@ -50,7 +47,7 @@ export default function useGridComponents({
         );
       },
     }),
-    [itemWidth, gridStyle, gridItemStyle],
+    [itemWidth, gridStyle],
   );
 
   return {

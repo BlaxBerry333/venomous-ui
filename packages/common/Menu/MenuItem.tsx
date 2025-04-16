@@ -32,8 +32,10 @@ const MenuItem: MenuItemComponentType = memo(
           disabled={disabled}
           color={isActive ? 'primary' : 'auto'}
           sx={{
-            py: 1,
-            px: 2,
+            py: '8px',
+            px: '16px',
+            width: '100%',
+            justifyContent: 'flex-start',
             transition: 'background-color 0.2s ease; color 0.2s ease',
             backgroundColor: isActive ? 'divider' : 'transparent',
             '&:hover': { backgroundColor: 'divider' },
@@ -44,9 +46,9 @@ const MenuItem: MenuItemComponentType = memo(
     }
 
     return (
-      <Flex row py={1} px={2} my={1} sx={{ ...sx }} id="VenomousUI-MenuItem">
+      <Flex row py="8px" px="16px" sx={{ width: '100%', ...sx }} id="VenomousUI-MenuItem">
         <Icon icon={icon} width={28} color={isActive ? 'primary' : 'auto'} />
-        <Text text={label} ellipsis flex={1} bgcolor={isActive ? 'primary' : 'auto'} />
+        <Text text={label} ellipsis flex={1} textColor={isActive ? 'primary' : 'auto'} />
       </Flex>
     );
   },

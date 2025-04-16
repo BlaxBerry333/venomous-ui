@@ -15,7 +15,6 @@ export type GridProps<T = unknown> = {
   items: T[];
   renderGridItem: (item: T, index: number) => React.ReactNode;
   gridStyle?: CSSProperties;
-  gridItemStyle?: CSSProperties;
   cols?: Partial<GridColsType>;
 };
 

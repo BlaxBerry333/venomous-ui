@@ -23,7 +23,16 @@ const Text: TextComponentType = memo(
           noWrap={ellipsis}
           sx={{
             fontWeight: isTitle || isLabel ? 'bold' : 'normal',
-            color: textColor,
+            color: (theme) =>
+              textColor === 'error'
+                ? theme.palette.error.main
+                : textColor === 'primary'
+                  ? theme.palette.primary.main
+                  : textColor === 'success'
+                    ? theme.palette.success.main
+                    : textColor === 'grey'
+                      ? theme.palette.text.secondary
+                      : 'inherit',
             ...sx,
           }}
           {...props}

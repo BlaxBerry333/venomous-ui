@@ -18,6 +18,7 @@ export interface MenuItemProps {
 export interface MenuProps {
   width?: string | number;
   height?: string | number;
+  isVirtualized?: boolean;
   items?: MenuItemProps[];
   renderItem?: (item: MenuItemProps, index: number) => ReactNode;
   sx?: FlexProps['sx'];

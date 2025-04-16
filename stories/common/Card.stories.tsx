@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from '@packages/common';
 
 const meta = {
-  title: 'Common Components/Card',
+  title: 'Common Components/Cards/Card',
   component: Card,
   parameters: { layout: 'centered' },
   tags: ['!autodocs', '!dev'],
@@ -16,20 +16,12 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
-    title: {
-      description: 'Title',
+    children: {
+      description: 'Content',
       control: 'text',
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '""' },
-      },
-    },
-    subtitle: {
-      description: 'Subtitle',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '""' },
+        type: { summary: 'React.ReactNode' },
+        defaultValue: { summary: 'undefined' },
       },
     },
     clickable: {
@@ -60,8 +52,7 @@ const meta = {
   },
   args: {
     isOutlined: false,
-    title: 'CardTitle',
-    subtitle: 'CardSubtitle',
+    children: 'Card Content',
     clickable: false,
     disabled: false,
     onClick: () => alert('Clicked'),

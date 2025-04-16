@@ -64,6 +64,8 @@ export const Default: Story = {
         <Drawer width={300} position="right" isOpen={isOpen} closeDrawer={closeDrawer}>
           <DrawerHeader height={50} title="Drawer Title" closeDrawer={closeDrawer} />
           Drawer content
+          <div style={{ height: '100vh', backgroundColor: 'pink' }} />
+          <div style={{ height: '100vh', backgroundColor: 'red' }} />
         </Drawer>
       </>
     );

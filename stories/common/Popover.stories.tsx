@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Popover } from '@packages/common';
+import { Button, Menu, MenuItem, Popover, type MenuProps } from '@packages/common';
 
 const meta = {
   title: 'Common Components/Popover',
@@ -36,6 +36,32 @@ export const Default: Story = {
         )}
       >
         Hello World
+      </Popover>
+    );
+  },
+};
+
+export const ActionMenu: Story = {
+  name: 'ActionMenu',
+  render: function RenderStory() {
+    const menuItems: MenuProps['items'] = [
+      { label: 'Edit', icon: 'solar:pen-new-square-line-duotone' },
+      { label: 'Delete', icon: 'solar:close-square-line-duotone' },
+    ];
+    return (
+      <Popover
+        renderPopoverHandler={({ isOpen, openPopover }) => (
+          <Button
+            isCircle
+            isGhost
+            icon="solar:menu-dots-line-duotone"
+            iconWidth={20}
+            disabled={isOpen}
+            onClick={openPopover}
+          />
+        )}
+      >
+        <Menu items={menuItems} renderItem={(item) => <MenuItem {...item} clickable />} />
       </Popover>
     );
   },

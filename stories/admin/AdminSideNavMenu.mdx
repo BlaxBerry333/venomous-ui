@@ -12,42 +12,39 @@ import { AdminSideNavMenu } from 'venomous-ui';
 ## Props
 
 <Controls />
-<Canvas of={Stories.Default} sourceState="shown" 
-  source={{
-    code: [
-      "import { AdminSideNavMenu, type AdminSideNavMenuProps } from 'venomous-ui';",
-      '',
-      'function App() {',
-      '  const menuItems: AdminSideNavMenuProps["menuItems"] = [',
-      '    {',
-      '      label: "Files",',
-      '      icon: "solar:folder-with-files-bold-duotone",',
-      '      subItems: [',
-      '        { label: "list", icon: "solar:folder-open-line-duotone", url: "" },',
-      '        { label: "create", icon: "solar:add-folder-line-duotone", url: "" },',
-      '      ],',
-      '    },',
-      '    {',
-      '      label: "ABCDEFGHIJKLMN",',
-      '      icon: "solar:box-minimalistic-bold-duotone",',
-      '      subItems: [',
-      '        { label: "123456", icon: "solar:box-minimalistic-bold-duotone", url: "" }',
-      '      ],',
-      '    },',
-      '  ];',
-      '',
-      '  return (',
-      '    <AdminSideNavMenu',
-      '      menuHeaderHeight={50}',
-      '      menuWidth={200}',
-      '      menuItems={menuItems}',
-      '      activedItemUrl=""',
-      '      logoSrc="/logo.svg"',
-      '      appName="VenomousUI"',
-      '    />',
-      '  );',
-      '}',
-    ].join('\n'),
-  }}
+<Canvas of={Stories.Default} sourceState="none" />
 
-/>
+## Example
+
+```tsx
+import { AdminSideNavMenu, type AdminSideNavMenuProps } from 'venomous-ui';
+
+function App() {
+  const menuItems: AdminSideNavMenuProps['menuItems'] = [
+    {
+      label: 'Files',
+      icon: 'solar:folder-with-files-bold-duotone',
+      subItems: [
+        { label: 'list', icon: 'solar:folder-open-line-duotone', url: '' },
+        { label: 'create', icon: 'solar:add-folder-line-duotone', url: '' },
+      ],
+    },
+    {
+      label: 'ABCDEFGHIJKLMN',
+      icon: 'solar:box-minimalistic-bold-duotone',
+      subItems: [{ label: '123456', icon: 'solar:box-minimalistic-bold-duotone', url: '' }],
+    },
+  ];
+
+  return (
+    <AdminSideNavMenu
+      menuHeaderHeight={50}
+      menuWidth={200}
+      menuItems={menuItems}
+      activedItemUrl=""
+      logoSrc="https://raw.githubusercontent.com/BlaxBerry333/venomous-ui/a51fd9d32216d9a7cf47e21cbe53bbee4dd114d6/public/favicon.svg"
+      appName="VenomousUI"
+    />
+  );
+}
+```

@@ -1,0 +1,31 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './AdminSettingsDrawer.stories';
+
+<Meta of={Stories} />
+
+# AdminSettingsDrawer
+
+```tsx
+import { AdminSettingsDrawer } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+```tsx
+import { AdminSettingsDrawer } from 'venomous-ui';
+
+function App() {
+  return (
+    <AdminSettingsDrawer title="Settings" width={300}>
+      <p>Other Custom Content</p>
+      <p>Other Custom Content</p>
+      <p>Other Custom Content</p>
+    </AdminSettingsDrawer>
+  );
+}
+```

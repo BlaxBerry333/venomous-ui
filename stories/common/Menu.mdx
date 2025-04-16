@@ -43,6 +43,36 @@ import { Menu } from 'venomous-ui';
   }}
 />
 
+#### InsidePaper
+
+<Canvas
+  of={Stories.InsidePaper}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Menu, type MenuProps, MenuItem } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const menuItems: MenuProps["items"] = [',
+      '    { label: "Item 1", icon: "solar:box-minimalistic-bold-duotone" },',
+      '    { label: "Item 2", icon: "solar:box-minimalistic-bold-duotone" },',
+      '  ];',
+      '',
+      '  return (',
+      '    <Paper isOutlined sx={{ height: 200, width: 200 }}>',
+      '      <Menu',
+      '        height="100%"',
+      '        width="100%"',
+      '        items={menuItems}',
+      '        renderItem={(item) => <MenuItem {...item} clickable />}',
+      '      />',
+      '    </Paper>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
 #### Virtualized
 
 <Canvas
@@ -55,11 +85,11 @@ import { Menu } from 'venomous-ui';
       'function App() {',
       '  const menuItems: MenuProps["items"] = Array.from({ length: 100 }, (_, index) => ({',
       '    label: `Item ${index + 1}`,',
-      '    onClick: () => console.log(`Clicked Item ${index}`),',
       '  }));',
       '',
       '  return (',
       '    <Menu',
+      '      isVirtualized',
       '      height={300}',
       '      width={300}',
       '      items={menuItems}',

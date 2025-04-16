@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Flex, Menu, MenuItem, type MenuProps, Text } from '@packages/common';
+import { Flex, Menu, MenuItem, type MenuProps, Paper, Text } from '@packages/common';
 
 const meta = {
   title: 'Common Components/Menu',
@@ -8,6 +8,14 @@ const meta = {
   parameters: { layout: 'fullscreen' },
   tags: ['!autodocs', '!dev'],
   argTypes: {
+    isVirtualized: {
+      description: 'Whether to use virtualization for the menu',
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     items: {
       description: 'Array of menu items',
       control: { type: 'object' },
@@ -41,6 +49,7 @@ const meta = {
     },
   },
   args: {
+    isVirtualized: false,
     items: [],
     renderItem: () => null,
     width: '100%',
@@ -71,18 +80,39 @@ export const Default: Story = {
   },
 };
 
+export const InsidePaper: Story = {
+  name: 'InsidePaper',
+  render: function RenderStory() {
+    const menuItems: MenuProps['items'] = [
+      { label: '123456', icon: 'solar:box-minimalistic-bold-duotone' },
+      { label: 'ABCDEFGHIJKLMN', icon: 'solar:box-minimalistic-bold-duotone' },
+    ];
+
+    return (
+      <Paper isOutlined sx={{ height: 200, width: 200 }}>
+        <Menu
+          height="100%"
+          width="100%"
+          items={menuItems}
+          renderItem={(item) => <MenuItem {...item} clickable />}
+        />
+      </Paper>
+    );
+  },
+};
+
 export const Virtualized: Story = {
   name: 'Virtualized',
   render: function RenderStory() {
     const menuItems: MenuProps['items'] = Array.from({ length: 100 }, (_, index) => ({
       label: `Item ${index + 1}`,
-      onClick: () => console.log(`Clicked Item ${index}`),
     }));
 
     return (
       <Menu
+        isVirtualized
         height={300}
-        width="100%"
+        width={300}
         items={menuItems}
         renderItem={(item, index) => (
           <Flex row>

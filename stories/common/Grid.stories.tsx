@@ -33,14 +33,6 @@ const meta = {
         defaultValue: { summary: '{}' },
       },
     },
-    gridItemStyle: {
-      description: 'Style for each grid item',
-      control: 'object',
-      table: {
-        type: { summary: 'object' },
-        defaultValue: { summary: '{}' },
-      },
-    },
     cols: {
       description: 'Number of columns',
       control: 'object',
@@ -71,7 +63,6 @@ const meta = {
     renderGridItem: () => null,
     cols: { xs: 1, sm: 1, md: 2, lg: 3, xl: 4 },
     gridStyle: {},
-    gridItemStyle: {},
     width: '100%',
     height: '100%',
   },
@@ -91,7 +82,9 @@ export const Virtualized: Story = {
         cols={{ xs: 1, sm: 1, md: 2, lg: 3, xl: 4 }}
         items={Array.from({ length: 100 }, (_, index) => index)}
         renderGridItem={(_, index) => (
-          <Paper sx={{ height: 100, width: '100%' }}>{`Item ${index + 1}`}</Paper>
+          <div style={{ margin: '8px', width: '100%' }}>
+            <Paper sx={{ height: 100, width: '100%' }}>{`Item ${index + 1}`}</Paper>
+          </div>
         )}
       />
     );

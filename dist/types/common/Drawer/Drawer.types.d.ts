@@ -6,7 +6,7 @@ export type DrawerProps = PropsWithChildren<{
     position?: MuiDrawerProps['anchor'];
     width?: string | number;
 }>;
-export type DrawerHeaderProps = Pick<DrawerProps, 'closeDrawer'> & {
+export type DrawerHeaderProps = Partial<Pick<DrawerProps, 'closeDrawer'>> & {
     title: string;
     height?: string | number;
 };

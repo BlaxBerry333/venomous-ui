@@ -1,0 +1,48 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './ExhibitCard.stories';
+
+<Meta of={Stories} />
+
+# ExhibitCard
+
+```tsx
+import { ExhibitCard, ExhibitCardActionButton } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas
+  of={Stories.Default}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { ExhibitCard, ExhibitCardActionButton, Icon, Text } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const menuItems: MenuProps["items"] = [',
+      '    { label: "Edit", icon: "solar:pen-new-square-line-duotone" },',
+      '    { label: "Delete", icon: "solar:close-square-line-duotone" },',
+      '  ];',
+      '',
+      '  return (',
+      '    <ExhibitCard',
+      '      title="Card Title"',
+      '      subtitle="Card Subtitle"',
+      '      headerStartExtra={<Icon icon="solar:box-minimalistic-bold-duotone" />}',
+      '      headerEndExtra={<ExhibitCardActionButton icon="solar:menu-dots-line-duotone" menuItems={menuItems} />}',
+      '    >',
+      '      <Text text="Card Content" />',
+      '      <Text text="Card Content" />',
+      '      <Text text="Card Content" />',
+      '    </ExhibitCard>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

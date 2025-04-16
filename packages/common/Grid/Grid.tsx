@@ -11,10 +11,9 @@ const Grid = <T,>({
   items = DEFAULT_ITEMS,
   renderGridItem,
   gridStyle,
-  gridItemStyle,
   cols = DEFAULT_COLS,
 }: GridProps<T>) => {
-  const { gridComponents } = useGridComponents({ gridStyle, gridItemStyle, cols });
+  const { gridComponents } = useGridComponents({ gridStyle, cols });
 
   return (
     <Flex

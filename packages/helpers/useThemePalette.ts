@@ -12,7 +12,7 @@ const THEME_PALETTES_MAIN_COLORS: Record<ThemePaletteName, string> = {
   [ThemePaletteName.Teal]: '#009688',
 };
 
-function generateThemePalette(name: ThemePaletteName) {
+export function generateThemePalette(name: ThemePaletteName) {
   const mainColor = THEME_PALETTES_MAIN_COLORS[name];
   return {
     main: mainColor,

@@ -39,3 +39,39 @@ import { Popover } from 'venomous-ui';
     ].join('\n'),
   }}
 />
+
+#### ActionMenu
+
+<Canvas
+  of={Stories.ActionMenu}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Popover, Button } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const menuItems: MenuProps["items"] = [',
+      '    { label: "Edit", icon: "solar:pen-new-square-line-duotone" },',
+      '    { label: "Delete", icon: "solar:close-square-line-duotone" },',
+      '  ];',
+      '',
+      '  return (',
+      '    <Popover',
+      '      renderPopoverHandler={({ isOpen, openPopover }) => (',
+      '        <Button',
+      '          isCircle',
+      '          isGhost',
+      '          icon="solar:menu-dots-line-duotone"',
+      '          iconWidth={20}',
+      '          disabled={isOpen}',
+      '          onClick={openPopover}',
+      '        />',
+      '      )}',
+      '    >',
+      '      <Menu items={menuItems} renderItem={(item) => <MenuItem {...item} clickable />} />',
+      '    </Popover>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

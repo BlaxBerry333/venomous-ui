@@ -15,57 +15,14 @@ import { Modal, useModal } from 'venomous-ui';
 
 ## Examples
 
-#### DefaultContent
+#### Default
 
 <Canvas
-  of={Stories.DefaultContent}
+  of={Stories.Default}
   sourceState="shown"
   source={{
     code: [
-      "import { useState } from 'react';",
-      "import { Button, Modal, useModal } from 'venomous-ui';",
-      '',
-      'function App() {',
-      '  const { isOpen, openModal, closeModal } = useModal();',
-      '',
-      '  const [isLoading, setIsLoading] = useState(false);',
-      '  const handleConfirm = async () => {',
-      '    setIsLoading(true);',
-      '    await new Promise((resolve) => setTimeout(resolve, 2000));',
-      '    setIsLoading(false);',
-      '  };',
-      '',
-      '  const handleClose = () => alert("closed");',
-      '',
-      '  return (',
-      '    <>',
-      '      <Button text="Open Modal" onClick={openModal} />',
-      '      <Modal',
-      '        isOpen={isOpen}',
-      '        onClose={closeModal}',
-      '        isSubmitting={isLoading}',
-      '        onSubmit={handleConfirm}',
-      '        onClose={handleClose}',
-      '        title="Are You Sure?"',
-      '        contentMessage="Are you sure you want to do something? This action cannot be undone."',
-      '        cancelButtonText="No"',
-      '        confirmButtonText="Yes"',
-      '      />',
-      '    </>',
-      '  );',
-      '}',
-    ].join('\n'),
-  }}
-/>
-
-#### CustomContent
-
-<Canvas
-  of={Stories.CustomContent}
-  sourceState="shown"
-  source={{
-    code: [
-      "import { Button, Modal, useModal } from 'venomous-ui';",
+      "import { Modal, useModal, Button } from 'venomous-ui';",
       '',
       'function App() {',
       '  const { isOpen, openModal, closeModal } = useModal();',

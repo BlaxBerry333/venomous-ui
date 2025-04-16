@@ -8,18 +8,20 @@ import type { PopperComponentType } from './Popper.types';
 import usePopper from './usePopper';
 
 const Popper: PopperComponentType = memo(
-  ({ id, children, renderPopperHandler, position = 'bottom', sx }) => {
+  ({ id, children, renderPopperHandler, position = 'bottom', sx, contentSx }) => {
     const { anchorEl, isOpen, openPopper, closePopper } = usePopper(id);
 
     return (
       <MuiClickAwayListener onClickAway={closePopper}>
-        <MuiBox sx={{ position: 'relative' }} role="presentation" id="#VenomousUI-Popper">
+        <MuiBox sx={{ position: 'relative', ...sx }} role="presentation" id="#VenomousUI-Popper">
           {renderPopperHandler({ anchorEl, isOpen, openPopper, closePopper })}
 
           <MuiPopper open={isOpen} anchorEl={anchorEl} placement={position} transition keepMounted>
             {({ TransitionProps }) => (
               <MuiFade {...TransitionProps}>
-                <Paper sx={sx}>{children}</Paper>
+                <Paper isOutlined sx={{ width: '100%', ...contentSx }}>
+                  {children}
+                </Paper>
               </MuiFade>
             )}
           </MuiPopper>

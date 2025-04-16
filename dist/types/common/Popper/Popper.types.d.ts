@@ -5,6 +5,7 @@ export type PopperProps = PropsWithChildren<{
     renderPopperHandler: (props: PopperHandlerType) => JSX.Element;
     position?: 'bottom' | 'left' | 'right' | 'top';
     sx?: PaperProps['sx'];
+    contentSx?: PaperProps['sx'];
 }>;
 export type PopperComponentType = NamedExoticComponent<PopperProps>;
 export type PopperHandlerType = {

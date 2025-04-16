@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { MenuItem } from '@packages/common';
+import { Menu, MenuItem } from '@packages/common';
 
 const meta = {
   title: 'Common Components/MenuItem',
@@ -73,4 +73,32 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: 'Default',
+  render: function RenderStory({ ...args }) {
+    return (
+      <div style={{ width: 200 }}>
+        <MenuItem {...args} />
+      </div>
+    );
+  },
+};
+
+export const WithParent: Story = {
+  name: 'WithParent',
+  render: function RenderStory() {
+    return (
+      <>
+        <MenuItem label="Without Parent" sx={{ background: 'pink' }} />
+
+        <div style={{ width: 250 }}>
+          <MenuItem label="Inside Custom Element" sx={{ background: 'pink' }} />
+        </div>
+
+        <Menu
+          width={250}
+          items={[{ label: 'Inside Menu Component' }]}
+          renderItem={(item) => <MenuItem label={item.label} sx={{ background: 'pink' }} />}
+        />
+      </>
+    );
+  },
 };
