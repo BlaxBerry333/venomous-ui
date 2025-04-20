@@ -25,7 +25,7 @@ const preview: Preview = {
             <MuiPaper
               sx={{
                 minHeight: '200px',
-                width: '100svw',
+                width: '90svw',
                 maxWidth: '1000px',
                 display: 'flex',
                 flexDirection: 'column',

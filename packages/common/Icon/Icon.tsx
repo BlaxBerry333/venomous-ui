@@ -23,8 +23,8 @@ const Icon: IconComponentType = memo(({ ref, icon, width = 20, color = 'auto', s
               ? theme.palette.primary.main
               : color === 'success'
                 ? theme.palette.success.main
-                : color === 'grey'
-                  ? theme.palette.text.secondary
+                : color === 'disabled'
+                  ? theme.palette.action.disabled
                   : 'inherit',
         ...sx,
       }}

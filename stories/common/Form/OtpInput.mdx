@@ -1,0 +1,45 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './OtpInput.stories';
+
+<Meta of={Stories} />
+
+# OtpInput
+
+```tsx
+import { OtpInput } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+#### CustomValidation
+
+<Canvas
+  of={Stories.CustomValidation}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { OtpInput } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const [value, setValue] = React.useState("");',
+      '',
+      '  const isEmpty: boolean = value.trim().length < 0;',
+      '',
+      '  return (',
+      '    <OtpInput',
+      '      label="xxx"',
+      '      value={value}',
+      '      onChange={(value: string) => setValue(value)}',
+      '      isError={isError}',
+      '      errorMessage={isEmpty ? "It is required" : ""}',
+      '    />',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

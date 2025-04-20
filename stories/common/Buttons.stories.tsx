@@ -78,9 +78,9 @@ const meta = {
     color: {
       description: 'Button background color',
       control: 'select',
-      options: ['auto', 'primary', 'error', 'success', 'grey'],
+      options: ['auto', 'primary', 'error', 'success', 'disabled'],
       table: {
-        type: { summary: '"auto" | "primary" | "error" | "success" | "grey"' },
+        type: { summary: '"auto" | "primary" | "error" | "success" | "disabled"' },
         defaultValue: { summary: 'primary' },
       },
     },

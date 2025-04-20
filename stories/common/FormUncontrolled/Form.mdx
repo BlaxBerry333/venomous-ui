@@ -1,0 +1,156 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Form.stories';
+
+<Meta of={Stories} />
+
+# FormUncontrolled
+
+```tsx
+import {
+  FormUntrolled,
+  useForm,
+  FormUncontrolledAction,
+  InputUncontrolled,
+  PasswordUncontrolled,
+  CheckboxUncontrolled,
+  OtpInputUncontrolled,
+  SwitchUncontrolled,
+  RadiosUncontrolled,
+} from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas
+  of={Stories.Default}
+  sourceState="shown"
+  source={{
+    code: [
+      'import {',
+      '  FormUncontrolled,',
+      '  useForm,',
+      '  FormUncontrolledAction,',
+      '  InputUncontrolled,',
+      '  PasswordUncontrolled,',
+      '  CheckboxUncontrolled,',
+      '  SwitchUncontrolled',
+      '  RadiosUncontrolled',
+      '} from "venomous-ui";',
+      '',
+      'type FormValue = {',
+      '  name: string;',
+      '  password: string;',
+      '  isAdmin: boolean;',
+      '  code: string;',
+      '  gender: "male" | "female";',
+      '};',
+      '',
+      'function App() {',
+      '  const form = useForm<FormValue>({',
+      '    mode: "all",',
+      '    defaultValues: {',
+      '      name: "Michael Jackson",',
+      '      password: "",',
+      '      isAdmin: true,',
+      '      code: "",',
+      '      gender: "male",',
+      '    },',
+      '  });',
+      '',
+      '  return (',
+      '    <FormUncontrolled',
+      '      formInstance={form}',
+      '      onSubmit={(formValue: FormValue) => console.log(formValue)}',
+      '    >',
+      '      <InputUncontrolled name="name" label="User Name" />',
+      '      <PasswordUncontrolled name="password" label="Password" />',
+      '      <CheckboxUncontrolled name="isAdmin" label="Is Admin Star" labelDirection="start" />',
+      '      <SwitchUncontrolled name="isAdmin" startLabel="Is Admin User" labelsDirection="column" />',
+      '      <OtpInputUncontrolled name="code" label="Code" />',
+      '      <RadiosUncontrolled',
+      '        name="gender"',
+      '        label="User Gender"',
+      '        options={[{ label: "Male", value: "male" }, { label: "Female", value: "female" }]}',
+      '      />',
+      '',
+      '      <FormUncontrolledAction',
+      '        cancelButtonText="Cancel"',
+      '        submitButtonText="Submit"',
+      '        isSubmitting={false}',
+      '      />',
+      '    </FormUncontrolled>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### With Zod Schema
+
+It is recommended to use `createZodSchema` to create form validation `ZodSchema`, this tool function can reuse API response types to ensure form value data structure matches the API contract
+
+<Canvas
+  of={Stories.UsingZodSchema}
+  sourceState="shown"
+  source={{
+    code: [
+      'import { z } from "zod";',
+      'import {',
+      '  FormUncontrolled,',
+      '  useForm,',
+      '  FormUncontrolledAction,',
+      '  createZodSchema,',
+      '  InputUncontrolled,',
+      '} from "venomous-ui";',
+      '',
+      'type FormValue = {',
+      '  name: string;',
+      '  age: number;',
+      '};',
+      '',
+      'const formSchemas = createZodSchema<FormValue>()(',
+      '  z.object({',
+      '    name: z.string()',
+      '      .min(1, "Name is required")',
+      '      .max(50, "Name must be less than 50 characters"),',
+      '    age: z.number()',
+      '      .min(0, "Age must be positive")',
+      '      .int("Age must be an integer"),',
+      '  }),',
+      ');',
+      '',
+      'function App() {',
+      '  const form = useForm<FormValue>({',
+      '    mode: "all",',
+      '    resolver: zodResolver(formSchemas),',
+      '    defaultValues: {',
+      '      name: "Michael Jackson",',
+      '      age: 50,',
+      '    },',
+      '  });',
+      '',
+      '  return (',
+      '    <FormUncontrolled',
+      '      formInstance={form}',
+      '      onSubmit={(formValue: FormValue) => console.log(formValue)}',
+      '    >',
+      '      <InputUncontrolled name="name" label="User Name" />',
+      '      <InputUncontrolled name="age" label="User Age" />',
+      '',
+      '      <FormUncontrolledAction',
+      '        cancelButtonText="Cancel"',
+      '        submitButtonText="Submit"',
+      '        isSubmitting={false}',
+      '      />',
+      '    </FormUncontrolled>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

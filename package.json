@@ -25,14 +25,18 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@hookform/resolvers": "^5.0.1",
     "@mui/material": "^7.0.1",
     "@mui/x-charts": "^7.28.0",
     "@mui/x-data-grid": "^7.28.3",
     "@mui/x-date-pickers": "^7.28.3",
     "dayjs": "^1.11.13",
     "motion": "^12.7.3",
+    "mui-one-time-password-input": "^5.0.0",
+    "react-hook-form": "^7.55.0",
     "react-virtuoso": "^4.12.6",
     "sonner": "^2.0.3",
+    "zod": "^3.24.3",
     "zustand": "^5.0.3"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ import type { NamedExoticComponent } from 'react';
 
 export type TextProps = Omit<MuiTypographyProps, 'children' | 'variant' | 'noWrap' | 'color'> & {
   text: string;
-  textColor?: 'auto' | 'primary' | 'error' | 'success' | 'grey';
+  textColor?: 'auto' | 'primary' | 'error' | 'success' | 'disabled';
 
   isLabel?: boolean;
 

@@ -4,6 +4,6 @@ import type { NamedExoticComponent } from 'react';
 export type IconProps = MuiBoxProps & IconifyIconProps & {
     ref?: React.RefObject<SVGElement | null>;
 } & {
-    color?: 'auto' | 'primary' | 'error' | 'success' | 'grey';
+    color?: 'auto' | 'primary' | 'error' | 'success' | 'disabled';
 };
 export type IconComponentType = NamedExoticComponent<IconProps>;

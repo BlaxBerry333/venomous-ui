@@ -1,0 +1,41 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Checkbox.stories';
+
+<Meta of={Stories} />
+
+# Checkbox
+
+```tsx
+import { Checkbox } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+#### DefaultValue
+
+<Canvas
+  of={Stories.DefaultValue}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Checkbox } from 'venomous-ui';",
+      '',
+      'function App() {',
+      'const [value, setValue] = React.useState(false);',
+      '',
+      'return (',
+      '  <Checkbox ',
+      '    label="True"',
+      '    labelDirection="end"',
+      '    value={value}',
+      '    onChange={(v) => setValue(v)}',
+      '  />',
+      '}',
+    ].join('\n'),
+  }}
+/>

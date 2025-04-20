@@ -1,0 +1,49 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Input.stories';
+
+<Meta of={Stories} />
+
+# Input
+
+```tsx
+import { Input } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+#### CustomValidation
+
+<Canvas
+  of={Stories.CustomValidation}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Input } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const [value, setValue] = React.useState("");',
+      '',
+      '  const isEmpty: boolean = value.trim().length < 0;',
+      '  const isTooSmall: boolean = value.length < 5;',
+      '  const isError: boolean = isEmpty || isTooSmall;',
+      '',
+      '  return (',
+      '    <Input',
+      '      label="xxx"',
+      '      value={value}',
+      '      onChange={(value: string) => setValue(value)}',
+      '      isError={isError}',
+      '      errorMessage={',
+      '        isEmpty ? "It is required" : isTooSmall ? "Must be more than 5 characters" : ""',
+      '      }',
+      '    />',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

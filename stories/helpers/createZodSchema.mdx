@@ -1,0 +1,26 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+
+# createZodSchema
+
+```tsx
+import { createZodSchema } from 'venomous-ui';
+```
+
+## Examples
+
+```tsx
+import { z } from 'zod';
+import { createZodSchema } from 'venomous-ui';
+
+type FormValue = {
+  name: string;
+  age: number;
+};
+
+const formSchemas = createZodSchema<FormValue>()(
+  z.object({
+    name: z.string().min(1, 'Name is required'),
+    age: z.number().min(0, 'Age must be positive'),
+  }),
+);
+```

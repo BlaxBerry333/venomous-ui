@@ -1,0 +1,42 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Switch.stories';
+
+<Meta of={Stories} />
+
+# Switch
+
+```tsx
+import { Switch } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+#### DefaultValue
+
+<Canvas
+  of={Stories.DefaultValue}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Switch } from 'venomous-ui';",
+      '',
+      'function App() {',
+      'const [value, setValue] = React.useState(false);',
+      '',
+      'return (',
+      '  <Switch',
+      '    startLabel="False"',
+      '    endLabel="True"',
+      '    labelsDirection="row"',
+      '    value={value}',
+      '    onChange={(v) => setValue(v)}',
+      '  />',
+      '}',
+    ].join('\n'),
+  }}
+/>

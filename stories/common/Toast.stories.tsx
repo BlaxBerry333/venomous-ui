@@ -57,7 +57,7 @@ export const Default: Story = {
             onClick={() => toast({ type: 'error', title: 'Error', description: 'xxxx' })}
           />
           <Button
-            color="grey"
+            color="auto"
             text="Infomation"
             onClick={() => toast({ type: 'info', title: 'Infomation' })}
           />

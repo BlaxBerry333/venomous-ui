@@ -1,0 +1,49 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Radios.stories';
+
+<Meta of={Stories} />
+
+# Radios
+
+```tsx
+import { Radios } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### DefaultValue
+
+<Canvas
+  of={Stories.DefaultValue}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Radios, type RadoisOptionType } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  const options: RadoisOptionType[] = [',
+      '    { value: "1", label: "OptionA" },',
+      '    { value: "2", label: "OptionB" },',
+      '    { value: "3", label: "OptionC", isDisabled: true },',
+      '  ];',
+      '',
+      '  const [radioOption, setRadioOption] = React.useState(options[0]);',
+      '',
+      '  return (',
+      '    <Radios',
+      '      name="xxx"',
+      '      options={options}',
+      '      value={radioOption.value}',
+      '      onChange={(option: RadoisOptionType) => setRadioOption(option)}',
+      '      label="Radios Group Label"',
+      '      tooltip="Radios Group Tooltip"',
+      '    />',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

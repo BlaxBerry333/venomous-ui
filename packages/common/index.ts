@@ -4,6 +4,8 @@ export * from './Card';
 export * from './Container';
 export * from './Drawer';
 export * from './Flex';
+export * from './Form';
+export * from './FormUncontrolled';
 export * from './Grid';
 export * from './Icon';
 export * from './Menu';

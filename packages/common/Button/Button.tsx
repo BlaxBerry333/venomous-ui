@@ -28,7 +28,6 @@ const Button: ButtonComponentType = memo(
 
     return (
       <MuiButton
-        id="VenomousUI-Button"
         variant={isGhost ? 'text' : isOutlined ? 'outlined' : 'contained'}
         loading={loading}
         disabled={disabled}
@@ -75,7 +74,7 @@ function useButton({ color = 'primary', isGhost, isOutlined }: ButtonProps) {
     const isDarkMode = theme.palette.mode === 'dark';
     const colorMap: Record<NonNullable<ButtonProps['color']>, string> = {
       auto: theme.palette.text.primary,
-      grey: theme.palette.text.secondary,
+      disabled: theme.palette.action.disabled,
       primary: theme.palette.primary.main,
       success: theme.palette.success.main,
       error: theme.palette.error.main,
@@ -83,7 +82,9 @@ function useButton({ color = 'primary', isGhost, isOutlined }: ButtonProps) {
 
     const mainColor = color in colorMap ? colorMap[color] : 'inherit';
     const textColor =
-      isDarkMode && ['auto', 'grey'].includes(color) ? 'black' : theme.palette.primary.contrastText;
+      isDarkMode && ['auto', 'disabled'].includes(color)
+        ? 'black'
+        : theme.palette.primary.contrastText;
 
     return {
       backgroundColor: isGhost || isOutlined ? 'transparent' : mainColor,

@@ -9,6 +9,6 @@ export type ButtonProps = Omit<MuiButtonProps, 'children' | 'variant' | 'startIc
     icon?: IconProps['icon'];
     iconWidth?: IconProps['width'];
     iconPosition?: 'start' | 'end';
-    color?: 'auto' | 'primary' | 'error' | 'success' | 'grey';
+    color?: 'auto' | 'primary' | 'error' | 'success' | 'disabled';
 };
 export type ButtonComponentType = NamedExoticComponent<ButtonProps>;

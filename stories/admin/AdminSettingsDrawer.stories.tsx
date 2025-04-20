@@ -13,7 +13,7 @@ const meta = {
       control: 'number',
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: '100' },
+        defaultValue: { summary: '300' },
       },
     },
     title: {
@@ -37,13 +37,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: 'Default',
-  args: {
-    children: (
-      <>
+  render: function RenderStory(args) {
+    return (
+      <AdminSettingsDrawer {...args}>
         <p>Other Custom Content</p>
         <p>Other Custom Content</p>
         <p>Other Custom Content</p>
-      </>
-    ),
+      </AdminSettingsDrawer>
+    );
   },
 };

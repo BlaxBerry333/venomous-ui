@@ -2,6 +2,7 @@ import MuiTooltip from '@mui/material/Tooltip';
 import MuiTypography from '@mui/material/Typography';
 import { memo, useMemo, type JSX } from 'react';
 import type { TextComponentType } from './Text.types';
+import useText from './useText';
 
 const Text: TextComponentType = memo(
   ({
@@ -10,10 +11,12 @@ const Text: TextComponentType = memo(
     isTitle = false,
     titleLevel = 'h6',
     ellipsis = false,
-    textColor = 'inherit',
+    textColor = 'auto',
     sx,
     ...props
   }) => {
+    const { textCommonStyles } = useText({ isTitle, isLabel, titleLevel, textColor });
+
     const TextComponent = useMemo<JSX.Element>(
       () => (
         <MuiTypography
@@ -22,17 +25,7 @@ const Text: TextComponentType = memo(
           variant={isTitle ? titleLevel : isLabel ? 'caption' : 'body1'}
           noWrap={ellipsis}
           sx={{
-            fontWeight: isTitle || isLabel ? 'bold' : 'normal',
-            color: (theme) =>
-              textColor === 'error'
-                ? theme.palette.error.main
-                : textColor === 'primary'
-                  ? theme.palette.primary.main
-                  : textColor === 'success'
-                    ? theme.palette.success.main
-                    : textColor === 'grey'
-                      ? theme.palette.text.secondary
-                      : 'inherit',
+            ...textCommonStyles,
             ...sx,
           }}
           {...props}
@@ -40,7 +33,7 @@ const Text: TextComponentType = memo(
           {text}
         </MuiTypography>
       ),
-      [text, isTitle, titleLevel, ellipsis, sx, props],
+      [text, isTitle, titleLevel, ellipsis, sx, props, textCommonStyles],
     );
 
     if (ellipsis) {
