@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
 import { AdminSideNavMenu, type AdminSideNavMenuProps } from '@packages/admin';
+import { Text } from '@packages/common';
+import type { Meta, StoryObj } from '@storybook/react';
+import type { FC } from 'react';
 import MenuMeta from '../common/Menu.stories';
 
 const meta = {
@@ -29,7 +30,7 @@ const meta = {
       ...MenuMeta.argTypes.items,
       description: 'Menu items',
     },
-    activedItemUrl: {
+    activedMenuItemUrl: {
       description: 'Actived item URL',
       control: 'text',
       table: {
@@ -37,20 +38,12 @@ const meta = {
         defaultValue: { summary: '""' },
       },
     },
-    logoSrc: {
-      description: 'Logo source',
-      control: 'text',
+    menuHeaderElement: {
+      description: 'Menu header element',
+      control: 'object',
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '""' },
-      },
-    },
-    appName: {
-      description: 'App name',
-      control: 'text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '""' },
+        type: { summary: 'ReactNode' },
+        defaultValue: { summary: 'null' },
       },
     },
   },
@@ -58,10 +51,8 @@ const meta = {
     menuHeaderHeight: 50,
     menuWidth: 220,
     menuItems: [],
-    activedItemUrl: '',
-    logoSrc:
-      'https://raw.githubusercontent.com/BlaxBerry333/venomous-ui/a51fd9d32216d9a7cf47e21cbe53bbee4dd114d6/public/favicon.svg',
-    appName: 'VenomousUI',
+    activedMenuItemUrl: '',
+    menuHeaderElement: null,
   },
 } satisfies Meta<typeof AdminSideNavMenu>;
 
@@ -103,6 +94,27 @@ export const Default: Story = {
       },
     ];
 
-    return <AdminSideNavMenu menuItems={menuItems} {...args} />;
+    const LogoElement: FC = () => (
+      <img
+        src="https://raw.githubusercontent.com/BlaxBerry333/venomous-ui/962fa42bc6d3fc7ae799c44206d8289ead2f2f5b/public/favicon.svg"
+        width={32}
+        height={32}
+        alt="logo"
+        draggable={false}
+      />
+    );
+
+    return (
+      <AdminSideNavMenu
+        menuItems={menuItems}
+        {...args}
+        menuHeaderElement={
+          <>
+            <LogoElement />
+            <Text text={'I Library'} isTitle />
+          </>
+        }
+      />
+    );
   },
 };

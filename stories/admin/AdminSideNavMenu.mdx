@@ -19,6 +19,16 @@ import { AdminSideNavMenu } from 'venomous-ui';
 ```tsx
 import { AdminSideNavMenu, type AdminSideNavMenuProps } from 'venomous-ui';
 
+const LogoElement: React.FC = () => (
+  <img
+    src="https://raw.githubusercontent.com/BlaxBerry333/venomous-ui/962fa42bc6d3fc7ae799c44206d8289ead2f2f5b/public/favicon.svg"
+    width={40}
+    height={40}
+    alt="logo"
+    draggable={false}
+  />
+);
+
 function App() {
   const menuItems: AdminSideNavMenuProps['menuItems'] = [
     {
@@ -41,9 +51,13 @@ function App() {
       menuHeaderHeight={50}
       menuWidth={200}
       menuItems={menuItems}
-      activedItemUrl=""
-      logoSrc="https://raw.githubusercontent.com/BlaxBerry333/venomous-ui/a51fd9d32216d9a7cf47e21cbe53bbee4dd114d6/public/favicon.svg"
-      appName="VenomousUI"
+      activedMenuItemUrl=""
+      menuHeaderElement={
+        <>
+          <LogoElement />
+          <Text text={'I Library'} isTitle />
+        </>
+      }
     />
   );
 }

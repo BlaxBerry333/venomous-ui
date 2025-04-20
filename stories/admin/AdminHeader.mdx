@@ -1,0 +1,50 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './AdminHeader.stories';
+
+<Meta of={Stories} />
+
+# AdminHeader
+
+```tsx
+import { AdminHeader } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+```tsx
+import { AdminHeader } from 'venomous-ui';
+
+const LogoElement: React.FC = () => (
+  <img
+    src="https://raw.githubusercontent.com/BlaxBerry333/venomous-ui/962fa42bc6d3fc7ae799c44206d8289ead2f2f5b/public/favicon.svg"
+    width={40}
+    height={40}
+    alt="logo"
+    draggable={false}
+  />
+);
+
+function App() {
+  return (
+    <div style={{ height: '100svh', width: '100%', overflow: 'scroll' }}>
+      <AdminHeader>
+        <Flex row gap={0} alignItems="self-end">
+          <LogoElement />
+          <Text text={'I Library'} isTitle sx={{ transform: 'translateY(6px)' }} />
+        </Flex>
+        <Flex row id={'VenomousUI-AdminHeader-Actions'}>
+          <AdminSettingsDrawer title="Settings" width={300}></AdminSettingsDrawer>
+        </Flex>
+      </AdminHeader>
+
+      <div style={{ height: '100vh', backgroundColor: 'pink' }} />
+      <div style={{ height: '100vh', backgroundColor: 'skyblue' }} />
+    </div>
+  );
+}
+```

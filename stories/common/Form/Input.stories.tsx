@@ -100,6 +100,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: 'Default',
+  render: function RenderSwitch(args) {
+    const [value, setValue] = React.useState<string>('');
+    React.useEffect(() => {
+      setValue(args.value as string);
+    }, [args.value]);
+    return <Input {...args} value={value} onChange={(value: string) => setValue(value)} />;
+  },
 };
 
 export const CustomValidation: Story = {

@@ -17,6 +17,7 @@ const AdminSettingsDrawer: AdminSettingsDrawerComponentType = memo(
           icon="solar:settings-line-duotone"
           iconWidth={28}
           onClick={openDrawer}
+          color="auto"
         />
         <Drawer width={width} position="right" isOpen={isOpen} closeDrawer={closeDrawer}>
           <DrawerHeader title={title} closeDrawer={closeDrawer} />

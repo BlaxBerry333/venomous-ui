@@ -2,8 +2,14 @@ import { memo, useState } from 'react';
 import { Button } from '../Button';
 import type { PasswordComponentType } from './Form.types';
 import Input from './Input';
+import useInput from './useInput';
 
-const Password: PasswordComponentType = memo(({ isError, fullWidth, sx, ...props }) => {
+const Password: PasswordComponentType = memo(({ isError, isDisabled, fullWidth, sx, ...props }) => {
+  const { inputCommonStyle } = useInput({
+    isDisabled,
+    isError,
+  });
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
@@ -22,7 +28,7 @@ const Password: PasswordComponentType = memo(({ isError, fullWidth, sx, ...props
         />
       }
       sx={{
-        width: fullWidth ? '100%' : 'calc(200px - 40px) !important',
+        width: fullWidth ? '100%' : `calc(${inputCommonStyle.minWidth} - 40px) !important`,
         ...sx,
       }}
       {...props}

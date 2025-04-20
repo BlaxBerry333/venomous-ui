@@ -48,7 +48,7 @@ const Input: InputComponentType = memo(
         <MuiOutlinedInput
           id={id}
           autoComplete="off"
-          fullWidth
+          fullWidth={fullWidth}
           size="small"
           error={isError}
           disabled={isDisabled}

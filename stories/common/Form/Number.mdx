@@ -1,0 +1,53 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Number.stories';
+
+<Meta of={Stories} />
+
+# Number
+
+```tsx
+import { Number } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas of={Stories.Default} sourceState="none" />
+
+#### CustomValidation
+
+<Canvas
+  of={Stories.CustomValidation}
+  sourceState="shown"
+  source={{
+    code: [
+      'import { Number } from "venomous-ui";',
+      '',
+      'function App() {',
+      '  const [value, setValue] = React.useState(0);',
+      '',
+      '  const isTooLarge: boolean = typeof value === "number" && value > 20;',
+      '  const isNotEven: boolean = typeof value === "number" && value % 2 !== 0;',
+      '  const isError: boolean = isTooLarge || isNotEven;',
+      '',
+      '  return (',
+      '    <Number',
+      '      label="xxx"',
+      '      value={value}',
+      '      onChange={(value: number) => setValue(value)}',
+      '      min={0}',
+      '      max={100}',
+      '      step={1}',
+      '      isError={isError}',
+      '      errorMessage={isTooLarge ? "Value is too large" : isNotEven? "Value is not even" : ""}',
+      '    />',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

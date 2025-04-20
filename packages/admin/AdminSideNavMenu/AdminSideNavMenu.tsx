@@ -1,5 +1,4 @@
-import MuiBox from '@mui/material/Box';
-import { Flex, Menu, MenuItem, Paper, Popper, Text } from '@packages/common';
+import { Flex, Menu, MenuItem, Paper, Popper } from '@packages/common';
 import { memo } from 'react';
 import type {
   AdminSideNavMenuComponentType,
@@ -7,25 +6,22 @@ import type {
 } from './AdminSideNavMenu.types';
 
 const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
-  ({ menuHeaderHeight = 50, menuWidth = 220, menuItems, activedItemUrl, logoSrc, appName }) => {
+  ({
+    menuHeaderHeight = 50,
+    menuWidth = 220,
+    menuItems,
+    activedMenuItemUrl,
+    menuHeaderElement,
+    sx,
+  }) => {
     return (
       <Paper
         id="VenomousUI-AdminSideNavMenu"
         isOutlined
-        sx={{ width: menuWidth, height: '100svh' }}
+        sx={{ width: menuWidth, height: '100svh', ...sx }}
       >
-        <Flex row gap={0} height={menuHeaderHeight} mb={'8px'}>
-          <MuiBox
-            width={32}
-            height={32}
-            component="img"
-            alt={appName}
-            src={logoSrc}
-            draggable={false}
-            loading="lazy"
-            sx={{ m: '10px' }}
-          />
-          <Text text={appName} isTitle />
+        <Flex row gap={0} height={menuHeaderHeight} px={'8px'} mb={'8px'}>
+          {menuHeaderElement}
         </Flex>
 
         <Menu
@@ -41,7 +37,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
               renderPopperHandler={({ isOpen, openPopper }) => (
                 <MenuItem
                   label={item.label}
-                  isActive={isOpen || item.url === activedItemUrl}
+                  isActive={isOpen || item.url === activedMenuItemUrl}
                   icon={item.icon}
                   clickable
                   onClick={openPopper}
@@ -55,7 +51,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
                   <MenuItem
                     key={subItem.label}
                     label={subItem.label}
-                    isActive={subItem.label === activedItemUrl}
+                    isActive={subItem.label === activedMenuItemUrl}
                     icon={subItem.icon}
                     clickable
                     onClick={subItem.onClick}

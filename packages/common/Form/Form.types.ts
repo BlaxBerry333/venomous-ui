@@ -72,6 +72,15 @@ export type InputProps = Omit<MuiOutlinedInputProp, 'value' | 'onChange'> &
     isRequired?: LabelProps['isRequired'];
   };
 
+export type NumberProps = Omit<InputProps, 'value' | 'onChange'> & {
+  value?: number;
+  onChange: (value: number) => void;
+  max?: number;
+  min?: number;
+  step?: number;
+  inputRef?: React.Ref<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+};
+
 export type LabelsComponentType = NamedExoticComponent<LabelsProps>;
 export type LabelComponentType = NamedExoticComponent<LabelProps>;
 export type SwitchComponentType = NamedExoticComponent<SwitchProps>;
@@ -79,4 +88,5 @@ export type CheckboxComponentType = NamedExoticComponent<CheckboxProps>;
 export type RadiosComponentType = NamedExoticComponent<RadiosProps>;
 export type InputComponentType = NamedExoticComponent<InputProps>;
 export type PasswordComponentType = NamedExoticComponent<InputProps>;
+export type NumberComponentType = NamedExoticComponent<NumberProps>;
 export type OtpInputComponentType = NamedExoticComponent<InputProps>;
