@@ -10,7 +10,7 @@ export type AdminSideNavMenuProps = {
   menuHeaderHeight?: number;
   menuWidth?: number;
   menuItems: Array<AdminSideNavMenuItemProps>;
-  activedMenuItemUrl: string;
+  currentPath: string;
   menuHeaderElement?: React.ReactNode;
   sx?: PaperProps['sx'];
 };

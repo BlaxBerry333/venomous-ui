@@ -1,0 +1,34 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+
+# checkMenuIsActived
+
+```tsx
+import { checkIsParentItemActive, checkIsSubItemActive } from 'venomous-ui';
+```
+
+## Examples
+
+```tsx
+import { useLocation } from 'react-router-dom';
+import { checkIsParentItemActive, checkIsSubItemActive } from 'venomous-ui';
+
+function App() {
+  const { pathname } = useLocation();
+
+  const menuItems: AdminSideNavMenuProps['menuItems'] = [
+    {
+      label: 'Files',
+      subItems: [
+        { label: 'list', url: '/files/list' },
+        { label: 'create', url: 'files/create' },
+      ],
+    },
+  ];
+
+  checkIsParentItemActive(pathname, menuItems[0]);
+  checkIsSubItemActive(pathname, menuItems[0]['subItems'][0]);
+  checkIsSubItemActive(pathname, menuItems[0]['subItems'][1]);
+
+  return null;
+}
+```

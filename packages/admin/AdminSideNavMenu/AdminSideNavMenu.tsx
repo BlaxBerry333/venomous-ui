@@ -1,4 +1,5 @@
 import { Flex, Menu, MenuItem, Paper, Popper } from '@packages/common';
+import { checkIsParentItemActive, checkIsSubItemActive } from '@packages/helpers';
 import { memo } from 'react';
 import type {
   AdminSideNavMenuComponentType,
@@ -6,14 +7,7 @@ import type {
 } from './AdminSideNavMenu.types';
 
 const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
-  ({
-    menuHeaderHeight = 50,
-    menuWidth = 220,
-    menuItems,
-    activedMenuItemUrl,
-    menuHeaderElement,
-    sx,
-  }) => {
+  ({ menuHeaderHeight = 50, menuWidth = 220, menuItems, currentPath, menuHeaderElement, sx }) => {
     return (
       <Paper
         id="VenomousUI-AdminSideNavMenu"
@@ -37,7 +31,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
               renderPopperHandler={({ isOpen, openPopper }) => (
                 <MenuItem
                   label={item.label}
-                  isActive={isOpen || item.url === activedMenuItemUrl}
+                  isActive={isOpen || checkIsParentItemActive(currentPath, item)}
                   icon={item.icon}
                   clickable
                   onClick={openPopper}
@@ -51,7 +45,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
                   <MenuItem
                     key={subItem.label}
                     label={subItem.label}
-                    isActive={subItem.label === activedMenuItemUrl}
+                    isActive={checkIsSubItemActive(currentPath, subItem)}
                     icon={subItem.icon}
                     clickable
                     onClick={subItem.onClick}

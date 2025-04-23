@@ -17,6 +17,7 @@ import { AdminSideNavMenu } from 'venomous-ui';
 ## Example
 
 ```tsx
+import { useLocation } from 'react-router-dom';
 import { AdminSideNavMenu, type AdminSideNavMenuProps } from 'venomous-ui';
 
 const LogoElement: React.FC = () => (
@@ -30,19 +31,26 @@ const LogoElement: React.FC = () => (
 );
 
 function App() {
+  const { pathname } = useLocation();
+
   const menuItems: AdminSideNavMenuProps['menuItems'] = [
     {
       label: 'Files',
       icon: 'solar:folder-with-files-bold-duotone',
       subItems: [
-        { label: 'list', icon: 'solar:folder-open-line-duotone', url: '' },
-        { label: 'create', icon: 'solar:add-folder-line-duotone', url: '' },
+        {
+          label: 'list',
+          icon: 'solar:folder-open-line-duotone',
+          url: '/file/list',
+          onClick: () => alert('list'),
+        },
+        {
+          label: 'create',
+          icon: 'solar:add-folder-line-duotone',
+          url: '/file/create',
+          onClick: () => alert('create'),
+        },
       ],
-    },
-    {
-      label: 'ABCDEFGHIJKLMN',
-      icon: 'solar:box-minimalistic-bold-duotone',
-      subItems: [{ label: '123456', icon: 'solar:box-minimalistic-bold-duotone', url: '' }],
     },
   ];
 
@@ -51,7 +59,7 @@ function App() {
       menuHeaderHeight={50}
       menuWidth={200}
       menuItems={menuItems}
-      activedMenuItemUrl=""
+      currentPath={pathname}
       menuHeaderElement={
         <>
           <LogoElement />

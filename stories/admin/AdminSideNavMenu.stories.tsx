@@ -30,8 +30,8 @@ const meta = {
       ...MenuMeta.argTypes.items,
       description: 'Menu items',
     },
-    activedMenuItemUrl: {
-      description: 'Actived item URL',
+    currentPath: {
+      description: 'Current route pathname',
       control: 'text',
       table: {
         type: { summary: 'string' },
@@ -51,7 +51,7 @@ const meta = {
     menuHeaderHeight: 50,
     menuWidth: 220,
     menuItems: [],
-    activedMenuItemUrl: '',
+    currentPath: '',
     menuHeaderElement: null,
   },
 } satisfies Meta<typeof AdminSideNavMenu>;
@@ -72,23 +72,14 @@ export const Default: Story = {
           {
             label: 'list',
             icon: 'solar:folder-open-line-duotone',
-            url: '',
+            url: '/file/list',
+            onClick: () => alert('list'),
           },
           {
             label: 'create',
             icon: 'solar:add-folder-line-duotone',
-            url: '',
-          },
-        ],
-      },
-      {
-        label: 'ABCDEFGHIJKLMN',
-        icon: 'solar:box-minimalistic-bold-duotone',
-        subItems: [
-          {
-            label: '123456',
-            icon: 'solar:box-minimalistic-bold-duotone',
-            url: '',
+            url: '/file/create',
+            onClick: () => alert('create'),
           },
         ],
       },
