@@ -4,11 +4,7 @@ export function checkIsParentItemActive(
   currentPath: string,
   item: AdminSideNavMenuItemProps,
 ): boolean {
-  const parentUrl =
-    item.url ||
-    (item.subItems && item.subItems[0]?.url
-      ? item.subItems[0].url.split('/').slice(0, 2).join('/')
-      : undefined);
+  const parentUrl = item.url;
   const isParentActive =
     (parentUrl && currentPath?.startsWith(parentUrl)) ||
     (item.subItems && item.subItems.some((sub) => sub.url && currentPath?.startsWith(sub.url)));

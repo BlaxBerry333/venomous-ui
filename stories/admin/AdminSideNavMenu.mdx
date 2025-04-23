@@ -33,26 +33,53 @@ const LogoElement: React.FC = () => (
 function App() {
   const { pathname } = useLocation();
 
-  const menuItems: AdminSideNavMenuProps['menuItems'] = [
-    {
-      label: 'Files',
-      icon: 'solar:folder-with-files-bold-duotone',
-      subItems: [
-        {
-          label: 'list',
-          icon: 'solar:folder-open-line-duotone',
-          url: '/file/list',
-          onClick: () => alert('list'),
-        },
-        {
-          label: 'create',
-          icon: 'solar:add-folder-line-duotone',
-          url: '/file/create',
-          onClick: () => alert('create'),
-        },
-      ],
-    },
-  ];
+  const menuItems = useMemo<AdminSideNavMenuProps['menuItems']>(
+    () => [
+      {
+        label: 'Analysis',
+        icon: 'hugeicons:pie-chart-02',
+        url: '/analysis',
+        onClick: () => navigate('/analysis'),
+      },
+      {
+        label: 'Draft',
+        icon: 'hugeicons:node-edit',
+        subItems: [
+          {
+            label: 'list',
+            icon: 'hugeicons:dashboard-square-01',
+            url: '/draft/list',
+            onClick: () => navigate('/draft/list'),
+          },
+          {
+            label: 'create',
+            icon: 'hugeicons:dashboard-square-add',
+            url: '/draft/create',
+            onClick: () => navigate('/draft/create'),
+          },
+        ],
+      },
+      {
+        label: 'Logic',
+        icon: 'hugeicons:hierarchy-square-01',
+        subItems: [
+          {
+            label: 'list',
+            icon: 'hugeicons:dashboard-square-01',
+            url: '/logic/list',
+            onClick: () => navigate('/logic/list'),
+          },
+          {
+            label: 'create',
+            icon: 'hugeicons:dashboard-square-add',
+            url: '/logic/create',
+            onClick: () => navigate('/logic/create'),
+          },
+        ],
+      },
+    ],
+    [navigate, pathname],
+  );
 
   return (
     <AdminSideNavMenu

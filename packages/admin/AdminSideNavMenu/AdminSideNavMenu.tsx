@@ -22,38 +22,52 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
           width="100%"
           height={`calc(100svh - ${menuHeaderHeight}px - 16px)`}
           items={menuItems}
-          renderItem={(item: AdminSideNavMenuItemProps) => (
-            <Popper
-              id={item.label}
-              position="right"
-              sx={{ width: '100%' }}
-              contentSx={{ p: '8px' }}
-              renderPopperHandler={({ isOpen, openPopper }) => (
+          renderItem={(item: AdminSideNavMenuItemProps) => {
+            if (!item.subItems)
+              return (
                 <MenuItem
+                  key={item.label}
                   label={item.label}
-                  isActive={isOpen || checkIsParentItemActive(currentPath, item)}
+                  isActive={checkIsParentItemActive(currentPath, item)}
                   icon={item.icon}
                   clickable
-                  onClick={openPopper}
-                  onMouseEnter={openPopper}
+                  onClick={item.onClick}
                 />
-              )}
-            >
-              <Menu
-                items={item.subItems}
-                renderItem={(subItem) => (
+              );
+
+            return (
+              <Popper
+                id={item.label}
+                position="right"
+                sx={{ width: '100%' }}
+                contentSx={{ p: '8px' }}
+                renderPopperHandler={({ isOpen, openPopper }) => (
                   <MenuItem
-                    key={subItem.label}
-                    label={subItem.label}
-                    isActive={checkIsSubItemActive(currentPath, subItem)}
-                    icon={subItem.icon}
+                    label={item.label}
+                    isActive={isOpen || checkIsParentItemActive(currentPath, item)}
+                    icon={item.icon}
                     clickable
-                    onClick={subItem.onClick}
+                    onClick={openPopper}
+                    onMouseEnter={openPopper}
                   />
                 )}
-              />
-            </Popper>
-          )}
+              >
+                <Menu
+                  items={item.subItems}
+                  renderItem={(subItem) => (
+                    <MenuItem
+                      key={subItem.label}
+                      label={subItem.label}
+                      isActive={checkIsSubItemActive(currentPath, subItem)}
+                      icon={subItem.icon}
+                      clickable
+                      onClick={subItem.onClick}
+                    />
+                  )}
+                />
+              </Popper>
+            );
+          }}
         />
       </Paper>
     );

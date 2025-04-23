@@ -1,7 +1,7 @@
 import { AdminSideNavMenu, type AdminSideNavMenuProps } from '@packages/admin';
 import { Text } from '@packages/common';
 import type { Meta, StoryObj } from '@storybook/react';
-import type { FC } from 'react';
+import React from 'react';
 import MenuMeta from '../common/Menu.stories';
 
 const meta = {
@@ -64,28 +64,7 @@ export const Default: Story = {
   name: 'Default',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render: function RenderStory({ menuItems: _, ...args }) {
-    const menuItems: AdminSideNavMenuProps['menuItems'] = [
-      {
-        label: 'Files',
-        icon: 'solar:folder-with-files-bold-duotone',
-        subItems: [
-          {
-            label: 'list',
-            icon: 'solar:folder-open-line-duotone',
-            url: '/file/list',
-            onClick: () => alert('list'),
-          },
-          {
-            label: 'create',
-            icon: 'solar:add-folder-line-duotone',
-            url: '/file/create',
-            onClick: () => alert('create'),
-          },
-        ],
-      },
-    ];
-
-    const LogoElement: FC = () => (
+    const LogoElement: React.FC = () => (
       <img
         src="https://raw.githubusercontent.com/BlaxBerry333/venomous-ui/962fa42bc6d3fc7ae799c44206d8289ead2f2f5b/public/favicon.svg"
         width={32}
@@ -93,6 +72,54 @@ export const Default: Story = {
         alt="logo"
         draggable={false}
       />
+    );
+
+    const menuItems = React.useMemo<AdminSideNavMenuProps['menuItems']>(
+      () => [
+        {
+          label: 'Analysis',
+          icon: 'hugeicons:pie-chart-02',
+          url: '/analysis',
+          onClick: () => alert('Analysis'),
+        },
+        {
+          label: 'Draft',
+          icon: 'hugeicons:node-edit',
+          subItems: [
+            {
+              label: 'list',
+              icon: 'hugeicons:dashboard-square-01',
+              url: '/draft/list',
+              onClick: () => alert('Draft List'),
+            },
+            {
+              label: 'create',
+              icon: 'hugeicons:dashboard-square-add',
+              url: '/draft/create',
+              onClick: () => alert('Draft Create'),
+            },
+          ],
+        },
+        {
+          label: 'Logic',
+          icon: 'hugeicons:hierarchy-square-01',
+          subItems: [
+            {
+              label: 'list',
+              icon: 'hugeicons:dashboard-square-01',
+              url: '/logic/list',
+              onClick: () => alert('Logic List'),
+            },
+            {
+              label: 'create',
+              icon: 'hugeicons:dashboard-square-add',
+              url: '/logic/create',
+              onClick: () => alert('Logic Create'),
+            },
+          ],
+        },
+      ],
+      [],
     );
 
     return (
