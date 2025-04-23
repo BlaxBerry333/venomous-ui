@@ -1,15 +1,9 @@
-import type { MenuItemProps, PaperProps } from '@packages/common';
+import type { NavMenuItemProps, PaperProps } from '@packages/common';
 import type { NamedExoticComponent } from 'react';
-export type AdminSideNavMenuItemProps = MenuItemProps & {
-    url?: string;
-    subItems?: Array<MenuItemProps & {
-        url: string;
-    }>;
-};
 export type AdminSideNavMenuProps = {
     menuHeaderHeight?: number;
     menuWidth?: number;
-    menuItems: Array<AdminSideNavMenuItemProps>;
+    menuItems: NavMenuItemProps[];
     currentPath: string;
     menuHeaderElement?: React.ReactNode;
     sx?: PaperProps['sx'];

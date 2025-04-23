@@ -1,13 +1,21 @@
-import { Flex, Menu, MenuItem, Paper, Popper } from '@packages/common';
-import { checkIsParentItemActive, checkIsSubItemActive } from '@packages/helpers';
+import {
+  Flex,
+  Menu,
+  MenuItem,
+  Paper,
+  Popper,
+  useCheckNavMenuActive,
+  type NavMenuItemProps,
+} from '@packages/common';
 import { memo } from 'react';
-import type {
-  AdminSideNavMenuComponentType,
-  AdminSideNavMenuItemProps,
-} from './AdminSideNavMenu.types';
+import type { AdminSideNavMenuComponentType } from './AdminSideNavMenu.types';
 
 const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
   ({ menuHeaderHeight = 50, menuWidth = 220, menuItems, currentPath, menuHeaderElement, sx }) => {
+    const { checkIsParentItemActive, checkIsSubItemActive } = useCheckNavMenuActive({
+      currentPath,
+    });
+
     return (
       <Paper
         id="VenomousUI-AdminSideNavMenu"
@@ -22,13 +30,13 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
           width="100%"
           height={`calc(100svh - ${menuHeaderHeight}px - 16px)`}
           items={menuItems}
-          renderItem={(item: AdminSideNavMenuItemProps) => {
+          renderItem={(item: NavMenuItemProps) => {
             if (!item.subItems)
               return (
                 <MenuItem
                   key={item.label}
                   label={item.label}
-                  isActive={checkIsParentItemActive(currentPath, item)}
+                  isActive={checkIsParentItemActive(item)}
                   icon={item.icon}
                   clickable
                   onClick={item.onClick}
@@ -44,11 +52,12 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
                 renderPopperHandler={({ isOpen, openPopper }) => (
                   <MenuItem
                     label={item.label}
-                    isActive={isOpen || checkIsParentItemActive(currentPath, item)}
+                    isActive={checkIsParentItemActive(item)}
                     icon={item.icon}
                     clickable
                     onClick={openPopper}
                     onMouseEnter={openPopper}
+                    sx={{ backgroundColor: isOpen ? 'divider' : 'transparent' }}
                   />
                 )}
               >
@@ -58,7 +67,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
                     <MenuItem
                       key={subItem.label}
                       label={subItem.label}
-                      isActive={checkIsSubItemActive(currentPath, subItem)}
+                      isActive={checkIsSubItemActive(subItem)}
                       icon={subItem.icon}
                       clickable
                       onClick={subItem.onClick}

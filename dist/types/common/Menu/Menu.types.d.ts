@@ -19,5 +19,11 @@ export interface MenuProps {
     renderItem?: (item: MenuItemProps, index: number) => ReactNode;
     sx?: FlexProps['sx'];
 }
+export type NavMenuItemProps = MenuItemProps & {
+    url?: string;
+    subItems?: Array<MenuItemProps & {
+        url: string;
+    }>;
+};
 export type MenuItemComponentType = NamedExoticComponent<MenuItemProps>;
 export type MenuComponentType = NamedExoticComponent<MenuProps>;
