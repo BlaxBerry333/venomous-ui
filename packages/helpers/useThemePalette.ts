@@ -5,11 +5,13 @@ import { devtools, persist } from 'zustand/middleware';
 export enum ThemePaletteName {
   Skyblue = 'Skyblue',
   Teal = 'Teal',
+  Amber = 'Amber',
 }
 
 const THEME_PALETTES_MAIN_COLORS: Record<ThemePaletteName, string> = {
   [ThemePaletteName.Skyblue]: '#0097a7',
   [ThemePaletteName.Teal]: '#009688',
+  [ThemePaletteName.Amber]: '#ffb300',
 };
 
 export function generateThemePalette(name: ThemePaletteName) {

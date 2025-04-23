@@ -8,6 +8,8 @@ export * from './Form';
 export * from './FormUncontrolled';
 export * from './Grid';
 export * from './Icon';
+export * from './Image';
+export * from './Loading';
 export * from './Menu';
 export * from './Modal';
 export * from './Paper';

@@ -1,12 +1,28 @@
 import { Tooltip } from '@mui/material';
-import { Button, Card, Drawer, DrawerHeader, Grid, Icon, Text, useDrawer } from '@packages/common';
+import {
+  Button,
+  Card,
+  Drawer,
+  DrawerHeader,
+  Grid,
+  Icon,
+  Switch,
+  Text,
+  useDrawer,
+} from '@packages/common';
 import { useThemeMode, useThemePalette } from '@packages/helpers';
 import { generateThemePalette } from '@packages/helpers/useThemePalette';
 import { memo } from 'react';
 import type { AdminSettingsDrawerComponentType } from './AdminSettingsDrawer.types';
 
 const AdminSettingsDrawer: AdminSettingsDrawerComponentType = memo(
-  ({ children, width = 300, title = 'Settings' }) => {
+  ({
+    children,
+    width = 300,
+    title = 'Settings',
+    labelOfThemeMode = 'ThemeMode',
+    labelOfThemePalettes = 'ThemePalettes',
+  }) => {
     const { isOpen, openDrawer, closeDrawer } = useDrawer();
 
     return (
@@ -22,11 +38,11 @@ const AdminSettingsDrawer: AdminSettingsDrawerComponentType = memo(
         <Drawer width={width} position="right" isOpen={isOpen} closeDrawer={closeDrawer}>
           <DrawerHeader title={title} closeDrawer={closeDrawer} />
 
-          <Text text="ThemeMode" isLabel ellipsis />
+          <Text text={labelOfThemeMode} isLabel ellipsis />
           <SettingBlockOfThemeMode />
           <br />
 
-          <Text text="ThemePalettes" isLabel ellipsis />
+          <Text text={labelOfThemePalettes} isLabel ellipsis />
           <SettingBlockOfThemePalettes />
           <br />
 
@@ -50,7 +66,8 @@ function SettingBlockOfThemeMode() {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
+        height: '60px',
       }}
     >
       <Icon
@@ -58,6 +75,7 @@ function SettingBlockOfThemeMode() {
         width={24}
         color="primary"
       />
+      <Switch value={isDarkMode} onChange={() => {}} />
     </Card>
   );
 }

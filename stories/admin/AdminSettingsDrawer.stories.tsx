@@ -24,10 +24,28 @@ const meta = {
         defaultValue: { summary: 'Settings' },
       },
     },
+    labelOfThemeMode: {
+      description: 'Label of Theme Mode',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '"ThemeMode"' },
+      },
+    },
+    labelOfThemePalettes: {
+      description: 'Label of Theme Palettes',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '"ThemePalettes"' },
+      },
+    },
   },
   args: {
     width: 300,
     title: 'Settings',
+    labelOfThemeMode: 'ThemeMode',
+    labelOfThemePalettes: 'ThemePalettes',
   },
 } satisfies Meta<typeof AdminSettingsDrawer>;
 

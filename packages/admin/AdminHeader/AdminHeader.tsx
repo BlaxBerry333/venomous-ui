@@ -13,6 +13,7 @@ const AdminHeader: AdminHeaderComponentType = memo(({ children }) => {
       sx={{
         position: 'sticky',
         height: 50,
+        width: '100%',
         top: 0,
         left: 0,
         right: 0,

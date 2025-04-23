@@ -26,7 +26,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
 
         <Menu
           width="100%"
-          height={`calc(100svh - ${menuHeaderHeight}px)`}
+          height={`calc(100svh - ${menuHeaderHeight}px - 16px)`}
           items={menuItems}
           renderItem={(item: AdminSideNavMenuItemProps) => (
             <Popper
