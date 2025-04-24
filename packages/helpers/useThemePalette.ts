@@ -20,7 +20,7 @@ export function generateThemePalette(name: ThemePaletteName) {
     main: mainColor,
     light: lighten(mainColor, 0.5),
     dark: darken(mainColor, 0.5),
-    opacity: alpha(mainColor, 0.5),
+    opacity: alpha(mainColor, 0.2),
     contrastText: '#fff',
   };
 }

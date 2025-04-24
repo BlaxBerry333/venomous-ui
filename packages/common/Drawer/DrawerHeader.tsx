@@ -36,7 +36,7 @@ const DrawerHeader: DrawerHeaderComponentType = memo(({ height = 50, title, clos
         />
       )}
 
-      <Text text={title} isTitle ellipsis />
+      <Text text={title} isTitle />
     </Flex>
   );
 });

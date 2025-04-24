@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { AdminHeader, AdminSettingsDrawer } from '@packages/admin';
+import { AdminFullScreen, AdminHeader, AdminSettingsDrawer } from '@packages/admin';
 import { Flex, Text } from '@packages/common';
 import type { FC } from 'react';
 
@@ -41,14 +41,15 @@ export const Default: Story = {
     );
 
     return (
-      <div style={{ height: '30svh', width: '100%', overflow: 'scroll' }}>
+      <div style={{ height: '30svh', width: '100%', position: 'relative', overflow: 'scroll' }}>
         <AdminHeader {...args}>
           <Flex row gap={0} alignItems="self-end">
             <LogoElement />
             <Text text={'I Library'} isTitle sx={{ transform: 'translateY(6px)' }} />
           </Flex>
           <Flex row id={'VenomousUI-AdminHeader-Actions'}>
-            <AdminSettingsDrawer title="Settings" width={300}></AdminSettingsDrawer>
+            <AdminFullScreen />
+            <AdminSettingsDrawer width={300} />
           </Flex>
         </AdminHeader>
 

@@ -6,6 +6,7 @@ export type DrawerProps = PropsWithChildren<{
   closeDrawer: VoidFunction;
   position?: MuiDrawerProps['anchor'];
   width?: string | number;
+  sx?: MuiDrawerProps['sx'];
 }>;
 
 export type DrawerHeaderProps = Partial<Pick<DrawerProps, 'closeDrawer'>> & {

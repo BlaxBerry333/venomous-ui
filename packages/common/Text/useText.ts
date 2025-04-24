@@ -7,11 +7,12 @@ export default function useText({
   isLabel = false,
   titleLevel = 'h6',
   textColor = 'auto',
-}: Pick<TextProps, 'isTitle' | 'isLabel' | 'titleLevel' | 'textColor'>) {
+  bold = false,
+}: Pick<TextProps, 'isTitle' | 'isLabel' | 'titleLevel' | 'textColor' | 'bold'>) {
   const textCommonStyles = useMemo(
     () => ({
       typography: isTitle ? titleLevel : isLabel ? 'caption' : 'body1',
-      fontWeight: isTitle || isLabel ? 'bold' : 'normal',
+      fontWeight: isTitle || isLabel || bold ? 'bold' : 'normal',
       color: (theme: MuiTheme) =>
         textColor === 'error'
           ? theme.palette.error.main
@@ -23,7 +24,7 @@ export default function useText({
                 ? theme.palette.action.disabled
                 : 'inherit',
     }),
-    [isTitle, isLabel, textColor],
+    [isTitle, isLabel, textColor, bold],
   );
 
   return {

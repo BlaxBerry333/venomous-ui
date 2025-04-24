@@ -1,3 +1,8 @@
+import type { PaperProps } from '@packages/common';
 import type { NamedExoticComponent, PropsWithChildren } from 'react';
 
-export type AdminHeaderComponentType = NamedExoticComponent<PropsWithChildren>;
+export type AdminHeaderProps = PropsWithChildren<{
+  sx?: PaperProps['sx'];
+}>;
+
+export type AdminHeaderComponentType = NamedExoticComponent<AdminHeaderProps>;

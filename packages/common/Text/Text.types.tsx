@@ -11,6 +11,7 @@ export type TextProps = Omit<MuiTypographyProps, 'children' | 'variant' | 'noWra
   titleLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
   ellipsis?: boolean;
+  bold?: boolean;
 };
 
 export type TextComponentType = NamedExoticComponent<TextProps>;

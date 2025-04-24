@@ -17,7 +17,7 @@ import { AdminHeader } from 'venomous-ui';
 ## Examples
 
 ```tsx
-import { AdminHeader } from 'venomous-ui';
+import { AdminHeader, AdminFullScreen, AdminSettingsDrawer, Flex, Text } from 'venomous-ui';
 
 const LogoElement: React.FC = () => (
   <img
@@ -38,7 +38,8 @@ function App() {
           <Text text={'I Library'} isTitle sx={{ transform: 'translateY(6px)' }} />
         </Flex>
         <Flex row id={'VenomousUI-AdminHeader-Actions'}>
-          <AdminSettingsDrawer title="Settings" width={300}></AdminSettingsDrawer>
+          <AdminFullScreen />
+          <AdminSettingsDrawer width={300} />
         </Flex>
       </AdminHeader>
 

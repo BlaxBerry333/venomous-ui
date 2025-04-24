@@ -1,0 +1,25 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './AdminFullScreen.stories';
+
+<Meta of={Stories} />
+
+# AdminFullScreen
+
+```tsx
+import { AdminFullScreen } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+```tsx
+import { AdminFullScreen } from 'venomous-ui';
+
+function App() {
+  return <AdminFullScreen />;
+}
+```

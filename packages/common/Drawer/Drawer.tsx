@@ -4,7 +4,7 @@ import { usePaper } from '../Paper';
 import type { DrawerComponentType, DrawerProps } from './Drawer.types';
 
 const Drawer: DrawerComponentType = memo(
-  ({ children, isOpen, closeDrawer, width, position = 'right' }) => {
+  ({ children, isOpen, closeDrawer, width, position = 'right', sx }) => {
     const { paperCommonStyles } = usePaper();
 
     return (
@@ -20,8 +20,8 @@ const Drawer: DrawerComponentType = memo(
               ...paperCommonStyles,
               ...getDrawerBorderRadius(position),
               width,
-              py: '8px',
-              px: '16px',
+              p: '16px',
+              ...sx,
             },
           },
         }}

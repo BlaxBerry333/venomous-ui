@@ -31,7 +31,7 @@ function useSetThemePaletteForHTML(themePalette: ThemePaletteType) {
     style.innerHTML = `
           /* 设置选中文本的样式 */
           ::selection {
-            background-color: ${themePalette.opacity};                      /* 设置选中文本的背景色 */
+            background-color: ${themePalette.light};                        /* 设置选中文本的背景色 */
             color: white;                                                   /* 设置选中文本的文字颜色 */
           }
     

@@ -61,6 +61,14 @@ const meta = {
         defaultValue: { summary: 'auto' },
       },
     },
+    bold: {
+      description: 'Is bold',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
   args: {
     text: 'Xxxxxxxxxx',
@@ -69,6 +77,7 @@ const meta = {
     isLabel: false,
     ellipsis: false,
     textColor: 'auto',
+    bold: false,
   },
 } satisfies Meta<typeof Text>;
 
@@ -93,6 +102,7 @@ export const Levels: Story = {
       <Text isTitle titleLevel="h5" text="h5.Heading" />
       <Text isTitle titleLevel="h6" text="h6.Heading" />
       <Text text="body.Heading" />
+      <Text bold text="body.Heading Bold" />
       <Text isLabel text="label.Heading" />
     </Flex>
   ),

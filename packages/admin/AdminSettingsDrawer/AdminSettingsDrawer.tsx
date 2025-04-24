@@ -1,4 +1,3 @@
-import { Tooltip } from '@mui/material';
 import {
   Button,
   Card,
@@ -38,11 +37,11 @@ const AdminSettingsDrawer: AdminSettingsDrawerComponentType = memo(
         <Drawer width={width} position="right" isOpen={isOpen} closeDrawer={closeDrawer}>
           <DrawerHeader title={title} closeDrawer={closeDrawer} />
 
-          <Text text={labelOfThemeMode} isLabel ellipsis />
+          <Text text={labelOfThemeMode} isLabel />
           <SettingBlockOfThemeMode />
           <br />
 
-          <Text text={labelOfThemePalettes} isLabel ellipsis />
+          <Text text={labelOfThemePalettes} isLabel />
           <SettingBlockOfThemePalettes />
           <br />
 
@@ -85,34 +84,35 @@ function SettingBlockOfThemePalettes() {
   return (
     <Grid
       cols={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3 }}
-      height={80 * Math.ceil(allPaletteNames.length / 3)}
+      height={(60 + 8) * Math.ceil(allPaletteNames.length / 3)}
       items={allPaletteNames.map((name) => name)}
       renderGridItem={(name) => (
-        <Tooltip title={name} arrow>
-          <div style={{ margin: '4px', width: '100%' }}>
-            <Card
-              isOutlined
-              clickable
-              disabled={name === themePaletteName}
-              onClick={() => setThemePaletteName(name)}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor:
-                  name === themePaletteName ? generateThemePalette(name).main : 'transparent',
-              }}
-            >
-              <Icon
-                icon="solar:siderbar-bold-duotone"
-                width={40}
-                sx={{
-                  color: name === themePaletteName ? 'white' : generateThemePalette(name).main,
-                }}
-              />
-            </Card>
-          </div>
-        </Tooltip>
+        <Card
+          isOutlined
+          clickable
+          disabled={name === themePaletteName}
+          onClick={() => setThemePaletteName(name)}
+          sx={{
+            width: '100%',
+            height: '60px',
+            m: '4px',
+            p: '8px',
+            border: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor:
+              name === themePaletteName ? generateThemePalette(name).opacity : 'transparent',
+          }}
+        >
+          <Icon
+            icon="solar:siderbar-bold-duotone"
+            width={32}
+            sx={{
+              color: generateThemePalette(name).main,
+            }}
+          />
+        </Card>
       )}
     />
   );

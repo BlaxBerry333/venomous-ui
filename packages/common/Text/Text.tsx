@@ -12,10 +12,11 @@ const Text: TextComponentType = memo(
     titleLevel = 'h6',
     ellipsis = false,
     textColor = 'auto',
+    bold,
     sx,
     ...props
   }) => {
-    const { textCommonStyles } = useText({ isTitle, isLabel, titleLevel, textColor });
+    const { textCommonStyles } = useText({ isTitle, isLabel, titleLevel, textColor, bold });
 
     const TextComponent = useMemo<JSX.Element>(
       () => (
