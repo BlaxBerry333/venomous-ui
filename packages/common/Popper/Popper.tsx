@@ -13,7 +13,11 @@ const Popper: PopperComponentType = memo(
 
     return (
       <MuiClickAwayListener onClickAway={closePopper}>
-        <MuiBox sx={{ position: 'relative', ...sx }} role="presentation" id="#VenomousUI-Popper">
+        <MuiBox
+          sx={{ position: 'relative', ...sx }}
+          role="presentation"
+          className="VenomousUI-Popper"
+        >
           {renderPopperHandler({ anchorEl, isOpen, openPopper, closePopper })}
 
           <MuiPopper open={isOpen} anchorEl={anchorEl} placement={position} transition keepMounted>

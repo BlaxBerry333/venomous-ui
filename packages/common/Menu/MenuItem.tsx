@@ -16,13 +16,14 @@ const MenuItem: MenuItemComponentType = memo(
     onMouseLeave,
     isActive,
     sx,
+    ellipsis = false,
   }) => {
     if (clickable) {
       return (
         <Button
-          id="VenomousUI-MenuItem"
+          className="VenomousUI-MenuItem"
           isGhost
-          text={<Text text={label} ellipsis />}
+          text={<Text text={label} ellipsis={ellipsis} sx={{ textAlign: 'left' }} />}
           icon={icon}
           iconWidth={28}
           iconPosition="start"
@@ -46,9 +47,15 @@ const MenuItem: MenuItemComponentType = memo(
     }
 
     return (
-      <Flex row py="8px" px="16px" sx={{ width: '100%', ...sx }} id="VenomousUI-MenuItem">
+      <Flex row py="8px" px="16px" sx={{ width: '100%', ...sx }} className="VenomousUI-MenuItem">
         <Icon icon={icon} width={28} color={isActive ? 'primary' : 'auto'} />
-        <Text text={label} ellipsis flex={1} textColor={isActive ? 'primary' : 'auto'} />
+        <Text
+          text={label}
+          ellipsis={ellipsis}
+          flex={1}
+          textColor={isActive ? 'primary' : 'auto'}
+          sx={{ cursor: 'default' }}
+        />
       </Flex>
     );
   },

@@ -8,7 +8,8 @@ export default function useText({
   titleLevel = 'h6',
   textColor = 'auto',
   bold = false,
-}: Pick<TextProps, 'isTitle' | 'isLabel' | 'titleLevel' | 'textColor' | 'bold'>) {
+  ellipsis = false,
+}: Pick<TextProps, 'isTitle' | 'isLabel' | 'titleLevel' | 'textColor' | 'bold' | 'ellipsis'>) {
   const textCommonStyles = useMemo(
     () => ({
       typography: isTitle ? titleLevel : isLabel ? 'caption' : 'body1',
@@ -23,8 +24,16 @@ export default function useText({
               : textColor === 'disabled'
                 ? theme.palette.action.disabled
                 : 'inherit',
+      ...(!ellipsis
+        ? {}
+        : {
+            width: '100%',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }),
     }),
-    [isTitle, isLabel, textColor, bold],
+    [isTitle, isLabel, textColor, bold, ellipsis],
   );
 
   return {

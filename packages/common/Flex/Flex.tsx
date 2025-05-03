@@ -6,7 +6,7 @@ const Flex: FlexComponentType = memo(
   ({ children, row, alignItems, justifyContent, gap = 1, sx, ...props }) => {
     return (
       <MuiBox
-        id="VenomousUI-Flex"
+        className="VenomousUI-Flex"
         component="div"
         sx={{
           display: 'flex',

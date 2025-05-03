@@ -18,7 +18,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
 
     return (
       <Paper
-        id="VenomousUI-AdminSideNavMenu"
+        className="VenomousUI-AdminSideNavMenu"
         isOutlined
         sx={{ width: menuWidth, height: '100svh', ...sx }}
       >

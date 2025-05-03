@@ -8,7 +8,7 @@ const Labels: LabelsComponentType = memo(
     const id = useId();
 
     return (
-      <Flex id="VenomousUI-Labels" gap={0} row={labelsDirection === 'row'}>
+      <Flex className="VenomousUI-Labels" gap={0} row={labelsDirection === 'row'}>
         {startLabel && (
           <Label label={startLabel} elementId={id} isDisabled={isDisabled} isError={isError} />
         )}

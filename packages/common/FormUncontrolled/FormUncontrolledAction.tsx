@@ -23,7 +23,7 @@ function FormUncontrolledAction({
         type="reset"
         text={cancelButtonText}
         isOutlined
-        loading={isSubmittingProp || isSubmitting}
+        disabled={isSubmittingProp || isSubmitting}
         onClick={() => reset(defaultValues)}
       />
       <Button

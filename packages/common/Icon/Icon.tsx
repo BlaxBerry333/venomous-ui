@@ -6,7 +6,7 @@ import type { IconComponentType } from './Icon.types';
 const Icon: IconComponentType = memo(({ ref, icon, width = 20, color = 'auto', sx, ...props }) => {
   return (
     <MuiBox
-      id="VenomousUI-Icon"
+      className="VenomousUI-Icon"
       ssr
       ref={ref}
       component={Iconify}

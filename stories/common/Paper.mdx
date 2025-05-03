@@ -18,20 +18,10 @@ import { Paper } from 'venomous-ui';
 
 #### Default
 
-<Canvas
-  of={Stories.Default}
-  sourceState="shown"
-  source={{
-    code: [
-      "import { Paper } from 'venomous-ui';",
-      '',
-      'function App() {',
-      '  return (',
-      '    <Paper>',
-      '      Hello World',
-      '    </Paper>',
-      '  );',
-      '}',
-    ].join('\n'),
-  }}
-/>
+```tsx
+import { Paper } from 'venomous-ui';
+
+function App() {
+  return <Paper>Hello World</Paper>;
+}
+```

@@ -6,7 +6,7 @@ import type { ContainerComponentType } from './Container.types';
 const Container: ContainerComponentType = memo(({ children, maxWidth = 'lg', ...props }) => {
   return (
     <MuiContainer
-      id="VenomousUI-Container"
+      className="VenomousUI-Container"
       disableGutters
       maxWidth={maxWidth === 'fullwidth' ? false : maxWidth}
       {...props}

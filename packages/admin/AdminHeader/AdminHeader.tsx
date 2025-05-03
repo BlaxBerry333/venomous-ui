@@ -16,7 +16,7 @@ const AdminHeader: AdminHeaderComponentType = memo(({ children, sx }) => {
       }}
     >
       <Flex
-        id="VenomousUI-AdminHeader"
+        className="VenomousUI-AdminHeader"
         row
         component="header"
         sx={{

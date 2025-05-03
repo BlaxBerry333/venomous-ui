@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Menu, MenuItem } from '@packages/common';
+import TextMeta from './Text.stories';
 
 const meta = {
   title: 'Common Components/MenuItem',
@@ -48,6 +49,9 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    ellipsis: {
+      ...TextMeta.argTypes?.ellipsis,
+    },
     onClick: {
       description: 'Callback function when the modal is closed',
       if: { arg: 'clickable', truthy: true },
@@ -63,6 +67,7 @@ const meta = {
     isActive: false,
     clickable: false,
     disabled: false,
+    ellipsis: false,
     onClick: () => alert('onClick'),
   },
 } satisfies Meta<typeof MenuItem>;
@@ -87,18 +92,41 @@ export const WithParent: Story = {
   render: function RenderStory() {
     return (
       <>
+        {/* According to parent's width */}
         <MenuItem label="Without Parent" sx={{ background: 'pink' }} />
 
-        <div style={{ width: 250 }}>
-          <MenuItem label="Inside Custom Element" sx={{ background: 'pink' }} />
+        {/* According to <div/>'s 350px */}
+        <div style={{ width: 350 }}>
+          <MenuItem label="Inside Custom Element" sx={{ background: 'orange' }} />
         </div>
 
+        {/* According to <Menu/>'s 250px */}
         <Menu
           width={250}
           items={[{ label: 'Inside Menu Component' }]}
-          renderItem={(item) => <MenuItem label={item.label} sx={{ background: 'pink' }} />}
+          renderItem={(item) => <MenuItem label={item.label} sx={{ background: 'skyblue' }} />}
         />
       </>
+    );
+  },
+};
+
+export const Ellipsis: Story = {
+  name: 'Ellipsis',
+  render: function RenderStory() {
+    return (
+      <div style={{ width: 250 }}>
+        <MenuItem
+          label="Content Text Content Text Content Text Content Text"
+          sx={{ background: 'pink' }}
+        />
+
+        <MenuItem
+          ellipsis
+          label="Content Text Content Text Content Text Content Text"
+          sx={{ background: 'skyblue' }}
+        />
+      </div>
     );
   },
 };

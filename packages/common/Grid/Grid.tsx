@@ -17,7 +17,7 @@ const Grid = <T,>({
 
   return (
     <Flex
-      id="VenomousUI-Grid"
+      className="VenomousUI-Grid"
       sx={{
         height: height || '100%',
         width: width || '100%',

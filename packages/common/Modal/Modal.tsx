@@ -5,16 +5,27 @@ import { usePaper } from '../Paper';
 import type { ModalComponentType } from './Modal.types';
 
 const Modal: ModalComponentType = memo(
-  ({ isOpen, closeModal, isPrevented = true, children, sx, ...props }) => {
+  ({
+    isOpen,
+    closeModal,
+    isPrevented = true,
+    children,
+    maxWidth = 'sm',
+    fullWidth = true,
+    sx,
+    ...props
+  }) => {
     const { paperCommonStyles } = usePaper();
 
     return (
       <MuiDialog
-        id="VenomousUI-Modal"
+        className="VenomousUI-Modal"
         open={isOpen}
         onClose={!isPrevented ? closeModal : undefined}
         scroll="paper"
         keepMounted
+        maxWidth={maxWidth}
+        fullWidth={fullWidth}
         sx={{ ...sx }}
         slotProps={{
           paper: {

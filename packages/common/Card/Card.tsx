@@ -8,7 +8,7 @@ const Card: CardComponentType = memo(
     if (clickable) {
       return (
         <MuiButton
-          id="VenomousUI-Card"
+          className="VenomousUI-Card"
           component={Paper}
           isOutlined={isOutlined}
           disabled={disabled}
@@ -36,7 +36,7 @@ const Card: CardComponentType = memo(
     }
 
     return (
-      <Paper id="VenomousUI-Card" isOutlined={isOutlined} sx={{ p: '16px', ...sx }}>
+      <Paper className="VenomousUI-Card" isOutlined={isOutlined} sx={{ p: '16px', ...sx }}>
         {children}
       </Paper>
     );

@@ -15,7 +15,7 @@ const Label: LabelComponentType = memo(
 
     return (
       <MuiBox
-        id="VenomousUI-Label"
+        className="VenomousUI-Label"
         component="label"
         htmlFor={elementId}
         sx={{

@@ -1,5 +1,6 @@
 import type { NamedExoticComponent, ReactNode } from 'react';
 import type { FlexProps } from '../Flex';
+import type { TextProps } from '../Text';
 export interface MenuItemProps {
     label: string;
     icon?: string;
@@ -10,6 +11,7 @@ export interface MenuItemProps {
     onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
     isActive?: boolean;
     sx?: FlexProps['sx'];
+    ellipsis?: TextProps['ellipsis'];
 }
 export interface MenuProps {
     width?: string | number;

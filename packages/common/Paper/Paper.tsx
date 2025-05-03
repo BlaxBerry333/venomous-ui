@@ -8,7 +8,7 @@ const Paper: PaperComponentType = memo(({ isOutlined, children, sx, ...props }) 
 
   return (
     <MuiPaper
-      id="VenomousUI-Paper"
+      className="VenomousUI-Paper"
       variant={isOutlined ? 'outlined' : 'elevation'}
       elevation={isOutlined ? 0 : 3}
       square

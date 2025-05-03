@@ -1,0 +1,60 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Tooltip.stories';
+
+<Meta of={Stories} />
+
+# Tooltip
+
+```tsx
+import { Tooltip } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas
+  of={Stories.Default}
+  source={{
+    code: [
+      "import { Tooltip, Card } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Tooltip tooltip="Tooltip Text">',
+      '      <span>',
+      '        <Card />',
+      '      </span>',
+      '    </Popover>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+## Examples
+
+#### Default
+
+It's recommended to use a `<span>` element as the container of the `<Tooltip>`'s child for these reasons:
+
+1. **Solves event propagation issues**, such as preventing the tooltip from appearing when clicking on the child element
+2. **Handles hover events for disabled elements**, such as `<button disabled>`
+3. **Prevents styling and positioning problems**, such as the tooltip appearing behind other elements
+
+```tsx
+import { Tooltip, Card } from 'venomous-ui';
+
+function App() {
+  return (
+    <Tooltip tooltip="Xxxxxxxxxxx">
+      <span>
+        <Card />
+      </span>
+    </Popover>
+
+    // <Tooltip tooltip="Tooltip Text">
+    //   <Card />
+    // </Popover>
+  );
+}
+```

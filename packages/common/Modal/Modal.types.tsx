@@ -1,7 +1,7 @@
-import type { ModalProps as MuiModalProps } from '@mui/material/Modal';
+import type { DialogProps as MuiDialogProps } from '@mui/material/Dialog';
 import type { NamedExoticComponent, PropsWithChildren } from 'react';
 
-export type ModalProps = PropsWithChildren<Omit<MuiModalProps, 'open' | 'children'>> & {
+export type ModalProps = PropsWithChildren<Omit<MuiDialogProps, 'open' | 'children'>> & {
   isOpen: boolean;
   closeModal: VoidFunction;
   isPrevented?: boolean;

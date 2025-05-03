@@ -6,7 +6,10 @@ import type { MenuComponentType } from './Menu.types';
 const Menu: MenuComponentType = memo(({ height, width, isVirtualized, items, renderItem, sx }) => {
   if (isVirtualized) {
     return (
-      <Flex id="VenomousUI-Menu" sx={{ height: height || '100%', width: width || '100%', ...sx }}>
+      <Flex
+        className="VenomousUI-Menu"
+        sx={{ height: height || '100%', width: width || '100%', ...sx }}
+      >
         <Virtuoso
           style={{ height: '100%', width: '100%' }}
           totalCount={items?.length}
@@ -19,7 +22,7 @@ const Menu: MenuComponentType = memo(({ height, width, isVirtualized, items, ren
 
   return (
     <Flex
-      id="VenomousUI-Menu"
+      className="VenomousUI-Menu"
       gap={1}
       sx={{
         height: height || '100%',
@@ -27,11 +30,11 @@ const Menu: MenuComponentType = memo(({ height, width, isVirtualized, items, ren
         overflowY: 'scroll',
         overflowX: 'hidden',
         ...sx,
-        '& > #VenomousUI-MenuItem': {
+        '& > .VenomousUI-MenuItem': {
           width: '100% !important',
         },
-        // '& #VenomousUI-MenuItem': { mb: '4px' },
-        // '& #VenomousUI-MenuItem:last-child': { mb: 0 },
+        // '& .VenomousUI-MenuItem': { mb: '4px' },
+        // '& .VenomousUI-MenuItem:last-child': { mb: 0 },
       }}
     >
       {items?.map((item, index) => (

@@ -9,7 +9,7 @@ const Drawer: DrawerComponentType = memo(
 
     return (
       <MuiDrawer
-        id="VenomousUI-Drawer"
+        className="VenomousUI-Drawer"
         open={isOpen}
         onClose={closeDrawer}
         anchor={position}

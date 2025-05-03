@@ -10,7 +10,7 @@ const DrawerHeader: DrawerHeaderComponentType = memo(({ height = 50, title, clos
 
   return (
     <Flex
-      id="VenomousUI-DrawerHeader"
+      className="VenomousUI-DrawerHeader"
       row
       sx={{
         ...paperCommonStyles,

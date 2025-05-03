@@ -1,3 +1,5 @@
+export * from './Avatar';
+export * from './Badge';
 export * from './Blank';
 export * from './Button';
 export * from './Card';
@@ -18,3 +20,4 @@ export * from './Popper';
 export * from './Text';
 export * from './ThemeProvider';
 export * from './Toast';
+export * from './Tooltip';

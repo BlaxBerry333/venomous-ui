@@ -1,5 +1,6 @@
 import type { NamedExoticComponent, ReactNode } from 'react';
 import type { FlexProps } from '../Flex';
+import type { TextProps } from '../Text';
 
 export interface MenuItemProps {
   label: string;
@@ -13,6 +14,7 @@ export interface MenuItemProps {
 
   isActive?: boolean;
   sx?: FlexProps['sx'];
+  ellipsis?: TextProps['ellipsis'];
 }
 
 export interface MenuProps {

@@ -1,6 +1,6 @@
-import MuiTooltip from '@mui/material/Tooltip';
 import MuiTypography from '@mui/material/Typography';
 import { memo, useMemo, type JSX } from 'react';
+import { Tooltip } from '../Tooltip';
 import type { TextComponentType } from './Text.types';
 import useText from './useText';
 
@@ -16,12 +16,19 @@ const Text: TextComponentType = memo(
     sx,
     ...props
   }) => {
-    const { textCommonStyles } = useText({ isTitle, isLabel, titleLevel, textColor, bold });
+    const { textCommonStyles } = useText({
+      isTitle,
+      isLabel,
+      titleLevel,
+      textColor,
+      bold,
+      ellipsis,
+    });
 
     const TextComponent = useMemo<JSX.Element>(
       () => (
         <MuiTypography
-          id="VenomousUI-Text"
+          className="VenomousUI-Text"
           component="div"
           variant={isTitle ? titleLevel : isLabel ? 'caption' : 'body1'}
           noWrap={ellipsis}
@@ -39,9 +46,9 @@ const Text: TextComponentType = memo(
 
     if (ellipsis) {
       return (
-        <MuiTooltip arrow title={text}>
+        <Tooltip tooltip={text} hide={!ellipsis}>
           {TextComponent}
-        </MuiTooltip>
+        </Tooltip>
       );
     }
 

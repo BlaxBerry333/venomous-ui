@@ -20,30 +20,60 @@ import { MenuItem } from 'venomous-ui';
 
 It is not recommended to use it directly, the width defaults to `100%` of the parent element's width.
 
-Prefer to place it in a parent element ( for example `<Menu/>` ) with a specified width
+Prefer to place it in a parent element with a specified width, for example component `<Menu/>`.
 
 <Canvas
   of={Stories.WithParent}
   sourceState="shown"
   source={{
     code: [
-      "import { Menu, type MenuProps, MenuItem } from 'venomous-ui';",
+      "import { MenuItem } from 'venomous-ui';",
       '',
       'function App() {',
       '  return (',
       '    <>',
+      "      {/* According to parent's width */}",
       '      <MenuItem label="Without Parent" sx={{ background: "pink" }} />',
       '',
-      '      <div style={{ width: 250 }}>',
-      '        <MenuItem label="Inside Custom Element" sx={{ background: "pink" }} />',
+      "      {/* According to <div/>'s 350px */}",
+      '      <div style={{ width: 350 }}>',
+      '        <MenuItem label="Inside Custom Element" sx={{ background: "orange" }} />',
       '      </div>',
       '',
+      "      {/* According to <Menu/>'s 250px */}",
       '      <Menu',
       '        width={250}',
       '        items={[{ label: "Inside Menu Component" }]}',
-      '        renderItem={(item) => <MenuItem label={item.label} sx={{ background: "pink" }} />}',
+      '        renderItem={(item) => <MenuItem label={item.label} sx={{ background: "skyblue" }} />}',
       '      />',
       '    </> ',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### Ellipsis
+
+By default, the `label` content expands to fit available space.
+
+When the `ellipsis` property is `true`, text remains constrained within the parent element's width, text content that exceeds the width of the parent element will be truncated.
+
+<Canvas
+  of={Stories.Ellipsis}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { MenuItem } from 'venomous-ui';",
+      '',
+      'const text = "Content Text Content Text Content Text Content Text";',
+      '',
+      'function RenderStory() {',
+      '  return (',
+      '    <div style={{ width: 250 }}>',
+      '      <MenuItem label={text} sx={{ background: "pink" }} />',
+      '      <MenuItem ellipsis label={text} sx={{ background: "skyblue" }} />',
+      '    </div>',
       '  );',
       '}',
     ].join('\n'),
