@@ -78,6 +78,8 @@ function SettingBlockOfThemeMode({
         alignItems: 'center',
         justifyContent: 'space-between',
         height: '60px',
+        pl: '24px',
+        mt: '2px',
       }}
     >
       <Icon
@@ -109,9 +111,7 @@ function SettingBlockOfThemePalettes({
         <Icon
           icon="solar:siderbar-bold-duotone"
           width={32}
-          sx={{
-            color: generateThemePalette(name).main,
-          }}
+          sx={{ color: generateThemePalette(name).main }}
         />
       )}
     />

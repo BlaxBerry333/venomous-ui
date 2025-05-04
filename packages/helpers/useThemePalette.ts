@@ -3,17 +3,22 @@ import { devtools, persist } from 'zustand/middleware';
 import getColors from './getColors';
 
 export enum ThemePaletteName {
-  Skyblue = 'Skyblue',
+  Iron = 'Iron',
+  Cyan = 'Cyan',
   Teal = 'Teal',
+  Coral = 'Coral',
   Amber = 'Amber',
+  Ochre = 'Ochre',
 }
 
 const THEME_PALETTES_MAIN_COLORS: Record<ThemePaletteName, string> = {
-  [ThemePaletteName.Skyblue]: '#0097a7',
+  [ThemePaletteName.Iron]: '#90a4ae',
+  [ThemePaletteName.Cyan]: '#00bcd4',
   [ThemePaletteName.Teal]: '#009688',
+  [ThemePaletteName.Coral]: '#FFA07A',
   [ThemePaletteName.Amber]: '#ffb300',
+  [ThemePaletteName.Ochre]: '#E3D026',
 };
-
 export function generateThemePalette(name: ThemePaletteName) {
   const mainColor = THEME_PALETTES_MAIN_COLORS[name];
   const { light, dark, opacity } = getColors(mainColor);
@@ -37,8 +42,8 @@ const useThemePaletteStore = create<{
     persist(
       (set) => {
         return {
-          themePaletteName: ThemePaletteName.Skyblue,
-          themePalette: generateThemePalette(ThemePaletteName.Skyblue),
+          themePaletteName: ThemePaletteName.Cyan,
+          themePalette: generateThemePalette(ThemePaletteName.Cyan),
           setThemePaletteName: (themePaletteName: ThemePaletteName) =>
             set({ themePaletteName, themePalette: generateThemePalette(themePaletteName) }),
         };

@@ -1,7 +1,10 @@
 export declare enum ThemePaletteName {
-    Skyblue = "Skyblue",
+    Iron = "Iron",
+    Cyan = "Cyan",
     Teal = "Teal",
-    Amber = "Amber"
+    Coral = "Coral",
+    Amber = "Amber",
+    Ochre = "Ochre"
 }
 export declare function generateThemePalette(name: ThemePaletteName): {
     main: string;

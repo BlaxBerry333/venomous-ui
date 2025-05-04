@@ -29,11 +29,12 @@ const AdminSettingsDrawerBlock = <T,>({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            transition: 'outline-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
             outlineWidth: '1px',
             outlineStyle: 'solid',
             outlineColor: ({ palette }) =>
-              isItemSelected(item) ? palette.primary.main : 'transparent',
-            transition: 'outline-color 0.2s ease-in-out',
+              isItemSelected(item) ? palette.primary.main : 'divider',
+            color: ({ palette }) => `${palette.text.primary} !important`,
           }}
         >
           {renderItem(item)}

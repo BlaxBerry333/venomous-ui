@@ -34138,11 +34138,14 @@ function IA(e) {
     opacity: Yt(e, 0.2)
   };
 }
-var Cv = /* @__PURE__ */ ((e) => (e.Skyblue = "Skyblue", e.Teal = "Teal", e.Amber = "Amber", e))(Cv || {});
+var Cv = /* @__PURE__ */ ((e) => (e.Iron = "Iron", e.Cyan = "Cyan", e.Teal = "Teal", e.Coral = "Coral", e.Amber = "Amber", e.Ochre = "Ochre", e))(Cv || {});
 const Ov = {
-  Skyblue: "#0097a7",
+  Iron: "#90a4ae",
+  Cyan: "#00bcd4",
   Teal: "#009688",
-  Amber: "#ffb300"
+  Coral: "#FFA07A",
+  Amber: "#ffb300",
+  Ochre: "#E3D026"
 };
 function Su(e) {
   const t = Ov[e], { light: n, dark: r, opacity: o } = IA(t);
@@ -34158,10 +34161,10 @@ const NA = ef()(
   Tv(
     Ev(
       (e) => ({
-        themePaletteName: "Skyblue",
+        themePaletteName: "Cyan",
         themePalette: Su(
-          "Skyblue"
-          /* Skyblue */
+          "Cyan"
+          /* Cyan */
         ),
         setThemePaletteName: (t) => e({ themePaletteName: t, themePalette: Su(t) })
       }),
@@ -37228,10 +37231,11 @@ const YM = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          transition: "outline-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
           outlineWidth: "1px",
           outlineStyle: "solid",
-          outlineColor: ({ palette: a }) => t(s) ? a.primary.main : "transparent",
-          transition: "outline-color 0.2s ease-in-out"
+          outlineColor: ({ palette: a }) => t(s) ? a.primary.main : "divider",
+          color: ({ palette: a }) => `${a.text.primary} !important`
         },
         children: o(s)
       }
@@ -37292,7 +37296,9 @@ function XM({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        height: "60px"
+        height: "60px",
+        pl: "24px",
+        mt: "2px"
       },
       children: [
         /* @__PURE__ */ P(
@@ -37327,9 +37333,7 @@ function QM({
         {
           icon: "solar:siderbar-bold-duotone",
           width: 32,
-          sx: {
-            color: Su(o).main
-          }
+          sx: { color: Su(o).main }
         }
       )
     }

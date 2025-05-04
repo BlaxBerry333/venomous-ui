@@ -74,6 +74,7 @@ export const Default: Story = {
   name: 'Default',
   render: function RenderStory(args) {
     const [alphabet, setAlphabet] = React.useState<string>();
+    const alphabets: string[] = ['A', 'B', 'C'];
 
     return (
       <AdminSettingsDrawer
@@ -88,8 +89,8 @@ export const Default: Story = {
 
         <Text text={'Alphabet'} isLabel />
         <AdminSettingsDrawerBlock
-          items={['A', 'B', 'C']}
-          renderItem={(item) => <div>{item}</div>}
+          items={alphabets}
+          renderItem={(item) => <Text text={item} bold={item === alphabet} />}
           isItemSelected={(item) => item === alphabet}
           isItemDisabled={(item) => item === alphabet}
           onItemClick={async (item) => {

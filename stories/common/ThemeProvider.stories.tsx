@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Flex, Text, ThemeProvider } from '@packages/common';
+import { Button, Card, Flex, Text, ThemeProvider } from '@packages/common';
 import { useThemeMode, useThemePalette } from '@packages/helpers';
 
 const meta = {
@@ -50,23 +50,30 @@ export const ThemePalette: Story = {
 
     return (
       <ThemeProvider>
-        <Flex gap={2}>
-          <Flex row>
-            {allPaletteNames.map((name) => (
-              <Button
-                key={name}
-                text={name}
-                // disabled={name === themePaletteName}
-                onClick={() => setThemePaletteName(name)}
-                sx={{ width: 100, backgroundColor: allPaletteMainColors[name] }}
-              />
+        <Flex row gap={4}>
+          <Flex>
+            {allPaletteNames.map((color) => (
+              <Card
+                key={color}
+                clickable
+                onClick={() => setThemePaletteName(color)}
+                sx={{
+                  width: 100,
+                  textAlign: 'center',
+                  bgcolor: allPaletteMainColors[color],
+                  color: '#fff',
+                  py: '8px',
+                }}
+              >
+                <Text bold text={color} />
+              </Card>
             ))}
           </Flex>
           <Flex>
             {Object.entries(themePalette).map(([name, color]) => (
               <Flex row key={name}>
-                <Text isLabel text={''} bgcolor={color} width={50} height={20} border={1} />
-                <Text isLabel text={`primary.${name}`} width={200} />
+                <Card isOutlined sx={{ bgcolor: color }} />
+                <Text isLabel text={`primary.${name}`} width={140} />
                 <Text isLabel text={color} />
               </Flex>
             ))}
