@@ -6,7 +6,7 @@ import * as Stories from './AdminSettingsDrawer.stories';
 # AdminSettingsDrawer
 
 ```tsx
-import { AdminSettingsDrawer } from 'venomous-ui';
+import { AdminSettingsDrawer, AdminSettingsDrawerBlock } from 'venomous-ui';
 ```
 
 ## Props
@@ -17,7 +17,7 @@ import { AdminSettingsDrawer } from 'venomous-ui';
 ## Examples
 
 ```tsx
-import { AdminSettingsDrawer } from 'venomous-ui';
+import { AdminSettingsDrawer, AdminSettingsDrawerBlock, Text } from 'venomous-ui';
 
 function App() {
   return (
@@ -26,10 +26,26 @@ function App() {
       title="Settings"
       labelOfThemeMode="ThemeMode"
       labelOfThemePalettes="ThemePalettes"
+      onChangeThemeMode={() => alert('Theme Mode Changed')}
+      onChangeThemePalette={() => alert('Theme Palette Changed')}
     >
       <p>Other Custom Content</p>
       <p>Other Custom Content</p>
       <p>Other Custom Content</p>
+      <br />
+
+      <Text text={'Alphabet'} isLabel />
+      <AdminSettingsDrawerBlock
+        items={['A', 'B', 'C']}
+        renderItem={(item) => <div>{item}</div>}
+        isItemSelected={(item) => item === alphabet}
+        isItemDisabled={(item) => item === alphabet}
+        onItemClick={async (item) => {
+          setAlphabet(item);
+          await new Promise((resolve) => setTimeout(resolve, 200));
+          alert(item);
+        }}
+      />
     </AdminSettingsDrawer>
   );
 }

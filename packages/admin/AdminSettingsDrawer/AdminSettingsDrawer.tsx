@@ -3,7 +3,6 @@ import {
   Card,
   Drawer,
   DrawerHeader,
-  Grid,
   Icon,
   Switch,
   Text,
@@ -12,7 +11,11 @@ import {
 import { useThemeMode, useThemePalette } from '@packages/helpers';
 import { generateThemePalette } from '@packages/helpers/useThemePalette';
 import { memo } from 'react';
-import type { AdminSettingsDrawerComponentType } from './AdminSettingsDrawer.types';
+import type {
+  AdminSettingsDrawerComponentType,
+  AdminSettingsDrawerProps,
+} from './AdminSettingsDrawer.types';
+import AdminSettingsDrawerBlock from './AdminSettingsDrawerBlock';
 
 const AdminSettingsDrawer: AdminSettingsDrawerComponentType = memo(
   ({
@@ -21,6 +24,9 @@ const AdminSettingsDrawer: AdminSettingsDrawerComponentType = memo(
     title = 'Settings',
     labelOfThemeMode = 'ThemeMode',
     labelOfThemePalettes = 'ThemePalettes',
+
+    onChangeThemeMode,
+    onChangeThemePalette,
   }) => {
     const { isOpen, openDrawer, closeDrawer } = useDrawer();
 
@@ -38,11 +44,11 @@ const AdminSettingsDrawer: AdminSettingsDrawerComponentType = memo(
           <DrawerHeader title={title} closeDrawer={closeDrawer} />
 
           <Text text={labelOfThemeMode} isLabel />
-          <SettingBlockOfThemeMode />
+          <SettingBlockOfThemeMode onChangeThemeMode={onChangeThemeMode} />
           <br />
 
           <Text text={labelOfThemePalettes} isLabel />
-          <SettingBlockOfThemePalettes />
+          <SettingBlockOfThemePalettes onChangeThemePalette={onChangeThemePalette} />
           <br />
 
           {children}
@@ -55,13 +61,18 @@ const AdminSettingsDrawer: AdminSettingsDrawerComponentType = memo(
 AdminSettingsDrawer.displayName = 'AdminSettingsDrawer';
 export default AdminSettingsDrawer;
 
-function SettingBlockOfThemeMode() {
-  const { isDarkMode, toggleThemeMode } = useThemeMode();
+function SettingBlockOfThemeMode({
+  onChangeThemeMode,
+}: Pick<AdminSettingsDrawerProps, 'onChangeThemeMode'>) {
+  const { themeMode, isDarkMode, toggleThemeMode } = useThemeMode();
   return (
     <Card
       isOutlined
       clickable
-      onClick={toggleThemeMode}
+      onClick={() => {
+        toggleThemeMode();
+        setTimeout(() => void onChangeThemeMode?.(themeMode), 200);
+      }}
       sx={{
         display: 'flex',
         alignItems: 'center',
@@ -79,40 +90,29 @@ function SettingBlockOfThemeMode() {
   );
 }
 
-function SettingBlockOfThemePalettes() {
+function SettingBlockOfThemePalettes({
+  onChangeThemePalette,
+}: Pick<AdminSettingsDrawerProps, 'onChangeThemePalette'>) {
   const { allPaletteNames, themePaletteName, setThemePaletteName } = useThemePalette();
+
   return (
-    <Grid
-      cols={{ xs: 3, sm: 3, md: 3, lg: 3, xl: 3 }}
-      height={(60 + 8) * Math.ceil(allPaletteNames.length / 3)}
+    <AdminSettingsDrawerBlock
       items={allPaletteNames.map((name) => name)}
-      renderGridItem={(name) => (
-        <Card
-          isOutlined
-          clickable
-          disabled={name === themePaletteName}
-          onClick={() => setThemePaletteName(name)}
+      isItemSelected={(name) => name === themePaletteName}
+      isItemDisabled={(name) => name === themePaletteName}
+      onItemClick={async (name) => {
+        void setThemePaletteName(name);
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        void onChangeThemePalette?.(name);
+      }}
+      renderItem={(name) => (
+        <Icon
+          icon="solar:siderbar-bold-duotone"
+          width={32}
           sx={{
-            width: '100%',
-            height: '60px',
-            m: '4px',
-            p: '8px',
-            border: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor:
-              name === themePaletteName ? generateThemePalette(name).opacity : 'transparent',
+            color: generateThemePalette(name).main,
           }}
-        >
-          <Icon
-            icon="solar:siderbar-bold-duotone"
-            width={32}
-            sx={{
-              color: generateThemePalette(name).main,
-            }}
-          />
-        </Card>
+        />
       )}
     />
   );

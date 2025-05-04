@@ -1,6 +1,6 @@
-import { alpha, darken, lighten } from '@mui/material/styles';
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
+import getColors from './getColors';
 
 export enum ThemePaletteName {
   Skyblue = 'Skyblue',
@@ -16,11 +16,12 @@ const THEME_PALETTES_MAIN_COLORS: Record<ThemePaletteName, string> = {
 
 export function generateThemePalette(name: ThemePaletteName) {
   const mainColor = THEME_PALETTES_MAIN_COLORS[name];
+  const { light, dark, opacity } = getColors(mainColor);
   return {
     main: mainColor,
-    light: lighten(mainColor, 0.5),
-    dark: darken(mainColor, 0.5),
-    opacity: alpha(mainColor, 0.2),
+    light,
+    dark,
+    opacity,
     contrastText: '#fff',
   };
 }

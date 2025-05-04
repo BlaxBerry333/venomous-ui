@@ -8,6 +8,8 @@ const Avatar: AvatarComponentType = memo(
     width = 28,
     src,
     alt,
+    onClick,
+    sx,
     badgeColor = 'primary',
     badgePosition = 'bottom-right',
     withDotBadge = false,
@@ -26,10 +28,13 @@ const Avatar: AvatarComponentType = memo(
             height: width,
             border: 1,
             borderColor: 'divider',
+            cursor: onClick ? 'pointer' : 'default',
+            ...sx,
           }}
+          onClick={onClick}
         />
       ),
-      [width],
+      [width, src, alt, onClick, sx],
     );
 
     if (withDotBadge) {

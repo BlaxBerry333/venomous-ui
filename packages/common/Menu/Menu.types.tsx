@@ -5,6 +5,7 @@ import type { TextProps } from '../Text';
 export interface MenuItemProps {
   label: string;
   icon?: string;
+  value?: string | number;
 
   clickable?: boolean;
   disabled?: boolean;

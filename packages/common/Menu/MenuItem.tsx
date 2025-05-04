@@ -9,6 +9,7 @@ const MenuItem: MenuItemComponentType = memo(
   ({
     icon = '',
     label,
+    value,
     clickable,
     disabled,
     onClick,
@@ -22,6 +23,7 @@ const MenuItem: MenuItemComponentType = memo(
       return (
         <Button
           className="VenomousUI-MenuItem"
+          value={value}
           isGhost
           text={<Text text={label} ellipsis={ellipsis} sx={{ textAlign: 'left' }} />}
           icon={icon}

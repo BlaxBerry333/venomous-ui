@@ -1,6 +1,7 @@
+import { AdminSettingsDrawer, AdminSettingsDrawerBlock } from '@packages/admin';
+import { Text } from '@packages/common';
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { AdminSettingsDrawer } from '@packages/admin';
+import React from 'react';
 
 const meta = {
   title: 'Admin Components/AdminSettingsDrawer',
@@ -40,12 +41,28 @@ const meta = {
         defaultValue: { summary: '"ThemePalettes"' },
       },
     },
+    onChangeThemeMode: {
+      description: 'Will be called when theme mode is changed, default delay 20ms',
+      table: {
+        category: 'Events',
+        type: { summary: '() => void' },
+      },
+    },
+    onChangeThemePalette: {
+      description: 'Will be called when theme palette is changed, default delay 20ms',
+      table: {
+        category: 'Events',
+        type: { summary: '() => void' },
+      },
+    },
   },
   args: {
     width: 300,
     title: 'Settings',
     labelOfThemeMode: 'ThemeMode',
     labelOfThemePalettes: 'ThemePalettes',
+    onChangeThemeMode: () => {},
+    onChangeThemePalette: () => {},
   },
 } satisfies Meta<typeof AdminSettingsDrawer>;
 
@@ -56,11 +73,31 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   name: 'Default',
   render: function RenderStory(args) {
+    const [alphabet, setAlphabet] = React.useState<string>();
+
     return (
-      <AdminSettingsDrawer {...args}>
+      <AdminSettingsDrawer
+        {...args}
+        onChangeThemeMode={() => alert('Theme Mode Changed')}
+        onChangeThemePalette={() => alert('Theme Palette Changed')}
+      >
         <p>Other Custom Content</p>
         <p>Other Custom Content</p>
         <p>Other Custom Content</p>
+        <br />
+
+        <Text text={'Alphabet'} isLabel />
+        <AdminSettingsDrawerBlock
+          items={['A', 'B', 'C']}
+          renderItem={(item) => <div>{item}</div>}
+          isItemSelected={(item) => item === alphabet}
+          isItemDisabled={(item) => item === alphabet}
+          onItemClick={async (item) => {
+            setAlphabet(item);
+            await new Promise((resolve) => setTimeout(resolve, 200));
+            alert(item);
+          }}
+        />
       </AdminSettingsDrawer>
     );
   },

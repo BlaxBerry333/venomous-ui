@@ -14,7 +14,7 @@ function FormUncontrolledAction({
     return null;
   }
 
-  const { formState, reset } = formInstance;
+  const { formState, reset, trigger } = formInstance;
   const { isValid, isSubmitting, defaultValues } = formState;
 
   return (
@@ -24,7 +24,10 @@ function FormUncontrolledAction({
         text={cancelButtonText}
         isOutlined
         disabled={isSubmittingProp || isSubmitting}
-        onClick={() => reset(defaultValues)}
+        onClick={() => {
+          reset(defaultValues);
+          void trigger();
+        }}
       />
       <Button
         type="submit"
