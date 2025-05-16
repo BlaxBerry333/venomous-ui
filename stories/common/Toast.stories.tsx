@@ -58,8 +58,8 @@ export const Default: Story = {
           />
           <Button
             color="auto"
-            text="Infomation"
-            onClick={() => toast({ type: 'info', title: 'Infomation' })}
+            text="Information"
+            onClick={() => toast({ type: 'info', title: 'Information' })}
           />
         </Flex>
       </>

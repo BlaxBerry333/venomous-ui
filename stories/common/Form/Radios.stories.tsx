@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Radios, type RadoisOptionType } from '@packages/common';
+import { Radios, type RadiosOptionType } from '@packages/common';
 import React from 'react';
 
 const meta = {
@@ -21,7 +21,7 @@ const meta = {
       if: { arg: 'isDisabled', eq: false },
       table: {
         category: 'Events',
-        type: { summary: '(option:RadoisOptionType) => void' },
+        type: { summary: '(option:RadiosOptionType) => void' },
       },
     },
     isDisabled: {
@@ -73,12 +73,12 @@ type Story = StoryObj<typeof meta>;
 export const DefaultValue: Story = {
   name: 'DefaultValue',
   render: function RenderSwitch() {
-    const options: RadoisOptionType[] = [
+    const options: RadiosOptionType[] = [
       { value: '1', label: 'OptionA' },
       { value: '2', label: 'OptionB' },
       { value: '3', label: 'OptionC', isDisabled: true },
     ];
-    const [radioOption, setRadioOption] = React.useState<RadoisOptionType>(options[0]);
+    const [radioOption, setRadioOption] = React.useState<RadiosOptionType>(options[0]);
     return (
       <Radios
         name="xxx"

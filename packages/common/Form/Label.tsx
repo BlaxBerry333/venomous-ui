@@ -1,5 +1,5 @@
 import MuiBox from '@mui/material/Box';
-import Muiooltip from '@mui/material/Tooltip';
+import MuiTooltip from '@mui/material/Tooltip';
 import { memo } from 'react';
 import { Icon } from '../Icon';
 import { useText } from '../Text';
@@ -42,14 +42,14 @@ const Label: LabelComponentType = memo(
         {label}
 
         {tooltip && (
-          <Muiooltip title={tooltip} arrow placement="top">
+          <MuiTooltip title={tooltip} arrow placement="top">
             <Icon
               icon="solar:info-circle-bold"
               width={16}
               color={isError ? 'error' : 'primary'}
               ml={'4px'}
             />
-          </Muiooltip>
+          </MuiTooltip>
         )}
       </MuiBox>
     );

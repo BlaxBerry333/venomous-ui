@@ -38,20 +38,20 @@ export type CheckboxProps = {
     tooltip?: LabelProps['tooltip'];
     inputRef?: React.Ref<any>;
 };
-export type RadoisOptionType = {
+export type RadiosOptionType = {
     value: string | number;
     label: string;
     isDisabled?: boolean;
 };
 export type RadiosProps = {
-    value?: RadoisOptionType['value'];
-    onChange: (radiosOption: RadoisOptionType) => void;
+    value?: RadiosOptionType['value'];
+    onChange: (radiosOption: RadiosOptionType) => void;
     isError?: CommonFormFieldProps['isError'];
     isDisabled?: CommonFormFieldProps['isDisabled'];
     label?: LabelProps['label'];
     tooltip?: LabelProps['tooltip'];
     name: string;
-    options: Array<RadoisOptionType>;
+    options: Array<RadiosOptionType>;
     optionLabelDirection?: 'start' | 'end';
     inputRef?: React.Ref<any>;
 };

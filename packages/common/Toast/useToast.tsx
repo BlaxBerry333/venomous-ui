@@ -9,7 +9,7 @@ type ToastHandlerType = (props: {
 }) => void;
 
 export default function useToast(): ToastHandlerType {
-  const toastHanlder: ToastHandlerType = useCallback(({ type, title, description }) => {
+  const toastHandler: ToastHandlerType = useCallback(({ type, title, description }) => {
     const options = {
       description,
       icon: <Icon icon={getToastIconName(type)} color={getToastColor(type)} />,
@@ -25,7 +25,7 @@ export default function useToast(): ToastHandlerType {
     else return toast.info(title, options);
   }, []);
 
-  return toastHanlder;
+  return toastHandler;
 }
 
 function getToastIconName(type: Parameters<ToastHandlerType>[0]['type']): IconProps['icon'] {

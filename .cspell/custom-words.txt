@@ -1,0 +1,9 @@
+Iconify
+hugeicons
+devicon
+
+autodocs
+
+fullwidth
+favourite
+siderbar

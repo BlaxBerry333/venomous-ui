@@ -22,10 +22,10 @@ import { Radios } from 'venomous-ui';
   sourceState="shown"
   source={{
     code: [
-      "import { Radios, type RadoisOptionType } from 'venomous-ui';",
+      "import { Radios, type RadiosOptionType } from 'venomous-ui';",
       '',
       'function App() {',
-      '  const options: RadoisOptionType[] = [',
+      '  const options: RadiosOptionType[] = [',
       '    { value: "1", label: "OptionA" },',
       '    { value: "2", label: "OptionB" },',
       '    { value: "3", label: "OptionC", isDisabled: true },',
@@ -38,7 +38,7 @@ import { Radios } from 'venomous-ui';
       '      name="xxx"',
       '      options={options}',
       '      value={radioOption.value}',
-      '      onChange={(option: RadoisOptionType) => setRadioOption(option)}',
+      '      onChange={(option: RadiosOptionType) => setRadioOption(option)}',
       '      label="Radios Group Label"',
       '      tooltip="Radios Group Tooltip"',
       '    />',

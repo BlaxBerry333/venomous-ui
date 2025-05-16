@@ -79,7 +79,7 @@ const meta = {
   args: {
     width: 40,
     src: 'https://avatars.githubusercontent.com/u/166675080?v=4',
-    alt: 'BlaxBerry333',
+    alt: 'BlackBerry333',
 
     badgePosition: 'bottom-right',
     badgeColor: 'primary',

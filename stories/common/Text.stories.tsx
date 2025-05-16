@@ -45,7 +45,7 @@ const meta = {
       },
     },
     ellipsis: {
-      description: "Is Ellipsisable ( According to parent element's width )",
+      description: "Is ellipsis ( According to parent element's width )",
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
