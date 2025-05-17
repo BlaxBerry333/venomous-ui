@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Avatar } from '@packages/common';
-import DotBadgeMeta from './Badges/DotBadge.stories';
-import IconBadgeMeta from './Badges/IconBadge.stories';
+import DotBadgeMeta from '../Badges/DotBadge.stories';
+import IconBadgeMeta from '../Badges/IconBadge.stories';
 
 const meta = {
   title: 'Common Components/Avatar',

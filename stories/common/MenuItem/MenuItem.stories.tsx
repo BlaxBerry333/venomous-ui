@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Menu, MenuItem } from '@packages/common';
-import TextMeta from './Text.stories';
+import TextMeta from '../Text/Text.stories';
 
 const meta = {
   title: 'Common Components/MenuItem',

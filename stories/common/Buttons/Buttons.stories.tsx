@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button, Flex } from '@packages/common';
-import IconMeta from './Icon.stories';
+import IconMeta from '../Icon/Icon.stories';
 
 const meta = {
   title: 'Common Components/Button',

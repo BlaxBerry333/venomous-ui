@@ -1,8 +1,8 @@
 import { AdminSideNavMenu, type AdminSideNavMenuProps } from '@packages/admin';
 import { Text } from '@packages/common';
+import MenuMeta from '@stories/common/Menu/Menu.stories';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import MenuMeta from '../common/Menu.stories';
 
 const meta = {
   title: 'Admin Components/AdminSideNavMenu',

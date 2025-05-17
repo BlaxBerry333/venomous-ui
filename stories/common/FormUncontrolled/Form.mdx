@@ -95,9 +95,7 @@ import {
   }}
 />
 
-#### With Zod Schema
-
-It is recommended to use `createZodSchema` to create form validation `ZodSchema`, this tool function can reuse API response types to ensure form value data structure matches the API contract
+#### Validation with Zod
 
 <Canvas
   of={Stories.UsingZodSchema}
@@ -106,10 +104,11 @@ It is recommended to use `createZodSchema` to create form validation `ZodSchema`
     code: [
       'import { z } from "zod";',
       'import {',
-      '  FormUncontrolled,',
       '  useForm,',
+      '  zodResolver,',
+      '  createZodSchema',
+      '  FormUncontrolled,',
       '  FormUncontrolledAction,',
-      '  createZodSchema,',
       '  InputUncontrolled,',
       '  NumberUncontrolled,',
       '} from "venomous-ui";',
