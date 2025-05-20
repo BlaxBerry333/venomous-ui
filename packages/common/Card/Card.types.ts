@@ -11,7 +11,7 @@ export type CardProps = Pick<PaperProps, 'isOutlined' | 'onClick' | 'sx'> &
     disabled?: boolean;
   }>;
 
-export interface ExhibitCardProps extends CardProps {
+export interface ExhibitCardProps extends Omit<CardProps, 'clickable' | 'onClick'> {
   title?: string;
   subtitle?: string;
   headerStartExtra?: React.ReactNode;

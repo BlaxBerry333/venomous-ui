@@ -22,12 +22,12 @@ import { ExhibitCard, ExhibitCardActionButton } from 'venomous-ui';
   sourceState="shown"
   source={{
     code: [
-      "import { ExhibitCard, ExhibitCardActionButton, Icon, Text } from 'venomous-ui';",
+      "import { ExhibitCard, ExhibitCardActionButton, type ExhibitCardActionButtonProps, Icon, Text, type } from 'venomous-ui';",
       '',
       'function App() {',
-      '  const menuItems: MenuProps["items"] = [',
-      '    { label: "Edit", icon: "solar:pen-new-square-line-duotone" },',
-      '    { label: "Delete", icon: "solar:close-square-line-duotone" },',
+      '  const menuItems: ExhibitCardActionButtonProps["menuItems"] = [',
+      '    { label: "Edit", icon: "solar:pen-new-square-line-duotone", onClick: () => alert("Edit") },',
+      '    { label: "Delete", icon: "solar:close-square-line-duotone", onClick: () => alert("Delete") },',
       '  ];',
       '',
       '  return (',

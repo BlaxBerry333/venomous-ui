@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-// @ts-expect-error: Importing CSS for blur effect, no type definitions available
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import type { LazyImageComponentType } from './LazyImage.types';
 

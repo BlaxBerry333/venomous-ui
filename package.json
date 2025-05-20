@@ -32,6 +32,7 @@
     "@mui/x-charts": "^7.28.0",
     "@mui/x-data-grid": "^7.28.3",
     "@mui/x-date-pickers": "^7.28.3",
+    "@xyflow/react": "^12.6.4",
     "dayjs": "^1.11.13",
     "motion": "^12.7.3",
     "mui-one-time-password-input": "^5.0.0",

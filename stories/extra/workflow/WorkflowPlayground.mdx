@@ -1,0 +1,18 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './WorkflowPlayground.stories';
+
+<Meta of={Stories} />
+
+# WorkflowPlayground
+
+Based on the library [Reactflow v12](https://reactflow.dev/)
+
+Must be wrapped in a `<WorkflowProvider>` component.
+
+## Example
+
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Props
+
+<Controls />

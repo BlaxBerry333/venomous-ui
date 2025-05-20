@@ -8,13 +8,16 @@ import {
 } from '@packages/common';
 import CardMeta from './Card.stories';
 
+const { clickable: _, onClick: __, ...cardMetaArgTypes } = CardMeta.argTypes || {}; // eslint-disable-line @typescript-eslint/no-unused-vars
+const { clickable: ___, onClick: ____, ...cardMetaArgs } = CardMeta.args || {}; // eslint-disable-line @typescript-eslint/no-unused-vars
+
 const meta = {
   title: 'Common Components/Cards/ExhibitCard',
   component: ExhibitCard,
   parameters: { layout: 'centered' },
   tags: ['!autodocs', '!dev'],
   argTypes: {
-    ...CardMeta.argTypes,
+    ...cardMetaArgTypes,
     title: {
       description: 'Title',
       control: 'text',
@@ -49,7 +52,7 @@ const meta = {
     },
   },
   args: {
-    ...CardMeta.args,
+    ...cardMetaArgs,
     title: 'Card Title',
     subtitle: 'Card Subtitle',
     headerStartExtra: '',
@@ -65,8 +68,8 @@ export const Default: Story = {
   name: 'Default',
   render: function RenderStory() {
     const menuItems: ExhibitCardActionButtonProps['menuItems'] = [
-      { label: 'Edit', icon: 'solar:pen-new-square-line-duotone' },
-      { label: 'Delete', icon: 'solar:close-square-line-duotone' },
+      { label: 'Edit', icon: 'solar:pen-new-square-line-duotone', onClick: () => alert('Edit') },
+      { label: 'Delete', icon: 'solar:close-square-line-duotone', onClick: () => alert('Delete') },
     ];
 
     return (

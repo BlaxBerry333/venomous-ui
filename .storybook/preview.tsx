@@ -31,6 +31,7 @@ const preview: Preview = {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
+                borderRadius: '8px',
               }}
             >
               <Story />

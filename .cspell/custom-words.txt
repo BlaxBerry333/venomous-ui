@@ -1,8 +1,15 @@
 Iconify
 hugeicons
 devicon
+xyflow
+Reactflow
+zustand
+zundo
 
 autodocs
+outgoer
+Outgoer
+Outgoers
 
 fullwidth
 favourite
