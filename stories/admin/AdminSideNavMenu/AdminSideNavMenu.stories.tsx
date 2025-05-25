@@ -101,7 +101,7 @@ export const Default: Story = {
           ],
         },
         {
-          label: 'Logic',
+          label: 'LogicLogicLogicLogicLogicLogic', // cspell:disable-line
           icon: 'hugeicons:hierarchy-square-01',
           subItems: [
             {
@@ -111,7 +111,7 @@ export const Default: Story = {
               onClick: () => alert('Logic List'),
             },
             {
-              label: 'create',
+              label: 'createcreatecreatecreatecreate', // cspell:disable-line
               icon: 'hugeicons:dashboard-square-add',
               url: '/logic/create',
               onClick: () => alert('Logic Create'),

@@ -94,7 +94,7 @@ export const InsidePaper: Story = {
           height="100%"
           width="100%"
           items={menuItems}
-          renderItem={(item) => <MenuItem {...item} clickable />}
+          renderItem={(item) => <MenuItem {...item} clickable ellipsis />}
         />
       </Paper>
     );

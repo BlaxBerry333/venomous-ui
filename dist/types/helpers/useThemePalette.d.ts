@@ -12,6 +12,7 @@ export declare function generateThemePalette(name: ThemePaletteName): {
     dark: string;
     opacity: string;
     contrastText: string;
+    error: string;
 };
 export type ThemePaletteType = ReturnType<typeof generateThemePalette>;
 export default function useThemePalette(): {

@@ -10,6 +10,7 @@ const meta = {
   argTypes: {
     renderPopoverHandler: {
       description: 'Render the popover handler',
+      control: false,
       table: {
         category: 'Events',
         type: { summary: '(props: PopoverHandlerType) => JSX.Element' },

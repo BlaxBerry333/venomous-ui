@@ -28,6 +28,7 @@ export function generateThemePalette(name: ThemePaletteName) {
     dark,
     opacity,
     contrastText: '#fff',
+    error: '#f44336',
   };
 }
 

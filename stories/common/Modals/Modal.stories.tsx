@@ -24,11 +24,29 @@ const meta = {
       },
     },
     isPrevented: {
-      description: 'Whether the modal is prevented from closing by click outside、esc',
+      description: 'Whether the modal is prevented from closing by click outside、and `esc` key',
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
+      },
+    },
+    maxWidth: {
+      description: 'Max width of the modal',
+      control: 'select',
+      options: ['sm', 'md', 'lg', 'xl'],
+      table: {
+        defaultValue: { summary: 'sm' },
+        type: { summary: 'sm | md | lg | xl' },
+      },
+    },
+    fullWidth: {
+      description:
+        'Whether the modal is full width, will fill the width of the screen automatically',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
       },
     },
   },
@@ -36,6 +54,8 @@ const meta = {
     isOpen: false,
     closeModal: () => {},
     isPrevented: true,
+    maxWidth: 'sm',
+    fullWidth: true,
   },
 } satisfies Meta<typeof Modal>;
 
@@ -45,12 +65,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: 'Default',
-  render: function RenderStory() {
+  render: function RenderStory(args) {
     const { isOpen, openModal, closeModal } = useModal();
     return (
       <>
         <Button text="Open Modal" onClick={openModal} />
-        <Modal isOpen={isOpen} closeModal={closeModal} isPrevented={false}>
+        <Modal {...args} isOpen={isOpen} closeModal={closeModal} isPrevented={false}>
           <div style={{ height: '200px', width: '300px', backgroundColor: 'pink' }} />
         </Modal>
       </>

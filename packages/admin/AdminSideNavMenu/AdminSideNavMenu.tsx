@@ -39,6 +39,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
                   isActive={checkIsParentItemActive(item)}
                   icon={item.icon}
                   clickable
+                  ellipsis
                   onClick={item.onClick}
                 />
               );
@@ -55,6 +56,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
                     isActive={checkIsParentItemActive(item)}
                     icon={item.icon}
                     clickable
+                    ellipsis
                     onClick={openPopper}
                     onMouseEnter={openPopper}
                     sx={{ backgroundColor: isOpen ? 'divider' : 'transparent' }}
@@ -62,6 +64,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
                 )}
               >
                 <Menu
+                  width={menuWidth}
                   items={item.subItems}
                   renderItem={(subItem) => (
                     <MenuItem
@@ -70,6 +73,7 @@ const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
                       isActive={checkIsSubItemActive(subItem)}
                       icon={subItem.icon}
                       clickable
+                      ellipsis
                       onClick={subItem.onClick}
                     />
                   )}

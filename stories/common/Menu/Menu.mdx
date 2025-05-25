@@ -45,6 +45,8 @@ import { Menu } from 'venomous-ui';
 
 #### InsidePaper
 
+It's highly recommended to add the `ellipsis` attribute when render a `<MenuItem/>` as the result of `renderItem` inside a fixed-size container.
+
 <Canvas
   of={Stories.InsidePaper}
   sourceState="shown"
@@ -64,7 +66,7 @@ import { Menu } from 'venomous-ui';
       '        height="100%"',
       '        width="100%"',
       '        items={menuItems}',
-      '        renderItem={(item) => <MenuItem {...item} clickable />}',
+      '        renderItem={(item) => <MenuItem {...item} clickable ellipsis />}',
       '      />',
       '    </Paper>',
       '  );',

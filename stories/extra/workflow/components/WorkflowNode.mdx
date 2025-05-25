@@ -1,0 +1,137 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './WorkflowNode.stories';
+
+<Meta of={Stories} />
+
+# WorkflowNode
+
+When using custom `<Nodes>` components, must passed as an object to the parameter `nodeTypes` of `<WorkflowPlayground />`
+
+```tsx
+import type { WorkflowNode, WorkflowNodeComponent } from 'venomous-ui';
+import { CustomNodeComponentA, CustomNodeComponentB } from './CustomNodes'; // custom nodes components files
+
+enum INodeType {
+  A = 'A',
+  B = 'B',
+}
+
+const NodeComponents: WorkflowNodeComponent<WorkflowNode<INodeType>> = {
+  [INodeType.A]: CustomNodeComponentA,
+  [INodeType.B]: CustomNodeComponentB,
+};
+```
+
+## Examples
+
+#### BaseNode
+
+<Canvas
+  of={Stories.BaseNode}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { memo } from "react";',
+      'import { WorkflowBaseNode, type WorkflowNode, type WorkflowNodeComponentProps } from "venomous-ui";',
+      '',
+      'type CustomNode = WorkflowNode<"BaseNode">;',
+      'type CustomNodeProps = WorkflowNodeComponentProps<CustomNode>;',
+      '',
+      'const CustomNode = memo<CustomNodeProps>((props) => {',
+      '  return (',
+      '    <WorkflowBaseNode {...props}>',
+      '      BaseNode #{props.id}',
+      '    </WorkflowBaseNode>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### MultipleSourceNode
+
+<Canvas
+  of={Stories.MultipleSourceNode}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { memo } from "react";',
+      'import type { WorkflowNode, WorkflowNodeComponentProps } from "venomous-ui";',
+      'import { WorkflowBaseNode, BaseNodeHandlerItem } from "venomous-ui";',
+      '',
+      'type ICustomNode = WorkflowNode<"MultipleSourceNode">;',
+      'type ICustomNodeProps = WorkflowNodeComponentProps<ICustomNode>;',
+      '',
+      'const CustomNode = memo(({ id: nodeId, data: nodeData, ...props }: ICustomNodeProps) => {',
+      '  return (',
+      '    <WorkflowBaseNode',
+      '      id={nodeId}',
+      '      data={{ ...nodeData, isMultipleSourceHandler: true }}',
+      '      {...props}',
+      '    >',
+      '      MultipleSourceNode #{nodeId}',
+      '      <div style={{ marginTop: 8 }}>',
+      '        {Array(3).fill(0).map((_, index) => {',
+      '          const MOCKID = `${nodeId}--${index + 1}`;',
+      '          return (',
+      '            <BaseNodeHandlerItem',
+      '              key={MOCKID}',
+      '              id={MOCKID}',
+      '              handlerType="source"',
+      '              handlerStyle={{ transform: "translateX(-11px)" }}',
+      '            >',
+      '              {`#${MOCKID}`}',
+      '            </BaseNodeHandlerItem>',
+      '          );',
+      '         })}',
+      '      </div>',
+      '    </WorkflowBaseNode>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>
+
+#### MultipleTargetNode
+
+<Canvas
+  of={Stories.MultipleTargetNode}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { memo } from "react";',
+      'import type { WorkflowNode, WorkflowNodeComponentProps } from "venomous-ui";',
+      'import { WorkflowBaseNode, BaseNodeHandlerItem } from "venomous-ui";',
+      '',
+      'type ICustomNode = WorkflowNode<"MultipleTargetNode">;',
+      'type ICustomNodeProps = WorkflowNodeComponentProps<ICustomNode>;',
+      '',
+      'const CustomNode = memo(({ id: nodeId, data: nodeData, ...props }: ICustomNodeProps) => {',
+      '  return (',
+      '    <WorkflowBaseNode',
+      '      id={nodeId}',
+      '      data={{ ...nodeData, isMultipleTargetHandler: true }}',
+      '      {...props}',
+      '    >',
+      '      MultipleSourceNode #{nodeId}',
+      '      <div style={{ marginTop: 8 }}>',
+      '        {Array(3).fill(0).map((_, index) => {',
+      '          const MOCKID = `${nodeId}--${index + 1}`;',
+      '          return (',
+      '            <BaseNodeHandlerItem',
+      '              key={MOCKID}',
+      '              id={MOCKID}',
+      '              handlerType="target"',
+      '              handlerStyle={{ transform: "translateX(-22px)" }}',
+      '            >',
+      '              {`#${MOCKID}`}',
+      '            </BaseNodeHandlerItem>',
+      '          );',
+      '         })}',
+      '      </div>',
+      '    </WorkflowBaseNode>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

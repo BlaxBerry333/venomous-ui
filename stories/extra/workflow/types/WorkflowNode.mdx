@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/blocks';
+
+# WorkflowNode
+
+```ts
+type WorkflowNode<
+  NodeType extends string = string,
+  NodeFormValue extends WorkflowNodeFormValue = WorkflowNodeFormValue,
+> = {
+  id: string;
+  data: WorkflowNodeData<NodeFormValue>;
+  type: NodeType;
+  position: XYPosition;
+  sourcePosition?: Position;
+  targetPosition?: Position;
+  hidden?: boolean;
+  selected?: boolean;
+  dragging?: boolean;
+  draggable?: boolean;
+  selectable?: boolean;
+  connectable?: boolean;
+  resizing?: boolean;
+  deletable?: boolean;
+  dragHandle?: string;
+  width?: number | null;
+  height?: number | null;
+  parentId?: string;
+  zIndex?: number;
+  extent?: 'parent' | CoordinateExtent;
+  expandParent?: boolean;
+  ariaLabel?: string;
+  focusable?: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+  origin?: NodeOrigin;
+  handles?: NodeHandle[];
+  measured?: {
+    width?: number;
+    height?: number;
+  };
+};
+```
+
+## Examples
+
+```tsx
+import type { WorkflowNode } from 'venomous-ui';
+
+// Suggest to use an enum for node types
+enum INodeType {
+  TypeA = 'TypeA',
+  TypeB = 'TypeB',
+}
+
+type INodeFormValue = {
+  fieldA: any;
+  fieldA: any;
+};
+
+// With custom node types
+// Types will be used for `node.type`
+type ICustomNode = WorkflowNode<INodeType>;
+
+// With custom form value types
+// Types will be used for `node.data.formValue`
+type ICustomNode = WorkflowNode<INodeType, INodeFormValue>;
+```

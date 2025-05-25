@@ -10,7 +10,10 @@ autodocs
 outgoer
 Outgoer
 Outgoers
+pannable
+zoomable
 
 fullwidth
 favourite
 siderbar
+MOCKID

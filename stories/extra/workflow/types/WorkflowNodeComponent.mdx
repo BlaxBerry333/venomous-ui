@@ -1,0 +1,10 @@
+import { Meta } from '@storybook/blocks';
+
+# WorkflowNodeComponent
+
+```ts
+type WorkflowNodeComponent<N extends WorkflowNode = WorkflowNode> = Record<
+  NonNullable<N['type']>,
+  React.NamedExoticComponent<WorkflowNodeComponentProps<N>>
+>;
+```

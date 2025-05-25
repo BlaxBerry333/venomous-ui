@@ -22,8 +22,8 @@ const meta = {
   tags: ['!autodocs', '!dev'],
   argTypes: {
     formInstance: {
-      description: 'Return of useForm()',
-      control: 'object',
+      description: 'Return of `useForm()`',
+      control: false,
       table: {
         type: { summary: 'object' },
         defaultValue: { summary: 'undefined' },

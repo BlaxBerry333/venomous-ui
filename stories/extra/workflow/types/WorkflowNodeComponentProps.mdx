@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+
+# WorkflowNodeComponentProps
+
+{/* prettier-ignore */}
+```ts
+type WorkflowNodeComponentProps<N extends WorkflowNode = WorkflowNode> = Pick<
+  N, 'id' | 'data' | 'width' | 'height' | 'sourcePosition' | 'targetPosition' | 'dragHandle' | 'parentId'
+> & Required<Pick<
+  N, 'type' | 'dragging' | 'zIndex' | 'selectable' | 'deletable' | 'selected' | 'draggable'>
+> & {
+    isConnectable: boolean;
+    positionAbsoluteX: number;
+    positionAbsoluteY: number;
+  };
+
+// {
+//   id: string;
+//   data: WorkflowNodeData<NodeFormValue>;
+//   type: NodeType;
+//   width?: number | null;
+//   height?: number | null;
+//   sourcePosition?: Position;
+//   targetPosition?: Position;
+//   dragHandle?: string;
+//   parentId?: string;
+//   dragging: boolean;
+//   zIndex: number;
+//   selectable: boolean;
+//   deletable: boolean;
+//   selected: boolean;
+//   draggable: boolean;
+//   isConnectable: boolean;
+//   positionAbsoluteX: number;
+//   positionAbsoluteY: number;
+// };
+```

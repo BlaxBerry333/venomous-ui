@@ -12,6 +12,7 @@ const meta = {
   argTypes: {
     children: {
       description: 'Children element',
+      control: false,
       table: {
         type: { summary: 'React.ReactNode' },
         defaultValue: { summary: 'null' },

@@ -1,0 +1,14 @@
+import { Meta } from '@storybook/blocks';
+
+# WorkflowNodeData
+
+```ts
+type WorkflowNodeData<NodeFormValue extends Record<string, any> | null = null> = Partial<{
+  formValue: NodeFormValue;
+  isMultipleSourceHandler: boolean; // 是否允许多个源节点
+  isMultipleTargetHandler: boolean; // 是否允许多个目标节点
+  isInValid: boolean; // 是否无效
+  isProtected: boolean; // 是否保护
+  isFocus: boolean; // 是否聚焦
+}>;
+```

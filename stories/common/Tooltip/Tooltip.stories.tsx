@@ -26,6 +26,7 @@ const meta = {
     },
     children: {
       description: 'Children element',
+      control: false,
       table: {
         type: { summary: 'React.ReactNode' },
         defaultValue: { summary: 'undefined' },

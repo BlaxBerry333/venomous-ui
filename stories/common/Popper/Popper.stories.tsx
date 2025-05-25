@@ -19,6 +19,7 @@ const meta = {
     },
     id: {
       description: 'Unique id of the popper',
+      control: false,
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'undefined' },

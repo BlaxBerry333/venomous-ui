@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+
+# WorkflowEdge
+
+```ts
+type WorkflowEdge = {
+  id: string;
+  type?: EdgeType;
+  source: string; // Id of source nod
+  target: string; // Id of target node
+  sourceHandle?: string | null; // Id of source handle, only needed if there are multiple handles per node
+  targetHandle?: string | null; // Id of target handle, only needed if there are multiple handles per node
+  data?: Partial<{
+    animated: boolean; // 是否启用动画
+  }>;
+
+  hidden?: boolean;
+  deletable?: boolean;
+  selectable?: boolean;
+  selected?: boolean;
+  markerStart?: EdgeMarkerType;
+  markerEnd?: EdgeMarkerType;
+  zIndex?: number;
+  ariaLabel?: string;
+  interactionWidth?: number;
+  label?: React.ReactNode;
+  labelStyle?: React.CSSProperties;
+  labelShowBg?: boolean;
+  labelBgStyle?: React.CSSProperties;
+  labelBgPadding?: [number, number];
+  labelBgBorderRadius?: number;
+};
+```
