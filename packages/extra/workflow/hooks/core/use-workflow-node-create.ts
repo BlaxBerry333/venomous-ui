@@ -7,7 +7,7 @@ import {
 } from '../stores/workflow-actions-history-store';
 import useWorkflowInstance from './use-workflow-instance';
 
-export default function useNodeCreate<N extends WorkflowNode, E extends WorkflowEdge>() {
+export default function useWorkflowNodeCreate<N extends WorkflowNode, E extends WorkflowEdge>() {
   const { getNodes, setNodes, screenToFlowPosition } = useWorkflowInstance<N, E>();
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
 

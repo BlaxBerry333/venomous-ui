@@ -16,11 +16,12 @@ import {
   useWorkflowActionsHistoryUpdate,
   WorkflowAction,
 } from '../stores/workflow-actions-history-store';
-import useWorkflowConfigs from '../stores/workflow-configs-store';
 import useWorkflowInstance from './use-workflow-instance';
 
-export default function useEdgeConnection<N extends WorkflowNode, E extends WorkflowEdge>() {
-  const configs = useWorkflowConfigs();
+export default function useWorkflowEdgeConnection<
+  N extends WorkflowNode,
+  E extends WorkflowEdge,
+>() {
   const { getNodes, getEdges, setEdges } = useWorkflowInstance<N, E>();
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
 
@@ -52,7 +53,7 @@ export default function useEdgeConnection<N extends WorkflowNode, E extends Work
 
       return validationResult;
     },
-    [configs, getNodes, getEdges],
+    [getNodes, getEdges],
   );
 
   /**

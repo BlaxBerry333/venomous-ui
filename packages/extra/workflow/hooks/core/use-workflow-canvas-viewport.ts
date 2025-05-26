@@ -5,7 +5,10 @@ import type { WorkflowEdge, WorkflowNode } from '@packages/extra/workflow/types'
 import useWorkflowConfigs from '../stores/workflow-configs-store';
 import useWorkflowInstance from './use-workflow-instance';
 
-export default function useCanvasViewport<N extends WorkflowNode, E extends WorkflowEdge>() {
+export default function useWorkflowCanvasViewport<
+  N extends WorkflowNode,
+  E extends WorkflowEdge,
+>() {
   const configs = useWorkflowConfigs();
   const { zoomIn, zoomOut, zoomTo, getZoom, fitView, setCenter, setNodes, setEdges, updateNode } =
     useWorkflowInstance<N, E>();
@@ -15,14 +18,14 @@ export default function useCanvasViewport<N extends WorkflowNode, E extends Work
    */
   const increaseZoom = useCallback(async () => {
     await zoomIn({ duration: configs.canvas.zoomDuration });
-  }, [zoomIn]);
+  }, [zoomIn, configs.canvas.zoomDuration]);
 
   /**
    * 画布缩小
    */
   const decreaseZoom = useCallback(async () => {
     await zoomOut({ duration: configs.canvas.zoomDuration });
-  }, [zoomOut]);
+  }, [zoomOut, configs.canvas.zoomDuration]);
 
   /**
    * 设置画布缩放值
@@ -33,7 +36,7 @@ export default function useCanvasViewport<N extends WorkflowNode, E extends Work
         duration: immediate ? 0 : configs.canvas.zoomDuration,
       });
     },
-    [zoomTo],
+    [zoomTo, configs.canvas.zoomDuration],
   );
 
   /**
@@ -43,7 +46,7 @@ export default function useCanvasViewport<N extends WorkflowNode, E extends Work
     async (immediate: boolean = true) => {
       await fitView({ duration: immediate ? 0 : configs.canvas.zoomDuration });
     },
-    [fitView, configs],
+    [fitView, configs.canvas.zoomDuration],
   );
 
   /**
@@ -60,7 +63,16 @@ export default function useCanvasViewport<N extends WorkflowNode, E extends Work
       setEdges((eds) => eds.map((e) => ({ ...e, selected: false })));
       updateNode(nodeId, { selected: true } as Partial<N>);
     },
-    [configs, getZoom, setCenter, setNodes, setEdges, updateNode],
+    [
+      getZoom,
+      setCenter,
+      setNodes,
+      setEdges,
+      updateNode,
+      configs.canvas.zoomDuration,
+      configs.styles.nodeWidth,
+      configs.styles.nodeMinHeight,
+    ],
   );
 
   return {

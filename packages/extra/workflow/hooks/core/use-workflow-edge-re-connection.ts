@@ -13,7 +13,10 @@ import {
 } from '../stores/workflow-actions-history-store';
 import useWorkflowInstance from './use-workflow-instance';
 
-export default function useEdgeReConnection<N extends WorkflowNode, E extends WorkflowEdge>() {
+export default function useWorkflowEdgeReConnection<
+  N extends WorkflowNode,
+  E extends WorkflowEdge,
+>() {
   const { setEdges } = useWorkflowInstance<N, E>();
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
 

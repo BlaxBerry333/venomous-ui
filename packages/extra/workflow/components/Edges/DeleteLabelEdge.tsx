@@ -2,14 +2,14 @@ import { EdgeLabelRenderer as XYFlowEdgeLabelRenderer } from '@xyflow/react';
 import { memo, useCallback } from 'react';
 
 import { Button } from '@packages/common';
-import { useElementsDelete } from '@packages/extra/workflow/hooks';
+import { useWorkflowElementsDelete } from '@packages/extra/workflow/hooks';
 import WorkflowBaseEdge from './BaseEdge';
 import type { WorkflowBaseEdgeProps } from './types';
 
 const WorkflowDeleteLabelEdge = memo<WorkflowBaseEdgeProps>((props) => {
   const { id: edgeId, selected } = props;
 
-  const { deleteEdge } = useElementsDelete();
+  const { deleteEdge } = useWorkflowElementsDelete();
   const handleClickDeleteLabel = useCallback(() => deleteEdge(edgeId), [edgeId, deleteEdge]);
 
   return (

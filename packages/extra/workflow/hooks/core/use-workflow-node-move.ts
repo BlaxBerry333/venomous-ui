@@ -6,7 +6,7 @@ import {
   WorkflowAction,
 } from '../stores/workflow-actions-history-store';
 
-export default function useNodeMove<N extends WorkflowNode>() {
+export default function useWorkflowNodeMove<N extends WorkflowNode>() {
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
 
   const nodeDragStartPosition = useRef<N['position']>({ x: 0, y: 0 });

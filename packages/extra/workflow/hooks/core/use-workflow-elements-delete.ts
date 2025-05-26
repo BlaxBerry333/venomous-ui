@@ -6,9 +6,14 @@ import {
   useWorkflowActionsHistoryUpdate,
   WorkflowAction,
 } from '../stores/workflow-actions-history-store';
+import useWorkflowConfigs from '../stores/workflow-configs-store';
 import useWorkflowInstance from './use-workflow-instance';
 
-export default function useElementsDelete<N extends WorkflowNode, E extends WorkflowEdge>() {
+export default function useWorkflowElementsDelete<
+  N extends WorkflowNode,
+  E extends WorkflowEdge,
+>() {
+  const configs = useWorkflowConfigs();
   const { getNodes, getEdges, setNodes, setEdges } = useWorkflowInstance<N, E>();
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
 
@@ -19,8 +24,9 @@ export default function useElementsDelete<N extends WorkflowNode, E extends Work
     (edgeId: E['id']) => {
       setEdges((edges) => edges.filter((edge) => edge.id !== edgeId));
       updateActionsHistory(WorkflowAction.EdgeDeleted);
+      configs.logger(WorkflowAction.EdgeDeleted);
     },
-    [setEdges, updateActionsHistory],
+    [setEdges, updateActionsHistory, configs.logger],
   );
 
   /**

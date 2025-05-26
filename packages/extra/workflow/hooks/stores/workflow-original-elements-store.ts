@@ -23,6 +23,6 @@ const workflowOriginalElementsStore = create<{
   ),
 );
 
-export default function useOriginalElements() {
+export default function useWorkflowOriginalElements() {
   return useStore(workflowOriginalElementsStore);
 }

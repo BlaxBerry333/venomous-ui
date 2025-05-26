@@ -5,12 +5,12 @@ import '@xyflow/react/dist/style.css';
 
 import { Paper } from '@packages/common';
 import {
-  useEdgeConnection,
-  useEdgeReConnection,
-  useNodeCreate,
-  useNodeMove,
   useWorkflowConfigs,
+  useWorkflowEdgeConnection,
+  useWorkflowEdgeReConnection,
   useWorkflowInit,
+  useWorkflowNodeCreate,
+  useWorkflowNodeMove,
 } from '@packages/extra/workflow/hooks';
 import { useThemeMode } from '@packages/helpers';
 import { SupportedEdgeTypes } from '../Edges';
@@ -34,10 +34,10 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
       configs: originalConfigs,
     });
 
-    const { onDrop, onDragOver } = useNodeCreate();
-    const { onNodeMoveStart, onNodeMoveStop } = useNodeMove();
-    const { isValidConnection, onConnect, onConnectEnd } = useEdgeConnection();
-    const { onReconnect, onReconnectStart, onReconnectEnd } = useEdgeReConnection();
+    const { onDrop, onDragOver } = useWorkflowNodeCreate();
+    const { onNodeMoveStart, onNodeMoveStop } = useWorkflowNodeMove();
+    const { isValidConnection, onConnect, onConnectEnd } = useWorkflowEdgeConnection();
+    const { onReconnect, onReconnectStart, onReconnectEnd } = useWorkflowEdgeReConnection();
 
     return (
       <Paper isOutlined sx={{ overflow: 'hidden', ...sx }}>

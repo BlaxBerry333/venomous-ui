@@ -1,26 +1,28 @@
 import { MiniMap as XYFlowMiniMap } from '@xyflow/react';
 import { memo, useCallback, type NamedExoticComponent } from 'react';
 
-import { useCanvasViewport, useWorkflowConfigs } from '@packages/extra/workflow/hooks';
+import { useWorkflowCanvasViewport, useWorkflowConfigs } from '@packages/extra/workflow/hooks';
 import type { WorkflowNode } from '@packages/extra/workflow/types';
 import { useThemePalette } from '@packages/helpers';
 
 const WorkflowMiniMap: NamedExoticComponent = memo(() => {
   const { themePalette } = useThemePalette();
-  const { moveToSpecificNode } = useCanvasViewport();
+  const { moveToSpecificNode } = useWorkflowCanvasViewport();
   const configs = useWorkflowConfigs();
 
   const getNodeStrokeColor = useCallback(
     (node: WorkflowNode): string => {
-      const nodeColor = configs.styles?.nodeColors?.[node.type!] || themePalette.main;
-      return node.selected || node.data?.isFocus ? nodeColor : 'transparent';
+      const { type, selected, data } = node;
+      const nodeColor = configs.styles?.nodeColors?.[type!] || themePalette.main;
+      return selected || data?.isFocus ? nodeColor : 'transparent';
     },
-    [themePalette],
+    [themePalette, configs.styles?.nodeColors],
   );
 
   const getNodeColor = useCallback(
     (node: WorkflowNode): string => {
-      return node.data?.isInValid ? themePalette.error : '#e2e2e2';
+      const { data } = node;
+      return data?.isInValid ? themePalette.error : '#e2e2e2';
     },
     [themePalette],
   );

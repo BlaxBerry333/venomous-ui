@@ -4,19 +4,19 @@ import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 import type { WorkflowPlaygroundProps } from '@packages/extra/workflow/components/Playground/WorkflowPlayground.types';
 import type { OnInit } from '@packages/extra/workflow/types';
 import type { ToolTypes } from '@packages/helpers/tool-types';
-import useOriginalElements from '../stores/original-elements-store';
 import {
   useWorkflowActionsHistoryUpdate,
   WorkflowAction,
 } from '../stores/workflow-actions-history-store';
 import useWorkflowConfigs, { type WorkflowConfigs } from '../stores/workflow-configs-store';
+import useWorkflowOriginalElements from '../stores/workflow-original-elements-store';
 
 export default function useWorkflowInit({
   originalElements,
   configs: originalConfigs,
 }: Pick<WorkflowPlaygroundProps, 'originalElements' | 'configs'>) {
   const { setHotkeys, setCanvas, setStyles, setMinimap, setUndoRedo } = useWorkflowConfigs();
-  const { setNodes, setEdges } = useOriginalElements();
+  const { setNodes, setEdges } = useWorkflowOriginalElements();
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
 
   useLayoutEffect(() => {

@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import type { WorkflowEdge, WorkflowNode } from '@packages/extra/workflow/types';
 import useWorkflowInstance from './use-workflow-instance';
 
-export default function useNodeUpdate<N extends WorkflowNode, E extends WorkflowEdge>() {
+export default function useWorkflowNodeUpdate<N extends WorkflowNode, E extends WorkflowEdge>() {
   const { updateNodeData } = useWorkflowInstance<N, E>();
 
   /**
