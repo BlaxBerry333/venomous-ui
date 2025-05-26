@@ -10,8 +10,8 @@ export { WorkflowBaseNode } from './Nodes';
 export type { WorkflowBaseNodeProps } from './Nodes';
 
 export {
-  BaseNodeHandlerItem,
   WorkflowBaseNodeHandler,
+  WorkflowBaseNodeHandlerItem,
   WorkflowSourceNodeHandler,
   WorkflowTargetNodeHandler,
 } from './NodeHandlers';

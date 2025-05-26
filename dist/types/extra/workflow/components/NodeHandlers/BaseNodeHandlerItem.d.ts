@@ -1,3 +1,3 @@
-import type { BaseNodeHandlerItemComponentType } from './types';
-declare const BaseNodeHandlerItem: BaseNodeHandlerItemComponentType;
-export default BaseNodeHandlerItem;
+import type { WorkflowBaseNodeHandlerItemComponentType } from './types';
+declare const WorkflowBaseNodeHandlerItem: WorkflowBaseNodeHandlerItemComponentType;
+export default WorkflowBaseNodeHandlerItem;

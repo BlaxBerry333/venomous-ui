@@ -2,9 +2,9 @@ import { memo } from 'react';
 
 import { useWorkflowConfigs } from '@packages/extra/workflow/hooks';
 import WorkflowBaseNodeHandler from './BaseNodeHandler';
-import type { BaseNodeHandlerItemComponentType } from './types';
+import type { WorkflowBaseNodeHandlerItemComponentType } from './types';
 
-const BaseNodeHandlerItem: BaseNodeHandlerItemComponentType = memo(
+const WorkflowBaseNodeHandlerItem: WorkflowBaseNodeHandlerItemComponentType = memo(
   ({ children, style, handlerStyle, id, handlerType, ...props }) => {
     const configs = useWorkflowConfigs();
 
@@ -29,5 +29,5 @@ const BaseNodeHandlerItem: BaseNodeHandlerItemComponentType = memo(
   },
 );
 
-BaseNodeHandlerItem.displayName = 'BaseNodeHandlerItem';
-export default BaseNodeHandlerItem;
+WorkflowBaseNodeHandlerItem.displayName = 'WorkflowBaseNodeHandlerItem';
+export default WorkflowBaseNodeHandlerItem;

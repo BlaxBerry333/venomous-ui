@@ -6,7 +6,7 @@ export type WorkflowBaseNodeHandlerProps = {
     style?: React.CSSProperties;
     onConnect?: XYFlowHandleProps['onConnect'];
 };
-export type BaseNodeHandlerItemComponentType = NamedExoticComponent<WorkflowBaseNodeHandlerProps & PropsWithChildren<{
+export type WorkflowBaseNodeHandlerItemComponentType = NamedExoticComponent<WorkflowBaseNodeHandlerProps & PropsWithChildren<{
     handlerStyle?: React.CSSProperties;
 }>>;
 export type WorkflowBaseNodeHandlerComponentType = NamedExoticComponent<WorkflowBaseNodeHandlerProps>;

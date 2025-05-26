@@ -1,8 +1,8 @@
 import { memo, type PropsWithChildren } from 'react';
 
 import {
-  BaseNodeHandlerItem,
   WorkflowBaseNode,
+  WorkflowBaseNodeHandlerItem,
   WorkflowPlayground,
   WorkflowWrapper,
   type WorkflowNode,
@@ -38,14 +38,14 @@ const MultipleSourceNodeComponent = memo(
           {MOCK_ITEMS.map((_, index) => {
             const MOCKID = `${nodeId}--${index + 1}`;
             return (
-              <BaseNodeHandlerItem
+              <WorkflowBaseNodeHandlerItem
                 key={MOCKID}
                 id={MOCKID}
                 handlerType="source"
                 handlerStyle={{ transform: 'translateX(-11px)' }}
               >
                 {`#${MOCKID}`}
-              </BaseNodeHandlerItem>
+              </WorkflowBaseNodeHandlerItem>
             );
           })}
         </div>
@@ -69,14 +69,14 @@ const MultipleTargetNodeComponent = memo(
           {MOCK_ITEMS.map((_, index) => {
             const MOCKID = `${nodeId}--${index + 1}`;
             return (
-              <BaseNodeHandlerItem
+              <WorkflowBaseNodeHandlerItem
                 key={MOCKID}
                 id={MOCKID}
                 handlerType="target"
                 handlerStyle={{ transform: 'translateX(-22px)' }}
               >
                 {`#${MOCKID}`}
-              </BaseNodeHandlerItem>
+              </WorkflowBaseNodeHandlerItem>
             );
           })}
         </div>

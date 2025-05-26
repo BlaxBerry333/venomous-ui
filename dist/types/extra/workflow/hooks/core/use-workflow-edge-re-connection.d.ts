@@ -1,6 +1,6 @@
 import { type OnReconnect } from '@xyflow/react';
 import type { OnReconnectEnd, OnReconnectStart, WorkflowEdge, WorkflowNode } from '@packages/extra/workflow/types';
-export default function useEdgeReConnection<N extends WorkflowNode, E extends WorkflowEdge>(): {
+export default function useWorkflowEdgeReConnection<N extends WorkflowNode, E extends WorkflowEdge>(): {
     onReconnect: OnReconnect;
     onReconnectStart: OnReconnectStart;
     onReconnectEnd: OnReconnectEnd;
