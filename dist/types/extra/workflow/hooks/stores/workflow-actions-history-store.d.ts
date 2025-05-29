@@ -26,6 +26,7 @@ export interface WorkflowActionHistory {
     timestamp: number;
     elements: WorkflowElements;
 }
+export declare function useWorkflowActionsHistoryStoreCleanup(): null;
 export declare function useWorkflowActionsHistoryStates(): {
     currentStates: WorkflowActionHistory;
     pastStates: {

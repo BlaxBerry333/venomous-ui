@@ -8,6 +8,13 @@ export type WorkflowElements<N extends WorkflowNode = WorkflowNode, E extends Wo
  */
 export type WorkflowNode<NodeType extends string = string, NodeFormValue extends WorkflowNodeFormValue = WorkflowNodeFormValue> = XYFlowNode<WorkflowNodeData<NodeFormValue>, NodeType>;
 /**
+ * Node Type ( Default )
+ */
+export declare enum WorkflowNodeTypeDefault {
+    Base = "Base",
+    Group = "Group"
+}
+/**
  * Node Data
  */
 export type WorkflowNodeData<NodeFormValue extends WorkflowNodeFormValue = WorkflowNodeFormValue> = Partial<{
@@ -17,6 +24,7 @@ export type WorkflowNodeData<NodeFormValue extends WorkflowNodeFormValue = Workf
     isInValid: boolean;
     isProtected: boolean;
     isFocus: boolean;
+    isIntersecting: boolean;
 }>;
 /**
  * Node Form Value
@@ -25,25 +33,25 @@ type WorkflowNodeFormValue = Record<string, any> | null;
 /**
  * Node Component Props
  */
-export type WorkflowNodeComponentProps<N extends WorkflowNode = WorkflowNode> = XYFlowNodeProps<N>;
+export type WorkflowNodeComponentProps<N extends WorkflowNode = WorkflowNode> = React.PropsWithChildren<XYFlowNodeProps<N>>;
 /**
- * Node Component Type
+ * Node Component Map Type
  */
 export type WorkflowNodeComponent<N extends WorkflowNode = WorkflowNode> = Record<NonNullable<N['type']>, React.NamedExoticComponent<WorkflowNodeComponentProps<N>>>;
 /**
  * Edge
  */
-export type WorkflowEdge = XYFlowEdge<WorkflowEdgeData, WorkflowEdgeType>;
+export type WorkflowEdge<EdgeType extends string = string> = XYFlowEdge<WorkflowEdgeData, EdgeType>;
 /**
  * Edge Data
  */
-export type WorkflowEdgeData = Partial<{
-    animated: boolean;
+export type WorkflowEdgeData = Record<string, unknown> & Partial<{
+    isAnimated: boolean;
 }>;
 /**
- * Edge Type
+ * Edge Type ( Default )
  */
-export declare enum WorkflowEdgeType {
+export declare enum WorkflowEdgeTypeDefault {
     Base = "Base",
     DeleteLabel = "DeleteLabel"
 }
@@ -54,7 +62,7 @@ export type WorkflowEdgeComponentProps<E extends WorkflowEdge = WorkflowEdge> = 
 /**
  * Edge Component Type
  */
-export type WorkflowEdgeComponentType<E extends WorkflowEdge = WorkflowEdge> = Record<WorkflowEdgeType, React.NamedExoticComponent<WorkflowEdgeComponentProps<E>>>;
+export type WorkflowEdgeComponentType<E extends WorkflowEdge = WorkflowEdge> = Record<NonNullable<E['type']>, React.NamedExoticComponent<WorkflowEdgeComponentProps<E>>>;
 /**
  * Edge End Marker Type
  */

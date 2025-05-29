@@ -1,8 +1,10 @@
-import { memo, type PropsWithChildren } from 'react';
+import { memo, type CSSProperties, type PropsWithChildren } from 'react';
 
 import {
   WorkflowBaseNode,
   WorkflowBaseNodeHandlerItem,
+  WorkflowGroupNode,
+  WorkflowNodeTypeDefault,
   WorkflowPlayground,
   WorkflowWrapper,
   type WorkflowNode,
@@ -11,7 +13,8 @@ import {
 } from '@packages/extra';
 
 export enum INodeType {
-  BASE = 'BASE',
+  BASE = WorkflowNodeTypeDefault.Base,
+  GROUP = WorkflowNodeTypeDefault.Group,
   MULTIPLE_SOURCE = 'MULTIPLE_SOURCE',
   MULTIPLE_TARGET = 'MULTIPLE_TARGET',
 }
@@ -21,6 +24,11 @@ export type INode = WorkflowNode<INodeType, null>;
 // eslint-disable-next-line react-refresh/only-export-components
 const BaseNodeComponent = memo<WorkflowNodeComponentProps<INode>>((props) => {
   return <WorkflowBaseNode {...props}>BaseNode #{props.id}</WorkflowBaseNode>;
+});
+
+// eslint-disable-next-line react-refresh/only-export-components
+const GroupNodeComponent = memo<WorkflowNodeComponentProps<INode>>((props) => {
+  return <WorkflowGroupNode {...props}>GroupNode #{props.id}</WorkflowGroupNode>;
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -42,6 +50,7 @@ const MultipleSourceNodeComponent = memo(
                 key={MOCKID}
                 id={MOCKID}
                 handlerType="source"
+                handlerPosition="right"
                 handlerStyle={{ transform: 'translateX(-11px)' }}
               >
                 {`#${MOCKID}`}
@@ -73,6 +82,7 @@ const MultipleTargetNodeComponent = memo(
                 key={MOCKID}
                 id={MOCKID}
                 handlerType="target"
+                handlerPosition="left"
                 handlerStyle={{ transform: 'translateX(-22px)' }}
               >
                 {`#${MOCKID}`}
@@ -85,36 +95,48 @@ const MultipleTargetNodeComponent = memo(
   },
 );
 
-export const NodeComponents: WorkflowNodeComponent<INode> = {
+const NodeComponents: WorkflowNodeComponent<INode> = {
   [INodeType.BASE]: BaseNodeComponent,
+  [INodeType.GROUP]: GroupNodeComponent,
   [INodeType.MULTIPLE_SOURCE]: MultipleSourceNodeComponent,
   [INodeType.MULTIPLE_TARGET]: MultipleTargetNodeComponent,
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-const PlaygroundComponent = memo((props: PropsWithChildren<{ node: INode }>) => {
-  return (
-    <WorkflowWrapper>
-      <WorkflowPlayground
-        sx={{ width: '100%', height: '250px', p: 0 }}
-        nodeTypes={NodeComponents}
-        originalElements={{
-          nodes: [props.node],
-          edges: [],
-        }}
-        configs={{
-          minimap: {
-            enabled: false,
-          },
-        }}
-      >
-        {props.children}
-      </WorkflowPlayground>
-    </WorkflowWrapper>
-  );
-});
+const PlaygroundComponent = memo<PropsWithChildren<{ nodes: INode[]; style?: CSSProperties }>>(
+  (props) => {
+    return (
+      <WorkflowWrapper>
+        <WorkflowPlayground
+          sx={{ width: '100%', height: '250px', p: 0, ...props.style }}
+          nodeTypes={NodeComponents}
+          originalElements={{
+            nodes: props.nodes,
+            edges: [],
+          }}
+          configs={{
+            logger: (type: string, message: string) => {
+              alert(`[${type}] ${message}`);
+            },
+            minimap: { enabled: false },
+            undoRedo: { enabled: false },
+            styles: {
+              // connectionPosition:{
+              //   source: 'bottom',
+              //   target: 'top',
+              // }
+            },
+          }}
+        >
+          {props.children}
+        </WorkflowPlayground>
+      </WorkflowWrapper>
+    );
+  },
+);
 
 export default {
+  NodeComponents,
   PlaygroundComponent,
   BaseNodeComponent,
   MultipleSourceNodeComponent,

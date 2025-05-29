@@ -1,1 +1,1 @@
-export { getRelevantEdgesByEdge, getRelevantEdgesByNode } from './getRelevantElements';
+export { getRelevantEdgesByEdge, getRelevantEdgesByNode } from './get-relevant-elements';

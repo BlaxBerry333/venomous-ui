@@ -4,11 +4,11 @@ import { devtools } from 'zustand/middleware';
 import {
   WorkflowEdgeConnectionLineType,
   WorkflowEdgeEndMarkerType,
-  WorkflowEdgeType,
+  WorkflowEdgeTypeDefault,
 } from '@packages/extra/workflow/types';
 
 export type WorkflowConfigs = {
-  logger: (message: string) => void;
+  logger: (type: 'success' | 'error' | 'info', message: string) => void;
   hotkeys: {
     keys: {
       copy: string; // 复制
@@ -32,12 +32,12 @@ export type WorkflowConfigs = {
     nodeMaxHeight: number | 'auto';
     nodeColors: Record<string, string>;
     edgeWidth: number;
-    edgeType: WorkflowEdgeType; // Edge 类型
+    edgeType: string; // Edge 类型
     edgeEndMarkerType: WorkflowEdgeEndMarkerType; // Edge End Marker 类型
     connectionLineType: WorkflowEdgeConnectionLineType; // Edge Connection 连接中的类型
     connectionPosition: {
-      source: 'bottom' | 'top' | 'left' | 'right'; // sourceHandle 在 Node 上的位置
-      target: 'bottom' | 'top' | 'left' | 'right'; // targetHandle 在 Node 上的位置
+      source: 'bottom' | 'left' | 'right'; // sourceHandle 在 Node 上的位置
+      target: 'top' | 'left' | 'right'; // targetHandle 在 Node 上的位置
     };
   };
   minimap: {
@@ -61,7 +61,7 @@ const workflowConfigsStore = create<
 >()(
   devtools(
     (set) => ({
-      logger: (message: string) => console.log(message),
+      logger: (type, message) => console.log(`${type}: ${message}`),
       hotkeys: {
         enabled: false,
         keys: {
@@ -85,7 +85,7 @@ const workflowConfigsStore = create<
         nodeMinHeight: 100,
         nodeMaxHeight: 'auto',
         edgeWidth: 2,
-        edgeType: WorkflowEdgeType.Base,
+        edgeType: WorkflowEdgeTypeDefault.DeleteLabel,
         edgeEndMarkerType: WorkflowEdgeEndMarkerType.ArrowClosed,
         connectionLineType: WorkflowEdgeConnectionLineType.Bezier,
         connectionPosition: {

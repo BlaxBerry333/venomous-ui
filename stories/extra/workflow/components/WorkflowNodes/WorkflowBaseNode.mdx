@@ -1,0 +1,35 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './WorkflowNodes.stories';
+
+<Meta of={Stories} />
+
+# WorkflowBaseNode
+
+`<WorkflowBaseNode>` is is a built-in component which is a basic component of workflow nodes.
+
+You can think of it as a wrapper container with default styles, customize its content with the `children` attribute.
+
+Use the built-in enum type `WorkflowNodeTypeDefault.Base` as its `NodeType`.
+
+<Canvas
+  of={Stories.BaseNode}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { memo } from "react";',
+      'import { WorkflowBaseNode, WorkflowNodeTypeDefault } from "venomous-ui";',
+      'import type { WorkflowNode, WorkflowNodeComponentProps } from "venomous-ui";',
+      '',
+      'type CustomNode = WorkflowNode<WorkflowNodeTypeDefault.Base>;',
+      'type CustomNodeProps = WorkflowNodeComponentProps<CustomNode>;',
+      '',
+      'const CustomNode = memo<CustomNodeProps>((props) => {',
+      '  return (',
+      '    <WorkflowBaseNode {...props}>',
+      '      BaseNode #{props.id}',
+      '    </WorkflowBaseNode>',
+      '  );',
+      '});',
+    ].join('\n'),
+  }}
+/>

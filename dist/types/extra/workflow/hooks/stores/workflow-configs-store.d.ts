@@ -1,6 +1,6 @@
-import { WorkflowEdgeConnectionLineType, WorkflowEdgeEndMarkerType, WorkflowEdgeType } from '@packages/extra/workflow/types';
+import { WorkflowEdgeConnectionLineType, WorkflowEdgeEndMarkerType } from '@packages/extra/workflow/types';
 export type WorkflowConfigs = {
-    logger: (message: string) => void;
+    logger: (type: 'success' | 'error' | 'info', message: string) => void;
     hotkeys: {
         keys: {
             copy: string;
@@ -24,12 +24,12 @@ export type WorkflowConfigs = {
         nodeMaxHeight: number | 'auto';
         nodeColors: Record<string, string>;
         edgeWidth: number;
-        edgeType: WorkflowEdgeType;
+        edgeType: string;
         edgeEndMarkerType: WorkflowEdgeEndMarkerType;
         connectionLineType: WorkflowEdgeConnectionLineType;
         connectionPosition: {
-            source: 'bottom' | 'top' | 'left' | 'right';
-            target: 'bottom' | 'top' | 'left' | 'right';
+            source: 'bottom' | 'left' | 'right';
+            target: 'top' | 'left' | 'right';
         };
     };
     minimap: {

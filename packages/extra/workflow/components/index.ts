@@ -6,7 +6,7 @@ export type { WorkflowWrapperProps } from './Wrapper';
 
 export { WorkflowDevtool, WorkflowMiniMap, WorkflowUndoRedo } from './Widgets';
 
-export { WorkflowBaseNode } from './Nodes';
+export { WorkflowBaseNode, WorkflowGroupNode } from './Nodes';
 export type { WorkflowBaseNodeProps } from './Nodes';
 
 export {

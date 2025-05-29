@@ -10,6 +10,8 @@ export interface WorkflowPlaygroundProps extends XYFlowReactFlowProps {
   children?: ReactNode;
   sx?: PaperProps['sx'];
 
+  workflowId?: string;
+
   originalElements: WorkflowElements;
 
   configs?: ToolTypes.DeepPartial<WorkflowConfigs>;

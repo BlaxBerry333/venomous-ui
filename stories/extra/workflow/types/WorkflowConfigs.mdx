@@ -4,7 +4,7 @@ import { Meta } from '@storybook/blocks';
 
 ```ts
 type WorkflowConfigs = {
-  logger: (message: string) => void; // 信息提示回调 ( 比如 console.log、alert 等 )
+  logger: (type: 'success' | 'error' | 'info', message: string) => void; // 信息提示回调 ( 比如 console.log、alert 等 )
   hotkeys: {
     keys: {
       copy: string; // 复制

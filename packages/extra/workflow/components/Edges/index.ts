@@ -1,5 +1,5 @@
 import {
-  WorkflowEdgeType,
+  WorkflowEdgeTypeDefault,
   type WorkflowEdgeComponentType,
 } from '@packages/extra/workflow/types/elements';
 
@@ -11,6 +11,6 @@ export { default as WorkflowDeleteLabelEdge } from './DeleteLabelEdge';
 export type { WorkflowBaseEdgeProps } from './types';
 
 export const SupportedEdgeTypes: WorkflowEdgeComponentType = {
-  [WorkflowEdgeType.Base]: WorkflowBaseEdge,
-  [WorkflowEdgeType.DeleteLabel]: WorkflowDeleteLabelEdge,
+  [WorkflowEdgeTypeDefault.Base]: WorkflowBaseEdge,
+  [WorkflowEdgeTypeDefault.DeleteLabel]: WorkflowDeleteLabelEdge,
 };

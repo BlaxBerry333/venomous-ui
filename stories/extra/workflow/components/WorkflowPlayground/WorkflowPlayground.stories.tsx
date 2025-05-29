@@ -2,14 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import {
   WorkflowDevtool,
-  WorkflowEdgeType,
+  WorkflowEdgeTypeDefault,
   WorkflowPlayground,
   WorkflowWrapper,
 } from '@packages/extra';
-import { INodeType, NodeComponents, type INode } from './_examples';
+import Examples, { INodeType, type INode } from '../_examples';
 
 const meta = {
-  title: 'Extra/workflow/components/WorkflowPlayground',
+  title: 'Extra/Workflow/components/WorkflowPlayground',
   component: WorkflowPlayground,
   parameters: { layout: 'centered' },
   tags: ['!autodocs', '!dev'],
@@ -57,6 +57,12 @@ export const Default: Story = {
   render: function RenderStory() {
     const MOCK_NODES: INode[] = [
       {
+        id: '0',
+        type: INodeType.GROUP,
+        position: { x: 600, y: 200 },
+        data: { formValue: null },
+      },
+      {
         id: '1',
         type: INodeType.BASE,
         position: { x: 100, y: 100 },
@@ -86,7 +92,7 @@ export const Default: Story = {
         id: '1__2',
         source: '1',
         target: '2',
-        type: WorkflowEdgeType.DeleteLabel,
+        type: WorkflowEdgeTypeDefault.DeleteLabel,
       },
       {
         id: '3--2__4--2',
@@ -94,20 +100,23 @@ export const Default: Story = {
         sourceHandle: '3--2',
         target: '4',
         targetHandle: '4--2',
-        type: WorkflowEdgeType.DeleteLabel,
+        type: WorkflowEdgeTypeDefault.DeleteLabel,
       },
     ];
 
     return (
       <WorkflowWrapper>
         <WorkflowPlayground
-          sx={{ width: '100%', height: '500px', p: 0 }}
-          nodeTypes={NodeComponents}
+          sx={{ width: '100%', height: '600px', p: 0 }}
+          nodeTypes={Examples.NodeComponents}
           originalElements={{
             nodes: MOCK_NODES,
             edges: MOCK_EDGES,
           }}
           configs={{
+            logger: (type: string, message: string) => {
+              alert(`[${type}] ${message}`);
+            },
             styles: {
               nodeWidth: 250,
               nodeMinHeight: 100,
@@ -117,7 +126,7 @@ export const Default: Story = {
                 [INodeType.MULTIPLE_SOURCE]: '#34aeeb',
                 [INodeType.MULTIPLE_TARGET]: '#42f598',
               },
-              edgeType: WorkflowEdgeType.DeleteLabel,
+              edgeType: WorkflowEdgeTypeDefault.DeleteLabel,
               connectionPosition: {
                 source: 'right',
                 target: 'left',

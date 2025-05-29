@@ -14,7 +14,7 @@ import {
 } from '@packages/extra/workflow/hooks';
 import { useThemeMode } from '@packages/helpers';
 import { SupportedEdgeTypes } from '../Edges';
-// import { WorkflowMiniMap } from '../Widgets';
+import { SupportedNodeTypes } from '../Nodes';
 import type { WorkflowPlaygroundComponentType } from './WorkflowPlayground.types';
 
 const WorkflowMiniMap = lazy(() =>
@@ -29,13 +29,10 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
     const { themeMode } = useThemeMode();
     const configs = useWorkflowConfigs();
 
-    const { onFinishedInit } = useWorkflowInit({
-      originalElements,
-      configs: originalConfigs,
-    });
+    const { onFinishedInit } = useWorkflowInit({ configs: originalConfigs });
 
     const { onDrop, onDragOver } = useWorkflowNodeCreate();
-    const { onNodeMoveStart, onNodeMoveStop } = useWorkflowNodeMove();
+    const { onNodeMoveStart, onNodeMoveStop, onNodeMoving } = useWorkflowNodeMove();
     const { isValidConnection, onConnect, onConnectEnd } = useWorkflowEdgeConnection();
     const { onReconnect, onReconnectStart, onReconnectEnd } = useWorkflowEdgeReConnection();
 
@@ -57,6 +54,9 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
           // ----------------------------------------------------------------------------------------------------
           defaultNodes={originalElements.nodes}                            /** Node 列表 ( 受控组件写法, 仅初始化时使用一次 ) */
           defaultEdges={originalElements.edges}                            /** Edge 列表 ( 受控组件写法, 仅初始化时使用一次 ) */
+          nodeTypes={{ ...SupportedNodeTypes, ...props.nodeTypes }}        /** 自定义 Node 组件 */
+          edgeTypes= {{ ...SupportedEdgeTypes, ...props.edgeTypes }}       /** 自定义 Edge 组件 */
+           // ----------------------------------------------------------------------------------------------------
           elementsSelectable                                               /** Node 与 Edge 是否能被选中 */
           nodesConnectable                                                 /** Node 是否能被连接 */
           nodesDraggable                                                   /** Node 是否能被拖拽 */
@@ -68,12 +68,8 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
           edgesFocusable={false}                                           /** 是否可以使用 Tab 切换 Edge  */
           nodeDragThreshold={5}                                            /** Node 被拖拽了指定 px 之后才会真正在 Canvas 上移动，可防止失误移动 */
           connectionRadius={configs?.styles?.nodeWidth / 4}                /** Node 连接的 px 范围 */
-          nodeTypes={props.nodeTypes}                                      /** 自定义 Node 组件 */
-          edgeTypes={props.edgeTypes || SupportedEdgeTypes}                /** 自定义 Edge 组件 */
           snapToGrid={configs?.canvas?.isGridLayout}                       /** 是否开启网格对齐 */
           snapGrid={configs?.canvas?.gridLayoutGap}                        /** 画布的网格 */
-          // ----------------------------------------------------------------------------------------------------
-          {...props}
           // ----------------------------------------------------------------------------------------------------
           onInit={onFinishedInit}                                          /** Reactflow Instance 初始化完成时的回调 */
           isValidConnection={isValidConnection}                            /** 自定义连接前校验 */
@@ -85,9 +81,12 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
           onDragOver={onDragOver}                                          /** Node 被拖拽到画布上的回调 */
           onDrop={onDrop}                                                  /** Node 被拖拽到画布后的回调 */
           onNodeDragStart={onNodeMoveStart}                                /** Node 移动开始的回调 */
+          onNodeDrag={onNodeMoving}                                        /** Node 移动中的回调 */
           onNodeDragStop={onNodeMoveStop}                                  /** Node 移动结束的回调 */
           // ----------------------------------------------------------------------------------------------------
           deleteKeyCode={null}                                             /** 默认删除键的 KeyCode */
+          // ----------------------------------------------------------------------------------------------------
+          {...props}
         >
           {children}
 

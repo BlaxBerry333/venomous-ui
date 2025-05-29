@@ -114,7 +114,7 @@ export default function useWorkflowEdgeConnection<
     if (cachedValidConnectionRef.current) {
       cachedValidConnectionRef.current = {
         ...cachedValidConnectionRef.current,
-        result: false,
+        result: true,
       };
     }
   }, []);

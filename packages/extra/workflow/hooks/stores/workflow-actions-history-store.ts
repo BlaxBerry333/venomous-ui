@@ -4,7 +4,7 @@ import { devtools } from 'zustand/middleware';
 
 import type { WorkflowElements } from '@packages/extra/workflow/types';
 import { debounce, isEqual } from 'es-toolkit';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import useWorkflowInstance from '../core/use-workflow-instance';
 import { _getWorkflowConfigsStoreStoreState } from './workflow-configs-store';
 
@@ -53,14 +53,7 @@ const workflowActionsHistoryStore = create<{
       (set) => ({
         actionsHistory: INITIAL_WORKFLOW_ACTION_HISTORY,
         updateActionsHistory: (actionsHistory) => set({ actionsHistory }),
-        clearActionsHistory: () =>
-          set({
-            actionsHistory: {
-              ...INITIAL_WORKFLOW_ACTION_HISTORY,
-              action: WorkflowAction.Reset,
-              timestamp: Date.now(),
-            },
-          }),
+        clearActionsHistory: () => set({ actionsHistory: INITIAL_WORKFLOW_ACTION_HISTORY }),
       }),
       {
         name: 'VENOMOUS_UI__WORKFLOW_ACTIONS_HISTORY',
@@ -75,6 +68,15 @@ const workflowActionsHistoryStore = create<{
     },
   ),
 );
+
+export function useWorkflowActionsHistoryStoreCleanup() {
+  useEffect(() => {
+    return () => {
+      workflowActionsHistoryStore.getState().clearActionsHistory();
+    };
+  }, []);
+  return null;
+}
 
 export function useWorkflowActionsHistoryStates() {
   const store = workflowActionsHistoryStore();

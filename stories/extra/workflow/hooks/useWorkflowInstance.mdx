@@ -3,3 +3,37 @@ import { Meta } from '@storybook/blocks';
 # useWorkflowInstance
 
 Must be used inside `<WorkflowWrapper>` component.
+
+```ts
+const {
+  getNode,
+  getNodes,
+  addNodes,
+  setNodes,
+  getEdge,
+  getEdges,
+  addEdges,
+  setEdges,
+  toObject,
+  deleteElements,
+  getNodesBounds,
+  getIntersectingNodes,
+  isNodeIntersecting,
+  viewportInitialized,
+  zoomIn,
+  zoomOut,
+  zoomTo,
+  getZoom,
+  setViewport,
+  getViewport,
+  fitView,
+  setCenter,
+  fitBounds,
+  screenToFlowPosition,
+  flowToScreenPosition,
+  updateNode,
+  updateNodeData,
+  updateEdge,
+  updateEdgeData,
+} = useWorkflowInstance<INode, IEdge>();
+```

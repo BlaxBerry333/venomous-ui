@@ -1,6 +1,11 @@
-import type { WorkflowNodeComponentProps } from '@packages/extra/workflow/types';
-import type { NamedExoticComponent, PropsWithChildren } from 'react';
+import type { NamedExoticComponent } from 'react';
 
-export type WorkflowBaseNodeProps = PropsWithChildren<WorkflowNodeComponentProps>;
+import type { PaperProps } from '@packages/common';
+import type { WorkflowNodeComponentProps } from '@packages/extra/workflow/types';
+
+export type WorkflowBaseNodeProps = WorkflowNodeComponentProps & {
+  sx?: PaperProps['sx'];
+  withoutHandlers?: boolean;
+};
 
 export type WorkflowBaseNodeComponentType = NamedExoticComponent<WorkflowBaseNodeProps>;

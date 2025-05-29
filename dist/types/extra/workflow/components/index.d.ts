@@ -3,7 +3,7 @@ export type { WorkflowPlaygroundProps } from './Playground';
 export { WorkflowWrapper } from './Wrapper';
 export type { WorkflowWrapperProps } from './Wrapper';
 export { WorkflowDevtool, WorkflowMiniMap, WorkflowUndoRedo } from './Widgets';
-export { WorkflowBaseNode } from './Nodes';
+export { WorkflowBaseNode, WorkflowGroupNode } from './Nodes';
 export type { WorkflowBaseNodeProps } from './Nodes';
 export { WorkflowBaseNodeHandler, WorkflowBaseNodeHandlerItem, WorkflowSourceNodeHandler, WorkflowTargetNodeHandler, } from './NodeHandlers';
 export type { WorkflowBaseNodeHandlerProps } from './NodeHandlers';

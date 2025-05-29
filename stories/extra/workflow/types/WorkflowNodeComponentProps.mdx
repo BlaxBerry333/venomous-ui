@@ -4,7 +4,7 @@ import { Meta } from '@storybook/blocks';
 
 {/* prettier-ignore */}
 ```ts
-type WorkflowNodeComponentProps<N extends WorkflowNode = WorkflowNode> = Pick<
+type WorkflowNodeComponentProps<N extends WorkflowNode = WorkflowNode> = React.PropsWithChildren<Pick<
   N, 'id' | 'data' | 'width' | 'height' | 'sourcePosition' | 'targetPosition' | 'dragHandle' | 'parentId'
 > & Required<Pick<
   N, 'type' | 'dragging' | 'zIndex' | 'selectable' | 'deletable' | 'selected' | 'draggable'>
@@ -12,7 +12,7 @@ type WorkflowNodeComponentProps<N extends WorkflowNode = WorkflowNode> = Pick<
     isConnectable: boolean;
     positionAbsoluteX: number;
     positionAbsoluteY: number;
-  };
+  }>;
 
 // {
 //   id: string;
@@ -33,5 +33,6 @@ type WorkflowNodeComponentProps<N extends WorkflowNode = WorkflowNode> = Pick<
 //   isConnectable: boolean;
 //   positionAbsoluteX: number;
 //   positionAbsoluteY: number;
+//   children?: React.ReactNode | undefined;
 // };
 ```

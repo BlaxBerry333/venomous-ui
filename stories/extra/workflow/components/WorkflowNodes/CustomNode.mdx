@@ -1,52 +1,35 @@
 import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
-import * as Stories from './WorkflowNode.stories';
+import * as Stories from './WorkflowNodes.stories';
 
 <Meta of={Stories} />
 
-# WorkflowNode
+# CustomNode
 
 When using custom `<Nodes>` components, must passed as an object to the parameter `nodeTypes` of `<WorkflowPlayground />`
 
+also use the node type and node component of the content when defining an enum.
+
 ```tsx
 import type { WorkflowNode, WorkflowNodeComponent } from 'venomous-ui';
+import { WorkflowNodeTypeDefault, WorkflowBaseNode, WorkflowGroupNode } from 'venomous-ui'; // built-in enum and components
 import { CustomNodeComponentA, CustomNodeComponentB } from './CustomNodes'; // custom nodes components files
 
 enum INodeType {
-  A = 'A',
-  B = 'B',
+  A = 'CustomA',
+  B = 'CustomB',
+  BASE = WorkflowNodeTypeDefault.Base,
+  GROUP = WorkflowNodeTypeDefault.Group,
 }
 
 const NodeComponents: WorkflowNodeComponent<WorkflowNode<INodeType>> = {
   [INodeType.A]: CustomNodeComponentA,
   [INodeType.B]: CustomNodeComponentB,
+  [INodeType.BASE]: WorkflowBaseNode,
+  [INodeType.GROUP]: WorkflowGroupNode,
 };
 ```
 
 ## Examples
-
-#### BaseNode
-
-<Canvas
-  of={Stories.BaseNode}
-  sourceState="hidden"
-  source={{
-    code: [
-      'import { memo } from "react";',
-      'import { WorkflowBaseNode, type WorkflowNode, type WorkflowNodeComponentProps } from "venomous-ui";',
-      '',
-      'type CustomNode = WorkflowNode<"BaseNode">;',
-      'type CustomNodeProps = WorkflowNodeComponentProps<CustomNode>;',
-      '',
-      'const CustomNode = memo<CustomNodeProps>((props) => {',
-      '  return (',
-      '    <WorkflowBaseNode {...props}>',
-      '      BaseNode #{props.id}',
-      '    </WorkflowBaseNode>',
-      '  );',
-      '}',
-    ].join('\n'),
-  }}
-/>
 
 #### MultipleSourceNode
 
@@ -78,6 +61,7 @@ const NodeComponents: WorkflowNodeComponent<WorkflowNode<INodeType>> = {
       '              key={MOCKID}',
       '              id={MOCKID}',
       '              handlerType="source"',
+      '              handlerPosition="right"',
       '              handlerStyle={{ transform: "translateX(-11px)" }}',
       '            >',
       '              {`#${MOCKID}`}',
@@ -122,6 +106,7 @@ const NodeComponents: WorkflowNodeComponent<WorkflowNode<INodeType>> = {
       '              key={MOCKID}',
       '              id={MOCKID}',
       '              handlerType="target"',
+      '              handlerPosition="left"',
       '              handlerStyle={{ transform: "translateX(-22px)" }}',
       '            >',
       '              {`#${MOCKID}`}',

@@ -1,7 +1,8 @@
 export {
   WorkflowEdgeConnectionLineType,
   WorkflowEdgeEndMarkerType,
-  WorkflowEdgeType,
+  WorkflowEdgeTypeDefault,
+  WorkflowNodeTypeDefault,
   type WorkflowEdge,
   type WorkflowEdgeData,
   type WorkflowElements,

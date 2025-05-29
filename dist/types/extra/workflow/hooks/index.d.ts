@@ -7,6 +7,6 @@ export { default as useWorkflowInstance } from './core/use-workflow-instance';
 export { default as useWorkflowNodeCreate } from './core/use-workflow-node-create';
 export { default as useWorkflowNodeMove } from './core/use-workflow-node-move';
 export { default as useWorkflowNodeUpdate } from './core/use-workflow-node-update';
-export { WorkflowAction, useWorkflowActionsHistoryStates, useWorkflowActionsHistoryUndoRedo, useWorkflowActionsHistoryUpdate, } from './stores/workflow-actions-history-store';
+export { WorkflowAction, useWorkflowActionsHistoryStates, useWorkflowActionsHistoryStoreCleanup, useWorkflowActionsHistoryUndoRedo, useWorkflowActionsHistoryUpdate, } from './stores/workflow-actions-history-store';
 export { default as useWorkflowConfigs, type WorkflowConfigs, } from './stores/workflow-configs-store';
 export { default as useWorkflowOriginalElements } from './stores/workflow-original-elements-store';

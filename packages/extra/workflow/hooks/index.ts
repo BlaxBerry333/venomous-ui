@@ -11,6 +11,7 @@ export { default as useWorkflowNodeUpdate } from './core/use-workflow-node-updat
 export {
   WorkflowAction,
   useWorkflowActionsHistoryStates,
+  useWorkflowActionsHistoryStoreCleanup,
   useWorkflowActionsHistoryUndoRedo,
   useWorkflowActionsHistoryUpdate,
 } from './stores/workflow-actions-history-store';

@@ -1,0 +1,37 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './WorkflowNodes.stories';
+
+<Meta of={Stories} />
+
+# WorkflowGroupNode
+
+`<WorkflowGroupNode>` is a built-in component that allows you to group nodes together.
+
+Use the built-in enum type `WorkflowNodeTypeDefault.Group` as its `NodeType`.
+
+<Canvas
+  of={Stories.GroupNode}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { memo } from "react";',
+      'import { WorkflowGroupNode, WorkflowNodeTypeDefault } from "venomous-ui";',
+      'import type { WorkflowNode, WorkflowNodeComponentProps } from "venomous-ui";',
+      '',
+      'type CustomNode = WorkflowNode<WorkflowNodeTypeDefault.Group>;',
+      'type CustomNodeProps = WorkflowNodeComponentProps<CustomNode>;',
+      '',
+      'const CustomNode = memo<CustomNodeProps>((props) => {',
+      '  return (',
+      '    <WorkflowGroupNode {...props}>',
+      '      GroupNode #{props.id}',
+      '    </WorkflowGroupNode>',
+      '  );',
+      '});',
+    ].join('\n'),
+  }}
+/>
+
+## Troubleshooting
+
+`Please make sure that parent nodes are in front of their child nodes in the nodes array.`

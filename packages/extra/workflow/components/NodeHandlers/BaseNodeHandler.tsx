@@ -1,5 +1,5 @@
 import { Handle as XYFlowHandle, Position as XYFlowPosition } from '@xyflow/react';
-import { memo, useMemo, type CSSProperties } from 'react';
+import { memo, useCallback, type CSSProperties } from 'react';
 
 import { useWorkflowConfigs } from '@packages/extra/workflow/hooks';
 import type { WorkflowBaseNodeHandlerComponentType } from './types';
@@ -13,13 +13,13 @@ const commonNodeHandlerStyles: CSSProperties = {
 };
 
 const WorkflowBaseNodeHandler: WorkflowBaseNodeHandlerComponentType = memo(
-  ({ id, handlerType = 'source', style, onConnect }) => {
+  ({ id, handlerType = 'source', handlerPosition, style, onConnect }) => {
     const configs = useWorkflowConfigs();
 
-    const handlerPosition = configs.styles.connectionPosition[handlerType];
-
-    const position = useMemo(() => {
-      switch (handlerPosition) {
+    const getHandlerPosition = useCallback(() => {
+      const configPosition = configs.styles.connectionPosition[handlerType];
+      const position = handlerPosition ?? configPosition;
+      switch (position) {
         case 'left':
           return XYFlowPosition.Left;
         case 'right':
@@ -31,13 +31,13 @@ const WorkflowBaseNodeHandler: WorkflowBaseNodeHandlerComponentType = memo(
         default:
           return XYFlowPosition.Left;
       }
-    }, [handlerPosition, handlerPosition]);
+    }, [handlerPosition, configs.styles.connectionPosition]);
 
     return (
       <XYFlowHandle
         type={handlerType}
         id={id}
-        position={position}
+        position={getHandlerPosition()}
         className="VenomousUI-WorkflowBaseNodeHandler"
         style={{ ...commonNodeHandlerStyles, ...style }}
         onConnect={onConnect}

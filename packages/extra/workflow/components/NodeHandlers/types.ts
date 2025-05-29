@@ -4,6 +4,7 @@ import type { NamedExoticComponent, PropsWithChildren } from 'react';
 export type WorkflowBaseNodeHandlerProps = {
   id: string | null;
   handlerType: XYFlowHandleProps['type'];
+  handlerPosition?: 'top' | 'right' | 'bottom' | 'left';
   style?: React.CSSProperties;
   onConnect?: XYFlowHandleProps['onConnect'];
 };
