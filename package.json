@@ -1,6 +1,6 @@
 {
   "name": "venomous-ui",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "UNLICENSED",
   "private": true,
   "type": "module",
@@ -97,6 +97,7 @@
   "files": [
     "dist/*.js",
     "dist/*.cjs",
+    "dist/*.css",
     "dist/types"
   ],
   "sideEffects": [
