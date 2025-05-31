@@ -5,7 +5,7 @@ import {
 import { default as WorkflowBaseNode } from './BaseNode';
 import { default as WorkflowGroupNode } from './GroupNode';
 
-export type { WorkflowBaseNodeProps } from './types';
+export type { WorkflowBaseNodeProps } from './index.types';
 
 export { default as WorkflowBaseNode } from './BaseNode';
 export { default as WorkflowGroupNode } from './GroupNode';

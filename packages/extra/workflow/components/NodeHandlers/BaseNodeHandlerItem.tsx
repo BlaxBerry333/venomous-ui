@@ -1,5 +1,6 @@
 import { memo } from 'react';
 
+import Box from '@mui/material/Box';
 import { useWorkflowConfigs } from '@packages/extra/workflow/hooks';
 import WorkflowBaseNodeHandler from './BaseNodeHandler';
 import type { WorkflowBaseNodeHandlerItemComponentType } from './types';
@@ -10,14 +11,15 @@ const WorkflowBaseNodeHandlerItem: WorkflowBaseNodeHandlerItemComponentType = me
 
     return (
       <div
+        className="VenomousUI-WorkflowBaseNodeHandlerItem"
         style={{
           position: 'relative',
           width: configs.styles?.nodeWidth,
-          padding: '4px 16px',
           ...style,
         }}
       >
-        {children}
+        <Box sx={{ typography: 'body2', padding: '4px 16px' }}>{children}</Box>
+
         <WorkflowBaseNodeHandler
           id={id}
           handlerType={handlerType}

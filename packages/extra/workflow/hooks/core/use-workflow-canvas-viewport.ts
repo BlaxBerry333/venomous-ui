@@ -1,5 +1,5 @@
-import type { XYPosition as XYFlowPosition } from '@xyflow/react';
-import { useCallback } from 'react';
+import { useViewport as XYFlowUseViewport, type XYPosition as XYFlowPosition } from '@xyflow/react';
+import { useCallback, useMemo } from 'react';
 
 import type { WorkflowEdge, WorkflowNode } from '@packages/extra/workflow/types';
 import useWorkflowConfigs from '../stores/workflow-configs-store';
@@ -12,6 +12,12 @@ export default function useWorkflowCanvasViewport<
   const configs = useWorkflowConfigs();
   const { zoomIn, zoomOut, zoomTo, getZoom, fitView, setCenter, setNodes, setEdges, updateNode } =
     useWorkflowInstance<N, E>();
+
+  /**
+   * 当前画布的缩放信息
+   */
+  const _currentViewport = XYFlowUseViewport();
+  const currentViewport = useMemo(() => _currentViewport, [_currentViewport]);
 
   /**
    * 画布放大
@@ -76,6 +82,7 @@ export default function useWorkflowCanvasViewport<
   );
 
   return {
+    currentViewport,
     increaseZoom,
     decreaseZoom,
     setZoom,

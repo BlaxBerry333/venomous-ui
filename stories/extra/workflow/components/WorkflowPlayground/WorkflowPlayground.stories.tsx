@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Text } from '@packages/common';
 import {
-  WorkflowDevtool,
   WorkflowEdgeTypeDefault,
   WorkflowPlayground,
+  WorkflowToolbarPanel,
   WorkflowWrapper,
 } from '@packages/extra';
 import Examples, { INodeType, type INode } from '../_examples';
@@ -135,11 +136,30 @@ export const Default: Story = {
             minimap: {
               enabled: true,
               position: 'bottom-left',
+              width: 150,
+            },
+            undoRedo: {
+              enabled: true,
+              position: 'bottom-left',
+              maxHistoryLength: 10,
+              tooltips: {
+                undo: 'Undo',
+                redo: 'Redo',
+                history: 'Undo/Redo History',
+              },
             },
           }}
         >
-          <WorkflowDevtool />
+          <WorkflowToolbarPanel position="top-left" isPaper={false}>
+            <Text textColor="disabled" text="Sample Workflow" />
+          </WorkflowToolbarPanel>
+          <WorkflowToolbarPanel position="top-right">
+            <Examples.SaveButton />
+          </WorkflowToolbarPanel>
+          <Examples.NodePanel />
         </WorkflowPlayground>
+
+        <Examples.DraggableSiderBar />
       </WorkflowWrapper>
     );
   },

@@ -81,3 +81,25 @@ import { Button } from 'venomous-ui';
     ].join('\n'),
   }}
 />
+
+#### Square
+
+<Canvas
+  of={Stories.Square}
+  sourceState="shown"
+  source={{
+    code: [
+      "import { Button, Flex } from 'venomous-ui';",
+      '',
+      'function App() {',
+      '  return (',
+      '    <Flex row gap={2}>',
+      '      <Button isSquare icon="mdi:home" iconWidth={20} />',
+      '      <Button isSquare isGhost icon="mdi:home" iconWidth={20} />',
+      '      <Button isSquare isOutlined icon="mdi:home" iconWidth={20} />',
+      '    </Flex>',
+      '  );',
+      '}',
+    ].join('\n'),
+  }}
+/>

@@ -24,7 +24,7 @@ export default function useWorkflowElementsDelete<
     (edgeId: E['id']) => {
       setEdges((edges) => edges.filter((edge) => edge.id !== edgeId));
       updateActionsHistory(WorkflowAction.EdgeDeleted);
-      configs.logger(WorkflowAction.EdgeDeleted);
+      configs.logger('error', WorkflowAction.EdgeDeleted);
     },
     [setEdges, updateActionsHistory, configs.logger],
   );

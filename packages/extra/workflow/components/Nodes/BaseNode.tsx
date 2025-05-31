@@ -3,10 +3,10 @@ import { memo } from 'react';
 import { Paper } from '@packages/common';
 import { useWorkflowConfigs } from '@packages/extra/workflow/hooks';
 import { WorkflowSourceNodeHandler, WorkflowTargetNodeHandler } from '../NodeHandlers';
-import type { WorkflowBaseNodeComponentType } from './types';
+import type { WorkflowBaseNodeComponentType } from './index.types';
 
 const WorkflowBaseNode: WorkflowBaseNodeComponentType = memo(
-  ({ children, sx, withoutHandlers = false, ...props }) => {
+  ({ children, sx, hideSourceHandler = false, hideTargetHandler = false, ...props }) => {
     const { selected, data: nodeData } = props;
 
     const configs = useWorkflowConfigs();
@@ -33,10 +33,10 @@ const WorkflowBaseNode: WorkflowBaseNodeComponentType = memo(
       >
         {children}
 
-        {!withoutHandlers && !nodeData?.isMultipleTargetHandler && (
+        {!hideTargetHandler && !nodeData?.isMultipleTargetHandler && (
           <WorkflowTargetNodeHandler id={null} />
         )}
-        {!withoutHandlers && !nodeData?.isMultipleSourceHandler && (
+        {!hideSourceHandler && !nodeData?.isMultipleSourceHandler && (
           <WorkflowSourceNodeHandler id={null} />
         )}
       </Paper>

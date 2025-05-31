@@ -5,9 +5,9 @@ import { Icon } from '@packages/common';
 import { useWorkflowConfigs } from '@packages/extra';
 import { getColors } from '@packages/helpers';
 import WorkflowBaseNode from './BaseNode';
-import type { WorkflowBaseNodeComponentType } from './types';
+import type { WorkflowGroupNodeComponentType } from './index.types';
 
-const WorkflowGroupNode: WorkflowBaseNodeComponentType = memo(({ children, sx, ...props }) => {
+const WorkflowGroupNode: WorkflowGroupNodeComponentType = memo(({ children, sx, ...props }) => {
   const { selected, data: nodeData } = props;
 
   const configs = useWorkflowConfigs();
@@ -16,7 +16,8 @@ const WorkflowGroupNode: WorkflowBaseNodeComponentType = memo(({ children, sx, .
 
   return (
     <WorkflowBaseNode
-      withoutHandlers
+      hideSourceHandler
+      hideTargetHandler
       sx={{
         position: 'static',
         height: '100%',
@@ -41,7 +42,12 @@ const WorkflowGroupNode: WorkflowBaseNodeComponentType = memo(({ children, sx, .
         minWidth={minWidth}
         minHeight={minHeight}
       >
-        <Icon icon="hugeicons:arrow-expand-02" color="primary" />
+        <Icon
+          icon="fa:expand"
+          width={24}
+          color="primary"
+          sx={{ transform: 'translate(-32px, -32px) rotate(90deg)' }}
+        />
       </XYFlowNodeResizeControl>
     </WorkflowBaseNode>
   );

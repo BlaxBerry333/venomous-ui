@@ -2,7 +2,6 @@ import { addEdge as XYFlowAddEdge, getOutgoers as XYFlowGetOutgoers } from '@xyf
 import { isEqual } from 'es-toolkit';
 import { useCallback, useRef } from 'react';
 
-import { getRelevantEdgesByEdge } from '@packages/extra/workflow/helpers';
 import type {
   Connection,
   IsValidConnection,
@@ -39,15 +38,10 @@ export default function useWorkflowEdgeConnection<
 
       const nodes = getNodes();
       const edges = getEdges();
-      const currentConnection = connection;
-      const relevantEdges = getRelevantEdgesByEdge(edges, currentConnection);
-      const isNoteCycling = _preventCyclingConnection(currentConnection, { nodes, edges });
-      const isNotDuplicate = !_getAlreadyConnectedEdge(currentConnection, relevantEdges);
-
-      const validationResult: boolean = isNoteCycling && isNotDuplicate;
+      const validationResult: boolean = _preventCyclingConnection(connection, { nodes, edges });
 
       cachedValidConnectionRef.current = {
-        connection: connection,
+        connection,
         result: validationResult,
       };
 
@@ -145,40 +139,4 @@ function _preventCyclingConnection<N extends WorkflowNode, E extends WorkflowEdg
   const target = nodes.find((node) => node.id === connection.target);
   if (target?.id === connection.source) return false;
   return !_hasCycle(target);
-}
-
-/**
- * 获取重复连接的 Edge
- */
-function _getAlreadyConnectedEdge<E extends WorkflowEdge>(
-  connection: Connection,
-  connectedEdges: E[],
-): E | null {
-  const { source, sourceHandle, target, targetHandle } = connection;
-  const alreadyExistedEdge = connectedEdges.find((e) => {
-    const isFromOne: boolean = !!source && !sourceHandle;
-    const isFromOneOfMany: boolean = !!source && !!sourceHandle;
-    const isToOne: boolean = !!target && !targetHandle;
-    const isToOneOfMany: boolean = !!target && !!targetHandle;
-    // one → one
-    if (isFromOne && isToOne) {
-      return e.source === connection.source && e.target === connection.target;
-    }
-    // one → many.one
-    if (isFromOne && isToOneOfMany) {
-      return e.source === connection.source && e.targetHandle === connection.targetHandle;
-    }
-    //  many.one → one
-    if (isFromOneOfMany && isToOne) {
-      return e.sourceHandle === connection.sourceHandle && e.target === connection.target;
-    }
-    //  many.one → many.one
-    if (isFromOneOfMany && isToOneOfMany) {
-      return (
-        e.sourceHandle === connection.sourceHandle && e.targetHandle === connection.targetHandle
-      );
-    }
-    return false;
-  });
-  return alreadyExistedEdge ?? null;
 }

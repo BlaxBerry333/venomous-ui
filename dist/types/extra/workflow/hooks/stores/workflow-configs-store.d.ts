@@ -1,4 +1,4 @@
-import { WorkflowEdgeConnectionLineType, WorkflowEdgeEndMarkerType } from '@packages/extra/workflow/types';
+import { WorkflowEdgeConnectionLineType, WorkflowEdgeEndMarkerType, type WorkflowToolbarPosition } from '@packages/extra/workflow/types';
 export type WorkflowConfigs = {
     logger: (type: 'success' | 'error' | 'info', message: string) => void;
     hotkeys: {
@@ -34,11 +34,18 @@ export type WorkflowConfigs = {
     };
     minimap: {
         enabled: boolean;
-        position: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
+        position: WorkflowToolbarPosition;
+        width: number;
     };
     undoRedo: {
         enabled: boolean;
         maxHistoryLength: number;
+        position: WorkflowToolbarPosition;
+        tooltips: {
+            undo: string;
+            redo: string;
+            history: string;
+        };
     };
 };
 export declare function _getWorkflowConfigsStoreStoreState(): WorkflowConfigs & {

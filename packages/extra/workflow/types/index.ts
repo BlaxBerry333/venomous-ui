@@ -23,4 +23,7 @@ export type {
   OnReconnectEnd,
   OnReconnectStart,
   SetEdges,
+  onSelectionChange,
 } from './events';
+
+export type { WorkflowToolbarPosition } from './others';

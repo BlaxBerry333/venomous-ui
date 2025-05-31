@@ -7,6 +7,7 @@ export type ButtonProps = Omit<
   'children' | 'variant' | 'startIcon' | 'endIcon' | 'color'
 > & {
   isCircle?: boolean;
+  isSquare?: boolean;
   isOutlined?: boolean;
   isGhost?: boolean;
   text?: ReactNode;

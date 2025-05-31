@@ -57,6 +57,14 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    isSquare: {
+      description: 'Button is square',
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     isOutlined: {
       description: 'Button is outlined',
       if: { arg: 'isGhost', truthy: false },
@@ -89,10 +97,11 @@ const meta = {
     loading: false,
     disabled: false,
     isCircle: false,
+    isSquare: false,
     isOutlined: false,
     isGhost: false,
     text: 'Xxx',
-    icon: IconMeta.args.icon,
+    icon: undefined,
     iconWidth: IconMeta.args.width,
     iconPosition: undefined,
     color: 'primary',
@@ -139,6 +148,18 @@ export const Circle: Story = {
       <Button isCircle icon="mdi:home" iconWidth={20} />
       <Button isCircle isGhost icon="mdi:home" iconWidth={20} />
       <Button isCircle isOutlined icon="mdi:home" iconWidth={20} />
+    </Flex>
+  ),
+};
+
+export const Square: Story = {
+  name: 'Square',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: (_) => (
+    <Flex row gap={2}>
+      <Button isSquare icon="mdi:home" iconWidth={20} />
+      <Button isSquare isGhost icon="mdi:home" iconWidth={20} />
+      <Button isSquare isOutlined icon="mdi:home" iconWidth={20} />
     </Flex>
   ),
 };

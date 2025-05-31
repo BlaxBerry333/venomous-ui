@@ -6,6 +6,7 @@ import type {
   Node as XYFlowNode,
   OnInit as XYFlowOnInit,
   OnNodeDrag as XYFlowOnNodeDrag,
+  OnSelectionChangeFunc as XYFlowOnSelectionChangeFunc,
 } from '@xyflow/react';
 
 export type OnInit<
@@ -43,3 +44,8 @@ export type OnReconnectEnd = (
 ) => void;
 
 export type OnNodeDrag<N extends XYFlowNode> = XYFlowOnNodeDrag<N>;
+
+export type onSelectionChange<
+  N extends XYFlowNode = XYFlowNode,
+  E extends XYFlowEdge = XYFlowEdge,
+> = XYFlowOnSelectionChangeFunc<N, E>;

@@ -8,6 +8,7 @@ import {
   useWorkflowConfigs,
   useWorkflowEdgeConnection,
   useWorkflowEdgeReConnection,
+  useWorkflowElementsSelect,
   useWorkflowInit,
   useWorkflowNodeCreate,
   useWorkflowNodeMove,
@@ -17,12 +18,9 @@ import { SupportedEdgeTypes } from '../Edges';
 import { SupportedNodeTypes } from '../Nodes';
 import type { WorkflowPlaygroundComponentType } from './WorkflowPlayground.types';
 
-const WorkflowMiniMap = lazy(() =>
-  import('../Widgets').then((m) => ({ default: m.WorkflowMiniMap })),
-);
-const WorkflowUndoRedo = lazy(() =>
-  import('../Widgets').then((m) => ({ default: m.WorkflowUndoRedo })),
-);
+const WorkflowMiniMap = lazy(() => import('../PanelWidgets/MiniMap'));
+const WorkflowZoom = lazy(() => import('../PanelWidgets/Zoom'));
+const WorkflowUndoRedo = lazy(() => import('../PanelWidgets/UndoRedo'));
 
 const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
   ({ children, sx, originalElements, configs: originalConfigs, ...props }) => {
@@ -35,9 +33,10 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
     const { onNodeMoveStart, onNodeMoveStop, onNodeMoving } = useWorkflowNodeMove();
     const { isValidConnection, onConnect, onConnectEnd } = useWorkflowEdgeConnection();
     const { onReconnect, onReconnectStart, onReconnectEnd } = useWorkflowEdgeReConnection();
+    const { onSelectionChange } = useWorkflowElementsSelect();
 
     return (
-      <Paper isOutlined sx={{ overflow: 'hidden', ...sx }}>
+      <Paper isOutlined sx={{ overflow: 'hidden', p: 0, ...sx }}>
         {/* prettier-ignore */}
         <ReactFlow
           className="VenomousUI-WorkflowPlayground"
@@ -56,8 +55,9 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
           defaultEdges={originalElements.edges}                            /** Edge 列表 ( 受控组件写法, 仅初始化时使用一次 ) */
           nodeTypes={{ ...SupportedNodeTypes, ...props.nodeTypes }}        /** 自定义 Node 组件 */
           edgeTypes= {{ ...SupportedEdgeTypes, ...props.edgeTypes }}       /** 自定义 Edge 组件 */
-           // ----------------------------------------------------------------------------------------------------
+          // ----------------------------------------------------------------------------------------------------
           elementsSelectable                                               /** Node 与 Edge 是否能被选中 */
+          selectNodesOnDrag={false}                                        /** Node 在被拖拽移动中不被视为选中状态 */
           nodesConnectable                                                 /** Node 是否能被连接 */
           nodesDraggable                                                   /** Node 是否能被拖拽 */
           panOnDrag                                                        /** 是否可以拖拽整个 Canvas */
@@ -83,6 +83,7 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
           onNodeDragStart={onNodeMoveStart}                                /** Node 移动开始的回调 */
           onNodeDrag={onNodeMoving}                                        /** Node 移动中的回调 */
           onNodeDragStop={onNodeMoveStop}                                  /** Node 移动结束的回调 */
+          onSelectionChange={onSelectionChange}                            /** 画布上的 Nodes、 Edges 选中状态 selected 切换时的回调 */
           // ----------------------------------------------------------------------------------------------------
           deleteKeyCode={null}                                             /** 默认删除键的 KeyCode */
           // ----------------------------------------------------------------------------------------------------
@@ -90,16 +91,17 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
         >
           {children}
 
-          {/* MiniMap */}
+          {/* Widgets */}
           <Suspense>
+            {/* MiniMap */}
             {configs.minimap.enabled && <WorkflowMiniMap />}
-          </Suspense>
-          
-          {/* UndoRedo */}
-          <Suspense>
+
+            {/* Zoom ( always below MiniMap ) */}
+            {configs.minimap.enabled && <WorkflowZoom />}
+
+            {/* UndoRedo */}
             {configs.undoRedo.enabled && <WorkflowUndoRedo />}
           </Suspense>
-
         </ReactFlow>
       </Paper>
     );

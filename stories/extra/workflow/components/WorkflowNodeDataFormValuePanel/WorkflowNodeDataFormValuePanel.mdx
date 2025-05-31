@@ -1,0 +1,12 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './WorkflowNodeDataFormValuePanel.stories';
+
+<Meta of={Stories} />
+
+# WorkflowNodeDataFormValuePanel
+
+`<WorkflowNodeDataFormValuePanel>` is is a built-in component, which needs to be passed in as children of `<WorkflowPlayground>`.
+
+**Only displayed** when a specified node is clicked, and the node must be **`selected`**, and must contains **`node.data.formValue`**.
+
+<Canvas of={Stories.Default} sourceState="hidden" />

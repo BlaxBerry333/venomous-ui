@@ -15,5 +15,6 @@ export {
   useWorkflowInstance,
   useWorkflowNodeCreate,
   useWorkflowNodeUpdate,
+  useWorkflowSelectedElements,
   type WorkflowConfigs,
 } from './hooks';

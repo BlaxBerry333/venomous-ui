@@ -2,6 +2,7 @@ export { default as useWorkflowCanvasViewport } from './core/use-workflow-canvas
 export { default as useWorkflowEdgeConnection } from './core/use-workflow-edge-connection';
 export { default as useWorkflowEdgeReConnection } from './core/use-workflow-edge-re-connection';
 export { default as useWorkflowElementsDelete } from './core/use-workflow-elements-delete';
+export { default as useWorkflowElementsSelect } from './core/use-workflow-elements-select';
 export { default as useWorkflowInit } from './core/use-workflow-init';
 export { default as useWorkflowInstance } from './core/use-workflow-instance';
 export { default as useWorkflowNodeCreate } from './core/use-workflow-node-create';
@@ -19,4 +20,11 @@ export {
   default as useWorkflowConfigs,
   type WorkflowConfigs,
 } from './stores/workflow-configs-store';
+export {
+  clearWorkflowCreatedNode,
+  getWorkflowCreatedNode,
+  setWorkflowCreatedNode,
+  default as useWorkflowCreatedNode,
+} from './stores/workflow-created-node-store';
 export { default as useWorkflowOriginalElements } from './stores/workflow-original-elements-store';
+export { default as useWorkflowSelectedElements } from './stores/workflow-selected-elements-store';

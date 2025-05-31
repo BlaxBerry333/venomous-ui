@@ -1,12 +1,18 @@
-import { memo, type CSSProperties, type PropsWithChildren } from 'react';
+import { memo, useCallback, type CSSProperties, type PropsWithChildren } from 'react';
 
+import { Button, Card, Flex } from '@packages/common';
 import {
+  generateNewNodeToStore,
+  useWorkflowConfigs,
+  useWorkflowInstance,
   WorkflowBaseNode,
   WorkflowBaseNodeHandlerItem,
   WorkflowGroupNode,
+  WorkflowNodeDataFormValuePanel,
   WorkflowNodeTypeDefault,
   WorkflowPlayground,
   WorkflowWrapper,
+  type NodeDataFormValuePanelProps,
   type WorkflowNode,
   type WorkflowNodeComponent,
   type WorkflowNodeComponentProps,
@@ -15,11 +21,12 @@ import {
 export enum INodeType {
   BASE = WorkflowNodeTypeDefault.Base,
   GROUP = WorkflowNodeTypeDefault.Group,
-  MULTIPLE_SOURCE = 'MULTIPLE_SOURCE',
-  MULTIPLE_TARGET = 'MULTIPLE_TARGET',
+  MULTIPLE_SOURCE = 'MultipleSource',
+  MULTIPLE_TARGET = 'MultipleTarget',
 }
 
-export type INode = WorkflowNode<INodeType, null>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type INode = WorkflowNode<INodeType, any>;
 
 // eslint-disable-next-line react-refresh/only-export-components
 const BaseNodeComponent = memo<WorkflowNodeComponentProps<INode>>((props) => {
@@ -51,7 +58,7 @@ const MultipleSourceNodeComponent = memo(
                 id={MOCKID}
                 handlerType="source"
                 handlerPosition="right"
-                handlerStyle={{ transform: 'translateX(-11px)' }}
+                style={{ transform: 'translateX(-16px)' }}
               >
                 {`#${MOCKID}`}
               </WorkflowBaseNodeHandlerItem>
@@ -83,7 +90,7 @@ const MultipleTargetNodeComponent = memo(
                 id={MOCKID}
                 handlerType="target"
                 handlerPosition="left"
-                handlerStyle={{ transform: 'translateX(-22px)' }}
+                style={{ transform: 'translateX(-16px)' }}
               >
                 {`#${MOCKID}`}
               </WorkflowBaseNodeHandlerItem>
@@ -135,9 +142,81 @@ const PlaygroundComponent = memo<PropsWithChildren<{ nodes: INode[]; style?: CSS
   },
 );
 
+// eslint-disable-next-line react-refresh/only-export-components
+const DraggableSiderBar = memo(() => {
+  const configs = useWorkflowConfigs();
+  const onDragToGenerateNewNode = useCallback(
+    (event: React.DragEvent<HTMLDivElement>, nodeType: WorkflowNode['type']) => {
+      event.dataTransfer.effectAllowed = 'move';
+      generateNewNodeToStore({
+        type: nodeType,
+      });
+    },
+    [],
+  );
+  return (
+    <Flex row py={1}>
+      {Object.keys(NodeComponents).map((nodeType) => (
+        <div
+          key={nodeType}
+          draggable
+          onDragStart={(event) => onDragToGenerateNewNode(event, nodeType)}
+        >
+          <Card
+            sx={{
+              cursor: 'grab',
+              border: ({ palette }) =>
+                `2px solid ${configs.styles.nodeColors?.[nodeType] || palette.primary.main}`,
+            }}
+          >{`${nodeType} Node`}</Card>
+        </div>
+      ))}
+    </Flex>
+  );
+});
+
+// eslint-disable-next-line react-refresh/only-export-components
+const SaveButton = memo(() => {
+  const { getNodes, getEdges } = useWorkflowInstance();
+  return (
+    <Button
+      icon="ic:round-save"
+      iconWidth={24}
+      iconPosition="start"
+      text="Save"
+      onClick={() => {
+        console.log({
+          nodes: getNodes(),
+          edges: getEdges(),
+        });
+      }}
+    />
+  );
+});
+
+// eslint-disable-next-line react-refresh/only-export-components
+const NodePanel = memo<NodeDataFormValuePanelProps>(
+  ({ position = 'bottom-right', style, ...props }) => {
+    return (
+      <WorkflowNodeDataFormValuePanel
+        position={position}
+        style={{
+          height: 'calc(100% - 80px)',
+          width: 300,
+          ...style,
+        }}
+        {...props}
+      />
+    );
+  },
+);
+
 export default {
   NodeComponents,
   PlaygroundComponent,
+  DraggableSiderBar,
+  SaveButton,
+  NodePanel,
   BaseNodeComponent,
   MultipleSourceNodeComponent,
   MultipleTargetNodeComponent,

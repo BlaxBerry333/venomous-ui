@@ -4,7 +4,15 @@ export type { WorkflowPlaygroundProps } from './Playground';
 export { WorkflowWrapper } from './Wrapper';
 export type { WorkflowWrapperProps } from './Wrapper';
 
-export { WorkflowDevtool, WorkflowMiniMap, WorkflowUndoRedo } from './Widgets';
+export {
+  WorkflowDevtool,
+  WorkflowMiniMap,
+  WorkflowNodeDataFormValuePanel,
+  WorkflowToolbarPanel,
+  WorkflowUndoRedo,
+  WorkflowZoom,
+} from './PanelWidgets';
+export type { NodeDataFormValuePanelProps, WorkflowToolbarPanelProps } from './PanelWidgets';
 
 export { WorkflowBaseNode, WorkflowGroupNode } from './Nodes';
 export type { WorkflowBaseNodeProps } from './Nodes';

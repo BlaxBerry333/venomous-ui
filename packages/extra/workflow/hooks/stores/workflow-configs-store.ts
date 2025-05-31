@@ -5,6 +5,7 @@ import {
   WorkflowEdgeConnectionLineType,
   WorkflowEdgeEndMarkerType,
   WorkflowEdgeTypeDefault,
+  type WorkflowToolbarPosition,
 } from '@packages/extra/workflow/types';
 
 export type WorkflowConfigs = {
@@ -42,11 +43,14 @@ export type WorkflowConfigs = {
   };
   minimap: {
     enabled: boolean; // 是否启用
-    position: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right'; // 位置
+    position: WorkflowToolbarPosition; // 位置
+    width: number; // 宽度
   };
   undoRedo: {
     enabled: boolean; // 是否启用
     maxHistoryLength: number; // 最大历史记录长度
+    position: WorkflowToolbarPosition; // 位置
+    tooltips: { undo: string; redo: string; history: string }; // 提示标签
   };
 };
 
@@ -75,8 +79,8 @@ const workflowConfigsStore = create<
       canvas: {
         isGridLayout: false,
         gridLayoutGap: [20, 20] as [number, number],
-        minZoom: 0.5,
-        maxZoom: 2,
+        minZoom: 0.5, // 50%
+        maxZoom: 2, // 200%
         zoomDuration: 200,
         zoomStep: 1,
       },
@@ -96,9 +100,12 @@ const workflowConfigsStore = create<
       minimap: {
         enabled: true,
         position: 'bottom-left',
+        width: 160,
       },
       undoRedo: {
         enabled: true,
+        position: 'bottom-left',
+        tooltips: { undo: 'Undo', redo: 'Redo', history: 'Undo/Redo History' },
         maxHistoryLength: 10,
       },
       setHotkeys: (hotkeys) => set((state) => ({ hotkeys: { ...state.hotkeys, ...hotkeys } })),

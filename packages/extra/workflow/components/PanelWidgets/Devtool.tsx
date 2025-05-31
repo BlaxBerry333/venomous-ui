@@ -1,16 +1,19 @@
-import { Panel } from '@xyflow/react';
 import { memo } from 'react';
 
 import { Button } from '@packages/common';
 import { useWorkflowInstance } from '@packages/extra/workflow/hooks';
+import WorkflowToolbarPanel from './ToolbarPanel';
+import type { WorkflowWorkflowToolbarPanelComponentType } from './index.types';
 
-const WorkflowDevtool = memo(() => {
+const WorkflowDevtool: WorkflowWorkflowToolbarPanelComponentType = memo(({ position, style }) => {
   const { getNodes, getEdges } = useWorkflowInstance();
 
   return (
-    <Panel position="top-right">
+    <WorkflowToolbarPanel position={position} style={style} isPaper={false}>
       <Button
-        text="currentElements"
+        icon="hugeicons:tools"
+        iconWidth={24}
+        isSquare
         onClick={() => {
           console.log({
             nodes: getNodes(),
@@ -18,7 +21,7 @@ const WorkflowDevtool = memo(() => {
           });
         }}
       />
-    </Panel>
+    </WorkflowToolbarPanel>
   );
 });
 

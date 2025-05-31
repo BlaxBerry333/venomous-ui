@@ -5,9 +5,15 @@ import {
   useWorkflowActionsHistoryUpdate,
   WorkflowAction,
 } from '../stores/workflow-actions-history-store';
+import useWorkflowConfigs from '../stores/workflow-configs-store';
+import {
+  clearWorkflowCreatedNode,
+  getWorkflowCreatedNode,
+} from '../stores/workflow-created-node-store';
 import useWorkflowInstance from './use-workflow-instance';
 
 export default function useWorkflowNodeCreate<N extends WorkflowNode, E extends WorkflowEdge>() {
+  const configs = useWorkflowConfigs();
   const { getNodes, setNodes, screenToFlowPosition } = useWorkflowInstance<N, E>();
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
 
@@ -24,41 +30,32 @@ export default function useWorkflowNodeCreate<N extends WorkflowNode, E extends 
    */
   const onDrop = useCallback(
     (e: React.DragEvent<HTMLDivElement>) => {
-      const lastNode = _getLastNodeBySortIdNumber<N>(getNodes());
+      const registeredNode = getWorkflowCreatedNode();
+      clearWorkflowCreatedNode();
+      if (!registeredNode) {
+        return;
+      }
+
       const newNode = {
-        id: (lastNode ? parseInt(lastNode.id) + 1 : 1).toString(),
-        type: '',
-        position: screenToFlowPosition({ x: e.clientX, y: e.clientY }),
-        data: {
-          isFocus: false,
-          isInValid: false,
-          isMultipleSourceHandler: false,
-          isMultipleTargetHandler: false,
-          isProtected: false,
-          formValue: {},
-        },
+        ...registeredNode,
+        id: `${Date.now()}`,
+        selected: true,
+        position: screenToFlowPosition(
+          { x: e.clientX, y: e.clientY },
+          {
+            snapToGrid: configs.canvas.isGridLayout,
+          },
+        ),
       } as N;
+
       setNodes((nds) => nds.concat(newNode));
       updateActionsHistory(WorkflowAction.NodeCreated);
     },
-    [getNodes, setNodes, screenToFlowPosition, updateActionsHistory],
+    [getNodes, setNodes, screenToFlowPosition, configs, updateActionsHistory],
   );
 
   return {
     onDragOver,
     onDrop,
   };
-}
-
-function _getLastNodeBySortIdNumber<N extends WorkflowNode>(nodes: N[]): N | null {
-  try {
-    const reversedNodes = nodes.sort((a, b) => {
-      const aId = parseInt(a.id, 10);
-      const bId = parseInt(b.id, 10);
-      return aId - bId;
-    });
-    return reversedNodes?.[0] || null;
-  } catch {
-    return null;
-  }
 }

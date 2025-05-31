@@ -1,5 +1,6 @@
+import { memo, useCallback, useMemo, type CSSProperties, type NamedExoticComponent } from 'react';
+
 import { MiniMap as XYFlowMiniMap } from '@xyflow/react';
-import { memo, useCallback, type NamedExoticComponent } from 'react';
 
 import { useWorkflowCanvasViewport, useWorkflowConfigs } from '@packages/extra/workflow/hooks';
 import type { WorkflowNode } from '@packages/extra/workflow/types';
@@ -9,6 +10,22 @@ const WorkflowMiniMap: NamedExoticComponent = memo(() => {
   const { themePalette } = useThemePalette();
   const { moveToSpecificNode } = useWorkflowCanvasViewport();
   const configs = useWorkflowConfigs();
+
+  const positionStyle = useMemo<CSSProperties>(() => {
+    if (!configs.minimap?.position) return {};
+    switch (configs.minimap?.position) {
+      case 'top-left':
+        return { transform: 'translate(-8px, 56px)' };
+      case 'top-right':
+        return { transform: 'translate(8px, 56px)' };
+      case 'bottom-left':
+        return { transform: 'translate(-8px, -56px)' };
+      case 'bottom-right':
+        return { transform: 'translate(8px, -56px)' };
+      default:
+        return {};
+    }
+  }, [configs.minimap?.position]);
 
   const getNodeStrokeColor = useCallback(
     (node: WorkflowNode): string => {
@@ -42,6 +59,12 @@ const WorkflowMiniMap: NamedExoticComponent = memo(() => {
       pannable
       zoomable
       zoomStep={configs.canvas?.zoomStep}
+      style={{
+        ...positionStyle,
+        width: configs.minimap?.width,
+        borderRadius: 8,
+        overflow: 'hidden',
+      }}
     />
   );
 });
