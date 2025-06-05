@@ -15,6 +15,7 @@ export type WorkflowConfigs = {
       copy: string; // 复制
       paste: string; // 粘贴
       delete: string; // 删除
+      cut: string; // 剪切
       undo: string; // 撤销
       redo: string; // 重做
     };
@@ -69,11 +70,12 @@ const workflowConfigsStore = create<
       hotkeys: {
         enabled: false,
         keys: {
-          copy: 'ctrl+c',
-          paste: 'ctrl+v',
+          copy: 'mod+c',
+          paste: 'mod+v',
           delete: 'delete',
-          undo: 'ctrl+z',
-          redo: 'ctrl+y',
+          cut: 'mod+x',
+          undo: 'mod+z',
+          redo: 'mod+shift+z',
         },
       },
       canvas: {

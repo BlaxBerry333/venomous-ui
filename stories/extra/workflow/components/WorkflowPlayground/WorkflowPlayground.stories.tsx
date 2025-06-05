@@ -58,31 +58,31 @@ export const Default: Story = {
   render: function RenderStory() {
     const MOCK_NODES: INode[] = [
       {
-        id: '0',
+        id: '1749132290000',
         type: INodeType.GROUP,
         position: { x: 600, y: 200 },
         data: { formValue: null },
       },
       {
-        id: '1',
+        id: '1749132290001',
         type: INodeType.BASE,
         position: { x: 100, y: 100 },
         data: { formValue: null },
       },
       {
-        id: '2',
+        id: '1749132290002',
         type: INodeType.BASE,
         position: { x: 0, y: 300 },
         data: { formValue: null },
       },
       {
-        id: '3',
+        id: '1749132290003',
         type: INodeType.MULTIPLE_SOURCE,
         position: { x: 300, y: 300 },
         data: { formValue: null },
       },
       {
-        id: '4',
+        id: '1749132290004',
         type: INodeType.MULTIPLE_TARGET,
         position: { x: 300, y: 500 },
         data: { formValue: null },

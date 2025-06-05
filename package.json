@@ -38,6 +38,7 @@
     "motion": "^12.7.3",
     "mui-one-time-password-input": "^5.0.0",
     "react-hook-form": "^7.55.0",
+    "react-hotkeys-hook": "^5.1.0",
     "react-lazy-load-image-component": "^1.6.3",
     "react-virtuoso": "^4.12.6",
     "sonner": "^2.0.3",

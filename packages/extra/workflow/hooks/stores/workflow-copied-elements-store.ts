@@ -3,7 +3,7 @@ import { devtools } from 'zustand/middleware';
 
 import type { WorkflowEdge, WorkflowNode } from '@packages/extra/workflow/types';
 
-const workflowSelectedElementsStore = create<{
+const workflowCopiedElementsStore = create<{
   nodes: WorkflowNode[];
   edges: WorkflowEdge[];
   setNodes: (nodes: WorkflowNode[]) => void;
@@ -19,12 +19,12 @@ const workflowSelectedElementsStore = create<{
       clear: () => set({ nodes: [], edges: [] }),
     }),
     {
-      name: 'VENOMOUS_UI__WORKFLOW_SELECTED_ELEMENTS',
-      store: 'VENOMOUS_UI__WORKFLOW_SELECTED_ELEMENTS',
+      name: 'VENOMOUS_UI__WORKFLOW_COPIED_ELEMENTS',
+      store: 'VENOMOUS_UI__WORKFLOW_COPIED_ELEMENTS',
     },
   ),
 );
 
-export default function useWorkflowSelectedElements() {
-  return useStore(workflowSelectedElementsStore);
+export default function useWorkflowCopiedElements() {
+  return useStore(workflowCopiedElementsStore);
 }

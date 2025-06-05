@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import type { NumberComponentType } from './Form.types';
+import type { NumberComponentType } from './index.types';
 import Input from './Input';
 
 const Number: NumberComponentType = memo(

@@ -5,6 +5,7 @@ import '@xyflow/react/dist/style.css';
 
 import { Paper } from '@packages/common';
 import {
+  useCanvasHotkeys,
   useWorkflowConfigs,
   useWorkflowEdgeConnection,
   useWorkflowEdgeReConnection,
@@ -28,6 +29,7 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
     const configs = useWorkflowConfigs();
 
     const { onFinishedInit } = useWorkflowInit({ configs: originalConfigs });
+    useCanvasHotkeys();
 
     const { onDrop, onDragOver } = useWorkflowNodeCreate();
     const { onNodeMoveStart, onNodeMoveStop, onNodeMoving } = useWorkflowNodeMove();

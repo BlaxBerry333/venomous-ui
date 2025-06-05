@@ -2,7 +2,7 @@ import MuiOutlinedInput from '@mui/material/OutlinedInput';
 import { memo, useId } from 'react';
 import { Flex } from '../Flex';
 import { Text, useText } from '../Text';
-import type { InputComponentType } from './Form.types';
+import type { InputComponentType } from './index.types';
 import Label from './Label';
 import useInput from './useInput';
 

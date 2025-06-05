@@ -4,7 +4,7 @@ import type { IconProps } from '../Icon';
 
 export type ButtonProps = Omit<
   MuiButtonProps,
-  'children' | 'variant' | 'startIcon' | 'endIcon' | 'color'
+  'children' | 'variant' | 'startIcon' | 'endIcon' | 'color' | 'size'
 > & {
   isCircle?: boolean;
   isSquare?: boolean;

@@ -1,3 +1,3 @@
-import type { CheckboxComponentType } from './Form.types';
+import type { CheckboxComponentType } from './index.types';
 declare const Checkbox: CheckboxComponentType;
 export default Checkbox;

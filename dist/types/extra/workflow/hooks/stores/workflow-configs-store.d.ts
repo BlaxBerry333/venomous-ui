@@ -6,6 +6,7 @@ export type WorkflowConfigs = {
             copy: string;
             paste: string;
             delete: string;
+            cut: string;
             undo: string;
             redo: string;
         };

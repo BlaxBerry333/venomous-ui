@@ -1,8 +1,10 @@
 export { default as useWorkflowCanvasViewport } from './core/use-workflow-canvas-viewport';
 export { default as useWorkflowEdgeConnection } from './core/use-workflow-edge-connection';
 export { default as useWorkflowEdgeReConnection } from './core/use-workflow-edge-re-connection';
+export { default as useWorkflowElementsCopyPasteCut } from './core/use-workflow-elements-copy-paste-cut';
 export { default as useWorkflowElementsDelete } from './core/use-workflow-elements-delete';
 export { default as useWorkflowElementsSelect } from './core/use-workflow-elements-select';
+export { default as useCanvasHotkeys } from './core/use-workflow-hotkeys';
 export { default as useWorkflowInit } from './core/use-workflow-init';
 export { default as useWorkflowInstance } from './core/use-workflow-instance';
 export { default as useWorkflowNodeCreate } from './core/use-workflow-node-create';
@@ -10,6 +12,7 @@ export { default as useWorkflowNodeMove } from './core/use-workflow-node-move';
 export { default as useWorkflowNodeUpdate } from './core/use-workflow-node-update';
 export { WorkflowAction, useWorkflowActionsHistoryStates, useWorkflowActionsHistoryStoreCleanup, useWorkflowActionsHistoryUndoRedo, useWorkflowActionsHistoryUpdate, } from './stores/workflow-actions-history-store';
 export { default as useWorkflowConfigs, type WorkflowConfigs, } from './stores/workflow-configs-store';
+export { default as useWorkflowCopiedElements } from './stores/workflow-copied-elements-store';
 export { clearWorkflowCreatedNode, getWorkflowCreatedNode, setWorkflowCreatedNode, default as useWorkflowCreatedNode, } from './stores/workflow-created-node-store';
 export { default as useWorkflowOriginalElements } from './stores/workflow-original-elements-store';
 export { default as useWorkflowSelectedElements } from './stores/workflow-selected-elements-store';

@@ -3,7 +3,7 @@ import MuiTooltip from '@mui/material/Tooltip';
 import { memo } from 'react';
 import { Icon } from '../Icon';
 import { useText } from '../Text';
-import type { LabelComponentType } from './Form.types';
+import type { LabelComponentType } from './index.types';
 
 const Label: LabelComponentType = memo(
   ({ label, elementId, tooltip, isDisabled, isError, isRequired }) => {

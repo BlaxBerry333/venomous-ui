@@ -22,6 +22,7 @@ export type {
   OnReconnect,
   OnReconnectEnd,
   OnReconnectStart,
+  OnSelectionEnd,
   SetEdges,
   onSelectionChange,
 } from './events';

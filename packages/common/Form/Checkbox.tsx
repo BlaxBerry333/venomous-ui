@@ -1,7 +1,7 @@
 import MuiCheckbox from '@mui/material/Checkbox';
 import MuiSvgIcon from '@mui/material/SvgIcon';
 import { memo, useCallback, type JSX, type NamedExoticComponent } from 'react';
-import type { CheckboxComponentType, CheckboxProps } from './Form.types';
+import type { CheckboxComponentType, CheckboxProps } from './index.types';
 import Labels from './Labels';
 
 const Checkbox: CheckboxComponentType = memo(

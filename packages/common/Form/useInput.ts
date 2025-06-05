@@ -1,6 +1,6 @@
 import type { Theme as MuiTheme } from '@mui/material/styles';
 import { useMemo } from 'react';
-import type { InputProps } from './Form.types';
+import type { InputProps } from './index.types';
 
 export default function useInput({
   isDisabled,

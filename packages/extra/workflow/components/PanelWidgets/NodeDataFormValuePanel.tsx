@@ -7,12 +7,12 @@ import type { NodeDataFormValuePanelComponentType } from './index.types';
 
 const NodeDataFormValuePanel: NodeDataFormValuePanelComponentType = memo(
   ({ position = 'bottom-right', style, renderContent }) => {
-    const { nodes: selectedNodes } = useWorkflowSelectedElements();
+    const selectedElements = useWorkflowSelectedElements();
 
     const selectedNode = useMemo<WorkflowNode | null>(() => {
-      if (selectedNodes.length === 1) return selectedNodes[0];
+      if (selectedElements.nodes.length === 1) return selectedElements.nodes[0];
       return null;
-    }, [selectedNodes]);
+    }, [selectedElements.nodes]);
 
     // 没有单一的 Node 被选中时不显示
     // 被选中的单一 Node 不含有 node.data.formaValue 时不显示

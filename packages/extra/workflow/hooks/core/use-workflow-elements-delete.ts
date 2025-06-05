@@ -107,5 +107,8 @@ export default function useWorkflowElementsDelete<
     updateActionsHistory,
   ]);
 
-  return { deleteEdge, deleteSelectedElements };
+  return {
+    deleteEdge,
+    deleteSelectedElements,
+  };
 }

@@ -12,6 +12,8 @@ export {
   useWorkflowActionsHistoryUpdate,
   useWorkflowCanvasViewport,
   useWorkflowConfigs,
+  useWorkflowCopiedElements,
+  useWorkflowElementsCopyPasteCut,
   useWorkflowInstance,
   useWorkflowNodeCreate,
   useWorkflowNodeUpdate,

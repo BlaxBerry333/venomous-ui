@@ -1,6 +1,10 @@
 import { useCallback, type DragEventHandler } from 'react';
 
-import type { WorkflowEdge, WorkflowNode } from '@packages/extra/workflow/types';
+import {
+  WorkflowNodeTypeDefault,
+  type WorkflowEdge,
+  type WorkflowNode,
+} from '@packages/extra/workflow/types';
 import {
   useWorkflowActionsHistoryUpdate,
   WorkflowAction,
@@ -31,6 +35,7 @@ export default function useWorkflowNodeCreate<N extends WorkflowNode, E extends 
   const onDrop = useCallback(
     (e: React.DragEvent<HTMLDivElement>) => {
       const registeredNode = getWorkflowCreatedNode();
+      // 清除 Store 中存储的已创建的 Node
       clearWorkflowCreatedNode();
       if (!registeredNode) {
         return;
@@ -42,13 +47,17 @@ export default function useWorkflowNodeCreate<N extends WorkflowNode, E extends 
         selected: true,
         position: screenToFlowPosition(
           { x: e.clientX, y: e.clientY },
-          {
-            snapToGrid: configs.canvas.isGridLayout,
-          },
+          { snapToGrid: configs.canvas.isGridLayout },
         ),
       } as N;
 
-      setNodes((nds) => nds.concat(newNode));
+      // 基于 node.parentId 实现的 GroupNode 必须在子节点之前
+      if (newNode.type === WorkflowNodeTypeDefault.Group) {
+        setNodes((nds) => [newNode, ...nds]);
+      } else {
+        setNodes((nds) => nds.concat(newNode));
+      }
+
       updateActionsHistory(WorkflowAction.NodeCreated);
     },
     [getNodes, setNodes, screenToFlowPosition, configs, updateActionsHistory],

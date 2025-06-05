@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import { Button } from '../Button';
-import type { PasswordComponentType } from './Form.types';
+import type { PasswordComponentType } from './index.types';
 import Input from './Input';
 import useInput from './useInput';
 

@@ -1,3 +1,3 @@
-import type { InputComponentType } from './Form.types';
+import type { InputComponentType } from './index.types';
 declare const Input: InputComponentType;
 export default Input;

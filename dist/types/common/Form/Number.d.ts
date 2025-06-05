@@ -1,3 +1,3 @@
-import type { NumberComponentType } from './Form.types';
+import type { NumberComponentType } from './index.types';
 declare const Number: NumberComponentType;
 export default Number;

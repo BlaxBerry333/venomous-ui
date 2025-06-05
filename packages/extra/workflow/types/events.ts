@@ -49,3 +49,5 @@ export type onSelectionChange<
   N extends XYFlowNode = XYFlowNode,
   E extends XYFlowEdge = XYFlowEdge,
 > = XYFlowOnSelectionChangeFunc<N, E>;
+
+export type OnSelectionEnd = (event: React.MouseEvent) => void;

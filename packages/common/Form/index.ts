@@ -1,4 +1,4 @@
-export * from './Form.types';
+export * from './index.types';
 
 export { default as Checkbox } from './Checkbox';
 export { default as Input } from './Input';

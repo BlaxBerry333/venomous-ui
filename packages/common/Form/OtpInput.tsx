@@ -2,7 +2,7 @@ import { MuiOtpInput } from 'mui-one-time-password-input';
 import { memo } from 'react';
 import { Flex } from '../Flex';
 import { Text, useText } from '../Text';
-import type { OtpInputComponentType } from './Form.types';
+import type { OtpInputComponentType } from './index.types';
 import Label from './Label';
 
 const OtpInput: OtpInputComponentType = memo(

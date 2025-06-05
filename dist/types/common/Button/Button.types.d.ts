@@ -1,7 +1,7 @@
 import type { ButtonProps as MuiButtonProps } from '@mui/material/Button';
 import type { NamedExoticComponent, ReactNode } from 'react';
 import type { IconProps } from '../Icon';
-export type ButtonProps = Omit<MuiButtonProps, 'children' | 'variant' | 'startIcon' | 'endIcon' | 'color'> & {
+export type ButtonProps = Omit<MuiButtonProps, 'children' | 'variant' | 'startIcon' | 'endIcon' | 'color' | 'size'> & {
     isCircle?: boolean;
     isSquare?: boolean;
     isOutlined?: boolean;

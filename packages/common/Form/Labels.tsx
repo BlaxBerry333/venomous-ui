@@ -1,6 +1,6 @@
 import { memo, useId } from 'react';
 import { Flex } from '../Flex';
-import type { LabelsComponentType } from './Form.types';
+import type { LabelsComponentType } from './index.types';
 import Label from './Label';
 
 const Labels: LabelsComponentType = memo(

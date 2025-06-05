@@ -13,13 +13,13 @@ export default function useWorkflowNodeMove<N extends WorkflowNode>() {
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
   const { updateNodeMovingAroundGroupNode } = useWorkflowNodeUpdate();
 
-  const nodeDragStartPosition = useRef<N['position']>({ x: 0, y: 0 });
+  const nodeDragStartPositionCache = useRef<N['position']>({ x: 0, y: 0 });
 
   /**
    * Node 移动开始的回调
    */
   const onNodeMoveStart: OnNodeDrag<N> = useCallback((_, node: N) => {
-    nodeDragStartPosition.current = {
+    nodeDragStartPositionCache.current = {
       x: node.position.x,
       y: node.position.y,
     };
@@ -42,11 +42,9 @@ export default function useWorkflowNodeMove<N extends WorkflowNode>() {
     (_, node) => {
       updateNodeMovingAroundGroupNode(node);
 
-      const { x, y } = nodeDragStartPosition.current;
+      const { x, y } = nodeDragStartPositionCache.current;
       if (!(x === node.position.x && y === node.position.y)) {
-        if (x !== 0 && y !== 0) {
-          updateActionsHistory(WorkflowAction.NodeMoved);
-        }
+        updateActionsHistory(WorkflowAction.NodeMoved);
       }
     },
     [updateActionsHistory, updateNodeMovingAroundGroupNode],

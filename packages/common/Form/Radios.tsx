@@ -1,7 +1,7 @@
 import MuiRadio from '@mui/material/Radio';
 import { memo } from 'react';
 import { Flex } from '../Flex';
-import type { RadiosComponentType } from './Form.types';
+import type { RadiosComponentType } from './index.types';
 import Label from './Label';
 import Labels from './Labels';
 

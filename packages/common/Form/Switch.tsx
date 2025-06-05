@@ -1,6 +1,6 @@
 import MuiSwitch from '@mui/material/Switch';
 import { memo, useCallback, type JSX } from 'react';
-import type { SwitchComponentType } from './Form.types';
+import type { SwitchComponentType } from './index.types';
 import Labels from './Labels';
 
 const Switch: SwitchComponentType = memo(

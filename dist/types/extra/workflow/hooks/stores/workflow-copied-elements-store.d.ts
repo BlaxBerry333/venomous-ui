@@ -1,5 +1,5 @@
 import type { WorkflowEdge, WorkflowNode } from '@packages/extra/workflow/types';
-export default function useWorkflowSelectedElements(): {
+export default function useWorkflowCopiedElements(): {
     nodes: WorkflowNode[];
     edges: WorkflowEdge[];
     setNodes: (nodes: WorkflowNode[]) => void;
