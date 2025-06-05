@@ -43776,11 +43776,12 @@ const cT = Fo()(
       hotkeys: {
         enabled: !1,
         keys: {
-          copy: "ctrl+c",
-          paste: "ctrl+v",
+          copy: "mod+c",
+          paste: "mod+v",
           delete: "delete",
-          undo: "ctrl+z",
-          redo: "ctrl+y"
+          cut: "mod+x",
+          undo: "mod+z",
+          redo: "mod+shift+z"
         }
       },
       canvas: {
@@ -44433,7 +44434,7 @@ function Q6() {
   }, [t, n, r, o, l, c]), d = $e(() => {
     const h = l.nodes, g = l.edges;
     if (h.length) {
-      r((y) => y.map((x) => ({ ...x, selected: !1 }))), c.setNodes([]);
+      r((y) => y.map((x) => ({ ...x, selected: !1 })));
       const m = h.map((y) => ({
         ...y,
         id: `${y.id}-copied-${u.current + 1}`,
@@ -44448,7 +44449,7 @@ function Q6() {
       r((y) => [...y, ...m]);
     }
     if (g.length) {
-      o((y) => y.map((x) => ({ ...x, selected: !1 }))), c.setEdges([]);
+      o((y) => y.map((x) => ({ ...x, selected: !1 })));
       const m = g.map((y) => ({
         ...y,
         id: `${y.id}-copied-${u.current + 1}`,
@@ -44459,8 +44460,17 @@ function Q6() {
       }));
       o((y) => y.concat(m));
     }
-    (h.length || g.length) && (u.current += 1, i(dn.NodeCreated));
-  }, [t, r, o, i]), p = $e(() => {
+    (h.length || g.length) && (u.current += 1, i(dn.ElementsPasted));
+  }, [
+    t,
+    n,
+    r,
+    o,
+    l,
+    c,
+    e,
+    i
+  ]), p = $e(() => {
     f(), s();
   }, [f, s]);
   return {
@@ -45281,7 +45291,7 @@ const IU = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
 }, Symbol.toStringTag, { value: "Module" })), _U = ve(
   ({ position: e = "bottom-right", style: t, renderContent: n }) => {
     var i;
-    const { nodes: r } = bm(), o = Ye(() => r.length === 1 ? r[0] : null, [r]);
+    const r = bm(), o = Ye(() => r.nodes.length === 1 ? r.nodes[0] : null, [r.nodes]);
     return (i = o == null ? void 0 : o.data) != null && i.formValue ? /* @__PURE__ */ N(
       ll,
       {

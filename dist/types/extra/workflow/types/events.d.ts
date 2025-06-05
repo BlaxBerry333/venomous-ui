@@ -10,3 +10,4 @@ export type OnReconnect = (oldEdge: XYFlowEdge, newConnection: XYFlowConnection)
 export type OnReconnectEnd = (event: MouseEvent | TouchEvent, edge: XYFlowEdge, handleType: XYFlowHandleType) => void;
 export type OnNodeDrag<N extends XYFlowNode> = XYFlowOnNodeDrag<N>;
 export type onSelectionChange<N extends XYFlowNode = XYFlowNode, E extends XYFlowEdge = XYFlowEdge> = XYFlowOnSelectionChangeFunc<N, E>;
+export type OnSelectionEnd = (event: React.MouseEvent) => void;
