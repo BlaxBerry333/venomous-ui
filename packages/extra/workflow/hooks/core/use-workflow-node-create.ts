@@ -52,11 +52,9 @@ export default function useWorkflowNodeCreate<N extends WorkflowNode, E extends 
       } as N;
 
       // 基于 node.parentId 实现的 GroupNode 必须在子节点之前
-      if (newNode.type === WorkflowNodeTypeDefault.Group) {
-        setNodes((nds) => [newNode, ...nds]);
-      } else {
-        setNodes((nds) => nds.concat(newNode));
-      }
+      setNodes((nds) =>
+        newNode.type === WorkflowNodeTypeDefault.Group ? [newNode, ...nds] : [...nds, newNode],
+      );
 
       updateActionsHistory(WorkflowAction.NodeCreated);
     },

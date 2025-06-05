@@ -1,6 +1,10 @@
 import { useCallback, useRef } from 'react';
 
-import { type WorkflowEdge, type WorkflowNode } from '@packages/extra/workflow/types';
+import {
+  WorkflowNodeTypeDefault,
+  type WorkflowEdge,
+  type WorkflowNode,
+} from '@packages/extra/workflow/types';
 import {
   useWorkflowActionsHistoryUpdate,
   WorkflowAction,
@@ -63,7 +67,10 @@ export default function useWorkflowElementsCopyPasteCut<
           data: { ...n.data },
         };
       });
-      setNodes((nds) => [...nds, ...nodesToAppended] as N[]);
+      // 基于 node.parentId 实现的 GroupNode 必须在子节点之前
+      const groupNodes = nodesToAppended.filter((n) => n.type === WorkflowNodeTypeDefault.Group);
+      const normalNodes = nodesToAppended.filter((n) => n.type !== WorkflowNodeTypeDefault.Group);
+      setNodes((nds) => [...groupNodes, ...nds, ...normalNodes] as N[]);
     }
 
     // 粘贴 Edges
