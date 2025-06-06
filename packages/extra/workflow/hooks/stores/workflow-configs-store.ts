@@ -72,7 +72,7 @@ const workflowConfigsStore = create<
         keys: {
           copy: 'mod+c',
           paste: 'mod+v',
-          delete: 'delete',
+          delete: 'backspace',
           cut: 'mod+x',
           undo: 'mod+z',
           redo: 'mod+shift+z',

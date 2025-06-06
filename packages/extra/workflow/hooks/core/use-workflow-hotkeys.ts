@@ -2,12 +2,14 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import { useWorkflowActionsHistoryUndoRedo } from '../stores/workflow-actions-history-store';
 import useWorkflowConfigs from '../stores/workflow-configs-store';
 import useWorkflowElementsCopyPasteCut from './use-workflow-elements-copy-paste-cut';
+import useWorkflowElementsDelete from './use-workflow-elements-delete';
 
 export default function useCanvasHotkeys() {
   const configs = useWorkflowConfigs();
 
   const { undo, redo, canUndo, canRedo } = useWorkflowActionsHistoryUndoRedo();
 
+  const { deleteSelectedElements } = useWorkflowElementsDelete();
   const { copySelectedElements, pastCopiedElement, cutSelectedElements } =
     useWorkflowElementsCopyPasteCut();
 
@@ -30,6 +32,13 @@ export default function useCanvasHotkeys() {
     () => cutSelectedElements(),
     { enabled: true, preventDefault: true },
     [cutSelectedElements],
+  );
+
+  useHotkeys(
+    configs.hotkeys.keys.delete,
+    () => deleteSelectedElements(),
+    { enabled: true, preventDefault: true, keyup: true },
+    [deleteSelectedElements],
   );
 
   useHotkeys(
