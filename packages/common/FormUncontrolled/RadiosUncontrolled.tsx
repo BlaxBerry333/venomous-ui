@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Controller as RHFController, useFormContext } from 'react-hook-form';
 import { Radios, type RadiosProps } from '../Form';
-import type { RadiosUncontrolledComponentType } from './FormUncontrolled.types';
+import type { RadiosUncontrolledComponentType } from './index.types';
 
 const DEFAULT_OPTIONS: RadiosProps['options'] = [];
 

@@ -7,6 +7,7 @@ import {
   OtpInputUncontrolled,
   PasswordUncontrolled,
   RadiosUncontrolled,
+  SelectInputUncontrolled,
   SwitchUncontrolled,
   useForm,
   zodResolver,
@@ -57,6 +58,7 @@ export const Default: Story = {
       isAdmin: boolean;
       code: string;
       gender: 'male' | 'female';
+      country: string;
     };
 
     const form = useForm<FormValue>({
@@ -68,6 +70,7 @@ export const Default: Story = {
         isAdmin: true,
         code: '',
         gender: 'male',
+        country: 'usa',
       },
     });
 
@@ -88,6 +91,15 @@ export const Default: Story = {
           options={[
             { label: 'Male', value: 'male' },
             { label: 'Female', value: 'female' },
+          ]}
+        />
+        <SelectInputUncontrolled
+          name="country"
+          label="Country"
+          options={[
+            { label: 'USA (usa)', value: 'usa' },
+            { label: 'Canada (ca)', value: 'ca' },
+            { label: 'Mexico (mx)', value: 'mx' },
           ]}
         />
 

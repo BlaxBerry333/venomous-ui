@@ -23,6 +23,7 @@ const Label: LabelComponentType = memo(
           cursor: isDisabled ? 'not-allowed' : 'pointer',
           display: 'flex',
           alignItems: 'center',
+          lineHeight: '1.5rem',
         }}
       >
         <MuiBox
@@ -31,7 +32,7 @@ const Label: LabelComponentType = memo(
             width: '14px',
             marginLeft: '-14px',
             fontSize: '1.5rem',
-            transform: 'translateY(0.25rem)',
+            transform: 'translateY(0.35rem)',
             opacity: isRequired ? 1 : 0,
             color: 'error.main',
           }}

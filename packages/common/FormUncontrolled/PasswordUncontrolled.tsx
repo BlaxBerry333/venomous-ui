@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Controller as RHFController, useFormContext } from 'react-hook-form';
 import { Password } from '../Form';
-import type { PasswordUncontrolledComponentType } from './FormUncontrolled.types';
+import type { PasswordUncontrolledComponentType } from './index.types';
 
 const PasswordUncontrolled: PasswordUncontrolledComponentType = memo(({ name, ...props }) => {
   const { control } = useFormContext();

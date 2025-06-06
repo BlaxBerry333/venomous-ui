@@ -1,12 +1,12 @@
 import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
-import * as Stories from './Number.stories';
+import * as Stories from './NumberInput.stories';
 
 <Meta of={Stories} />
 
-# Number
+# NumberInput
 
 ```tsx
-import { Number } from 'venomous-ui';
+import { NumberInput } from 'venomous-ui';
 ```
 
 ## Props
@@ -26,7 +26,7 @@ import { Number } from 'venomous-ui';
   sourceState="shown"
   source={{
     code: [
-      'import { Number } from "venomous-ui";',
+      'import { NumberInput } from "venomous-ui";',
       '',
       'function App() {',
       '  const [value, setValue] = React.useState(0);',
@@ -36,7 +36,7 @@ import { Number } from 'venomous-ui';
       '  const isError: boolean = isTooLarge || isNotEven;',
       '',
       '  return (',
-      '    <Number',
+      '    <NumberInput',
       '      label="xxx"',
       '      value={value}',
       '      onChange={(value: number) => setValue(value)}',

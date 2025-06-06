@@ -1,8 +1,8 @@
 import { memo, useCallback } from 'react';
-import type { NumberComponentType } from './index.types';
+import type { NumberInputComponentType } from './index.types';
 import Input from './Input';
 
-const Number: NumberComponentType = memo(
+const NumberInput: NumberInputComponentType = memo(
   ({ isError, fullWidth, value = 0, onChange, sx, min = 0, max = 1000, step = 1, ...props }) => {
     const handleOnChange = useCallback(
       (value: string) => {
@@ -40,5 +40,5 @@ const Number: NumberComponentType = memo(
   },
 );
 
-Number.displayName = 'Number';
-export default Number;
+NumberInput.displayName = 'NumberInput';
+export default NumberInput;

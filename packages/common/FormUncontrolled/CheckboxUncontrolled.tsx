@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Controller as RHFController, useFormContext } from 'react-hook-form';
 import { Checkbox } from '../Form';
-import type { CheckboxUncontrolledComponentType } from './FormUncontrolled.types';
+import type { CheckboxUncontrolledComponentType } from './index.types';
 
 const CheckboxUncontrolled: CheckboxUncontrolledComponentType = memo(({ name, ...props }) => {
   const { control } = useFormContext();

@@ -5,7 +5,7 @@ import {
 } from 'react-hook-form';
 
 import { memo, useEffect } from 'react';
-import type { FormUncontrolledProps } from './FormUncontrolled.types';
+import type { FormUncontrolledProps } from './index.types';
 
 function FormUncontrolled<T extends RHFFieldValues>({
   children,

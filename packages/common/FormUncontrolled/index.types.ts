@@ -3,7 +3,14 @@ import type {
   FieldValues as RHFFieldValues,
   UseFormReturn as RHFUseFormReturn,
 } from 'react-hook-form';
-import type { CheckboxProps, InputProps, NumberProps, RadiosProps, SwitchProps } from '../Form';
+import type {
+  CheckboxProps,
+  InputProps,
+  NumberInputProps,
+  RadiosProps,
+  SelectInputProps,
+  SwitchProps,
+} from '../Form';
 
 export type FormUncontrolledProps<T extends RHFFieldValues> = PropsWithChildren<{
   formInstance: RHFUseFormReturn<T>;
@@ -32,9 +39,12 @@ export type InputUncontrolledComponentType = NamedExoticComponent<
 export type PasswordUncontrolledComponentType = NamedExoticComponent<
   Partial<InputProps> & { name: string }
 >;
-export type NumberUncontrolledComponentType = NamedExoticComponent<
-  Partial<NumberProps> & { name: string }
+export type NumberInputUncontrolledComponentType = NamedExoticComponent<
+  Partial<NumberInputProps> & { name: string }
 >;
 export type OtpInputUncontrolledComponentType = NamedExoticComponent<
   Partial<InputProps> & { name: string }
+>;
+export type SelectInputUncontrolledComponentType = NamedExoticComponent<
+  Partial<SelectInputProps> & { name: string }
 >;

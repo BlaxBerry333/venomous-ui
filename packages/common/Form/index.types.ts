@@ -44,11 +44,14 @@ export type CheckboxProps = {
   inputRef?: React.Ref<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
-export type RadiosOptionType = {
+export type OptionType = {
   value: string | number;
   label: string;
   isDisabled?: boolean;
+  isSelected?: boolean;
 };
+
+export type RadiosOptionType = Pick<OptionType, 'value' | 'label' | 'isDisabled'>;
 
 export type RadiosProps = {
   value?: RadiosOptionType['value'];
@@ -66,19 +69,31 @@ export type RadiosProps = {
 export type InputProps = Omit<MuiOutlinedInputProp, 'value' | 'onChange'> &
   CommonFormFieldProps & {
     value?: string;
-    onChange: (value: string) => void;
+    onChange: (
+      value: string,
+      e?: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
     label?: LabelProps['label'];
     tooltip?: LabelProps['tooltip'];
     isRequired?: LabelProps['isRequired'];
   };
 
-export type NumberProps = Omit<InputProps, 'value' | 'onChange'> & {
+export type NumberInputProps = Omit<InputProps, 'value' | 'onChange'> & {
   value?: number;
   onChange: (value: number) => void;
   max?: number;
   min?: number;
   step?: number;
   inputRef?: React.Ref<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+};
+
+export type SelectInputProps = Omit<InputProps, 'value' | 'onChange'> & {
+  options: Array<OptionType>;
+  value?: OptionType['value'];
+  onChange: (option: OptionType | null, e?: React.SyntheticEvent<Element, Event>) => void;
+  inputRef?: React.Ref<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  emptyOptionMessage?: string;
+  hideOptionsWhenEmpty?: boolean;
 };
 
 export type LabelsComponentType = NamedExoticComponent<LabelsProps>;
@@ -88,5 +103,6 @@ export type CheckboxComponentType = NamedExoticComponent<CheckboxProps>;
 export type RadiosComponentType = NamedExoticComponent<RadiosProps>;
 export type InputComponentType = NamedExoticComponent<InputProps>;
 export type PasswordComponentType = NamedExoticComponent<InputProps>;
-export type NumberComponentType = NamedExoticComponent<NumberProps>;
+export type NumberInputComponentType = NamedExoticComponent<NumberInputProps>;
 export type OtpInputComponentType = NamedExoticComponent<InputProps>;
+export type SelectInputComponentType = NamedExoticComponent<SelectInputProps>;

@@ -53,7 +53,7 @@ const Input: InputComponentType = memo(
           error={isError}
           disabled={isDisabled}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value, e)}
           sx={{ ...inputCommonStyle, ...sx }}
           {...props}
         />
@@ -62,7 +62,7 @@ const Input: InputComponentType = memo(
           <Text
             text={isError ? errorMessage : ''}
             isLabel
-            sx={{ ...errorMessageStyles, minHeight: '24px' }}
+            sx={{ ...errorMessageStyles, lineHeight: '1.5rem' }}
           />
         )}
       </Flex>

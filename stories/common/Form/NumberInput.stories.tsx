@@ -1,11 +1,11 @@
-import { Number } from '@packages/common';
+import { NumberInput } from '@packages/common';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import InputMeta from './Input.stories';
 
 const meta = {
-  title: 'Common Components/Form/Number',
-  component: Number,
+  title: 'Common Components/Form/NumberInput',
+  component: NumberInput,
   parameters: { layout: 'centered' },
   tags: ['!autodocs', '!dev'],
   argTypes: {
@@ -69,7 +69,7 @@ export const Default: Story = {
     React.useEffect(() => {
       setValue((args.value ?? args.min) as number);
     }, [args.value]);
-    return <Number {...args} value={value} onChange={(value: number) => setValue(value)} />;
+    return <NumberInput {...args} value={value} onChange={(value: number) => setValue(value)} />;
   },
 };
 
@@ -83,7 +83,7 @@ export const CustomValidation: Story = {
     const isError: boolean = isTooLarge || isNotEven;
 
     return (
-      <Number
+      <NumberInput
         label="xxx"
         value={value}
         onChange={(value: number) => setValue(value)}

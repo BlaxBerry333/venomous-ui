@@ -1,0 +1,43 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './SelectInput.stories';
+
+<Meta of={Stories} />
+
+# SelectInput
+
+```tsx
+import { SelectInput } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+#### Default
+
+<Canvas of={Stories.Default} sourceState="none" />
+
+```tsx
+import { SelectInput, type OptionType } from 'venomous-ui';
+
+function App() {
+  const [value, setValue] = React.useState<OptionType['value']>();
+
+  const options: OptionType[] = [
+    { label: 'Option 1', value: 'option1' },
+    { label: 'Option 2', value: 'option2' },
+    { label: 'Option 3', value: 'option3' },
+  ];
+
+  return (
+    <SelectInput
+      value={value}
+      options={options}
+      onChange={(option) => setValue(option?.value)}
+      hideOptionsWhenEmpty={false}
+    />
+  );
+}
+```

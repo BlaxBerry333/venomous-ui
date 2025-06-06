@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { Controller as RHFController, useFormContext } from 'react-hook-form';
-import { Number } from '../Form';
-import type { NumberUncontrolledComponentType } from './FormUncontrolled.types';
+import { NumberInput } from '../Form';
+import type { NumberInputUncontrolledComponentType } from './index.types';
 
-const NumberUncontrolled: NumberUncontrolledComponentType = memo(({ name, ...props }) => {
+const NumberInputUncontrolled: NumberInputUncontrolledComponentType = memo(({ name, ...props }) => {
   const { control } = useFormContext();
 
   return (
@@ -11,7 +11,7 @@ const NumberUncontrolled: NumberUncontrolledComponentType = memo(({ name, ...pro
       control={control}
       name={name}
       render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => (
-        <Number
+        <NumberInput
           {...props}
           value={value}
           onChange={onChange}
@@ -25,5 +25,5 @@ const NumberUncontrolled: NumberUncontrolledComponentType = memo(({ name, ...pro
   );
 });
 
-NumberUncontrolled.displayName = 'NumberUncontrolled';
-export default NumberUncontrolled;
+NumberInputUncontrolled.displayName = 'NumberInputUncontrolled';
+export default NumberInputUncontrolled;

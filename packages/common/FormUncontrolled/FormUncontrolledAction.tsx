@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { Button } from '../Button';
 import { Flex } from '../Flex';
-import type { FormUncontrolledActionProps } from './FormUncontrolled.types';
+import type { FormUncontrolledActionProps } from './index.types';
 
 function FormUncontrolledAction({
   isSubmitting: isSubmittingProp,

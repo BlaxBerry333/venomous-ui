@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Controller as RHFController, useFormContext } from 'react-hook-form';
 import { Switch } from '../Form';
-import type { SwitchUncontrolledComponentType } from './FormUncontrolled.types';
+import type { SwitchUncontrolledComponentType } from './index.types';
 
 const SwitchUncontrolled: SwitchUncontrolledComponentType = memo(({ name, ...props }) => {
   const { control } = useFormContext();
