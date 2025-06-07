@@ -1,6 +1,6 @@
 import type { NamedExoticComponent, PropsWithChildren } from 'react';
 import type { FieldValues as RHFFieldValues, UseFormReturn as RHFUseFormReturn } from 'react-hook-form';
-import type { CheckboxProps, InputProps, NumberInputProps, RadiosProps, SelectInputProps, SwitchProps } from '../Form';
+import type { CheckboxProps, InputProps, NumberInputProps, RadiosProps, SelectProps, SwitchProps } from '../Form';
 export type FormUncontrolledProps<T extends RHFFieldValues> = PropsWithChildren<{
     formInstance: RHFUseFormReturn<T>;
     onSubmit: (formValue: T) => void;
@@ -32,6 +32,6 @@ export type NumberInputUncontrolledComponentType = NamedExoticComponent<Partial<
 export type OtpInputUncontrolledComponentType = NamedExoticComponent<Partial<InputProps> & {
     name: string;
 }>;
-export type SelectInputUncontrolledComponentType = NamedExoticComponent<Partial<SelectInputProps> & {
+export type SelectUncontrolledComponentType = NamedExoticComponent<Partial<SelectProps> & {
     name: string;
 }>;

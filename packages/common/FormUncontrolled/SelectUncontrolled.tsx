@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import { Controller as RHFController, useFormContext } from 'react-hook-form';
 
-import { SelectInput, type OptionType } from '../Form';
-import type { SelectInputUncontrolledComponentType } from './index.types';
+import { Select, type OptionType } from '../Form';
+import type { SelectUncontrolledComponentType } from './index.types';
 
 const DEFAULT_OPTIONS: OptionType[] = [];
 
-const SelectInputUncontrolled: SelectInputUncontrolledComponentType = memo(
+const SelectUncontrolled: SelectUncontrolledComponentType = memo(
   ({ name, options = DEFAULT_OPTIONS, ...props }) => {
     const { control } = useFormContext();
 
@@ -15,7 +15,7 @@ const SelectInputUncontrolled: SelectInputUncontrolledComponentType = memo(
         control={control}
         name={name}
         render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => (
-          <SelectInput
+          <Select
             {...props}
             options={options}
             value={value}
@@ -31,5 +31,5 @@ const SelectInputUncontrolled: SelectInputUncontrolledComponentType = memo(
   },
 );
 
-SelectInputUncontrolled.displayName = 'SelectInputUncontrolled';
-export default SelectInputUncontrolled;
+SelectUncontrolled.displayName = 'SelectUncontrolled';
+export default SelectUncontrolled;

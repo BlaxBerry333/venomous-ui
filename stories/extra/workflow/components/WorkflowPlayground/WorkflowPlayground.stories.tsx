@@ -156,7 +156,7 @@ export const Default: Story = {
           <WorkflowToolbarPanel position="top-right">
             <Examples.SaveButton />
           </WorkflowToolbarPanel>
-          <Examples.NodePanel />
+          <Examples.NodePanel position="bottom-right" />
         </WorkflowPlayground>
 
         <Examples.DraggableSiderBar />

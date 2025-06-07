@@ -7,5 +7,5 @@ export { default as NumberInput } from './NumberInput';
 export { default as OtpInput } from './OtpInput';
 export { default as Password } from './Password';
 export { default as Radios } from './Radios';
-export { default as SelectInput } from './SelectInput';
+export { default as Select } from './Select';
 export { default as Switch } from './Switch';

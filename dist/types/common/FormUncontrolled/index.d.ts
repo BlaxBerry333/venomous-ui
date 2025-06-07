@@ -9,5 +9,5 @@ export { default as NumberUncontrolled } from './NumberInputUncontrolled';
 export { default as OtpInputUncontrolled } from './OtpInputUncontrolled';
 export { default as PasswordUncontrolled } from './PasswordUncontrolled';
 export { default as RadiosUncontrolled } from './RadiosUncontrolled';
-export { default as SelectInputUncontrolled } from './SelectInputUncontrolled';
+export { default as SelectUncontrolled } from './SelectUncontrolled';
 export { default as SwitchUncontrolled } from './SwitchUncontrolled';

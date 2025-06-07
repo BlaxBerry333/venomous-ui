@@ -8,9 +8,11 @@ export { default as useCanvasHotkeys } from './core/use-workflow-hotkeys';
 export { default as useWorkflowInit } from './core/use-workflow-init';
 export { default as useWorkflowInstance } from './core/use-workflow-instance';
 export { default as useWorkflowNodeCreate } from './core/use-workflow-node-create';
+export { default as useWorkflowNodeJump } from './core/use-workflow-node-jump';
 export { default as useWorkflowNodeMove } from './core/use-workflow-node-move';
 export { default as useWorkflowNodeUpdate } from './core/use-workflow-node-update';
 
+export { default as useWorkflowElementsProtect } from './core/use-workflow-elements-protect';
 export {
   WorkflowAction,
   useWorkflowActionsHistoryStates,

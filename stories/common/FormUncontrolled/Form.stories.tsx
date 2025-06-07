@@ -7,7 +7,7 @@ import {
   OtpInputUncontrolled,
   PasswordUncontrolled,
   RadiosUncontrolled,
-  SelectInputUncontrolled,
+  SelectUncontrolled,
   SwitchUncontrolled,
   useForm,
   zodResolver,
@@ -93,7 +93,7 @@ export const Default: Story = {
             { label: 'Female', value: 'female' },
           ]}
         />
-        <SelectInputUncontrolled
+        <SelectUncontrolled
           name="country"
           label="Country"
           options={[

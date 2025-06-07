@@ -2,13 +2,13 @@ import { memo, useCallback, useMemo, type CSSProperties, type NamedExoticCompone
 
 import { MiniMap as XYFlowMiniMap } from '@xyflow/react';
 
-import { useWorkflowCanvasViewport, useWorkflowConfigs } from '@packages/extra/workflow/hooks';
+import { useWorkflowConfigs, useWorkflowNodeJump } from '@packages/extra/workflow/hooks';
 import type { WorkflowNode } from '@packages/extra/workflow/types';
 import { useThemePalette } from '@packages/helpers';
 
 const WorkflowMiniMap: NamedExoticComponent = memo(() => {
   const { themePalette } = useThemePalette();
-  const { moveToSpecificNode } = useWorkflowCanvasViewport();
+  const { jumpToSpecificNode } = useWorkflowNodeJump();
   const configs = useWorkflowConfigs();
 
   const positionStyle = useMemo<CSSProperties>(() => {
@@ -54,7 +54,7 @@ const WorkflowMiniMap: NamedExoticComponent = memo(() => {
       nodeBorderRadius={16}
       onNodeClick={(e, node) => {
         e.stopPropagation();
-        void moveToSpecificNode(node.id, node.position);
+        void jumpToSpecificNode(node.id, node.position);
       }}
       pannable
       zoomable

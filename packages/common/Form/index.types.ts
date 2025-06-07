@@ -87,13 +87,15 @@ export type NumberInputProps = Omit<InputProps, 'value' | 'onChange'> & {
   inputRef?: React.Ref<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
-export type SelectInputProps = Omit<InputProps, 'value' | 'onChange'> & {
+export type SelectProps = Omit<InputProps, 'value' | 'onChange'> & {
   options: Array<OptionType>;
   value?: OptionType['value'];
   onChange: (option: OptionType | null, e?: React.SyntheticEvent<Element, Event>) => void;
   inputRef?: React.Ref<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   emptyOptionMessage?: string;
   hideOptionsWhenEmpty?: boolean;
+  isLoadingOptions?: boolean;
+  renderOption?: (option: OptionType) => React.ReactNode;
 };
 
 export type LabelsComponentType = NamedExoticComponent<LabelsProps>;
@@ -105,4 +107,4 @@ export type InputComponentType = NamedExoticComponent<InputProps>;
 export type PasswordComponentType = NamedExoticComponent<InputProps>;
 export type NumberInputComponentType = NamedExoticComponent<NumberInputProps>;
 export type OtpInputComponentType = NamedExoticComponent<InputProps>;
-export type SelectInputComponentType = NamedExoticComponent<SelectInputProps>;
+export type SelectComponentType = NamedExoticComponent<SelectProps>;

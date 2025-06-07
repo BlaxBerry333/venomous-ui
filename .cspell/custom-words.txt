@@ -12,6 +12,7 @@ Outgoer
 Outgoers
 pannable
 zoomable
+reconnectable
 
 fullwidth
 favourite

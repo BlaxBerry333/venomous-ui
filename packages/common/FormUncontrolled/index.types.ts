@@ -8,7 +8,7 @@ import type {
   InputProps,
   NumberInputProps,
   RadiosProps,
-  SelectInputProps,
+  SelectProps,
   SwitchProps,
 } from '../Form';
 
@@ -45,6 +45,6 @@ export type NumberInputUncontrolledComponentType = NamedExoticComponent<
 export type OtpInputUncontrolledComponentType = NamedExoticComponent<
   Partial<InputProps> & { name: string }
 >;
-export type SelectInputUncontrolledComponentType = NamedExoticComponent<
-  Partial<SelectInputProps> & { name: string }
+export type SelectUncontrolledComponentType = NamedExoticComponent<
+  Partial<SelectProps> & { name: string }
 >;

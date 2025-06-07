@@ -1,11 +1,11 @@
-import { SelectInput, type OptionType } from '@packages/common';
+import { Flex, Icon, Select, type OptionType } from '@packages/common';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import InputMeta from './Input.stories';
 
 const meta = {
-  title: 'Common Components/Form/SelectInput',
-  component: SelectInput,
+  title: 'Common Components/Form/Select',
+  component: Select,
   parameters: { layout: 'centered' },
   tags: ['!autodocs', '!dev'],
   argTypes: {
@@ -32,12 +32,30 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    isLoadingOptions: {
+      description: 'If true, will display a loading indicator',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     options: {
       description: 'The options to display in the select input',
       //   control: false,
       table: {
         type: {
           summary: 'Array<{ label: string, value: string }>',
+        },
+      },
+    },
+    renderOption: {
+      description: 'Function to render each option item',
+      table: {
+        category: 'Events',
+        type: {
+          summary:
+            '(optionProps: React.HTMLAttributes<HTMLLIElement> , option: OptionType) => React.ReactNode',
         },
       },
     },
@@ -67,15 +85,17 @@ const meta = {
     errorMessage: InputMeta.args.errorMessage,
     emptyOptionMessage: 'No Options',
     hideOptionsWhenEmpty: false,
+    isLoadingOptions: false,
     value: '',
     onChange: () => {},
     options: [
       { label: 'Option 1', value: 'option1' },
       { label: 'Option 2', value: 'option2' },
       { label: 'Option 3', value: 'option3' },
+      { label: 'Option disabled', value: 'option-disabled', isDisabled: true },
     ],
   },
-} satisfies Meta<typeof SelectInput>;
+} satisfies Meta<typeof Select>;
 
 export default meta;
 
@@ -90,15 +110,48 @@ export const Default: Story = {
     }, [args.value]);
     return (
       <>
-        <SelectInput
+        <Select {...args} value={value} onChange={(option) => setValue(option?.value)} />
+
+        <div style={{ height: 50 }}>
+          {JSON.stringify(
+            args.options.find((o) => o.value === value),
+            null,
+            2,
+          )}
+        </div>
+      </>
+    );
+  },
+};
+
+export const CustomOption: Story = {
+  name: 'CustomOption',
+  render: function RenderSwitch(args) {
+    const [value, setValue] = React.useState<OptionType['value']>();
+    React.useEffect(() => {
+      setValue(args.value);
+    }, [args.value]);
+    return (
+      <>
+        <Select
           {...args}
           value={value}
-          onChange={(option) => {
-            setValue(option?.value);
-          }}
+          onChange={(option) => setValue(option?.value)}
+          renderOption={(option) => (
+            <Flex row p={0.5}>
+              <Icon icon="solar:asteroid-bold-duotone" />
+              {option.label}
+            </Flex>
+          )}
         />
 
-        {value}
+        <div style={{ height: 50 }}>
+          {JSON.stringify(
+            args.options.find((o) => o.value === value),
+            null,
+            2,
+          )}
+        </div>
       </>
     );
   },

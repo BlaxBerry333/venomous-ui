@@ -1,4 +1,4 @@
-import { useViewport as XYFlowUseViewport, type XYPosition as XYFlowPosition } from '@xyflow/react';
+import { useViewport as XYFlowUseViewport } from '@xyflow/react';
 import { useCallback, useMemo } from 'react';
 
 import type { WorkflowEdge, WorkflowNode } from '@packages/extra/workflow/types';
@@ -10,8 +10,7 @@ export default function useWorkflowCanvasViewport<
   E extends WorkflowEdge,
 >() {
   const configs = useWorkflowConfigs();
-  const { zoomIn, zoomOut, zoomTo, getZoom, fitView, setCenter, setNodes, setEdges, updateNode } =
-    useWorkflowInstance<N, E>();
+  const { zoomIn, zoomOut, zoomTo, fitView } = useWorkflowInstance<N, E>();
 
   /**
    * 当前画布的缩放信息
@@ -55,38 +54,11 @@ export default function useWorkflowCanvasViewport<
     [fitView, configs.canvas.zoomDuration],
   );
 
-  /**
-   * 移动画布到指定 Node
-   */
-  const moveToSpecificNode = useCallback(
-    async (nodeId: string, { x, y }: XYFlowPosition) => {
-      const zoom = getZoom();
-      await setCenter(x + configs.styles.nodeWidth / 2, y + configs.styles.nodeMinHeight / 2, {
-        duration: configs.canvas.zoomDuration,
-        zoom,
-      });
-      setNodes((nds) => nds.map((n) => ({ ...n, selected: false })));
-      setEdges((eds) => eds.map((e) => ({ ...e, selected: false })));
-      updateNode(nodeId, { selected: true } as Partial<N>);
-    },
-    [
-      getZoom,
-      setCenter,
-      setNodes,
-      setEdges,
-      updateNode,
-      configs.canvas.zoomDuration,
-      configs.styles.nodeWidth,
-      configs.styles.nodeMinHeight,
-    ],
-  );
-
   return {
     currentViewport,
     increaseZoom,
     decreaseZoom,
     setZoom,
-    moveToSpecificNode,
     autoView,
   };
 }

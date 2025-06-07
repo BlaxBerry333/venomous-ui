@@ -1,17 +1,19 @@
 import MuiAutocomplete from '@mui/material/Autocomplete';
+import MuiBox from '@mui/material/Box';
+import MuiCircularProgress from '@mui/material/CircularProgress';
+import MuiTextField from '@mui/material/TextField';
 import { memo, useId, useMemo } from 'react';
 
-import MuiTextField from '@mui/material/TextField';
 import { Flex } from '../Flex';
 import { usePaper } from '../Paper';
 import { Text, useText } from '../Text';
-import type { OptionType, SelectInputComponentType } from './index.types';
+import type { OptionType, SelectComponentType } from './index.types';
 import Label from './Label';
 import useInput from './useInput';
 
 const DEFAULT_OPTIONS: OptionType[] = [];
 
-const SelectInput: SelectInputComponentType = memo(
+const Select: SelectComponentType = memo(
   ({
     label = '',
     tooltip,
@@ -25,6 +27,8 @@ const SelectInput: SelectInputComponentType = memo(
     errorMessage = '',
     emptyOptionMessage = 'No Options',
     hideOptionsWhenEmpty = false,
+    isLoadingOptions = false,
+    renderOption,
   }) => {
     const id = useId();
 
@@ -62,10 +66,11 @@ const SelectInput: SelectInputComponentType = memo(
 
         <MuiAutocomplete
           className="VenomousUI-SelectInput"
+          multiple={false}
           id={id}
-          value={selectedOption}
           fullWidth={fullWidth}
-          disabled={isDisabled}
+          disabled={isDisabled || isLoadingOptions}
+          value={selectedOption}
           onChange={(e, newValue) => onChange?.(newValue, e)}
           renderInput={(params) => (
             <MuiTextField
@@ -77,20 +82,56 @@ const SelectInput: SelectInputComponentType = memo(
                 input: {
                   ...params.InputProps,
                   sx: { ...inputCommonStyle },
+                  endAdornment: (
+                    <>
+                      {isLoadingOptions ? (
+                        <MuiCircularProgress color="primary" disableShrink size={20} />
+                      ) : null}
+                      {params.InputProps.endAdornment}
+                    </>
+                  ),
                 },
               }}
             />
           )}
+          loading={isLoadingOptions}
           options={options}
+          noOptionsText={hideOptions ? null : emptyOptionMessage}
           isOptionEqualToValue={(option, value) => option.value === value.value}
-          getOptionLabel={(option) => option.label}
           getOptionDisabled={(option) => !!option.isDisabled}
+          getOptionLabel={(option) => option.label}
+          renderOption={({ key, ...optionProps }, option) => (
+            <MuiBox
+              component="li"
+              key={key}
+              {...optionProps}
+              style={{ minHeight: 40, padding: 0, borderRadius: '8px' }}
+              sx={{ mb: '4px', '&:last-child': { mb: 0 } }}
+            >
+              {renderOption ? (
+                renderOption(option)
+              ) : (
+                <Text
+                  text={option.label}
+                  sx={{
+                    width: 1,
+                    flex: 1,
+                    padding: 0,
+                    paddingLeft: '6px',
+                    paddingRight: '6px',
+                  }}
+                />
+              )}
+            </MuiBox>
+          )}
           slotProps={{
             paper: {
-              sx: { ...paperCommonStyles, py: 0.25, display: hideOptions ? 'none' : 'display' },
+              sx: { ...paperCommonStyles, display: hideOptions ? 'none' : 'display' },
+            },
+            listbox: {
+              sx: { p: 0 },
             },
           }}
-          noOptionsText={hideOptions ? null : emptyOptionMessage}
         />
 
         {isError && (
@@ -105,5 +146,5 @@ const SelectInput: SelectInputComponentType = memo(
   },
 );
 
-SelectInput.displayName = 'SelectInput';
-export default SelectInput;
+Select.displayName = 'Select';
+export default Select;
