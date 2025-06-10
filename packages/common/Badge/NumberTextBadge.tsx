@@ -1,7 +1,7 @@
 import MuiBadge from '@mui/material/Badge';
 import { memo, useMemo } from 'react';
 import { Tooltip } from '../Tooltip';
-import type { NumberTextBadgeComponentType } from './Badge.types';
+import type { NumberTextBadgeComponentType } from './index.types';
 import useBadge from './useBadge';
 
 const NumberTextBadge: NumberTextBadgeComponentType = memo(

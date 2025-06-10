@@ -1,6 +1,6 @@
 import MuiBadge from '@mui/material/Badge';
 import { memo } from 'react';
-import type { DotBadgeComponentType } from './Badge.types';
+import type { DotBadgeComponentType } from './index.types';
 import useBadge from './useBadge';
 
 const DotBadge: DotBadgeComponentType = memo(

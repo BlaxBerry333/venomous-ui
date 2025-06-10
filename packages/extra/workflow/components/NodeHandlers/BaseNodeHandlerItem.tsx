@@ -15,10 +15,9 @@ const WorkflowBaseNodeHandlerItem: WorkflowBaseNodeHandlerItemComponentType = me
         style={{
           position: 'relative',
           width: configs.styles?.nodeWidth,
-          ...style,
         }}
       >
-        <Box sx={{ typography: 'body2', padding: '4px 16px' }}>{children}</Box>
+        <Box sx={{ typography: 'body2', padding: '4px 16px', ...style }}>{children}</Box>
 
         <WorkflowBaseNodeHandler
           id={id}

@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { Icon } from '../Icon';
 import { usePaper } from '../Paper';
 import { Tooltip } from '../Tooltip';
-import type { IconBadgeComponentType } from './Badge.types';
+import type { IconBadgeComponentType } from './index.types';
 import useBadge from './useBadge';
 
 const IconBadge: IconBadgeComponentType = memo(

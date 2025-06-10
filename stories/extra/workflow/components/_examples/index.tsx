@@ -59,6 +59,7 @@ const MultipleSourceNodeComponent = memo(
                 handlerType="source"
                 handlerPosition="right"
                 style={{ transform: 'translateX(-16px)' }}
+                handlerStyle={{ transform: 'translate(-11px, -6px)' }}
               >
                 {`#${MOCKID}`}
               </WorkflowBaseNodeHandlerItem>
@@ -91,6 +92,7 @@ const MultipleTargetNodeComponent = memo(
                 handlerType="target"
                 handlerPosition="left"
                 style={{ transform: 'translateX(-16px)' }}
+                handlerStyle={{ transform: 'translate(-23px, -6px)' }}
               >
                 {`#${MOCKID}`}
               </WorkflowBaseNodeHandlerItem>
