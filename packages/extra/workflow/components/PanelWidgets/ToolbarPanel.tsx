@@ -31,7 +31,10 @@ const WorkflowToolbarPanel: WorkflowToolbarPanelComponentType = memo(
         }}
       >
         {isPaper && (
-          <Paper isOutlined={isOutlinedPaper} sx={{ height: '100%' }}>
+          <Paper
+            isOutlined={isOutlinedPaper}
+            sx={{ height: '100%', border: 1, borderColor: 'divider' }}
+          >
             {children}
           </Paper>
         )}

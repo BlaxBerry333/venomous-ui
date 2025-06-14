@@ -1,5 +1,6 @@
+import MuiBox from '@mui/material/Box';
 import { memo } from 'react';
-import { Button } from '../Button';
+import { Card } from '../Card';
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
@@ -9,7 +10,6 @@ const MenuItem: MenuItemComponentType = memo(
   ({
     icon = '',
     label,
-    value,
     clickable,
     disabled,
     onClick,
@@ -17,47 +17,89 @@ const MenuItem: MenuItemComponentType = memo(
     onMouseLeave,
     isActive,
     sx,
-    ellipsis = false,
+    ellipsis = true,
+    endIcon,
+    startIconPlaceholder = false,
   }) => {
     if (clickable) {
       return (
-        <Button
+        <MuiBox
+          component="div"
           className="VenomousUI-MenuItem"
-          value={value}
-          isGhost
-          text={<Text text={label} ellipsis={ellipsis} sx={{ textAlign: 'left' }} />}
-          icon={icon}
-          iconWidth={28}
-          iconPosition="start"
-          onClick={onClick}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          disabled={disabled}
-          color={isActive ? 'primary' : 'auto'}
+          onClick={(e) => {
+            if (!disabled) onClick?.(e);
+          }}
+          onMouseEnter={(e) => {
+            if (!disabled) onMouseEnter?.(e);
+          }}
+          onMouseLeave={(e) => {
+            if (!disabled) onMouseLeave?.(e);
+          }}
           sx={{
-            py: '8px',
-            px: '16px',
-            width: '100%',
-            justifyContent: 'flex-start',
-            transition: 'background-color 0.2s ease; color 0.2s ease',
-            backgroundColor: isActive ? 'divider' : 'transparent',
-            '&:hover': { backgroundColor: 'divider' },
+            overflow: 'hidden',
+            borderRadius: '8px',
             ...sx,
           }}
-        />
+        >
+          <Card
+            isOutlined
+            clickable
+            sx={{
+              border: 'none',
+              width: 1,
+              height: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              py: '9px',
+              px: '12px',
+              transition: 'background-color 0.2s ease; color 0.2s ease',
+              backgroundColor: isActive ? 'divider' : 'transparent',
+              '&:hover': { backgroundColor: 'divider' },
+              cursor: disabled ? 'not-allowed' : 'pointer',
+            }}
+          >
+            <Icon icon={icon} width={24} color={isActive ? 'primary' : 'auto'} />
+
+            {startIconPlaceholder && !icon && <div style={{ minWidth: 24, minHeight: 24 }} />}
+
+            <Text
+              text={label}
+              ellipsis={ellipsis}
+              textColor={isActive ? 'primary' : 'auto'}
+              sx={{ mx: '8px', fontWeight: 550 }}
+            />
+
+            {endIcon}
+          </Card>
+        </MuiBox>
       );
     }
 
     return (
-      <Flex row py="8px" px="16px" sx={{ width: '100%', ...sx }} className="VenomousUI-MenuItem">
-        <Icon icon={icon} width={28} color={isActive ? 'primary' : 'auto'} />
+      <Flex
+        row
+        py="8px"
+        px="16px"
+        sx={{ width: '100%', cursor: disabled ? 'not-allowed' : 'default', ...sx }}
+        className="VenomousUI-MenuItem"
+      >
+        <Icon
+          icon={icon}
+          width={28}
+          color={disabled ? 'disabled' : isActive ? 'primary' : 'auto'}
+        />
+
+        {startIconPlaceholder && !icon && <div style={{ minWidth: 24, minHeight: 24 }} />}
+
         <Text
           text={label}
           ellipsis={ellipsis}
           flex={1}
-          textColor={isActive ? 'primary' : 'auto'}
-          sx={{ cursor: 'default' }}
+          textColor={disabled ? 'disabled' : isActive ? 'primary' : 'auto'}
+          sx={{ mx: '8px', fontWeight: 550 }}
         />
+        {endIcon}
       </Flex>
     );
   },

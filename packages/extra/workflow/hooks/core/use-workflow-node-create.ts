@@ -44,7 +44,7 @@ export default function useWorkflowNodeCreate<N extends WorkflowNode, E extends 
       const newNode = {
         ...registeredNode,
         id: `${Date.now()}`,
-        selected: true,
+        // selected: true,
         position: screenToFlowPosition(
           { x: e.clientX, y: e.clientY },
           { snapToGrid: configs.canvas.isGridLayout },

@@ -3,6 +3,7 @@ export * from './Badge';
 export * from './Blank';
 export * from './Button';
 export * from './Card';
+export * from './Collapse';
 export * from './Container';
 export * from './Drawer';
 export * from './Flex';

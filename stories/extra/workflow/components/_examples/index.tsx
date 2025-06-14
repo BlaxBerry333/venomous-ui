@@ -152,6 +152,10 @@ const DraggableSiderBar = memo(() => {
       event.dataTransfer.effectAllowed = 'move';
       generateNewNodeToStore({
         type: nodeType,
+        data: {
+          isInValid: nodeType === INodeType.GROUP ? false : true,
+          formValue: null,
+        },
       });
     },
     [],

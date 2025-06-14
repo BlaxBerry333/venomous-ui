@@ -1,0 +1,43 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './Collapse.stories';
+
+<Meta of={Stories} />
+
+# Collapse
+
+```tsx
+import { Collapse } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+Needs to be wrapped inside a fixed-width parent container.
+
+```tsx
+import { Collapse, Button, Paper } from 'venomous-ui';
+
+function App() {
+  return (
+    <Paper sx={{ width: 200 }}>
+      <Collapse
+        renderTrigger={({ isCollapsed, toggleCollapsed }) => (
+          <Button
+            onClick={toggleCollapsed}
+            text={`click to ${isCollapsed ? 'Collapse' : 'Expand'}`}
+            sx={{ width: 1 }}
+          />
+        )}
+      >
+        <div style={{ backgroundColor: '#cccccc' }}>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+        <div style={{ backgroundColor: '#cccccc' }}>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+        <div style={{ backgroundColor: '#cccccc' }}>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
+      </Collapse>
+    </Paper>
+  );
+}
+```

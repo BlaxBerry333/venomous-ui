@@ -30,6 +30,8 @@ const WorkflowMiniMap: NamedExoticComponent = memo(() => {
   const getNodeStrokeColor = useCallback(
     (node: WorkflowNode): string => {
       const { type, selected, data } = node;
+      const isInvalid = data?.isInValid;
+      if (isInvalid) return themePalette.error;
       const nodeColor = configs.styles?.nodeColors?.[type!] || themePalette.main;
       return selected || data?.isFocus ? nodeColor : 'transparent';
     },

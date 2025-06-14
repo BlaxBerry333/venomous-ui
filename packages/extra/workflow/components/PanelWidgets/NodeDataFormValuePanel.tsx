@@ -1,22 +1,20 @@
 import { memo, useMemo } from 'react';
 
-import { useWorkflowSelectedElements } from '@packages/extra/workflow/hooks';
+import { useWorkflowInstance, useWorkflowPanel } from '@packages/extra/workflow/hooks';
 import type { WorkflowNode } from '@packages/extra/workflow/types';
 import WorkflowToolbarPanel from './ToolbarPanel';
 import type { NodeDataFormValuePanelComponentType } from './index.types';
 
 const NodeDataFormValuePanel: NodeDataFormValuePanelComponentType = memo(
   ({ position = 'bottom-right', style, renderContent }) => {
-    const selectedElements = useWorkflowSelectedElements();
+    const { getNode } = useWorkflowInstance();
+    const { selectedNodeId } = useWorkflowPanel();
+    const selectedNode = useMemo<WorkflowNode | undefined>(() => {
+      if (!selectedNodeId) return void 0;
+      return getNode(selectedNodeId);
+    }, [selectedNodeId]);
 
-    const selectedNode = useMemo<WorkflowNode | null>(() => {
-      if (selectedElements.nodes.length === 1) return selectedElements.nodes[0];
-      return null;
-    }, [selectedElements.nodes]);
-
-    // 没有单一的 Node 被选中时不显示
-    // 被选中的单一 Node 不含有 node.data.formaValue 时不显示
-    if (!selectedNode?.data?.formValue) {
+    if (!selectedNodeId || !selectedNode?.data?.formValue) {
       return null;
     }
     return (

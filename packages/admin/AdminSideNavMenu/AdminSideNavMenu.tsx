@@ -1,88 +1,152 @@
 import {
-  Flex,
+  Collapse,
+  CollapsedSidebar,
+  Icon,
   Menu,
   MenuItem,
-  Paper,
   Popper,
   useCheckNavMenuActive,
   type NavMenuItemProps,
 } from '@packages/common';
 import { memo } from 'react';
-import type { AdminSideNavMenuComponentType } from './AdminSideNavMenu.types';
+import type { AdminSideNavMenuComponentType } from './index.types';
 
 const AdminSideNavMenu: AdminSideNavMenuComponentType = memo(
-  ({ menuHeaderHeight = 50, menuWidth = 220, menuItems, currentPath, menuHeaderElement, sx }) => {
+  ({
+    menuHeaderHeight = 50,
+    menuWidth = 220,
+    collapsedWidth = 64,
+    menuItems,
+    currentPath,
+    renderHeader,
+    sx,
+    collapseButtonSx,
+  }) => {
     const { checkIsParentItemActive, checkIsSubItemActive } = useCheckNavMenuActive({
       currentPath,
     });
 
     return (
-      <Paper
-        className="VenomousUI-AdminSideNavMenu"
-        isOutlined
-        sx={{ width: menuWidth, height: '100svh', ...sx }}
-      >
-        <Flex row gap={0} height={menuHeaderHeight} px={'8px'} mb={'8px'}>
-          {menuHeaderElement}
-        </Flex>
-
-        <Menu
-          width="100%"
-          height={`calc(100svh - ${menuHeaderHeight}px - 16px)`}
-          items={menuItems}
-          renderItem={(item: NavMenuItemProps) => {
-            if (!item.subItems)
-              return (
-                <MenuItem
-                  key={item.label}
-                  label={item.label}
-                  isActive={checkIsParentItemActive(item)}
-                  icon={item.icon}
-                  clickable
-                  ellipsis
-                  onClick={item.onClick}
-                />
-              );
-
-            return (
-              <Popper
-                id={item.label}
-                position="right"
-                sx={{ width: '100%' }}
-                contentSx={{ p: '8px' }}
-                renderPopperHandler={({ isOpen, openPopper }) => (
+      <CollapsedSidebar
+        width={menuWidth}
+        headerHeight={menuHeaderHeight}
+        collapsedWidth={collapsedWidth}
+        defaultIsCollapsed={false}
+        sx={sx}
+        collapseButtonSx={collapseButtonSx}
+        renderHeader={renderHeader}
+        renderContent={({ isCollapsed }) => (
+          <Menu
+            width="100%"
+            height={`calc(100svh - ${menuHeaderHeight}px - 16px)`}
+            items={menuItems}
+            renderItem={(item: NavMenuItemProps) => {
+              if (!item.subItems)
+                return (
                   <MenuItem
+                    key={item.label}
                     label={item.label}
                     isActive={checkIsParentItemActive(item)}
                     icon={item.icon}
                     clickable
                     ellipsis
-                    onClick={openPopper}
-                    onMouseEnter={openPopper}
-                    sx={{ backgroundColor: isOpen ? 'divider' : 'transparent' }}
+                    onClick={item.onClick}
                   />
-                )}
-              >
-                <Menu
-                  width={menuWidth}
-                  items={item.subItems}
-                  renderItem={(subItem) => (
+                );
+
+              if (!isCollapsed && item.subItems?.length) {
+                return (
+                  <Collapse
+                    defaultIsCollapsed={true}
+                    renderTrigger={(itemTrigger) => (
+                      <MenuItem
+                        label={item.label}
+                        isActive={checkIsParentItemActive(item)}
+                        icon={item.icon}
+                        clickable
+                        ellipsis
+                        onClick={itemTrigger.toggleCollapsed}
+                        endIcon={
+                          <Icon
+                            icon={
+                              itemTrigger.isCollapsed
+                                ? 'solar:alt-arrow-down-bold-duotone'
+                                : 'solar:alt-arrow-up-bold-duotone'
+                            }
+                          />
+                        }
+                        sx={{
+                          backgroundColor: itemTrigger.isCollapsed ? 'transparent' : 'divider',
+                        }}
+                      />
+                    )}
+                    style={
+                      {
+                        // width: 'calc(100% - 26px)',
+                        // marginLeft: '26px',
+                      }
+                    }
+                  >
+                    <Menu
+                      width={'100%'}
+                      items={item.subItems}
+                      renderItem={(subItem) => (
+                        <MenuItem
+                          key={subItem.label}
+                          label={subItem.label}
+                          isActive={checkIsSubItemActive(subItem)}
+                          startIconPlaceholder
+                          clickable
+                          ellipsis
+                          onClick={subItem.onClick}
+                          sx={{}}
+                        />
+                      )}
+                    />
+                  </Collapse>
+                );
+              }
+
+              return (
+                <Popper
+                  id={item.label}
+                  position="right"
+                  sx={{ width: '100%' }}
+                  contentSx={{ p: '8px' }}
+                  renderPopperHandler={({ isOpen, openPopper }) => (
                     <MenuItem
-                      key={subItem.label}
-                      label={subItem.label}
-                      isActive={checkIsSubItemActive(subItem)}
-                      icon={subItem.icon}
+                      label={item.label}
+                      isActive={checkIsParentItemActive(item)}
+                      icon={item.icon}
                       clickable
                       ellipsis
-                      onClick={subItem.onClick}
+                      onClick={openPopper}
+                      onMouseEnter={openPopper}
+                      sx={{ backgroundColor: isOpen ? 'divider' : 'transparent' }}
                     />
                   )}
-                />
-              </Popper>
-            );
-          }}
-        />
-      </Paper>
+                >
+                  <Menu
+                    width={menuWidth}
+                    items={item.subItems}
+                    renderItem={(subItem) => (
+                      <MenuItem
+                        key={subItem.label}
+                        label={subItem.label}
+                        isActive={checkIsSubItemActive(subItem)}
+                        icon={subItem.icon}
+                        clickable
+                        ellipsis
+                        onClick={subItem.onClick}
+                      />
+                    )}
+                  />
+                </Popper>
+              );
+            }}
+          />
+        )}
+      />
     );
   },
 );

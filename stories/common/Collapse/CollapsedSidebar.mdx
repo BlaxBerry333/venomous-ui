@@ -1,0 +1,54 @@
+import { Meta, Canvas, Primary, Controls, Story } from '@storybook/blocks';
+import * as Stories from './CollapsedSidebar.stories';
+
+<Meta of={Stories} />
+
+# CollapsedSidebar
+
+```tsx
+import { CollapsedSidebar } from 'venomous-ui';
+```
+
+## Props
+
+<Controls />
+<Canvas of={Stories.Default} sourceState="none" />
+
+## Examples
+
+It is recommended to wrap `renderHeader` rendered elements with empty tags `<>` if they are nested.
+
+```tsx
+import { CollapsedSidebar, Flex } from 'venomous-ui';
+
+function App() {
+  return (
+    <Flex row>
+      <CollapsedSidebar
+        width={220}
+        collapsedWidth={64}
+        headerHeight={50}
+        defaultIsCollapsed={false}
+        renderHeader={() => (
+          <>
+            <Text text="Header" isTitle ellipsis width={1} />
+          </>
+        )}
+      />
+
+      <CollapsedSidebar
+        width={220}
+        collapsedWidth={64}
+        headerHeight={50}
+        defaultIsCollapsed={false}
+        renderHeader={() => (
+          <>
+            <Icon width={32} icon="solar:box-minimalistic-bold-duotone" />
+            <Text text="Header" isTitle ellipsis width={1} ml={'16px'} />
+          </>
+        )}
+      />
+    </Flex>
+  );
+}
+```

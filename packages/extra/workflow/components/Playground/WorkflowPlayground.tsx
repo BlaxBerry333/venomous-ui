@@ -9,7 +9,6 @@ import {
   useWorkflowConfigs,
   useWorkflowEdgeConnection,
   useWorkflowEdgeReConnection,
-  useWorkflowElementsSelect,
   useWorkflowInit,
   useWorkflowNodeCreate,
   useWorkflowNodeMove,
@@ -35,7 +34,6 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
     const { onNodeMoveStart, onNodeMoveStop, onNodeMoving } = useWorkflowNodeMove();
     const { isValidConnection, onConnect, onConnectEnd } = useWorkflowEdgeConnection();
     const { onReconnect, onReconnectStart, onReconnectEnd } = useWorkflowEdgeReConnection();
-    const { onSelectionChange } = useWorkflowElementsSelect();
 
     return (
       <Paper isOutlined sx={{ overflow: 'hidden', p: 0, ...sx }}>
@@ -85,7 +83,7 @@ const WorkflowPlayground: WorkflowPlaygroundComponentType = memo(
           onNodeDragStart={onNodeMoveStart}                                /** Node 移动开始的回调 */
           onNodeDrag={onNodeMoving}                                        /** Node 移动中的回调 */
           onNodeDragStop={onNodeMoveStop}                                  /** Node 移动结束的回调 */
-          onSelectionChange={onSelectionChange}                            /** 画布上的 Nodes、 Edges 选中状态 selected 切换时的回调 */
+          // onSelectionChange={onSelectionChange}                            /** 画布上的 Nodes、 Edges 选中状态 selected 切换时的回调 */
           // ----------------------------------------------------------------------------------------------------
           deleteKeyCode={null}                                             /** 默认删除键的 KeyCode */
           // ----------------------------------------------------------------------------------------------------

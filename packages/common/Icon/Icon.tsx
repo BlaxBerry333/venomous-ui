@@ -13,6 +13,7 @@ const Icon: IconComponentType = memo(({ ref, icon, width = 20, color = 'auto', s
       icon={icon}
       sx={{
         width,
+        minWidth: width,
         height: width,
         flexShrink: 0,
         display: 'inline-flex',

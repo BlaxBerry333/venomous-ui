@@ -11,8 +11,8 @@ import {
 } from '../stores/workflow-actions-history-store';
 import useWorkflowConfigs from '../stores/workflow-configs-store';
 import useWorkflowCopiedElements from '../stores/workflow-copied-elements-store';
-import useWorkflowSelectedElements from '../stores/workflow-selected-elements-store';
 import useWorkflowElementsDelete from './use-workflow-elements-delete';
+import useWorkflowElementsSelected from './use-workflow-elements-selected';
 import useWorkflowInstance from './use-workflow-instance';
 
 export default function useWorkflowElementsCopyPasteCut<
@@ -24,7 +24,7 @@ export default function useWorkflowElementsCopyPasteCut<
   const { updateActionsHistory } = useWorkflowActionsHistoryUpdate();
   const { deleteSelectedElements } = useWorkflowElementsDelete();
   const copiedElements = useWorkflowCopiedElements();
-  const selectedElements = useWorkflowSelectedElements();
+  const selectedElements = useWorkflowElementsSelected();
 
   const pasteCount = useRef<number>(0);
 

@@ -29,6 +29,7 @@ const Select: SelectComponentType = memo(
     hideOptionsWhenEmpty = false,
     isLoadingOptions = false,
     renderOption,
+    sx,
   }) => {
     const id = useId();
 
@@ -81,7 +82,7 @@ const Select: SelectComponentType = memo(
               slotProps={{
                 input: {
                   ...params.InputProps,
-                  sx: { ...inputCommonStyle },
+                  sx: { ...inputCommonStyle, ...sx },
                   endAdornment: (
                     <>
                       {isLoadingOptions ? (

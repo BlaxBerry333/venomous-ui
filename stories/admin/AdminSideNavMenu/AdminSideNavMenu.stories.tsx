@@ -1,8 +1,10 @@
-import { AdminSideNavMenu, type AdminSideNavMenuProps } from '@packages/admin';
-import { Text } from '@packages/common';
-import MenuMeta from '@stories/common/Menu/Menu.stories';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+
+import { AdminSideNavMenu, type AdminSideNavMenuProps } from '@packages/admin';
+import { Text } from '@packages/common';
+import CollapsedSidebarMeta from '@stories/common/Collapse/CollapsedSidebar.stories';
+import MenuMeta from '@stories/common/Menu/Menu.stories';
 
 const meta = {
   title: 'Admin Components/AdminSideNavMenu',
@@ -10,22 +12,11 @@ const meta = {
   parameters: { layout: 'fullscreen' },
   tags: ['!autodocs', '!dev'],
   argTypes: {
-    menuHeaderHeight: {
-      description: 'Menu header height',
-      control: 'number',
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '50' },
-      },
-    },
-    menuWidth: {
-      description: 'Menu header height',
-      control: 'number',
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '220' },
-      },
-    },
+    menuHeaderHeight: CollapsedSidebarMeta.argTypes.headerHeight,
+    menuWidth: CollapsedSidebarMeta.argTypes.width,
+    renderHeader: CollapsedSidebarMeta.argTypes.renderHeader,
+    collapsedWidth: CollapsedSidebarMeta.argTypes.collapsedWidth,
+    collapseButtonSx: CollapsedSidebarMeta.argTypes.collapseButtonSx,
     menuItems: {
       ...MenuMeta.argTypes.items,
       description: 'Menu items',
@@ -38,21 +29,13 @@ const meta = {
         defaultValue: { summary: '""' },
       },
     },
-    menuHeaderElement: {
-      description: 'Menu header element',
-      control: 'object',
-      table: {
-        type: { summary: 'ReactNode' },
-        defaultValue: { summary: 'null' },
-      },
-    },
   },
   args: {
-    menuHeaderHeight: 50,
-    menuWidth: 220,
+    menuHeaderHeight: CollapsedSidebarMeta.args.headerHeight,
+    menuWidth: CollapsedSidebarMeta.args.width,
+    collapsedWidth: CollapsedSidebarMeta.args.collapsedWidth,
     menuItems: [],
     currentPath: '',
-    menuHeaderElement: null,
   },
 } satisfies Meta<typeof AdminSideNavMenu>;
 
@@ -126,12 +109,12 @@ export const Default: Story = {
       <AdminSideNavMenu
         menuItems={menuItems}
         {...args}
-        menuHeaderElement={
+        renderHeader={() => (
           <>
             <LogoElement />
-            <Text text={'I Library'} isTitle />
+            <Text text={'I Library'} isTitle ellipsis />
           </>
-        }
+        )}
       />
     );
   },

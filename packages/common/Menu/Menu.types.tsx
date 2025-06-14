@@ -9,13 +9,16 @@ export interface MenuItemProps {
 
   clickable?: boolean;
   disabled?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
-  onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  onMouseEnter?: React.MouseEventHandler<HTMLDivElement>;
+  onMouseLeave?: React.MouseEventHandler<HTMLDivElement>;
 
   isActive?: boolean;
   sx?: FlexProps['sx'];
   ellipsis?: TextProps['ellipsis'];
+
+  endIcon?: ReactNode;
+  startIconPlaceholder?: boolean;
 }
 
 export interface MenuProps {

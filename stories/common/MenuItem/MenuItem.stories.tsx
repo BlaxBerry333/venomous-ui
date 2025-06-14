@@ -52,6 +52,22 @@ const meta = {
     ellipsis: {
       ...TextMeta.argTypes?.ellipsis,
     },
+    endIcon: {
+      description: 'Item end icon',
+      control: false,
+      table: {
+        type: { summary: 'ReactNode' },
+        defaultValue: { summary: '' },
+      },
+    },
+    startIconPlaceholder: {
+      description: 'Item start icon placeholder',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     onClick: {
       description: 'Callback function when the modal is closed',
       if: { arg: 'clickable', truthy: true },
@@ -68,7 +84,11 @@ const meta = {
     clickable: false,
     disabled: false,
     ellipsis: false,
+    endIcon: undefined,
+    startIconPlaceholder: false,
     onClick: () => alert('onClick'),
+    onMouseEnter: () => {},
+    onMouseLeave: () => {},
   },
 } satisfies Meta<typeof MenuItem>;
 

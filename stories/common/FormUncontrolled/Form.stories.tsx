@@ -3,7 +3,7 @@ import {
   FormUncontrolled,
   FormUncontrolledAction,
   InputUncontrolled,
-  NumberUncontrolled,
+  NumberInputUncontrolled,
   OtpInputUncontrolled,
   PasswordUncontrolled,
   RadiosUncontrolled,
@@ -81,7 +81,7 @@ export const Default: Story = {
       >
         <InputUncontrolled name="name" label="User Name" fullWidth />
         <PasswordUncontrolled name="password" label="Password" fullWidth />
-        <NumberUncontrolled name="age" label="User Age" />
+        <NumberInputUncontrolled name="age" label="User Age" />
         <CheckboxUncontrolled name="isAdmin" label="Is Admin User" labelDirection="start" />
         <SwitchUncontrolled name="isAdmin" startLabel="Is Admin User" labelsDirection="column" />
         <OtpInputUncontrolled name="code" label="Code" />
@@ -143,7 +143,7 @@ export const UsingZodSchema: Story = {
         onSubmit={(formValue) => console.log('formValue', formValue)}
       >
         <InputUncontrolled name="name" label="User Name" />
-        <NumberUncontrolled name="age" label="User Age" />
+        <NumberInputUncontrolled name="age" label="User Age" />
 
         <FormUncontrolledAction
           cancelButtonText="Cancel"

@@ -15,10 +15,11 @@ export {
   useWorkflowCopiedElements,
   useWorkflowElementsCopyPasteCut,
   useWorkflowElementsProtect,
+  useWorkflowElementsSelected,
   useWorkflowInstance,
   useWorkflowNodeCreate,
   useWorkflowNodeJump,
   useWorkflowNodeUpdate,
-  useWorkflowSelectedElements,
+  useWorkflowPanel,
   type WorkflowConfigs,
 } from './hooks';
