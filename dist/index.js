@@ -16890,6 +16890,7 @@ const Yi = Pe(
             px: "12px",
             transition: "background-color 0.2s ease; color 0.2s ease",
             backgroundColor: l ? "divider" : "transparent",
+            backgroundImage: "none",
             "&:hover": { backgroundColor: "divider" },
             cursor: o ? "not-allowed" : "pointer"
           },
@@ -16902,7 +16903,7 @@ const Yi = Pe(
                 text: t,
                 ellipsis: u,
                 textColor: l ? "primary" : "auto",
-                sx: { mx: "8px", fontWeight: 550 }
+                sx: { mx: "8px" }
               }
             ),
             d
@@ -16935,7 +16936,7 @@ const Yi = Pe(
             ellipsis: u,
             flex: 1,
             textColor: o ? "disabled" : l ? "primary" : "auto",
-            sx: { mx: "8px", fontWeight: 550 }
+            sx: { mx: "8px" }
           }
         ),
         d
@@ -56389,7 +56390,14 @@ const lte = Li()(
   )
 );
 function b$() {
-  return Yr(lte);
+  const e = Yr(lte), { selectedNodeId: t } = e, { getNode: n } = to(), o = Ge(() => {
+    if (t)
+      return n(t);
+  }, [t]);
+  return {
+    ...e,
+    selectedNode: o
+  };
 }
 const av = Pe(({ renderChildren: e, ...t }) => {
   const n = Kn(), {
@@ -56819,12 +56827,9 @@ const vte = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty(
   default: T$
 }, Symbol.toStringTag, { value: "Module" })), xte = Pe(
   ({ position: e = "bottom-right", style: t, renderContent: n }) => {
-    var s;
-    const { getNode: o } = to(), { selectedNodeId: r } = b$(), i = Ge(() => {
-      if (r)
-        return o(r);
-    }, [r]);
-    return !r || !((s = i == null ? void 0 : i.data) != null && s.formValue) ? null : /* @__PURE__ */ O(
+    var r;
+    const { selectedNode: o } = b$();
+    return (r = o == null ? void 0 : o.data) != null && r.formValue ? /* @__PURE__ */ O(
       iu,
       {
         isPaper: !0,
@@ -56835,9 +56840,9 @@ const vte = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty(
           width: 300,
           ...t
         },
-        children: n == null ? void 0 : n(i)
+        children: n == null ? void 0 : n(o)
       }
-    );
+    ) : null;
   }
 );
 xte.displayName = "NodeDataFormValuePanel";

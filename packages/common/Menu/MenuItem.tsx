@@ -55,6 +55,7 @@ const MenuItem: MenuItemComponentType = memo(
               px: '12px',
               transition: 'background-color 0.2s ease; color 0.2s ease',
               backgroundColor: isActive ? 'divider' : 'transparent',
+              backgroundImage: 'none',
               '&:hover': { backgroundColor: 'divider' },
               cursor: disabled ? 'not-allowed' : 'pointer',
             }}
@@ -67,7 +68,7 @@ const MenuItem: MenuItemComponentType = memo(
               text={label}
               ellipsis={ellipsis}
               textColor={isActive ? 'primary' : 'auto'}
-              sx={{ mx: '8px', fontWeight: 550 }}
+              sx={{ mx: '8px' }}
             />
 
             {endIcon}
@@ -97,7 +98,7 @@ const MenuItem: MenuItemComponentType = memo(
           ellipsis={ellipsis}
           flex={1}
           textColor={disabled ? 'disabled' : isActive ? 'primary' : 'auto'}
-          sx={{ mx: '8px', fontWeight: 550 }}
+          sx={{ mx: '8px' }}
         />
         {endIcon}
       </Flex>

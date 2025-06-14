@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
 import { create, useStore } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 import type { WorkflowNode } from '@packages/extra/workflow/types';
+import useWorkflowInstance from '../core/use-workflow-instance';
 
 const workflowPanelStore = create<{
   selectedNodeId: WorkflowNode['id'] | null;
@@ -22,5 +24,17 @@ const workflowPanelStore = create<{
 );
 
 export default function useWorkflowPanel() {
-  return useStore(workflowPanelStore);
+  const store = useStore(workflowPanelStore);
+  const { selectedNodeId } = store;
+
+  const { getNode } = useWorkflowInstance();
+  const selectedNode = useMemo<WorkflowNode | undefined>(() => {
+    if (!selectedNodeId) return void 0;
+    return getNode(selectedNodeId);
+  }, [selectedNodeId]);
+
+  return {
+    ...store,
+    selectedNode,
+  };
 }
