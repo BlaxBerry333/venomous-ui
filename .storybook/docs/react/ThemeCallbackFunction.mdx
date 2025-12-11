@@ -1,0 +1,247 @@
+import { Meta, Source } from "@storybook/blocks";
+
+<Meta title="React/Theme Callback Function" />
+
+# Theme Callback Function
+
+When styling components with `style` prop, the attribute accepts both a standard CSS object and a theme callback functions.
+
+Accessing the parameters of the theme callback function you can use the `theme` object.
+
+<Source
+  language="tsx"
+  dark
+  code={`<Button
+  style={(theme) => ({
+    backgroundColor: theme.mode.isDark
+      ? theme.semanticColors.success.dark
+      : theme.semanticColors.success.main,
+    color: theme.fontColor("primary"),
+    padding: \`\${theme.spacing(2)} \${theme.spacing(4)}\`,
+    borderRadius: theme.borderRadius("medium"),
+    boxShadow: theme.boxShadow("small"),
+    transition: theme.transition("fast"),
+  })}
+  text="Themed Button"
+/>`}
+/>
+
+## Theme object
+
+<br/>
+
+### Mode
+
+Information about the current theme mode:
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.mode.current   // "light" | "dark"
+theme.mode.isDark    // boolean
+theme.mode.isLight   // boolean`}
+/>
+
+
+### Palette Colors
+
+User-configurable main color palette:
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.paletteColors.light   // lighter variant
+theme.paletteColors.main    // main color
+theme.paletteColors.dark    // darker variant`}
+/>
+
+### Semantic Colors
+
+Semantic colors for success, warning, error, and info states:
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.semanticColors.success.light
+theme.semanticColors.success.main
+theme.semanticColors.success.dark
+
+theme.semanticColors.warning.light
+theme.semanticColors.warning.main
+theme.semanticColors.warning.dark
+
+theme.semanticColors.error.light
+theme.semanticColors.error.main
+theme.semanticColors.error.dark
+
+theme.semanticColors.info.light
+theme.semanticColors.info.main
+theme.semanticColors.info.dark`}
+/>
+
+### Background Color
+
+Auto-switches between light/dark mode:
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.backgroundColor("body")      // page background
+theme.backgroundColor("normal")    // component background
+theme.backgroundColor("float")     // floating element background
+theme.backgroundColor("active")    // active state background
+theme.backgroundColor("disabled")  // disabled state background`}
+/>
+
+### Font Color
+
+Auto-switches between light/dark mode:
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.fontColor("primary")    // main text
+theme.fontColor("secondary")  // secondary text
+theme.fontColor("tertiary")   // tertiary text
+theme.fontColor("disabled")   // disabled text`}
+/>
+
+### Border Color
+
+Auto-switches between light/dark mode:
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.borderColor("primary")    // main border
+theme.borderColor("secondary")  // secondary border
+theme.borderColor("tertiary")   // tertiary border
+theme.borderColor("disabled")   // disabled border`}
+/>
+
+### Spacing
+
+Based on 4px scale (0-10):
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.spacing(0)   // "0px"
+theme.spacing(1)   // "4px"
+theme.spacing(2)   // "8px"
+theme.spacing(3)   // "12px"
+theme.spacing(4)   // "16px"
+theme.spacing(5)   // "20px"
+// ... up to 10`}
+/>
+
+### Border Radius
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.borderRadius("none")    // "0px"
+theme.borderRadius("small")   // "4px"
+theme.borderRadius("medium")  // "8px"
+theme.borderRadius("large")   // "16px"
+theme.borderRadius("full")    // "9999px"`}
+/>
+
+### Breakpoints
+
+For responsive design logic:
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.breakpoint("xs")  // "0px"
+theme.breakpoint("sm")  // "640px"
+theme.breakpoint("md")  // "768px"
+theme.breakpoint("lg")  // "1024px"
+theme.breakpoint("xl")  // "1280px"`}
+/>
+
+### Font Size
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.fontSize("small")   // "14px"
+theme.fontSize("medium")  // "16px"
+theme.fontSize("large")   // "18px"`}
+/>
+
+### Font Weight
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.fontWeight("light")     // 300
+theme.fontWeight("regular")   // 400
+theme.fontWeight("medium")    // 500
+theme.fontWeight("semibold")  // 600
+theme.fontWeight("bold")      // 700`}
+/>
+
+### Line Height
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.lineHeight("small")   // "1.25"
+theme.lineHeight("medium")  // "1.5"
+theme.lineHeight("large")   // "1.75"`}
+/>
+
+### Box Shadow
+
+Auto-switches between light/dark mode:
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.boxShadow("none")    // no shadow
+theme.boxShadow("small")   // subtle shadow
+theme.boxShadow("medium")  // medium shadow
+theme.boxShadow("large")   // prominent shadow`}
+/>
+
+### Opacity
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.opacity("low")     // 0.3
+theme.opacity("medium")  // 0.6
+theme.opacity("high")    // 1.0`}
+/>
+
+### Transition
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.transition("fast")    // "all 100ms ease-out"
+theme.transition("normal")  // "all 200ms ease-in-out"
+theme.transition("slow")    // "all 300ms ease-in"`}
+/>
+
+### Stroke Width
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.strokeWidth("small")   // "1px"
+theme.strokeWidth("medium")  // "2px"
+theme.strokeWidth("large")   // "4px"`}
+/>
+
+### Z-Index
+
+<Source
+  language="tsx"
+  dark
+  code={`theme.zIndex("small")   // 100
+theme.zIndex("medium")  // 200
+theme.zIndex("large")   // 300`}
+/>

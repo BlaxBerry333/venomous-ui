@@ -1,0 +1,91 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock } from "../../components";
+import { Icon } from "../../../src/react/components";
+
+<Meta title="React/Styling System" />
+
+# Styling System
+
+`venomous-ui` has 2 ways to style a component, using the `className` or `style` props. 
+
+When styling with `style` prop, the attribute accepts both a standard CSS object and a theme callback functions, but before using which one, you must wrap the component in the `<ThemeProvider>` component.
+
+<StoryDocsTabCodeBlock
+  source={{ dark: true }}
+  tabs={[
+    {
+      label: "with className",
+      icon: <Icon icon="material-icon-theme:react" />,
+      language: "html",
+      code: `
+<ThemeProvider>
+  <Button className="my-custom-button" text="Custom" />
+</ThemeProvider>
+
+<style>
+  .my-custom-button {
+    /* Your custom styles - will override default styles */
+    background-color: purple;
+    border-radius: 999px;
+  }
+</style>`,
+    },
+    {
+      label: "with style",
+      icon: <Icon icon="material-icon-theme:react" />,
+      language: "tsx",
+      code: `
+<ThemeProvider>
+  // CSS object
+  <Button
+    text="Click me"
+    style={{ 
+      borderRadius: "16px", 
+      backgroundColor: "green" 
+    }}
+  />
+
+  // Theme callback function
+  <Button
+    text="Click me"
+    style={(theme) => ({
+      borderRadius: theme.borderRadius("large"),
+      backgroundColor: theme.semanticColors.success.main,
+    })}
+  />
+</ThemeProvider>`,
+    },
+  ]}
+/>
+
+## CSS classes
+
+All components use consistent class names with the `VENOMOUS_UI__` prefix to avoid style conflicts.
+
+<Source
+  language="css"
+  dark
+  code={`
+.VENOMOUS_UI__Button__base { /* Base styles */ }
+.VENOMOUS_UI__Button__loading { /* State modifier */ }
+.VENOMOUS_UI__Button__disabled { /* State modifier */ }
+.VENOMOUS_UI__Button__variantContained { /* Variant modifier */ }
+.VENOMOUS_UI__Button__sizeSmall { /* Size modifier */ }`}
+/>
+
+## CSS Injection
+
+All components' classes and styles are automatically injected into the `style` tag of the document `<head>` when mounted.
+
+- Each component's styles are injected only once (no duplicates)
+- Styles are marked with `data-*` attributes for identification
+- Styles persist for the page lifetime (not removed on unmount) for better performance
+
+<Source language="html" dark code={`
+<html>
+  <head>
+    <!-- others -->
+    <style data-venomous_ui__button>/* Button CSS */</style>
+    <style data-venomous_ui__card>/* Card CSS */</style>
+  </head>
+</html>`} />

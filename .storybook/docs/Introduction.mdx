@@ -1,0 +1,85 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock } from "../components";
+import { Icon } from "../../src/react/components";
+
+<Meta title="Introduction" />
+
+# Venomous UI
+
+`venomous-ui` is a UI component library that supports multiple front-end frameworks.
+
+- Supports multiple front-end frameworks such as React and Vue  
+- Client-side rendering only  
+- Tree-shakeable: Import only what you need  
+- TypeScript First: Full type safety and IntelliSense support  
+
+<br/>
+
+## Installation
+
+Only can be downloaded from my GitHub repository.
+
+<StoryDocsTabCodeBlock
+  source={{ dark: true }}
+  tabs={[
+    {
+      label: "npm",
+      icon: <Icon icon="material-icon-theme:npm" />,
+      language: "text",
+      code: `npm install github:BlaxBerry333/venomous-ui#release`,
+    },
+    {
+      label: "yarn",
+      icon: <Icon icon="material-icon-theme:yarn" />,
+      language: "text",
+      code: `yarn add github:BlaxBerry333/venomous-ui#release`,
+    },
+    {
+      label: "pnpm",
+      icon: <Icon icon="material-icon-theme:pnpm" />,
+      language: "text",
+      code: `pnpm add github:BlaxBerry333/venomous-ui#release`,
+    },
+  ]}
+/>
+
+## Quick Start
+
+Supports multiple front-end frameworks.
+
+<StoryDocsTabCodeBlock
+  source={{ dark: true }}
+  tabs={[
+    {
+      label: "React",
+      icon: <Icon icon="material-icon-theme:react" />,
+      language: "tsx",
+      code: `"use client";
+
+import { ThemeProvider, Button } from "venomous-ui/react/components";
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Button text="Click me" onClick={() => console.log("Clicked!")} />
+    </ThemeProvider>
+  );
+}
+`,
+    },
+    {
+      label: "Vue",
+      icon: <Icon icon="material-icon-theme:vue" />,
+      language: "html",
+      code: `<script setup lang="ts">
+import { ThemeProvider, Button } from "venomous-ui/vue/components";
+</script>
+
+<template>
+  <ThemeProvider>
+    <ButtonStyled text="Click me" @click="console.log('Clicked!')" />
+  </ThemeProvider>
+</template>`,
+    },
+  ]}
+/>

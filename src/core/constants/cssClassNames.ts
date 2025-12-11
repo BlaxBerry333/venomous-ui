@@ -1,0 +1,153 @@
+import { COMPONENT_NAMES } from "./componentNames";
+
+/**
+ * Box
+ */
+export const BOX_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Box}__base`,
+    description: "Box root class",
+  },
+} as const;
+
+/**
+ * Button
+ */
+export const BUTTON_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Button}__base`,
+    description: "Button root class",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.Button}__disabled`,
+    description: "if `Button.disabled={true}`",
+  },
+  loading: {
+    className: `${COMPONENT_NAMES.Button}__loading`,
+    description: "if `Button.loading={true}`",
+  },
+  fullWidth: {
+    className: `${COMPONENT_NAMES.Button}__fullwidth`,
+    description: "if `Button.fullWidth={true}`",
+  },
+  variantContained: {
+    className: `${COMPONENT_NAMES.Button}__variantContained`,
+    description: "if `Button.variant='contained'`",
+  },
+  variantOutlined: {
+    className: `${COMPONENT_NAMES.Button}__variantOutlined`,
+    description: "if `Button.variant='outlined'`",
+  },
+  variantText: {
+    className: `${COMPONENT_NAMES.Button}__variantText`,
+    description: "if `Button.variant='text'`",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.Button}__sizeSmall`,
+    description: "if `Button.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.Button}__sizeMedium`,
+    description: "if `Button.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.Button}__sizeLarge`,
+    description: "if `Button.size='large'`",
+  },
+} as const;
+
+/**
+ * Card
+ */
+export const CARD_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Card}__base`,
+    description: "Card root class",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.Card}__disabled`,
+    description: "if `Card.disabled={true}`",
+  },
+  loading: {
+    className: `${COMPONENT_NAMES.Card}__loading`,
+    description: "if `Card.loading={true}`",
+  },
+  clickable: {
+    className: `${COMPONENT_NAMES.Card}__clickable`,
+    description: "if `Card.clickable={true}`",
+  },
+  variantElevated: {
+    className: `${COMPONENT_NAMES.Card}__variantElevated`,
+    description: "if `Card.variant='elevated'`",
+  },
+  variantOutlined: {
+    className: `${COMPONENT_NAMES.Card}__variantOutlined`,
+    description: "if `Card.variant='outlined'`",
+  },
+  variantFilled: {
+    className: `${COMPONENT_NAMES.Card}__variantFilled`,
+    description: "if `Card.variant='filled'`",
+  },
+  paddingNone: {
+    className: `${COMPONENT_NAMES.Card}__paddingNone`,
+    description: "if `Card.padding='none'`",
+  },
+  paddingSmall: {
+    className: `${COMPONENT_NAMES.Card}__paddingSmall`,
+    description: "if `Card.padding='small'`",
+  },
+  paddingMedium: {
+    className: `${COMPONENT_NAMES.Card}__paddingMedium`,
+    description: "if `Card.padding='medium'`",
+  },
+  paddingLarge: {
+    className: `${COMPONENT_NAMES.Card}__paddingLarge`,
+    description: "if `Card.padding='large'`",
+  },
+  radiusNone: {
+    className: `${COMPONENT_NAMES.Card}__radiusNone`,
+    description: "if `Card.radius='none'`",
+  },
+  radiusSmall: {
+    className: `${COMPONENT_NAMES.Card}__radiusSmall`,
+    description: "if `Card.radius='small'`",
+  },
+  radiusMedium: {
+    className: `${COMPONENT_NAMES.Card}__radiusMedium`,
+    description: "if `Card.radius='medium'`",
+  },
+  radiusLarge: {
+    className: `${COMPONENT_NAMES.Card}__radiusLarge`,
+    description: "if `Card.radius='large'`",
+  },
+} as const;
+
+/**
+ * Icon
+ */
+export const ICON_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Icon}__base`,
+    description: "Icon root class",
+  },
+} as const;
+
+/**
+ * Space.Flex
+ */
+export const SPACE_FLEX_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.SpaceFlex}__base`,
+    description: "Space.Flex root class",
+  },
+} as const;
+
+/**
+ * Space.Grid
+ */
+export const SPACE_GRID_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.SpaceGrid}__base`,
+    description: "Space.Grid root class",
+  },
+} as const;
