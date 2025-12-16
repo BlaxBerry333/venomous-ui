@@ -1,10 +1,10 @@
-import { Flex } from "./Flex";
-import { Grid } from "./Grid";
+import { SpaceFlex } from "./Flex";
+import { SpaceGrid } from "./Grid";
 
 export * from "./Flex";
 export * from "./Grid";
 
 export const Space = {
-  Flex,
-  Grid,
+  Flex: SpaceFlex,
+  Grid: SpaceGrid,
 };

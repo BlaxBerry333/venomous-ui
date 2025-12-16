@@ -1,22 +1,13 @@
 import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CssReset } from "@/react/components/CssReset";
-import { ThemeProvider } from "@/react/components/ThemeProvider";
-import Grid from "./Grid";
+import { Card } from "@/react/components/Card";
+import Grid from "./SpaceGrid";
 
 const meta = {
   title: "React/Components/<Space.Grid>",
   component: Grid,
   tags: ["autodocs"],
-  decorators: [
-    (Story) => (
-      <ThemeProvider>
-        <CssReset />
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
   argTypes: {
     as: {
       description: "HTML element to render as.",
@@ -31,13 +22,13 @@ const meta = {
       options: ["div", "span", "section", "main", "aside", "header", "footer", "nav", "figure", "figcaption"],
     },
     spacing: {
-      description: "Gap between grid items, same as theme.spacing().",
+      description: "Gap between children, same as theme.spacing().",
       table: {
-        type: { summary: '"none" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10' },
+        type: { summary: "0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10" },
         defaultValue: { summary: '"none"' },
       },
-      control: { type: "select" },
-      options: ["none", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      control: { type: "number", min: 0, max: 10, step: 1 },
+      options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
     columns: {
       description: "Number of columns, supports number or responsive object.",
@@ -125,6 +116,10 @@ function App() {
           <Heading>{StyleCallbackExample.name}</Heading>
           <Description of={StyleCallbackExample} />
           <Canvas of={StyleCallbackExample} />
+
+          <Heading>{ResponsiveColumnsExample.name}</Heading>
+          <Description of={ResponsiveColumnsExample} />
+          <Canvas of={ResponsiveColumnsExample} />
         </>
       ),
     },
@@ -148,9 +143,9 @@ export const Playground: Story = {
   render: (args) => (
     <Grid {...args}>
       {[...Array(6).keys()].map((i) => (
-        <div key={i} style={{ padding: 16, backgroundColor: "#e3f2fd", borderRadius: 4, textAlign: "center" }}>
+        <Card key={i} variant="outlined" style={{ textAlign: "center" }}>
           Item {i}
-        </div>
+        </Card>
       ))}
     </Grid>
   ),
@@ -169,20 +164,20 @@ export const StyleCallbackExample: Story = {
       },
       source: {
         code: `
-<Grid
+<Space.Grid
   columns={3}
   spacing={4}
   style={(theme) => ({
-    padding: theme.spacing(4),
-    backgroundColor: theme.backgroundColor("float"),
-    borderRadius: theme.borderRadius("medium"),
-    boxShadow: theme.boxShadow("small"),
+    backgroundColor: theme.paletteColors.light,
+    color: "#FFFFFF",
   })}
 >
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</Grid>
+  {[1, 2, 3, 4, 5, 6].map((i) => (
+    <div key={i} style={{ textAlign: "center" }}>
+      Item {i}
+    </div>
+  ))}
+</Space.Grid>
         `.trim(),
       },
     },
@@ -193,14 +188,69 @@ export const StyleCallbackExample: Story = {
         columns={3}
         spacing={4}
         style={(theme) => ({
-          padding: theme.spacing(4),
-          backgroundColor: theme.backgroundColor("float"),
-          borderRadius: theme.borderRadius("medium"),
-          boxShadow: theme.boxShadow("small"),
+          backgroundColor: theme.paletteColors.light,
+          color: "#FFFFFF",
         })}
       >
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} style={{ padding: 12, backgroundColor: "#e3f2fd", borderRadius: 4, textAlign: "center" }}>
+          <div key={i} style={{ textAlign: "center" }}>
+            Item {i}
+          </div>
+        ))}
+      </Grid>
+    );
+  },
+};
+
+// ============================
+// Responsive Columns Example
+// ============================
+export const ResponsiveColumnsExample: Story = {
+  name: "Responsive Columns",
+  tags: ["!dev"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Use responsive object for `columns` prop to create layouts that adapt to different screen sizes. Resize the browser window to see the effect.",
+      },
+      source: {
+        code: `
+<Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={4}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+  <div>Item 5</div>
+  <div>Item 6</div>
+  <div>Item 7</div>
+  <div>Item 8</div>
+</Space.Grid>
+
+// Breakpoints:
+// xs: default (no media query)
+// sm: 576px
+// md: 768px
+// lg: 992px
+// xl: 1200px
+        `.trim(),
+      },
+    },
+  },
+  render: function RenderStory() {
+    return (
+      <Grid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={4}>
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+          <div
+            key={i}
+            style={{
+              padding: 20,
+              backgroundColor: "#e3f2fd",
+              borderRadius: 8,
+              textAlign: "center",
+              fontWeight: 500,
+            }}
+          >
             Item {i}
           </div>
         ))}

@@ -1,2 +1,7 @@
-export { default as Grid } from "./Grid";
-export type { GridElement, GridProps, GridRenderElement, ResponsiveColumns } from "./Grid.types";
+export { default as SpaceGrid } from "./SpaceGrid";
+export type {
+  SpaceGridElement,
+  SpaceGridProps,
+  SpaceGridRenderElement,
+  SpaceGridResponsiveColumns,
+} from "./SpaceGrid.types";

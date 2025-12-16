@@ -1,2 +1,2 @@
-export { default as Flex } from "./Flex";
-export type { FlexElement, FlexProps, FlexRenderElement } from "./Flex.types";
+export { default as SpaceFlex } from "./SpaceFlex";
+export type { SpaceFlexElement, SpaceFlexProps, SpaceFlexRenderElement } from "./SpaceFlex.types";

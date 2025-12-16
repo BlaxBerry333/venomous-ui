@@ -1,22 +1,13 @@
 import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CssReset } from "@/react/components/CssReset";
-import { ThemeProvider } from "@/react/components/ThemeProvider";
-import Flex from "./Flex";
+import { Card } from "@/react/components/Card";
+import Flex from "./SpaceFlex";
 
 const meta = {
   title: "React/Components/<Space.Flex>",
   component: Flex,
   tags: ["autodocs"],
-  decorators: [
-    (Story) => (
-      <ThemeProvider>
-        <CssReset />
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
   argTypes: {
     as: {
       description: "HTML element to render as.",
@@ -33,11 +24,11 @@ const meta = {
     spacing: {
       description: "Gap between children, same as theme.spacing().",
       table: {
-        type: { summary: '"none" | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10' },
+        type: { summary: "0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10" },
         defaultValue: { summary: '"none"' },
       },
-      control: { type: "select" },
-      options: ["none", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      control: { type: "number", min: 0, max: 10, step: 1 },
+      options: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
     column: {
       description: "Use column direction (flex-direction: column).",
@@ -146,9 +137,11 @@ export const Playground: Story = {
   },
   render: (args) => (
     <Flex {...args}>
-      <div style={{ padding: 16, backgroundColor: "#e3f2fd", borderRadius: 4 }}>Item 1</div>
-      <div style={{ padding: 16, backgroundColor: "#e3f2fd", borderRadius: 4 }}>Item 2</div>
-      <div style={{ padding: 16, backgroundColor: "#e3f2fd", borderRadius: 4 }}>Item 3</div>
+      {[...Array(6).keys()].map((i) => (
+        <Card key={i} variant="outlined" style={{ textAlign: "center" }}>
+          Item {i}
+        </Card>
+      ))}
     </Flex>
   ),
 };
@@ -166,19 +159,19 @@ export const StyleCallbackExample: Story = {
       },
       source: {
         code: `
-<Flex
-  spacing={4}
+<Space.lex
+  spacing={10}
   style={(theme) => ({
-    padding: theme.spacing(4),
-    backgroundColor: theme.backgroundColor("float"),
-    borderRadius: theme.borderRadius("medium"),
-    boxShadow: theme.boxShadow("small"),
+    backgroundColor: theme.paletteColors.light,
+    color: "#FFFFFF",
   })}
 >
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</Flex>
+  {[1, 2, 3, 4, 5, 6].map((i) => (
+    <div key={i} style={{ textAlign: "center" }}>
+      Item {i}
+    </div>
+  ))}
+</Space.Flex>
         `.trim(),
       },
     },
@@ -186,17 +179,17 @@ export const StyleCallbackExample: Story = {
   render: function RenderStory() {
     return (
       <Flex
-        spacing={4}
+        spacing={10}
         style={(theme) => ({
-          padding: theme.spacing(4),
-          backgroundColor: theme.backgroundColor("float"),
-          borderRadius: theme.borderRadius("medium"),
-          boxShadow: theme.borderRadius("small"),
+          backgroundColor: theme.paletteColors.light,
+          color: "#FFFFFF",
         })}
       >
-        <div style={{ padding: 12, backgroundColor: "#e3f2fd", borderRadius: 4 }}>Item 1</div>
-        <div style={{ padding: 12, backgroundColor: "#e3f2fd", borderRadius: 4 }}>Item 2</div>
-        <div style={{ padding: 12, backgroundColor: "#e3f2fd", borderRadius: 4 }}>Item 3</div>
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <div key={i} style={{ textAlign: "center" }}>
+            Item {i}
+          </div>
+        ))}
       </Flex>
     );
   },

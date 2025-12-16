@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { describe, expect, it } from "vitest";
 
-import { COMPONENT_NAMES } from "@/core/constants";
+import { SPACE_GRID_CSS_CLASS_NAMES } from "@/core/constants";
 import { ThemeProvider } from "@/react/components/ThemeProvider";
-import Grid from "./Grid";
+import Grid from "./SpaceGrid";
 
 const renderWithTheme = (ui: React.ReactElement) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>);
@@ -65,7 +65,7 @@ describe("Grid", () => {
       </Grid>,
     );
     const element = screen.getByTestId("grid");
-    expect(element).toHaveClass(COMPONENT_NAMES.SpaceGrid);
+    expect(element).toHaveClass(SPACE_GRID_CSS_CLASS_NAMES.base.className);
     expect(element).toHaveClass("custom-class");
   });
 

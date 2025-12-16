@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import { SPACE_FLEX_CSS_CLASS_NAMES } from "@/core/constants";
 import { ThemeProvider } from "@/react/components/ThemeProvider";
-import Flex from "./Flex";
+import Flex from "./SpaceFlex";
 
 const renderWithTheme = (ui: React.ReactElement) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>);
