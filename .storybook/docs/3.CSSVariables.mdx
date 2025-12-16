@@ -1,0 +1,142 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock } from "../components";
+import { Icon } from "../../src/react/components";
+
+<Meta title="3. CSS Variables" />
+
+# CSS Variables
+
+`venomous-ui` provides CSS custom properties (variables) for theming. These variables are framework-agnostic and can be used in any stylesheet.
+
+<br/>
+
+## Mode-dependent Variables
+
+These variables have different values for light and dark modes:
+
+<Source
+  language="css"
+  dark
+  code={`
+/* ========== Background Colors ========== */
+--venomous-bg-body
+--venomous-bg-normal
+--venomous-bg-float
+--venomous-bg-active
+--venomous-bg-disabled
+
+/* ========== Text Colors ========== */
+--venomous-text-primary
+--venomous-text-secondary
+--venomous-text-tertiary
+--venomous-text-disabled
+
+/* ========== Border Colors ========== */
+--venomous-border-primary
+--venomous-border-secondary
+--venomous-border-tertiary
+--venomous-border-disabled
+
+/* ========== Box Shadows ========== */
+--venomous-shadow-none
+--venomous-shadow-small
+--venomous-shadow-medium
+--venomous-shadow-large
+
+/* ========== Palette (user-configurable theme color) ========== */
+--venomous-palette-light
+--venomous-palette-main
+--venomous-palette-dark`}
+/>
+
+## Mode-independent Variables
+
+Semantic colors remain constant regardless of theme mode:
+
+<Source
+  language="css"
+  dark
+  code={`
+/* ========== Semantic Colors ========== */
+--venomous-semantic-primary-light
+--venomous-semantic-primary-main
+--venomous-semantic-primary-dark
+
+--venomous-semantic-success-light
+--venomous-semantic-success-main
+--venomous-semantic-success-dark
+
+--venomous-semantic-warning-light
+--venomous-semantic-warning-main
+--venomous-semantic-warning-dark
+
+--venomous-semantic-danger-light
+--venomous-semantic-danger-main
+--venomous-semantic-danger-dark
+
+--venomous-semantic-info-light
+--venomous-semantic-info-main
+--venomous-semantic-info-dark`}
+/>
+
+## How to use
+
+You can use these CSS variables in your stylesheets.
+
+Or use the `getCssVar()` helper to generate type-safe CSS variable references in TypeScript.
+
+
+<StoryDocsTabCodeBlock
+  source={{ dark: true }}
+  tabs={[
+    {
+      label: "Use in CSS",
+      icon: <Icon icon="material-icon-theme:css" />,
+      language: "css",
+      code: `
+.my-component {
+  background-color: var(--venomous-bg-float);
+  color: var(--venomous-text-primary);
+  border: 1px solid var(--venomous-border-primary);
+  box-shadow: var(--venomous-shadow-small);
+}
+
+.my-button {
+  background-color: var(--venomous-palette-main);
+}
+
+.success-message {
+  color: var(--venomous-semantic-success-main);
+}`,
+    },
+    {
+      label: "Use in TypeScript",
+      icon: <Icon icon="material-icon-theme:typescript" />,
+      language: "ts",
+      code: `
+import { getCssVar } from "venomous-ui/core/css";
+
+const CSS: string = \`
+  .my-component {
+    background: \${getCssVar(v => v.bg.float)};
+    color: \${getCssVar(v => v.text.primary)};
+    border-color: \${getCssVar(v => v.border.primary)};
+    box-shadow: \${getCssVar(v => v.shadow.small)};
+  }
+
+  .themed-button {
+    background: \${getCssVar(v => v.palette.main)};
+  }
+
+  .success-text {
+    color: \${getCssVar(v => v.semantic.success.main)};
+  }
+\`;
+
+// Output:
+// background: var(--venomous-bg-float);
+// color: var(--venomous-text-primary);
+// ...`,
+    }
+  ]}
+/>
