@@ -10,6 +10,8 @@ const config: StorybookConfig = {
     "../src/vue/**/*.stories.@(ts|tsx)",
   ],
 
+  staticDirs: ["./assets"],
+
   framework: {
     name: "@storybook/react-vite",
     options: {},
@@ -25,6 +27,15 @@ const config: StorybookConfig = {
       hmr: {
         overlay: false,
       },
+      watch: {
+        // Reduce file system polling for better performance
+        usePolling: false,
+      },
+    };
+    // Optimize dependencies for faster cold start
+    config.optimizeDeps = {
+      ...config.optimizeDeps,
+      include: ["react", "react-dom", "@storybook/blocks", "@storybook/theming", "storybook-dark-mode"],
     };
     config.build = {
       ...config.build,

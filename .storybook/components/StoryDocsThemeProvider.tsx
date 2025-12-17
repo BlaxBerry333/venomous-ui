@@ -5,6 +5,7 @@ import { addons } from "@storybook/preview-api";
 import { themes } from "@storybook/theming";
 import { DARK_MODE_EVENT_NAME } from "storybook-dark-mode";
 
+import { DESIGN_TOKENS } from "../../src/core/designs";
 import type { IThemeMode } from "../../src/core/theme";
 import { CssReset, ThemeProvider } from "../../src/react/components";
 
@@ -18,7 +19,24 @@ import { CssReset, ThemeProvider } from "../../src/react/components";
  * Syncs with storybook-dark-mode addon.
  */
 export default function StoryDocsThemeProvider({ children, ...props }: React.PropsWithChildren<DocsContainerProps>) {
-  const [isDark, setIsDark] = React.useState(false);
+  // Initialize with system preference or stored preference
+  const [isDark, setIsDark] = React.useState(() => {
+    // Check localStorage first (storybook-dark-mode stores preference)
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("sb-addon-themes-3");
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          return parsed.current === "dark";
+        } catch {
+          // Ignore parse errors
+        }
+      }
+      // Fallback to system preference
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    return false;
+  });
   const mode: IThemeMode = isDark ? "dark" : "light";
 
   React.useEffect(() => {
@@ -29,13 +47,21 @@ export default function StoryDocsThemeProvider({ children, ...props }: React.Pro
       document.documentElement.dataset.theme = dark ? "dark" : "light";
     };
 
+    // Set initial theme on mount
+    document.documentElement.dataset.theme = isDark ? "dark" : "light";
+
     channel.on(DARK_MODE_EVENT_NAME, handleDarkModeChange);
     return () => channel.off(DARK_MODE_EVENT_NAME, handleDarkModeChange);
-  }, []);
+  }, [isDark]);
 
   return (
     <DocsContainer {...props} theme={isDark ? themes.dark : themes.light}>
-      <ThemeProvider mode={mode}>
+      <ThemeProvider
+        mode={mode}
+        customDesignTokens={{
+          paletteColors: DESIGN_TOKENS.palettesColorsResets.WOLFSBANE,
+        }}
+      >
         <CssReset />
         {children}
       </ThemeProvider>

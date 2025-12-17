@@ -1,5 +1,6 @@
 import React from "react";
 
+import { DESIGN_TOKENS } from "../../src/core/designs";
 import type { IThemeMode } from "../../src/core/theme";
 import { CssReset, ThemeProvider } from "../../src/react/components";
 
@@ -15,7 +16,13 @@ export default function StoryPreviewThemeProvider({ mode, children }: React.Prop
   }, [mode]);
 
   return (
-    <ThemeProvider mode={mode} onModeChange={() => console.log("Theme changed")}>
+    <ThemeProvider
+      mode={mode}
+      onModeChange={() => console.log("Theme changed")}
+      customDesignTokens={{
+        paletteColors: DESIGN_TOKENS.palettesColorsResets.WOLFSBANE,
+      }}
+    >
       <CssReset />
       {children}
     </ThemeProvider>

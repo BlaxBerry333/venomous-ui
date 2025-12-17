@@ -3,6 +3,7 @@ import { useDarkMode } from "storybook-dark-mode";
 
 import type { IThemeMode } from "../src/core/theme";
 import { StoryDocsThemeProvider, StoryPreviewThemeProvider } from "./components";
+import { storybookDarkTheme, storybookLightTheme } from "./manager";
 
 const preview: Preview = {
   parameters: {
@@ -14,10 +15,12 @@ const preview: Preview = {
       },
     },
     darkMode: {
-      classTarget: "html", // Use data-theme attribute instead of class for my components
-      darkClass: [], // Don't add any class, my components use data-theme
-      lightClass: [], // Don't add any class, my components use data-theme
+      classTarget: "html",
+      darkClass: [],
+      lightClass: [],
       stylePreview: true,
+      dark: storybookDarkTheme,
+      light: storybookLightTheme,
     },
     docs: {
       container: StoryDocsThemeProvider,
