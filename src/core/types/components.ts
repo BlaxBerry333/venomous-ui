@@ -1,3 +1,6 @@
+export type AvatarSize = "small" | "medium" | "large";
+export type AvatarVariant = "circular" | "rounded" | "square";
+
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonVariant = "contained" | "outlined" | "text";
 

@@ -1,6 +1,52 @@
 import { COMPONENT_NAMES } from "./componentNames";
 
 /**
+ * Avatar
+ */
+export const AVATAR_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Avatar}__base`,
+    description: "Avatar root class",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.Avatar}__sizeSmall`,
+    description: "if `Avatar.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.Avatar}__sizeMedium`,
+    description: "if `Avatar.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.Avatar}__sizeLarge`,
+    description: "if `Avatar.size='large'`",
+  },
+  variantCircular: {
+    className: `${COMPONENT_NAMES.Avatar}__variantCircular`,
+    description: "if `Avatar.variant='circular'`",
+  },
+  variantRounded: {
+    className: `${COMPONENT_NAMES.Avatar}__variantRounded`,
+    description: "if `Avatar.variant='rounded'`",
+  },
+  variantSquare: {
+    className: `${COMPONENT_NAMES.Avatar}__variantSquare`,
+    description: "if `Avatar.variant='square'`",
+  },
+  hasImage: {
+    className: `${COMPONENT_NAMES.Avatar}__hasImage`,
+    description: "if Avatar has valid image",
+  },
+  image: {
+    className: `${COMPONENT_NAMES.Avatar}__image`,
+    description: "Avatar image element",
+  },
+  fallback: {
+    className: `${COMPONENT_NAMES.Avatar}__fallback`,
+    description: "Avatar fallback content (text or icon)",
+  },
+} as const;
+
+/**
  * Box
  */
 export const BOX_CSS_CLASS_NAMES = {
