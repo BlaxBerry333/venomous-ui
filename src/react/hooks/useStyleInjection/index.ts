@@ -3,49 +3,57 @@
 import React from "react";
 
 /**
- * Cache of injected style IDs
- * Using Set for O(1) lookup instead of DOM query
+ * Cache: styleId -> { css, element }
+ * Stores both CSS content and DOM reference for O(1) updates
  */
-const injectedStyles = new Set<string>();
+const injectedStyles = new Map<string, { css: string; element: HTMLStyleElement }>();
 
 /**
  * Hook to inject CSS styles into the document head.
  *
- * Uses a Set cache for O(1) duplicate detection (faster than DOM query).
- * Styles are injected once and persist for the lifetime of the page.
+ * Performance characteristics:
+ * - O(1) cache lookup and comparison
+ * - No DOM query needed for updates (element reference cached)
+ * - Static styles (most components): single injection, no updates
+ * - Dynamic styles (ThemeProvider): updates when content changes
  *
- * @param styleId - Unique identifier for the style element (used as data attribute)
+ * Handles edge cases:
+ * - HMR/page refresh: cleans up orphaned style elements from previous sessions
+ * - Element removal: recreates element if externally removed
+ *
+ * @param styleId - Unique identifier for the style element
  * @param css - CSS string to inject
- *
- * @example
- * ```tsx
- * import { useStyleInjection } from "@/react/hooks";
- * import { COMPONENT_NAMES } from "@/core/constants";
- * import { BUTTON_CSS } from "@/core/css";
- *
- * function Button() {
- *   useStyleInjection(COMPONENT_NAMES.Button, BUTTON_CSS);
- *   return <button>...</button>;
- * }
- * ```
  */
 export default function useStyleInjection(styleId: string, css: string): void {
   React.useInsertionEffect(() => {
     if (typeof document === "undefined") return;
 
-    // O(1) Set lookup instead of DOM query
-    if (injectedStyles.has(styleId)) return;
+    const cached = injectedStyles.get(styleId);
 
-    injectedStyles.add(styleId);
+    // Fast path: CSS content unchanged and element still in DOM
+    if (cached?.css === css && cached.element.isConnected) return;
 
-    const cssAttr = `data-${styleId}`;
-    const styleEl = document.createElement("style");
-    styleEl.setAttribute(cssAttr, "");
-    styleEl.textContent = css;
-    document.head.appendChild(styleEl);
+    if (cached?.element.isConnected) {
+      // Update existing element (no DOM query needed)
+      cached.element.textContent = css;
+      cached.css = css;
+    } else {
+      // Check for orphaned style element from previous session (HMR/refresh)
+      // This can happen when JS module reloads but DOM persists
+      const existingEl = document.querySelector(`style[data-${styleId}]`) as HTMLStyleElement | null;
 
-    // Note: I don't remove styles on cleanup because:
-    // 1. Other instances of the same component may still be using them
-    // 2. Styles should persist for the page lifetime for performance
+      if (existingEl) {
+        // Reuse existing element, update content
+        existingEl.textContent = css;
+        injectedStyles.set(styleId, { css, element: existingEl });
+      } else {
+        // First injection: create and cache element
+        const styleEl = document.createElement("style");
+        styleEl.setAttribute(`data-${styleId}`, "");
+        styleEl.textContent = css;
+        document.head.appendChild(styleEl);
+        injectedStyles.set(styleId, { css, element: styleEl });
+      }
+    }
   }, [styleId, css]);
 }
