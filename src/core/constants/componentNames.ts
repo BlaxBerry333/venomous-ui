@@ -3,6 +3,8 @@ export const COMPONENT_LIBRARY_NAME = "VENOMOUS_UI" as const;
 export const COMPONENT_NAMES = {
   Avatar: `${COMPONENT_LIBRARY_NAME}__Avatar`,
 
+  Backdrop: `${COMPONENT_LIBRARY_NAME}__Backdrop`,
+
   Box: `${COMPONENT_LIBRARY_NAME}__Box`,
 
   Button: `${COMPONENT_LIBRARY_NAME}__Button`,

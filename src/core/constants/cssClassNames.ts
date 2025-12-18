@@ -47,6 +47,16 @@ export const AVATAR_CSS_CLASS_NAMES = {
 } as const;
 
 /**
+ * Backdrop
+ */
+export const BACKDROP_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Backdrop}__base`,
+    description: "Backdrop root class",
+  },
+} as const;
+
+/**
  * Box
  */
 export const BOX_CSS_CLASS_NAMES = {
