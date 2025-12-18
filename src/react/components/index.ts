@@ -5,6 +5,7 @@ export * from "./Button";
 export * from "./Card";
 export * from "./CssReset";
 export * from "./Icon";
+export * from "./Modal";
 export * from "./Portal";
 export * from "./Space/Flex";
 export * from "./Space/Grid";

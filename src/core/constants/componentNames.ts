@@ -15,6 +15,8 @@ export const COMPONENT_NAMES = {
 
   Icon: `${COMPONENT_LIBRARY_NAME}__Icon`,
 
+  Modal: `${COMPONENT_LIBRARY_NAME}__Modal`,
+
   Portal: `${COMPONENT_LIBRARY_NAME}__Portal`,
 
   SpaceFlex: `${COMPONENT_LIBRARY_NAME}__SpaceFlex`,

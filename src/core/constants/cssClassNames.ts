@@ -189,6 +189,16 @@ export const ICON_CSS_CLASS_NAMES = {
 } as const;
 
 /**
+ * Modal
+ */
+export const MODAL_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Modal}__base`,
+    description: "Modal root class (content container)",
+  },
+} as const;
+
+/**
  * Space.Flex
  */
 export const SPACE_FLEX_CSS_CLASS_NAMES = {
