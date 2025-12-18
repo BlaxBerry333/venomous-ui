@@ -13,6 +13,8 @@ export const COMPONENT_NAMES = {
 
   CssReset: `${COMPONENT_LIBRARY_NAME}__CssReset`,
 
+  Drawer: `${COMPONENT_LIBRARY_NAME}__Drawer`,
+
   Icon: `${COMPONENT_LIBRARY_NAME}__Icon`,
 
   Modal: `${COMPONENT_LIBRARY_NAME}__Modal`,

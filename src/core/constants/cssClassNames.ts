@@ -189,6 +189,32 @@ export const ICON_CSS_CLASS_NAMES = {
 } as const;
 
 /**
+ * Drawer
+ */
+export const DRAWER_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Drawer}__base`,
+    description: "Drawer root class (content container)",
+  },
+  anchorLeft: {
+    className: `${COMPONENT_NAMES.Drawer}--anchor-left`,
+    description: "Drawer anchored to left edge",
+  },
+  anchorRight: {
+    className: `${COMPONENT_NAMES.Drawer}--anchor-right`,
+    description: "Drawer anchored to right edge",
+  },
+  anchorTop: {
+    className: `${COMPONENT_NAMES.Drawer}--anchor-top`,
+    description: "Drawer anchored to top edge",
+  },
+  anchorBottom: {
+    className: `${COMPONENT_NAMES.Drawer}--anchor-bottom`,
+    description: "Drawer anchored to bottom edge",
+  },
+} as const;
+
+/**
  * Modal
  */
 export const MODAL_CSS_CLASS_NAMES = {
