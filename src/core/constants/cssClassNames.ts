@@ -1,6 +1,32 @@
 import { COMPONENT_NAMES } from "./componentNames";
 
 /**
+ * Arrow
+ */
+export const ARROW_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Arrow}__base`,
+    description: "Arrow root class",
+  },
+  directionTop: {
+    className: `${COMPONENT_NAMES.Arrow}--direction-top`,
+    description: "Arrow pointing up",
+  },
+  directionBottom: {
+    className: `${COMPONENT_NAMES.Arrow}--direction-bottom`,
+    description: "Arrow pointing down",
+  },
+  directionLeft: {
+    className: `${COMPONENT_NAMES.Arrow}--direction-left`,
+    description: "Arrow pointing left",
+  },
+  directionRight: {
+    className: `${COMPONENT_NAMES.Arrow}--direction-right`,
+    description: "Arrow pointing right",
+  },
+} as const;
+
+/**
  * Avatar
  */
 export const AVATAR_CSS_CLASS_NAMES = {
@@ -221,6 +247,30 @@ export const MODAL_CSS_CLASS_NAMES = {
   base: {
     className: `${COMPONENT_NAMES.Modal}__base`,
     description: "Modal root class (content container)",
+  },
+} as const;
+
+/**
+ * Popover
+ */
+export const POPOVER_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Popover}__base`,
+    description: "Popover content container",
+  },
+  trigger: {
+    className: `${COMPONENT_NAMES.Popover}__trigger`,
+    description: "Popover trigger wrapper",
+  },
+} as const;
+
+/**
+ * Tooltip
+ */
+export const TOOLTIP_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Tooltip}__base`,
+    description: "Tooltip content container",
   },
 } as const;
 

@@ -1,6 +1,8 @@
 export const COMPONENT_LIBRARY_NAME = "VENOMOUS_UI" as const;
 
 export const COMPONENT_NAMES = {
+  Arrow: `${COMPONENT_LIBRARY_NAME}__Arrow`,
+
   Avatar: `${COMPONENT_LIBRARY_NAME}__Avatar`,
 
   Backdrop: `${COMPONENT_LIBRARY_NAME}__Backdrop`,
@@ -19,6 +21,8 @@ export const COMPONENT_NAMES = {
 
   Modal: `${COMPONENT_LIBRARY_NAME}__Modal`,
 
+  Popover: `${COMPONENT_LIBRARY_NAME}__Popover`,
+
   Portal: `${COMPONENT_LIBRARY_NAME}__Portal`,
 
   SpaceFlex: `${COMPONENT_LIBRARY_NAME}__SpaceFlex`,
@@ -26,6 +30,8 @@ export const COMPONENT_NAMES = {
 
   ThemeProvider: `${COMPONENT_LIBRARY_NAME}__ThemeProvider`,
   ThemeProviderContext: `${COMPONENT_LIBRARY_NAME}__ThemeProviderContext`,
+
+  Tooltip: `${COMPONENT_LIBRARY_NAME}__Tooltip`,
 } as const;
 
 export type IComponentName = keyof typeof COMPONENT_NAMES;

@@ -7,3 +7,21 @@ export type ButtonVariant = "contained" | "outlined" | "text";
 export type CardVariant = "elevated" | "outlined" | "filled";
 export type CardPadding = "none" | "small" | "medium" | "large";
 export type CardRadius = "none" | "small" | "medium" | "large";
+
+export type ArrowDirection = "top" | "bottom" | "left" | "right";
+
+export type TooltipPlacement = ArrowDirection;
+
+export type PopoverPlacement =
+  | "top"
+  | "top-start"
+  | "top-end"
+  | "bottom"
+  | "bottom-start"
+  | "bottom-end"
+  | "left"
+  | "left-start"
+  | "left-end"
+  | "right"
+  | "right-start"
+  | "right-end";

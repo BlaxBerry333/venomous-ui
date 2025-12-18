@@ -1,3 +1,4 @@
+export * from "./Arrow";
 export * from "./Avatar";
 export * from "./Backdrop";
 export * from "./Box";
@@ -7,7 +8,9 @@ export * from "./CssReset";
 export * from "./Drawer";
 export * from "./Icon";
 export * from "./Modal";
+export * from "./Popover";
 export * from "./Portal";
 export * from "./Space/Flex";
 export * from "./Space/Grid";
 export * from "./ThemeProvider";
+export * from "./Tooltip";
