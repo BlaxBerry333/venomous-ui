@@ -79,7 +79,7 @@ export function generateResponsiveGridCSS(
   for (const bp of restBreakpoints) {
     const colCount = columns[bp]!;
     cssRules.push(
-      `@media (min-width: ${DESIGN_TOKENS.breakpoints[bp]}) { .${uniqueClassName} { grid-template-columns: repeat(${colCount}, 1fr); } }`,
+      `@media (min-width: ${DESIGN_TOKENS.breakpoints[bp].min}) { .${uniqueClassName} { grid-template-columns: repeat(${colCount}, 1fr); } }`,
     );
   }
 
