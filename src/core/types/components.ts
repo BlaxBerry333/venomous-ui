@@ -12,7 +12,7 @@ export type ArrowDirection = "top" | "bottom" | "left" | "right";
 
 export type TooltipPlacement = ArrowDirection;
 
-export type PopoverPlacement =
+export type Placement =
   | "top"
   | "top-start"
   | "top-end"
@@ -25,3 +25,20 @@ export type PopoverPlacement =
   | "right"
   | "right-start"
   | "right-end";
+
+export type PopoverPlacement = Placement;
+
+export type TypographyTitleRenderElement = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+export type TypographyTextRenderElement =
+  | "span"
+  | "small"
+  | "strong"
+  | "em"
+  | "mark"
+  | "del"
+  | "ins"
+  | "sub"
+  | "sup"
+  | "code"
+  | "kbd";

@@ -333,6 +333,104 @@ export const SPACE_FLEX_CSS_CLASS_NAMES = {
 } as const;
 
 /**
+ * Typography.Paragraph
+ */
+export const TYPOGRAPHY_PARAGRAPH_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.TypographyParagraph}__base`,
+    description: "Typography.Paragraph root class",
+  },
+  ellipsis: {
+    className: `${COMPONENT_NAMES.TypographyParagraph}--ellipsis`,
+    description: "Typography.Paragraph with ellipsis enabled",
+  },
+} as const;
+
+/**
+ * Typography.Title
+ */
+export const TYPOGRAPHY_TITLE_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.TypographyTitle}__base`,
+    description: "Typography.Title root class",
+  },
+  levelH1: {
+    className: `${COMPONENT_NAMES.TypographyTitle}--h1`,
+    description: "Typography.Title as h1",
+  },
+  levelH2: {
+    className: `${COMPONENT_NAMES.TypographyTitle}--h2`,
+    description: "Typography.Title as h2",
+  },
+  levelH3: {
+    className: `${COMPONENT_NAMES.TypographyTitle}--h3`,
+    description: "Typography.Title as h3",
+  },
+  levelH4: {
+    className: `${COMPONENT_NAMES.TypographyTitle}--h4`,
+    description: "Typography.Title as h4",
+  },
+  levelH5: {
+    className: `${COMPONENT_NAMES.TypographyTitle}--h5`,
+    description: "Typography.Title as h5",
+  },
+  levelH6: {
+    className: `${COMPONENT_NAMES.TypographyTitle}--h6`,
+    description: "Typography.Title as h6",
+  },
+} as const;
+
+/**
+ * Typography.Text
+ */
+export const TYPOGRAPHY_TEXT_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.TypographyText}__base`,
+    description: "Typography.Text root class",
+  },
+  asCode: {
+    className: `${COMPONENT_NAMES.TypographyText}--code`,
+    description: "Typography.Text as code element",
+  },
+  asKbd: {
+    className: `${COMPONENT_NAMES.TypographyText}--kbd`,
+    description: "Typography.Text as kbd element",
+  },
+  asMark: {
+    className: `${COMPONENT_NAMES.TypographyText}--mark`,
+    description: "Typography.Text as mark element",
+  },
+  asDel: {
+    className: `${COMPONENT_NAMES.TypographyText}--del`,
+    description: "Typography.Text as del element",
+  },
+  asIns: {
+    className: `${COMPONENT_NAMES.TypographyText}--ins`,
+    description: "Typography.Text as ins element",
+  },
+  asSmall: {
+    className: `${COMPONENT_NAMES.TypographyText}--small`,
+    description: "Typography.Text as small element",
+  },
+  asStrong: {
+    className: `${COMPONENT_NAMES.TypographyText}--strong`,
+    description: "Typography.Text as strong element",
+  },
+  asEm: {
+    className: `${COMPONENT_NAMES.TypographyText}--em`,
+    description: "Typography.Text as em element",
+  },
+  asSub: {
+    className: `${COMPONENT_NAMES.TypographyText}--sub`,
+    description: "Typography.Text as sub element",
+  },
+  asSup: {
+    className: `${COMPONENT_NAMES.TypographyText}--sup`,
+    description: "Typography.Text as sup element",
+  },
+} as const;
+
+/**
  * Space.Grid
  */
 export const SPACE_GRID_CSS_CLASS_NAMES = {

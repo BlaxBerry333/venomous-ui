@@ -14,3 +14,4 @@ export * from "./Space/Flex";
 export * from "./Space/Grid";
 export * from "./ThemeProvider";
 export * from "./Tooltip";
+export * from "./Typography";

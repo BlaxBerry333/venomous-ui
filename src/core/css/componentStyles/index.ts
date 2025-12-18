@@ -13,3 +13,6 @@ export * from "./SpaceFlex";
 export * from "./SpaceGrid";
 export * from "./ThemeProvider";
 export * from "./Tooltip";
+export * from "./TypographyParagraph";
+export * from "./TypographyText";
+export * from "./TypographyTitle";

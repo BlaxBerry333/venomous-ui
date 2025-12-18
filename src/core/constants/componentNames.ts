@@ -32,6 +32,10 @@ export const COMPONENT_NAMES = {
   ThemeProviderContext: `${COMPONENT_LIBRARY_NAME}__ThemeProviderContext`,
 
   Tooltip: `${COMPONENT_LIBRARY_NAME}__Tooltip`,
+
+  TypographyParagraph: `${COMPONENT_LIBRARY_NAME}__TypographyParagraph`,
+  TypographyTitle: `${COMPONENT_LIBRARY_NAME}__TypographyTitle`,
+  TypographyText: `${COMPONENT_LIBRARY_NAME}__TypographyText`,
 } as const;
 
 export type IComponentName = keyof typeof COMPONENT_NAMES;
