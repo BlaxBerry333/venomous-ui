@@ -531,3 +531,521 @@ export const SPACE_GRID_CSS_CLASS_NAMES = {
     description: "if `SpaceGrid.columns={12}`",
   },
 } as const;
+
+/**
+ * FormLabel
+ */
+export const FORM_LABEL_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormLabel}__base`,
+    description: "FormLabel root class",
+  },
+  required: {
+    className: `${COMPONENT_NAMES.FormLabel}--required`,
+    description: "FormLabel with required indicator",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormLabel}--size-small`,
+    description: "if `FormLabel.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormLabel}--size-medium`,
+    description: "if `FormLabel.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormLabel}--size-large`,
+    description: "if `FormLabel.size='large'`",
+  },
+} as const;
+
+/**
+ * FormField.Text
+ */
+export const FORM_FIELD_TEXT_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormFieldText}__base`,
+    description: "FormField.Text root class (wrapper)",
+  },
+  input: {
+    className: `${COMPONENT_NAMES.FormFieldText}__input`,
+    description: "FormField.Text input element",
+  },
+  prefix: {
+    className: `${COMPONENT_NAMES.FormFieldText}__prefix`,
+    description: "FormField.Text prefix element",
+  },
+  suffix: {
+    className: `${COMPONENT_NAMES.FormFieldText}__suffix`,
+    description: "FormField.Text suffix element",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.FormFieldText}--disabled`,
+    description: "FormField.Text disabled state",
+  },
+  focused: {
+    className: `${COMPONENT_NAMES.FormFieldText}--focused`,
+    description: "FormField.Text focused state",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormFieldText}--error`,
+    description: "FormField.Text error state",
+  },
+  variantOutlined: {
+    className: `${COMPONENT_NAMES.FormFieldText}--variant-outlined`,
+    description: "if `FormField.Text.variant='outlined'`",
+  },
+  variantFilled: {
+    className: `${COMPONENT_NAMES.FormFieldText}--variant-filled`,
+    description: "if `FormField.Text.variant='filled'`",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormFieldText}--size-small`,
+    description: "if `FormField.Text.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormFieldText}--size-medium`,
+    description: "if `FormField.Text.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormFieldText}--size-large`,
+    description: "if `FormField.Text.size='large'`",
+  },
+  fullWidth: {
+    className: `${COMPONENT_NAMES.FormFieldText}--full-width`,
+    description: "if `FormField.Text.fullWidth=true`",
+  },
+} as const;
+
+/**
+ * FormField.Number
+ */
+export const FORM_FIELD_NUMBER_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}__base`,
+    description: "FormField.Number root class (wrapper)",
+  },
+  input: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}__input`,
+    description: "FormField.Number input element",
+  },
+  controls: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}__controls`,
+    description: "FormField.Number controls container",
+  },
+  controlButton: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}__control-button`,
+    description: "FormField.Number control button (+/-)",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--disabled`,
+    description: "FormField.Number disabled state",
+  },
+  focused: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--focused`,
+    description: "FormField.Number focused state",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--error`,
+    description: "FormField.Number error state",
+  },
+  variantOutlined: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--variant-outlined`,
+    description: "if `FormField.Number.variant='outlined'`",
+  },
+  variantFilled: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--variant-filled`,
+    description: "if `FormField.Number.variant='filled'`",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--size-small`,
+    description: "if `FormField.Number.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--size-medium`,
+    description: "if `FormField.Number.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--size-large`,
+    description: "if `FormField.Number.size='large'`",
+  },
+  fullWidth: {
+    className: `${COMPONENT_NAMES.FormFieldNumber}--full-width`,
+    description: "if `FormField.Number.fullWidth=true`",
+  },
+} as const;
+
+/**
+ * FormField.Password
+ */
+export const FORM_FIELD_PASSWORD_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}__base`,
+    description: "FormField.Password root class (wrapper)",
+  },
+  input: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}__input`,
+    description: "FormField.Password input element",
+  },
+  toggle: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}__toggle`,
+    description: "FormField.Password visibility toggle button",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--disabled`,
+    description: "FormField.Password disabled state",
+  },
+  focused: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--focused`,
+    description: "FormField.Password focused state",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--error`,
+    description: "FormField.Password error state",
+  },
+  variantOutlined: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--variant-outlined`,
+    description: "if `FormField.Password.variant='outlined'`",
+  },
+  variantFilled: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--variant-filled`,
+    description: "if `FormField.Password.variant='filled'`",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--size-small`,
+    description: "if `FormField.Password.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--size-medium`,
+    description: "if `FormField.Password.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--size-large`,
+    description: "if `FormField.Password.size='large'`",
+  },
+  fullWidth: {
+    className: `${COMPONENT_NAMES.FormFieldPassword}--full-width`,
+    description: "if `FormField.Password.fullWidth=true`",
+  },
+} as const;
+
+/**
+ * FormField.Textarea
+ */
+export const FORM_FIELD_TEXTAREA_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}__base`,
+    description: "FormField.Textarea root class (wrapper)",
+  },
+  textarea: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}__textarea`,
+    description: "FormField.Textarea textarea element",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--disabled`,
+    description: "FormField.Textarea disabled state",
+  },
+  focused: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--focused`,
+    description: "FormField.Textarea focused state",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--error`,
+    description: "FormField.Textarea error state",
+  },
+  variantOutlined: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--variant-outlined`,
+    description: "if `FormField.Textarea.variant='outlined'`",
+  },
+  variantFilled: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--variant-filled`,
+    description: "if `FormField.Textarea.variant='filled'`",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--size-small`,
+    description: "if `FormField.Textarea.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--size-medium`,
+    description: "if `FormField.Textarea.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--size-large`,
+    description: "if `FormField.Textarea.size='large'`",
+  },
+  resizeNone: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--resize-none`,
+    description: "if `FormField.Textarea.resize='none'`",
+  },
+  resizeVertical: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--resize-vertical`,
+    description: "if `FormField.Textarea.resize='vertical'`",
+  },
+  resizeHorizontal: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--resize-horizontal`,
+    description: "if `FormField.Textarea.resize='horizontal'`",
+  },
+  resizeBoth: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--resize-both`,
+    description: "if `FormField.Textarea.resize='both'`",
+  },
+  fullWidth: {
+    className: `${COMPONENT_NAMES.FormFieldTextarea}--full-width`,
+    description: "if `FormField.Textarea.fullWidth=true`",
+  },
+} as const;
+
+/**
+ * FormField.Select
+ */
+export const FORM_FIELD_SELECT_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__base`,
+    description: "FormField.Select root class (trigger wrapper)",
+  },
+  trigger: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__trigger`,
+    description: "FormField.Select trigger button",
+  },
+  value: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__value`,
+    description: "FormField.Select selected value display",
+  },
+  placeholder: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__placeholder`,
+    description: "FormField.Select placeholder text",
+  },
+  arrow: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__arrow`,
+    description: "FormField.Select dropdown arrow",
+  },
+  dropdown: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__dropdown`,
+    description: "FormField.Select dropdown container",
+  },
+  search: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__search`,
+    description: "FormField.Select search input",
+  },
+  optionsList: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__options-list`,
+    description: "FormField.Select options list",
+  },
+  option: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__option`,
+    description: "FormField.Select option item",
+  },
+  optionSelected: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__option--selected`,
+    description: "FormField.Select selected option",
+  },
+  optionDisabled: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__option--disabled`,
+    description: "FormField.Select disabled option",
+  },
+  group: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__group`,
+    description: "FormField.Select option group",
+  },
+  groupLabel: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__group-label`,
+    description: "FormField.Select group label",
+  },
+  clearButton: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}__clear-button`,
+    description: "FormField.Select clear button",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--disabled`,
+    description: "FormField.Select disabled state",
+  },
+  open: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--open`,
+    description: "FormField.Select open state",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--error`,
+    description: "FormField.Select error state",
+  },
+  variantOutlined: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--variant-outlined`,
+    description: "if `FormField.Select.variant='outlined'`",
+  },
+  variantFilled: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--variant-filled`,
+    description: "if `FormField.Select.variant='filled'`",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--size-small`,
+    description: "if `FormField.Select.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--size-medium`,
+    description: "if `FormField.Select.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--size-large`,
+    description: "if `FormField.Select.size='large'`",
+  },
+  fullWidth: {
+    className: `${COMPONENT_NAMES.FormFieldSelect}--full-width`,
+    description: "if `FormField.Select.fullWidth=true`",
+  },
+} as const;
+
+/**
+ * FormField.Checkbox
+ */
+export const FORM_FIELD_CHECKBOX_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}__base`,
+    description: "FormField.Checkbox root class (wrapper)",
+  },
+  input: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}__input`,
+    description: "FormField.Checkbox hidden input element",
+  },
+  box: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}__box`,
+    description: "FormField.Checkbox visual box",
+  },
+  icon: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}__icon`,
+    description: "FormField.Checkbox check icon",
+  },
+  label: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}__label`,
+    description: "FormField.Checkbox label text",
+  },
+  checked: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}--checked`,
+    description: "FormField.Checkbox checked state",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}--disabled`,
+    description: "FormField.Checkbox disabled state",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}--error`,
+    description: "FormField.Checkbox error state",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}--size-small`,
+    description: "if `FormField.Checkbox.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}--size-medium`,
+    description: "if `FormField.Checkbox.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormFieldCheckbox}--size-large`,
+    description: "if `FormField.Checkbox.size='large'`",
+  },
+} as const;
+
+/**
+ * FormField.Switch
+ */
+export const FORM_FIELD_SWITCH_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}__base`,
+    description: "FormField.Switch root class (wrapper)",
+  },
+  input: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}__input`,
+    description: "FormField.Switch hidden input element",
+  },
+  track: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}__track`,
+    description: "FormField.Switch track (background)",
+  },
+  thumb: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}__thumb`,
+    description: "FormField.Switch thumb (knob)",
+  },
+  checked: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}--checked`,
+    description: "FormField.Switch checked state",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}--disabled`,
+    description: "FormField.Switch disabled state",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}--error`,
+    description: "FormField.Switch error state",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}--size-small`,
+    description: "if `FormField.Switch.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}--size-medium`,
+    description: "if `FormField.Switch.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormFieldSwitch}--size-large`,
+    description: "if `FormField.Switch.size='large'`",
+  },
+} as const;
+
+/**
+ * FormField.Radio
+ */
+export const FORM_FIELD_RADIO_CSS_CLASS_NAMES = {
+  group: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}__group`,
+    description: "FormField.Radio group container",
+  },
+  base: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}__base`,
+    description: "FormField.Radio item root class (wrapper)",
+  },
+  input: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}__input`,
+    description: "FormField.Radio hidden input element",
+  },
+  circle: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}__circle`,
+    description: "FormField.Radio visual circle",
+  },
+  dot: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}__dot`,
+    description: "FormField.Radio inner dot",
+  },
+  label: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}__label`,
+    description: "FormField.Radio label text",
+  },
+  checked: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}--checked`,
+    description: "FormField.Radio checked state",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}--disabled`,
+    description: "FormField.Radio disabled state",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}--error`,
+    description: "FormField.Radio error state",
+  },
+  horizontal: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}--horizontal`,
+    description: "FormField.Radio group horizontal layout",
+  },
+  vertical: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}--vertical`,
+    description: "FormField.Radio group vertical layout",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}--size-small`,
+    description: "if `FormField.Radio.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}--size-medium`,
+    description: "if `FormField.Radio.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormFieldRadio}--size-large`,
+    description: "if `FormField.Radio.size='large'`",
+  },
+} as const;

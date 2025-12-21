@@ -42,3 +42,25 @@ export type TypographyTextRenderElement =
   | "sup"
   | "code"
   | "kbd";
+
+export type FormFieldCheckboxSize = "small" | "medium" | "large";
+
+export type FormFieldNumberSize = "small" | "medium" | "large";
+export type FormFieldNumberVariant = "outlined" | "filled";
+
+export type FormFieldPasswordSize = "small" | "medium" | "large";
+export type FormFieldPasswordVariant = "outlined" | "filled";
+
+export type FormFieldRadioSize = "small" | "medium" | "large";
+
+export type FormFieldSelectSize = "small" | "medium" | "large";
+export type FormFieldSelectVariant = "outlined" | "filled";
+
+export type FormFieldSwitchSize = "small" | "medium" | "large";
+
+export type FormFieldTextSize = "small" | "medium" | "large";
+export type FormFieldTextVariant = "outlined" | "filled";
+
+export type FormFieldTextareaSize = "small" | "medium" | "large";
+export type FormFieldTextareaVariant = "outlined" | "filled";
+export type FormFieldTextareaResize = "none" | "vertical" | "horizontal" | "both";

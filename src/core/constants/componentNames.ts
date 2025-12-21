@@ -36,6 +36,16 @@ export const COMPONENT_NAMES = {
   TypographyParagraph: `${COMPONENT_LIBRARY_NAME}__TypographyParagraph`,
   TypographyTitle: `${COMPONENT_LIBRARY_NAME}__TypographyTitle`,
   TypographyText: `${COMPONENT_LIBRARY_NAME}__TypographyText`,
+
+  FormLabel: `${COMPONENT_LIBRARY_NAME}__FormLabel`,
+  FormFieldText: `${COMPONENT_LIBRARY_NAME}__FormFieldText`,
+  FormFieldNumber: `${COMPONENT_LIBRARY_NAME}__FormFieldNumber`,
+  FormFieldPassword: `${COMPONENT_LIBRARY_NAME}__FormFieldPassword`,
+  FormFieldTextarea: `${COMPONENT_LIBRARY_NAME}__FormFieldTextarea`,
+  FormFieldSelect: `${COMPONENT_LIBRARY_NAME}__FormFieldSelect`,
+  FormFieldCheckbox: `${COMPONENT_LIBRARY_NAME}__FormFieldCheckbox`,
+  FormFieldSwitch: `${COMPONENT_LIBRARY_NAME}__FormFieldSwitch`,
+  FormFieldRadio: `${COMPONENT_LIBRARY_NAME}__FormFieldRadio`,
 } as const;
 
 export type IComponentName = keyof typeof COMPONENT_NAMES;
