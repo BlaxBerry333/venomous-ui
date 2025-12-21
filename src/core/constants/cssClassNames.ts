@@ -1049,3 +1049,151 @@ export const FORM_FIELD_RADIO_CSS_CLASS_NAMES = {
     description: "if `FormField.Radio.size='large'`",
   },
 } as const;
+
+/**
+ * Progress.Bar CSS class names
+ */
+export const PROGRESS_BAR_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.ProgressBar}__base`,
+    description: "Progress.Bar root class",
+  },
+  track: {
+    className: `${COMPONENT_NAMES.ProgressBar}__track`,
+    description: "Progress.Bar track/background",
+  },
+  fill: {
+    className: `${COMPONENT_NAMES.ProgressBar}__fill`,
+    description: "Progress.Bar filled portion",
+  },
+  animated: {
+    className: `${COMPONENT_NAMES.ProgressBar}--animated`,
+    description: "Progress.Bar animated/indeterminate state",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.ProgressBar}--size-small`,
+    description: "if `Progress.Bar.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.ProgressBar}--size-medium`,
+    description: "if `Progress.Bar.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.ProgressBar}--size-large`,
+    description: "if `Progress.Bar.size='large'`",
+  },
+  colorPrimary: {
+    className: `${COMPONENT_NAMES.ProgressBar}--color-primary`,
+    description: "if `Progress.Bar.color='primary'`",
+  },
+  colorSuccess: {
+    className: `${COMPONENT_NAMES.ProgressBar}--color-success`,
+    description: "if `Progress.Bar.color='success'`",
+  },
+  colorError: {
+    className: `${COMPONENT_NAMES.ProgressBar}--color-error`,
+    description: "if `Progress.Bar.color='error'`",
+  },
+  colorWarning: {
+    className: `${COMPONENT_NAMES.ProgressBar}--color-warning`,
+    description: "if `Progress.Bar.color='warning'`",
+  },
+  colorInfo: {
+    className: `${COMPONENT_NAMES.ProgressBar}--color-info`,
+    description: "if `Progress.Bar.color='info'`",
+  },
+} as const;
+
+/**
+ * Progress.Circle CSS class names
+ */
+export const PROGRESS_CIRCLE_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.ProgressCircle}__base`,
+    description: "Progress.Circle root class",
+  },
+  svg: {
+    className: `${COMPONENT_NAMES.ProgressCircle}__svg`,
+    description: "Progress.Circle SVG element",
+  },
+  track: {
+    className: `${COMPONENT_NAMES.ProgressCircle}__track`,
+    description: "Progress.Circle track circle",
+  },
+  fill: {
+    className: `${COMPONENT_NAMES.ProgressCircle}__fill`,
+    description: "Progress.Circle filled arc",
+  },
+  label: {
+    className: `${COMPONENT_NAMES.ProgressCircle}__label`,
+    description: "Progress.Circle center label",
+  },
+  animated: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--animated`,
+    description: "Progress.Circle animated/indeterminate state",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--size-small`,
+    description: "if `Progress.Circle.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--size-medium`,
+    description: "if `Progress.Circle.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--size-large`,
+    description: "if `Progress.Circle.size='large'`",
+  },
+  colorPrimary: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--color-primary`,
+    description: "if `Progress.Circle.color='primary'`",
+  },
+  colorSuccess: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--color-success`,
+    description: "if `Progress.Circle.color='success'`",
+  },
+  colorError: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--color-error`,
+    description: "if `Progress.Circle.color='error'`",
+  },
+  colorWarning: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--color-warning`,
+    description: "if `Progress.Circle.color='warning'`",
+  },
+  colorInfo: {
+    className: `${COMPONENT_NAMES.ProgressCircle}--color-info`,
+    description: "if `Progress.Circle.color='info'`",
+  },
+} as const;
+
+/**
+ * Progress.PageLoad CSS class names
+ */
+export const PROGRESS_PAGE_LOAD_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.ProgressPageLoad}__base`,
+    description: "Progress.PageLoad root class",
+  },
+  bar: {
+    className: `${COMPONENT_NAMES.ProgressPageLoad}__bar`,
+    description: "Progress.PageLoad progress bar",
+  },
+  active: {
+    className: `${COMPONENT_NAMES.ProgressPageLoad}--active`,
+    description: "Progress.PageLoad visible/active state",
+  },
+} as const;
+
+/**
+ * Progress.ScrollIndicator CSS class names
+ */
+export const PROGRESS_SCROLL_INDICATOR_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.ProgressScrollIndicator}__base`,
+    description: "Progress.ScrollIndicator root class",
+  },
+  bar: {
+    className: `${COMPONENT_NAMES.ProgressScrollIndicator}__bar`,
+    description: "Progress.ScrollIndicator progress bar",
+  },
+} as const;

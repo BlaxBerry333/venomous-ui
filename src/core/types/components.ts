@@ -64,3 +64,7 @@ export type FormFieldTextVariant = "outlined" | "filled";
 export type FormFieldTextareaSize = "small" | "medium" | "large";
 export type FormFieldTextareaVariant = "outlined" | "filled";
 export type FormFieldTextareaResize = "none" | "vertical" | "horizontal" | "both";
+
+export type ProgressSize = "small" | "medium" | "large";
+export type ProgressPresetColor = "primary" | "success" | "error" | "warning" | "info";
+export type ProgressColor = ProgressPresetColor | (string & {});

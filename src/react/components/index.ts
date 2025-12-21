@@ -12,6 +12,7 @@ export * from "./Icon";
 export * from "./Modal";
 export * from "./Popover";
 export * from "./Portal";
+export * from "./Progress";
 export * from "./Space/Flex";
 export * from "./Space/Grid";
 export * from "./ThemeProvider";

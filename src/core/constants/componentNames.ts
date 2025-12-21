@@ -46,6 +46,11 @@ export const COMPONENT_NAMES = {
   FormFieldCheckbox: `${COMPONENT_LIBRARY_NAME}__FormFieldCheckbox`,
   FormFieldSwitch: `${COMPONENT_LIBRARY_NAME}__FormFieldSwitch`,
   FormFieldRadio: `${COMPONENT_LIBRARY_NAME}__FormFieldRadio`,
+
+  ProgressBar: `${COMPONENT_LIBRARY_NAME}__ProgressBar`,
+  ProgressCircle: `${COMPONENT_LIBRARY_NAME}__ProgressCircle`,
+  ProgressPageLoad: `${COMPONENT_LIBRARY_NAME}__ProgressPageLoad`,
+  ProgressScrollIndicator: `${COMPONENT_LIBRARY_NAME}__ProgressScrollIndicator`,
 } as const;
 
 export type IComponentName = keyof typeof COMPONENT_NAMES;
