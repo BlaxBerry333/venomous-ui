@@ -209,7 +209,7 @@ describe("Progress.PageLoad", () => {
   });
 
   it("cleans up intervals on unmount", () => {
-    const clearIntervalSpy = vi.spyOn(global, "clearInterval");
+    const clearIntervalSpy = vi.spyOn(globalThis, "clearInterval");
     const { unmount } = renderWithTheme(<PageLoad isLoading />);
 
     // Advance time to create interval

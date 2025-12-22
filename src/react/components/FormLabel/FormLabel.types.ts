@@ -13,6 +13,8 @@ export interface FormLabelProps extends Omit<LabelHTMLAttributes<FormLabelElemen
   required?: boolean;
   /** Size of the label */
   size?: FormLabelSize;
+  /** Tooltip content to show next to label */
+  tooltip?: ReactNode;
   /** Custom class name */
   className?: string;
   /** Custom styles, supports object or theme callback function */

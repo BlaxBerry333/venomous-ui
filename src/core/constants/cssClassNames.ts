@@ -533,6 +533,56 @@ export const SPACE_GRID_CSS_CLASS_NAMES = {
 } as const;
 
 /**
+ * FormControl
+ */
+export const FORM_CONTROL_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.FormControl}__base`,
+    description: "FormControl root class",
+  },
+  row: {
+    className: `${COMPONENT_NAMES.FormControl}--row`,
+    description: "FormControl horizontal layout",
+  },
+  labelWrapper: {
+    className: `${COMPONENT_NAMES.FormControl}__label-wrapper`,
+    description: "FormControl label wrapper",
+  },
+  labelTooltip: {
+    className: `${COMPONENT_NAMES.FormControl}__label-tooltip`,
+    description: "FormControl label tooltip icon",
+  },
+  content: {
+    className: `${COMPONENT_NAMES.FormControl}__content`,
+    description: "FormControl content wrapper (for row layout)",
+  },
+  field: {
+    className: `${COMPONENT_NAMES.FormControl}__field`,
+    description: "FormControl field wrapper",
+  },
+  helperText: {
+    className: `${COMPONENT_NAMES.FormControl}__helper-text`,
+    description: "FormControl helper/error text",
+  },
+  error: {
+    className: `${COMPONENT_NAMES.FormControl}--error`,
+    description: "FormControl error state",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.FormControl}--size-small`,
+    description: "if `FormControl.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.FormControl}--size-medium`,
+    description: "if `FormControl.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.FormControl}--size-large`,
+    description: "if `FormControl.size='large'`",
+  },
+} as const;
+
+/**
  * FormLabel
  */
 export const FORM_LABEL_CSS_CLASS_NAMES = {
@@ -543,6 +593,10 @@ export const FORM_LABEL_CSS_CLASS_NAMES = {
   required: {
     className: `${COMPONENT_NAMES.FormLabel}--required`,
     description: "FormLabel with required indicator",
+  },
+  tooltip: {
+    className: `${COMPONENT_NAMES.FormLabel}__tooltip`,
+    description: "FormLabel tooltip icon wrapper",
   },
   sizeSmall: {
     className: `${COMPONENT_NAMES.FormLabel}--size-small`,

@@ -90,4 +90,17 @@ describe("FormLabel", () => {
     // The theme callback should apply the success color
     expect(label.style.color).toBeTruthy();
   });
+
+  it("renders tooltip icon when tooltip prop is provided", () => {
+    renderWithTheme(<FormLabel tooltip="Help text">With Tooltip</FormLabel>);
+    const tooltipIcon = document.querySelector(`.${FORM_LABEL_CSS_CLASS_NAMES.tooltip.className}`);
+    expect(tooltipIcon).toBeInTheDocument();
+    expect(tooltipIcon?.querySelector("svg")).toBeInTheDocument();
+  });
+
+  it("does not render tooltip icon when tooltip prop is not provided", () => {
+    renderWithTheme(<FormLabel>No Tooltip</FormLabel>);
+    const tooltipIcon = document.querySelector(`.${FORM_LABEL_CSS_CLASS_NAMES.tooltip.className}`);
+    expect(tooltipIcon).not.toBeInTheDocument();
+  });
 });

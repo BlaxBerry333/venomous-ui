@@ -37,6 +37,7 @@ export const COMPONENT_NAMES = {
   TypographyTitle: `${COMPONENT_LIBRARY_NAME}__TypographyTitle`,
   TypographyText: `${COMPONENT_LIBRARY_NAME}__TypographyText`,
 
+  FormControl: `${COMPONENT_LIBRARY_NAME}__FormControl`,
   FormLabel: `${COMPONENT_LIBRARY_NAME}__FormLabel`,
   FormFieldText: `${COMPONENT_LIBRARY_NAME}__FormFieldText`,
   FormFieldNumber: `${COMPONENT_LIBRARY_NAME}__FormFieldNumber`,
