@@ -73,6 +73,84 @@ export const AVATAR_CSS_CLASS_NAMES = {
 } as const;
 
 /**
+ * Badge
+ */
+export const BADGE_CSS_CLASS_NAMES = {
+  root: {
+    className: `${COMPONENT_NAMES.Badge}__root`,
+    description: "Badge root wrapper (contains children)",
+  },
+  badge: {
+    className: `${COMPONENT_NAMES.Badge}__badge`,
+    description: "Badge element itself",
+  },
+  invisible: {
+    className: `${COMPONENT_NAMES.Badge}--invisible`,
+    description: "Badge invisible state",
+  },
+  variantStandard: {
+    className: `${COMPONENT_NAMES.Badge}--variant-standard`,
+    description: "if `Badge.variant='standard'`",
+  },
+  variantDot: {
+    className: `${COMPONENT_NAMES.Badge}--variant-dot`,
+    description: "if `Badge.variant='dot'`",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.Badge}--size-small`,
+    description: "if `Badge.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.Badge}--size-medium`,
+    description: "if `Badge.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.Badge}--size-large`,
+    description: "if `Badge.size='large'`",
+  },
+  colorDefault: {
+    className: `${COMPONENT_NAMES.Badge}--color-default`,
+    description: "if `Badge.color='default'`",
+  },
+  colorPrimary: {
+    className: `${COMPONENT_NAMES.Badge}--color-primary`,
+    description: "if `Badge.color='primary'`",
+  },
+  colorSuccess: {
+    className: `${COMPONENT_NAMES.Badge}--color-success`,
+    description: "if `Badge.color='success'`",
+  },
+  colorError: {
+    className: `${COMPONENT_NAMES.Badge}--color-error`,
+    description: "if `Badge.color='error'`",
+  },
+  colorWarning: {
+    className: `${COMPONENT_NAMES.Badge}--color-warning`,
+    description: "if `Badge.color='warning'`",
+  },
+  colorInfo: {
+    className: `${COMPONENT_NAMES.Badge}--color-info`,
+    description: "if `Badge.color='info'`",
+  },
+  anchorTopRight: {
+    className: `${COMPONENT_NAMES.Badge}--anchor-top-right`,
+    description: "if `Badge.anchorOrigin='top-right'`",
+  },
+  anchorTopLeft: {
+    className: `${COMPONENT_NAMES.Badge}--anchor-top-left`,
+    description: "if `Badge.anchorOrigin='top-left'`",
+  },
+  anchorBottomRight: {
+    className: `${COMPONENT_NAMES.Badge}--anchor-bottom-right`,
+    description: "if `Badge.anchorOrigin='bottom-right'`",
+  },
+  anchorBottomLeft: {
+    className: `${COMPONENT_NAMES.Badge}--anchor-bottom-left`,
+    description: "if `Badge.anchorOrigin='bottom-left'`",
+  },
+} as const;
+
+/**
  * Backdrop
  */
 export const BACKDROP_CSS_CLASS_NAMES = {

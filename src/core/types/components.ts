@@ -12,6 +12,11 @@ export type ChipVariant = "filled" | "outlined";
 export type ChipSize = "small" | "medium" | "large";
 export type ChipColor = "default" | "primary" | "success" | "error" | "warning" | "info";
 
+export type BadgeVariant = "standard" | "dot";
+export type BadgeSize = "small" | "medium" | "large";
+export type BadgeColor = "default" | "primary" | "success" | "error" | "warning" | "info";
+export type BadgeAnchorOrigin = "top-right" | "top-left" | "bottom-right" | "bottom-left";
+
 export type ArrowDirection = "top" | "bottom" | "left" | "right";
 
 export type TooltipPlacement = ArrowDirection;

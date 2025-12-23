@@ -5,6 +5,8 @@ export const COMPONENT_NAMES = {
 
   Avatar: `${COMPONENT_LIBRARY_NAME}__Avatar`,
 
+  Badge: `${COMPONENT_LIBRARY_NAME}__Badge`,
+
   Backdrop: `${COMPONENT_LIBRARY_NAME}__Backdrop`,
 
   Box: `${COMPONENT_LIBRARY_NAME}__Box`,
