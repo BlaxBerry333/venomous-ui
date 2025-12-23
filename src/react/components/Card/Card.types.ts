@@ -14,8 +14,10 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, "style"> {
   radius?: "none" | "small" | "medium" | "large";
   /** Show loading overlay */
   loading?: boolean;
-  /** Disabled state (only works when clickable) */
+  /** Disabled state */
   disabled?: boolean;
+  /** Enable clickable styles (hover/active effects) */
+  clickable?: boolean;
   /** Children */
   children?: ReactNode;
   /** Custom class name */

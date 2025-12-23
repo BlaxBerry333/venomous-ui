@@ -113,10 +113,33 @@ describe("Card", () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it("applies clickable className when onClick provided", () => {
+  it("applies clickable className when clickable prop is true", () => {
+    renderWithTheme(<Card clickable>Content</Card>);
+    expect(screen.getByRole("article")).toHaveClass(CARD_CSS_CLASS_NAMES.clickable.className);
+  });
+
+  it("does not apply clickable className when clickable is false even with onClick", () => {
     const handleClick = vi.fn();
     renderWithTheme(<Card onClick={handleClick}>Content</Card>);
-    expect(screen.getByRole("article")).toHaveClass(CARD_CSS_CLASS_NAMES.clickable.className);
+    expect(screen.getByRole("article")).not.toHaveClass(CARD_CSS_CLASS_NAMES.clickable.className);
+  });
+
+  it("does not apply clickable className when disabled", () => {
+    renderWithTheme(
+      <Card clickable disabled>
+        Content
+      </Card>,
+    );
+    expect(screen.getByRole("article")).not.toHaveClass(CARD_CSS_CLASS_NAMES.clickable.className);
+  });
+
+  it("does not apply clickable className when loading", () => {
+    renderWithTheme(
+      <Card clickable loading>
+        Content
+      </Card>,
+    );
+    expect(screen.getByRole("article")).not.toHaveClass(CARD_CSS_CLASS_NAMES.clickable.className);
   });
 
   it("applies loading state", () => {

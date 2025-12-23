@@ -18,6 +18,8 @@ const {
   paddingSmall,
   paddingMedium,
   paddingLarge,
+  content,
+  loadingIcon,
 } = CARD_CSS_CLASS_NAMES;
 
 /**
@@ -64,6 +66,26 @@ function generateCardStateCSS(): string {
   pointer-events: none;
 }
 
+/* ${content.description} */
+.${content.className} {
+  display: block;
+}
+
+.${loading.className} .${content.className} {
+  visibility: hidden;
+}
+
+/* ${loadingIcon.description} */
+.${loadingIcon.className} {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ${clickable.description} */
 .${clickable.className} {
   cursor: pointer;
@@ -80,15 +102,14 @@ function generateCardVariantCSS(): string {
 .${variantElevated.className} {
   background-color: ${getCssVar((v) => v.bg.float)};
   border: 1px solid transparent;
-  box-shadow: ${getCssVar((v) => v.shadow.small)};
-}
-.${variantElevated.className}.${clickable}:hover:not(.${disabled}) {
   box-shadow: ${getCssVar((v) => v.shadow.medium)};
-  transform: translateY(-2px);
 }
-.${variantElevated.className}.${clickable}:active:not(.${disabled}) {
-  transform: translateY(0);
-  box-shadow: ${getCssVar((v) => v.shadow.small)};
+.${variantElevated.className}.${clickable.className}:hover:not(.${disabled.className}) {
+  box-shadow: ${getCssVar((v) => v.shadow.large)};
+}
+.${variantElevated.className}.${clickable.className}:active:not(.${disabled.className}) {
+  transform: scale(0.995);
+  box-shadow: ${getCssVar((v) => v.shadow.medium)};
 }
 
 /* ${variantOutlined.description} */
@@ -101,6 +122,7 @@ function generateCardVariantCSS(): string {
   box-shadow: 0 0 0 1px ${getCssVar((v) => v.palette.main)};
 }
 .${variantOutlined.className}.${clickable.className}:active:not(.${disabled.className}) {
+  transform: scale(0.995);
   background-color: ${getCssVar((v) => v.bg.active)};
 }
 
@@ -113,6 +135,7 @@ function generateCardVariantCSS(): string {
   background-color: ${getCssVar((v) => v.bg.active)};
 }
 .${variantFilled.className}.${clickable.className}:active:not(.${disabled.className}) {
+  transform: scale(0.995);
   background-color: ${getCssVar((v) => v.bg.disabled)};
 }
   `.trim();

@@ -312,6 +312,14 @@ export const CARD_CSS_CLASS_NAMES = {
     className: `${COMPONENT_NAMES.Card}__radiusLarge`,
     description: "if `Card.radius='large'`",
   },
+  content: {
+    className: `${COMPONENT_NAMES.Card}__content`,
+    description: "Card content wrapper",
+  },
+  loadingIcon: {
+    className: `${COMPONENT_NAMES.Card}__loading-icon`,
+    description: "Card loading icon (centered overlay)",
+  },
 } as const;
 
 /**

@@ -29,6 +29,15 @@ const meta = {
       },
       control: { type: "boolean" },
     },
+    clickable: {
+      description: "Enable clickable styles (hover/active effects).",
+      type: { name: "boolean" },
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+      control: { type: "boolean" },
+    },
     children: {
       description: "Card content.",
       table: {
@@ -104,14 +113,12 @@ const meta = {
 
           <Markdown>
             {`
-A styled card component, built on top of the headless \`<Card>\` component. But \`style\` prop also supports a theme callback function.<br />
+A styled card component.<br />
 Must be used within \`<ThemeProvider>\` component.
-
-After the component is mounted, a \`<style>\` tag will be injected into the \`<head>\` of the \`<html>\` document (only be injected once and will not be duplicated). The \`<style>\` tag will be removed from the \`<head>\` after the component is unmounted.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -142,28 +149,30 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{VariantsExample.name}</Heading>
+          <Subtitle>{VariantsExample.name}</Subtitle>
           <Description of={VariantsExample} />
           <Canvas of={VariantsExample} />
 
-          <Heading>{PaddingExample.name}</Heading>
+          <Subtitle>{PaddingExample.name}</Subtitle>
           <Description of={PaddingExample} />
           <Canvas of={PaddingExample} />
 
-          <Heading>{RadiusExample.name}</Heading>
+          <Subtitle>{RadiusExample.name}</Subtitle>
           <Description of={RadiusExample} />
           <Canvas of={RadiusExample} />
 
-          <Heading>{ClickableExample.name}</Heading>
+          <Subtitle>{ClickableExample.name}</Subtitle>
           <Description of={ClickableExample} />
           <Canvas of={ClickableExample} />
 
-          <Heading>{StyleCallbackExample.name}</Heading>
+          <Subtitle>{StyleCallbackExample.name}</Subtitle>
           <Description of={StyleCallbackExample} />
           <Canvas of={StyleCallbackExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },
@@ -182,6 +191,7 @@ export const Playground: Story = {
   args: {
     loading: false,
     disabled: false,
+    clickable: false,
     variant: "elevated",
     padding: "medium",
     radius: "medium",
@@ -338,15 +348,15 @@ export const ClickableExample: Story = {
 
     return (
       <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-        <Card variant="elevated" onClick={() => alert("Clicked!")}>
+        <Card variant="elevated" clickable onClick={() => alert("Clicked!")}>
           <h4 style={{ margin: 0, marginBottom: 8 }}>Clickable</h4>
           <p style={{ margin: 0 }}>Click me!</p>
         </Card>
-        <Card variant="outlined" disabled>
+        <Card variant="outlined" clickable disabled>
           <h4 style={{ margin: 0, marginBottom: 8 }}>Disabled</h4>
           <p style={{ margin: 0 }}>Cannot click</p>
         </Card>
-        <Card variant="filled" loading={loading} onClick={handleClick}>
+        <Card variant="filled" clickable loading={loading} onClick={handleClick}>
           <h4 style={{ margin: 0, marginBottom: 8 }}>Click to Load</h4>
           <p style={{ margin: 0 }}>{loading ? "Loading..." : "Click me!"}</p>
         </Card>

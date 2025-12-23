@@ -6,7 +6,6 @@ import clsx from "clsx";
 
 import { CARD_CSS_CLASS_NAMES, COMPONENT_NAMES } from "@/core/constants";
 import { generateCardCSS } from "@/core/css";
-import { Box } from "@/react/components/Box";
 import { Icon } from "@/react/components/Icon";
 import { useComputedStyle, useStyleInjection } from "@/react/hooks";
 import type { CardElement, CardProps } from "./Card.types";
@@ -20,6 +19,7 @@ const Card = React.memo(
         radius = "medium",
         loading = false,
         disabled = false,
+        clickable = false,
         className,
         style,
         children,
@@ -29,7 +29,7 @@ const Card = React.memo(
       ref,
     ) => {
       const isDisabled: boolean = disabled || loading;
-      const clickable: boolean = !isDisabled && !!onClick;
+      const isClickable: boolean = clickable && !isDisabled;
 
       /**
        * inject component css
@@ -49,7 +49,7 @@ const Card = React.memo(
         CARD_CSS_CLASS_NAMES.base.className,
         isDisabled && CARD_CSS_CLASS_NAMES.disabled.className,
         loading && CARD_CSS_CLASS_NAMES.loading.className,
-        clickable && CARD_CSS_CLASS_NAMES.clickable.className,
+        isClickable && CARD_CSS_CLASS_NAMES.clickable.className,
         variant === "elevated" && CARD_CSS_CLASS_NAMES.variantElevated.className,
         variant === "outlined" && CARD_CSS_CLASS_NAMES.variantOutlined.className,
         variant === "filled" && CARD_CSS_CLASS_NAMES.variantFilled.className,
@@ -74,12 +74,12 @@ const Card = React.memo(
           aria-disabled={isDisabled || undefined}
           {...restProps}
         >
-          {children}
           {loading && (
-            <Box className={`${CARD_CSS_CLASS_NAMES.loading.className}--loading-overlay`}>
+            <span className={CARD_CSS_CLASS_NAMES.loadingIcon.className}>
               <Icon name="svg-spinners:ring-resize" />
-            </Box>
+            </span>
           )}
+          <div className={CARD_CSS_CLASS_NAMES.content.className}>{children}</div>
         </article>
       );
     },
