@@ -8,6 +8,10 @@ export type CardVariant = "elevated" | "outlined" | "filled";
 export type CardPadding = "none" | "small" | "medium" | "large";
 export type CardRadius = "none" | "small" | "medium" | "large";
 
+export type ChipVariant = "filled" | "outlined";
+export type ChipSize = "small" | "medium" | "large";
+export type ChipColor = "default" | "primary" | "success" | "error" | "warning" | "info";
+
 export type ArrowDirection = "top" | "bottom" | "left" | "right";
 
 export type TooltipPlacement = ArrowDirection;

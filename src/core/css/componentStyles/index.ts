@@ -4,6 +4,7 @@ export * from "./Backdrop";
 export * from "./Box";
 export * from "./Button";
 export * from "./Card";
+export * from "./Chip";
 export * from "./CssReset";
 export * from "./Drawer";
 export * from "./FormControl";

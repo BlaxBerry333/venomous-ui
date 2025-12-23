@@ -13,6 +13,8 @@ export const COMPONENT_NAMES = {
 
   Card: `${COMPONENT_LIBRARY_NAME}__Card`,
 
+  Chip: `${COMPONENT_LIBRARY_NAME}__Chip`,
+
   CssReset: `${COMPONENT_LIBRARY_NAME}__CssReset`,
 
   Drawer: `${COMPONENT_LIBRARY_NAME}__Drawer`,

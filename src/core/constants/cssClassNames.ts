@@ -205,6 +205,80 @@ export const CARD_CSS_CLASS_NAMES = {
 } as const;
 
 /**
+ * Chip
+ */
+export const CHIP_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.Chip}__base`,
+    description: "Chip root class",
+  },
+  disabled: {
+    className: `${COMPONENT_NAMES.Chip}--disabled`,
+    description: "Chip disabled state",
+  },
+  selected: {
+    className: `${COMPONENT_NAMES.Chip}--selected`,
+    description: "Chip selected state",
+  },
+  clickable: {
+    className: `${COMPONENT_NAMES.Chip}--clickable`,
+    description: "Chip clickable state",
+  },
+  variantFilled: {
+    className: `${COMPONENT_NAMES.Chip}--variant-filled`,
+    description: "if `Chip.variant='filled'`",
+  },
+  variantOutlined: {
+    className: `${COMPONENT_NAMES.Chip}--variant-outlined`,
+    description: "if `Chip.variant='outlined'`",
+  },
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.Chip}--size-small`,
+    description: "if `Chip.size='small'`",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.Chip}--size-medium`,
+    description: "if `Chip.size='medium'`",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.Chip}--size-large`,
+    description: "if `Chip.size='large'`",
+  },
+  colorDefault: {
+    className: `${COMPONENT_NAMES.Chip}--color-default`,
+    description: "if `Chip.color='default'`",
+  },
+  colorPrimary: {
+    className: `${COMPONENT_NAMES.Chip}--color-primary`,
+    description: "if `Chip.color='primary'`",
+  },
+  colorSuccess: {
+    className: `${COMPONENT_NAMES.Chip}--color-success`,
+    description: "if `Chip.color='success'`",
+  },
+  colorError: {
+    className: `${COMPONENT_NAMES.Chip}--color-error`,
+    description: "if `Chip.color='error'`",
+  },
+  colorWarning: {
+    className: `${COMPONENT_NAMES.Chip}--color-warning`,
+    description: "if `Chip.color='warning'`",
+  },
+  colorInfo: {
+    className: `${COMPONENT_NAMES.Chip}--color-info`,
+    description: "if `Chip.color='info'`",
+  },
+  label: {
+    className: `${COMPONENT_NAMES.Chip}__label`,
+    description: "Chip label/text",
+  },
+  deleteIcon: {
+    className: `${COMPONENT_NAMES.Chip}__delete-icon`,
+    description: "Chip delete icon",
+  },
+} as const;
+
+/**
  * Icon
  */
 export const ICON_CSS_CLASS_NAMES = {
