@@ -56,6 +56,9 @@ export const COMPONENT_NAMES = {
   ProgressCircle: `${COMPONENT_LIBRARY_NAME}__ProgressCircle`,
   ProgressPageLoad: `${COMPONENT_LIBRARY_NAME}__ProgressPageLoad`,
   ProgressScrollIndicator: `${COMPONENT_LIBRARY_NAME}__ProgressScrollIndicator`,
+
+  Toast: `${COMPONENT_LIBRARY_NAME}__Toast`,
+  ToastProvider: `${COMPONENT_LIBRARY_NAME}__ToastProvider`,
 } as const;
 
 export type IComponentName = keyof typeof COMPONENT_NAMES;

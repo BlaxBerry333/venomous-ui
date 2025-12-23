@@ -29,6 +29,7 @@ export * from "./ProgressScrollIndicator";
 export * from "./SpaceFlex";
 export * from "./SpaceGrid";
 export * from "./ThemeProvider";
+export * from "./Toast";
 export * from "./Tooltip";
 export * from "./TypographyParagraph";
 export * from "./TypographyText";

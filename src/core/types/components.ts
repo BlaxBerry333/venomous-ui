@@ -77,3 +77,6 @@ export type FormFieldTextareaResize = "none" | "vertical" | "horizontal" | "both
 export type ProgressSize = "small" | "medium" | "large";
 export type ProgressPresetColor = "primary" | "success" | "error" | "warning" | "info";
 export type ProgressColor = ProgressPresetColor | (string & {});
+
+export type ToastVariant = "success" | "error" | "warning" | "info" | "loading";
+export type ToastPlacement = "top-right" | "top-center" | "top-left" | "bottom-right" | "bottom-center" | "bottom-left";

@@ -1403,3 +1403,98 @@ export const PROGRESS_SCROLL_INDICATOR_CSS_CLASS_NAMES = {
     description: "Progress.ScrollIndicator progress bar",
   },
 } as const;
+
+/**
+ * Toast
+ */
+export const TOAST_CSS_CLASS_NAMES = {
+  // Container (viewport)
+  container: {
+    className: `${COMPONENT_NAMES.ToastProvider}__container`,
+    description: "Toast container/viewport",
+  },
+  // Single toast
+  root: {
+    className: `${COMPONENT_NAMES.Toast}__root`,
+    description: "Toast root element",
+  },
+  icon: {
+    className: `${COMPONENT_NAMES.Toast}__icon`,
+    description: "Toast icon container",
+  },
+  content: {
+    className: `${COMPONENT_NAMES.Toast}__content`,
+    description: "Toast content wrapper",
+  },
+  title: {
+    className: `${COMPONENT_NAMES.Toast}__title`,
+    description: "Toast title",
+  },
+  description: {
+    className: `${COMPONENT_NAMES.Toast}__description`,
+    description: "Toast description",
+  },
+  action: {
+    className: `${COMPONENT_NAMES.Toast}__action`,
+    description: "Toast action area",
+  },
+  closeButton: {
+    className: `${COMPONENT_NAMES.Toast}__close-button`,
+    description: "Toast close button",
+  },
+  // Variants
+  variantSuccess: {
+    className: `${COMPONENT_NAMES.Toast}--variant-success`,
+    description: "if `Toast.variant='success'`",
+  },
+  variantError: {
+    className: `${COMPONENT_NAMES.Toast}--variant-error`,
+    description: "if `Toast.variant='error'`",
+  },
+  variantWarning: {
+    className: `${COMPONENT_NAMES.Toast}--variant-warning`,
+    description: "if `Toast.variant='warning'`",
+  },
+  variantInfo: {
+    className: `${COMPONENT_NAMES.Toast}--variant-info`,
+    description: "if `Toast.variant='info'`",
+  },
+  variantLoading: {
+    className: `${COMPONENT_NAMES.Toast}--variant-loading`,
+    description: "if `Toast.variant='loading'`",
+  },
+  // Placements
+  placementTopRight: {
+    className: `${COMPONENT_NAMES.ToastProvider}--placement-top-right`,
+    description: "if `ToastProvider.placement='top-right'`",
+  },
+  placementTopCenter: {
+    className: `${COMPONENT_NAMES.ToastProvider}--placement-top-center`,
+    description: "if `ToastProvider.placement='top-center'`",
+  },
+  placementTopLeft: {
+    className: `${COMPONENT_NAMES.ToastProvider}--placement-top-left`,
+    description: "if `ToastProvider.placement='top-left'`",
+  },
+  placementBottomRight: {
+    className: `${COMPONENT_NAMES.ToastProvider}--placement-bottom-right`,
+    description: "if `ToastProvider.placement='bottom-right'`",
+  },
+  placementBottomCenter: {
+    className: `${COMPONENT_NAMES.ToastProvider}--placement-bottom-center`,
+    description: "if `ToastProvider.placement='bottom-center'`",
+  },
+  placementBottomLeft: {
+    className: `${COMPONENT_NAMES.ToastProvider}--placement-bottom-left`,
+    description: "if `ToastProvider.placement='bottom-left'`",
+  },
+  // States
+  entering: {
+    className: `${COMPONENT_NAMES.Toast}--entering`,
+    description: "Toast entering animation",
+  },
+  exiting: {
+    className: `${COMPONENT_NAMES.Toast}--exiting`,
+    description: "Toast exiting animation",
+  },
+} as const;
