@@ -366,12 +366,12 @@ const Select = React.memo<FormFieldSelectProps>(
               tabIndex={-1}
               aria-label="Clear selection"
             >
-              <Icon icon="mdi:close" />
+              <Icon name="mdi:close" />
             </span>
           )}
 
           <span className={FORM_FIELD_SELECT_CSS_CLASS_NAMES.arrow.className}>
-            <Icon icon="mdi:chevron-down" />
+            <Icon name="mdi:chevron-down" />
           </span>
         </button>
 

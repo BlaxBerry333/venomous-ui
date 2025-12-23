@@ -396,6 +396,30 @@ export const ICON_CSS_CLASS_NAMES = {
     className: `${COMPONENT_NAMES.Icon}__base`,
     description: "Icon root class",
   },
+  colorInherit: {
+    className: `${COMPONENT_NAMES.Icon}--color-inherit`,
+    description: "if `Icon.color='inherit'`",
+  },
+  colorPrimary: {
+    className: `${COMPONENT_NAMES.Icon}--color-primary`,
+    description: "if `Icon.color='primary'`",
+  },
+  colorSuccess: {
+    className: `${COMPONENT_NAMES.Icon}--color-success`,
+    description: "if `Icon.color='success'`",
+  },
+  colorError: {
+    className: `${COMPONENT_NAMES.Icon}--color-error`,
+    description: "if `Icon.color='error'`",
+  },
+  colorWarning: {
+    className: `${COMPONENT_NAMES.Icon}--color-warning`,
+    description: "if `Icon.color='warning'`",
+  },
+  colorInfo: {
+    className: `${COMPONENT_NAMES.Icon}--color-info`,
+    description: "if `Icon.color='info'`",
+  },
 } as const;
 
 /**

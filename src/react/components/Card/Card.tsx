@@ -77,7 +77,7 @@ const Card = React.memo(
           {children}
           {loading && (
             <Box className={`${CARD_CSS_CLASS_NAMES.loading.className}--loading-overlay`}>
-              <Icon icon="svg-spinners:ring-resize" />
+              <Icon name="svg-spinners:ring-resize" />
             </Box>
           )}
         </article>

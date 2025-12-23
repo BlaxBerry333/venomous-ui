@@ -83,7 +83,7 @@ const Password = React.memo(
             tabIndex={-1}
             aria-label={isVisible ? "Hide password" : "Show password"}
           >
-            <Icon icon={isVisible ? "mdi:eye-off" : "mdi:eye"} />
+            <Icon name={isVisible ? "mdi:eye-off" : "mdi:eye"} />
           </button>
         </div>
       );

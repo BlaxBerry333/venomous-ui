@@ -1,12 +1,13 @@
 import { ICON_CSS_CLASS_NAMES } from "@/core/constants";
+import { getCssVar } from "@/core/css/variables";
 import { DESIGN_TOKENS } from "@/core/designs";
 
-const { base } = ICON_CSS_CLASS_NAMES;
+const { base, colorInherit, colorPrimary, colorSuccess, colorError, colorWarning, colorInfo } = ICON_CSS_CLASS_NAMES;
 
 /**
  * Generate base CSS for Icon
  */
-export function generateIconBaseCSS(): string {
+function generateIconBaseCSS(): string {
   return `
 /* ${base.description} */
 .${base.className} {
@@ -19,3 +20,50 @@ export function generateIconBaseCSS(): string {
 }
   `.trim();
 }
+
+/**
+ * Generate color CSS for Icon
+ */
+function generateIconColorCSS(): string {
+  return `
+/* ${colorInherit.description} */
+.${colorInherit.className} {
+  color: inherit;
+}
+
+/* ${colorPrimary.description} */
+.${colorPrimary.className} {
+  color: ${getCssVar((v) => v.palette.main)};
+}
+
+/* ${colorSuccess.description} */
+.${colorSuccess.className} {
+  color: ${getCssVar((v) => v.semantic.success.main)};
+}
+
+/* ${colorError.description} */
+.${colorError.className} {
+  color: ${getCssVar((v) => v.semantic.danger.main)};
+}
+
+/* ${colorWarning.description} */
+.${colorWarning.className} {
+  color: ${getCssVar((v) => v.semantic.warning.main)};
+}
+
+/* ${colorInfo.description} */
+.${colorInfo.className} {
+  color: ${getCssVar((v) => v.semantic.info.main)};
+}
+  `.trim();
+}
+
+/**
+ * Generate Icon CSS
+ */
+export function generateIconCSS(): string {
+  return [generateIconBaseCSS(), generateIconColorCSS()].join("\n\n");
+}
+
+// Keep old export for backwards compatibility
+export { generateIconCSS as generateIconBaseCSS };

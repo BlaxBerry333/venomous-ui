@@ -1,6 +1,8 @@
 import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { Space } from "../Space";
+import { Typography } from "../Typography";
 import Icon from "./Icon";
 
 const meta = {
@@ -8,7 +10,7 @@ const meta = {
   component: Icon,
   tags: ["autodocs"],
   argTypes: {
-    icon: {
+    name: {
       description: "Icon name from Iconify. See https://icon-sets.iconify.design/ for available icons.",
       type: { name: "string", required: true },
       table: {
@@ -26,12 +28,13 @@ const meta = {
       control: { type: "number", min: 1, max: 100, step: 1 },
     },
     color: {
-      description: "Icon color. Accepts any valid CSS color value.",
+      description: "Icon color. Supports preset colors or any valid CSS color value.",
       type: { name: "string" },
       table: {
-        type: { summary: "string" },
+        type: { summary: '"inherit" | "primary" | "success" | "error" | "warning" | "info" | string' },
+        defaultValue: { summary: '"inherit"' },
       },
-      control: { type: "color" },
+      control: { type: "text" },
     },
     className: {
       description: "Additional CSS class names.",
@@ -57,14 +60,12 @@ const meta = {
 
           <Markdown>
             {`
-A styled icon component, built on top of the headless \`<Icon>\` component. But \`style\` prop also supports a theme callback function.<br />
+A styled icon component built on top of the \`Iconify\` library ( See https://iconify.design/docs/icon-components/react/ ) <br />
 Must be used within \`<ThemeProvider>\` component.
-
-After the component is mounted, a \`<style>\` tag will be injected into the \`<head>\` of the \`<html>\` document ( only be injected once and will not be duplicated ). The \`<style>\` tag will be removed from the \`<head>\` after the component is unmounted.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -75,26 +76,42 @@ import { ThemeProvider, Icon } from "venomous-ui/react/components";
 function App() {
   return (
     <ThemeProvider>
-      {/* Use color prop */}
-      <Icon icon="mdi:check-circle" color="#22c55e" width={24} />
+      {/* Basic icon */}
+      <Icon name="mdi:home" />
 
-      {/* Use style callback with theme */}
-      <Icon
-        icon="mdi:alert-circle"
-        width={24}
-        style={(theme) => ({ color: theme.semantic.warning.main })}
-      />
+      {/* With preset color */}
+      <Icon name="mdi:check-circle" color="success" />
+
+      {/* With custom color */}
+      <Icon name="mdi:heart" color="#e91e63" />
+
+      {/* With size */}
+      <Icon name="mdi:star" width={32} />
     </ThemeProvider>
   );
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{StyleCallbackExample.name}</Heading>
-          <Description of={StyleCallbackExample} />
-          <Canvas of={StyleCallbackExample} />
+          <Subtitle>{SizesExample.name}</Subtitle>
+          <Description of={SizesExample} />
+          <Canvas of={SizesExample} />
+
+          <Subtitle>{ColorsExample.name}</Subtitle>
+          <Description of={ColorsExample} />
+          <Canvas of={ColorsExample} />
+
+          <Subtitle>{CustomStyleExample.name}</Subtitle>
+          <Description of={CustomStyleExample} />
+          <Canvas of={CustomStyleExample} />
+
+          <Subtitle>{PopularIconsExample.name}</Subtitle>
+          <Description of={PopularIconsExample} />
+          <Canvas of={PopularIconsExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },
@@ -111,36 +128,128 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   name: "Playground",
   args: {
-    icon: "mdi:home",
-    width: 20,
+    name: "mdi:home",
+    width: 24,
+    color: "inherit",
   },
 };
 
 // ============================
-// Style Callback Example
+// Sizes Example
 // ============================
-export const StyleCallbackExample: Story = {
-  name: "Style Callback Example",
+export const SizesExample: Story = {
+  name: "Sizes Example",
   tags: ["!dev"],
   args: Playground.args,
   parameters: {
     docs: {
       description: {
-        story: "Use `style` prop with theme callback to access semantic colors from theme.",
+        story: "Use the `width` prop to set icon size. The height will be the same as width.",
       },
       source: {
         code: `
+<Icon name="mdi:home" width={16} />
+<Icon name="mdi:home" width={20} />
+<Icon name="mdi:home" width={24} />
+<Icon name="mdi:home" width={32} />
+<Icon name="mdi:home" width={48} />
+        `.trim(),
+      },
+    },
+  },
+  render: function RenderStory() {
+    return (
+      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+        <Icon name="mdi:home" width={16} />
+        <Icon name="mdi:home" width={20} />
+        <Icon name="mdi:home" width={24} />
+        <Icon name="mdi:home" width={32} />
+        <Icon name="mdi:home" width={48} />
+      </div>
+    );
+  },
+};
+
+// ============================
+// Colors Example
+// ============================
+export const ColorsExample: Story = {
+  name: "Colors Example",
+  tags: ["!dev"],
+  args: Playground.args,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Use the `color` prop to set icon color. Supports preset colors (`inherit`, `primary`, `success`, `error`, `warning`, `info`) or any CSS color value.",
+      },
+      source: {
+        code: `
+// Preset colors
+<Icon name="mdi:circle" color="inherit" />
+<Icon name="mdi:circle" color="primary" />
+<Icon name="mdi:circle" color="success" />
+<Icon name="mdi:circle" color="error" />
+<Icon name="mdi:circle" color="warning" />
+<Icon name="mdi:circle" color="info" />
+
+// Custom colors
+<Icon name="mdi:heart" color="#e91e63" />
+<Icon name="mdi:star" color="gold" />
+<Icon name="mdi:leaf" color="forestgreen"  />
+<Icon name="mdi:water" color="deepskyblue"  />
+        `.trim(),
+      },
+    },
+  },
+  render: function RenderStory() {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <Icon name="mdi:circle" color="inherit" />
+          <Icon name="mdi:circle" color="primary" />
+          <Icon name="mdi:circle" color="success" />
+          <Icon name="mdi:circle" color="error" />
+          <Icon name="mdi:circle" color="warning" />
+          <Icon name="mdi:circle" color="info" />
+        </div>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <Icon name="mdi:heart" color="#e91e63" />
+          <Icon name="mdi:star" color="gold" />
+          <Icon name="mdi:leaf" color="forestgreen" />
+          <Icon name="mdi:water" color="deepskyblue" />
+        </div>
+      </div>
+    );
+  },
+};
+
+// ============================
+// Custom Style Example
+// ============================
+export const CustomStyleExample: Story = {
+  name: "Custom Style Example",
+  tags: ["!dev"],
+  args: Playground.args,
+  parameters: {
+    docs: {
+      description: {
+        story: "Use `style` prop for custom styles. It supports both a plain object and a theme callback function.",
+      },
+      source: {
+        code: `
+// Plain object style
 <Icon
-  icon="mdi:check-circle"
-  style={(theme) => ({ color: theme.semanticColors.success.main })}
+  name="mdi:account-circle"
+  width={32}
+  style={{ opacity: 0.5 }}
 />
+
+// Theme callback style
 <Icon
-  icon="mdi:alert-circle"
-  style={(theme) => ({ color: theme.semanticColors.warning.main })}
-/>
-<Icon
-  icon="mdi:close-circle"
-  style={(theme) => ({ color: theme.semanticColors.error.main })}
+  name="mdi:palette"
+  width={32}
+  style={(theme) => ({ color: theme.paletteColors.main })}
 />
         `.trim(),
       },
@@ -149,10 +258,115 @@ export const StyleCallbackExample: Story = {
   render: function RenderStory() {
     return (
       <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-        <Icon icon="mdi:check-circle" style={(theme) => ({ color: theme.semanticColors.success.main })} />
-        <Icon icon="mdi:alert-circle" style={(theme) => ({ color: theme.semanticColors.warning.main })} />
-        <Icon icon="mdi:close-circle" style={(theme) => ({ color: theme.semanticColors.error.main })} />
+        <Icon name="mdi:account-circle" width={32} style={{ opacity: 0.5 }} />
+        <Icon name="mdi:palette" width={32} style={(theme) => ({ color: theme.paletteColors.main })} />
       </div>
+    );
+  },
+};
+
+// ============================
+// Popular Icons Example
+// ============================
+export const PopularIconsExample: Story = {
+  name: "Popular Icons Example",
+  tags: ["!dev"],
+  args: Playground.args,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Popular icon sets available through Iconify. Visit [icon-sets.iconify.design](https://icon-sets.iconify.design/) for the full catalog.",
+      },
+      source: {
+        code: `
+// MDI (Material Design Icons)
+<Icon name="mdi:home" />
+<Icon name="mdi:account" />
+<Icon name="mdi:cog" />
+<Icon name="mdi:magnify" />
+
+// Solar (Modern UI icons)
+<Icon name="solar:sun-bold" />
+<Icon name="solar:moon-bold" />
+<Icon name="solar:settings-bold" />
+<Icon name="solar:bell-bold" />
+
+// Lucide (Clean line icons)
+<Icon name="lucide:heart" />
+<Icon name="lucide:star" />
+<Icon name="lucide:mail" />
+<Icon name="lucide:calendar" />
+
+// Logos (Brand logos)
+<Icon name="logos:react" />
+<Icon name="logos:vue" />
+<Icon name="logos:typescript-icon" />
+<Icon name="logos:github-icon" />
+
+// Flagpack (Country flags)
+<Icon name="flagpack:us" />
+<Icon name="flagpack:cn" />
+<Icon name="flagpack:jp" />
+<Icon name="flagpack:gb-ukm" />
+        `.trim(),
+      },
+    },
+  },
+  render: function RenderStory() {
+    const iconGroups = [
+      {
+        label: "MDI (Material Design Icons)",
+        icons: ["mdi:home", "mdi:account", "mdi:cog", "mdi:magnify", "mdi:bell", "mdi:heart"],
+      },
+      {
+        label: "Solar (Modern UI icons)",
+        icons: [
+          "solar:sun-bold",
+          "solar:moon-bold",
+          "solar:settings-bold",
+          "solar:bell-bold",
+          "solar:chat-round-dots-bold",
+          "solar:trash-bin-trash-bold",
+        ],
+      },
+      {
+        label: "Lucide (Clean line icons)",
+        icons: ["lucide:heart", "lucide:star", "lucide:mail", "lucide:calendar", "lucide:download", "lucide:upload"],
+      },
+      {
+        label: "Logos (Brand logos)",
+        icons: [
+          "logos:react",
+          "logos:vue",
+          "logos:typescript-icon",
+          "logos:github-icon",
+          "logos:nodejs-icon",
+          "logos:npm-icon",
+        ],
+      },
+      {
+        label: "Flagpack (Country flags)",
+        icons: ["flagpack:us", "flagpack:cn", "flagpack:jp", "flagpack:gb-ukm", "flagpack:de", "flagpack:fr"],
+      },
+    ];
+
+    return (
+      <Space.Flex column spacing={10}>
+        {iconGroups.map((group) => (
+          <div key={group.label}>
+            <Typography.Text>{group.label}</Typography.Text>
+            <Space.Grid columns={{ xs: 6 }}>
+              {group.icons.map((iconName) => (
+                <div key={iconName} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                  <Icon name={iconName} width={24} />
+                  <span style={{ fontSize: 10, color: "#999" }}>{iconName.split(":")[1]}</span>
+                </div>
+              ))}
+            </Space.Grid>
+          </div>
+        ))}
+      </Space.Flex>
     );
   },
 };

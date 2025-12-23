@@ -120,7 +120,7 @@ const Avatar = React.memo(
         // Priority 5: Default person icon
         return (
           <span className={AVATAR_CSS_CLASS_NAMES.fallback.className}>
-            <Icon icon="mdi:account" />
+            <Icon name="mdi:account" />
           </span>
         );
       };

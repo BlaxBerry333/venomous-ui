@@ -64,7 +64,7 @@ const meta = {
       options: [undefined, "<Icon />"],
       mapping: {
         undefined: undefined,
-        "<Icon />": <Icon icon="mdi:star" />,
+        "<Icon />": <Icon name="mdi:star" />,
       },
       if: { arg: "fallbackText", truthy: false },
     },
@@ -141,7 +141,7 @@ function App() {
       <Avatar fallbackText="JD" />
 
       {/* Custom icon (fallback) */}
-      <Avatar fallbackIcon={<Icon icon="mdi:account-group" />} />
+      <Avatar fallbackIcon={<Icon name="mdi:account-group" />} />
 
       {/* Image with fallback text (shows text if image fails) */}
       <Avatar imageSrc="/user.jpg" fallbackText="JD" />
@@ -209,7 +209,7 @@ export const FallbackExample: Story = {
         code: `
 {/* Custom fallback icon */}
 <Avatar>
-  <Icon icon="mdi:star" width={40} />
+  <Icon name="mdi:star" width={40} />
 </Avatar>
 
 {/* Image load success */}
@@ -219,7 +219,7 @@ export const FallbackExample: Story = {
 <Avatar imageSrc="/invalid.jpg" fallbackText="FB" />
 
 {/* Image load failure - falls back to icon */}
-<Avatar imageSrc="/invalid.jpg" fallbackIcon={<Icon icon="mdi:alert" />} />
+<Avatar imageSrc="/invalid.jpg" fallbackIcon={<Icon name="mdi:alert" />} />
 
 {/* Image load failure - falls back to default */}
 <Avatar imageSrc="/invalid.jpg" />
@@ -231,11 +231,11 @@ export const FallbackExample: Story = {
     return (
       <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
         <Avatar>
-          <Icon icon="mdi:star" width={40} />
+          <Icon name="mdi:star" width={40} />
         </Avatar>
         <Avatar imageSrc={Playground.args?.imageSrc} alt="User" />
         <Avatar imageSrc="/invalid-image-url.jpg" fallbackText="FB" />
-        <Avatar imageSrc="/invalid-image-url.jpg" fallbackIcon={<Icon icon="mdi:alert" />} />
+        <Avatar imageSrc="/invalid-image-url.jpg" fallbackIcon={<Icon name="mdi:alert" />} />
         <Avatar imageSrc="/invalid-image-url.jpg" />
       </div>
     );

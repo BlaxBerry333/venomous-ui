@@ -158,7 +158,7 @@ const Number = React.memo(
               tabIndex={-1}
               aria-label="Increase value"
             >
-              <Icon icon="mdi:chevron-up" />
+              <Icon name="mdi:chevron-up" />
             </button>
             <button
               type="button"
@@ -168,7 +168,7 @@ const Number = React.memo(
               tabIndex={-1}
               aria-label="Decrease value"
             >
-              <Icon icon="mdi:chevron-down" />
+              <Icon name="mdi:chevron-down" />
             </button>
           </div>
         </div>

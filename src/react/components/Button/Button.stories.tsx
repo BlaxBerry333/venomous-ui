@@ -53,7 +53,7 @@ const meta = {
       options: [undefined, "<Icon />"],
       mapping: {
         undefined: undefined,
-        "<Icon />": <Icon icon="solar:asteroid-bold" />,
+        "<Icon />": <Icon name="solar:asteroid-bold" />,
       },
     },
     EndElement: {
@@ -65,7 +65,7 @@ const meta = {
       options: [undefined, "<Icon />"],
       mapping: {
         undefined: undefined,
-        "<Icon />": <Icon icon="solar:asteroid-bold" />,
+        "<Icon />": <Icon name="solar:asteroid-bold" />,
       },
     },
     children: {
@@ -381,12 +381,12 @@ export const WithIconExample: Story = {
         code: `
 <Button
   text="Save"
-  startElement={<Icon icon="mdi:content-save" />}
+  startElement={<Icon name="mdi:content-save" />}
 />
 <Button
   variant="outlined"
   text="Delete"
-  startElement={<Icon icon="mdi:delete" />}
+  startElement={<Icon name="mdi:delete" />}
 />
         `.trim(),
       },
@@ -395,10 +395,10 @@ export const WithIconExample: Story = {
   render: function RenderStory() {
     return (
       <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-        <Button text="Save" StartElement={<Icon icon="mdi:content-save" />} />
-        <Button variant="outlined" text="Delete" StartElement={<Icon icon="mdi:delete" />} />
-        <Button variant="text" text="Add" StartElement={<Icon icon="mdi:plus" />} />
-        <Button text="Next" EndElement={<Icon icon="mdi:arrow-right" />} />
+        <Button text="Save" StartElement={<Icon name="mdi:content-save" />} />
+        <Button variant="outlined" text="Delete" StartElement={<Icon name="mdi:delete" />} />
+        <Button variant="text" text="Add" StartElement={<Icon name="mdi:plus" />} />
+        <Button text="Next" EndElement={<Icon name="mdi:arrow-right" />} />
       </div>
     );
   },

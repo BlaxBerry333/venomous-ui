@@ -428,7 +428,7 @@ export const CustomIconExample: Story = {
         code: `
 // icon accepts ReactNode - custom icon component
 toast.loading("Uploading...", {
-  icon: <Icon icon="mdi:cloud-upload" />,
+  icon: <Icon name="mdi:cloud-upload" />,
 });
 
 // Emoji as icon
@@ -659,7 +659,7 @@ function CustomIconDemo() {
       <Button
         onClick={() =>
           toast.loading("Uploading...", {
-            icon: <Icon icon="mdi:cloud-upload" />,
+            icon: <Icon name="mdi:cloud-upload" />,
           })
         }
       >
@@ -668,7 +668,7 @@ function CustomIconDemo() {
       <Button
         onClick={() =>
           toast.info("New message", {
-            icon: <Icon icon="mdi:message" />,
+            icon: <Icon name="mdi:message" />,
           })
         }
       >

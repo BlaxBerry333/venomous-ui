@@ -80,7 +80,7 @@ const Checkbox = React.memo(
           />
           <span className={FORM_FIELD_CHECKBOX_CSS_CLASS_NAMES.box.className}>
             <span className={FORM_FIELD_CHECKBOX_CSS_CLASS_NAMES.icon.className}>
-              <Icon icon="mdi:check" />
+              <Icon name="mdi:check" />
             </span>
           </span>
           {label && <span className={FORM_FIELD_CHECKBOX_CSS_CLASS_NAMES.label.className}>{label}</span>}

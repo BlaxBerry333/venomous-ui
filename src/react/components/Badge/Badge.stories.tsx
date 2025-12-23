@@ -137,7 +137,7 @@ function App() {
     <ThemeProvider>
       {/* Basic badge with count */}
       <Badge content={5}>
-        <Icon icon="mdi:bell" />
+        <Icon name="mdi:bell" />
       </Badge>
 
       {/* Dot variant for status */}
@@ -147,7 +147,7 @@ function App() {
 
       {/* With max overflow */}
       <Badge content={150} max={99}>
-        <Icon icon="mdi:mail" />
+        <Icon name="mdi:mail" />
       </Badge>
 
       {/* Custom position */}
@@ -210,7 +210,7 @@ export const Playground: Story = {
   render: function RenderStory(args) {
     return (
       <Badge {...args}>
-        <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+        <Icon name="mdi:bell" style={{ fontSize: 24 }} />
       </Badge>
     );
   },
@@ -231,7 +231,7 @@ export const BasicExample: Story = {
       source: {
         code: `
 <Badge content={5}>
-  <Icon icon="mdi:bell" />
+  <Icon name="mdi:bell" />
 </Badge>
         `.trim(),
       },
@@ -241,13 +241,13 @@ export const BasicExample: Story = {
     return (
       <div style={{ display: "flex", gap: 24 }}>
         <Badge content={5}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <Badge content={12}>
-          <Icon icon="mdi:email" style={{ fontSize: 24 }} />
+          <Icon name="mdi:email" style={{ fontSize: 24 }} />
         </Badge>
         <Badge content="New">
-          <Icon icon="mdi:shopping-outline" style={{ fontSize: 24 }} />
+          <Icon name="mdi:shopping-outline" style={{ fontSize: 24 }} />
         </Badge>
       </div>
     );
@@ -269,10 +269,10 @@ export const VariantsExample: Story = {
       source: {
         code: `
 <Badge variant="standard" content={5}>
-  <Icon icon="mdi:bell" />
+  <Icon name="mdi:bell" />
 </Badge>
 <Badge variant="dot">
-  <Icon icon="mdi:bell" />
+  <Icon name="mdi:bell" />
 </Badge>
         `.trim(),
       },
@@ -282,10 +282,10 @@ export const VariantsExample: Story = {
     return (
       <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
         <Badge variant="standard" content={5}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <Badge variant="dot">
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <Badge variant="dot" color="success">
           <Avatar size="medium">U</Avatar>
@@ -323,22 +323,22 @@ export const ColorsExample: Story = {
     return (
       <div style={{ display: "flex", gap: 24 }}>
         <Badge color="default" content={1}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <Badge color="primary" content={2}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <Badge color="success" content={3}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <Badge color="error" content={4}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <Badge color="warning" content={5}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <Badge color="info" content={6}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
       </div>
     );
@@ -371,24 +371,24 @@ export const SizesExample: Story = {
       <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
         <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
           <Badge size="small" content={5}>
-            <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+            <Icon name="mdi:bell" style={{ fontSize: 24 }} />
           </Badge>
           <Badge size="medium" content={5}>
-            <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+            <Icon name="mdi:bell" style={{ fontSize: 24 }} />
           </Badge>
           <Badge size="large" content={5}>
-            <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+            <Icon name="mdi:bell" style={{ fontSize: 24 }} />
           </Badge>
         </div>
         <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
           <Badge size="small" variant="dot">
-            <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+            <Icon name="mdi:bell" style={{ fontSize: 24 }} />
           </Badge>
           <Badge size="medium" variant="dot">
-            <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+            <Icon name="mdi:bell" style={{ fontSize: 24 }} />
           </Badge>
           <Badge size="large" variant="dot">
-            <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+            <Icon name="mdi:bell" style={{ fontSize: 24 }} />
           </Badge>
         </div>
       </div>
@@ -423,16 +423,16 @@ export const MaxOverflowExample: Story = {
     return (
       <div style={{ display: "flex", gap: 24 }}>
         <Badge content={99} max={99}>
-          <Icon icon="mdi:email" style={{ fontSize: 24 }} />
+          <Icon name="mdi:email" style={{ fontSize: 24 }} />
         </Badge>
         <Badge content={100} max={99}>
-          <Icon icon="mdi:email" style={{ fontSize: 24 }} />
+          <Icon name="mdi:email" style={{ fontSize: 24 }} />
         </Badge>
         <Badge content={1000} max={999}>
-          <Icon icon="mdi:email" style={{ fontSize: 24 }} />
+          <Icon name="mdi:email" style={{ fontSize: 24 }} />
         </Badge>
         <Badge content={0} showZero>
-          <Icon icon="mdi:email" style={{ fontSize: 24 }} />
+          <Icon name="mdi:email" style={{ fontSize: 24 }} />
         </Badge>
       </div>
     );
@@ -505,7 +505,7 @@ export const InvisibleExample: Story = {
 const [count, setCount] = useState(0);
 
 <Badge content={count} invisible={count === 0}>
-  <Icon icon="mdi:bell" />
+  <Icon name="mdi:bell" />
 </Badge>
         `.trim(),
       },
@@ -517,7 +517,7 @@ const [count, setCount] = useState(0);
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
         <Badge content={count} invisible={count === 0}>
-          <Icon icon="mdi:bell" style={{ fontSize: 24 }} />
+          <Icon name="mdi:bell" style={{ fontSize: 24 }} />
         </Badge>
         <div style={{ display: "flex", gap: 8 }}>
           <button onClick={() => setCount((c) => Math.max(0, c - 1))}>-</button>

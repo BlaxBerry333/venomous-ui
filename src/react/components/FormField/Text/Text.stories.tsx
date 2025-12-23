@@ -73,7 +73,7 @@ const meta = {
       options: [undefined, "<Icon />"],
       mapping: {
         undefined: undefined,
-        "<Icon />": <Icon icon="mdi:magnify" />,
+        "<Icon />": <Icon name="mdi:magnify" />,
       },
     },
     suffix: {
@@ -85,7 +85,7 @@ const meta = {
       options: [undefined, "<Icon />"],
       mapping: {
         undefined: undefined,
-        "<Icon />": <Icon icon="mdi:close-circle" />,
+        "<Icon />": <Icon name="mdi:close-circle" />,
       },
     },
     className: {
@@ -135,7 +135,7 @@ function App() {
 
       {/* With prefix icon */}
       <FormField.Text
-        prefix={<Icon icon="mdi:magnify" />}
+        prefix={<Icon name="mdi:magnify" />}
         placeholder="Search..."
       />
 
@@ -267,16 +267,16 @@ export const WithIconsExample: Story = {
       source: {
         code: `
 <FormField.Text
-  prefix={<Icon icon="mdi:magnify" />}
+  prefix={<Icon name="mdi:magnify" />}
   placeholder="Search..."
 />
 <FormField.Text
-  suffix={<Icon icon="mdi:close-circle" />}
+  suffix={<Icon name="mdi:close-circle" />}
   placeholder="Clear me..."
 />
 <FormField.Text
-  prefix={<Icon icon="mdi:account" />}
-  suffix={<Icon icon="mdi:check-circle" />}
+  prefix={<Icon name="mdi:account" />}
+  suffix={<Icon name="mdi:check-circle" />}
   placeholder="Username"
 />
         `.trim(),
@@ -286,9 +286,9 @@ export const WithIconsExample: Story = {
   render: function RenderStory() {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 300 }}>
-        <Text prefix={<Icon icon="mdi:magnify" />} placeholder="Search..." />
-        <Text suffix={<Icon icon="mdi:close-circle" />} placeholder="Clear me..." />
-        <Text prefix={<Icon icon="mdi:account" />} suffix={<Icon icon="mdi:check-circle" />} placeholder="Username" />
+        <Text prefix={<Icon name="mdi:magnify" />} placeholder="Search..." />
+        <Text suffix={<Icon name="mdi:close-circle" />} placeholder="Clear me..." />
+        <Text prefix={<Icon name="mdi:account" />} suffix={<Icon name="mdi:check-circle" />} placeholder="Username" />
       </div>
     );
   },

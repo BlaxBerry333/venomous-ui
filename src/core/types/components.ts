@@ -18,6 +18,9 @@ export type BadgeSize = "small" | "medium" | "large";
 export type BadgeColor = "default" | "primary" | "success" | "error" | "warning" | "info";
 export type BadgeAnchorOrigin = "top-right" | "top-left" | "bottom-right" | "bottom-left";
 
+export type IconPresetColor = "inherit" | "primary" | "success" | "error" | "warning" | "info";
+export type IconColor = IconPresetColor | (string & {});
+
 export type ArrowDirection = "top" | "bottom" | "left" | "right";
 
 export type TooltipPlacement = ArrowDirection;

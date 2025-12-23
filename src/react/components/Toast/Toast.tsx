@@ -63,7 +63,7 @@ const Toast = React.memo<ToastItemProps>(({ toast, onClose, onMouseEnter, onMous
 
     return (
       <span className={TOAST_CSS_CLASS_NAMES.icon.className}>
-        <Icon icon={DEFAULT_ICONS[variant]} />
+        <Icon name={DEFAULT_ICONS[variant]} />
       </span>
     );
   };
@@ -92,7 +92,7 @@ const Toast = React.memo<ToastItemProps>(({ toast, onClose, onMouseEnter, onMous
           onClick={onClose}
           aria-label="Close notification"
         >
-          <Icon icon="mdi:close" />
+          <Icon name="mdi:close" />
         </button>
       )}
     </div>

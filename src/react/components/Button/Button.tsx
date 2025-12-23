@@ -80,7 +80,7 @@ const Button = React.memo(
         >
           {loading && (
             <span className={BUTTON_CSS_CLASS_NAMES.loadingIcon.className}>
-              <Icon icon="svg-spinners:ring-resize" />
+              <Icon name="svg-spinners:ring-resize" />
             </span>
           )}
           <span className={BUTTON_CSS_CLASS_NAMES.content.className}>

@@ -455,7 +455,7 @@ export const WithIconExample: Story = {
       source: {
         code: `
 <Chip Icon={<span>★</span>}>Favorite</Chip>
-<Chip Icon={<Icon icon="mdi:account" />} variant="outlined" color="primary" />
+<Chip Icon={<Icon name="mdi:account" />} variant="outlined" color="primary" />
 <Chip Icon={<Avatar size="small" imageSrc="https://xxx" style={{ marginRight: 4 }}  />}
 >
   Avatar
@@ -483,7 +483,7 @@ export const WithIconExample: Story = {
         <Chip Icon={<CheckIcon />} color="success">
           Completed
         </Chip>
-        <Chip Icon={<Icon icon="mdi:account" />} variant="outlined" color="primary" />
+        <Chip Icon={<Icon name="mdi:account" />} variant="outlined" color="primary" />
         <Chip
           Icon={
             <Avatar
