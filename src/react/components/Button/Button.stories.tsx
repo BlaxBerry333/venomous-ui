@@ -117,6 +117,16 @@ const meta = {
       control: { type: "radio" },
       options: ["small", "medium", "large"],
     },
+    color: {
+      description: "Color theme.",
+      type: { name: "string" },
+      table: {
+        type: { summary: '"default" | "primary" | "success" | "error" | "warning" | "info"' },
+        defaultValue: { summary: '"primary"' },
+      },
+      control: { type: "radio" },
+      options: ["default", "primary", "success", "error", "warning", "info"],
+    },
     className: {
       description: "Additional CSS class names.",
       table: {
@@ -141,66 +151,66 @@ const meta = {
 
           <Markdown>
             {`
-A styled button component, built on top of the headless \`<Button>\` component. But \`style\` prop also supports a theme callback function.<br />
+A styled button component. Built on top of the \`<button>\` tag.<br />
 Must be used within \`<ThemeProvider>\` component.
-
-After the component is mounted, a \`<style>\` tag will be injected into the \`<head>\` of the \`<html>\` document ( only be injected once and will not be duplicated ). The \`<style>\` tag will be removed from the \`<head>\` after the component is unmounted.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
             code={`"use client";
 
-import { ThemeProvider, ButtonStyled } from "venomous-ui/react/components";
+import { ThemeProvider, Button } from "venomous-ui/react/components";
 
 function App() {
   return (
     <ThemeProvider>
       {/* Basic usage */}
-      <ButtonStyled
+      <Button
         variant="contained"
         size="medium"
         text="Click me"
       />
 
-      {/* With style callback for semantic colors */}
-      <ButtonStyled
-        text="Success"
-        style={(theme) => ({
-          backgroundColor: theme.semantic.success.main,
-          color: "#ffffff",
-        })}
-      />
+      {/* With color prop */}
+      <Button text="Success" color="success" />
+      <Button text="Error" color="error" />
+      <Button text="Warning" color="warning" variant="outlined" />
     </ThemeProvider>
   );
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{VariantsExample.name}</Heading>
+          <Subtitle>{VariantsExample.name}</Subtitle>
           <Description of={VariantsExample} />
           <Canvas of={VariantsExample} />
 
-          <Heading>{SizesExample.name}</Heading>
+          <Subtitle>{SizesExample.name}</Subtitle>
           <Description of={SizesExample} />
           <Canvas of={SizesExample} />
 
-          <Heading>{WithIconExample.name}</Heading>
+          <Subtitle>{ColorsExample.name}</Subtitle>
+          <Description of={ColorsExample} />
+          <Canvas of={ColorsExample} />
+
+          <Subtitle>{WithIconExample.name}</Subtitle>
           <Description of={WithIconExample} />
           <Canvas of={WithIconExample} />
 
-          <Heading>{StatesExample.name}</Heading>
+          <Subtitle>{StatesExample.name}</Subtitle>
           <Description of={StatesExample} />
           <Canvas of={StatesExample} />
 
-          <Heading>{StyleCallbackExample.name}</Heading>
-          <Description of={StyleCallbackExample} />
-          <Canvas of={StyleCallbackExample} />
+          <Subtitle>{CustomStyleExample.name}</Subtitle>
+          <Description of={CustomStyleExample} />
+          <Canvas of={CustomStyleExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },
@@ -226,6 +236,7 @@ export const Playground: Story = {
     fullWidth: false,
     variant: "contained",
     size: "medium",
+    color: "primary",
   },
 };
 
@@ -242,9 +253,9 @@ export const VariantsExample: Story = {
       },
       source: {
         code: `
-<ButtonStyled variant="contained" text="Contained" />
-<ButtonStyled variant="outlined" text="Outlined" />
-<ButtonStyled variant="text" text="Text" />
+<Button variant="contained" text="Contained" />
+<Button variant="outlined" text="Outlined" />
+<Button variant="text" text="Text" />
         `.trim(),
       },
     },
@@ -273,9 +284,9 @@ export const SizesExample: Story = {
       },
       source: {
         code: `
-<ButtonStyled size="small" text="Small" />
-<ButtonStyled size="medium" text="Medium" />
-<ButtonStyled size="large" text="Large" />
+<Button size="small" text="Small" />
+<Button size="medium" text="Medium" />
+<Button size="large" text="Large" />
         `.trim(),
       },
     },
@@ -286,6 +297,70 @@ export const SizesExample: Story = {
         <Button size="small" text="Small" />
         <Button size="medium" text="Medium" />
         <Button size="large" text="Large" />
+      </div>
+    );
+  },
+};
+
+// ============================
+// Colors Example
+// ============================
+export const ColorsExample: Story = {
+  name: "Colors Example",
+  tags: ["!dev"],
+  parameters: {
+    docs: {
+      description: {
+        story: "Six color options: `default`, `primary`, `success`, `error`, `warning`, `info`.",
+      },
+      source: {
+        code: `
+// Contained variant with colors
+<Button color="default" text="Default" />
+<Button color="primary" text="Primary" />
+<Button color="success" text="Success" />
+<Button color="error" text="Error" />
+<Button color="warning" text="Warning" />
+<Button color="info" text="Info" />
+
+// Outlined variant with colors
+<Button variant="outlined" color="success" text="Success" />
+<Button variant="outlined" color="error" text="Error" />
+
+// Text variant with colors
+<Button variant="text" color="success" text="Success" />
+<Button variant="text" color="error" text="Error" />
+        `.trim(),
+      },
+    },
+  },
+  render: function RenderStory() {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+          <Button color="default" text="Default" />
+          <Button color="primary" text="Primary" />
+          <Button color="success" text="Success" />
+          <Button color="error" text="Error" />
+          <Button color="warning" text="Warning" />
+          <Button color="info" text="Info" />
+        </div>
+        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+          <Button variant="outlined" color="default" text="Default" />
+          <Button variant="outlined" color="primary" text="Primary" />
+          <Button variant="outlined" color="success" text="Success" />
+          <Button variant="outlined" color="error" text="Error" />
+          <Button variant="outlined" color="warning" text="Warning" />
+          <Button variant="outlined" color="info" text="Info" />
+        </div>
+        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+          <Button variant="text" color="default" text="Default" />
+          <Button variant="text" color="primary" text="Primary" />
+          <Button variant="text" color="success" text="Success" />
+          <Button variant="text" color="error" text="Error" />
+          <Button variant="text" color="warning" text="Warning" />
+          <Button variant="text" color="info" text="Info" />
+        </div>
       </div>
     );
   },
@@ -304,11 +379,11 @@ export const WithIconExample: Story = {
       },
       source: {
         code: `
-<ButtonStyled
+<Button
   text="Save"
   startElement={<Icon icon="mdi:content-save" />}
 />
-<ButtonStyled
+<Button
   variant="outlined"
   text="Delete"
   startElement={<Icon icon="mdi:delete" />}
@@ -342,64 +417,74 @@ export const StatesExample: Story = {
       },
       source: {
         code: `
-<ButtonStyled text="Disabled" disabled />
-<ButtonStyled text="Loading" loading />
+// Contained
+<Button text="Normal" />
+<Button text="Disabled" disabled />
+<Button text="Loading" loading />
+
+// Outlined
+<Button variant="outlined" text="Normal" />
+<Button variant="outlined" text="Disabled" disabled />
+<Button variant="outlined" text="Loading" loading />
+
+// Text
+<Button variant="text" text="Normal" />
+<Button variant="text" text="Disabled" disabled />
+<Button variant="text" text="Loading" loading />
         `.trim(),
       },
     },
   },
   render: function RenderStory() {
     return (
-      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-        <Button text="Normal" />
-        <Button text="Disabled" disabled />
-        <Button text="Loading" loading />
-        <Button variant="outlined" text="Disabled" disabled />
-        <Button variant="outlined" text="Loading" loading />
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <Button text="Normal" />
+          <Button text="Disabled" disabled />
+          <Button text="Loading" loading />
+        </div>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <Button variant="outlined" text="Normal" />
+          <Button variant="outlined" text="Disabled" disabled />
+          <Button variant="outlined" text="Loading" loading />
+        </div>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <Button variant="text" text="Normal" />
+          <Button variant="text" text="Disabled" disabled />
+          <Button variant="text" text="Loading" loading />
+        </div>
       </div>
     );
   },
 };
 
 // ============================
-// Style Callback Example
+// Custom Style Example
 // ============================
-export const StyleCallbackExample: Story = {
-  name: "Style Callback Example",
+export const CustomStyleExample: Story = {
+  name: "Custom Style Example",
   tags: ["!dev"],
   parameters: {
     docs: {
       description: {
-        story: "Use `style` prop with theme callback to apply semantic colors.",
+        story:
+          "Use the `style` prop to apply custom styles. It supports both a plain object and a theme callback function.",
       },
       source: {
         code: `
 <Button
-  text="Success"
-  style={(theme) => ({
-    backgroundColor: theme.semanticColors.success.main,
-    color: "#ffffff",
-  })}
+  text="Gradient Background"
+  style={{
+    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    borderRadius: 20,
+  }}
 />
+
 <Button
-  text="Warning"
+  text="Capsule"
+  variant="outlined"
   style={(theme) => ({
-    backgroundColor: theme.semanticColors.warning.main,
-    color: "#ffffff",
-  })}
-/>
-<Button
-  text="Error"
-  style={(theme) => ({
-    backgroundColor: theme.semanticColors.error.main,
-    color: "#ffffff",
-  })}
-/>
-<Button
-  text="Info"
-  style={(theme) => ({
-    backgroundColor: theme.semanticColors.info.main,
-    color: "#ffffff",
+    borderRadius: theme.borderRadius("full"),
   })}
 />
         `.trim(),
@@ -410,31 +495,17 @@ export const StyleCallbackExample: Story = {
     return (
       <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
         <Button
-          text="Success"
-          style={(theme) => ({
-            backgroundColor: theme.semanticColors.success.main,
-            color: "#ffffff",
-          })}
+          text="Gradient Background"
+          style={{
+            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            borderRadius: 20,
+          }}
         />
         <Button
-          text="Warning"
+          text="Capsule"
+          variant="outlined"
           style={(theme) => ({
-            backgroundColor: theme.semanticColors.warning.main,
-            color: "#ffffff",
-          })}
-        />
-        <Button
-          text="Error"
-          style={(theme) => ({
-            backgroundColor: theme.semanticColors.error.main,
-            color: "#ffffff",
-          })}
-        />
-        <Button
-          text="Info"
-          style={(theme) => ({
-            backgroundColor: theme.semanticColors.info.main,
-            color: "#ffffff",
+            borderRadius: theme.borderRadius("full"),
           })}
         />
       </div>

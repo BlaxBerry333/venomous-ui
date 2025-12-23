@@ -130,4 +130,53 @@ describe("Button", () => {
     const button = screen.getByRole("button");
     expect(button).toHaveStyle({ backgroundColor: expect.any(String) });
   });
+
+  it("applies color className", () => {
+    const { rerender } = render(
+      <ThemeProvider>
+        <Button text="Button" color="default" />
+      </ThemeProvider>,
+    );
+    expect(screen.getByRole("button")).toHaveClass(BUTTON_CSS_CLASS_NAMES.colorDefault.className);
+
+    rerender(
+      <ThemeProvider>
+        <Button text="Button" color="primary" />
+      </ThemeProvider>,
+    );
+    expect(screen.getByRole("button")).toHaveClass(BUTTON_CSS_CLASS_NAMES.colorPrimary.className);
+
+    rerender(
+      <ThemeProvider>
+        <Button text="Button" color="success" />
+      </ThemeProvider>,
+    );
+    expect(screen.getByRole("button")).toHaveClass(BUTTON_CSS_CLASS_NAMES.colorSuccess.className);
+
+    rerender(
+      <ThemeProvider>
+        <Button text="Button" color="error" />
+      </ThemeProvider>,
+    );
+    expect(screen.getByRole("button")).toHaveClass(BUTTON_CSS_CLASS_NAMES.colorError.className);
+
+    rerender(
+      <ThemeProvider>
+        <Button text="Button" color="warning" />
+      </ThemeProvider>,
+    );
+    expect(screen.getByRole("button")).toHaveClass(BUTTON_CSS_CLASS_NAMES.colorWarning.className);
+
+    rerender(
+      <ThemeProvider>
+        <Button text="Button" color="info" />
+      </ThemeProvider>,
+    );
+    expect(screen.getByRole("button")).toHaveClass(BUTTON_CSS_CLASS_NAMES.colorInfo.className);
+  });
+
+  it("has default color as primary", () => {
+    renderWithTheme(<Button text="Button" />);
+    expect(screen.getByRole("button")).toHaveClass(BUTTON_CSS_CLASS_NAMES.colorPrimary.className);
+  });
 });

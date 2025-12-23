@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
 import type { ITheme } from "@/core/theme";
-import type { ButtonSize, ButtonVariant } from "@/core/types";
+import type { ButtonColor, ButtonSize, ButtonVariant } from "@/core/types";
 
 export type ButtonElement = HTMLButtonElement;
 
@@ -10,6 +10,8 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<ButtonElement>, "
   variant?: ButtonVariant;
   /** Button size */
   size?: ButtonSize;
+  /** Color theme */
+  color?: ButtonColor;
   /** Whether the button is disabled */
   disabled?: boolean;
   /** Whether the button is in loading state */

@@ -16,6 +16,7 @@ const Button = React.memo(
       {
         variant = "contained",
         size = "medium",
+        color = "primary",
         disabled = false,
         loading = false,
         fullWidth = false,
@@ -57,6 +58,12 @@ const Button = React.memo(
         size === "small" && BUTTON_CSS_CLASS_NAMES.sizeSmall.className,
         size === "medium" && BUTTON_CSS_CLASS_NAMES.sizeMedium.className,
         size === "large" && BUTTON_CSS_CLASS_NAMES.sizeLarge.className,
+        color === "default" && BUTTON_CSS_CLASS_NAMES.colorDefault.className,
+        color === "primary" && BUTTON_CSS_CLASS_NAMES.colorPrimary.className,
+        color === "success" && BUTTON_CSS_CLASS_NAMES.colorSuccess.className,
+        color === "error" && BUTTON_CSS_CLASS_NAMES.colorError.className,
+        color === "warning" && BUTTON_CSS_CLASS_NAMES.colorWarning.className,
+        color === "info" && BUTTON_CSS_CLASS_NAMES.colorInfo.className,
         className,
       );
 
@@ -71,14 +78,20 @@ const Button = React.memo(
           aria-busy={loading || undefined}
           {...restProps}
         >
-          {children || (
-            <>
-              {loading && <Icon icon="svg-spinners:ring-resize" />}
-              {!loading && StartElement}
-              {text}
-              {!loading && EndElement}
-            </>
+          {loading && (
+            <span className={BUTTON_CSS_CLASS_NAMES.loadingIcon.className}>
+              <Icon icon="svg-spinners:ring-resize" />
+            </span>
           )}
+          <span className={BUTTON_CSS_CLASS_NAMES.content.className}>
+            {children || (
+              <>
+                {StartElement}
+                {text}
+                {EndElement}
+              </>
+            )}
+          </span>
         </button>
       );
     },

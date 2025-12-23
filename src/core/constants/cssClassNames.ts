@@ -214,6 +214,38 @@ export const BUTTON_CSS_CLASS_NAMES = {
     className: `${COMPONENT_NAMES.Button}__sizeLarge`,
     description: "if `Button.size='large'`",
   },
+  colorDefault: {
+    className: `${COMPONENT_NAMES.Button}__colorDefault`,
+    description: "if `Button.color='default'`",
+  },
+  colorPrimary: {
+    className: `${COMPONENT_NAMES.Button}__colorPrimary`,
+    description: "if `Button.color='primary'`",
+  },
+  colorSuccess: {
+    className: `${COMPONENT_NAMES.Button}__colorSuccess`,
+    description: "if `Button.color='success'`",
+  },
+  colorError: {
+    className: `${COMPONENT_NAMES.Button}__colorError`,
+    description: "if `Button.color='error'`",
+  },
+  colorWarning: {
+    className: `${COMPONENT_NAMES.Button}__colorWarning`,
+    description: "if `Button.color='warning'`",
+  },
+  colorInfo: {
+    className: `${COMPONENT_NAMES.Button}__colorInfo`,
+    description: "if `Button.color='info'`",
+  },
+  content: {
+    className: `${COMPONENT_NAMES.Button}__content`,
+    description: "Button content wrapper",
+  },
+  loadingIcon: {
+    className: `${COMPONENT_NAMES.Button}__loading-icon`,
+    description: "Button loading icon (centered overlay)",
+  },
 } as const;
 
 /**
