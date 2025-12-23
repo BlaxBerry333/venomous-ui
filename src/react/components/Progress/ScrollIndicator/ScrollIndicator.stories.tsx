@@ -47,7 +47,7 @@ Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -68,7 +68,9 @@ function App() {
 }`}
           />
 
-          <Heading>{ContainerExample.name}</Heading>
+          <Heading>Examples</Heading>
+
+          <Subtitle>{ContainerExample.name}</Subtitle>
           <Description of={ContainerExample} />
           <Canvas of={ContainerExample} />
 

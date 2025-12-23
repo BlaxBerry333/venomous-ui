@@ -125,14 +125,12 @@ const meta = {
 
           <Markdown>
             {`
-A container component that combines a form field with label, helper text, and error handling.
-Supports both vertical and horizontal (row) layouts.
-
+A container component that combines a form field with label, helper text, and error handling.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -172,28 +170,30 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{VerticalLayoutExample.name}</Heading>
+          <Subtitle>{VerticalLayoutExample.name}</Subtitle>
           <Description of={VerticalLayoutExample} />
           <Canvas of={VerticalLayoutExample} />
 
-          <Heading>{HorizontalLayoutExample.name}</Heading>
+          <Subtitle>{HorizontalLayoutExample.name}</Subtitle>
           <Description of={HorizontalLayoutExample} />
           <Canvas of={HorizontalLayoutExample} />
 
-          <Heading>{WithTooltipExample.name}</Heading>
+          <Subtitle>{WithTooltipExample.name}</Subtitle>
           <Description of={WithTooltipExample} />
           <Canvas of={WithTooltipExample} />
 
-          <Heading>{ErrorStateExample.name}</Heading>
+          <Subtitle>{ErrorStateExample.name}</Subtitle>
           <Description of={ErrorStateExample} />
           <Canvas of={ErrorStateExample} />
 
-          <Heading>{FormExample.name}</Heading>
+          <Subtitle>{FormExample.name}</Subtitle>
           <Description of={FormExample} />
           <Canvas of={FormExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

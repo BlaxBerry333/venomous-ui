@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ArgTypes, Canvas, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
+import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button } from "@/react/components/Button";
@@ -40,16 +40,10 @@ const meta = {
             {`
 Portal renders its children into a DOM node that exists outside the DOM hierarchy of the parent component.<br />
 This is useful for your components that need to "break out" of their container, such as modals, tooltips, and dropdowns.
-
-**Key features:**
-- Renders to \`document.body\` by default
-- Supports CSS selector, HTMLElement, or React ref as container
-- Automatically creates and cleans up container when not specified
-- SSR compatible (renders nothing on server)
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -83,11 +77,14 @@ const containerRef = useRef<HTMLDivElement>(null);
             `.trim()}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{ContainerTypesExample.name}</Heading>
+          <Subtitle>{ContainerTypesExample.name}</Subtitle>
+          <Description of={ContainerTypesExample} />
           <Canvas of={ContainerTypesExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

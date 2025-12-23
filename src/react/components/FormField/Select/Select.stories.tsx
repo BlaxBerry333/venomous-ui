@@ -134,13 +134,12 @@ const meta = {
 
           <Markdown>
             {`
-A styled select/dropdown component with support for grouped options, search, and clear functionality.
-
+A styled select/dropdown component with support for grouped options, search, and clear functionality.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -170,28 +169,30 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{VariantsExample.name}</Heading>
+          <Subtitle>{VariantsExample.name}</Subtitle>
           <Description of={VariantsExample} />
           <Canvas of={VariantsExample} />
 
-          <Heading>{SizesExample.name}</Heading>
+          <Subtitle>{SizesExample.name}</Subtitle>
           <Description of={SizesExample} />
           <Canvas of={SizesExample} />
 
-          <Heading>{GroupedOptionsExample.name}</Heading>
+          <Subtitle>{GroupedOptionsExample.name}</Subtitle>
           <Description of={GroupedOptionsExample} />
           <Canvas of={GroupedOptionsExample} />
 
-          <Heading>{FeaturesExample.name}</Heading>
+          <Subtitle>{FeaturesExample.name}</Subtitle>
           <Description of={FeaturesExample} />
           <Canvas of={FeaturesExample} />
 
-          <Heading>{StatesExample.name}</Heading>
+          <Subtitle>{StatesExample.name}</Subtitle>
           <Description of={StatesExample} />
           <Canvas of={StatesExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

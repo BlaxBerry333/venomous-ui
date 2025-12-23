@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ArgTypes, Canvas, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
+import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button } from "@/react/components/Button";
@@ -70,11 +70,12 @@ const meta = {
           <Markdown>
             {`
 \`<Backdrop>\` provides a semi-transparent overlay that sits behind modal content.<br />
-It's typically used as a building block for \`<Modal>\`、\`<Drawer>\`、 and \`<Dialog>\` components.
+It's typically used as a building block for \`<Modal>\`、\`<Drawer>\`、 and \`<Dialog>\` components..<br />
+Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -101,11 +102,14 @@ function ModalExample() {
             `.trim()}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
-
           <Heading>Examples</Heading>
-          <Canvas of={Playground} />
+
+          <Subtitle>{CustomStyleExample.name}</Subtitle>
+          <Description of={CustomStyleExample} />
+          <Canvas of={CustomStyleExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

@@ -75,7 +75,7 @@ Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -100,20 +100,22 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{SizesExample.name}</Heading>
+          <Subtitle>{SizesExample.name}</Subtitle>
           <Description of={SizesExample} />
           <Canvas of={SizesExample} />
 
-          <Heading>{AnimatedExample.name}</Heading>
+          <Subtitle>{AnimatedExample.name}</Subtitle>
           <Description of={AnimatedExample} />
           <Canvas of={AnimatedExample} />
 
-          <Heading>{ColorsExample.name}</Heading>
+          <Subtitle>{ColorsExample.name}</Subtitle>
           <Description of={ColorsExample} />
           <Canvas of={ColorsExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

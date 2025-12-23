@@ -85,13 +85,12 @@ const meta = {
 
           <Markdown>
             {`
-A styled checkbox component with custom icon styling.
-
+A styled checkbox component with custom icon styling.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -116,16 +115,18 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{SizesExample.name}</Heading>
+          <Subtitle>{SizesExample.name}</Subtitle>
           <Description of={SizesExample} />
           <Canvas of={SizesExample} />
 
-          <Heading>{StatesExample.name}</Heading>
+          <Subtitle>{StatesExample.name}</Subtitle>
           <Description of={StatesExample} />
           <Canvas of={StatesExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

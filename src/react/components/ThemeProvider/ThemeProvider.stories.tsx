@@ -67,7 +67,7 @@ This component renders as a wrapper for all styled components, meaning it has no
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -85,12 +85,14 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{ToggleModeExample.name}</Heading>
+          <Subtitle>{ToggleModeExample.name}</Subtitle>
           <Description of={ToggleModeExample} />
           <Canvas of={ToggleModeExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

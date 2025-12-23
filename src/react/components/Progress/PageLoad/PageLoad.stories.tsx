@@ -58,7 +58,7 @@ Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -81,16 +81,18 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{BasicExample.name}</Heading>
+          <Subtitle>{BasicExample.name}</Subtitle>
           <Description of={BasicExample} />
           <Canvas of={BasicExample} />
 
-          <Heading>{DeterminateExample.name}</Heading>
+          <Subtitle>{DeterminateExample.name}</Subtitle>
           <Description of={DeterminateExample} />
           <Canvas of={DeterminateExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

@@ -23,7 +23,7 @@ After the component is mounted, a \`<style>\` tag will be injected into the \`<h
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark

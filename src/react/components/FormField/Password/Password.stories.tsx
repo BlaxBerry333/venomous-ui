@@ -87,13 +87,12 @@ const meta = {
 
           <Markdown>
             {`
-A styled password input component with an eye icon to toggle password visibility.
-
+A styled password input component with an eye icon to toggle password visibility.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -115,20 +114,22 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{VariantsExample.name}</Heading>
+          <Subtitle>{VariantsExample.name}</Subtitle>
           <Description of={VariantsExample} />
           <Canvas of={VariantsExample} />
 
-          <Heading>{SizesExample.name}</Heading>
+          <Subtitle>{SizesExample.name}</Subtitle>
           <Description of={SizesExample} />
           <Canvas of={SizesExample} />
 
-          <Heading>{StatesExample.name}</Heading>
+          <Subtitle>{StatesExample.name}</Subtitle>
           <Description of={StatesExample} />
           <Canvas of={StatesExample} />
+
+          <Heading>API</Heading>
+          <ArgTypes />
         </>
       ),
     },

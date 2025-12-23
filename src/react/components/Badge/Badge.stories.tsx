@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
+import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
@@ -118,13 +118,12 @@ const meta = {
           <Markdown>
             {`
 Badge generates a small badge to the corner of its child element.
-Commonly used for notification counts, status indicators, and more.
-
+Commonly used for notification counts, status indicators, and more.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -159,29 +158,38 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{BasicExample.name}</Heading>
+          <Subtitle>{BasicExample.name}</Subtitle>
+          <Description of={BasicExample} />
           <Canvas of={BasicExample} />
 
-          <Heading>{VariantsExample.name}</Heading>
+          <Subtitle>{VariantsExample.name}</Subtitle>
+          <Description of={VariantsExample} />
           <Canvas of={VariantsExample} />
 
-          <Heading>{ColorsExample.name}</Heading>
+          <Subtitle>{ColorsExample.name}</Subtitle>
+          <Description of={ColorsExample} />
           <Canvas of={ColorsExample} />
 
-          <Heading>{SizesExample.name}</Heading>
+          <Subtitle>{SizesExample.name}</Subtitle>
+          <Description of={SizesExample} />
           <Canvas of={SizesExample} />
 
-          <Heading>{MaxOverflowExample.name}</Heading>
+          <Subtitle>{MaxOverflowExample.name}</Subtitle>
+          <Description of={MaxOverflowExample} />
           <Canvas of={MaxOverflowExample} />
 
-          <Heading>{PositioningExample.name}</Heading>
+          <Subtitle>{PositioningExample.name}</Subtitle>
+          <Description of={PositioningExample} />
           <Canvas of={PositioningExample} />
 
-          <Heading>{InvisibleExample.name}</Heading>
+          <Subtitle>{InvisibleExample.name}</Subtitle>
+          <Description of={InvisibleExample} />
           <Canvas of={InvisibleExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

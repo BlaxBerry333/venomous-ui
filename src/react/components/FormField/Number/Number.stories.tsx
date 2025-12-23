@@ -112,13 +112,12 @@ const meta = {
 
           <Markdown>
             {`
-A styled number input component with custom increment/decrement buttons.
-
+A styled number input component with custom increment/decrement buttons.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -143,24 +142,26 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{VariantsExample.name}</Heading>
+          <Subtitle>{VariantsExample.name}</Subtitle>
           <Description of={VariantsExample} />
           <Canvas of={VariantsExample} />
 
-          <Heading>{SizesExample.name}</Heading>
+          <Subtitle>{SizesExample.name}</Subtitle>
           <Description of={SizesExample} />
           <Canvas of={SizesExample} />
 
-          <Heading>{WithMinMaxExample.name}</Heading>
+          <Subtitle>{WithMinMaxExample.name}</Subtitle>
           <Description of={WithMinMaxExample} />
           <Canvas of={WithMinMaxExample} />
 
-          <Heading>{StatesExample.name}</Heading>
+          <Subtitle>{StatesExample.name}</Subtitle>
           <Description of={StatesExample} />
           <Canvas of={StatesExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

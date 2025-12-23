@@ -1,4 +1,4 @@
-import { ArgTypes, Canvas, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
+import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
@@ -137,7 +137,7 @@ Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -176,29 +176,38 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{VariantsExample.name}</Heading>
+          <Subtitle>{VariantsExample.name}</Subtitle>
+          <Description of={VariantsExample} />
           <Canvas of={VariantsExample} />
 
-          <Heading>{SizesExample.name}</Heading>
+          <Subtitle>{SizesExample.name}</Subtitle>
+          <Description of={SizesExample} />
           <Canvas of={SizesExample} />
 
-          <Heading>{ColorsExample.name}</Heading>
+          <Subtitle>{ColorsExample.name}</Subtitle>
+          <Description of={ColorsExample} />
           <Canvas of={ColorsExample} />
 
-          <Heading>{ClickableExample.name}</Heading>
+          <Subtitle>{ClickableExample.name}</Subtitle>
+          <Description of={ClickableExample} />
           <Canvas of={ClickableExample} />
 
-          <Heading>{DeletableExample.name}</Heading>
+          <Subtitle>{DeletableExample.name}</Subtitle>
+          <Description of={DeletableExample} />
           <Canvas of={DeletableExample} />
 
-          <Heading>{WithIconExample.name}</Heading>
+          <Subtitle>{WithIconExample.name}</Subtitle>
+          <Description of={WithIconExample} />
           <Canvas of={WithIconExample} />
 
-          <Heading>{SelectableExample.name}</Heading>
+          <Subtitle>{SelectableExample.name}</Subtitle>
+          <Description of={SelectableExample} />
           <Canvas of={SelectableExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

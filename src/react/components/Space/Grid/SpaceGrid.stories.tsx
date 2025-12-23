@@ -69,31 +69,31 @@ const meta = {
 
           <Markdown>
             {`
-A styled grid layout component, built on top of the headless \`<Grid>\` component. The \`style\` prop supports a theme callback function.<br />
+A styled grid layout component.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
             code={`"use client";
 
-import { ThemeProvider, Grid } from "venomous-ui/react/components";
+import { ThemeProvider, Space } from "venomous-ui/react/components";
 
 function App() {
   return (
     <ThemeProvider>
       {/* Basic usage */}
-      <Grid columns={3} spacing={4}>
+      <Space.Grid columns={3} spacing={4}>
         <div>Item 1</div>
         <div>Item 2</div>
         <div>Item 3</div>
-      </Grid>
+      </Space.Grid>
 
       {/* With style callback for theme tokens */}
-      <Grid
+      <Space.Grid
         columns={{ xs: 1, sm: 2, lg: 3 }}
         spacing={4}
         style={(theme) => ({
@@ -104,22 +104,24 @@ function App() {
         <div>Themed Item 1</div>
         <div>Themed Item 2</div>
         <div>Themed Item 3</div>
-      </Grid>
+      </Space.Grid>
     </ThemeProvider>
   );
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{StyleCallbackExample.name}</Heading>
+          <Subtitle>{StyleCallbackExample.name}</Subtitle>
           <Description of={StyleCallbackExample} />
           <Canvas of={StyleCallbackExample} />
 
-          <Heading>{ResponsiveColumnsExample.name}</Heading>
+          <Subtitle>{ResponsiveColumnsExample.name}</Subtitle>
           <Description of={ResponsiveColumnsExample} />
           <Canvas of={ResponsiveColumnsExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },
@@ -252,64 +254,6 @@ export const ResponsiveColumnsExample: Story = {
             }}
           >
             Item {i}
-          </div>
-        ))}
-      </Grid>
-    );
-  },
-};
-
-// ============================
-// Responsive with Theme Example
-// ============================
-export const ResponsiveThemeExample: Story = {
-  name: "Responsive with Theme",
-  tags: ["!dev"],
-  parameters: {
-    docs: {
-      description: {
-        story: "Combine responsive columns with theme-based styling.",
-      },
-      source: {
-        code: `
-<Grid
-  columns={{ xs: 1, sm: 2, lg: 3 }}
-  spacing={4}
-  style={(theme) => ({
-    padding: theme.spacing(6),
-    backgroundColor: theme.paletteColors.light,
-    borderRadius: theme.borderRadius("large"),
-  })}
->
-  {items.map(item => <Card key={item.id} />)}
-</Grid>
-        `.trim(),
-      },
-    },
-  },
-  render: function RenderStory() {
-    return (
-      <Grid
-        columns={{ xs: 1, sm: 2, lg: 3 }}
-        spacing={4}
-        style={(theme) => ({
-          padding: theme.spacing(6),
-          backgroundColor: theme.paletteColors.light,
-          borderRadius: theme.borderRadius("large"),
-        })}
-      >
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div
-            key={i}
-            style={{
-              padding: 16,
-              backgroundColor: "white",
-              borderRadius: 4,
-              textAlign: "center",
-              boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-            }}
-          >
-            Card {i}
           </div>
         ))}
       </Grid>

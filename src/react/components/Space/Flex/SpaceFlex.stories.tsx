@@ -69,31 +69,31 @@ const meta = {
 
           <Markdown>
             {`
-A styled flex layout component, built on top of the headless \`<Flex>\` component. The \`style\` prop supports a theme callback function.<br />
+A styled flex layout component.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
             code={`"use client";
 
-import { ThemeProvider, Flex } from "venomous-ui/react/components";
+import { ThemeProvider, Space } from "venomous-ui/react/components";
 
 function App() {
   return (
     <ThemeProvider>
       {/* Basic usage */}
-      <Flex spacing={4}>
+      <Space.Flex spacing={4}>
         <div>Item 1</div>
         <div>Item 2</div>
         <div>Item 3</div>
-      </Flex>
+      </Space.Flex>
 
       {/* With style callback for theme tokens */}
-      <Flex
+      <Space.Flex
         spacing={4}
         style={(theme) => ({
           padding: theme.spacing(4),
@@ -103,18 +103,20 @@ function App() {
       >
         <div>Themed Item 1</div>
         <div>Themed Item 2</div>
-      </Flex>
+      </Space.Flex>
     </ThemeProvider>
   );
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{StyleCallbackExample.name}</Heading>
+          <Subtitle>{StyleCallbackExample.name}</Subtitle>
           <Description of={StyleCallbackExample} />
           <Canvas of={StyleCallbackExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },

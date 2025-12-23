@@ -123,7 +123,7 @@ Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
 
-          <Heading>Usage</Heading>
+          <Heading>Basic Usage</Heading>
           <Source
             language="tsx"
             dark
@@ -159,16 +159,18 @@ function App() {
 }`}
           />
 
-          <Heading>API</Heading>
-          <ArgTypes />
+          <Heading>Examples</Heading>
 
-          <Heading>{FallbackExample.name}</Heading>
+          <Subtitle>{FallbackExample.name}</Subtitle>
           <Description of={FallbackExample} />
           <Canvas of={FallbackExample} />
 
-          <Heading>{StyleCallbackExample.name}</Heading>
+          <Subtitle>{StyleCallbackExample.name}</Subtitle>
           <Description of={StyleCallbackExample} />
           <Canvas of={StyleCallbackExample} />
+
+          <Heading>Props</Heading>
+          <ArgTypes />
         </>
       ),
     },
