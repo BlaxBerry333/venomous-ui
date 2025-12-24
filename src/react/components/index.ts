@@ -18,6 +18,7 @@ export * from "./Portal";
 export * from "./Progress";
 export * from "./Space/Flex";
 export * from "./Space/Grid";
+export * from "./Tabs";
 export * from "./ThemeProvider";
 export * from "./Toast";
 export * from "./Tooltip";

@@ -59,6 +59,8 @@ export const COMPONENT_NAMES = {
 
   Toast: `${COMPONENT_LIBRARY_NAME}__Toast`,
   ToastProvider: `${COMPONENT_LIBRARY_NAME}__ToastProvider`,
+
+  Tabs: `${COMPONENT_LIBRARY_NAME}__Tabs`,
 } as const;
 
 export type IComponentName = keyof typeof COMPONENT_NAMES;

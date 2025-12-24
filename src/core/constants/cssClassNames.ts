@@ -1562,3 +1562,90 @@ export const TOAST_CSS_CLASS_NAMES = {
     description: "Toast exiting animation",
   },
 } as const;
+
+/**
+ * Tabs
+ */
+export const TABS_CSS_CLASS_NAMES = {
+  // Root
+  root: {
+    className: `${COMPONENT_NAMES.Tabs}__root`,
+    description: "Tabs root container",
+  },
+  // List
+  list: {
+    className: `${COMPONENT_NAMES.Tabs}__list`,
+    description: "Tabs list container",
+  },
+  // Tab
+  tab: {
+    className: `${COMPONENT_NAMES.Tabs}__tab`,
+    description: "Individual tab button",
+  },
+  tabActive: {
+    className: `${COMPONENT_NAMES.Tabs}__tab--active`,
+    description: "Active tab state",
+  },
+  tabDisabled: {
+    className: `${COMPONENT_NAMES.Tabs}__tab--disabled`,
+    description: "Disabled tab state",
+  },
+  tabIcon: {
+    className: `${COMPONENT_NAMES.Tabs}__tab-icon`,
+    description: "Tab icon container",
+  },
+  // Panel
+  panel: {
+    className: `${COMPONENT_NAMES.Tabs}__panel`,
+    description: "Tab panel content",
+  },
+  panelHidden: {
+    className: `${COMPONENT_NAMES.Tabs}__panel--hidden`,
+    description: "Hidden panel state",
+  },
+  // Variants
+  variantUnderline: {
+    className: `${COMPONENT_NAMES.Tabs}--variant-underline`,
+    description: "Underline variant",
+  },
+  variantEnclosed: {
+    className: `${COMPONENT_NAMES.Tabs}--variant-enclosed`,
+    description: "Enclosed/boxed variant",
+  },
+  variantPills: {
+    className: `${COMPONENT_NAMES.Tabs}--variant-pills`,
+    description: "Pills/rounded variant",
+  },
+  // Sizes
+  sizeSmall: {
+    className: `${COMPONENT_NAMES.Tabs}--size-small`,
+    description: "Small size",
+  },
+  sizeMedium: {
+    className: `${COMPONENT_NAMES.Tabs}--size-medium`,
+    description: "Medium size",
+  },
+  sizeLarge: {
+    className: `${COMPONENT_NAMES.Tabs}--size-large`,
+    description: "Large size",
+  },
+  // Orientation
+  horizontal: {
+    className: `${COMPONENT_NAMES.Tabs}--horizontal`,
+    description: "Horizontal orientation",
+  },
+  vertical: {
+    className: `${COMPONENT_NAMES.Tabs}--vertical`,
+    description: "Vertical orientation",
+  },
+  // Full width
+  fullWidth: {
+    className: `${COMPONENT_NAMES.Tabs}--full-width`,
+    description: "Full width tabs",
+  },
+  // Disabled (root level)
+  disabled: {
+    className: `${COMPONENT_NAMES.Tabs}--disabled`,
+    description: "All tabs disabled",
+  },
+} as const;

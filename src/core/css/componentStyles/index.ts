@@ -28,6 +28,7 @@ export * from "./ProgressPageLoad";
 export * from "./ProgressScrollIndicator";
 export * from "./SpaceFlex";
 export * from "./SpaceGrid";
+export * from "./Tabs";
 export * from "./ThemeProvider";
 export * from "./Toast";
 export * from "./Tooltip";

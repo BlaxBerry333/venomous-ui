@@ -84,3 +84,7 @@ export type ProgressColor = ProgressPresetColor | (string & {});
 
 export type ToastVariant = "success" | "error" | "warning" | "info" | "loading";
 export type ToastPlacement = "top-right" | "top-center" | "top-left" | "bottom-right" | "bottom-center" | "bottom-left";
+
+export type TabsVariant = "underline" | "enclosed" | "pills";
+export type TabsSize = "small" | "medium" | "large";
+export type TabsOrientation = "horizontal" | "vertical";
