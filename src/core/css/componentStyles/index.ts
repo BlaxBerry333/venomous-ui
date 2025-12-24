@@ -20,6 +20,7 @@ export * from "./FormFieldText";
 export * from "./FormFieldTextarea";
 export * from "./FormLabel";
 export * from "./Icon";
+export * from "./List";
 export * from "./Modal";
 export * from "./Popover";
 export * from "./ProgressBar";

@@ -1649,3 +1649,80 @@ export const TABS_CSS_CLASS_NAMES = {
     description: "All tabs disabled",
   },
 } as const;
+
+/**
+ * List
+ */
+export const LIST_CSS_CLASS_NAMES = {
+  // List root
+  root: {
+    className: `${COMPONENT_NAMES.List}__root`,
+    description: "List root container",
+  },
+  divider: {
+    className: `${COMPONENT_NAMES.List}--divider`,
+    description: "List with dividers between items",
+  },
+  spacingNone: {
+    className: `${COMPONENT_NAMES.List}--spacing-none`,
+    description: "if `List.spacing='none'`",
+  },
+  spacingSmall: {
+    className: `${COMPONENT_NAMES.List}--spacing-small`,
+    description: "if `List.spacing='small'`",
+  },
+  spacingMedium: {
+    className: `${COMPONENT_NAMES.List}--spacing-medium`,
+    description: "if `List.spacing='medium'`",
+  },
+  spacingLarge: {
+    className: `${COMPONENT_NAMES.List}--spacing-large`,
+    description: "if `List.spacing='large'`",
+  },
+  // List.Item
+  item: {
+    className: `${COMPONENT_NAMES.List}__item`,
+    description: "List item",
+  },
+  itemInteractive: {
+    className: `${COMPONENT_NAMES.List}__item--interactive`,
+    description: "Interactive list item (has onClick)",
+  },
+  itemSelected: {
+    className: `${COMPONENT_NAMES.List}__item--selected`,
+    description: "Selected list item",
+  },
+  itemDisabled: {
+    className: `${COMPONENT_NAMES.List}__item--disabled`,
+    description: "Disabled list item",
+  },
+  itemStartElement: {
+    className: `${COMPONENT_NAMES.List}__item-start-element`,
+    description: "List item start element container",
+  },
+  itemEndElement: {
+    className: `${COMPONENT_NAMES.List}__item-end-element`,
+    description: "List item end element container",
+  },
+  itemContent: {
+    className: `${COMPONENT_NAMES.List}__item-content`,
+    description: "List item content wrapper",
+  },
+  // List.ItemText
+  itemText: {
+    className: `${COMPONENT_NAMES.List}__item-text`,
+    description: "List item text container",
+  },
+  itemTextPrimary: {
+    className: `${COMPONENT_NAMES.List}__item-text-primary`,
+    description: "List item primary text",
+  },
+  itemTextSecondary: {
+    className: `${COMPONENT_NAMES.List}__item-text-secondary`,
+    description: "List item secondary text",
+  },
+  itemTextEllipsis: {
+    className: `${COMPONENT_NAMES.List}__item-text--ellipsis`,
+    description: "List item text with ellipsis",
+  },
+} as const;

@@ -88,3 +88,5 @@ export type ToastPlacement = "top-right" | "top-center" | "top-left" | "bottom-r
 export type TabsVariant = "underline" | "enclosed" | "pills";
 export type TabsSize = "small" | "medium" | "large";
 export type TabsOrientation = "horizontal" | "vertical";
+
+export type ListSpacing = "none" | "small" | "medium" | "large";

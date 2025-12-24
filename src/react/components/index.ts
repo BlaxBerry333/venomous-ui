@@ -12,6 +12,7 @@ export * from "./FormControl";
 export * from "./FormField";
 export * from "./FormLabel";
 export * from "./Icon";
+export * from "./List";
 export * from "./Modal";
 export * from "./Popover";
 export * from "./Portal";
