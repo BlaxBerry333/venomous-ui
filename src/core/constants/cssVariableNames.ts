@@ -47,10 +47,10 @@ export const CSS_VARIABLE_NAMES = {
       main: `--${COMPONENT_LIBRARY_NAME}-semantic-warning-main`,
       dark: `--${COMPONENT_LIBRARY_NAME}-semantic-warning-dark`,
     },
-    danger: {
-      light: `--${COMPONENT_LIBRARY_NAME}-semantic-danger-light`,
-      main: `--${COMPONENT_LIBRARY_NAME}-semantic-danger-main`,
-      dark: `--${COMPONENT_LIBRARY_NAME}-semantic-danger-dark`,
+    error: {
+      light: `--${COMPONENT_LIBRARY_NAME}-semantic-error-light`,
+      main: `--${COMPONENT_LIBRARY_NAME}-semantic-error-main`,
+      dark: `--${COMPONENT_LIBRARY_NAME}-semantic-error-dark`,
     },
     info: {
       light: `--${COMPONENT_LIBRARY_NAME}-semantic-info-light`,

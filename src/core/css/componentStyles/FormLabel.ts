@@ -30,7 +30,7 @@ function generateRequiredCSS(): string {
 /* ${required.description} */
 .${required.className}::after {
   content: "*";
-  color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
   margin-left: ${DESIGN_TOKENS.spacings[1]};
 }
   `.trim();

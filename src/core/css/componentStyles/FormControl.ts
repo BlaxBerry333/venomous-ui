@@ -105,12 +105,12 @@ function generateHelperTextCSS(): string {
 
 /* ${error.description} */
 .${error.className} .${helperText.className} {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 /* Error state label color */
 .${error.className} label {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
 }
   `.trim();
 }

@@ -43,7 +43,7 @@ function generateIconColorCSS(): string {
 
 /* ${colorError.description} */
 .${colorError.className} {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 /* ${colorWarning.description} */

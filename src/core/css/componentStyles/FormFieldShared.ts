@@ -67,10 +67,10 @@ export function generateFocusedCSS(focusedClassName: string): string {
  * Generate common error state CSS for form fields
  *
  * Error state design:
- * - Default: danger.main border with subtle error background tint
- * - Hover: danger.dark border for enhanced feedback
- * - Focus: danger.main border with danger.light glow ring
- * - Text color changes to danger.main for input content
+ * - Default: error.main border with subtle error background tint
+ * - Hover: error.dark border for enhanced feedback
+ * - Focus: error.main border with error.light glow ring
+ * - Text color changes to error.main for input content
  */
 export function generateErrorCSS(
   errorClassName: string,
@@ -80,23 +80,23 @@ export function generateErrorCSS(
 ): string {
   let css = `
 .${errorClassName} {
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 .${errorClassName}:hover:not(.${disabledClassName}):not(.${focusedClassName}) {
-  border-color: ${getCssVar((v) => v.semantic.danger.dark)};
+  border-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
 
 .${errorClassName}.${focusedClassName} {
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
-  box-shadow: 0 0 0 3px color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 20%, transparent);
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
+  box-shadow: 0 0 0 3px color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 20%, transparent);
 }`;
 
   if (inputClassName) {
     css += `
 
 .${errorClassName} .${inputClassName} {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
 }`;
   }
 
@@ -127,13 +127,13 @@ export function generateOutlinedVariantCSS(
 }
 
 .${outlinedClassName}.${errorClassName}:not(.${focusedClassName}) {
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
-  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 4%, transparent);
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
+  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 4%, transparent);
 }
 
 .${outlinedClassName}.${errorClassName}:hover:not(.${disabledClassName}):not(.${focusedClassName}) {
-  border-color: ${getCssVar((v) => v.semantic.danger.dark)};
-  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 6%, transparent);
+  border-color: ${getCssVar((v) => v.semantic.error.dark)};
+  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 6%, transparent);
 }`;
 }
 
@@ -167,17 +167,17 @@ export function generateFilledVariantCSS(
 }
 
 .${filledClassName}.${errorClassName} {
-  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 8%, transparent);
+  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 8%, transparent);
   border-color: transparent;
 }
 
 .${filledClassName}.${errorClassName}:hover:not(.${disabledClassName}):not(.${focusedClassName}) {
-  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 12%, transparent);
+  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 12%, transparent);
 }
 
 .${filledClassName}.${errorClassName}.${focusedClassName} {
   background-color: transparent;
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
 }`;
 }
 

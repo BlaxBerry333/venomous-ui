@@ -229,10 +229,10 @@ function generateToastVariantCSS(): string {
 
 /* ${variantError.description} */
 .${variantError.className}::before {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 .${variantError.className} .${icon.className} {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 /* ${variantWarning.description} */

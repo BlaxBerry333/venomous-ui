@@ -165,7 +165,7 @@ function generateBadgeColorCSS(): string {
 
 /* ${colorError.description} */
 .${colorError.className} .${badge.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
   color: #ffffff;
 }
 

@@ -173,7 +173,7 @@ function generateColorCSS(): string {
 
 /* ${colorError.description} */
 .${colorError.className} .${fill.className} {
-  stroke: ${getCssVar((v) => v.semantic.danger.main)};
+  stroke: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 /* ${colorWarning.description} */

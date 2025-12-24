@@ -176,11 +176,11 @@ function generateChipColorFilledCSS(): string {
 
 /* Filled + Error */
 .${variantFilled.className}.${colorError.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
   color: #ffffff;
 }
 .${variantFilled.className}.${colorError.className}.${clickable.className}:hover:not(.${disabled.className}) {
-  background-color: ${getCssVar((v) => v.semantic.danger.dark)};
+  background-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
 
 /* Filled + Warning */
@@ -244,11 +244,11 @@ function generateChipColorOutlinedCSS(): string {
 
 /* Outlined + Error */
 .${variantOutlined.className}.${colorError.className} {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 .${variantOutlined.className}.${colorError.className}.${clickable.className}:hover:not(.${disabled.className}) {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
   color: #ffffff;
 }
 

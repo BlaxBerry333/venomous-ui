@@ -83,19 +83,19 @@ function generateStateCSS(): string {
 
 /* ${error.description} */
 .${error.className} .${track.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.light)};
+  background-color: ${getCssVar((v) => v.semantic.error.light)};
 }
 
 .${error.className}:hover:not(.${disabled.className}):not(.${checked.className}) .${track.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 .${error.className}.${checked.className} .${track.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 .${error.className}.${checked.className}:hover:not(.${disabled.className}) .${track.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.dark)};
+  background-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
 
 /* Focus ring */
@@ -104,7 +104,7 @@ function generateStateCSS(): string {
 }
 
 .${error.className} .${input.className}:focus-visible + .${track.className} {
-  box-shadow: 0 0 0 3px color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 20%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 20%, transparent);
 }
   `.trim();
 }

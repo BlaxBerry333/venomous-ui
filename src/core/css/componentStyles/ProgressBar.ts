@@ -87,7 +87,7 @@ function generateColorCSS(): string {
 
 /* ${colorError.description} */
 .${colorError.className} .${fill.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 /* ${colorWarning.description} */

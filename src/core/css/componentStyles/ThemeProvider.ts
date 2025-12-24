@@ -34,10 +34,10 @@ function generateSemanticColorsVariablesCSS(semanticColors: ISemanticColors): st
   ${CSS_VARIABLE_NAMES.semantic.warning.main}: ${semanticColors.warning.main};
   ${CSS_VARIABLE_NAMES.semantic.warning.dark}: ${semanticColors.warning.dark};
 
-  /* Semantic colors - Danger */
-  ${CSS_VARIABLE_NAMES.semantic.danger.light}: ${semanticColors.error.light};
-  ${CSS_VARIABLE_NAMES.semantic.danger.main}: ${semanticColors.error.main};
-  ${CSS_VARIABLE_NAMES.semantic.danger.dark}: ${semanticColors.error.dark};
+  /* Semantic colors - Error */
+  ${CSS_VARIABLE_NAMES.semantic.error.light}: ${semanticColors.error.light};
+  ${CSS_VARIABLE_NAMES.semantic.error.main}: ${semanticColors.error.main};
+  ${CSS_VARIABLE_NAMES.semantic.error.dark}: ${semanticColors.error.dark};
 
   /* Semantic colors - Info */
   ${CSS_VARIABLE_NAMES.semantic.info.light}: ${semanticColors.info.light};
@@ -100,7 +100,7 @@ function generateThemeModeColorsVariablesCSS(themeMode: IThemeMode, paletteColor
  *
  * Includes:
  * - Base styles
- * - Semantic colors (primary, success, warning, danger, info)
+ * - Semantic colors (primary, success, warning, error, info)
  * - Theme mode color variables
  *
  * @param params.palette - PaletteColor object with light/main/dark colors

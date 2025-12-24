@@ -218,20 +218,20 @@ function generateStateCSS(): string {
 
 /* ${error.description} */
 .${error.className} .${trigger.className} {
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 .${error.className}:not(.${disabled.className}):not(.${open.className}):hover .${trigger.className} {
-  border-color: ${getCssVar((v) => v.semantic.danger.dark)};
+  border-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
 
 .${error.className}.${open.className} .${trigger.className} {
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
-  box-shadow: 0 0 0 3px color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 20%, transparent);
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
+  box-shadow: 0 0 0 3px color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 20%, transparent);
 }
 
 .${error.className} .${value.className} {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
 }
   `.trim();
 }
@@ -252,13 +252,13 @@ function generateVariantCSS(): string {
 }
 
 .${variantOutlined.className}.${error.className}:not(.${open.className}) .${trigger.className} {
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
-  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 4%, transparent);
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
+  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 4%, transparent);
 }
 
 .${variantOutlined.className}.${error.className}:not(.${disabled.className}):not(.${open.className}):hover .${trigger.className} {
-  border-color: ${getCssVar((v) => v.semantic.danger.dark)};
-  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 6%, transparent);
+  border-color: ${getCssVar((v) => v.semantic.error.dark)};
+  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 6%, transparent);
 }
 
 /* ${variantFilled.description} */
@@ -277,17 +277,17 @@ function generateVariantCSS(): string {
 }
 
 .${variantFilled.className}.${error.className} .${trigger.className} {
-  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 8%, transparent);
+  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 8%, transparent);
   border-color: transparent;
 }
 
 .${variantFilled.className}.${error.className}:not(.${disabled.className}):not(.${open.className}):hover .${trigger.className} {
-  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 12%, transparent);
+  background-color: color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 12%, transparent);
 }
 
 .${variantFilled.className}.${error.className}.${open.className} .${trigger.className} {
   background-color: transparent;
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
 }
   `.trim();
 }

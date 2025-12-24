@@ -234,10 +234,10 @@ function generateButtonColorContainedCSS(): string {
 
 /* Contained + Error */
 .${variantContained.className}.${colorError.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 .${variantContained.className}.${colorError.className}:hover:not(.${disabled.className}) {
-  background-color: ${getCssVar((v) => v.semantic.danger.dark)};
+  background-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
 
 /* Contained + Warning */
@@ -301,15 +301,15 @@ function generateButtonColorOutlinedCSS(): string {
 
 /* Outlined + Error */
 .${variantOutlined.className}.${colorError.className} {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 .${variantOutlined.className}.${colorError.className}:hover:not(.${disabled.className}) {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 .${variantOutlined.className}.${colorError.className}:active:not(.${disabled.className}) {
-  background-color: ${getCssVar((v) => v.semantic.danger.dark)};
-  border-color: ${getCssVar((v) => v.semantic.danger.dark)};
+  background-color: ${getCssVar((v) => v.semantic.error.dark)};
+  border-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
 
 /* Outlined + Warning */
@@ -362,7 +362,7 @@ function generateButtonColorTextCSS(): string {
 
 /* Text + Error */
 .${variantText.className}.${colorError.className} {
-  color: ${getCssVar((v) => v.semantic.danger.main)};
+  color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 /* Text + Warning */

@@ -109,21 +109,21 @@ function generateStateCSS(): string {
 
 /* ${error.description} */
 .${error.className} .${circle.className} {
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 .${error.className}:hover:not(.${disabled.className}) .${circle.className} {
-  border-color: ${getCssVar((v) => v.semantic.danger.dark)};
+  border-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
 
 .${error.className}.${checked.className} .${circle.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.main)};
-  border-color: ${getCssVar((v) => v.semantic.danger.main)};
+  background-color: ${getCssVar((v) => v.semantic.error.main)};
+  border-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
 .${error.className}.${checked.className}:hover:not(.${disabled.className}) .${circle.className} {
-  background-color: ${getCssVar((v) => v.semantic.danger.dark)};
-  border-color: ${getCssVar((v) => v.semantic.danger.dark)};
+  background-color: ${getCssVar((v) => v.semantic.error.dark)};
+  border-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
 
 /* Focus ring */
@@ -132,7 +132,7 @@ function generateStateCSS(): string {
 }
 
 .${error.className} .${input.className}:focus-visible + .${circle.className} {
-  box-shadow: 0 0 0 3px color-mix(in srgb, ${getCssVar((v) => v.semantic.danger.main)} 20%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, ${getCssVar((v) => v.semantic.error.main)} 20%, transparent);
 }
   `.trim();
 }
