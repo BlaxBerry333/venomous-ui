@@ -1,6 +1,6 @@
 import { Meta, Source } from "@storybook/blocks";
 import { DESIGN_TOKENS } from "../../src/core/designs";
-import { SpaceFlex, SpaceGrid, Card, Box } from "../../src/react/components";
+import { Space, Card, Box } from "../../src/react/components";
 
 <Meta title="2. Design Tokens" />
 
@@ -33,13 +33,13 @@ const { light, main, dark } = DESIGN_TOKENS.palettesColorsResets.DART_FROG;
 export const PalettePreview = () => {
   const palettes = DESIGN_TOKENS.palettesColorsResets;
   return (
-    <SpaceGrid columns={{ xs: 1, sm: 2, md: 3 }} spacing={4}>
+    <Space.Grid columns={{ xs: 1, sm: 2, md: 3 }} spacing={4}>
       {Object.entries(palettes).map(([name, colors]) => (
         <Card key={name} variant="outlined" style={{ padding: "16px" }}>
           <div style={{ fontWeight: 600, marginBottom: "12px", fontSize: "14px", textAlign:"center" }}>
             {name}
           </div>
-          <SpaceFlex spacing={2} style={{ justifyContent: "center" }}>
+          <Space.Flex spacing={2} style={{ justifyContent: "center" }}>
             {["light", "main", "dark"].map((variant) => (
               <div key={variant} style={{ textAlign: "center" }}>
                 <div
@@ -55,10 +55,10 @@ export const PalettePreview = () => {
                 <div style={{ fontSize: "10px", fontFamily: "monospace" }}>{colors[variant]}</div>
               </div>
             ))}
-          </SpaceFlex>
+          </Space.Flex>
         </Card>
       ))}
-    </SpaceGrid>
+    </Space.Grid>
   );
 };
 
@@ -81,13 +81,13 @@ const { light, main, dark } = DESIGN_TOKENS.semanticColors.success;
 export const SemanticColorsPreview = () => {
   const semantic = DESIGN_TOKENS.semanticColors;
   return (
-    <SpaceGrid columns={{ xs: 1, sm: 2, md: 3 }} spacing={4}>
+    <Space.Grid columns={{ xs: 1, sm: 2, md: 3 }} spacing={4}>
       {Object.entries(semantic).map(([name, colors]) => (
         <Card key={name} variant="outlined" style={{ padding: "16px" }}>
           <div style={{ fontWeight: 600, marginBottom: "12px", fontSize: "14px", textTransform: "capitalize", textAlign:"center" }}>
             {name}
           </div>
-          <SpaceFlex spacing={2} style={{ justifyContent: "center" }}>
+          <Space.Flex spacing={2} style={{ justifyContent: "center" }}>
             {["light", "main", "dark"].map((variant) => (
               <div key={variant} style={{ textAlign: "center" }}>
                 <div
@@ -103,10 +103,10 @@ export const SemanticColorsPreview = () => {
                 <div style={{ fontSize: "10px", fontFamily: "monospace" }}>{colors[variant]}</div>
               </div>
             ))}
-          </SpaceFlex>
+          </Space.Flex>
         </Card>
       ))}
-    </SpaceGrid>
+    </Space.Grid>
   );
 };
 
@@ -131,14 +131,14 @@ export const BackgroundColorsPreview = () => {
   const darkBg = DESIGN_TOKENS.backgroundColors.dark;
   const keys = ["body", "normal", "float", "active", "disabled"];
   return (
-    <SpaceFlex column spacing={4}>
+    <Space.Flex column spacing={4}>
       <div>
-        <SpaceFlex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#e0e0e0", borderRadius: "8px" }}>
+        <Space.Flex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#e0e0e0", borderRadius: "8px" }}>
           <div style={{ width: "100%", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "#000000" }}>
             Light Mode
           </div>
           {keys.map((key) => (
-            <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+            <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
               <div
                 style={{
                   width: "64px",
@@ -150,17 +150,17 @@ export const BackgroundColorsPreview = () => {
               />
               <div style={{ fontSize: "12px", fontWeight: 600, color: "#000000" }}>{key}</div>
               <div style={{ fontSize: "10px", fontFamily: "monospace", color: "#000000" }}>{lightBg[key]}</div>
-            </SpaceFlex>
+            </Space.Flex>
           ))}
-        </SpaceFlex>
+        </Space.Flex>
       </div>
       <div>
-        <SpaceFlex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#1a1a1a", borderRadius: "8px" }}>
+        <Space.Flex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#1a1a1a", borderRadius: "8px" }}>
           <div style={{ width: "100%", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "#ffffff" }}>
             Dark Mode
           </div>
           {keys.map((key) => (
-            <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+            <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
               <div
                 style={{
                   width: "64px",
@@ -172,11 +172,11 @@ export const BackgroundColorsPreview = () => {
               />
               <div style={{ fontSize: "12px", fontWeight: 600, color: "#ffffff" }}>{key}</div>
               <div style={{ fontSize: "10px", fontFamily: "monospace", color: "#ffffff" }}>{darkBg[key]}</div>
-            </SpaceFlex>
+            </Space.Flex>
           ))}
-        </SpaceFlex>
+        </Space.Flex>
       </div>
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -201,40 +201,40 @@ export const FontColorsPreview = () => {
   const darkColors = DESIGN_TOKENS.fontColors.dark;
   const keys = ["primary", "secondary", "tertiary", "disabled"];
   return (
-    <SpaceFlex column spacing={4}>
+    <Space.Flex column spacing={4}>
       <div>
-        <SpaceFlex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#ffffff", borderRadius: "8px", border: "1px solid #e0e0e0" }}>
+        <Space.Flex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#ffffff", borderRadius: "8px", border: "1px solid #e0e0e0" }}>
           <div style={{ width: "100%", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "#000000" }}>
             Light Mode
           </div>
           {keys.map((key) => (
-            <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+            <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
               <div style={{ fontSize: "18px", fontWeight: 600, color: lightColors[key] }}>
                 Aa
               </div>
               <div style={{ fontSize: "12px", fontWeight: 600, color: "#000000" }}>{key}</div>
               <div style={{ fontSize: "10px", fontFamily: "monospace", color: "#000000" }}>{lightColors[key]}</div>
-            </SpaceFlex>
+            </Space.Flex>
           ))}
-        </SpaceFlex>
+        </Space.Flex>
       </div>
       <div>
-        <SpaceFlex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#0a0a0a", borderRadius: "8px" }}>
+        <Space.Flex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#0a0a0a", borderRadius: "8px" }}>
           <div style={{ width: "100%", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "#ffffff" }}>
             Dark Mode
           </div>
           {keys.map((key) => (
-            <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+            <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
               <div style={{ fontSize: "18px", fontWeight: 600, color: darkColors[key] }}>
                 Aa
               </div>
               <div style={{ fontSize: "12px", fontWeight: 600, color: "#ffffff" }}>{key}</div>
               <div style={{ fontSize: "10px", fontFamily: "monospace", color: "#ffffff" }}>{darkColors[key]}</div>
-            </SpaceFlex>
+            </Space.Flex>
           ))}
-        </SpaceFlex>
+        </Space.Flex>
       </div>
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -259,14 +259,14 @@ export const BorderColorsPreview = () => {
   const darkColors = DESIGN_TOKENS.borderColors.dark;
   const keys = ["primary", "secondary", "tertiary", "disabled"];
   return (
-    <SpaceFlex column spacing={4}>
+    <Space.Flex column spacing={4}>
       <div>
-        <SpaceFlex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#ffffff", borderRadius: "8px", border: "1px solid #e0e0e0" }}>
+        <Space.Flex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#ffffff", borderRadius: "8px", border: "1px solid #e0e0e0" }}>
           <div style={{ width: "100%", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "#000000" }}>
             Light Mode
           </div>
           {keys.map((key) => (
-            <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+            <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
               <div
                 style={{
                   width: "64px",
@@ -278,17 +278,17 @@ export const BorderColorsPreview = () => {
               />
               <div style={{ fontSize: "12px", fontWeight: 600, color: "#000000" }}>{key}</div>
               <div style={{ fontSize: "10px", fontFamily: "monospace", color: "#000000" }}>{lightColors[key]}</div>
-            </SpaceFlex>
+            </Space.Flex>
           ))}
-        </SpaceFlex>
+        </Space.Flex>
       </div>
       <div>
-        <SpaceFlex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#0a0a0a", borderRadius: "8px" }}>
+        <Space.Flex spacing={4} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#0a0a0a", borderRadius: "8px" }}>
           <div style={{ width: "100%", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "#ffffff" }}>
             Dark Mode
           </div>
           {keys.map((key) => (
-            <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+            <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
               <div
                 style={{
                   width: "64px",
@@ -300,11 +300,11 @@ export const BorderColorsPreview = () => {
               />
               <div style={{ fontSize: "12px", fontWeight: 600, color: "#ffffff" }}>{key}</div>
               <div style={{ fontSize: "10px", fontFamily: "monospace", color: "#ffffff" }}>{darkColors[key]}</div>
-            </SpaceFlex>
+            </Space.Flex>
           ))}
-        </SpaceFlex>
+        </Space.Flex>
       </div>
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -328,14 +328,14 @@ export const BoxShadowsPreview = () => {
   const lightShadows = DESIGN_TOKENS.boxShadows.light;
   const darkShadows = DESIGN_TOKENS.boxShadows.dark;
   return (
-    <SpaceFlex column spacing={4}>
+    <Space.Flex column spacing={4}>
       <div>
-        <SpaceFlex spacing={6} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#f5f5f5", borderRadius: "8px" }}>
+        <Space.Flex spacing={6} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#f5f5f5", borderRadius: "8px" }}>
           <div style={{ fontSize: "14px", fontWeight: 600, marginBottom: "12px", color: "#000000" }}>
             Light Mode
           </div>
           {Object.entries(lightShadows).map(([key, value]) => (
-            <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+            <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
               <div
                 style={{
                   width: "80px",
@@ -346,17 +346,17 @@ export const BoxShadowsPreview = () => {
                 }}
               />
               <div style={{ fontSize: "12px", fontWeight: 600 }}>{key}</div>
-            </SpaceFlex>
+            </Space.Flex>
           ))}
-        </SpaceFlex>
+        </Space.Flex>
       </div>
       <div>
-        <SpaceFlex spacing={6} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#1a1a1a", borderRadius: "8px" }}>
+        <Space.Flex spacing={6} style={{ flexWrap: "wrap", padding: "24px", backgroundColor: "#1a1a1a", borderRadius: "8px" }}>
           <div style={{ fontSize: "14px", fontWeight: 600, marginBottom: "12px", color: "#ffffff" }}>
             Dark Mode
           </div>
           {Object.entries(darkShadows).map(([key, value]) => (
-            <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+            <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
               <div
                 style={{
                   width: "80px",
@@ -367,11 +367,11 @@ export const BoxShadowsPreview = () => {
                 }}
               />
               <div style={{ fontSize: "12px", fontWeight: 600, color: "#ffffff" }}>{key}</div>
-            </SpaceFlex>
+            </Space.Flex>
           ))}
-        </SpaceFlex>
+        </Space.Flex>
       </div>
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -406,9 +406,9 @@ const [
 export const SpacingsPreview = () => {
   const spacings = DESIGN_TOKENS.spacings;
   return (
-    <SpaceFlex column spacing={2}>
+    <Space.Flex column spacing={2}>
       {Object.entries(spacings).map(([key, value]) => (
-        <SpaceFlex key={key} spacing={4} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} spacing={4} style={{ alignItems: "center" }}>
           <div style={{ width: "100px", fontFamily: "monospace", fontSize: "14px" }}>{`spacing${key}`}</div>
           <div
             style={{
@@ -420,9 +420,9 @@ export const SpacingsPreview = () => {
             }}
           />
           <div style={{ fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -443,9 +443,9 @@ const { none, small, medium, large, full } = DESIGN_TOKENS.borderRadius;
 export const BorderRadiusPreview = () => {
   const radius = DESIGN_TOKENS.borderRadius;
   return (
-    <SpaceFlex spacing={4} style={{ flexWrap: "wrap" }}>
+    <Space.Flex spacing={4} style={{ flexWrap: "wrap" }}>
       {Object.entries(radius).map(([key, value]) => (
-        <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
           <div
             style={{
               width: "64px",
@@ -456,9 +456,9 @@ export const BorderRadiusPreview = () => {
           />
           <div style={{ fontSize: "12px", fontWeight: 600 }}>{key}</div>
           <div style={{ fontSize: "10px", fontFamily: "monospace", opacity: 0.7 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -479,15 +479,15 @@ const { title1, title2, subtitle1, subtitle2, large, medium, small } = DESIGN_TO
 export const FontSizesPreview = () => {
   const sizes = DESIGN_TOKENS.fontSizes;
   return (
-    <SpaceFlex column spacing={3}>
+    <Space.Flex column spacing={3}>
       {Object.entries(sizes).map(([key, value]) => (
-        <SpaceFlex key={key} spacing={4} style={{ alignItems: "baseline" }}>
+        <Space.Flex key={key} spacing={4} style={{ alignItems: "baseline" }}>
           <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>{key}</div>
           <div style={{ fontSize: value }}>The quick brown fox</div>
           <div style={{ fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -508,15 +508,15 @@ const { light, medium, bold } = DESIGN_TOKENS.fontWeights;
 export const FontWeightsPreview = () => {
   const weights = DESIGN_TOKENS.fontWeights;
   return (
-    <SpaceFlex column spacing={3}>
+    <Space.Flex column spacing={3}>
       {Object.entries(weights).map(([key, value]) => (
-        <SpaceFlex key={key} spacing={4} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} spacing={4} style={{ alignItems: "center" }}>
           <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>{key}</div>
           <div style={{ fontWeight: value, fontSize: "16px" }}>The quick brown fox</div>
           <div style={{ fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -537,17 +537,17 @@ const { none, small, medium, large } = DESIGN_TOKENS.lineHeights;
 export const LineHeightsPreview = () => {
   const lineHeights = DESIGN_TOKENS.lineHeights;
   return (
-    <SpaceFlex column spacing={4}>
+    <Space.Flex column spacing={4}>
       {Object.entries(lineHeights).map(([key, value]) => (
-        <SpaceFlex key={key} spacing={4} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} spacing={4} style={{ alignItems: "center" }}>
           <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>{key}</div>
           <div style={{ lineHeight: value, fontSize: "14px", backgroundColor: "#e0e0e0", padding: "8px", borderRadius: "4px" }}>
             The quick brown fox<br/>jumps over the lazy dog
           </div>
           <div style={{ fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -568,9 +568,9 @@ const { none, small, medium, large } = DESIGN_TOKENS.strokeWidths;
 export const StrokeWidthsPreview = () => {
   const strokeWidths = DESIGN_TOKENS.strokeWidths;
   return (
-    <SpaceFlex spacing={6} style={{ flexWrap: "wrap" }}>
+    <Space.Flex spacing={6} style={{ flexWrap: "wrap" }}>
       {Object.entries(strokeWidths).map(([key, value]) => (
-        <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
           <div
             style={{
               width: "64px",
@@ -582,9 +582,9 @@ export const StrokeWidthsPreview = () => {
           />
           <div style={{ fontSize: "12px", fontWeight: 600 }}>{key}</div>
           <div style={{ fontSize: "10px", fontFamily: "monospace", opacity: 0.7 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -614,20 +614,20 @@ const mediaQuery = \`@media (min-width: \${sm.min})\`;
 export const BreakpointsPreview = () => {
   const breakpoints = DESIGN_TOKENS.breakpoints;
   return (
-    <SpaceFlex column spacing={3}>
-      <SpaceFlex spacing={4} style={{ alignItems: "center", fontWeight: 600, fontSize: "12px" }}>
+    <Space.Flex column spacing={3}>
+      <Space.Flex spacing={4} style={{ alignItems: "center", fontWeight: 600, fontSize: "12px" }}>
         <div style={{ width: "80px" }}>Key</div>
         <div style={{ width: "80px" }}>Min</div>
         <div style={{ width: "80px" }}>Max</div>
-      </SpaceFlex>
+      </Space.Flex>
       {Object.entries(breakpoints).map(([key, value]) => (
-        <SpaceFlex key={key} spacing={4} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} spacing={4} style={{ alignItems: "center" }}>
           <div style={{ width: "80px", fontFamily: "monospace", fontSize: "14px", fontWeight: 600 }}>{key}</div>
           <div style={{ width: "80px", fontFamily: "monospace", fontSize: "12px", opacity: 0.7 }}>{value.min}</div>
           <div style={{ width: "80px", fontFamily: "monospace", fontSize: "12px", opacity: 0.7 }}>{value.max}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -648,9 +648,9 @@ const { transparent, disabled, small, medium, large } = DESIGN_TOKENS.opacities;
 export const OpacitiesPreview = () => {
   const opacities = DESIGN_TOKENS.opacities;
   return (
-    <SpaceFlex spacing={4}>
+    <Space.Flex spacing={4}>
       {Object.entries(opacities).map(([key, value]) => (
-        <SpaceFlex key={key} column spacing={2} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} column spacing={2} style={{ alignItems: "center" }}>
           <div
             style={{
               width: "64px",
@@ -662,9 +662,9 @@ export const OpacitiesPreview = () => {
           />
           <div style={{ fontSize: "12px", fontWeight: 600 }}>{key}</div>
           <div style={{ fontSize: "10px", fontFamily: "monospace", opacity: 0.7 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -685,14 +685,14 @@ const { fast, medium, slow } = DESIGN_TOKENS.transitions;
 export const TransitionsPreview = () => {
   const transitions = DESIGN_TOKENS.transitions;
   return (
-    <SpaceFlex column spacing={3}>
+    <Space.Flex column spacing={3}>
       {Object.entries(transitions).map(([key, value]) => (
-        <SpaceFlex key={key} spacing={4} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} spacing={4} style={{ alignItems: "center" }}>
           <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>{key}</div>
           <div style={{ fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
@@ -713,14 +713,14 @@ const { small, medium, large } = DESIGN_TOKENS.zIndexs;
 export const ZIndexPreview = () => {
   const zIndexs = DESIGN_TOKENS.zIndexs;
   return (
-    <SpaceFlex column spacing={2}>
+    <Space.Flex column spacing={2}>
       {Object.entries(zIndexs).map(([key, value]) => (
-        <SpaceFlex key={key} spacing={4} style={{ alignItems: "center" }}>
+        <Space.Flex key={key} spacing={4} style={{ alignItems: "center" }}>
           <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>{key}</div>
           <div style={{ fontSize: "14px", fontWeight: 600 }}>{value}</div>
-        </SpaceFlex>
+        </Space.Flex>
       ))}
-    </SpaceFlex>
+    </Space.Flex>
   );
 };
 
