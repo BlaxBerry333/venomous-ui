@@ -9,5 +9,12 @@
     "rootDir": "../src"
   },
   "include": ["../src/vue", "../src/core"],
-  "exclude": ["../node_modules", "../dist", "../src/**/*.stories.tsx", "../src/**/*.test.tsx", "../src/**/*.test.ts"]
+  "exclude": ["../node_modules", "../dist", "../src/**/*.stories.tsx", "../src/**/*.test.tsx", "../src/**/*.test.ts"],
+  "tsc-alias": {
+    "replacers": {
+      "base-url": {
+        "enabled": false
+      }
+    }
+  }
 }
