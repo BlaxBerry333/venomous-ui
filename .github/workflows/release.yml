@@ -1,12 +1,15 @@
 name: Build and Deploy to Release Branch
 
 on:
-  # Only trigger on version tags (e.g., v0.1.0, v1.0.0)
+  # Trigger on push to main branch
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - main
   # Allow manual trigger
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build-and-release:
@@ -29,8 +32,13 @@ jobs:
 
       - name: Build all frameworks
         run: |
+          npm run clean:dist
           npm run build:react
           npm run build:vue
+
+      - name: Get version from package.json
+        id: pkg
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Create release package.json
         run: |
@@ -58,8 +66,8 @@ jobs:
           mkdir -p release-build
           cp -r dist release-build/
           cp release-package.json release-build/package.json
-          [ -f README.md ] && cp README.md release-build/
-          [ -f LICENSE ] && cp LICENSE release-build/
+          [ -f README.md ] && cp README.md release-build/ || true
+          [ -f LICENSE ] && cp LICENSE release-build/ || true
 
       - name: Deploy to release branch
         run: |
@@ -68,5 +76,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Release ${{ github.ref_name }} from ${{ github.sha }}"
+          git commit -m "release: v${{ steps.pkg.outputs.version }}"
           git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:release

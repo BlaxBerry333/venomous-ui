@@ -1,10 +1,10 @@
 name: Deploy Storybook to GitHub Pages
 
 on:
-  # Only trigger on version tags (same as release workflow)
+  # Trigger on push to main branch
   push:
-    tags:
-      - "v*.*.*"
+    branches:
+      - main
   # Allow manual trigger
   workflow_dispatch:
 
