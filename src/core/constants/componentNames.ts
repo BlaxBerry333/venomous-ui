@@ -63,6 +63,10 @@ export const COMPONENT_NAMES = {
   Tabs: `${COMPONENT_LIBRARY_NAME}__Tabs`,
 
   List: `${COMPONENT_LIBRARY_NAME}__List`,
+
+  Breadcrumb: `${COMPONENT_LIBRARY_NAME}__Breadcrumb`,
+  BreadcrumbItem: `${COMPONENT_LIBRARY_NAME}__BreadcrumbItem`,
+  BreadcrumbSeparator: `${COMPONENT_LIBRARY_NAME}__BreadcrumbSeparator`,
 } as const;
 
 export type IComponentName = keyof typeof COMPONENT_NAMES;

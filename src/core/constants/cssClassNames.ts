@@ -1726,3 +1726,53 @@ export const LIST_CSS_CLASS_NAMES = {
     description: "List item text with ellipsis",
   },
 } as const;
+
+/**
+ * Breadcrumb
+ */
+export const BREADCRUMB_CSS_CLASS_NAMES = {
+  // Root container
+  root: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__root`,
+    description: "Breadcrumb root container (nav element)",
+  },
+  // List
+  list: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__list`,
+    description: "Breadcrumb ordered list",
+  },
+  // Item wrapper (li)
+  item: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__item`,
+    description: "Breadcrumb item wrapper",
+  },
+  // Link element inside item
+  link: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__link`,
+    description: "Breadcrumb link element",
+  },
+  // States
+  itemActive: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__item--active`,
+    description: "Current/active breadcrumb item",
+  },
+  itemDisabled: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__item--disabled`,
+    description: "Disabled breadcrumb item",
+  },
+  // Icon
+  icon: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__icon`,
+    description: "Breadcrumb item icon",
+  },
+  // Separator
+  separator: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__separator`,
+    description: "Separator between breadcrumb items",
+  },
+  // Collapsed ellipsis
+  collapsed: {
+    className: `${COMPONENT_NAMES.Breadcrumb}__collapsed`,
+    description: "Collapsed items indicator (ellipsis)",
+  },
+} as const;
