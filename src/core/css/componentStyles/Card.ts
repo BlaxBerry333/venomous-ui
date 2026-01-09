@@ -38,11 +38,7 @@ function generateCardBaseCSS(): string {
   overflow: hidden;
 
   /* Smooth transitions */
-  transition:
-    box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colorsAndShadow}, ${DESIGN_TOKENS.transitions.transform};
 }
   `.trim();
 }

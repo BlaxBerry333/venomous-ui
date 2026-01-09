@@ -41,9 +41,7 @@ function generateBaseCSS(): string {
   border: 2px solid ${getCssVar((v) => v.border.secondary)};
   border-radius: ${DESIGN_TOKENS.borderRadius.small};
   background-color: transparent;
-  transition:
-    background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colors};
 }
 
 .${base.className}:hover:not(.${disabled.className}):not(.${error.className}) .${box.className} {
@@ -58,9 +56,7 @@ function generateBaseCSS(): string {
   opacity: 0;
   color: #ffffff;
   transform: scale(0.5);
-  transition:
-    opacity 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.opacity}, ${DESIGN_TOKENS.transitions.transform};
 }
 
 /* ${label.description} */

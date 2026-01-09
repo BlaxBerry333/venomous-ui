@@ -49,7 +49,7 @@ function generateBaseCSS(): string {
   fill: none;
   stroke: ${getCssVar((v) => v.palette.main)};
   stroke-linecap: round;
-  transition: stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke-dashoffset ${DESIGN_TOKENS.transitions.progress};
 }
 
 /* ${label.description} */

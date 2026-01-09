@@ -3,11 +3,9 @@ import { DESIGN_TOKENS } from "@/core/designs";
 
 /**
  * Common CSS transition for form field containers
+ * @deprecated Use DESIGN_TOKENS.transitions.colorsAndShadow instead
  */
-export const FORM_FIELD_TRANSITION = `
-  border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-  background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-  box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1)`;
+export const FORM_FIELD_TRANSITION = DESIGN_TOKENS.transitions.colorsAndShadow;
 
 /**
  * Generate common input field CSS
@@ -283,9 +281,7 @@ export function generateButtonAddonCSS(buttonClassName: string): string {
   cursor: pointer;
   padding: 0;
   border-radius: ${DESIGN_TOKENS.borderRadius.small};
-  transition:
-    background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colors};
 }
 
 .${buttonClassName}:hover {

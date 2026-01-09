@@ -85,7 +85,7 @@ ${generateFullWidthCSS(fullWidth.className)}
 ${generateAddonCSS(arrow.className)}
 
 .${arrow.className} {
-  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.transform};
 }
 
 .${open.className} .${arrow.className} {
@@ -145,7 +145,7 @@ ${generateButtonAddonCSS(clearButton.className)}
   padding: ${DESIGN_TOKENS.spacings[2]} ${DESIGN_TOKENS.spacings[3]};
   cursor: pointer;
   color: ${getCssVar((v) => v.text.primary)};
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colors};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

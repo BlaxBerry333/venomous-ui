@@ -48,9 +48,7 @@ function generateBadgeBaseCSS(): string {
   font-weight: ${DESIGN_TOKENS.fontWeights.medium};
   line-height: 1;
   z-index: 1;
-  transition:
-    transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colors}, ${DESIGN_TOKENS.transitions.transform}, ${DESIGN_TOKENS.transitions.opacity};
 }
   `.trim();
 }

@@ -1,5 +1,6 @@
 import { PROGRESS_BAR_CSS_CLASS_NAMES } from "@/core/constants";
 import { getCssVar } from "@/core/css/variables";
+import { DESIGN_TOKENS } from "@/core/designs";
 
 const {
   base,
@@ -43,7 +44,7 @@ function generateBaseCSS(): string {
   height: 100%;
   border-radius: 999px;
   background-color: ${getCssVar((v) => v.palette.main)};
-  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width ${DESIGN_TOKENS.transitions.progress};
 }
   `.trim();
 }

@@ -55,12 +55,7 @@ function generateButtonBaseCSS(): string {
   vertical-align: middle;
 
   /* Smooth transitions */
-  transition:
-    background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colorsAndShadow}, ${DESIGN_TOKENS.transitions.transformFast};
 }
 
 .${base.className}:focus-visible {

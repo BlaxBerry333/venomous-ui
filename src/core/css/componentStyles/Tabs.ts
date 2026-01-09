@@ -58,11 +58,7 @@ function generateTabsBaseCSS(): string {
   color: ${getCssVar((v) => v.text.secondary)};
   font-family: inherit;
   font-weight: ${DESIGN_TOKENS.fontWeights.medium};
-  transition:
-    color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colorsAndShadow};
 }
 
 .${tab.className}:hover:not(.${tabDisabled.className}) {

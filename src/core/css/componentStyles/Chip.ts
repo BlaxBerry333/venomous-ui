@@ -40,11 +40,7 @@ function generateChipBaseCSS(): string {
   white-space: nowrap;
   user-select: none;
   vertical-align: middle;
-  transition:
-    background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colorsAndShadow};
 }
 
 .${base.className}:focus-visible {
@@ -295,7 +291,7 @@ function generateChipElementsCSS(): string {
   cursor: pointer;
   border-radius: 50%;
   opacity: 0.7;
-  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.opacity};
 }
 
 .${deleteIcon.className}:hover {

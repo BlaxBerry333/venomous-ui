@@ -43,7 +43,7 @@ function generateBreadcrumbBaseCSS(): string {
   line-height: 1.5;
   text-decoration: none;
   cursor: pointer;
-  transition: color 150ms ease-out;
+  transition: ${DESIGN_TOKENS.transitions.colors};
 }
 
 .${link.className}:hover:not(.${itemDisabled.className} .${link.className}):not(.${itemActive.className} .${link.className}) {
@@ -128,7 +128,7 @@ function generateBreadcrumbCollapsedCSS(): string {
   border: none;
   border-radius: ${DESIGN_TOKENS.borderRadius.small};
   cursor: pointer;
-  transition: background-color 150ms ease-out, color 150ms ease-out;
+  transition: ${DESIGN_TOKENS.transitions.colors};
 }
 
 .${collapsed.className}:hover {

@@ -1,5 +1,6 @@
 import { PROGRESS_PAGE_LOAD_CSS_CLASS_NAMES } from "@/core/constants";
 import { getCssVar } from "@/core/css/variables";
+import { DESIGN_TOKENS } from "@/core/designs";
 
 const { base, bar, active } = PROGRESS_PAGE_LOAD_CSS_CLASS_NAMES;
 
@@ -19,7 +20,7 @@ function generateBaseCSS(): string {
   z-index: 9999;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 200ms ease-out;
+  transition: ${DESIGN_TOKENS.transitions.opacity};
 }
 
 /* ${active.description} */
@@ -32,7 +33,7 @@ function generateBaseCSS(): string {
   height: 100%;
   background-color: var(--vui-page-load-bar-bg);
   box-shadow: 0 0 10px var(--vui-page-load-bar-bg), 0 0 5px var(--vui-page-load-bar-bg);
-  transition: width 200ms ease-out;
+  transition: width ${DESIGN_TOKENS.transitions.progress};
 }
   `.trim();
 }

@@ -192,7 +192,7 @@ function generateToastBaseCSS(): string {
   color: ${getCssVar((v) => v.text.tertiary)};
   font-size: 18px;
   cursor: pointer;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colors};
 }
 
 .${closeButton.className}:hover {

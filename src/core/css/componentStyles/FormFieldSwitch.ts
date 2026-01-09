@@ -40,7 +40,7 @@ function generateBaseCSS(): string {
   flex-shrink: 0;
   background-color: ${getCssVar((v) => v.border.secondary)};
   border-radius: 999px;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colors};
 }
 
 .${base.className}:hover:not(.${disabled.className}):not(.${checked.className}):not(.${error.className}) .${track.className} {
@@ -55,7 +55,7 @@ function generateBaseCSS(): string {
   box-shadow:
     0 1px 3px 0 rgb(0 0 0 / 0.1),
     0 1px 2px -1px rgb(0 0 0 / 0.1);
-  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.transform};
 }
   `.trim();
 }

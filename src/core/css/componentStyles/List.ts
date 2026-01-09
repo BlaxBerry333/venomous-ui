@@ -48,9 +48,7 @@ function generateListBaseCSS(): string {
 /* Interactive item */
 .${itemInteractive.className} {
   cursor: pointer;
-  transition:
-    background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colors};
 }
 
 .${itemInteractive.className}:hover:not(.${itemDisabled.className}) {

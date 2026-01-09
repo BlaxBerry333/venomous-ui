@@ -61,9 +61,7 @@ function generateBaseCSS(): string {
   border: 2px solid ${getCssVar((v) => v.border.secondary)};
   border-radius: 50%;
   background-color: transparent;
-  transition:
-    background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.colors};
 }
 
 .${base.className}:hover:not(.${disabled.className}):not(.${error.className}) .${circle.className} {
@@ -75,7 +73,7 @@ function generateBaseCSS(): string {
   border-radius: 50%;
   background-color: #ffffff;
   transform: scale(0);
-  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ${DESIGN_TOKENS.transitions.transform};
 }
 
 /* ${label.description} */
