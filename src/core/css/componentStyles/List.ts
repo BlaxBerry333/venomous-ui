@@ -73,7 +73,6 @@ function generateListBaseCSS(): string {
 
 .${itemSelected.className} .${itemTextPrimary.className} {
   color: ${getCssVar((v) => v.palette.main)};
-  font-weight: ${DESIGN_TOKENS.fontWeights.medium};
 }
 
 .${itemSelected.className} .${itemStartElement.className},
