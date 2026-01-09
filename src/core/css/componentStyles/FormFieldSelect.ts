@@ -108,7 +108,7 @@ ${generateButtonAddonCSS(clearButton.className)}
   background-color: ${getCssVar((v) => v.bg.normal)};
   border: 1px solid ${getCssVar((v) => v.border.secondary)};
   border-radius: ${DESIGN_TOKENS.borderRadius.medium};
-  box-shadow: ${DESIGN_TOKENS.boxShadows.light.medium};
+  box-shadow: ${getCssVar((v) => v.shadow.medium)};
   display: flex;
   flex-direction: column;
 }
