@@ -72,10 +72,8 @@ function useMergeThemeMode(
   }, [currentMode, setMode]);
 
   React.useEffect(() => {
-    if (!isControlled) {
-      document.documentElement.dataset.theme = currentMode;
-    }
-  }, [currentMode, isControlled]);
+    document.documentElement.dataset.theme = currentMode;
+  }, [currentMode]);
 
   return { currentMode, setMode, toggleMode };
 }
