@@ -78,6 +78,13 @@ const meta = {
       },
       control: false,
     },
+    style: {
+      description: "Custom styles for the popover content. Supports theme callback function.",
+      table: {
+        type: { summary: "CSSProperties | ((theme: ITheme) => CSSProperties)" },
+      },
+      control: false,
+    },
   },
   parameters: {
     docs: {

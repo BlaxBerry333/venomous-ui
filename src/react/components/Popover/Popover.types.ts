@@ -1,5 +1,6 @@
-import type { PropsWithChildren, ReactNode } from "react";
+import type { CSSProperties, PropsWithChildren, ReactNode } from "react";
 
+import type { ITheme } from "@/core/theme";
 import type { PopoverPlacement } from "@/core/types/components";
 
 export interface PopoverProps extends PropsWithChildren {
@@ -34,4 +35,10 @@ export interface PopoverProps extends PropsWithChildren {
    * Additional CSS class names for the popover content
    */
   className?: string;
+
+  /**
+   * Custom styles for the popover content.
+   * Can be a CSSProperties object or a function that receives the theme and returns CSSProperties.
+   */
+  style?: CSSProperties | ((theme: ITheme) => CSSProperties);
 }

@@ -8,16 +8,21 @@ import { COMPONENT_NAMES, POPOVER_CSS_CLASS_NAMES } from "@/core/constants";
 import { generatePopoverCSS } from "@/core/css";
 import { calculateFloatingPosition, getElementRect } from "@/core/tools";
 import { Portal } from "@/react/components/Portal";
-import { useStyleInjection } from "@/react/hooks";
+import { useComputedStyle, useStyleInjection } from "@/react/hooks";
 import type { PopoverProps } from "./Popover.types";
 
 const Popover = React.memo<PopoverProps>(
-  ({ trigger, placement = "bottom", offset = 8, onOpen, onClose, className, children }) => {
+  ({ trigger, placement = "bottom", offset = 8, onOpen, onClose, className, style, children }) => {
     /**
      * Inject component CSS
      */
     const POPOVER_CSS: string = generatePopoverCSS();
     useStyleInjection(COMPONENT_NAMES.Popover, POPOVER_CSS);
+
+    /**
+     * Compute style from theme callback or static object
+     */
+    const computedStyle = useComputedStyle(style);
 
     /**
      * Internal state
@@ -29,6 +34,19 @@ const Popover = React.memo<PopoverProps>(
      */
     const [position, setPosition] = React.useState<{ x: number; y: number } | null>(null);
     const [, setActualPlacement] = React.useState<PopoverProps["placement"]>(placement);
+
+    /**
+     * Compute content style with position
+     */
+    const contentStyle = React.useMemo(
+      () => ({
+        ...computedStyle,
+        left: position ? `${position.x}px` : 0,
+        top: position ? `${position.y}px` : 0,
+        visibility: position ? ("visible" as const) : ("hidden" as const),
+      }),
+      [position, computedStyle],
+    );
 
     /**
      * Refs
@@ -152,18 +170,6 @@ const Popover = React.memo<PopoverProps>(
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [isOpen, handleClose]);
-
-    /**
-     * Compute content style with position
-     */
-    const contentStyle = React.useMemo(
-      () => ({
-        left: position ? `${position.x}px` : 0,
-        top: position ? `${position.y}px` : 0,
-        visibility: position ? ("visible" as const) : ("hidden" as const),
-      }),
-      [position],
-    );
 
     return (
       <>

@@ -13,7 +13,6 @@ function generatePopoverBaseCSS(): string {
   background-color: ${getCssVar((v) => v.bg.float)};
   box-shadow: ${getCssVar((v) => v.shadow.medium)};
   border-radius: ${DESIGN_TOKENS.borderRadius.medium};
-  padding: ${DESIGN_TOKENS.spacings[3]};
 }
 
 .${base.className} > .${arrowBase.className} {
