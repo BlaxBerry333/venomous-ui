@@ -20,6 +20,13 @@ const {
   itemTextPrimary,
   itemTextSecondary,
   itemTextEllipsis,
+  itemDepth1,
+  itemDepth2,
+  itemDepth3,
+  itemDepth4,
+  collapse,
+  collapseOpen,
+  collapseContent,
 } = LIST_CSS_CLASS_NAMES;
 
 /**
@@ -183,15 +190,76 @@ function generateListDividerCSS(): string {
 }
 
 /**
+ * Generate depth CSS for List.Item
+ * Uses spacing scale: depth 1 = 8 (32px), depth 2 = 56px, depth 3 = 80px, depth 4 = 104px
+ * Each depth adds 24px (spacing[6])
+ */
+function generateListDepthCSS(): string {
+  return `
+/* Depth level 1 - 32px (spacing[8]) */
+.${itemDepth1.className} {
+  padding-left: ${DESIGN_TOKENS.spacings[8]};
+}
+
+/* Depth level 2 - 56px */
+.${itemDepth2.className} {
+  padding-left: calc(${DESIGN_TOKENS.spacings[8]} + ${DESIGN_TOKENS.spacings[6]});
+}
+
+/* Depth level 3 - 80px */
+.${itemDepth3.className} {
+  padding-left: calc(${DESIGN_TOKENS.spacings[8]} + ${DESIGN_TOKENS.spacings[6]} * 2);
+}
+
+/* Depth level 4 - 104px */
+.${itemDepth4.className} {
+  padding-left: calc(${DESIGN_TOKENS.spacings[8]} + ${DESIGN_TOKENS.spacings[6]} * 3);
+}
+  `.trim();
+}
+
+/**
+ * Generate collapse CSS for List.Collapse
+ */
+function generateListCollapseCSS(): string {
+  return `
+/* Collapse container - uses CSS Grid for smooth height animation */
+.${collapse.className} {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows ${DESIGN_TOKENS.transitions.slow};
+}
+
+/* Collapse open state */
+.${collapseOpen.className} {
+  grid-template-rows: 1fr;
+}
+
+/* Collapse content wrapper - handles overflow */
+.${collapseContent.className} {
+  overflow: hidden;
+}
+  `.trim();
+}
+
+/**
  * Generate List CSS
  *
  * Includes:
  * - Base styles
  * - Spacing styles (none, small, medium, large)
  * - Divider styles
+ * - Depth styles (for nested items)
+ * - Collapse styles (for collapsible sections)
  *
  * @returns CSS string for List component
  */
 export function generateListCSS(): string {
-  return [generateListBaseCSS(), generateListSpacingCSS(), generateListDividerCSS()].join("\n\n");
+  return [
+    generateListBaseCSS(),
+    generateListSpacingCSS(),
+    generateListDividerCSS(),
+    generateListDepthCSS(),
+    generateListCollapseCSS(),
+  ].join("\n\n");
 }

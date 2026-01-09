@@ -23,6 +23,7 @@ const ListItem = React.memo(
         onClick,
         StartElement,
         EndElement,
+        depth,
         children,
         className,
         style,
@@ -43,6 +44,24 @@ const ListItem = React.memo(
       const isInteractive = Boolean(onClick) && !disabled;
 
       /**
+       * Get depth class name based on level
+       */
+      const getDepthClassName = () => {
+        switch (depth) {
+          case 1:
+            return LIST_CSS_CLASS_NAMES.itemDepth1.className;
+          case 2:
+            return LIST_CSS_CLASS_NAMES.itemDepth2.className;
+          case 3:
+            return LIST_CSS_CLASS_NAMES.itemDepth3.className;
+          case 4:
+            return LIST_CSS_CLASS_NAMES.itemDepth4.className;
+          default:
+            return undefined;
+        }
+      };
+
+      /**
        * Get component className
        */
       const itemClassName: string = clsx(
@@ -50,6 +69,7 @@ const ListItem = React.memo(
         isInteractive && LIST_CSS_CLASS_NAMES.itemInteractive.className,
         selected && LIST_CSS_CLASS_NAMES.itemSelected.className,
         disabled && LIST_CSS_CLASS_NAMES.itemDisabled.className,
+        getDepthClassName(),
         className,
       );
 

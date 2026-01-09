@@ -45,6 +45,9 @@ export type ListProps<E extends React.ElementType = "ul"> = PolymorphicComponent
 
 export type ListItemElement = HTMLLIElement | HTMLDivElement | HTMLElement;
 
+/** List item depth level for nested items (1-4) */
+export type ListItemDepthLevel = 1 | 2 | 3 | 4;
+
 interface ListItemBaseProps {
   /** Whether the item is selected */
   selected?: boolean;
@@ -56,6 +59,8 @@ interface ListItemBaseProps {
   StartElement?: ReactNode;
   /** Element to render at the end of the item */
   EndElement?: ReactNode;
+  /** Depth level for nested items (1-4) */
+  depth?: ListItemDepthLevel;
   /** Children content */
   children?: ReactNode;
   /** Custom class name */
@@ -85,6 +90,23 @@ export interface ListItemTextProps extends Omit<HTMLAttributes<ListItemTextEleme
    */
   ellipsis?: number;
   /** Children content (alternative to primary) */
+  children?: ReactNode;
+  /** Custom class name */
+  className?: string;
+  /** Custom styles, supports object or theme callback function */
+  style?: CSSProperties | ((theme: ITheme) => CSSProperties);
+}
+
+// ============================================================================
+// ListCollapse component types
+// ============================================================================
+
+export type ListCollapseElement = HTMLDivElement;
+
+export interface ListCollapseProps extends Omit<HTMLAttributes<ListCollapseElement>, "style"> {
+  /** Whether the collapse section is expanded */
+  open?: boolean;
+  /** Children content (typically List.Item components) */
   children?: ReactNode;
   /** Custom class name */
   className?: string;
