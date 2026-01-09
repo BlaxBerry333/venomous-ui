@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { COMPONENT_NAMES, FORM_FIELD_PASSWORD_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateFormFieldPasswordCSS } from "@/core/css";
+import { useFormControlContext } from "@/react/components/FormControl";
 import { Icon } from "@/react/components/Icon";
 import { useComputedStyle, useFormFieldFocus, useStyleInjection } from "@/react/hooks";
 import type { FormFieldPasswordElement, FormFieldPasswordProps } from "./Password.types";
@@ -36,6 +37,11 @@ const Password = React.memo(
        * get component style
        */
       const computedStyle = useComputedStyle(style);
+
+      /**
+       * Get FormControl context for a11y attributes
+       */
+      const formControl = useFormControlContext();
 
       /**
        * get component status
@@ -71,6 +77,8 @@ const Password = React.memo(
             type={isVisible ? "text" : "password"}
             className={FORM_FIELD_PASSWORD_CSS_CLASS_NAMES.input.className}
             disabled={disabled}
+            aria-invalid={error || undefined}
+            aria-describedby={formControl?.helperTextId}
             onFocus={handleFocus}
             onBlur={handleBlur}
             {...restProps}

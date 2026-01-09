@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { COMPONENT_NAMES, FORM_FIELD_RADIO_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateFormFieldRadioCSS } from "@/core/css";
+import { useFormControlContext } from "@/react/components/FormControl";
 import { useComputedStyle, useStyleInjection } from "@/react/hooks";
 import type { FormFieldRadioProps, RadioOption } from "./Radio.types";
 
@@ -33,6 +34,11 @@ const Radio = React.memo<FormFieldRadioProps>(
      * Get computed style
      */
     const computedStyle = useComputedStyle(style);
+
+    /**
+     * Get FormControl context for a11y attributes
+     */
+    const formControl = useFormControlContext();
 
     /**
      * Internal state for uncontrolled mode
@@ -109,7 +115,13 @@ const Radio = React.memo<FormFieldRadioProps>(
     };
 
     return (
-      <div role="radiogroup" className={groupClassName} style={computedStyle}>
+      <div
+        role="radiogroup"
+        className={groupClassName}
+        style={computedStyle}
+        aria-invalid={error || undefined}
+        aria-describedby={formControl?.helperTextId}
+      >
         {options.map(renderOption)}
       </div>
     );

@@ -10,6 +10,7 @@ import { FormLabel } from "@/react/components/FormLabel";
 import { Typography } from "@/react/components/Typography";
 import { useComputedStyle, useStyleInjection } from "@/react/hooks";
 import type { FormControlElement, FormControlProps } from "./FormControl.types";
+import { FormControlContext } from "./FormControlContext";
 
 const FormControl = React.memo(
   React.forwardRef<FormControlElement, FormControlProps>(
@@ -39,6 +40,11 @@ const FormControl = React.memo(
       useStyleInjection(COMPONENT_NAMES.FormControl, FORM_CONTROL_CSS);
 
       /**
+       * Generate unique ID for helper text (used for aria-describedby)
+       */
+      const helperId = React.useId();
+
+      /**
        * Get computed style
        */
       const computedStyle = useComputedStyle(style);
@@ -60,6 +66,16 @@ const FormControl = React.memo(
        * Helper/error text to display
        */
       const displayText = error && errorMessage ? errorMessage : helperText;
+
+      /**
+       * Helper text ID for aria-describedby (only if there's helper text)
+       */
+      const helperTextId = displayText ? `helper-${helperId}` : undefined;
+
+      /**
+       * Context value for child form fields
+       */
+      const contextValue = React.useMemo(() => ({ helperTextId, error }), [helperTextId, error]);
 
       /**
        * Label style for row layout
@@ -93,16 +109,25 @@ const FormControl = React.memo(
         if (!displayText) return null;
 
         return (
-          <Typography.Text as="small" className={FORM_CONTROL_CSS_CLASS_NAMES.helperText.className}>
+          <Typography.Text
+            as="small"
+            id={helperTextId}
+            aria-live="polite"
+            className={FORM_CONTROL_CSS_CLASS_NAMES.helperText.className}
+          >
             {displayText}
           </Typography.Text>
         );
       };
 
       /**
-       * Render field wrapper
+       * Render field wrapper with context
        */
-      const renderField = () => <div className={FORM_CONTROL_CSS_CLASS_NAMES.field.className}>{children}</div>;
+      const renderField = () => (
+        <FormControlContext.Provider value={contextValue}>
+          <div className={FORM_CONTROL_CSS_CLASS_NAMES.field.className}>{children}</div>
+        </FormControlContext.Provider>
+      );
 
       /**
        * Vertical layout (default)

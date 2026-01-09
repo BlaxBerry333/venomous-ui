@@ -31,6 +31,8 @@ const Circle = React.memo(
         animated = false,
         showLabel = false,
         label,
+        ariaLabel,
+        ariaValueText,
         className,
         style,
         ...restProps
@@ -95,9 +97,11 @@ const Circle = React.memo(
           className={circleClassName}
           style={computedStyle}
           role="progressbar"
+          aria-label={ariaLabel}
           aria-valuenow={animated ? undefined : clampedValue}
           aria-valuemin={0}
           aria-valuemax={100}
+          aria-valuetext={ariaValueText}
           {...restProps}
         >
           <svg

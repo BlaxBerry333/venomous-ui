@@ -20,6 +20,11 @@ const Popover = React.memo<PopoverProps>(
     useStyleInjection(COMPONENT_NAMES.Popover, POPOVER_CSS);
 
     /**
+     * Generate unique ID for ARIA attributes
+     */
+    const popoverId = React.useId();
+
+    /**
      * Compute style from theme callback or static object
      */
     const computedStyle = useComputedStyle(style);
@@ -171,9 +176,34 @@ const Popover = React.memo<PopoverProps>(
       };
     }, [isOpen, handleClose]);
 
+    /**
+     * Close on Escape key
+     */
+    React.useEffect(() => {
+      if (!isOpen) return;
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          handleClose();
+        }
+      };
+
+      document.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }, [isOpen, handleClose]);
+
     return (
       <>
-        <div ref={triggerRef} className={POPOVER_CSS_CLASS_NAMES.trigger.className} onClick={handleToggle}>
+        <div
+          ref={triggerRef}
+          className={POPOVER_CSS_CLASS_NAMES.trigger.className}
+          onClick={handleToggle}
+          aria-expanded={isOpen}
+          aria-haspopup="dialog"
+          aria-controls={`popover-${popoverId}`}
+        >
           {trigger}
         </div>
 
@@ -181,6 +211,8 @@ const Popover = React.memo<PopoverProps>(
           <Portal>
             <div
               ref={contentRef}
+              id={`popover-${popoverId}`}
+              role="dialog"
               className={clsx(POPOVER_CSS_CLASS_NAMES.base.className, className)}
               style={contentStyle}
             >

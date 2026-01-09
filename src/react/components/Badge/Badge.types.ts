@@ -22,6 +22,8 @@ export interface BadgeProps extends Omit<HTMLAttributes<BadgeElement>, "style" |
   invisible?: boolean;
   /** Position of the badge relative to children */
   anchorOrigin?: BadgeAnchorOrigin;
+  /** Accessible label for screen readers */
+  ariaLabel?: string;
   /** Custom class name */
   className?: string;
   /** Custom styles, supports object or theme callback function */

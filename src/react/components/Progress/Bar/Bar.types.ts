@@ -14,6 +14,10 @@ export interface ProgressBarProps extends Omit<HTMLAttributes<ProgressBarElement
   color?: ProgressColor;
   /** Whether to show animated indeterminate state (for loading) */
   animated?: boolean;
+  /** Accessible label for screen readers */
+  ariaLabel?: string;
+  /** Human-readable text for current value (e.g., "50%", "Loading...") */
+  ariaValueText?: string;
   /** Custom class name */
   className?: string;
   /** Custom styles, supports object or theme callback function */

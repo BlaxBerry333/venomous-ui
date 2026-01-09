@@ -9,7 +9,7 @@ import { generateModalCSS } from "@/core/css";
 import { DESIGN_TOKENS } from "@/core/designs";
 import { Backdrop } from "@/react/components/Backdrop";
 import { Card } from "@/react/components/Card";
-import { useComputedStyle, useStyleInjection } from "@/react/hooks";
+import { useComputedStyle, useFocusTrap, useStyleInjection } from "@/react/hooks";
 import type { ModalProps } from "./Modal.types";
 
 const Modal = React.memo<ModalProps>(
@@ -31,6 +31,16 @@ const Modal = React.memo<ModalProps>(
      */
     const MODAL_CSS: string = generateModalCSS();
     useStyleInjection(COMPONENT_NAMES.Modal, MODAL_CSS);
+
+    /**
+     * Ref for focus trap
+     */
+    const modalRef = React.useRef<HTMLDivElement>(null);
+
+    /**
+     * Focus trap: traps focus within modal and restores on close
+     */
+    useFocusTrap(modalRef, isOpen);
 
     /**
      * Get component style with CSS variables for sizing
@@ -84,7 +94,7 @@ const Modal = React.memo<ModalProps>(
     return (
       <Backdrop isOpen={isOpen} onClick={handleBackdropClick}>
         {/* Wrapper div to stop propagation without triggering Card's clickable state */}
-        <div onClick={handleContentClick}>
+        <div ref={modalRef} onClick={handleContentClick}>
           <Card
             className={clsx(MODAL_CSS_CLASS_NAMES.base.className, className)}
             style={modalStyle as React.CSSProperties}

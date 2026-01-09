@@ -18,6 +18,8 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, "style"> {
   disabled?: boolean;
   /** Enable clickable styles (hover/active effects) */
   clickable?: boolean;
+  /** Accessible label for clickable cards */
+  ariaLabel?: string;
   /** Children */
   children?: ReactNode;
   /** Custom class name */

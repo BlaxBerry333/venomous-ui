@@ -14,7 +14,20 @@ const PRESET_COLORS: ProgressPresetColor[] = ["primary", "success", "error", "wa
 
 const Bar = React.memo(
   React.forwardRef<ProgressBarElement, ProgressBarProps>(
-    ({ value = 0, size = "medium", color = "primary", animated = false, className, style, ...restProps }, ref) => {
+    (
+      {
+        value = 0,
+        size = "medium",
+        color = "primary",
+        animated = false,
+        ariaLabel,
+        ariaValueText,
+        className,
+        style,
+        ...restProps
+      },
+      ref,
+    ) => {
       /**
        * Clamp value between 0-100
        */
@@ -68,9 +81,11 @@ const Bar = React.memo(
           className={barClassName}
           style={computedStyle}
           role="progressbar"
+          aria-label={ariaLabel}
           aria-valuenow={animated ? undefined : clampedValue}
           aria-valuemin={0}
           aria-valuemax={100}
+          aria-valuetext={ariaValueText}
           {...restProps}
         >
           <div className={PROGRESS_BAR_CSS_CLASS_NAMES.track.className}>

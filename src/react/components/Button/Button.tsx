@@ -23,6 +23,7 @@ const Button = React.memo(
         text,
         StartElement,
         EndElement,
+        ariaLabel,
         children,
         className,
         style,
@@ -74,6 +75,7 @@ const Button = React.memo(
           className={buttonClassName}
           style={computedStyle}
           disabled={isDisabled}
+          aria-label={ariaLabel}
           aria-disabled={isDisabled || undefined}
           aria-busy={loading || undefined}
           {...restProps}

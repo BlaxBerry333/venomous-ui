@@ -24,6 +24,8 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<ButtonElement>, "
   StartElement?: ReactNode;
   /** Element displayed after the text (e.g., icon) */
   EndElement?: ReactNode;
+  /** Accessible label for icon-only buttons */
+  ariaLabel?: string;
   /** Custom content, overrides loading/startElement/text/endElement */
   children?: ReactNode;
   /** Custom class name */

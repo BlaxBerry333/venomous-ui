@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { COMPONENT_NAMES, DRAWER_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateDrawerCSS } from "@/core/css";
 import { Backdrop } from "@/react/components/Backdrop";
-import { useComputedStyle, useStyleInjection } from "@/react/hooks";
+import { useComputedStyle, useFocusTrap, useStyleInjection } from "@/react/hooks";
 import type { DrawerProps } from "./Drawer.types";
 
 const anchorClassMap = {
@@ -35,6 +35,16 @@ const Drawer = React.memo<DrawerProps>(
      */
     const DRAWER_CSS: string = generateDrawerCSS();
     useStyleInjection(COMPONENT_NAMES.Drawer, DRAWER_CSS);
+
+    /**
+     * Ref for focus trap
+     */
+    const drawerRef = React.useRef<HTMLDivElement>(null);
+
+    /**
+     * Focus trap: traps focus within drawer and restores on close
+     */
+    useFocusTrap(drawerRef, isOpen);
 
     /**
      * Get component style
@@ -80,6 +90,7 @@ const Drawer = React.memo<DrawerProps>(
     return (
       <Backdrop isOpen={isOpen} onClick={handleBackdropClick}>
         <div
+          ref={drawerRef}
           className={clsx(DRAWER_CSS_CLASS_NAMES.base.className, anchorClassMap[anchor], className)}
           style={computedStyle}
           data-open={isOpen}

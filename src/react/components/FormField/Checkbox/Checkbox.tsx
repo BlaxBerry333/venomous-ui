@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { COMPONENT_NAMES, FORM_FIELD_CHECKBOX_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateFormFieldCheckboxCSS } from "@/core/css";
+import { useFormControlContext } from "@/react/components/FormControl";
 import { Icon } from "@/react/components/Icon";
 import { useComputedStyle, useControlledState, useStyleInjection } from "@/react/hooks";
 import type { FormFieldCheckboxElement, FormFieldCheckboxProps } from "./Checkbox.types";
@@ -36,6 +37,11 @@ const Checkbox = React.memo(
        * get component style
        */
       const computedStyle = useComputedStyle(style);
+
+      /**
+       * Get FormControl context for a11y attributes
+       */
+      const formControl = useFormControlContext();
 
       /**
        * get component status
@@ -75,6 +81,8 @@ const Checkbox = React.memo(
             className={FORM_FIELD_CHECKBOX_CSS_CLASS_NAMES.input.className}
             checked={isChecked}
             disabled={disabled}
+            aria-invalid={error || undefined}
+            aria-describedby={formControl?.helperTextId}
             onChange={handleChange}
             {...restProps}
           />

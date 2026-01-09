@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { COMPONENT_NAMES, FORM_FIELD_SWITCH_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateFormFieldSwitchCSS } from "@/core/css";
+import { useFormControlContext } from "@/react/components/FormControl";
 import { useComputedStyle, useControlledState, useStyleInjection } from "@/react/hooks";
 import type { FormFieldSwitchElement, FormFieldSwitchProps } from "./Switch.types";
 
@@ -34,6 +35,11 @@ const Switch = React.memo(
        * get component style
        */
       const computedStyle = useComputedStyle(style);
+
+      /**
+       * Get FormControl context for a11y attributes
+       */
+      const formControl = useFormControlContext();
 
       /**
        * get component status
@@ -74,8 +80,10 @@ const Switch = React.memo(
             className={FORM_FIELD_SWITCH_CSS_CLASS_NAMES.input.className}
             checked={isChecked}
             disabled={disabled}
-            onChange={handleChange}
+            aria-invalid={error || undefined}
+            aria-describedby={formControl?.helperTextId}
             aria-checked={isChecked}
+            onChange={handleChange}
             {...restProps}
           />
           <span className={FORM_FIELD_SWITCH_CSS_CLASS_NAMES.track.className}>

@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { COMPONENT_NAMES, FORM_FIELD_TEXT_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateFormFieldTextCSS } from "@/core/css";
+import { useFormControlContext } from "@/react/components/FormControl";
 import { useComputedStyle, useFormFieldFocus, useStyleInjection } from "@/react/hooks";
 import type { FormFieldTextElement, FormFieldTextProps } from "./Text.types";
 
@@ -39,6 +40,11 @@ const Text = React.memo(
       const computedStyle = useComputedStyle(style);
 
       /**
+       * Get FormControl context for a11y attributes
+       */
+      const formControl = useFormControlContext();
+
+      /**
        * get component status
        */
       const { isFocused, handleFocus, handleBlur } = useFormFieldFocus({ onFocus, onBlur });
@@ -68,6 +74,8 @@ const Text = React.memo(
             type="text"
             className={FORM_FIELD_TEXT_CSS_CLASS_NAMES.input.className}
             disabled={disabled}
+            aria-invalid={error || undefined}
+            aria-describedby={formControl?.helperTextId}
             onFocus={handleFocus}
             onBlur={handleBlur}
             {...restProps}

@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { COMPONENT_NAMES, FORM_FIELD_TEXTAREA_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateFormFieldTextareaCSS } from "@/core/css";
+import { useFormControlContext } from "@/react/components/FormControl";
 import { useComputedStyle, useFormFieldFocus, useStyleInjection } from "@/react/hooks";
 import type { FormFieldTextareaElement, FormFieldTextareaProps } from "./Textarea.types";
 
@@ -41,6 +42,11 @@ const Textarea = React.memo(
        * get component style
        */
       const computedStyle = useComputedStyle(style);
+
+      /**
+       * Get FormControl context for a11y attributes
+       */
+      const formControl = useFormControlContext();
 
       /**
        * get component status
@@ -107,6 +113,8 @@ const Textarea = React.memo(
             className={FORM_FIELD_TEXTAREA_CSS_CLASS_NAMES.textarea.className}
             disabled={disabled}
             rows={rows ?? minRows}
+            aria-invalid={error || undefined}
+            aria-describedby={formControl?.helperTextId}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onChange={handleChange}

@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { COMPONENT_NAMES, FORM_FIELD_SELECT_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateFormFieldSelectCSS } from "@/core/css";
 import { calculateFloatingPosition, getElementRect } from "@/core/tools";
+import { useFormControlContext } from "@/react/components/FormControl";
 import { Icon } from "@/react/components/Icon";
 import { Portal } from "@/react/components/Portal";
 import { useComputedStyle, useStyleInjection } from "@/react/hooks";
@@ -43,6 +44,11 @@ const Select = React.memo<FormFieldSelectProps>(
      * Get computed style
      */
     const computedStyle = useComputedStyle(style);
+
+    /**
+     * Get FormControl context for a11y attributes
+     */
+    const formControl = useFormControlContext();
 
     /**
      * Internal state for uncontrolled mode
@@ -344,6 +350,8 @@ const Select = React.memo<FormFieldSelectProps>(
           disabled={disabled}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
+          aria-invalid={error || undefined}
+          aria-describedby={formControl?.helperTextId}
         >
           {selectedOption ? (
             <span className={FORM_FIELD_SELECT_CSS_CLASS_NAMES.value.className}>{selectedOption.label}</span>

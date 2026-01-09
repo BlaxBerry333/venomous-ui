@@ -21,6 +21,7 @@ const Badge = React.memo(
         showZero = false,
         invisible: invisibleProp = false,
         anchorOrigin = "top-right",
+        ariaLabel,
         className,
         style,
         children,
@@ -106,7 +107,14 @@ const Badge = React.memo(
       return (
         <span ref={ref} className={rootClassName} style={computedStyle} {...restProps}>
           {children}
-          <span className={BADGE_CSS_CLASS_NAMES.badge.className}>{displayContent}</span>
+          <span
+            className={BADGE_CSS_CLASS_NAMES.badge.className}
+            role="status"
+            aria-label={ariaLabel}
+            aria-hidden={invisible || undefined}
+          >
+            {displayContent}
+          </span>
         </span>
       );
     },

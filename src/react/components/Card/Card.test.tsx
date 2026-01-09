@@ -115,7 +115,8 @@ describe("Card", () => {
 
   it("applies clickable className when clickable prop is true", () => {
     renderWithTheme(<Card clickable>Content</Card>);
-    expect(screen.getByRole("article")).toHaveClass(CARD_CSS_CLASS_NAMES.clickable.className);
+    // When clickable, the role becomes "button" for accessibility
+    expect(screen.getByRole("button")).toHaveClass(CARD_CSS_CLASS_NAMES.clickable.className);
   });
 
   it("does not apply clickable className when clickable is false even with onClick", () => {
@@ -130,6 +131,7 @@ describe("Card", () => {
         Content
       </Card>,
     );
+    // When disabled, isClickable is false so role remains "article"
     expect(screen.getByRole("article")).not.toHaveClass(CARD_CSS_CLASS_NAMES.clickable.className);
   });
 

@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { COMPONENT_NAMES, FORM_FIELD_NUMBER_CSS_CLASS_NAMES } from "@/core/constants";
 import { generateFormFieldNumberCSS } from "@/core/css";
+import { useFormControlContext } from "@/react/components/FormControl";
 import { Icon } from "@/react/components/Icon";
 import { useComputedStyle, useFormFieldFocus, useStyleInjection } from "@/react/hooks";
 import type { FormFieldNumberElement, FormFieldNumberProps } from "./Number.types";
@@ -42,6 +43,11 @@ const Number = React.memo(
        * get component style
        */
       const computedStyle = useComputedStyle(style);
+
+      /**
+       * Get FormControl context for a11y attributes
+       */
+      const formControl = useFormControlContext();
 
       /**
        * get component status
@@ -144,6 +150,8 @@ const Number = React.memo(
             step={step}
             value={value}
             defaultValue={defaultValue}
+            aria-invalid={error || undefined}
+            aria-describedby={formControl?.helperTextId}
             onChange={onChange}
             onFocus={handleFocus}
             onBlur={handleBlur}

@@ -20,6 +20,11 @@ const Tooltip = React.memo<TooltipProps>(({ children, title, placement = "top", 
   useStyleInjection(COMPONENT_NAMES.Tooltip, TOOLTIP_CSS);
 
   /**
+   * Generate unique ID for tooltip (used for aria-describedby)
+   */
+  const tooltipId = React.useId();
+
+  /**
    * Get computed style
    */
   const computedStyle = useComputedStyle(style);
@@ -150,6 +155,7 @@ const Tooltip = React.memo<TooltipProps>(({ children, title, placement = "top", 
     onMouseLeave?: React.MouseEventHandler;
     onFocus?: React.FocusEventHandler;
     onBlur?: React.FocusEventHandler;
+    "aria-describedby"?: string;
   };
 
   // eslint-disable-next-line react-x/no-children-only -- intentional: tooltip requires single child element as trigger
@@ -158,6 +164,7 @@ const Tooltip = React.memo<TooltipProps>(({ children, title, placement = "top", 
   // eslint-disable-next-line react-x/no-clone-element -- intentional: merging ref and event handlers with child element
   const triggerElement = React.cloneElement(child, {
     ref: triggerRef as React.Ref<HTMLElement>,
+    "aria-describedby": isOpen ? `tooltip-${tooltipId}` : undefined,
     onMouseEnter: (e: React.MouseEvent) => {
       handleMouseEnter();
       child.props.onMouseEnter?.(e);
@@ -184,6 +191,7 @@ const Tooltip = React.memo<TooltipProps>(({ children, title, placement = "top", 
         <Portal>
           <div
             ref={contentRef}
+            id={`tooltip-${tooltipId}`}
             className={clsx(TOOLTIP_CSS_CLASS_NAMES.base.className, className)}
             style={contentStyle}
             role="tooltip"

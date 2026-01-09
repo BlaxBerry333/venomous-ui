@@ -35,6 +35,7 @@
     "fullwidth",
     "Indexs",
     "flagpack",
-    "overscan"
+    "overscan",
+    "focusables"
   ]
 }

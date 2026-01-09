@@ -20,6 +20,7 @@ const Card = React.memo(
         loading = false,
         disabled = false,
         clickable = false,
+        ariaLabel,
         className,
         style,
         children,
@@ -30,6 +31,19 @@ const Card = React.memo(
     ) => {
       const isDisabled: boolean = disabled || loading;
       const isClickable: boolean = clickable && !isDisabled;
+
+      /**
+       * Handle keyboard interaction for clickable cards
+       */
+      const handleKeyDown = React.useCallback(
+        (e: React.KeyboardEvent<HTMLElement>) => {
+          if (isClickable && onClick && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            onClick(e as unknown as React.MouseEvent<HTMLElement>);
+          }
+        },
+        [isClickable, onClick],
+      );
 
       /**
        * inject component css
@@ -70,7 +84,12 @@ const Card = React.memo(
           className={cardClassName}
           style={computedStyle}
           onClick={onClick}
+          onKeyDown={isClickable ? handleKeyDown : undefined}
+          tabIndex={isClickable ? 0 : undefined}
+          role={isClickable ? "button" : undefined}
+          aria-label={ariaLabel}
           aria-busy={loading || undefined}
+          aria-disabled={isDisabled || undefined}
           {...restProps}
         >
           {loading && (

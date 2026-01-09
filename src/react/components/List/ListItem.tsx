@@ -82,13 +82,25 @@ const ListItem = React.memo(
         }
       };
 
+      /**
+       * Handle keyboard interaction
+       */
+      const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+        if (isInteractive && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          onClick?.(event as unknown as React.MouseEvent<HTMLElement>);
+        }
+      };
+
       return (
         <Element
           ref={ref}
           className={itemClassName}
           style={computedStyle}
           onClick={onClick ? handleClick : undefined}
+          onKeyDown={isInteractive ? handleKeyDown : undefined}
           tabIndex={isInteractive ? 0 : undefined}
+          aria-selected={selected || undefined}
           aria-disabled={disabled || undefined}
           {...restProps}
         >
