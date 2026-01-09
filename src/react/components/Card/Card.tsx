@@ -71,7 +71,6 @@ const Card = React.memo(
           style={computedStyle}
           onClick={onClick}
           aria-busy={loading || undefined}
-          aria-disabled={isDisabled || undefined}
           {...restProps}
         >
           {loading && (

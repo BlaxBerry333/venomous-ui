@@ -92,15 +92,21 @@ const Chip = React.memo(
         }
       };
 
+      /**
+       * Determine if chip is interactive (has button role)
+       * aria-disabled is only valid on elements with widget roles
+       */
+      const isInteractive = clickable || Boolean(onClick);
+
       return (
         <div
           ref={ref}
           className={chipClassName}
           style={computedStyle}
           onClick={handleClick}
-          aria-disabled={disabled || undefined}
-          role={clickable || onClick ? "button" : undefined}
-          tabIndex={clickable || onClick ? (disabled ? -1 : 0) : undefined}
+          role={isInteractive ? "button" : undefined}
+          aria-disabled={isInteractive && disabled ? true : undefined}
+          tabIndex={isInteractive ? (disabled ? -1 : 0) : undefined}
           {...restProps}
         >
           {Icon}

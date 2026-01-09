@@ -292,18 +292,6 @@ describe("List.Item", () => {
 
       expect(screen.getByTestId("item")).toHaveClass(LIST_CSS_CLASS_NAMES.itemSelected.className);
     });
-
-    it("sets aria-selected when selected", () => {
-      renderWithTheme(
-        <List>
-          <List.Item data-testid="item" selected>
-            Item 1
-          </List.Item>
-        </List>,
-      );
-
-      expect(screen.getByTestId("item")).toHaveAttribute("aria-selected", "true");
-    });
   });
 
   describe("Disabled State", () => {

@@ -152,6 +152,15 @@ describe("Chip", () => {
     );
     const chip = screen.getByTestId("chip");
     expect(chip).toHaveClass(CHIP_CSS_CLASS_NAMES.disabled.className);
+  });
+
+  it("sets aria-disabled when disabled and clickable", () => {
+    renderWithTheme(
+      <Chip data-testid="chip" disabled clickable>
+        Tag
+      </Chip>,
+    );
+    const chip = screen.getByTestId("chip");
     expect(chip).toHaveAttribute("aria-disabled", "true");
   });
 

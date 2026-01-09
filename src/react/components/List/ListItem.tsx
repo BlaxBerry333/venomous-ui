@@ -69,7 +69,6 @@ const ListItem = React.memo(
           style={computedStyle}
           onClick={onClick ? handleClick : undefined}
           tabIndex={isInteractive ? 0 : undefined}
-          aria-selected={selected || undefined}
           aria-disabled={disabled || undefined}
           {...restProps}
         >

@@ -32,6 +32,12 @@ const BreadcrumbItem = React.memo(
       const Element = (_as || (active ? "span" : "a")) as React.ElementType;
 
       /**
+       * Check if element is interactive (supports aria-disabled)
+       * span has role="generic" which does not support aria-disabled
+       */
+      const isInteractiveElement = Element !== "span";
+
+      /**
        * Get computed style from theme callback
        */
       const computedStyle = useComputedStyle(style);
@@ -57,7 +63,7 @@ const BreadcrumbItem = React.memo(
             className={linkClassName}
             style={computedStyle}
             aria-current={active ? "page" : undefined}
-            aria-disabled={disabled || undefined}
+            aria-disabled={isInteractiveElement && disabled ? true : undefined}
             {...restProps}
           >
             {icon && <span className={BREADCRUMB_CSS_CLASS_NAMES.icon.className}>{icon}</span>}

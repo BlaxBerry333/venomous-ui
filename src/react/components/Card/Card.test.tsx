@@ -149,7 +149,7 @@ describe("Card", () => {
 
   it("applies disabled state", () => {
     renderWithTheme(<Card disabled>Content</Card>);
-    expect(screen.getByRole("article")).toHaveAttribute("aria-disabled", "true");
+    expect(screen.getByRole("article")).toHaveClass(CARD_CSS_CLASS_NAMES.disabled.className);
   });
 
   it("applies custom className", () => {
