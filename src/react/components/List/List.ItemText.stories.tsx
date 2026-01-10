@@ -1,7 +1,7 @@
 import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { List } from "../index";
+import { List } from "./index";
 
 const meta = {
   title: "React/Components/<List.ItemText>/ItemText",

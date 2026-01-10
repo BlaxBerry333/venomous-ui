@@ -1,10 +1,9 @@
 import ListRoot from "./List";
-import ListCollapse from "./ListCollapse";
 import ListItem from "./ListItem";
 import ListItemText from "./ListItemText";
 
 /**
- * List compound component with Item, ItemText and Collapse sub-components
+ * List compound component with Item and ItemText sub-components
  *
  * @example
  * // Basic usage
@@ -15,24 +14,25 @@ import ListItemText from "./ListItemText";
  * </List>
  *
  * @example
- * // Collapsible nested list
+ * // Collapsible nested list (use Transition.Collapse)
  * const [open, setOpen] = useState(false);
  * <List>
  *   <List.Item onClick={() => setOpen(!open)}>
  *     <List.ItemText primary="Parent" />
  *   </List.Item>
- *   <List.Collapse open={open}>
- *     <List.Item depth={1}>
- *       <List.ItemText primary="Child" />
- *     </List.Item>
- *   </List.Collapse>
+ *   <Transition.Collapse as="li" open={open}>
+ *     <List spacing="small">
+ *       <List.Item style={{ paddingLeft: 32 }}>
+ *         <List.ItemText primary="Child" />
+ *       </List.Item>
+ *     </List>
+ *   </Transition.Collapse>
  * </List>
  */
 const List = Object.assign(ListRoot, {
   Item: ListItem,
   ItemText: ListItemText,
-  Collapse: ListCollapse,
 });
 
-export type { ListCollapseProps, ListItemDepthLevel, ListItemProps, ListItemTextProps, ListProps } from "./List.types";
+export type { ListItemProps, ListItemTextProps, ListProps } from "./List.types";
 export { List };

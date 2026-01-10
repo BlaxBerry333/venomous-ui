@@ -67,6 +67,8 @@ export const COMPONENT_NAMES = {
   Breadcrumb: `${COMPONENT_LIBRARY_NAME}__Breadcrumb`,
   BreadcrumbItem: `${COMPONENT_LIBRARY_NAME}__BreadcrumbItem`,
   BreadcrumbSeparator: `${COMPONENT_LIBRARY_NAME}__BreadcrumbSeparator`,
+
+  TransitionCollapse: `${COMPONENT_LIBRARY_NAME}__TransitionCollapse`,
 } as const;
 
 export type IComponentName = keyof typeof COMPONENT_NAMES;

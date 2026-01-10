@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Avatar, Icon } from "@/react/components";
 
-import { List } from "../index";
+import { List } from "./index";
 
 const meta = {
   title: "React/Components/<List.Item>/Item",
@@ -61,15 +61,6 @@ const meta = {
         defaultValue: { summary: "undefined" },
       },
       control: false,
-    },
-    depth: {
-      description: "Nesting depth level (1-4). Adds left padding for nested items.",
-      table: {
-        type: { summary: "undefined | 1 | 2 | 3 | 4" },
-        defaultValue: { summary: "undefined" },
-      },
-      control: { type: "radio" },
-      options: [undefined, 1, 2, 3, 4],
     },
     children: {
       description: "Item content (typically List.ItemText).",
@@ -139,9 +130,9 @@ Must be used within \`<List>\` component.
           <Description of={WithAvatarsExample} />
           <Canvas of={WithAvatarsExample} />
 
-          <Subtitle>{DepthExample.name}</Subtitle>
-          <Description of={DepthExample} />
-          <Canvas of={DepthExample} />
+          <Subtitle>{NestedExample.name}</Subtitle>
+          <Description of={NestedExample} />
+          <Canvas of={NestedExample} />
 
           <Heading>Props</Heading>
           <ArgTypes />
@@ -317,24 +308,23 @@ export const WithAvatarsExample: Story = {
 };
 
 // ============================
-// Depth Example
+// Nested Example
 // ============================
-export const DepthExample: Story = {
-  name: "Depth (Nested)",
+export const NestedExample: Story = {
+  name: "Nested (with style)",
   tags: ["!dev"],
   parameters: {
     docs: {
       description: {
-        story: "Use `depth` prop (1-4) to add left padding for nested items.",
+        story: "Use `style={{ paddingLeft: ... }}` to add left padding for nested items.",
       },
       source: {
         code: `
 <List>
   <List.Item><List.ItemText primary="Parent" /></List.Item>
-  <List.Item depth={1}><List.ItemText primary="Child (depth=1)" /></List.Item>
-  <List.Item depth={2}><List.ItemText primary="Grandchild (depth=2)" /></List.Item>
-  <List.Item depth={3}><List.ItemText primary="Great-grandchild (depth=3)" /></List.Item>
-  <List.Item depth={4}><List.ItemText primary="depth=4" /></List.Item>
+  <List.Item style={{ paddingLeft: 32 }}><List.ItemText primary="Child (32px)" /></List.Item>
+  <List.Item style={{ paddingLeft: 56 }}><List.ItemText primary="Grandchild (56px)" /></List.Item>
+  <List.Item style={{ paddingLeft: 80 }}><List.ItemText primary="Great-grandchild (80px)" /></List.Item>
 </List>
         `.trim(),
       },
@@ -346,17 +336,14 @@ export const DepthExample: Story = {
         <List.Item onClick={() => {}}>
           <List.ItemText primary="Parent Item" />
         </List.Item>
-        <List.Item depth={1} onClick={() => {}}>
-          <List.ItemText primary="Child (depth=1)" secondary="32px padding" />
+        <List.Item style={{ paddingLeft: 32 }} onClick={() => {}}>
+          <List.ItemText primary="Child" secondary="32px padding" />
         </List.Item>
-        <List.Item depth={2} onClick={() => {}}>
-          <List.ItemText primary="Grandchild (depth=2)" secondary="56px padding" />
+        <List.Item style={{ paddingLeft: 56 }} onClick={() => {}}>
+          <List.ItemText primary="Grandchild" secondary="56px padding" />
         </List.Item>
-        <List.Item depth={3} onClick={() => {}}>
-          <List.ItemText primary="Great-grandchild (depth=3)" secondary="80px padding" />
-        </List.Item>
-        <List.Item depth={4} onClick={() => {}}>
-          <List.ItemText primary="depth=4" secondary="104px padding" />
+        <List.Item style={{ paddingLeft: 80 }} onClick={() => {}}>
+          <List.ItemText primary="Great-grandchild" secondary="80px padding" />
         </List.Item>
       </List>
     );

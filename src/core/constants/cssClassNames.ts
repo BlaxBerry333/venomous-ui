@@ -1725,36 +1725,6 @@ export const LIST_CSS_CLASS_NAMES = {
     className: `${COMPONENT_NAMES.List}__item-text--ellipsis`,
     description: "List item text with ellipsis",
   },
-  // List.Item depth levels
-  itemDepth1: {
-    className: `${COMPONENT_NAMES.List}__item--depth-1`,
-    description: "List item depth level 1",
-  },
-  itemDepth2: {
-    className: `${COMPONENT_NAMES.List}__item--depth-2`,
-    description: "List item depth level 2",
-  },
-  itemDepth3: {
-    className: `${COMPONENT_NAMES.List}__item--depth-3`,
-    description: "List item depth level 3",
-  },
-  itemDepth4: {
-    className: `${COMPONENT_NAMES.List}__item--depth-4`,
-    description: "List item depth level 4",
-  },
-  // List.Collapse
-  collapse: {
-    className: `${COMPONENT_NAMES.List}__collapse`,
-    description: "List collapse container",
-  },
-  collapseOpen: {
-    className: `${COMPONENT_NAMES.List}__collapse--open`,
-    description: "List collapse open state",
-  },
-  collapseContent: {
-    className: `${COMPONENT_NAMES.List}__collapse-content`,
-    description: "List collapse inner content wrapper",
-  },
 } as const;
 
 /**
@@ -1804,5 +1774,23 @@ export const BREADCRUMB_CSS_CLASS_NAMES = {
   collapsed: {
     className: `${COMPONENT_NAMES.Breadcrumb}__collapsed`,
     description: "Collapsed items indicator (ellipsis)",
+  },
+} as const;
+
+/**
+ * Transition.Collapse
+ */
+export const TRANSITION_COLLAPSE_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.TransitionCollapse}__base`,
+    description: "Transition.Collapse root class",
+  },
+  open: {
+    className: `${COMPONENT_NAMES.TransitionCollapse}--open`,
+    description: "Transition.Collapse open state",
+  },
+  content: {
+    className: `${COMPONENT_NAMES.TransitionCollapse}__content`,
+    description: "Transition.Collapse inner content wrapper",
   },
 } as const;

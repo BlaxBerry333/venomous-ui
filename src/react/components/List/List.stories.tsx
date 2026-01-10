@@ -1,7 +1,11 @@
+import React from "react";
+
 import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { List } from "../index";
+import { Icon, Transition } from "@/react/components";
+
+import { List } from "./index";
 
 const meta = {
   title: "React/Components/<List>",
@@ -66,7 +70,8 @@ const meta = {
 
           <Markdown>
             {`
-A compound component for creating lists, including \`<List>\`, \`<List.Item>\`, \`<List.ItemText>\`, \`<List.Collapse>\`.<br />
+A compound component for creating lists with \`<List>\`, \`<List.Item>\`, and \`<List.ItemText>\`.<br />
+For collapsible nested lists, use \`<Transition.Collapse>\` component.<br />
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
@@ -127,6 +132,10 @@ function App() {
           <Subtitle>{PolymorphicExample.name}</Subtitle>
           <Description of={PolymorphicExample} />
           <Canvas of={PolymorphicExample} />
+
+          <Subtitle>{CollapsibleExample.name}</Subtitle>
+          <Description of={CollapsibleExample} />
+          <Canvas of={CollapsibleExample} />
 
           <Heading>Props</Heading>
           <ArgTypes />
@@ -352,6 +361,171 @@ export const PolymorphicExample: Story = {
           </List>
         </div>
       </div>
+    );
+  },
+};
+
+// ============================
+// Collapsible Example
+// ============================
+export const CollapsibleExample: Story = {
+  name: "Collapsible (with Transition.Collapse)",
+  tags: ["!dev"],
+  parameters: {
+    docs: {
+      description: {
+        story: `
+Use \`<Transition.Collapse>\` component to create collapsible nested lists.
+
+**Key points:**
+- \`Transition.Collapse\` is a separate component (not part of List)
+- Use \`as="li"\` to maintain semantic HTML structure inside \`<ul>\`
+- Put a nested \`<List>\` inside for full control over spacing and dividers
+- Use \`style={{ paddingLeft: 32 }}\` for indentation
+        `.trim(),
+      },
+      source: {
+        code: `
+import { List, Transition, Icon } from "venomous-ui/react/components";
+
+const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+  inbox: true,
+});
+
+const toggle = (key: string) => {
+  setOpenSections(prev => ({ ...prev, [key]: !prev[key] }));
+};
+
+<List divider>
+  {/* Collapsible section */}
+  <List.Item
+    onClick={() => toggle("inbox")}
+    StartElement={<Icon name="mdi:inbox" />}
+    EndElement={
+      <Icon
+        name="mdi:chevron-down"
+        style={{
+          transform: openSections.inbox ? "rotate(180deg)" : "rotate(0deg)",
+          transition: "transform 0.3s ease",
+        }}
+      />
+    }
+  >
+    <List.ItemText primary="Inbox" />
+  </List.Item>
+
+  {/* Transition.Collapse wraps nested content */}
+  <Transition.Collapse as="li" open={openSections.inbox}>
+    <List divider>
+      <List.Item style={{ paddingLeft: 32 }} onClick={() => {}}>
+        <List.ItemText primary="Primary" secondary="12 new" />
+      </List.Item>
+      <List.Item style={{ paddingLeft: 32 }} onClick={() => {}}>
+        <List.ItemText primary="Social" secondary="3 new" />
+      </List.Item>
+    </List>
+  </Transition.Collapse>
+
+  {/* Non-collapsible item */}
+  <List.Item onClick={() => {}} StartElement={<Icon name="mdi:help-circle" />}>
+    <List.ItemText primary="Help" />
+  </List.Item>
+</List>
+        `.trim(),
+      },
+    },
+  },
+  render: function RenderStory() {
+    const [openSections, setOpenSections] = React.useState<Record<string, boolean>>({
+      inbox: true,
+      settings: false,
+    });
+
+    const toggle = (key: string) => {
+      setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
+    };
+
+    return (
+      <List divider style={{ maxWidth: 320 }}>
+        {/* Inbox section - collapsible */}
+        <List.Item
+          onClick={() => toggle("inbox")}
+          StartElement={<Icon name="mdi:inbox" width={24} />}
+          EndElement={
+            <Icon
+              name="mdi:chevron-down"
+              width={20}
+              style={{
+                transform: openSections.inbox ? "rotate(180deg)" : "rotate(0deg)",
+                transition: "transform 0.3s ease",
+              }}
+            />
+          }
+        >
+          <List.ItemText primary="Inbox" />
+        </List.Item>
+        <Transition.Collapse as="li" open={openSections.inbox}>
+          <List divider>
+            <List.Item style={{ paddingLeft: 32 }} onClick={() => {}}>
+              <List.ItemText primary="Primary" secondary="12 new" />
+            </List.Item>
+            <List.Item style={{ paddingLeft: 32 }} onClick={() => {}}>
+              <List.ItemText primary="Social" secondary="3 new" />
+            </List.Item>
+            <List.Item style={{ paddingLeft: 32 }} onClick={() => {}}>
+              <List.ItemText primary="Promotions" secondary="8 new" />
+            </List.Item>
+          </List>
+        </Transition.Collapse>
+
+        {/* Settings section - collapsible */}
+        <List.Item
+          onClick={() => toggle("settings")}
+          StartElement={<Icon name="mdi:cog" width={24} />}
+          EndElement={
+            <Icon
+              name="mdi:chevron-down"
+              width={20}
+              style={{
+                transform: openSections.settings ? "rotate(180deg)" : "rotate(0deg)",
+                transition: "transform 0.3s ease",
+              }}
+            />
+          }
+        >
+          <List.ItemText primary="Settings" />
+        </List.Item>
+        <Transition.Collapse as="li" open={openSections.settings}>
+          <List divider>
+            <List.Item
+              style={{ paddingLeft: 32 }}
+              onClick={() => {}}
+              StartElement={<Icon name="mdi:account" width={24} />}
+            >
+              <List.ItemText primary="Account" />
+            </List.Item>
+            <List.Item
+              style={{ paddingLeft: 32 }}
+              onClick={() => {}}
+              StartElement={<Icon name="mdi:shield-account" width={24} />}
+            >
+              <List.ItemText primary="Privacy" />
+            </List.Item>
+            <List.Item
+              style={{ paddingLeft: 32 }}
+              onClick={() => {}}
+              StartElement={<Icon name="mdi:bell" width={24} />}
+            >
+              <List.ItemText primary="Notifications" />
+            </List.Item>
+          </List>
+        </Transition.Collapse>
+
+        {/* Help - non-collapsible */}
+        <List.Item onClick={() => {}} StartElement={<Icon name="mdi:help-circle" width={24} />}>
+          <List.ItemText primary="Help" />
+        </List.Item>
+      </List>
     );
   },
 };
