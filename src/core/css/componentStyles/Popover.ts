@@ -1,9 +1,8 @@
-import { ARROW_CSS_CLASS_NAMES, POPOVER_CSS_CLASS_NAMES } from "../../constants";
+import { POPOVER_CSS_CLASS_NAMES } from "../../constants";
 import { DESIGN_TOKENS } from "../../designs";
 import { getCssVar } from "../variables";
 
 const { base, trigger } = POPOVER_CSS_CLASS_NAMES;
-const arrowBase = ARROW_CSS_CLASS_NAMES.base;
 
 function generatePopoverBaseCSS(): string {
   return `
@@ -13,10 +12,6 @@ function generatePopoverBaseCSS(): string {
   background-color: ${getCssVar((v) => v.bg.float)};
   box-shadow: ${getCssVar((v) => v.shadow.medium)};
   border-radius: ${DESIGN_TOKENS.borderRadius.medium};
-}
-
-.${base.className} > .${arrowBase.className} {
-  --arrow-color: ${getCssVar((v) => v.bg.float)};
 }
   `.trim();
 }
