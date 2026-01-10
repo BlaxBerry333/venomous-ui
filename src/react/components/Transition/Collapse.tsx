@@ -77,7 +77,7 @@ const Collapse = React.memo(
       );
 
       return (
-        <Element ref={ref} className={collapseClassName} style={computedStyle} {...restProps}>
+        <Element ref={ref} className={collapseClassName} style={computedStyle} aria-hidden={!open} {...restProps}>
           <div className={TRANSITION_COLLAPSE_CSS_CLASS_NAMES.content.className}>{children}</div>
         </Element>
       );

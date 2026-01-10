@@ -8,7 +8,7 @@ import { COMPONENT_NAMES, POPOVER_CSS_CLASS_NAMES } from "@/core/constants";
 import { generatePopoverCSS } from "@/core/css";
 import { calculateFloatingPosition, getElementRect } from "@/core/tools";
 import { Portal } from "@/react/components/Portal";
-import { useComputedStyle, useStyleInjection } from "@/react/hooks";
+import { useComputedStyle, useFocusTrap, useStyleInjection } from "@/react/hooks";
 import type { PopoverProps } from "./Popover.types";
 
 const Popover = React.memo<PopoverProps>(
@@ -58,6 +58,11 @@ const Popover = React.memo<PopoverProps>(
      */
     const triggerRef = React.useRef<HTMLDivElement>(null);
     const contentRef = React.useRef<HTMLDivElement>(null);
+
+    /**
+     * Focus trap: traps focus within popover and restores on close
+     */
+    useFocusTrap(contentRef, isOpen);
 
     /**
      * Open handler

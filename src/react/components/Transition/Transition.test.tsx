@@ -147,4 +147,26 @@ describe("Transition.Collapse", () => {
       expect(screen.getByTestId("collapse")).not.toHaveClass(TRANSITION_COLLAPSE_CSS_CLASS_NAMES.open.className);
     });
   });
+
+  describe("Accessibility", () => {
+    it("sets aria-hidden to true when closed", () => {
+      renderWithTheme(
+        <Transition.Collapse open={false} data-testid="collapse">
+          <div>Content</div>
+        </Transition.Collapse>,
+      );
+
+      expect(screen.getByTestId("collapse")).toHaveAttribute("aria-hidden", "true");
+    });
+
+    it("sets aria-hidden to false when open", () => {
+      renderWithTheme(
+        <Transition.Collapse open={true} data-testid="collapse">
+          <div>Content</div>
+        </Transition.Collapse>,
+      );
+
+      expect(screen.getByTestId("collapse")).toHaveAttribute("aria-hidden", "false");
+    });
+  });
 });

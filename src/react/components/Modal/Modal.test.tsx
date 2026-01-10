@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { COMPONENT_NAMES, MODAL_CSS_CLASS_NAMES } from "@/core/constants";
+import { BACKDROP_CSS_CLASS_NAMES, COMPONENT_NAMES, MODAL_CSS_CLASS_NAMES } from "@/core/constants";
 import { DESIGN_TOKENS } from "@/core/designs";
 import { ThemeProvider } from "@/react/components/ThemeProvider";
 import Modal from "./Modal";
@@ -57,7 +57,7 @@ describe("Modal", () => {
     );
 
     // Click on backdrop (not on modal content)
-    const backdrop = document.querySelector('[aria-hidden="true"]');
+    const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
     expect(backdrop).toBeInTheDocument();
     fireEvent.click(backdrop!);
 
@@ -73,7 +73,7 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    const backdrop = document.querySelector('[aria-hidden="true"]');
+    const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
     fireEvent.click(backdrop!);
 
     expect(handleClose).not.toHaveBeenCalled();
@@ -141,8 +141,7 @@ describe("Modal", () => {
       </Modal>,
     );
 
-    // Use hidden: true because the modal is inside aria-hidden backdrop
-    expect(screen.getByRole("button", { name: "Close", hidden: true })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Close" })).toBeInTheDocument();
   });
 
   // Children renders inside Card

@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { COMPONENT_NAMES, DRAWER_CSS_CLASS_NAMES } from "@/core/constants";
+import { BACKDROP_CSS_CLASS_NAMES, COMPONENT_NAMES, DRAWER_CSS_CLASS_NAMES } from "@/core/constants";
 import { ThemeProvider } from "@/react/components/ThemeProvider";
 import Drawer from "./Drawer";
 
@@ -116,7 +116,7 @@ describe("Drawer", () => {
     );
 
     // Click on backdrop (not on drawer content)
-    const backdrop = document.querySelector('[aria-hidden="true"]');
+    const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
     expect(backdrop).toBeInTheDocument();
     fireEvent.click(backdrop!);
 
@@ -132,7 +132,7 @@ describe("Drawer", () => {
       </Drawer>,
     );
 
-    const backdrop = document.querySelector('[aria-hidden="true"]');
+    const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
     fireEvent.click(backdrop!);
 
     expect(handleClose).not.toHaveBeenCalled();
@@ -200,8 +200,7 @@ describe("Drawer", () => {
       </Drawer>,
     );
 
-    // Use hidden: true because the drawer is inside aria-hidden backdrop
-    expect(screen.getByRole("button", { name: "Close", hidden: true })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Close" })).toBeInTheDocument();
   });
 
   // Children renders

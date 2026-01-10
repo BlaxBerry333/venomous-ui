@@ -44,7 +44,6 @@ const Backdrop = React.memo<BackdropProps>(({ isOpen, onClick, style, className,
         className={clsx(BACKDROP_CSS_CLASS_NAMES.base.className, className)}
         style={computedStyle}
         onClick={handleClick}
-        aria-hidden="true"
       >
         {children}
       </div>

@@ -127,14 +127,6 @@ describe("Backdrop", () => {
     expect(portalContainer?.contains(backdropContent)).toBe(true);
   });
 
-  // aria-hidden test
-  it("has aria-hidden attribute", () => {
-    renderWithTheme(<Backdrop isOpen={true} />);
-
-    const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
-    expect(backdrop).toHaveAttribute("aria-hidden", "true");
-  });
-
   // Toggle visibility test
   it("toggles visibility when isOpen changes", () => {
     const { rerender } = renderWithTheme(<Backdrop isOpen={false} />);
