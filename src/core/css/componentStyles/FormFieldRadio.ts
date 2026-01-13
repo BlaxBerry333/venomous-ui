@@ -110,6 +110,10 @@ function generateStateCSS(): string {
   border-color: ${getCssVar((v) => v.semantic.error.main)};
 }
 
+.${error.className} .${label.className} {
+  color: ${getCssVar((v) => v.semantic.error.main)};
+}
+
 .${error.className}:hover:not(.${disabled.className}) .${circle.className} {
   border-color: ${getCssVar((v) => v.semantic.error.dark)};
 }
