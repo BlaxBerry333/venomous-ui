@@ -6,7 +6,7 @@ import { create } from "@storybook/theming/create";
  */
 const sharedThemeOptions = {
   brandTitle: "Venomous UI",
-  brandUrl: "https://github.com/user/venomous-ui",
+  brandUrl: process.env.NODE_ENV === "production" ? "https://blaxberry333.github.io/venomous-ui/" : "/",
   brandTarget: "_self" as const,
   appBorderRadius: 8,
 };
