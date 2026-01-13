@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/core/designs/lineHeights/index.ts"],"names":[],"mappings":"AAAA;;;;;;;GAOG;AACH,eAAO,MAAM,YAAY,EAAE,YAK1B,CAAC;AAEF,MAAM,MAAM,YAAY,GAAG;IACzB,+BAA+B;IAC/B,IAAI,EAAE,MAAM,CAAC;IACb,2BAA2B;IAC3B,KAAK,EAAE,MAAM,CAAC;IACd,6BAA6B;IAC7B,MAAM,EAAE,MAAM,CAAC;IACf,gCAAgC;IAChC,KAAK,EAAE,MAAM,CAAC;CACf,CAAC"}

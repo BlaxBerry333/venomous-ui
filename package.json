@@ -1,0 +1,82 @@
+{
+  "name": "venomous-ui",
+  "version": "0.1.0",
+  "description": "A lightweight UI component library that supports multiple front-end frameworks.",
+  "author": "BlaxBerry",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./core/constants": {
+      "types": "./dist/core/constants/index.d.ts",
+      "import": "./dist/core/constants/index.mjs"
+    },
+    "./core/designs": {
+      "types": "./dist/core/designs/index.d.ts",
+      "import": "./dist/core/designs/index.mjs"
+    },
+    "./core/tools": {
+      "types": "./dist/core/tools/index.d.ts",
+      "import": "./dist/core/tools/index.mjs"
+    },
+    "./core/types": {
+      "types": "./dist/core/types/index.d.ts",
+      "import": "./dist/core/types/index.mjs"
+    },
+    "./core/styles": {
+      "types": "./dist/core/styles/index.d.ts",
+      "import": "./dist/core/styles/index.mjs"
+    },
+    "./react/components": {
+      "types": "./dist/react/components/index.d.ts",
+      "import": "./dist/react/components/index.mjs"
+    },
+    "./react/hooks": {
+      "types": "./dist/react/hooks/index.d.ts",
+      "import": "./dist/react/hooks/index.mjs"
+    },
+    "./react/providers": {
+      "types": "./dist/react/providers/index.d.ts",
+      "import": "./dist/react/providers/index.mjs"
+    },
+    "./vue/components": {
+      "types": "./dist/vue/components/index.d.ts",
+      "import": "./dist/vue/components/index.mjs"
+    },
+    "./vue/composables": {
+      "types": "./dist/vue/composables/index.d.ts",
+      "import": "./dist/vue/composables/index.mjs"
+    },
+    "./vue/providers": {
+      "types": "./dist/vue/providers/index.d.ts",
+      "import": "./dist/vue/providers/index.mjs"
+    }
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "peerDependencies": {
+    "@iconify/react": "^5.0.0",
+    "@iconify/vue": "^5.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "vue": ">=3.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@iconify/react": {
+      "optional": true
+    },
+    "@iconify/vue": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
+  }
+}

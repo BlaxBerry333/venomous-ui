@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/core/designs/strokeWidths/index.ts"],"names":[],"mappings":"AAAA;;;;;;;GAOG;AACH,eAAO,MAAM,aAAa,EAAE,aAK3B,CAAC;AAEF,MAAM,MAAM,aAAa,GAAG;IAC1B,gBAAgB;IAChB,IAAI,EAAE,MAAM,CAAC;IACb,qBAAqB;IACrB,KAAK,EAAE,MAAM,CAAC;IACd,qBAAqB;IACrB,MAAM,EAAE,MAAM,CAAC;IACf,yBAAyB;IACzB,KAAK,EAAE,MAAM,CAAC;CACf,CAAC"}
