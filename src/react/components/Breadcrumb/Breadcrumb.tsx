@@ -52,11 +52,7 @@ const BreadcrumbRoot = React.memo(
       /**
        * Build class names
        */
-      const breadcrumbClassName = clsx(
-        BREADCRUMB_CSS_CLASS_NAMES.root.className,
-        BREADCRUMB_CSS_CLASS_NAMES.root.className,
-        className,
-      );
+      const breadcrumbClassName = clsx(BREADCRUMB_CSS_CLASS_NAMES.root.className, className);
 
       /**
        * State for expanded collapsed items
