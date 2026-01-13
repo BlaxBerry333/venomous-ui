@@ -10,7 +10,7 @@ import { useFormControlContext } from "@/react/components/FormControl";
 import { useComputedStyle, useStyleInjection } from "@/react/hooks";
 import type { FormFieldRadioProps, RadioOption } from "./Radio.types";
 
-const Radio = React.memo<FormFieldRadioProps>(
+const FormFieldRadio = React.memo<FormFieldRadioProps>(
   ({
     options,
     value: controlledValue,
@@ -62,9 +62,14 @@ const Radio = React.memo<FormFieldRadioProps>(
     );
 
     /**
-     * Generate unique name if not provided
+     * Generate unique ID for group name fallback
      */
-    const groupName = React.useMemo(() => name ?? `radio-group-${Math.random().toString(36).slice(2, 9)}`, [name]);
+    const generatedId = React.useId();
+
+    /**
+     * Get group name (use provided name or generated ID)
+     */
+    const groupName = name ?? `radio-group-${generatedId}`;
 
     /**
      * Handle change
@@ -128,6 +133,6 @@ const Radio = React.memo<FormFieldRadioProps>(
   },
 );
 
-Radio.displayName = COMPONENT_NAMES.FormFieldRadio;
+FormFieldRadio.displayName = COMPONENT_NAMES.FormFieldRadio;
 
-export default Radio;
+export default FormFieldRadio;
