@@ -68,7 +68,8 @@ const ListItem = React.memo(
       const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
         if (isInteractive && (event.key === "Enter" || event.key === " ")) {
           event.preventDefault();
-          onClick?.(event as unknown as React.MouseEvent<HTMLElement>);
+          // Trigger click on the element itself for proper event handling
+          event.currentTarget.click();
         }
       };
 

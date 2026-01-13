@@ -39,7 +39,8 @@ const Card = React.memo(
         (e: React.KeyboardEvent<HTMLElement>) => {
           if (isClickable && onClick && (e.key === "Enter" || e.key === " ")) {
             e.preventDefault();
-            onClick(e as unknown as React.MouseEvent<HTMLElement>);
+            // Trigger click on the element itself for proper event handling
+            e.currentTarget.click();
           }
         },
         [isClickable, onClick],
