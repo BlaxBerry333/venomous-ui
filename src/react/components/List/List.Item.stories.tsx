@@ -8,7 +8,7 @@ import { Avatar, Icon } from "@/react/components";
 import { List } from "./index";
 
 const meta = {
-  title: "React/Components/<List.Item>/Item",
+  title: "React/Components/<List.Item>",
   component: List.Item,
   tags: ["autodocs"],
   argTypes: {
@@ -102,18 +102,58 @@ Must be used within \`<List>\` component.
           <Source
             language="tsx"
             dark
-            code={`
-<List>
-  <List.Item
-    selected={isSelected}
-    onClick={() => handleSelect()}
-    StartElement={<Icon name="mdi:home" />}
-    EndElement={<Icon name="mdi:chevron-right" />}
-  >
-    <List.ItemText primary="Home" secondary="Go to homepage" />
-  </List.Item>
-</List>
-            `.trim()}
+            code={`"use client";
+
+import { useState } from "react";
+import { ThemeProvider, List, Icon, Avatar } from "venomous-ui/react/components";
+
+function App() {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  return (
+    <ThemeProvider>
+      {/* Basic interactive list */}
+      <List>
+        <List.Item
+          selected={selected === "home"}
+          onClick={() => setSelected("home")}
+        >
+          <List.ItemText primary="Home" secondary="Go to homepage" />
+        </List.Item>
+        <List.Item
+          selected={selected === "profile"}
+          onClick={() => setSelected("profile")}
+        >
+          <List.ItemText primary="Profile" />
+        </List.Item>
+        <List.Item disabled onClick={() => {}}>
+          <List.ItemText primary="Disabled Item" />
+        </List.Item>
+      </List>
+
+      {/* With icons */}
+      <List>
+        <List.Item
+          onClick={() => {}}
+          StartElement={<Icon name="mdi:home" width={24} />}
+          EndElement={<Icon name="mdi:chevron-right" width={20} />}
+        >
+          <List.ItemText primary="Home" secondary="Go to homepage" />
+        </List.Item>
+      </List>
+
+      {/* With avatar */}
+      <List>
+        <List.Item
+          onClick={() => {}}
+          StartElement={<Avatar size="medium">JD</Avatar>}
+        >
+          <List.ItemText primary="John Doe" secondary="john@example.com" />
+        </List.Item>
+      </List>
+    </ThemeProvider>
+  );
+}`}
           />
 
           <Heading>Examples</Heading>
@@ -145,6 +185,24 @@ Must be used within \`<List>\` component.
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+// ============================
+// Playground
+// ============================
+export const Playground: Story = {
+  name: "Playground",
+  args: {
+    selected: false,
+    disabled: false,
+  },
+  render: (args) => (
+    <List style={{ maxWidth: 360 }}>
+      <List.Item {...args} onClick={() => {}}>
+        <List.ItemText primary="List Item" secondary="Click to interact" />
+      </List.Item>
+    </List>
+  ),
+};
 
 // ============================
 // Interactive Example

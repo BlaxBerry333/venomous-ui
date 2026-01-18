@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { List } from "./index";
 
 const meta = {
-  title: "React/Components/<List.ItemText>/ItemText",
+  title: "React/Components/<List.ItemText>",
   component: List.ItemText,
   tags: ["autodocs"],
   argTypes: {
@@ -72,21 +72,46 @@ Must be used within \`<List.Item>\` component.
           <Source
             language="tsx"
             dark
-            code={`
-<List.Item>
-  <List.ItemText
-    primary="Primary Text"
-    secondary="Secondary description text"
-  />
-</List.Item>
+            code={`"use client";
 
-// Or with children
-<List.Item>
-  <List.ItemText primary="Title">
-    Custom content here
-  </List.ItemText>
-</List.Item>
-            `.trim()}
+import { ThemeProvider, List } from "venomous-ui/react/components";
+
+function App() {
+  return (
+    <ThemeProvider>
+      <List>
+        {/* Primary text only */}
+        <List.Item>
+          <List.ItemText primary="Primary Text" />
+        </List.Item>
+
+        {/* Primary and secondary text */}
+        <List.Item>
+          <List.ItemText
+            primary="Primary Text"
+            secondary="Secondary description text"
+          />
+        </List.Item>
+
+        {/* With custom children */}
+        <List.Item>
+          <List.ItemText primary="Title">
+            <span style={{ color: "blue" }}>Custom content here</span>
+          </List.ItemText>
+        </List.Item>
+
+        {/* With ellipsis truncation */}
+        <List.Item>
+          <List.ItemText
+            primary="Very long title that will be truncated..."
+            secondary="Very long description that will also be truncated..."
+            ellipsis={1}
+          />
+        </List.Item>
+      </List>
+    </ThemeProvider>
+  );
+}`}
           />
 
           <Heading>Examples</Heading>
@@ -110,6 +135,25 @@ Must be used within \`<List.Item>\` component.
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+// ============================
+// Playground
+// ============================
+export const Playground: Story = {
+  name: "Playground",
+  args: {
+    primary: "Primary Text",
+    secondary: "Secondary description text",
+    ellipsis: 0,
+  },
+  render: (args) => (
+    <List style={{ maxWidth: 360 }}>
+      <List.Item>
+        <List.ItemText {...args} />
+      </List.Item>
+    </List>
+  ),
+};
 
 // ============================
 // Basic Example

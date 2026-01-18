@@ -82,7 +82,14 @@ const meta = {
 
           <Markdown>
             {`
-A compound component for breadcrumb navigation, including \`<Breadcrumb>\`、\`<Breadcrumb.Item>\`、\`<Breadcrumb.Separator>\`.<br />
+**Compound Component** for breadcrumb navigation.
+
+| Component | Description |
+|-----------|-------------|
+| \`<Breadcrumb>\` | Root container (renders as \`<nav>\`) |
+| \`<Breadcrumb.Item>\` | Individual breadcrumb item ([see docs](?path=/docs/react-components-breadcrumb-item--docs)) |
+| \`<Breadcrumb.Separator>\` | Custom separator (auto-inserted by default) |
+
 Must be used within \`<ThemeProvider>\` component.
             `}
           </Markdown>
@@ -106,7 +113,7 @@ function App() {
       </Breadcrumb>
 
       {/* With custom separator */}
-      <Breadcrumb separator={<Icon name="mdi:chevron-right" width={16} />}>
+      <Breadcrumb separator={<Icon name="mdi:chevron-right" />}>
         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>
         <Breadcrumb.Item active>API</Breadcrumb.Item>
@@ -114,6 +121,36 @@ function App() {
     </ThemeProvider>
   );
 }`}
+          />
+
+          <Heading>TypeScript Usage</Heading>
+          <Source
+            language="tsx"
+            dark
+            code={`import type { BreadcrumbItemProps, PolymorphicBreadcrumbItemProps } from "venomous-ui";
+import Link from "next/link";
+
+// Basic usage - simple interface for common cases
+const itemProps: BreadcrumbItemProps = {
+  active: true,
+  href: "/home",
+  icon: <HomeIcon />,
+  children: "Home"
+};
+
+// Advanced usage - polymorphic type for custom elements (e.g., Next.js Link)
+const linkProps: PolymorphicBreadcrumbItemProps<typeof Link> = {
+  as: Link,
+  href: "/products",
+  children: "Products"
+};
+
+// Usage with custom component
+<Breadcrumb>
+  <Breadcrumb.Item as={Link} href="/home">Home</Breadcrumb.Item>
+  <Breadcrumb.Item as={Link} href="/products">Products</Breadcrumb.Item>
+  <Breadcrumb.Item active>Current</Breadcrumb.Item>
+</Breadcrumb>`}
           />
 
           <Heading>Examples</Heading>
@@ -143,8 +180,11 @@ function App() {
           <Subtitle>{"<Breadcrumb>"}</Subtitle>
           <ArgTypes />
 
-          <Subtitle>{"<Breadcrumb.Item>"}</Subtitle>
-          <ArgTypes of={Breadcrumb.Item} />
+          <Markdown>
+            {`
+For \`<Breadcrumb.Item>\` props, see the [dedicated documentation](?path=/docs/react-components-breadcrumb-item--docs).
+            `}
+          </Markdown>
         </>
       ),
     },
@@ -223,7 +263,7 @@ export const CustomSeparatorExample: Story = {
       },
       source: {
         code: `
-<Breadcrumb separator={<Icon name="mdi:chevron-right" width={16} />}>
+<Breadcrumb separator={<Icon name="mdi:chevron-right" />}>
   <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
   <Breadcrumb.Item href="#">Docs</Breadcrumb.Item>
   <Breadcrumb.Item active>API</Breadcrumb.Item>
@@ -247,7 +287,7 @@ export const CustomSeparatorExample: Story = {
   render: function RenderStory() {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        <Breadcrumb separator={<Icon name="mdi:chevron-right" width={16} />}>
+        <Breadcrumb separator={<Icon name="mdi:chevron-right" />}>
           <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
           <Breadcrumb.Item href="#">Docs</Breadcrumb.Item>
           <Breadcrumb.Item active>API</Breadcrumb.Item>
@@ -282,14 +322,14 @@ export const WithIconsExample: Story = {
       },
       source: {
         code: `
-<Breadcrumb separator={<Icon name="mdi:chevron-right" width={16} />}>
-  <Breadcrumb.Item href="/" icon={<Icon name="mdi:home" width={16} />}>
+<Breadcrumb separator={<Icon name="mdi:chevron-right" />}>
+  <Breadcrumb.Item href="/" icon={<Icon name="mdi:home" />}>
     Home
   </Breadcrumb.Item>
-  <Breadcrumb.Item href="/settings" icon={<Icon name="mdi:cog" width={16} />}>
+  <Breadcrumb.Item href="/settings" icon={<Icon name="mdi:cog" />}>
     Settings
   </Breadcrumb.Item>
-  <Breadcrumb.Item active icon={<Icon name="mdi:account" width={16} />}>
+  <Breadcrumb.Item active icon={<Icon name="mdi:account" />}>
     Profile
   </Breadcrumb.Item>
 </Breadcrumb>
@@ -299,14 +339,14 @@ export const WithIconsExample: Story = {
   },
   render: function RenderStory() {
     return (
-      <Breadcrumb separator={<Icon name="mdi:chevron-right" width={16} />}>
-        <Breadcrumb.Item href="#" icon={<Icon name="mdi:home" width={16} />}>
+      <Breadcrumb separator={<Icon name="mdi:chevron-right" />}>
+        <Breadcrumb.Item href="#" icon={<Icon name="mdi:home" />}>
           Home
         </Breadcrumb.Item>
-        <Breadcrumb.Item href="#" icon={<Icon name="mdi:cog" width={16} />}>
+        <Breadcrumb.Item href="#" icon={<Icon name="mdi:cog" />}>
           Settings
         </Breadcrumb.Item>
-        <Breadcrumb.Item active icon={<Icon name="mdi:account" width={16} />}>
+        <Breadcrumb.Item active icon={<Icon name="mdi:account" />}>
           Profile
         </Breadcrumb.Item>
       </Breadcrumb>
@@ -348,7 +388,7 @@ export const CollapsedExample: Story = {
             maxItems={4}
             itemsBeforeCollapse={1}
             itemsAfterCollapse={2}
-            separator={<Icon name="mdi:chevron-right" width={16} />}
+            separator={<Icon name="mdi:chevron-right" />}
           >
             <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
             <Breadcrumb.Item href="#">Electronics</Breadcrumb.Item>
@@ -361,7 +401,7 @@ export const CollapsedExample: Story = {
 
         <div>
           <p style={{ margin: "0 0 8px 0", fontSize: 14, color: "#666" }}>Expanded (no maxItems):</p>
-          <Breadcrumb separator={<Icon name="mdi:chevron-right" width={16} />}>
+          <Breadcrumb separator={<Icon name="mdi:chevron-right" />}>
             <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
             <Breadcrumb.Item href="#">Electronics</Breadcrumb.Item>
             <Breadcrumb.Item href="#">Smartphones</Breadcrumb.Item>

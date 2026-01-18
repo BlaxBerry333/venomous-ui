@@ -8,7 +8,7 @@ import { Icon, List } from "@/react/components";
 import { Transition } from "./index";
 
 const meta = {
-  title: "React/Components/<Transition.Collapse>/Collapse",
+  title: "React/Components/<Transition.Collapse>",
   component: Transition.Collapse,
   tags: ["autodocs"],
   argTypes: {
@@ -70,16 +70,39 @@ Works with any content - cards, lists, forms, etc.
           <Source
             language="tsx"
             dark
-            code={`
-const [open, setOpen] = useState(false);
+            code={`"use client";
 
-<button onClick={() => setOpen(!open)}>Toggle</button>
-<Transition.Collapse open={open}>
-  <div style={{ padding: 16, background: '#f5f5f5' }}>
-    Collapsible content here
-  </div>
-</Transition.Collapse>
-            `.trim()}
+import { useState } from "react";
+import { ThemeProvider, Transition } from "venomous-ui/react/components";
+
+function App() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <ThemeProvider>
+      {/* Basic collapse */}
+      <button onClick={() => setOpen(!open)}>
+        {open ? "Close" : "Open"}
+      </button>
+      <Transition.Collapse open={open}>
+        <div style={{ padding: 16, background: "#f5f5f5" }}>
+          Collapsible content here
+        </div>
+      </Transition.Collapse>
+
+      {/* As list item (for nested menus) */}
+      <ul>
+        <li>Parent Item</li>
+        <Transition.Collapse as="li" open={open}>
+          <ul>
+            <li>Child Item 1</li>
+            <li>Child Item 2</li>
+          </ul>
+        </Transition.Collapse>
+      </ul>
+    </ThemeProvider>
+  );
+}`}
           />
 
           <Heading>Examples</Heading>
@@ -107,6 +130,46 @@ const [open, setOpen] = useState(false);
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+// ============================
+// Playground
+// ============================
+export const Playground: Story = {
+  name: "Playground",
+  args: {
+    open: true,
+  },
+  render: function RenderPlayground(args) {
+    const [open, setOpen] = React.useState(args.open);
+
+    // Sync with storybook controls
+    React.useEffect(() => {
+      setOpen(args.open);
+    }, [args.open]);
+
+    return (
+      <div style={{ maxWidth: 400 }}>
+        <button
+          onClick={() => setOpen(!open)}
+          style={{
+            padding: "8px 16px",
+            cursor: "pointer",
+            borderRadius: 4,
+            border: "1px solid #ccc",
+            marginBottom: 8,
+          }}
+        >
+          {open ? "Close" : "Open"}
+        </button>
+        <Transition.Collapse {...args} open={open}>
+          <div style={{ padding: 16, background: "#f5f5f5", borderRadius: 4 }}>
+            This content smoothly animates in and out using CSS Grid transitions.
+          </div>
+        </Transition.Collapse>
+      </div>
+    );
+  },
+};
 
 // ============================
 // Basic Example
