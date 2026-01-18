@@ -35,8 +35,8 @@ describe("Modal", () => {
     expect(screen.getByText("Modal content")).toBeInTheDocument();
   });
 
-  // Does not render when isOpen is false
-  it("does not render when isOpen is false", () => {
+  // Modal is hidden when isOpen is false (still in DOM for animation purposes)
+  it("is hidden when isOpen is false", () => {
     renderWithTheme(
       <Modal isOpen={false}>
         <p>Modal content</p>
@@ -44,7 +44,12 @@ describe("Modal", () => {
     );
 
     const modal = document.querySelector(`.${MODAL_CSS_CLASS_NAMES.base.className}`);
-    expect(modal).not.toBeInTheDocument();
+    expect(modal).toBeInTheDocument();
+    // Modal should not have open class
+    expect(modal).not.toHaveClass(MODAL_CSS_CLASS_NAMES.open.className);
+    // Backdrop should not have open class
+    const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
+    expect(backdrop).not.toHaveClass(BACKDROP_CSS_CLASS_NAMES.open.className);
   });
 
   // onClose callback test - backdrop click
@@ -269,15 +274,20 @@ describe("Modal", () => {
     expect(modal).toHaveAttribute("aria-modal", "true");
   });
 
-  // Toggle visibility test
-  it("toggles visibility when isOpen changes", () => {
+  // Toggle open class when isOpen changes
+  it("toggles open class when isOpen changes", () => {
     const { rerender } = renderWithTheme(
       <Modal isOpen={false}>
         <p>Modal content</p>
       </Modal>,
     );
 
-    expect(document.querySelector(`.${MODAL_CSS_CLASS_NAMES.base.className}`)).not.toBeInTheDocument();
+    const modal = document.querySelector(`.${MODAL_CSS_CLASS_NAMES.base.className}`);
+    const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
+    expect(modal).toBeInTheDocument();
+    expect(backdrop).toBeInTheDocument();
+    expect(modal).not.toHaveClass(MODAL_CSS_CLASS_NAMES.open.className);
+    expect(backdrop).not.toHaveClass(BACKDROP_CSS_CLASS_NAMES.open.className);
 
     rerender(
       <ThemeProvider>
@@ -287,7 +297,8 @@ describe("Modal", () => {
       </ThemeProvider>,
     );
 
-    expect(document.querySelector(`.${MODAL_CSS_CLASS_NAMES.base.className}`)).toBeInTheDocument();
+    expect(modal).toHaveClass(MODAL_CSS_CLASS_NAMES.open.className);
+    expect(backdrop).toHaveClass(BACKDROP_CSS_CLASS_NAMES.open.className);
 
     rerender(
       <ThemeProvider>
@@ -297,7 +308,8 @@ describe("Modal", () => {
       </ThemeProvider>,
     );
 
-    expect(document.querySelector(`.${MODAL_CSS_CLASS_NAMES.base.className}`)).not.toBeInTheDocument();
+    expect(modal).not.toHaveClass(MODAL_CSS_CLASS_NAMES.open.className);
+    expect(backdrop).not.toHaveClass(BACKDROP_CSS_CLASS_NAMES.open.className);
   });
 
   // Full modal with header, body, and footer test

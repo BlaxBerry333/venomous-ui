@@ -15,7 +15,7 @@ export function generateTransitionCollapseCSS(): string {
 .${base.className} {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows ${DESIGN_TOKENS.transitions.slow};
+  transition: grid-template-rows ${DESIGN_TOKENS.transitions.progress};
 }
 
 /* Open state */

@@ -96,7 +96,11 @@ const Modal = React.memo<ModalProps>(
         {/* Wrapper div to stop propagation without triggering Card's clickable state */}
         <div ref={modalRef} onClick={handleContentClick}>
           <Card
-            className={clsx(MODAL_CSS_CLASS_NAMES.base.className, className)}
+            className={clsx(
+              MODAL_CSS_CLASS_NAMES.base.className,
+              isOpen && MODAL_CSS_CLASS_NAMES.open.className,
+              className,
+            )}
             style={modalStyle as React.CSSProperties}
             role="dialog"
             aria-modal="true"

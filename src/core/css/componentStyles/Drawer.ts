@@ -30,7 +30,7 @@ function generateDrawerBaseCSS(): string {
   overflow: auto;
 
   /* Slide animation */
-  transition: transform ${DESIGN_TOKENS.transitions.slow};
+  transition: transform ${DESIGN_TOKENS.transitions.progress};
 }
   `.trim();
 }

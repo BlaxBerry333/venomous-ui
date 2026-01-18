@@ -34,8 +34,8 @@ describe("Drawer", () => {
     expect(screen.getByText("Drawer content")).toBeInTheDocument();
   });
 
-  // Does not render when isOpen is false
-  it("does not render when isOpen is false", () => {
+  // Drawer is hidden when isOpen is false (still in DOM for animation purposes)
+  it("is hidden when isOpen is false", () => {
     renderWithTheme(
       <Drawer isOpen={false}>
         <p>Drawer content</p>
@@ -43,7 +43,8 @@ describe("Drawer", () => {
     );
 
     const drawer = document.querySelector(`.${DRAWER_CSS_CLASS_NAMES.base.className}`);
-    expect(drawer).not.toBeInTheDocument();
+    expect(drawer).toBeInTheDocument();
+    expect(drawer).toHaveAttribute("data-open", "false");
   });
 
   // Default anchor is left
@@ -268,15 +269,17 @@ describe("Drawer", () => {
     expect(drawer).toHaveAttribute("aria-modal", "true");
   });
 
-  // Toggle visibility test
-  it("toggles visibility when isOpen changes", () => {
+  // Toggle data-open attribute when isOpen changes
+  it("toggles data-open attribute when isOpen changes", () => {
     const { rerender } = renderWithTheme(
       <Drawer isOpen={false}>
         <p>Drawer content</p>
       </Drawer>,
     );
 
-    expect(document.querySelector(`.${DRAWER_CSS_CLASS_NAMES.base.className}`)).not.toBeInTheDocument();
+    const drawer = document.querySelector(`.${DRAWER_CSS_CLASS_NAMES.base.className}`);
+    expect(drawer).toBeInTheDocument();
+    expect(drawer).toHaveAttribute("data-open", "false");
 
     rerender(
       <ThemeProvider>
@@ -286,7 +289,7 @@ describe("Drawer", () => {
       </ThemeProvider>,
     );
 
-    expect(document.querySelector(`.${DRAWER_CSS_CLASS_NAMES.base.className}`)).toBeInTheDocument();
+    expect(drawer).toHaveAttribute("data-open", "true");
 
     rerender(
       <ThemeProvider>
@@ -296,7 +299,7 @@ describe("Drawer", () => {
       </ThemeProvider>,
     );
 
-    expect(document.querySelector(`.${DRAWER_CSS_CLASS_NAMES.base.className}`)).not.toBeInTheDocument();
+    expect(drawer).toHaveAttribute("data-open", "false");
   });
 
   // Full drawer with header, body, and footer test
