@@ -1,7 +1,8 @@
 import Collapse from "./Collapse";
+import Fade from "./Fade";
 
 /**
- * Transition compound component with Collapse sub-component
+ * Transition compound component with animation sub-components
  *
  * @example
  * // Basic collapse usage
@@ -11,6 +12,15 @@ import Collapse from "./Collapse";
  * <Transition.Collapse open={open}>
  *   <div>Collapsible content</div>
  * </Transition.Collapse>
+ *
+ * @example
+ * // Basic fade usage
+ * const [open, setOpen] = useState(false);
+ *
+ * <button onClick={() => setOpen(!open)}>Toggle</button>
+ * <Transition.Fade open={open}>
+ *   <div>Fading content</div>
+ * </Transition.Fade>
  *
  * @example
  * // With List component
@@ -29,7 +39,9 @@ import Collapse from "./Collapse";
  */
 const Transition = {
   Collapse,
+  Fade,
 };
 
 export type { CollapseElement, CollapseProps } from "./Collapse.types";
+export type { FadeElement, FadeProps } from "./Fade.types";
 export { Transition };

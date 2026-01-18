@@ -158,6 +158,10 @@ export const BACKDROP_CSS_CLASS_NAMES = {
     className: `${COMPONENT_NAMES.Backdrop}__base`,
     description: "Backdrop root class",
   },
+  open: {
+    className: `${COMPONENT_NAMES.Backdrop}--open`,
+    description: "Backdrop open state",
+  },
 } as const;
 
 /**
@@ -463,6 +467,10 @@ export const MODAL_CSS_CLASS_NAMES = {
   base: {
     className: `${COMPONENT_NAMES.Modal}__base`,
     description: "Modal root class (content container)",
+  },
+  open: {
+    className: `${COMPONENT_NAMES.Modal}--open`,
+    description: "Modal open state (visible with animation)",
   },
 } as const;
 
@@ -1792,5 +1800,19 @@ export const TRANSITION_COLLAPSE_CSS_CLASS_NAMES = {
   content: {
     className: `${COMPONENT_NAMES.TransitionCollapse}__content`,
     description: "Transition.Collapse inner content wrapper",
+  },
+} as const;
+
+/**
+ * Transition.Fade
+ */
+export const TRANSITION_FADE_CSS_CLASS_NAMES = {
+  base: {
+    className: `${COMPONENT_NAMES.TransitionFade}__base`,
+    description: "Transition.Fade root class",
+  },
+  open: {
+    className: `${COMPONENT_NAMES.TransitionFade}--open`,
+    description: "Transition.Fade open state (visible)",
   },
 } as const;

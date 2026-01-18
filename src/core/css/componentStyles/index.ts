@@ -35,6 +35,7 @@ export * from "./ThemeProvider";
 export * from "./Toast";
 export * from "./Tooltip";
 export * from "./TransitionCollapse";
+export * from "./TransitionFade";
 export * from "./TypographyParagraph";
 export * from "./TypographyText";
 export * from "./TypographyTitle";
