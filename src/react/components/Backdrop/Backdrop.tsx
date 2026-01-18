@@ -34,16 +34,17 @@ const Backdrop = React.memo<BackdropProps>(({ isOpen, onClick, style, className,
     [onClick],
   );
 
-  if (!isOpen) {
-    return null;
-  }
-
   return (
     <Portal>
       <div
-        className={clsx(BACKDROP_CSS_CLASS_NAMES.base.className, className)}
+        className={clsx(
+          BACKDROP_CSS_CLASS_NAMES.base.className,
+          isOpen && BACKDROP_CSS_CLASS_NAMES.open.className,
+          className,
+        )}
         style={computedStyle}
         onClick={handleClick}
+        aria-hidden={!isOpen}
       >
         {children}
       </div>

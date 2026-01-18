@@ -1,7 +1,7 @@
 import { BACKDROP_CSS_CLASS_NAMES } from "@/core/constants";
 import { DESIGN_TOKENS } from "@/core/designs";
 
-const { base } = BACKDROP_CSS_CLASS_NAMES;
+const { base, open } = BACKDROP_CSS_CLASS_NAMES;
 
 /**
  * Generate base CSS for Backdrop
@@ -25,11 +25,23 @@ function generateBackdropBaseCSS(): string {
   align-items: center;
   justify-content: center;
 
-  /* Backdrop appearance */
-  background-color: rgba(0, 0, 0, 0.5);
+  /* Backdrop appearance - hidden by default */
+  background-color: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  pointer-events: none;
+
+  /* Animation */
+  transition: background-color ${DESIGN_TOKENS.transitions.progress}, visibility ${DESIGN_TOKENS.transitions.progress};
 
   /* Prevent text selection */
   -webkit-tap-highlight-color: transparent;
+}
+
+/* ${open.description} */
+.${base.className}.${open.className} {
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: visible;
+  pointer-events: auto;
 }
   `.trim();
 }

@@ -29,12 +29,14 @@ describe("Backdrop", () => {
     expect(backdrop).toBeInTheDocument();
   });
 
-  // Does not render when isOpen is false
-  it("does not render when isOpen is false", () => {
+  // Backdrop is hidden when isOpen is false (still in DOM for animation purposes)
+  it("is hidden when isOpen is false", () => {
     renderWithTheme(<Backdrop isOpen={false} />);
 
     const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
-    expect(backdrop).not.toBeInTheDocument();
+    expect(backdrop).toBeInTheDocument();
+    expect(backdrop).not.toHaveClass(BACKDROP_CSS_CLASS_NAMES.open.className);
+    expect(backdrop).toHaveAttribute("aria-hidden", "true");
   });
 
   // onClick callback test
@@ -127,11 +129,13 @@ describe("Backdrop", () => {
     expect(portalContainer?.contains(backdropContent)).toBe(true);
   });
 
-  // Toggle visibility test
-  it("toggles visibility when isOpen changes", () => {
+  // Toggle visibility test - checks open class toggling
+  it("toggles open class when isOpen changes", () => {
     const { rerender } = renderWithTheme(<Backdrop isOpen={false} />);
 
-    expect(document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`)).not.toBeInTheDocument();
+    const backdrop = document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`);
+    expect(backdrop).toBeInTheDocument();
+    expect(backdrop).not.toHaveClass(BACKDROP_CSS_CLASS_NAMES.open.className);
 
     rerender(
       <ThemeProvider>
@@ -139,7 +143,7 @@ describe("Backdrop", () => {
       </ThemeProvider>,
     );
 
-    expect(document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`)).toBeInTheDocument();
+    expect(backdrop).toHaveClass(BACKDROP_CSS_CLASS_NAMES.open.className);
 
     rerender(
       <ThemeProvider>
@@ -147,6 +151,6 @@ describe("Backdrop", () => {
       </ThemeProvider>,
     );
 
-    expect(document.querySelector(`.${BACKDROP_CSS_CLASS_NAMES.base.className}`)).not.toBeInTheDocument();
+    expect(backdrop).not.toHaveClass(BACKDROP_CSS_CLASS_NAMES.open.className);
   });
 });

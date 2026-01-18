@@ -7,6 +7,7 @@ import { Button } from "@/react/components/Button";
 import { Card } from "@/react/components/Card";
 import { CssReset } from "@/react/components/CssReset";
 import { ThemeProvider } from "@/react/components/ThemeProvider";
+import { Transition } from "@/react/components/Transition";
 import Backdrop from "./Backdrop";
 
 const meta = {
@@ -70,8 +71,10 @@ const meta = {
           <Markdown>
             {`
 \`<Backdrop>\` provides a semi-transparent overlay that sits behind modal content.<br />
-It's typically used as a building block for \`<Modal>\`、\`<Drawer>\`、 and \`<Dialog>\` components..<br />
+It's typically used as a building block for \`<Modal>\`、\`<Drawer>\`、 and \`<Dialog>\` components.<br />
 Must be used within \`<ThemeProvider>\` component.
+
+**Note:** Backdrop has a 300ms fade transition. To synchronize child content animation, wrap children with \`<Transition.Fade>\`.
             `}
           </Markdown>
 
@@ -82,7 +85,7 @@ Must be used within \`<ThemeProvider>\` component.
             code={`"use client";
 
 import React from "react";
-import { Backdrop, Button, Card } from "venomous-ui/react/components";
+import { Backdrop, Button, Card, Transition } from "venomous-ui/react/components";
 
 function ModalExample() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -92,9 +95,12 @@ function ModalExample() {
       <Button onClick={() => setIsOpen(true)} text="Open Modal" />
 
       <Backdrop isOpen={isOpen} onClick={() => setIsOpen(false)}>
-        <Card style={{ maxWidth: "400px" }}>
-          <Button onClick={() => setIsOpen(false)} text="Close" />
-        </Card>
+        {/* Wrap content with Transition.Fade to sync animation with Backdrop */}
+        <Transition.Fade open={isOpen}>
+          <Card style={{ maxWidth: "400px" }}>
+            <Button onClick={() => setIsOpen(false)} text="Close" />
+          </Card>
+        </Transition.Fade>
       </Backdrop>
     </>
   );
@@ -126,33 +132,36 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   name: "Playground",
   args: {
-    isOpen: false,
-    onClick: undefined,
-    style: undefined,
-    className: undefined,
-    children: undefined,
+    isOpen: true,
   },
-  render: function RenderStory() {
-    const [isOpen, setIsOpen] = React.useState(false);
+  render: function RenderPlayground(args) {
+    const [isOpen, setIsOpen] = React.useState(args.isOpen);
+
+    // Sync with storybook controls
+    React.useEffect(() => {
+      setIsOpen(args.isOpen);
+    }, [args.isOpen]);
 
     return (
       <div>
         <Button onClick={() => setIsOpen(true)} text="Open Backdrop" />
 
-        <Backdrop isOpen={isOpen} onClick={() => setIsOpen(false)}>
-          <Card
-            style={(theme) => ({
-              padding: theme.spacing(6),
-              maxWidth: "400px",
-              textAlign: "center",
-            })}
-          >
-            <h3 style={{ margin: "0 0 16px" }}>Modal Content</h3>
-            <p style={{ margin: "0 0 16px", color: "#737373" }}>
-              Click the backdrop (outside this card) to close, or use the button below.
-            </p>
-            <Button onClick={() => setIsOpen(false)} text="Close" />
-          </Card>
+        <Backdrop {...args} isOpen={isOpen} onClick={() => setIsOpen(false)}>
+          <Transition.Fade open={isOpen}>
+            <Card
+              style={(theme) => ({
+                padding: theme.spacing(6),
+                maxWidth: "400px",
+                textAlign: "center",
+              })}
+            >
+              <h3 style={{ margin: "0 0 16px" }}>Modal Content</h3>
+              <p style={{ margin: "0 0 16px", color: "#737373" }}>
+                Click the backdrop (outside this card) to close, or use the button below.
+              </p>
+              <Button onClick={() => setIsOpen(false)} text="Close" />
+            </Card>
+          </Transition.Fade>
         </Backdrop>
 
         <p style={{ marginTop: "16px", color: "#737373", fontSize: "14px" }}>
@@ -169,7 +178,9 @@ export const Playground: Story = {
 export const CustomStyleExample: Story = {
   name: "Custom Style Example",
   tags: ["!dev"],
-  args: Playground.args,
+  args: {
+    isOpen: true,
+  },
   parameters: {
     docs: {
       description: {
@@ -181,12 +192,14 @@ export const CustomStyleExample: Story = {
 <Backdrop
   isOpen={isOpen}
   onClick={handleClose}
-  style={(theme) => ({
+  style={{
     backgroundColor: "rgba(0, 0, 0, 0.8)",
     backdropFilter: "blur(4px)",
-  })}
+  }}
 >
-  <Card>Modal content</Card>
+  <Transition.Fade open={isOpen}>
+    <Card>Modal content</Card>
+  </Transition.Fade>
 </Backdrop>
         `.trim(),
       },
@@ -207,17 +220,21 @@ export const CustomStyleExample: Story = {
             backdropFilter: "blur(4px)",
           }}
         >
-          <Card
-            style={{
-              padding: "24px",
-              maxWidth: "400px",
-              textAlign: "center",
-            }}
-          >
-            <h3 style={{ margin: "0 0 16px" }}>Blur Effect</h3>
-            <p style={{ margin: "0 0 16px", color: "#737373" }}>Custom backdrop with darker overlay and blur effect.</p>
-            <Button onClick={() => setIsOpen(false)} text="Close" />
-          </Card>
+          <Transition.Fade open={isOpen}>
+            <Card
+              style={{
+                padding: "24px",
+                maxWidth: "400px",
+                textAlign: "center",
+              }}
+            >
+              <h3 style={{ margin: "0 0 16px" }}>Blur Effect</h3>
+              <p style={{ margin: "0 0 16px", color: "#737373" }}>
+                Custom backdrop with darker overlay and blur effect.
+              </p>
+              <Button onClick={() => setIsOpen(false)} text="Close" />
+            </Card>
+          </Transition.Fade>
         </Backdrop>
       </div>
     );
