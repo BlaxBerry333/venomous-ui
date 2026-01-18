@@ -47,13 +47,21 @@ export type BreadcrumbProps<E extends React.ElementType = "nav"> = PolymorphicCo
 
 export type BreadcrumbItemElement = HTMLElement;
 
-interface BreadcrumbItemBaseProps {
+/**
+ * BreadcrumbItem component props for user consumption.
+ * For polymorphic usage with custom elements, use PolymorphicBreadcrumbItemProps<E>.
+ */
+export interface BreadcrumbItemProps {
+  /** Polymorphic element type (default: "a", or "span" when active) */
+  as?: React.ElementType;
   /** Whether this is the current/active page */
   active?: boolean;
   /** Whether the item is disabled */
   disabled?: boolean;
   /** Icon element to display before the text */
   icon?: ReactNode;
+  /** Link URL (when using default "a" element) */
+  href?: string;
   /** Children content (link text) */
   children?: ReactNode;
   /** Custom class name */
@@ -62,9 +70,13 @@ interface BreadcrumbItemBaseProps {
   style?: CSSProperties | ((theme: ITheme) => CSSProperties);
 }
 
-export type BreadcrumbItemProps<E extends React.ElementType = "a"> = PolymorphicComponentProps<
+/**
+ * Internal polymorphic props type for component implementation.
+ * Provides full type safety when using custom elements via `as` prop.
+ */
+export type PolymorphicBreadcrumbItemProps<E extends React.ElementType = "a"> = PolymorphicComponentProps<
   E,
-  BreadcrumbItemBaseProps
+  Omit<BreadcrumbItemProps, "as" | "href">
 >;
 
 // ============================================================================

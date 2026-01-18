@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { BREADCRUMB_CSS_CLASS_NAMES, COMPONENT_NAMES } from "@/core/constants";
 import { useComputedStyle } from "@/react/hooks";
 
-import type { BreadcrumbItemElement, BreadcrumbItemProps } from "./Breadcrumb.types";
+import type { BreadcrumbItemElement, PolymorphicBreadcrumbItemProps } from "./Breadcrumb.types";
 
 // const { item, link, itemActive, itemDisabled, icon: iconClassName } = BREADCRUMB_CSS_CLASS_NAMES;
 
@@ -23,7 +23,7 @@ const BreadcrumbItem = React.memo(
         className,
         style,
         ...restProps
-      }: BreadcrumbItemProps<E>,
+      }: PolymorphicBreadcrumbItemProps<E>,
       ref: React.ForwardedRef<BreadcrumbItemElement>,
     ) => {
       /**
@@ -74,7 +74,7 @@ const BreadcrumbItem = React.memo(
     },
   ),
 ) as <E extends React.ElementType = "a">(
-  props: BreadcrumbItemProps<E> & { ref?: React.ForwardedRef<BreadcrumbItemElement> },
+  props: PolymorphicBreadcrumbItemProps<E> & { ref?: React.ForwardedRef<BreadcrumbItemElement> },
 ) => React.ReactElement | null;
 
 (BreadcrumbItem as React.FC).displayName = COMPONENT_NAMES.BreadcrumbItem;
