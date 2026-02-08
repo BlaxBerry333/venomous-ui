@@ -1,0 +1,170 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock } from "../components";
+
+<Meta title="Component Design" />
+
+# Component Design
+
+Venomous UI follows an **Unstyled by Default** approach, giving you full control over styling while providing solid component logic and semantic class names.
+
+## Zero Runtime CSS
+
+All styles are pure CSS with no JavaScript runtime overhead. Import only the CSS you need:
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `// Import CSS variables and component styles separately
+import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/button.css";
+
+import { Button } from "venomous-ui/react";
+
+export default function App() {
+  return <Button variant="solid">Click me</Button>;
+}`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<script setup lang="ts">
+import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/button.css";
+
+import { Button } from "venomous-ui/vue";
+</script>
+
+<template>
+  <Button variant="solid">Click me</Button>
+</template>`,
+    },
+  ]}
+/>
+
+**Why this matters:**
+
+- No CSS-in-JS runtime = faster page loads
+- SSR-friendly without hydration issues
+- Easy to inspect and debug in DevTools
+- Replace entire stylesheets without touching component code
+
+## Unstyled by Default
+
+Components are split into two layers:
+
+1. **Logic layer** (React/Vue components) - handles behavior, accessibility, state, and outputs semantic class names
+2. **Style layer** (CSS files) - handles all visual presentation via separate CSS files
+
+You can use the components with or without the provided styles:
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "With Styles",
+      language: "tsx",
+      code: `// Use built-in styles
+import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/button.css";
+
+<Button variant="solid" color="theme">Styled Button</Button>`,
+    },
+    {
+      label: "Custom Styles",
+      language: "tsx",
+      code: `// Skip CSS imports, use your own styles targeting the class names
+import { Button } from "venomous-ui/react";
+
+<Button className="my-custom-button">Custom Styled</Button>`,
+    },
+    {
+      label: "Custom CSS",
+      language: "css",
+      code: `/* Override with CSS variables */
+:root {
+  --VENOMOUSUI-color-theme: #your-brand-color;
+  --VENOMOUSUI-color-theme-hover: #your-hover-color;
+}
+
+/_ Or write completely custom styles _/
+.my-custom-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  padding: 12px 24px;
+}`,
+},
+]}
+/>
+
+## Compound Components
+
+Complex components use a composable API. Due to framework differences, the syntax varies slightly:
+
+- **React**: Uses `Component.SubComponent` syntax (e.g., `Card.Header`)
+- **Vue**: Imports subcomponents separately (e.g., `CardHeader`)
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/card.css";
+
+import { Card } from "venomous-ui/react";
+
+<Card>
+  <Card.Header>
+    <Card.Title>Card Title</Card.Title>
+    <Card.Description>Optional description</Card.Description>
+  </Card.Header>
+  <Card.Body>
+    Main content goes here
+  </Card.Body>
+  <Card.Footer>
+    <Button>Action</Button>
+  </Card.Footer>
+</Card>`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<script setup lang="ts">
+import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/card.css";
+
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardBody,
+  CardFooter,
+} from "venomous-ui/vue";
+</script>
+
+<template>
+  <Card>
+    <CardHeader>
+      <CardTitle>Card Title</CardTitle>
+      <CardDescription>Optional description</CardDescription>
+    </CardHeader>
+    <CardBody>
+      Main content goes here
+    </CardBody>
+    <CardFooter>
+      <Button>Action</Button>
+    </CardFooter>
+  </Card>
+</template>`,
+    },
+  ]}
+/>
+
+**Benefits:**
+
+- Arrange subcomponents in any order
+- Skip parts you don't need
+- Insert custom content anywhere
+- Full TypeScript support

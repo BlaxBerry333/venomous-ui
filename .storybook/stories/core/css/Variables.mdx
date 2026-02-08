@@ -1,0 +1,245 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock, StoryDocsTable } from "../../../components";
+import { CSS_VARS, CSS_VAR_NAMES, CSS_VAR_PREFIX } from "../../../../src/core/constants";
+
+<Meta title="Core/CSS/Variables" />
+
+# CSS Variables
+
+Venomous UI provides constants for type-safe CSS variable usage:
+
+<StoryDocsTable
+  headers={["Constant", "Purpose", "Example Value"]}
+  rows={[
+    ["`CSS_VAR_PREFIX`", "CSS variable prefix", `\`"${CSS_VAR_PREFIX}"\``],
+    ["`CSS_VARS`", "For inline styles (wrapped in `var()`)", `\`"${CSS_VARS.spacingSm}"\``],
+    ["`CSS_VAR_NAMES`", "For `getCssVar()` (raw variable name)", `\`"${CSS_VAR_NAMES.spacingSm}"\``],
+  ]}
+/>
+
+## CSS_VARS Usage
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `import { CSS_VARS } from "venomous-ui/core/constants";
+
+// Use in inline styles
+
+<div style={{
+  color: CSS_VARS.colorTheme,
+  padding: CSS_VARS.spacingMd,
+  borderRadius: CSS_VARS.radiusMd,
+}}>
+  Styled with CSS variables
+</div>`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<script setup lang="ts">
+import { CSS_VARS } from "venomous-ui/core/constants";
+</script>
+
+<template>
+  <div :style="{
+    color: CSS_VARS.colorTheme,
+    padding: CSS_VARS.spacingMd,
+    borderRadius: CSS_VARS.radiusMd,
+  }">
+    Styled with CSS variables
+  </div>
+</template>`,
+    },
+  ]}
+/>
+
+## CSS_VAR_NAMES Usage
+
+Use `CSS_VAR_NAMES` with [`getCssVar()`](?path=/docs/core-helpers-helpers--docs#getcssvar) helper function to get the computed numeric value of a CSS variable at runtime:
+
+<Source
+  language="tsx"
+  dark
+  code={`import { CSS_VAR_NAMES } from "venomous-ui/core/constants";
+import { getCssVar } from "venomous-ui/core/helpers";
+
+// Get spacing value as number (e.g., 8)
+const spacing = getCssVar(CSS_VAR_NAMES.spacingSm);
+
+// With fallback
+const duration = getCssVar(CSS_VAR_NAMES.durationNormal, 200);`}
+/>
+
+### CSS_VAR_NAMES Reference
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable Name", "Usage"]}
+  rows={[
+    ["spacingXs", CSS_VAR_NAMES.spacingXs, "`CSS_VAR_NAMES.spacingXs`"],
+    ["spacingSm", CSS_VAR_NAMES.spacingSm, "`CSS_VAR_NAMES.spacingSm`"],
+    ["spacingMd", CSS_VAR_NAMES.spacingMd, "`CSS_VAR_NAMES.spacingMd`"],
+    ["spacingLg", CSS_VAR_NAMES.spacingLg, "`CSS_VAR_NAMES.spacingLg`"],
+    ["spacingXl", CSS_VAR_NAMES.spacingXl, "`CSS_VAR_NAMES.spacingXl`"],
+    ["spacing2xl", CSS_VAR_NAMES.spacing2xl, "`CSS_VAR_NAMES.spacing2xl`"],
+    ["spacing3xl", CSS_VAR_NAMES.spacing3xl, "`CSS_VAR_NAMES.spacing3xl`"],
+    ["spacing4xl", CSS_VAR_NAMES.spacing4xl, "`CSS_VAR_NAMES.spacing4xl`"],
+    ["durationFast", CSS_VAR_NAMES.durationFast, "`CSS_VAR_NAMES.durationFast`"],
+    ["durationNormal", CSS_VAR_NAMES.durationNormal, "`CSS_VAR_NAMES.durationNormal`"],
+    ["durationSlow", CSS_VAR_NAMES.durationSlow, "`CSS_VAR_NAMES.durationSlow`"],
+    ["zDropdown", CSS_VAR_NAMES.zDropdown, "`CSS_VAR_NAMES.zDropdown`"],
+    ["zSticky", CSS_VAR_NAMES.zSticky, "`CSS_VAR_NAMES.zSticky`"],
+    ["zModal", CSS_VAR_NAMES.zModal, "`CSS_VAR_NAMES.zModal`"],
+    ["zPopover", CSS_VAR_NAMES.zPopover, "`CSS_VAR_NAMES.zPopover`"],
+    ["zTooltip", CSS_VAR_NAMES.zTooltip, "`CSS_VAR_NAMES.zTooltip`"],
+  ]}
+/>
+
+## CSS_VARS Reference
+
+The `CSS_VARS` object contains the following properties:
+
+### Colors
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable", "Usage"]}
+  rows={[
+    ["colorTheme", CSS_VARS.colorTheme, "`CSS_VARS.colorTheme`"],
+    ["colorThemeHover", CSS_VARS.colorThemeHover, "`CSS_VARS.colorThemeHover`"],
+    ["colorThemeActive", CSS_VARS.colorThemeActive, "`CSS_VARS.colorThemeActive`"],
+    ["colorSuccess", CSS_VARS.colorSuccess, "`CSS_VARS.colorSuccess`"],
+    ["colorSuccessHover", CSS_VARS.colorSuccessHover, "`CSS_VARS.colorSuccessHover`"],
+    ["colorWarning", CSS_VARS.colorWarning, "`CSS_VARS.colorWarning`"],
+    ["colorWarningHover", CSS_VARS.colorWarningHover, "`CSS_VARS.colorWarningHover`"],
+    ["colorError", CSS_VARS.colorError, "`CSS_VARS.colorError`"],
+    ["colorErrorHover", CSS_VARS.colorErrorHover, "`CSS_VARS.colorErrorHover`"],
+    ["colorInfo", CSS_VARS.colorInfo, "`CSS_VARS.colorInfo`"],
+    ["colorInfoHover", CSS_VARS.colorInfoHover, "`CSS_VARS.colorInfoHover`"],
+    ["colorWhite", CSS_VARS.colorWhite, "`CSS_VARS.colorWhite`"],
+    ["colorBlack", CSS_VARS.colorBlack, "`CSS_VARS.colorBlack`"],
+    ["colorGray50", CSS_VARS.colorGray50, "`CSS_VARS.colorGray50`"],
+    ["colorGray100", CSS_VARS.colorGray100, "`CSS_VARS.colorGray100`"],
+    ["colorGray200", CSS_VARS.colorGray200, "`CSS_VARS.colorGray200`"],
+    ["colorGray300", CSS_VARS.colorGray300, "`CSS_VARS.colorGray300`"],
+    ["colorGray400", CSS_VARS.colorGray400, "`CSS_VARS.colorGray400`"],
+    ["colorGray500", CSS_VARS.colorGray500, "`CSS_VARS.colorGray500`"],
+    ["colorGray600", CSS_VARS.colorGray600, "`CSS_VARS.colorGray600`"],
+    ["colorGray700", CSS_VARS.colorGray700, "`CSS_VARS.colorGray700`"],
+    ["colorGray800", CSS_VARS.colorGray800, "`CSS_VARS.colorGray800`"],
+    ["colorGray900", CSS_VARS.colorGray900, "`CSS_VARS.colorGray900`"],
+  ]}
+/>
+
+### Background
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable", "Usage"]}
+  rows={[
+    ["bgPrimary", CSS_VARS.bgPrimary, "`CSS_VARS.bgPrimary`"],
+    ["bgSecondary", CSS_VARS.bgSecondary, "`CSS_VARS.bgSecondary`"],
+    ["bgTertiary", CSS_VARS.bgTertiary, "`CSS_VARS.bgTertiary`"],
+  ]}
+/>
+
+### Text
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable", "Usage"]}
+  rows={[
+    ["textPrimary", CSS_VARS.textPrimary, "`CSS_VARS.textPrimary`"],
+    ["textSecondary", CSS_VARS.textSecondary, "`CSS_VARS.textSecondary`"],
+    ["textTertiary", CSS_VARS.textTertiary, "`CSS_VARS.textTertiary`"],
+    ["textInverse", CSS_VARS.textInverse, "`CSS_VARS.textInverse`"],
+  ]}
+/>
+
+### Border
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable", "Usage"]}
+  rows={[
+    ["borderColor", CSS_VARS.borderColor, "`CSS_VARS.borderColor`"],
+    ["borderColorHover", CSS_VARS.borderColorHover, "`CSS_VARS.borderColorHover`"],
+  ]}
+/>
+
+### Spacing
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable", "Usage"]}
+  rows={[
+    ["spacingXs", CSS_VARS.spacingXs, "`CSS_VARS.spacingXs`"],
+    ["spacingSm", CSS_VARS.spacingSm, "`CSS_VARS.spacingSm`"],
+    ["spacingMd", CSS_VARS.spacingMd, "`CSS_VARS.spacingMd`"],
+    ["spacingLg", CSS_VARS.spacingLg, "`CSS_VARS.spacingLg`"],
+    ["spacingXl", CSS_VARS.spacingXl, "`CSS_VARS.spacingXl`"],
+    ["spacing2xl", CSS_VARS.spacing2xl, "`CSS_VARS.spacing2xl`"],
+    ["spacing3xl", CSS_VARS.spacing3xl, "`CSS_VARS.spacing3xl`"],
+    ["spacing4xl", CSS_VARS.spacing4xl, "`CSS_VARS.spacing4xl`"],
+  ]}
+/>
+
+### Border Radius
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable", "Usage"]}
+  rows={[
+    ["radiusNone", CSS_VARS.radiusNone, "`CSS_VARS.radiusNone`"],
+    ["radiusSm", CSS_VARS.radiusSm, "`CSS_VARS.radiusSm`"],
+    ["radiusMd", CSS_VARS.radiusMd, "`CSS_VARS.radiusMd`"],
+    ["radiusLg", CSS_VARS.radiusLg, "`CSS_VARS.radiusLg`"],
+    ["radiusXl", CSS_VARS.radiusXl, "`CSS_VARS.radiusXl`"],
+    ["radius2xl", CSS_VARS.radius2xl, "`CSS_VARS.radius2xl`"],
+    ["radiusFull", CSS_VARS.radiusFull, "`CSS_VARS.radiusFull`"],
+  ]}
+/>
+
+### Typography
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable", "Usage"]}
+  rows={[
+    ["fontFamilySans", CSS_VARS.fontFamilySans, "`CSS_VARS.fontFamilySans`"],
+    ["fontFamilyMono", CSS_VARS.fontFamilyMono, "`CSS_VARS.fontFamilyMono`"],
+    ["fontSizeXs", CSS_VARS.fontSizeXs, "`CSS_VARS.fontSizeXs`"],
+    ["fontSizeSm", CSS_VARS.fontSizeSm, "`CSS_VARS.fontSizeSm`"],
+    ["fontSizeMd", CSS_VARS.fontSizeMd, "`CSS_VARS.fontSizeMd`"],
+    ["fontSizeLg", CSS_VARS.fontSizeLg, "`CSS_VARS.fontSizeLg`"],
+    ["fontSizeXl", CSS_VARS.fontSizeXl, "`CSS_VARS.fontSizeXl`"],
+    ["fontSize2xl", CSS_VARS.fontSize2xl, "`CSS_VARS.fontSize2xl`"],
+    ["fontSize3xl", CSS_VARS.fontSize3xl, "`CSS_VARS.fontSize3xl`"],
+    ["fontWeightNormal", CSS_VARS.fontWeightNormal, "`CSS_VARS.fontWeightNormal`"],
+    ["fontWeightMedium", CSS_VARS.fontWeightMedium, "`CSS_VARS.fontWeightMedium`"],
+    ["fontWeightSemibold", CSS_VARS.fontWeightSemibold, "`CSS_VARS.fontWeightSemibold`"],
+    ["fontWeightBold", CSS_VARS.fontWeightBold, "`CSS_VARS.fontWeightBold`"],
+    ["lineHeightTight", CSS_VARS.lineHeightTight, "`CSS_VARS.lineHeightTight`"],
+    ["lineHeightNormal", CSS_VARS.lineHeightNormal, "`CSS_VARS.lineHeightNormal`"],
+    ["lineHeightRelaxed", CSS_VARS.lineHeightRelaxed, "`CSS_VARS.lineHeightRelaxed`"],
+  ]}
+/>
+
+### Effects
+
+<StoryDocsTable
+  headers={["Property", "CSS Variable", "Usage"]}
+  rows={[
+    ["shadowNone", CSS_VARS.shadowNone, "`CSS_VARS.shadowNone`"],
+    ["shadowSm", CSS_VARS.shadowSm, "`CSS_VARS.shadowSm`"],
+    ["shadowMd", CSS_VARS.shadowMd, "`CSS_VARS.shadowMd`"],
+    ["shadowLg", CSS_VARS.shadowLg, "`CSS_VARS.shadowLg`"],
+    ["shadowXl", CSS_VARS.shadowXl, "`CSS_VARS.shadowXl`"],
+    ["durationFast", CSS_VARS.durationFast, "`CSS_VARS.durationFast`"],
+    ["durationNormal", CSS_VARS.durationNormal, "`CSS_VARS.durationNormal`"],
+    ["durationSlow", CSS_VARS.durationSlow, "`CSS_VARS.durationSlow`"],
+    ["easingDefault", CSS_VARS.easingDefault, "`CSS_VARS.easingDefault`"],
+    ["zDropdown", CSS_VARS.zDropdown, "`CSS_VARS.zDropdown`"],
+    ["zSticky", CSS_VARS.zSticky, "`CSS_VARS.zSticky`"],
+    ["zModal", CSS_VARS.zModal, "`CSS_VARS.zModal`"],
+    ["zPopover", CSS_VARS.zPopover, "`CSS_VARS.zPopover`"],
+    ["zTooltip", CSS_VARS.zTooltip, "`CSS_VARS.zTooltip`"],
+    ["opacityDisabled", CSS_VARS.opacityDisabled, "`CSS_VARS.opacityDisabled`"],
+    ["opacityOverlay", CSS_VARS.opacityOverlay, "`CSS_VARS.opacityOverlay`"],
+  ]}
+/>

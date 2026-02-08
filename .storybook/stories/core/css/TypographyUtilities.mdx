@@ -1,0 +1,335 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsCard, StoryDocsFlex, StoryDocsTabCodeBlock } from "../../../components";
+
+<Meta title="Core/CSS/Typography Utilities" />
+
+# Typography Utilities
+
+Pure CSS utility classes for typography styling. Use these classes directly on native HTML elements without any component wrappers.
+
+## Quick Start
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/typography.css";
+
+export function App() {
+  return (
+    <>
+      <h1 className="venomous-title venomous-title--1">Page Title</h1>
+      <p className="venomous-text venomous-text--secondary">
+        Secondary paragraph text
+      </p>
+    </>
+  );
+}`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<script setup lang="ts">
+import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/typography.css";
+</script>
+
+<template>
+  <h1 class="venomous-title venomous-title--1">Page Title</h1>
+  <p class="venomous-text venomous-text--secondary">
+    Secondary paragraph text
+  </p>
+</template>`,
+    },
+  ]}
+/>
+
+## Titles
+
+Use `.venomous-title` as the base class, combined with size modifiers.
+
+<StoryDocsCard>
+  <div className="venomous-title venomous-title--1" style={{ marginBottom: 8 }}>
+    Title 1 - 30px
+  </div>
+  <div className="venomous-title venomous-title--2" style={{ marginBottom: 8 }}>
+    Title 2 - 24px
+  </div>
+  <div className="venomous-title venomous-title--3" style={{ marginBottom: 8 }}>
+    Title 3 - 20px
+  </div>
+  <div className="venomous-title venomous-title--4" style={{ marginBottom: 8 }}>
+    Title 4 - 18px
+  </div>
+  <div className="venomous-title venomous-title--5" style={{ marginBottom: 8 }}>
+    Title 5 - 16px
+  </div>
+  <div className="venomous-title venomous-title--6">Title 6 - 14px</div>
+</StoryDocsCard>
+
+<Source
+  language="html"
+  dark
+  code={`<h1 class="venomous-title venomous-title--1">Title 1</h1>
+<h2 class="venomous-title venomous-title--2">Title 2</h2>
+<h3 class="venomous-title venomous-title--3">Title 3</h3>`}
+/>
+
+## Text Sizes
+
+Use `.venomous-text` as the base class for paragraph text.
+
+<StoryDocsCard>
+  <div className="venomous-text venomous-text--lg" style={{ margin: "4px 0" }}>
+    Large text - 18px
+  </div>
+  <div className="venomous-text venomous-text--md" style={{ margin: "4px 0" }}>
+    Medium text - 16px (default)
+  </div>
+  <div className="venomous-text venomous-text--sm" style={{ margin: "4px 0" }}>
+    Small text - 14px
+  </div>
+  <div className="venomous-text venomous-text--xs" style={{ margin: "4px 0" }}>
+    Extra small text - 12px
+  </div>
+</StoryDocsCard>
+
+<Source
+  language="html"
+  dark
+  code={`<p class="venomous-text venomous-text--lg">Large text</p>
+<p class="venomous-text venomous-text--md">Medium text</p>
+<p class="venomous-text venomous-text--sm">Small text</p>
+<p class="venomous-text venomous-text--xs">Extra small text</p>`}
+/>
+
+## Text Colors
+
+<StoryDocsCard>
+  <StoryDocsFlex direction="column" gap={8}>
+    <span className="venomous-text venomous-text--primary">Primary text color</span>
+    <span className="venomous-text venomous-text--secondary">Secondary text color</span>
+    <span className="venomous-text venomous-text--tertiary">Tertiary text color</span>
+    <span className="venomous-text venomous-text--theme">Theme color</span>
+    <span className="venomous-text venomous-text--success">Success color</span>
+    <span className="venomous-text venomous-text--warning">Warning color</span>
+    <span className="venomous-text venomous-text--error">Error color</span>
+    <span className="venomous-text venomous-text--info">Info color</span>
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+<Source
+  language="html"
+  dark
+  code={`<span class="venomous-text venomous-text--primary">Primary</span>
+<span class="venomous-text venomous-text--secondary">Secondary</span>
+<span class="venomous-text venomous-text--theme">Theme</span>
+<span class="venomous-text venomous-text--error">Error</span>`}
+/>
+
+## Font Weights
+
+<StoryDocsCard>
+  <StoryDocsFlex direction="column" gap={8}>
+    <span className="venomous-text venomous-font--normal">Normal weight (400)</span>
+    <span className="venomous-text venomous-font--medium">Medium weight (500)</span>
+    <span className="venomous-text venomous-font--semibold">Semibold weight (600)</span>
+    <span className="venomous-text venomous-font--bold">Bold weight (700)</span>
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+<Source
+  language="html"
+  dark
+  code={`<span class="venomous-text venomous-font--bold">Bold text</span>
+<span class="venomous-text venomous-font--medium">Medium text</span>`}
+/>
+
+## Text Alignment
+
+<StoryDocsCard>
+  <div
+    className="venomous-text venomous-text--left"
+    style={{ padding: "8px", background: "rgba(139, 92, 246, 0.1)", marginBottom: 8 }}
+  >
+    Left aligned text
+  </div>
+  <div
+    className="venomous-text venomous-text--center"
+    style={{ padding: "8px", background: "rgba(139, 92, 246, 0.1)", marginBottom: 8 }}
+  >
+    Center aligned text
+  </div>
+  <div className="venomous-text venomous-text--right" style={{ padding: "8px", background: "rgba(139, 92, 246, 0.1)" }}>
+    Right aligned text
+  </div>
+</StoryDocsCard>
+
+<Source
+  language="html"
+  dark
+  code={`<p class="venomous-text venomous-text--left">Left aligned</p>
+<p class="venomous-text venomous-text--center">Center aligned</p>
+<p class="venomous-text venomous-text--right">Right aligned</p>`}
+/>
+
+## Monospace Text
+
+<StoryDocsCard>
+  <div className="venomous-text" style={{ marginBottom: 8 }}>
+    Regular text: The quick brown fox
+  </div>
+  <div className="venomous-text venomous-text--mono">Monospace text: The quick brown fox</div>
+</StoryDocsCard>
+
+<Source language="html" dark code={`<code class="venomous-text venomous-text--mono">console.log("Hello")</code>`} />
+
+## Text Truncation
+
+### Single Line Ellipsis
+
+Use `.venomous-ellipsis` to truncate text to a single line with ellipsis.
+
+<StoryDocsCard>
+  <div style={{ width: 300, border: "1px dashed #ccc", padding: 8 }}>
+    <div className="venomous-text venomous-ellipsis">
+      This is a very long text that will be truncated with an ellipsis when it exceeds the container width.
+    </div>
+  </div>
+</StoryDocsCard>
+
+<Source
+  language="html"
+  dark
+  code={`<p class="venomous-text venomous-ellipsis" style="width: 300px">
+  This is a very long text that will be truncated...
+</p>`}
+/>
+
+### Multi-line Ellipsis (Line Clamp)
+
+Use `.venomous-line-clamp` with preset classes or custom `--line-clamp` variable.
+
+<StoryDocsCard>
+  <StoryDocsFlex gap={24}>
+    <div style={{ width: 200, border: "1px dashed #ccc", padding: 8 }}>
+      <div style={{ fontSize: 12, marginBottom: 4, opacity: 0.6 }}>2 lines:</div>
+      <div className="venomous-text venomous-line-clamp venomous-line-clamp--2">
+        This is a long paragraph that demonstrates multi-line text truncation. The text will be cut off after 2 lines
+        with an ellipsis at the end.
+      </div>
+    </div>
+    <div style={{ width: 200, border: "1px dashed #ccc", padding: 8 }}>
+      <div style={{ fontSize: 12, marginBottom: 4, opacity: 0.6 }}>3 lines:</div>
+      <div className="venomous-text venomous-line-clamp venomous-line-clamp--3">
+        This is a long paragraph that demonstrates multi-line text truncation. The text will be cut off after 3 lines
+        with an ellipsis at the end. More content here to show the difference.
+      </div>
+    </div>
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+<Source
+  language="html"
+  dark
+  code={`<!-- Using preset class -->
+<p class="venomous-text venomous-line-clamp venomous-line-clamp--2">
+  Long text truncated at 2 lines...
+</p>
+
+<p class="venomous-text venomous-line-clamp venomous-line-clamp--3">Long text truncated at 3 lines...</p>
+
+<!-- Using custom line count -->
+
+<p class="venomous-text venomous-line-clamp" style="--line-clamp: 4">
+  Long text truncated at 4 lines...
+</p>`}
+/>
+
+## Line Heights
+
+<StoryDocsCard>
+  <StoryDocsFlex gap={24}>
+    <div style={{ width: 200 }}>
+      <div style={{ fontSize: 12, marginBottom: 4, opacity: 0.6 }}>Tight (1.25):</div>
+      <div
+        className="venomous-text venomous-leading--tight"
+        style={{ background: "rgba(139, 92, 246, 0.1)", padding: 8 }}
+      >
+        The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.
+      </div>
+    </div>
+    <div style={{ width: 200 }}>
+      <div style={{ fontSize: 12, marginBottom: 4, opacity: 0.6 }}>Normal (1.5):</div>
+      <div
+        className="venomous-text venomous-leading--normal"
+        style={{ background: "rgba(139, 92, 246, 0.1)", padding: 8 }}
+      >
+        The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.
+      </div>
+    </div>
+    <div style={{ width: 200 }}>
+      <div style={{ fontSize: 12, marginBottom: 4, opacity: 0.6 }}>Relaxed (1.75):</div>
+      <div
+        className="venomous-text venomous-leading--relaxed"
+        style={{ background: "rgba(139, 92, 246, 0.1)", padding: 8 }}
+      >
+        The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.
+      </div>
+    </div>
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+## Combining Classes
+
+Classes can be freely combined for complex styling:
+
+<StoryDocsCard>
+  <div className="venomous-title venomous-title--2 venomous-text--theme venomous-text--center">
+    Centered Theme Title
+  </div>
+  <div
+    className="venomous-text venomous-text--sm venomous-text--secondary venomous-font--medium venomous-leading--relaxed"
+    style={{ marginTop: 8 }}
+  >
+    This paragraph combines small size, secondary color, medium weight, and relaxed line height.
+  </div>
+</StoryDocsCard>
+
+<Source
+  language="html"
+  dark
+  code={`<h2 class="venomous-title venomous-title--2 venomous-text--theme venomous-text--center">
+  Centered Theme Title
+</h2>
+
+<p class="venomous-text venomous-text--sm venomous-text--secondary venomous-font--medium venomous-leading--relaxed">
+  Combined styling example
+</p>`}
+/>
+
+## TypeScript Usage
+
+Access class names programmatically via `CSS_CLASSES`:
+
+<Source
+  language="tsx"
+  dark
+  code={`import { CSS_CLASSES } from "venomous-ui/core/constants";
+
+// Title classes
+CSS_CLASSES.typography.title // "venomous-title"
+CSS_CLASSES.typography.titleSizes[1] // "venomous-title--1"
+
+// Text classes
+CSS_CLASSES.typography.text // "venomous-text"
+CSS_CLASSES.typography.textSizes.sm // "venomous-text--sm"
+CSS_CLASSES.typography.textColors.secondary // "venomous-text--secondary"
+
+// Utility classes
+CSS_CLASSES.typography.ellipsis // "venomous-ellipsis"
+CSS_CLASSES.typography.lineClamp // "venomous-line-clamp"
+CSS_CLASSES.typography.lineClampPresets[3] // "venomous-line-clamp--3"`}
+/>

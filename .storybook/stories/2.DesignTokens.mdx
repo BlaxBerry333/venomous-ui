@@ -1,0 +1,536 @@
+import { Meta, Source } from "@storybook/blocks";
+import {
+  StoryDocsSection,
+  StoryDocsGrid,
+  StoryDocsFlex,
+  StoryDocsCard,
+  ColorSwatch,
+  ColorPalette,
+  SpacingPreview,
+  RadiusPreview,
+  FontSizePreview,
+  FontWeightPreview,
+  ShadowPreview,
+  ModeContainer,
+} from "../components";
+
+<Meta title="Design Tokens" />
+
+# Design Tokens
+
+Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. Venomous UI provides design tokens as CSS custom properties (variables).
+
+## Usage
+
+### CSS Variables (Recommended)
+
+Import the CSS variables file and use them directly in your styles:
+
+<Source
+  language="css"
+  code={`/* Import CSS variables */
+@import "venomous-ui/core/styles/variables/index.css";
+
+/_ Use in your CSS _/
+.my-component {
+color: var(--VENOMOUSUI-text-primary);
+padding: var(--VENOMOUSUI-spacing-md);
+border-radius: var(--VENOMOUSUI-radius-md);
+}`}
+/>
+
+### JavaScript/TypeScript
+
+For inline styles or CSS-in-JS, use the `designTokens` object:
+
+<Source
+  language="tsx"
+  code={`// IMPORTANT: Import CSS variables first
+import "venomous-ui/core/styles/variables/index.css";
+import { designTokens } from "venomous-ui/core/design-tokens";
+
+// React
+
+<div
+  style={{
+    color: designTokens.colors.primary,
+    padding: designTokens.spacing.md,
+    borderRadius: designTokens.radius.md,
+  }}
+>
+  Hello World
+</div>
+
+// Vue
+
+<div :style="{
+  color: designTokens.colors.primary,
+  padding: designTokens.spacing.md,
+}">
+  Hello World
+</div>`}
+/>
+
+### Runtime Value Access
+
+Use `getCssVar` with `CSS_VAR_NAMES` to get the computed numeric value of a CSS variable at runtime. This is useful when you need the actual pixel value for calculations (e.g., canvas drawing, animations).
+
+<Source
+  language="tsx"
+  code={`import "venomous-ui/core/styles/variables/index.css";
+import { CSS_VAR_NAMES } from "venomous-ui/core/constants";
+import { getCssVar } from "venomous-ui/core/helpers";
+
+// Get spacing value as number (e.g., 12)
+const spacingMd = getCssVar(CSS_VAR_NAMES.spacingMd);
+
+// With fallback
+const spacingSm = getCssVar(CSS_VAR_NAMES.spacingSm, 8);
+
+// Get duration value for animations
+const duration = getCssVar(CSS_VAR_NAMES.durationNormal);
+
+// Use in calculations
+const totalPadding = spacingMd \* 2;`}
+/>
+
+**Note:** `getCssVar` returns a parsed integer value, not a string. It's designed for numeric CSS variables like spacing, z-index, etc.
+
+## Colors
+
+### Theme Color
+
+<StoryDocsFlex gap={12} wrap={true}>
+  <ColorSwatch color="#8b5cf6" name="theme" />
+  <ColorSwatch color="#7c3aed" name="theme-hover" />
+  <ColorSwatch color="#6d28d9" name="theme-active" />
+  <ColorSwatch color="rgb(139 92 246 / 0.15)" name="theme-muted" />
+</StoryDocsFlex>
+
+### Semantic Colors
+
+<StoryDocsGrid columns={4} gap={24}>
+  <ColorPalette
+    name="Success"
+    colors={{
+      main: "#22c55e",
+      hover: "#16a34a",
+      active: "#15803d",
+    }}
+  />
+  <ColorPalette
+    name="Warning"
+    colors={{
+      main: "#f59e0b",
+      hover: "#d97706",
+      active: "#b45309",
+    }}
+  />
+  <ColorPalette
+    name="Error"
+    colors={{
+      main: "#ef4444",
+      hover: "#dc2626",
+      active: "#b91c1c",
+    }}
+  />
+  <ColorPalette
+    name="Info"
+    colors={{
+      main: "#3b82f6",
+      hover: "#2563eb",
+      active: "#1d4ed8",
+    }}
+  />
+</StoryDocsGrid>
+
+### Neutral Colors
+
+<StoryDocsFlex gap={12} wrap={true} justify="flex-start">
+  <ColorSwatch color="#ffffff" name="white" />
+  <ColorSwatch color="#fafafa" name="gray-50" />
+  <ColorSwatch color="#f5f5f5" name="gray-100" />
+  <ColorSwatch color="#e5e5e5" name="gray-200" />
+  <ColorSwatch color="#d4d4d4" name="gray-300" />
+  <ColorSwatch color="#a3a3a3" name="gray-400" />
+  <ColorSwatch color="#737373" name="gray-500" />
+  <ColorSwatch color="#525252" name="gray-600" />
+  <ColorSwatch color="#404040" name="gray-700" />
+  <ColorSwatch color="#262626" name="gray-800" />
+  <ColorSwatch color="#171717" name="gray-900" />
+  <ColorSwatch color="#000000" name="black" />
+</StoryDocsFlex>
+
+### Theme Colors (Light/Dark Mode)
+
+<StoryDocsGrid columns={2} gap={24}>
+  <ModeContainer mode="light">
+    <StoryDocsSection title="Background">
+      <StoryDocsFlex gap={12}>
+        <ColorSwatch color="#ffffff" name="bg-primary" size={40} />
+        <ColorSwatch color="#fafafa" name="bg-secondary" size={40} />
+        <ColorSwatch color="#f5f5f5" name="bg-tertiary" size={40} />
+      </StoryDocsFlex>
+    </StoryDocsSection>
+    <StoryDocsSection title="Text">
+      <StoryDocsFlex gap={12}>
+        <ColorSwatch color="#171717" name="text-primary" size={40} />
+        <ColorSwatch color="#525252" name="text-secondary" size={40} />
+        <ColorSwatch color="#a3a3a3" name="text-tertiary" size={40} />
+      </StoryDocsFlex>
+    </StoryDocsSection>
+    <StoryDocsSection title="Border">
+      <StoryDocsFlex gap={12}>
+        <ColorSwatch color="#e5e5e5" name="border" size={40} />
+        <ColorSwatch color="#d4d4d4" name="border-hover" size={40} />
+      </StoryDocsFlex>
+    </StoryDocsSection>
+  </ModeContainer>
+  <ModeContainer mode="dark">
+    <StoryDocsSection title="Background">
+      <StoryDocsFlex gap={12}>
+        <ColorSwatch color="#171717" name="bg-primary" size={40} />
+        <ColorSwatch color="#262626" name="bg-secondary" size={40} />
+        <ColorSwatch color="#404040" name="bg-tertiary" size={40} />
+      </StoryDocsFlex>
+    </StoryDocsSection>
+    <StoryDocsSection title="Text">
+      <StoryDocsFlex gap={12}>
+        <ColorSwatch color="#f5f5f5" name="text-primary" size={40} />
+        <ColorSwatch color="#a3a3a3" name="text-secondary" size={40} />
+        <ColorSwatch color="#737373" name="text-tertiary" size={40} />
+      </StoryDocsFlex>
+    </StoryDocsSection>
+    <StoryDocsSection title="Border">
+      <StoryDocsFlex gap={12}>
+        <ColorSwatch color="#404040" name="border" size={40} />
+        <ColorSwatch color="#525252" name="border-hover" size={40} />
+      </StoryDocsFlex>
+    </StoryDocsSection>
+  </ModeContainer>
+</StoryDocsGrid>
+
+## Spacing
+
+<StoryDocsCard>
+  <StoryDocsFlex direction="column" gap={12}>
+    <SpacingPreview name="spacing-xs" value="4px" />
+    <SpacingPreview name="spacing-sm" value="8px" />
+    <SpacingPreview name="spacing-md" value="12px" />
+    <SpacingPreview name="spacing-lg" value="16px" />
+    <SpacingPreview name="spacing-xl" value="24px" />
+    <SpacingPreview name="spacing-2xl" value="32px" />
+    <SpacingPreview name="spacing-3xl" value="48px" />
+    <SpacingPreview name="spacing-4xl" value="64px" />
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+## Border Radius
+
+<StoryDocsFlex gap={24} wrap={true}>
+  <RadiusPreview name="none" value="0" />
+  <RadiusPreview name="sm" value="4px" />
+  <RadiusPreview name="md" value="6px" />
+  <RadiusPreview name="lg" value="8px" />
+  <RadiusPreview name="xl" value="12px" />
+  <RadiusPreview name="2xl" value="16px" />
+  <RadiusPreview name="full" value="9999px" />
+</StoryDocsFlex>
+
+## Typography
+
+### Font Size
+
+<StoryDocsCard>
+  <StoryDocsFlex direction="column" gap={16}>
+    <FontSizePreview name="font-size-xs" value="12px" />
+    <FontSizePreview name="font-size-sm" value="14px" />
+    <FontSizePreview name="font-size-md" value="16px" />
+    <FontSizePreview name="font-size-lg" value="18px" />
+    <FontSizePreview name="font-size-xl" value="20px" />
+    <FontSizePreview name="font-size-2xl" value="24px" />
+    <FontSizePreview name="font-size-3xl" value="30px" />
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+### Font Weight
+
+<StoryDocsCard>
+  <StoryDocsFlex direction="column" gap={12}>
+    <FontWeightPreview name="font-weight-normal" value={400} />
+    <FontWeightPreview name="font-weight-medium" value={500} />
+    <FontWeightPreview name="font-weight-semibold" value={600} />
+    <FontWeightPreview name="font-weight-bold" value={700} />
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+### Line Height
+
+<StoryDocsCard>
+  <StoryDocsFlex direction="column" gap={8}>
+    <StoryDocsFlex gap={16} align="center">
+      <div style={{ width: "140px", fontFamily: "monospace", fontSize: "12px" }}>line-height-tight</div>
+      <div style={{ lineHeight: 1.25, fontSize: "16px", backgroundColor: "rgba(139, 92, 246, 0.1)", padding: "8px" }}>
+        The quick brown fox jumps over the lazy dog.
+        <br />
+        Pack my box with five dozen liquor jugs.
+      </div>
+      <div style={{ fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>1.25</div>
+    </StoryDocsFlex>
+    <StoryDocsFlex gap={16} align="center">
+      <div style={{ width: "140px", fontFamily: "monospace", fontSize: "12px" }}>line-height-normal</div>
+      <div style={{ lineHeight: 1.5, fontSize: "16px", backgroundColor: "rgba(139, 92, 246, 0.1)", padding: "8px" }}>
+        The quick brown fox jumps over the lazy dog.
+        <br />
+        Pack my box with five dozen liquor jugs.
+      </div>
+      <div style={{ fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>1.5</div>
+    </StoryDocsFlex>
+    <StoryDocsFlex gap={16} align="center">
+      <div style={{ width: "140px", fontFamily: "monospace", fontSize: "12px" }}>line-height-relaxed</div>
+      <div style={{ lineHeight: 1.75, fontSize: "16px", backgroundColor: "rgba(139, 92, 246, 0.1)", padding: "8px" }}>
+        The quick brown fox jumps over the lazy dog.
+        <br />
+        Pack my box with five dozen liquor jugs.
+      </div>
+      <div style={{ fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>1.75</div>
+    </StoryDocsFlex>
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+## Effects
+
+### Box Shadow
+
+<StoryDocsFlex gap={24} wrap={true}>
+  <ShadowPreview name="none" value="none" />
+  <ShadowPreview name="sm" value="0 1px 2px 0 rgb(0 0 0 / 0.05)" />
+  <ShadowPreview name="md" value="0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)" />
+  <ShadowPreview name="lg" value="0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)" />
+  <ShadowPreview name="xl" value="0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" />
+</StoryDocsFlex>
+
+### Transition Duration
+
+<StoryDocsCard>
+  <StoryDocsFlex gap={24} justify="center">
+    <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          width: "60px",
+          height: "60px",
+          backgroundColor: "#8b5cf6",
+          borderRadius: "8px",
+          transition: "transform 150ms ease",
+          cursor: "pointer",
+          margin: "0 auto 8px",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+      />
+      <div style={{ fontSize: "12px", fontWeight: 600 }}>fast</div>
+      <div style={{ fontSize: "10px", fontFamily: "monospace", opacity: 0.7 }}>150ms</div>
+    </div>
+    <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          width: "60px",
+          height: "60px",
+          backgroundColor: "#8b5cf6",
+          borderRadius: "8px",
+          transition: "transform 200ms ease",
+          cursor: "pointer",
+          margin: "0 auto 8px",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+      />
+      <div style={{ fontSize: "12px", fontWeight: 600 }}>normal</div>
+      <div style={{ fontSize: "10px", fontFamily: "monospace", opacity: 0.7 }}>200ms</div>
+    </div>
+    <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          width: "60px",
+          height: "60px",
+          backgroundColor: "#8b5cf6",
+          borderRadius: "8px",
+          transition: "transform 300ms ease",
+          cursor: "pointer",
+          margin: "0 auto 8px",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+      />
+      <div style={{ fontSize: "12px", fontWeight: 600 }}>slow</div>
+      <div style={{ fontSize: "10px", fontFamily: "monospace", opacity: 0.7 }}>300ms</div>
+    </div>
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+### Z-Index Scale
+
+<StoryDocsCard>
+  <StoryDocsFlex direction="column" gap={8}>
+    <StoryDocsFlex gap={16} align="center">
+      <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>z-dropdown</div>
+      <div
+        style={{
+          flex: 1,
+          height: "24px",
+          backgroundColor: "rgba(139, 92, 246, 0.2)",
+          borderRadius: "4px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: "calc(1000 / 1400 * 100%)",
+            top: 0,
+            bottom: 0,
+            width: "4px",
+            backgroundColor: "#8b5cf6",
+            borderRadius: "2px",
+          }}
+        />
+      </div>
+      <div style={{ width: "50px", fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>1000</div>
+    </StoryDocsFlex>
+    <StoryDocsFlex gap={16} align="center">
+      <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>z-sticky</div>
+      <div
+        style={{
+          flex: 1,
+          height: "24px",
+          backgroundColor: "rgba(139, 92, 246, 0.2)",
+          borderRadius: "4px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: "calc(1100 / 1400 * 100%)",
+            top: 0,
+            bottom: 0,
+            width: "4px",
+            backgroundColor: "#8b5cf6",
+            borderRadius: "2px",
+          }}
+        />
+      </div>
+      <div style={{ width: "50px", fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>1100</div>
+    </StoryDocsFlex>
+    <StoryDocsFlex gap={16} align="center">
+      <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>z-modal</div>
+      <div
+        style={{
+          flex: 1,
+          height: "24px",
+          backgroundColor: "rgba(139, 92, 246, 0.2)",
+          borderRadius: "4px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: "calc(1200 / 1400 * 100%)",
+            top: 0,
+            bottom: 0,
+            width: "4px",
+            backgroundColor: "#8b5cf6",
+            borderRadius: "2px",
+          }}
+        />
+      </div>
+      <div style={{ width: "50px", fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>1200</div>
+    </StoryDocsFlex>
+    <StoryDocsFlex gap={16} align="center">
+      <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>z-popover</div>
+      <div
+        style={{
+          flex: 1,
+          height: "24px",
+          backgroundColor: "rgba(139, 92, 246, 0.2)",
+          borderRadius: "4px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: "calc(1300 / 1400 * 100%)",
+            top: 0,
+            bottom: 0,
+            width: "4px",
+            backgroundColor: "#8b5cf6",
+            borderRadius: "2px",
+          }}
+        />
+      </div>
+      <div style={{ width: "50px", fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>1300</div>
+    </StoryDocsFlex>
+    <StoryDocsFlex gap={16} align="center">
+      <div style={{ width: "100px", fontFamily: "monospace", fontSize: "12px" }}>z-tooltip</div>
+      <div
+        style={{
+          flex: 1,
+          height: "24px",
+          backgroundColor: "rgba(139, 92, 246, 0.2)",
+          borderRadius: "4px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: "calc(1400 / 1400 * 100%)",
+            top: 0,
+            bottom: 0,
+            width: "4px",
+            backgroundColor: "#8b5cf6",
+            borderRadius: "2px",
+          }}
+        />
+      </div>
+      <div style={{ width: "50px", fontSize: "12px", fontFamily: "monospace", opacity: 0.7 }}>1400</div>
+    </StoryDocsFlex>
+  </StoryDocsFlex>
+</StoryDocsCard>
+
+### Opacity
+
+<StoryDocsCard>
+  <StoryDocsFlex gap={24} justify="center">
+    <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          width: "80px",
+          height: "80px",
+          backgroundColor: "#8b5cf6",
+          borderRadius: "8px",
+          opacity: 0.5,
+          margin: "0 auto 8px",
+        }}
+      />
+      <div style={{ fontSize: "12px", fontWeight: 600 }}>disabled</div>
+      <div style={{ fontSize: "10px", fontFamily: "monospace", opacity: 0.7 }}>0.5</div>
+    </div>
+    <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          width: "80px",
+          height: "80px",
+          backgroundColor: "#000000",
+          borderRadius: "8px",
+          opacity: 0.5,
+          margin: "0 auto 8px",
+        }}
+      />
+      <div style={{ fontSize: "12px", fontWeight: 600 }}>overlay</div>
+      <div style={{ fontSize: "10px", fontFamily: "monospace", opacity: 0.7 }}>0.5</div>
+    </div>
+  </StoryDocsFlex>
+</StoryDocsCard>

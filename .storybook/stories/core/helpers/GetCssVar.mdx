@@ -1,0 +1,45 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTable } from "../../../components";
+
+<Meta title="Core/Helpers/getCssVar" />
+
+# getCssVar
+
+Reads a Venomous UI CSS variable value from `:root` and returns the parsed integer.
+
+This is useful when you need design token values in JavaScript logic — for example, calculating floating positions or animation durations — rather than applying them directly via CSS. Before using this function, you must import the CSS variables file first, otherwise all values will return the fallback.
+
+```ts
+import "venomous-ui/core/styles/variables/index.css";
+```
+
+<StoryDocsTable
+  headers={["Parameter", "Type", "Default", "Description"]}
+  rows={[
+    ["`name`", "`string`", "—", "CSS variable name (with or without `--` prefix)"],
+    ["`fallback`", "`number`", "`0`", "Fallback value if variable not found or not a number"],
+  ]}
+/>
+
+<Source
+  language="tsx"
+  dark
+  code={`import "venomous-ui/core/styles/variables/index.css";
+import { CSS_VAR_NAMES } from "venomous-ui/core/constants";
+import { getCssVar } from "venomous-ui/core/helpers";
+
+// Get spacing value as number (e.g., 8)
+const spacing = getCssVar(CSS_VAR_NAMES.spacingSm);
+
+// With fallback
+const duration = getCssVar(CSS_VAR_NAMES.durationNormal, 200);
+
+// Also works with raw variable names
+const zIndex = getCssVar("--venomous-z-modal");`}
+/>
+
+### How it works
+
+1. Calls `getComputedStyle(document.documentElement).getPropertyValue(name)` to read the CSS variable from `:root`
+2. Parses the result with `parseInt()` to convert it to a number
+3. Returns the parsed value, or the `fallback` if the variable is not found or not a valid number

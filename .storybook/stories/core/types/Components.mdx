@@ -1,0 +1,495 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTable } from "../../../components";
+
+<Meta title="Core/Types/Components" />
+
+# Component Types
+
+Base props types shared between React and Vue component implementations. These types define the common interface for each component.
+
+All types use the `T` prefix for easy identification in code.
+
+## TAvatarBaseProps
+
+Base props for Avatar component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TAvatarBaseProps } from "venomous-ui/core/types";
+
+interface TAvatarBaseProps {
+  /** Image source URL \*/
+  src?: string;
+  /** Alt text for image \*/
+  alt?: string;
+  /** User name — used to generate initials when no src or src fails to load \*/
+  name?: string;
+  /** Size of the avatar \*/
+  size?: TSize;
+  /** Shape of the avatar \*/
+  shape?: "circle" | "square";
+  /** Additional CSS class names \*/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["src", "string", "-", "Image source URL"],
+    ["alt", "string", "-", "Alt text for image"],
+    ["name", "string", "-", "User name for initials fallback"],
+    ["size", "TSize", '"md"', "Avatar size (sm/md/lg)"],
+    ["shape", '"circle" | "square"', '"circle"', "Avatar shape"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TBadgeBaseProps
+
+Base props for Badge component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TBadgeBaseProps } from "venomous-ui/core/types";
+
+interface TBadgeBaseProps {
+  /** Badge content (number or string). Ignored when dot=true \*/
+  content?: number | string;
+  /** Show as a small dot without content \*/
+  dot?: boolean;
+  /** Maximum number to display. Shows "{max}+" when content exceeds \*/
+  max?: number;
+  /** Color scheme \*/
+  colorScheme?: TColorScheme;
+  /** Hide the badge \*/
+  hidden?: boolean;
+  /** Additional CSS class names \*/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["content", "number | string", "-", "Badge content"],
+    ["dot", "boolean", "false", "Show as small dot without content"],
+    ["max", "number", "99", 'Max number, shows "{max}+" when exceeded'],
+    ["colorScheme", "TColorScheme", '"error"', "Color scheme"],
+    ["hidden", "boolean", "false", "Hide the badge"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TBreadcrumbBaseProps
+
+Base props for Breadcrumb root component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TBreadcrumbBaseProps } from "venomous-ui/core/types";
+
+interface TBreadcrumbBaseProps {
+  /** Custom separator character \*/
+  separator?: string;
+  /** Additional CSS class names \*/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["separator", "string", '"/"', "Custom separator character"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TBreadcrumbItemBaseProps
+
+Base props for Breadcrumb.Item component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TBreadcrumbItemBaseProps } from "venomous-ui/core/types";
+
+interface TBreadcrumbItemBaseProps {
+  /** Link URL \*/
+  href?: string;
+  /** Whether this is the current page _/
+  isCurrentPage?: boolean;
+  /\*\* Whether the item is disabled \*/
+  disabled?: boolean;
+  /\*\* Additional CSS class names _/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["href", "string", "-", "Link URL, renders <a> when provided"],
+    ["isCurrentPage", "boolean", "false", 'Current page, adds aria-current="page"'],
+    ["disabled", "boolean", "false", "Disabled item, renders span instead of link"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TBreadcrumbEllipsisBaseProps
+
+Base props for Breadcrumb.Ellipsis component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TBreadcrumbEllipsisBaseProps } from "venomous-ui/core/types";
+
+interface TBreadcrumbEllipsisBaseProps {
+  /\*_ Additional CSS class names _/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[["className", "string", "-", "Additional CSS classes"]]}
+/>
+
+## TButtonBaseProps
+
+Base props shared between React and Vue Button components.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TButtonBaseProps } from "venomous-ui/core/types";
+
+interface TButtonBaseProps {
+  /** Button size \*/
+  size?: TSize;
+  /** Button variant _/
+  variant?: TVariant;
+  /\*\* Color scheme _/
+  colorScheme?: TColorScheme;
+  /** Whether the button is disabled \*/
+  disabled?: boolean;
+  /** Whether the button takes full width _/
+  fullWidth?: boolean;
+  /\*\* Additional CSS class names _/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["size", "TSize", '"md"', "Button size"],
+    ["variant", "TVariant", '"solid"', "Visual style variant"],
+    ["colorScheme", "TColorScheme", '"theme"', "Color scheme"],
+    ["disabled", "boolean", "false", "Disables the button"],
+    ["fullWidth", "boolean", "false", "Makes button full width"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TCardBaseProps
+
+Base props for Card component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TCardBaseProps, TCardVariant } from "venomous-ui/core/types";
+
+type TCardVariant = "elevated" | "outline" | "filled";
+
+interface TCardBaseProps {
+  /** Card variant style \*/
+  variant?: TCardVariant;
+  /** Enable hover effect for clickable cards _/
+  clickable?: boolean;
+  /\*\* Additional CSS class names _/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["variant", "TCardVariant", '"elevated"', "Card visual style"],
+    ["clickable", "boolean", "false", "Enable hover effect"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TModalBaseProps
+
+Base props for Modal component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TModalBaseProps, TModalSize } from "venomous-ui/core/types";
+
+type TModalSize = "sm" | "md" | "lg" | "xl" | "full";
+
+interface TModalBaseProps {
+  /** Whether the modal is open \*/
+  open: boolean;
+  /** Modal size _/
+  size?: TModalSize;
+  /\*\* Close modal when clicking the backdrop _/
+  closeOnBackdrop?: boolean;
+  /** Close modal when pressing ESC key \*/
+  closeOnEsc?: boolean;
+  /** Additional CSS class names \*/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["open", "boolean", "-", "Whether the modal is open (required)"],
+    ["size", "TModalSize", '"md"', "Modal size"],
+    ["closeOnBackdrop", "boolean", "true", "Close on backdrop click"],
+    ["closeOnEsc", "boolean", "true", "Close on ESC key"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TPortalBaseProps
+
+Base props for Portal component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TPortalBaseProps } from "venomous-ui/core/types";
+
+interface TPortalBaseProps {
+  /\*_ Disable portal and render inline _/
+  disabled?: boolean;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[["disabled", "boolean", "false", "Disable portal rendering"]]}
+/>
+
+## TSkeletonBaseProps
+
+Base props for Skeleton component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TSkeletonBaseProps, TSkeletonVariant, TSkeletonAnimation } from "venomous-ui/core/types";
+
+type TSkeletonVariant = "rect" | "circle" | "text";
+type TSkeletonAnimation = "pulse" | "wave";
+
+interface TSkeletonBaseProps {
+  /** Shape variant \*/
+  variant?: TSkeletonVariant;
+  /** Animation type, false to disable _/
+  animation?: TSkeletonAnimation | false;
+  /\*\* Width (number for px, string for custom units) _/
+  width?: number | string;
+  /** Height (number for px, string for custom units) \*/
+  height?: number | string;
+  /** Additional CSS class names \*/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["variant", "TSkeletonVariant", '"rect"', "Shape variant"],
+    ["animation", "TSkeletonAnimation | false", '"pulse"', "Animation type, false to disable"],
+    ["width", "number | string", "-", "Width (number for px, string for custom)"],
+    ["height", "number | string", "-", "Height (number for px, string for custom)"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TToasterBaseProps
+
+Base props for the Toaster container component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TToasterBaseProps, TToastPlacement, TToastStore } from "venomous-ui/core/types";
+
+type TToastPlacement = "top-start" | "top" | "top-end" | "bottom-start" | "bottom" | "bottom-end";
+
+interface TToasterBaseProps {
+  /** Toast store instance. If omitted, uses the default global store \*/
+  store?: TToastStore;
+  /** Toast display placement \*/
+  placement?: TToastPlacement;
+  /** Default auto-close duration (ms), 0 to disable \*/
+  duration?: number;
+  /** Show close button by default \*/
+  closable?: boolean;
+  /\*\* Additional CSS class names \*/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["store", "TToastStore", "default global store", "Toast store instance for isolation"],
+    ["placement", "TToastPlacement", '"top"', "Toast display placement"],
+    ["duration", "number", "4000", "Auto-close duration in ms, 0 to disable"],
+    ["closable", "boolean", "true", "Show close button by default"],
+    ["className", "string", "-", "Additional CSS classes"],
+    [
+      "icons",
+      "TToastIcons",
+      "-",
+      "Custom icons for each toast type and close button (framework-specific prop on TToasterProps)",
+    ],
+  ]}
+/>
+
+## TToastOptions
+
+Options when creating a toast via the imperative API.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TToastOptions, TToastType } from "venomous-ui/core/types";
+
+type TToastType = "success" | "error" | "warning" | "info";
+
+interface TToastOptions {
+  /** Toast type — determines color \*/
+  type?: TToastType;
+  /** Main title (required) \*/
+  title: string;
+  /** Description text \*/
+  description?: string;
+  /** Auto-close duration (ms), 0 to disable \*/
+  duration?: number;
+  /** Show close button \*/
+  closable?: boolean;
+  /** Callback when toast is closed \*/
+  onClose?: () => void;
+  /\*\* Callback when toast is auto-closed \*/
+  onAutoClose?: () => void;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["type", "TToastType", '"info"', "Toast type (determines color and icon)"],
+    ["title", "string", "-", "Main title (required)"],
+    ["description", "string", "-", "Description text below the title"],
+    ["duration", "number", "4000", "Auto-close duration in ms, 0 to disable"],
+    ["closable", "boolean", "true", "Show close button"],
+    ["onClose", "() => void", "-", "Callback when toast is closed"],
+    ["onAutoClose", "() => void", "-", "Callback when toast is auto-closed"],
+  ]}
+/>
+
+## TTabsBaseProps
+
+Base props for Tabs root component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TTabsBaseProps, TTabsVariant, TOrientation, TTabsUnmountStrategy } from "venomous-ui/core/types";
+
+type TOrientation = "horizontal" | "vertical";
+type TTabsVariant = "line" | "pill";
+type TTabsUnmountStrategy = "keepMounted" | "unmountOnHide";
+
+interface TTabsBaseProps {
+  /** Default active tab value (uncontrolled mode) \*/
+  defaultValue?: string;
+  /** Current active tab value (controlled mode) \*/
+  value?: string;
+  /** Tabs orientation \*/
+  orientation?: TOrientation;
+  /** Visual variant \*/
+  variant?: TTabsVariant;
+  /\*\* Panel unmount strategy \*/
+  unmountStrategy?: TTabsUnmountStrategy;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["defaultValue", "string", "-", "Default active tab (uncontrolled)"],
+    ["value", "string", "-", "Current active tab (controlled)"],
+    ["orientation", "TOrientation", '"horizontal"', "Tabs orientation"],
+    ["variant", "TTabsVariant", '"line"', "Visual style variant"],
+    ["unmountStrategy", "TTabsUnmountStrategy", '"keepMounted"', "Panel unmount strategy"],
+  ]}
+/>
+
+## TTabsTabBaseProps
+
+Base props for Tabs.Tab component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TTabsTabBaseProps } from "venomous-ui/core/types";
+
+interface TTabsTabBaseProps {
+  /** Unique value to identify this tab \*/
+  value: string;
+  /** Whether the tab is disabled \*/
+  disabled?: boolean;
+  /\*\* Additional CSS class names \*/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["value", "string", "-", "Unique tab identifier (required)"],
+    ["disabled", "boolean", "false", "Disables the tab"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TTabsPanelBaseProps
+
+Base props for Tabs.Panel component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TTabsPanelBaseProps } from "venomous-ui/core/types";
+
+interface TTabsPanelBaseProps {
+  /** Value of the corresponding tab \*/
+  value: string;
+  /** Additional CSS class names \*/
+  className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["value", "string", "-", "Corresponding tab value (required)"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>

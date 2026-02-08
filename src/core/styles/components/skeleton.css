@@ -1,0 +1,91 @@
+/**
+ * Skeleton Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-skeleton-bg: background color (default: --VENOMOUSUI-bg-tertiary)
+ * --venomous-skeleton-radius: border radius (default: --VENOMOUSUI-radius-md)
+ */
+
+.venomous-skeleton {
+  /* Customizable component variables */
+  --venomous-skeleton-bg: var(--VENOMOUSUI-bg-tertiary);
+  --venomous-skeleton-radius: var(--VENOMOUSUI-radius-md);
+
+  display: block;
+  background-color: var(--venomous-skeleton-bg);
+  border-radius: var(--venomous-skeleton-radius);
+}
+
+/*
+==================================================
+Variants
+==================================================
+*/
+.venomous-skeleton--circle {
+  border-radius: var(--VENOMOUSUI-radius-full);
+}
+
+.venomous-skeleton--text {
+  height: 1em;
+  border-radius: var(--VENOMOUSUI-radius-sm);
+  transform: scale(1, 0.6);
+  transform-origin: 0 55%;
+}
+
+/*
+==================================================
+Animations
+==================================================
+*/
+.venomous-skeleton--pulse {
+  animation: venomous-skeleton-pulse 1.5s var(--VENOMOUSUI-easing-in-out) infinite;
+}
+
+.venomous-skeleton--wave {
+  position: relative;
+  overflow: hidden;
+}
+
+.venomous-skeleton--wave::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 40%), transparent);
+  transform: translateX(-100%);
+  animation: venomous-skeleton-wave 1.6s linear infinite;
+}
+
+@keyframes venomous-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes venomous-skeleton-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  60% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/*
+==================================================
+Dark Theme
+==================================================
+*/
+[data-theme="dark"] .venomous-skeleton--wave::after {
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 12%), transparent);
+}

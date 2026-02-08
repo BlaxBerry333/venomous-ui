@@ -1,0 +1,56 @@
+import { Meta } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock, StoryDocsTable } from "../../../components";
+
+<Meta title="Core/Helpers/calculateFloatingPosition" />
+
+# calculateFloatingPosition
+
+Calculates the `top` and `left` position for a floating element (tooltip, popover, dropdown) relative to a trigger element. Uses fixed positioning relative to the viewport.
+
+<StoryDocsTable
+  headers={["Parameter", "Type", "Description"]}
+  rows={[
+    ["`triggerRect`", "`DOMRect`", "Bounding rect of the trigger element (`getBoundingClientRect()`)"],
+    ["`floatingSize`", "`{ width: number; height: number }`", "Size of the floating element"],
+    ["`placement`", '`"top" \\| "bottom" \\| "left" \\| "right"`', "Desired placement relative to trigger"],
+    ["`gap`", "`number`", "Spacing between trigger and floating element (px)"],
+  ]}
+/>
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `import { calculateFloatingPosition } from "venomous-ui/core/helpers";
+
+const triggerRect = triggerRef.current.getBoundingClientRect();
+const floatingSize = { width: 200, height: 100 };
+
+const { top, left } = calculateFloatingPosition(
+  triggerRect,
+  floatingSize,
+  "bottom", // placement
+  8, // gap in px
+);`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<script setup lang="ts">
+import { calculateFloatingPosition } from "venomous-ui/core/helpers";
+
+const triggerRect = triggerRef.value.getBoundingClientRect();
+const floatingSize = { width: 200, height: 100 };
+
+const { top, left } = calculateFloatingPosition(
+  triggerRect,
+  floatingSize,
+  "bottom", // placement
+  8, // gap in px
+);
+
+</script>`,
+    },
+  ]}
+/>

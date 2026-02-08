@@ -1,0 +1,76 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTable } from "../../../components";
+
+<Meta title="Core/Types/Common" />
+
+# Common Types
+
+Venomous UI exports common TypeScript types that are shared between React and Vue implementations. These types ensure consistency across frameworks.
+
+All types use the `T` prefix for easy identification in code.
+
+## TSize
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TSize } from "venomous-ui/core/types";
+
+type TSize = "sm" | "md" | "lg";`}
+/>
+
+Used for component sizing across buttons, inputs, modals, etc.
+
+<StoryDocsTable
+  headers={["Value", "Description"]}
+  rows={[
+    ["sm", "Small size"],
+    ["md", "Medium size (default)"],
+    ["lg", "Large size"],
+  ]}
+/>
+
+## TVariant
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TVariant } from "venomous-ui/core/types";
+
+type TVariant = "solid" | "outline" | "ghost" | "link";`}
+/>
+
+Used for visual style variations.
+
+<StoryDocsTable
+  headers={["Value", "Description"]}
+  rows={[
+    ["solid", "Filled background (default)"],
+    ["outline", "Border with transparent background"],
+    ["ghost", "No border or background"],
+    ["link", "Styled as a link"],
+  ]}
+/>
+
+## TColorScheme
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TColorScheme } from "venomous-ui/core/types";
+
+type TColorScheme = "theme" | "success" | "warning" | "error" | "info";`}
+/>
+
+Semantic color schemes for different purposes.
+
+<StoryDocsTable
+  headers={["Value", "Description"]}
+  rows={[
+    ["theme", "Theme/brand color (default)"],
+    ["success", "Success/positive actions"],
+    ["warning", "Warning/caution actions"],
+    ["error", "Error/destructive actions"],
+    ["info", "Informational actions"],
+  ]}
+/>

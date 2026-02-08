@@ -1,0 +1,177 @@
+/**
+ * Radio Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-radio-color: checked/accent color (default: --VENOMOUSUI-color-theme)
+ *
+ * Supports both native appearance and custom icon mode:
+ * - Default: Native radio with browser styling
+ * - Custom: Uses checkedIcon/uncheckedIcon via .venomous-radio--custom
+ */
+
+.venomous-radio {
+  /* Customizable component variables */
+  --venomous-radio-color: var(--VENOMOUSUI-color-theme);
+
+  display: inline-flex;
+  gap: var(--VENOMOUSUI-spacing-sm);
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.venomous-radio__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip-path: inset(50%);
+}
+
+.venomous-radio--disabled .venomous-radio__input {
+  cursor: not-allowed;
+}
+
+.venomous-radio__label {
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+/*
+==================================================
+Custom mode - show icon control
+==================================================
+*/
+.venomous-radio--custom .venomous-radio__control {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--VENOMOUSUI-text-secondary);
+  transition: color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-radio--custom .venomous-radio__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.venomous-radio--custom.venomous-radio--checked .venomous-radio__control {
+  color: var(--venomous-radio-color);
+}
+
+/*
+==================================================
+Native mode - show native radio
+==================================================
+*/
+.venomous-radio:not(.venomous-radio--custom) .venomous-radio__input {
+  position: relative;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  white-space: normal;
+  accent-color: var(--venomous-radio-color);
+  cursor: pointer;
+  clip-path: none;
+}
+
+.venomous-radio:not(.venomous-radio--custom) .venomous-radio__control {
+  display: none;
+}
+
+/*
+==================================================
+Sizes
+==================================================
+*/
+.venomous-radio--sm {
+  gap: var(--VENOMOUSUI-spacing-xs);
+}
+
+.venomous-radio--sm .venomous-radio__label {
+  font-size: var(--VENOMOUSUI-font-size-xs);
+}
+
+.venomous-radio--sm.venomous-radio--custom .venomous-radio__control {
+  font-size: 16px;
+}
+
+.venomous-radio--sm:not(.venomous-radio--custom) .venomous-radio__input {
+  width: 14px;
+  height: 14px;
+}
+
+.venomous-radio--md {
+  gap: var(--VENOMOUSUI-spacing-sm);
+}
+
+.venomous-radio--md .venomous-radio__label {
+  font-size: var(--VENOMOUSUI-font-size-sm);
+}
+
+.venomous-radio--md.venomous-radio--custom .venomous-radio__control {
+  font-size: 20px;
+}
+
+.venomous-radio--md:not(.venomous-radio--custom) .venomous-radio__input {
+  width: 16px;
+  height: 16px;
+}
+
+.venomous-radio--lg {
+  gap: var(--VENOMOUSUI-spacing-sm);
+}
+
+.venomous-radio--lg .venomous-radio__label {
+  font-size: var(--VENOMOUSUI-font-size-md);
+}
+
+.venomous-radio--lg.venomous-radio--custom .venomous-radio__control {
+  font-size: 24px;
+}
+
+.venomous-radio--lg:not(.venomous-radio--custom) .venomous-radio__input {
+  width: 18px;
+  height: 18px;
+}
+
+/*
+==================================================
+States
+==================================================
+*/
+.venomous-radio--disabled {
+  cursor: not-allowed;
+  opacity: var(--VENOMOUSUI-opacity-disabled);
+}
+
+/* Focus - no outline for radio, the checked state change is enough visual feedback */
+
+/*
+==================================================
+RadioGroup
+==================================================
+*/
+.venomous-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.venomous-radio-group--horizontal {
+  flex-direction: row;
+  gap: var(--VENOMOUSUI-spacing-lg);
+}
+
+.venomous-radio-group--vertical {
+  flex-direction: column;
+  gap: var(--VENOMOUSUI-spacing-sm);
+}

@@ -1,0 +1,142 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock, StoryDocsTable } from "../components";
+
+<Meta title="Introduction" />
+
+# Venomous UI
+
+A lightweight, cross-framework UI component library.
+
+## Why Venomous UI?
+
+There are many excellent UI libraries out there, each with its own strengths. However, during daily development, I've encountered some friction points that led me to explore alternatives:
+
+<StoryDocsTable
+  headers={["Library Type", "Personal Pain Points"]}
+  rows={[
+    ["Ant Design / MUI", "Bundle size concerns, style overrides often need !important, locked to one framework"],
+    ["Chakra / Mantine", "Runtime CSS-in-JS adds complexity for SSR, style props mixed with component logic"],
+    ["Radix / Headless UI", "Great flexibility but requires building styles from scratch every time"],
+    ["Tailwind-based", "Works well, but utility classes can reduce code readability in complex components"],
+  ]}
+/>
+
+This project started as a personal learning exercise and a way to address my specific preferences. It's not meant to replace mainstream libraries — they're battle-tested and feature-rich. Instead, Venomous UI is an attempt to find a balance that works for my workflow:
+
+- **Zero Runtime CSS** - Pure CSS with variables, avoiding runtime overhead and SSR complexity
+- **Cross-framework** - Sharing the same API between React and Vue projects I work on
+- **Optional Built-in Styles** - Ready to use out of the box, but easy to replace entirely
+- **Simple Customization** - CSS variables make theming straightforward without deep selector chains
+- **Readable Class Names** - Semantic names like `.venomous-button--solid` help with debugging
+- **Minimal Footprint** - Import only what's needed, keeping bundles lean
+
+## Installation
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "npm",
+      language: "bash",
+      code: `npm install github:BlaxBerry333/venomous-ui#release`,
+    },
+    {
+      label: "yarn",
+      language: "bash",
+      code: `yarn add github:BlaxBerry333/venomous-ui#release`,
+    },
+    {
+      label: "pnpm",
+      language: "bash",
+      code: `pnpm add github:BlaxBerry333/venomous-ui#release`,
+    },
+  ]}
+/>
+
+## Quick Start
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `"use client";
+
+import { Button } from "venomous-ui/react";
+import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/button.css";
+
+export default function App() {
+  return <Button variant="solid">Click me</Button>;
+}`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<script setup lang="ts">
+import { Button } from "venomous-ui/vue";
+import "venomous-ui/core/styles/variables/index.css";
+import "venomous-ui/core/styles/components/button.css";
+</script>
+
+<template>
+  <Button variant="solid">Click me</Button>
+</template>`,
+    },
+  ]}
+/>
+
+## Customizing Theme
+
+Override CSS variables to customize the theme:
+
+<Source
+  language="css"
+  dark
+  code={`:root {
+  --VENOMOUSUI-color-primary: #your-color;
+  --VENOMOUSUI-color-primary-hover: #your-hover-color;
+}`}
+/>
+
+For convenience, we provide a TypeScript object `CSS_VARS` that maps to CSS variable values, allowing you to use them in JavaScript:
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `import { CSS_VARS } from "venomous-ui/core/constants";
+
+// Use in inline styles
+
+<div style={{ color: CSS_VARS.colorTheme }}>
+  Theme colored text
+</div>`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<script setup lang="ts">
+import { CSS_VARS } from "venomous-ui/core/constants";
+</script>
+
+<template>
+  <div :style="{ color: CSS_VARS.colorTheme }">
+    Theme colored text
+  </div>
+</template>`,
+    },
+  ]}
+/>
+
+## Documentation
+
+### Core
+
+- [CSS Variables](?path=/docs/core-css-variables--docs) - TypeScript mappings to CSS custom properties
+- [CSS Classes](?path=/docs/core-css-classes--docs) - Component CSS class names
+- [Types](?path=/docs/core-types--docs) - Shared TypeScript types
+
+### Reference
+
+- [Design Tokens](?path=/docs/design-tokens--docs) - Color, spacing, typography, and effect tokens

@@ -1,0 +1,173 @@
+/**
+ * Storybook Custom Style Overrides
+ * Fixes for dark mode table styling and other UI issues
+ */
+
+/* stylelint-disable no-descending-specificity, no-duplicate-selectors */
+
+/*
+==================================================
+Light Mode - Table Styles (base styles first)
+==================================================
+*/
+.sbdocs table:not(.docblock-argstable) tbody tr:nth-of-type(odd),
+.sbdocs table:not(.docblock-argstable) tbody tr:nth-of-type(even) {
+  background-color: transparent;
+}
+
+.sbdocs table:not(.docblock-argstable) tbody tr {
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+.sbdocs table:not(.docblock-argstable) thead tr {
+  background-color: rgb(0 0 0 / 3%);
+  border-bottom: 1px solid rgb(0 0 0 / 15%);
+}
+
+/*
+==================================================
+Dark Mode - Table Styles
+Remove alternating row colors in dark mode for better readability
+==================================================
+*/
+.dark .sbdocs-table tbody tr,
+.dark .docblock-argstable tbody tr,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .sbdocs-table tbody tr,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .docblock-argstable tbody tr {
+  background-color: transparent !important;
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
+}
+
+.dark .sbdocs-table tbody tr:nth-of-type(odd),
+.dark .sbdocs-table tbody tr:nth-of-type(even),
+.dark .docblock-argstable tbody tr:nth-of-type(odd),
+.dark .docblock-argstable tbody tr:nth-of-type(even),
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .sbdocs-table tbody tr:nth-of-type(odd),
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .sbdocs-table tbody tr:nth-of-type(even),
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .docblock-argstable tbody tr:nth-of-type(odd),
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .docblock-argstable tbody tr:nth-of-type(even) {
+  background-color: transparent !important;
+}
+
+/* Table header styling */
+.dark .sbdocs-table thead tr,
+.dark .docblock-argstable thead tr,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .sbdocs-table thead tr,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .docblock-argstable thead tr {
+  background-color: rgb(255 255 255 / 5%) !important;
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+/*
+==================================================
+Dark Mode - Markdown Table Styles (in component descriptions)
+==================================================
+*/
+.dark .sbdocs table:not(.docblock-argstable) tbody tr,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] table:not(.docblock-argstable) tbody tr {
+  background-color: transparent !important;
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
+}
+
+.dark .sbdocs table:not(.docblock-argstable) tbody tr:nth-of-type(odd),
+.dark .sbdocs table:not(.docblock-argstable) tbody tr:nth-of-type(even),
+.sbdocs.sbdocs-wrapper[data-theme="dark"] table:not(.docblock-argstable) tbody tr:nth-of-type(odd),
+.sbdocs.sbdocs-wrapper[data-theme="dark"] table:not(.docblock-argstable) tbody tr:nth-of-type(even) {
+  background-color: transparent !important;
+}
+
+.dark .sbdocs table:not(.docblock-argstable) thead tr,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] table:not(.docblock-argstable) thead tr {
+  background-color: rgb(255 255 255 / 5%) !important;
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+/*
+==================================================
+Dark Mode - Canvas/Dev Page Background
+==================================================
+*/
+.dark .sb-show-main,
+html.dark #storybook-root,
+html.dark .sb-main-padded {
+  background-color: #0f0f0f !important;
+}
+
+.dark #storybook-preview-wrapper {
+  background-color: #0f0f0f !important;
+}
+
+/* Canvas iframe background */
+.dark .sb-show-main.sb-main-padded {
+  background: #0f0f0f !important;
+}
+
+/*
+==================================================
+Markdown Tables - Full Width with Text Overflow
+==================================================
+*/
+.sbdocs table:not(.docblock-argstable) {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.sbdocs table:not(.docblock-argstable) td,
+.sbdocs table:not(.docblock-argstable) th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Allow text wrap for description column if needed */
+.sbdocs table:not(.docblock-argstable) td:last-child,
+.sbdocs table:not(.docblock-argstable) th:last-child {
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/*
+==================================================
+Stories Section Heading - Consistent Style
+==================================================
+*/
+.sbdocs .sbdocs-h2,
+.sbdocs .sbdocs-h3,
+.sbdocs h2,
+.sbdocs h3 {
+  padding-left: 0 !important;
+  margin-top: 3.5rem !important;
+  margin-bottom: 1rem !important;
+  margin-left: 0 !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #171717;
+}
+
+.sbdocs .sbdocs-h3,
+.sbdocs h3 {
+  margin-top: 1.5rem !important;
+  font-size: 1.25rem !important;
+}
+
+/* Hide anchor link - first child <a> that contains only SVG (the link icon) */
+.sbdocs h1 > a:first-child:has(svg),
+.sbdocs h2 > a:first-child:has(svg),
+.sbdocs h3 > a:first-child:has(svg),
+.sbdocs .sbdocs-h1 > a:first-child:has(svg),
+.sbdocs .sbdocs-h2 > a:first-child:has(svg),
+.sbdocs .sbdocs-h3 > a:first-child:has(svg) {
+  display: none !important;
+}
+
+/* Dark mode heading color */
+.dark .sbdocs .sbdocs-h2,
+.dark .sbdocs .sbdocs-h3,
+.dark .sbdocs h2,
+.dark .sbdocs h3,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .sbdocs-h2,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] .sbdocs-h3,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] h2,
+.sbdocs.sbdocs-wrapper[data-theme="dark"] h3 {
+  color: #f5f5f5 !important;
+}

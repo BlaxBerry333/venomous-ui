@@ -1,0 +1,53 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+*.tsbuildinfo
+_BUNDLE_ANALYZER.html
+storybook-static/
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea
+*.suo
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.debugs/
+
+# Test
+coverage/
+
+# Cache
+*.cache
+.eslintcache
+.prettiercache
+
+# Storybook
+storybook-static/
+
+# AI
+CLAUDE.md
+.claude/
+_*.md

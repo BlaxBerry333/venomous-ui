@@ -1,0 +1,198 @@
+/**
+ * Button Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-button-radius: border radius (default: --VENOMOUSUI-radius-md)
+ * --venomous-button-font-weight: font weight (default: --VENOMOUSUI-font-weight-medium)
+ * --venomous-button-color: theme color (default: --VENOMOUSUI-color-theme)
+ *
+ * Internal CSS variables (used for variant switching):
+ * --_btn-color, --_btn-color-hover, --_btn-color-active, --_btn-color-muted
+ */
+
+.venomous-button {
+  /* Customizable component variables */
+  --venomous-button-radius: var(--VENOMOUSUI-radius-md);
+  --venomous-button-font-weight: var(--VENOMOUSUI-font-weight-medium);
+  --venomous-button-color: var(--VENOMOUSUI-color-theme);
+
+  /* Internal variables for color variant switching */
+  --_btn-color: var(--venomous-button-color);
+  --_btn-color-hover: var(--VENOMOUSUI-color-theme-hover);
+  --_btn-color-active: var(--VENOMOUSUI-color-theme-active);
+  --_btn-color-muted: var(--VENOMOUSUI-color-theme-muted);
+
+  display: inline-flex;
+  gap: var(--VENOMOUSUI-spacing-sm);
+  align-items: center;
+  justify-content: center;
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+  font-weight: var(--venomous-button-font-weight);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--venomous-button-radius);
+  transition:
+    background-color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default),
+    border-color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default),
+    color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default),
+    box-shadow var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-button:focus-visible {
+  outline: 2px solid var(--_btn-color);
+  outline-offset: 2px;
+}
+
+.venomous-button:disabled,
+.venomous-button--disabled {
+  cursor: not-allowed;
+  opacity: var(--VENOMOUSUI-opacity-disabled);
+}
+
+/*
+==================================================
+Sizes
+==================================================
+*/
+.venomous-button--sm {
+  height: 32px;
+  padding: 0 var(--VENOMOUSUI-spacing-md);
+  font-size: var(--VENOMOUSUI-font-size-xs);
+}
+
+.venomous-button--md {
+  height: 40px;
+  padding: 0 var(--VENOMOUSUI-spacing-lg);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+}
+
+.venomous-button--lg {
+  height: 48px;
+  padding: 0 var(--VENOMOUSUI-spacing-xl);
+  font-size: var(--VENOMOUSUI-font-size-md);
+}
+
+/*
+==================================================
+Color Variants (override local variables)
+==================================================
+*/
+.venomous-button--success {
+  --_btn-color: var(--VENOMOUSUI-color-success);
+  --_btn-color-hover: var(--VENOMOUSUI-color-success-hover);
+  --_btn-color-active: var(--VENOMOUSUI-color-success-active);
+  --_btn-color-muted: var(--VENOMOUSUI-color-success-muted);
+}
+
+.venomous-button--warning {
+  --_btn-color: var(--VENOMOUSUI-color-warning);
+  --_btn-color-hover: var(--VENOMOUSUI-color-warning-hover);
+  --_btn-color-active: var(--VENOMOUSUI-color-warning-active);
+  --_btn-color-muted: var(--VENOMOUSUI-color-warning-muted);
+}
+
+.venomous-button--error {
+  --_btn-color: var(--VENOMOUSUI-color-error);
+  --_btn-color-hover: var(--VENOMOUSUI-color-error-hover);
+  --_btn-color-active: var(--VENOMOUSUI-color-error-active);
+  --_btn-color-muted: var(--VENOMOUSUI-color-error-muted);
+}
+
+.venomous-button--info {
+  --_btn-color: var(--VENOMOUSUI-color-info);
+  --_btn-color-hover: var(--VENOMOUSUI-color-info-hover);
+  --_btn-color-active: var(--VENOMOUSUI-color-info-active);
+  --_btn-color-muted: var(--VENOMOUSUI-color-info-muted);
+}
+
+/*
+==================================================
+Variant: Solid
+==================================================
+*/
+.venomous-button--solid {
+  color: var(--VENOMOUSUI-text-inverse);
+  background-color: var(--_btn-color);
+}
+
+.venomous-button--solid:hover:not(:disabled) {
+  background-color: var(--_btn-color-hover);
+}
+
+.venomous-button--solid:active:not(:disabled) {
+  background-color: var(--_btn-color-active);
+}
+
+/*
+==================================================
+Variant: Outline
+==================================================
+*/
+.venomous-button--outline {
+  color: var(--_btn-color);
+  background-color: transparent;
+  border-color: var(--_btn-color);
+}
+
+.venomous-button--outline:hover:not(:disabled) {
+  background-color: var(--_btn-color-muted);
+}
+
+.venomous-button--outline:active:not(:disabled) {
+  color: var(--VENOMOUSUI-text-inverse);
+  background-color: var(--_btn-color);
+}
+
+/*
+==================================================
+Variant: Ghost
+==================================================
+*/
+.venomous-button--ghost {
+  color: var(--VENOMOUSUI-text-primary);
+  background-color: transparent;
+}
+
+.venomous-button--ghost:hover:not(:disabled) {
+  background-color: var(--VENOMOUSUI-bg-secondary);
+}
+
+.venomous-button--ghost:active:not(:disabled) {
+  color: var(--_btn-color);
+  background-color: var(--_btn-color-muted);
+}
+
+/*
+==================================================
+Variant: Link
+==================================================
+*/
+.venomous-button--link {
+  height: auto;
+  padding: 0;
+  color: var(--_btn-color);
+  background-color: transparent;
+}
+
+.venomous-button--link:hover:not(:disabled) {
+  color: var(--_btn-color-hover);
+  text-decoration: underline;
+}
+
+.venomous-button--link:active:not(:disabled) {
+  color: var(--_btn-color-active);
+}
+
+/*
+==================================================
+Full Width
+==================================================
+*/
+.venomous-button--full {
+  width: 100%;
+}

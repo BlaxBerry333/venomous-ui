@@ -1,0 +1,350 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTable } from "../../../components";
+
+<Meta title="Core/CSS/Classes" />
+
+# CSS Classes
+
+Venomous UI uses a consistent BEM-like naming convention for all CSS classes:
+
+<Source
+  language="css"
+  dark
+  code={`/* Block — component root */
+.venomous-button { }
+
+/_ Modifier — variant / size / state _/
+.venomous-button--solid { }
+.venomous-button--sm { }
+.venomous-button--disabled { }
+
+/_ Element — sub-part of a compound component _/
+.venomous-card**header { }
+.venomous-card**body { }`}
+/>
+
+All class names are available via the `CSS_CLASSES` constant for type-safe usage:
+
+<Source
+  language="ts"
+  dark
+  code={`import { CSS_CLASSES } from "venomous-ui/core/constants";
+
+// Example
+const cls = CSS_CLASSES.button.root; // "venomous-button"
+const size = CSS_CLASSES.button.sizes.sm; // "venomous-button--sm"`}
+/>
+
+---
+
+## Avatar
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-avatar`", "Root element (inline-flex container)"],
+    ["`venomous-avatar--sm`", "Small size (32px)"],
+    ["`venomous-avatar--md`", "Medium size (40px, default)"],
+    ["`venomous-avatar--lg`", "Large size (48px)"],
+    ["`venomous-avatar--circle`", "Circle shape (default)"],
+    ["`venomous-avatar--square`", "Square shape with rounded corners"],
+    ["`venomous-avatar__image`", "Image element (object-fit: cover)"],
+    ["`venomous-avatar__text`", "Text initials element"],
+    ["`venomous-avatar__icon`", "Icon container (60% of avatar size)"],
+  ]}
+/>
+
+## Badge
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-badge-wrapper`", "Wrapper container (relative positioning)"],
+    ["`venomous-badge`", "Badge indicator element"],
+    ["`venomous-badge--dot`", "Dot mode (8px circle, no content)"],
+    ["`venomous-badge--theme`", "Theme color"],
+    ["`venomous-badge--success`", "Success color"],
+    ["`venomous-badge--warning`", "Warning color"],
+    ["`venomous-badge--error`", "Error color (default)"],
+    ["`venomous-badge--info`", "Info color"],
+  ]}
+/>
+
+## Breadcrumb
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-breadcrumb`", "Root nav container"],
+    ["`venomous-breadcrumb__list`", "Ordered list (`<ol>`)"],
+    ["`venomous-breadcrumb__item`", "List item (`<li>`)"],
+    ["`venomous-breadcrumb__separator`", "Separator between items (`aria-hidden`)"],
+    ["`venomous-breadcrumb__link`", "Link element (`<a>`)"],
+    ["`venomous-breadcrumb__text`", "Text element (`<span>`)"],
+    ["`venomous-breadcrumb__text--current`", "Current page text (with `aria-current`)"],
+    ["`venomous-breadcrumb__ellipsis`", "Ellipsis placeholder"],
+    ["`venomous-breadcrumb__item--disabled`", "Disabled item (cursor + reduced opacity)"],
+  ]}
+/>
+
+## Button
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-button`", "Base button style"],
+    ["`venomous-button--sm`", "Small size"],
+    ["`venomous-button--md`", "Medium size (default)"],
+    ["`venomous-button--lg`", "Large size"],
+    ["`venomous-button--solid`", "Solid variant (default)"],
+    ["`venomous-button--outline`", "Outline variant"],
+    ["`venomous-button--ghost`", "Ghost variant"],
+    ["`venomous-button--link`", "Link variant"],
+    ["`venomous-button--theme`", "Theme color (default)"],
+    ["`venomous-button--success`", "Success color"],
+    ["`venomous-button--warning`", "Warning color"],
+    ["`venomous-button--error`", "Error color"],
+    ["`venomous-button--info`", "Info color"],
+    ["`venomous-button--disabled`", "Disabled state"],
+    ["`venomous-button--loading`", "Loading state"],
+    ["`venomous-button--full`", "Full width"],
+  ]}
+/>
+
+## Card
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-card`", "Base card style"],
+    ["`venomous-card--elevated`", "Elevated variant with shadow (default)"],
+    ["`venomous-card--outline`", "Outline variant with border"],
+    ["`venomous-card--filled`", "Filled variant with background"],
+    ["`venomous-card--clickable`", "Clickable state with hover effect"],
+  ]}
+/>
+
+## Modal
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-modal-backdrop`", "Backdrop overlay"],
+    ["`venomous-modal-backdrop--closing`", "Backdrop closing animation"],
+    ["`venomous-modal`", "Modal container"],
+    ["`venomous-modal--closing`", "Modal closing animation"],
+    ["`venomous-modal__header`", "Header area"],
+    ["`venomous-modal__title`", "Title text"],
+    ["`venomous-modal__body`", "Body content area"],
+    ["`venomous-modal__footer`", "Footer area"],
+    ["`venomous-modal__close`", "Close button"],
+    ["`venomous-modal--sm`", "Small size"],
+    ["`venomous-modal--md`", "Medium size (default)"],
+    ["`venomous-modal--lg`", "Large size"],
+    ["`venomous-modal--xl`", "Extra large size"],
+    ["`venomous-modal--full`", "Full screen"],
+  ]}
+/>
+
+## Skeleton
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-skeleton`", "Base skeleton style (rect variant by default)"],
+    ["`venomous-skeleton--circle`", "Circle variant"],
+    ["`venomous-skeleton--text`", "Text line variant"],
+    ["`venomous-skeleton--pulse`", "Pulse animation (default)"],
+    ["`venomous-skeleton--wave`", "Wave shimmer animation"],
+  ]}
+/>
+
+## Toast
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-toaster`", "Toaster container (fixed position)"],
+    ["`venomous-toaster--top`", "Top center placement"],
+    ["`venomous-toaster--top-start`", "Top left placement"],
+    ["`venomous-toaster--top-end`", "Top right placement"],
+    ["`venomous-toaster--bottom`", "Bottom center placement"],
+    ["`venomous-toaster--bottom-start`", "Bottom left placement"],
+    ["`venomous-toaster--bottom-end`", "Bottom right placement"],
+    ["`venomous-toast`", "Single toast item"],
+    ["`venomous-toast--success`", "Success type (green left border)"],
+    ["`venomous-toast--error`", "Error type (red left border)"],
+    ["`venomous-toast--warning`", "Warning type (yellow left border)"],
+    ["`venomous-toast--info`", "Info type (blue left border)"],
+    ["`venomous-toast--closing`", "Closing animation state"],
+    ["`venomous-toast__icon`", "Type icon container"],
+    ["`venomous-toast__content`", "Content wrapper (title + description)"],
+    ["`venomous-toast__title`", "Title text"],
+    ["`venomous-toast__description`", "Description text"],
+    ["`venomous-toast__close`", "Close button"],
+  ]}
+/>
+
+## Tabs
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-tabs`", "Tabs root container"],
+    ["`venomous-tabs--horizontal`", "Horizontal orientation (default)"],
+    ["`venomous-tabs--vertical`", "Vertical orientation"],
+    ["`venomous-tabs--line`", "Line variant (default)"],
+    ["`venomous-tabs--pill`", "Pill variant"],
+    ["`venomous-tabs__list`", "Tab list container"],
+    ["`venomous-tabs__tab`", "Individual tab"],
+    ["`venomous-tabs__tab--active`", "Active tab state"],
+    ["`venomous-tabs__tab--disabled`", "Disabled tab state"],
+    ["`venomous-tabs__panel`", "Tab panel content"],
+  ]}
+/>
+
+## Typography
+
+Text styling utility classes that can be used independently without components.
+
+### Titles
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-title`", "Base title style"],
+    ["`venomous-title--1`", "Heading level 1 (largest)"],
+    ["`venomous-title--2`", "Heading level 2"],
+    ["`venomous-title--3`", "Heading level 3"],
+    ["`venomous-title--4`", "Heading level 4"],
+    ["`venomous-title--5`", "Heading level 5"],
+    ["`venomous-title--6`", "Heading level 6 (smallest)"],
+  ]}
+/>
+
+### Text Sizes
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-text`", "Base text style"],
+    ["`venomous-text--xs`", "Extra small text"],
+    ["`venomous-text--sm`", "Small text"],
+    ["`venomous-text--md`", "Medium text (default)"],
+    ["`venomous-text--lg`", "Large text"],
+    ["`venomous-text--mono`", "Monospace font"],
+  ]}
+/>
+
+### Text Colors
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-text--primary`", "Primary text color"],
+    ["`venomous-text--secondary`", "Secondary text color"],
+    ["`venomous-text--tertiary`", "Tertiary text color"],
+    ["`venomous-text--theme`", "Theme color"],
+    ["`venomous-text--success`", "Success color"],
+    ["`venomous-text--warning`", "Warning color"],
+    ["`venomous-text--error`", "Error color"],
+    ["`venomous-text--info`", "Info color"],
+  ]}
+/>
+
+### Font Weights
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-font--normal`", "Normal weight (400)"],
+    ["`venomous-font--medium`", "Medium weight (500)"],
+    ["`venomous-font--semibold`", "Semibold weight (600)"],
+    ["`venomous-font--bold`", "Bold weight (700)"],
+  ]}
+/>
+
+### Text Alignment
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-text--left`", "Left aligned"],
+    ["`venomous-text--center`", "Center aligned"],
+    ["`venomous-text--right`", "Right aligned"],
+    ["`venomous-text--justify`", "Justified"],
+  ]}
+/>
+
+### Text Truncation
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-ellipsis`", "Single line truncation with ellipsis"],
+    ["`venomous-line-clamp`", "Base class for multi-line truncation"],
+    ["`venomous-line-clamp--2`", "Clamp to 2 lines"],
+    ["`venomous-line-clamp--3`", "Clamp to 3 lines"],
+    ["`venomous-line-clamp--4`", "Clamp to 4 lines"],
+    ["`venomous-line-clamp--5`", "Clamp to 5 lines"],
+  ]}
+/>
+
+### Line Heights
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-leading--tight`", "Tight line height"],
+    ["`venomous-leading--normal`", "Normal line height"],
+    ["`venomous-leading--relaxed`", "Relaxed line height"],
+  ]}
+/>
+
+## Spacing
+
+Gap utility classes for flexbox and grid layouts, using design system spacing tokens.
+
+### Gap (All Directions)
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-gap-0`", "No gap"],
+    ["`venomous-gap-xs`", "Extra small gap"],
+    ["`venomous-gap-sm`", "Small gap"],
+    ["`venomous-gap-md`", "Medium gap"],
+    ["`venomous-gap-lg`", "Large gap"],
+    ["`venomous-gap-xl`", "Extra large gap"],
+    ["`venomous-gap-2xl`", "2x large gap"],
+    ["`venomous-gap-3xl`", "3x large gap"],
+  ]}
+/>
+
+### Column Gap (gap-x)
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-gap-x-0`", "No column gap"],
+    ["`venomous-gap-x-xs`", "Extra small column gap"],
+    ["`venomous-gap-x-sm`", "Small column gap"],
+    ["`venomous-gap-x-md`", "Medium column gap"],
+    ["`venomous-gap-x-lg`", "Large column gap"],
+    ["`venomous-gap-x-xl`", "Extra large column gap"],
+  ]}
+/>
+
+### Row Gap (gap-y)
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-gap-y-0`", "No row gap"],
+    ["`venomous-gap-y-xs`", "Extra small row gap"],
+    ["`venomous-gap-y-sm`", "Small row gap"],
+    ["`venomous-gap-y-md`", "Medium row gap"],
+    ["`venomous-gap-y-lg`", "Large row gap"],
+    ["`venomous-gap-y-xl`", "Extra large row gap"],
+  ]}
+/>

@@ -1,0 +1,78 @@
+/**
+ * Badge Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-badge-color: badge background color (default: --VENOMOUSUI-color-error)
+ * --venomous-badge-text-color: badge text color (default: --VENOMOUSUI-text-inverse)
+ * --venomous-badge-size: badge height/min-width (default: 20px)
+ * --venomous-badge-dot-size: dot mode size (default: 8px)
+ */
+
+/* Wrapper container */
+.venomous-badge-wrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+/* Badge indicator */
+.venomous-badge {
+  /* Customizable component variables */
+  --venomous-badge-color: var(--VENOMOUSUI-color-error);
+  --venomous-badge-text-color: var(--VENOMOUSUI-text-inverse);
+  --venomous-badge-size: 20px;
+  --venomous-badge-dot-size: 8px;
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--venomous-badge-size);
+  height: var(--venomous-badge-size);
+  padding: 0 6px;
+  font-size: var(--VENOMOUSUI-font-size-xs);
+  font-weight: var(--VENOMOUSUI-font-weight-medium);
+  line-height: 1;
+  color: var(--venomous-badge-text-color);
+  white-space: nowrap;
+  background-color: var(--venomous-badge-color);
+  border-radius: var(--VENOMOUSUI-radius-full);
+}
+
+/* Attached mode — positioned at top-right corner */
+.venomous-badge-wrapper > .venomous-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+/* Dot mode */
+.venomous-badge--dot {
+  width: var(--venomous-badge-dot-size);
+  min-width: var(--venomous-badge-dot-size);
+  height: var(--venomous-badge-dot-size);
+  padding: 0;
+}
+
+/* Color schemes */
+.venomous-badge--error {
+  --venomous-badge-color: var(--VENOMOUSUI-color-error);
+}
+
+.venomous-badge--success {
+  --venomous-badge-color: var(--VENOMOUSUI-color-success);
+}
+
+.venomous-badge--warning {
+  --venomous-badge-color: var(--VENOMOUSUI-color-warning);
+}
+
+.venomous-badge--info {
+  --venomous-badge-color: var(--VENOMOUSUI-color-info);
+}
+
+.venomous-badge--theme {
+  --venomous-badge-color: var(--VENOMOUSUI-color-theme);
+}

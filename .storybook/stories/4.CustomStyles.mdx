@@ -1,0 +1,274 @@
+import { Meta } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock, StoryDocsTable } from "../components";
+
+<Meta title="Custom Styles" />
+
+# Custom Styles
+
+Venomous UI provides a **three-layer style customization system** built on CSS custom properties (variables). You can customize styles at different levels of granularity — from global theming to per-instance overrides.
+
+## Three-Layer System Overview
+
+<StoryDocsTable
+  headers={["Layer", "Naming Pattern", "Scope"]}
+  rows={[
+    ["Layer 1: Global Tokens", "--VENOMOUSUI-{category}-{name}", "All components"],
+    ["Layer 2: Component Variables", "--venomous-{component}-{property}", "Specific component type"],
+    ["Layer 3: Instance Overrides", "className / style prop", "Single instance"],
+  ]}
+/>
+
+## Layer 1: Global Design Tokens
+
+Modify `:root` CSS variables to affect **all components** that reference them. This is ideal for brand theming or switching between light/dark modes.
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "CSS",
+      language: "css",
+      code: `/* Global theming — affects all components */
+:root {
+  --VENOMOUSUI-color-theme: #0ea5e9;
+  --VENOMOUSUI-color-theme-hover: #0284c7;
+  --VENOMOUSUI-color-theme-active: #0369a1;
+  --VENOMOUSUI-radius-md: 8px;
+  --VENOMOUSUI-radius-lg: 12px;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] {
+  --VENOMOUSUI-bg-primary: #1a1a2e;
+  --VENOMOUSUI-bg-secondary: #16213e;
+  --VENOMOUSUI-text-primary: #e2e8f0;
+}`,
+    },
+  ]}
+/>
+
+See the [Design Tokens](?path=/docs/design-tokens--docs) page for the full list of global variables.
+
+## Layer 2: Component-Level Variables
+
+Each component exposes public CSS variables in the format `--venomous-{component}-{property}`. Override these to customize a **specific component type** without affecting others.
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "CSS",
+      language: "css",
+      code: `/* Make all Buttons fully rounded */
+.venomous-button {
+  --venomous-button-radius: 999px;
+}
+
+/* Make all Modals wider with more padding */
+.venomous-modal {
+  --venomous-modal-radius: 16px;
+  --venomous-modal-padding: 32px;
+}
+
+/* Change the default Switch colors */
+.venomous-switch__track {
+  --venomous-switch-track-bg: #cbd5e1;
+  --venomous-switch-track-bg-checked: #22c55e;
+}`,
+    },
+  ]}
+/>
+
+This layer is powerful because it only affects one component type. For example, changing `--venomous-button-radius` won't affect Card or Modal border radius.
+
+## Layer 3: Instance Overrides
+
+Use `className` or `style` props to override a **single component instance**.
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `// Override via className
+<Button className="my-special-button" variant="solid">
+  Special Button
+</Button>
+
+// Override via style prop (component variables)
+<Card style={{ "--venomous-card-radius": "20px", "--venomous-card-shadow": "0 8px 32px rgba(0,0,0,0.12)" }}>
+  Custom styled card
+</Card>
+
+// Override via inline style (standard CSS)
+<Modal open={open} onClose={onClose} style={{ maxWidth: "800px" }}>
+  Wide modal content
+</Modal>`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<!-- Override via class -->
+<Button class="my-special-button" variant="solid">
+  Special Button
+</Button>
+
+<!-- Override via style (component variables) -->
+<Card :style="{ '--venomous-card-radius': '20px', '--venomous-card-shadow': '0 8px 32px rgba(0,0,0,0.12)' }">
+  Custom styled card
+</Card>
+
+<!-- Override via inline style (standard CSS) -->
+<Modal :open="open" @close="onClose" :style="{ maxWidth: '800px' }">
+  Wide modal content
+</Modal>`,
+    },
+    {
+      label: "CSS",
+      language: "css",
+      code: `.my-special-button {
+  --venomous-button-radius: 999px;
+  --venomous-button-color: #ec4899;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}`,
+    },
+  ]}
+/>
+
+## How the Layers Cascade
+
+The three layers work together through CSS variable fallback chains:
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "CSS",
+      language: "css",
+      code: `/* Layer 1: Global Token (defined in :root) */
+:root {
+  --VENOMOUSUI-radius-md: 6px;
+}
+
+/* Layer 2: Component variable references the global token as default */
+.venomous-button {
+  --venomous-button-radius: var(--VENOMOUSUI-radius-md);  /* = 6px */
+  border-radius: var(--venomous-button-radius);
+}
+
+/* User overrides Layer 2 → only buttons change */
+.venomous-button {
+  --venomous-button-radius: 999px;  /* pill buttons! */
+}
+
+/* User overrides Layer 1 → all components using radius-md change */
+:root {
+  --VENOMOUSUI-radius-md: 12px;  /* rounder everything */
+}`,
+    },
+  ]}
+/>
+
+Some components also use **internal private variables** (`--_{abbr}-{property}`) for variant switching. These are not intended for direct use but their defaults point to the public component variables:
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "CSS",
+      language: "css",
+      code: `/* Internal cascade (you don't need to touch these) */
+.venomous-button {
+  --venomous-button-color: var(--VENOMOUSUI-color-theme);  /* public */
+  --_btn-color: var(--venomous-button-color);               /* private */
+}
+
+/* Color variants override the private variable */
+.venomous-button--success {
+  --_btn-color: var(--VENOMOUSUI-color-success);
+}
+
+/* But you CAN override the public variable to change the default */
+.venomous-button {
+  --venomous-button-color: #0ea5e9;
+}`,
+    },
+  ]}
+/>
+
+Each component's CSS file includes a header comment listing all its public variables. See [CSS Variables](?path=/docs/core-css-variables--docs) for the full reference.
+
+## Practical Examples
+
+### Brand Theming
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "CSS",
+      language: "css",
+      code: `/* Apply a blue brand theme */
+:root {
+  --VENOMOUSUI-color-theme: #2563eb;
+  --VENOMOUSUI-color-theme-hover: #1d4ed8;
+  --VENOMOUSUI-color-theme-active: #1e40af;
+  --VENOMOUSUI-color-theme-muted: rgb(37 99 235 / 0.15);
+}
+
+/* Pill-shaped buttons */
+.venomous-button {
+  --venomous-button-radius: 999px;
+}
+
+/* Softer cards */
+.venomous-card {
+  --venomous-card-radius: 16px;
+  --venomous-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}`,
+    },
+  ]}
+/>
+
+### Scoped Customization
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "CSS",
+      language: "css",
+      code: `/* Only affect components inside a specific container */
+.sidebar .venomous-button {
+  --venomous-button-radius: 4px;
+}
+
+.hero-section .venomous-card {
+  --venomous-card-radius: 24px;
+  --venomous-card-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}`,
+    },
+  ]}
+/>
+
+### Writing Fully Custom Styles
+
+If the variable system doesn't cover your needs, you can always write custom CSS targeting the component class names:
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "CSS",
+      language: "css",
+      code: `/* Gradient button */
+.venomous-button.my-gradient-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.venomous-button.my-gradient-btn:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}`,
+    },
+  ]}
+/>
+
+See the [Component Design](?path=/docs/component-design--docs) page for more information about how CSS class names are structured.

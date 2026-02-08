@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "../dist",
+    "rootDir": "../src",
+    "jsx": "react-jsx"
+  },
+  "include": ["../src/react", "../src/core"],
+  "exclude": ["../node_modules", "../dist", "../src/**/*.stories.tsx", "../src/**/*.test.tsx", "../src/**/*.test.ts"],
+  "tsc-alias": {
+    "replacers": {
+      "base-url": {
+        "enabled": false
+      }
+    }
+  }
+}

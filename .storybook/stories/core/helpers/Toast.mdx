@@ -1,0 +1,169 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTabCodeBlock, StoryDocsTable } from "../../../components";
+
+<Meta title="Core/Helpers/toast" />
+
+# toast
+
+Imperative API for creating toast notifications. Works with both React and Vue — just mount a `<Toaster />` component once and call `toast()` from anywhere.
+
+## Setup
+
+<StoryDocsTabCodeBlock
+  tabs={[
+    {
+      label: "React",
+      language: "tsx",
+      code: `import "venomous-ui/core/styles/components/toast.css";
+import { toast } from "venomous-ui/core/helpers";
+import { Toaster } from "venomous-ui/react";
+
+// 1. Place Toaster once in your app root
+export default function App() {
+  return (
+    <div>
+      <MyApp />
+      <Toaster />
+    </div>
+  );
+}
+
+// 2. Call toast() from anywhere
+toast.success("File saved!");`,
+    },
+    {
+      label: "Vue",
+      language: "html",
+      code: `<script setup lang="ts">
+import "venomous-ui/core/styles/components/toast.css";
+import { toast } from "venomous-ui/core/helpers";
+import { Toaster } from "venomous-ui/vue";
+
+// Call toast() from anywhere
+function handleSave() {
+  toast.success("File saved!");
+}
+</script>
+
+<template>
+  <button @click="handleSave">Save</button>
+  <!-- Place Toaster once in your app root -->
+  <Toaster />
+</template>`,
+    },
+  ]}
+/>
+
+## Methods
+
+<StoryDocsTable
+  headers={["Method", "Signature", "Description"]}
+  rows={[
+    ["`toast()`", "`(title, options?) => string`", "Create a toast (default info type). Returns toast ID."],
+    ["`toast.success()`", "`(title, options?) => string`", "Create a success toast"],
+    ["`toast.error()`", "`(title, options?) => string`", "Create an error toast"],
+    ["`toast.warning()`", "`(title, options?) => string`", "Create a warning toast"],
+    ["`toast.info()`", "`(title, options?) => string`", "Create an info toast"],
+    ["`toast.dismiss()`", "`(id?) => void`", "Dismiss a toast by ID, or all toasts if no ID"],
+  ]}
+/>
+
+## Examples
+
+<Source
+  language="ts"
+  dark
+  code={`import { toast } from "venomous-ui/core/helpers";
+
+// Basic
+toast("Something happened");
+
+// With type
+toast.success("File saved successfully");
+toast.error("Failed to save file");
+toast.warning("Disk space running low");
+toast.info("New update available");
+
+// With description
+toast.success("File saved", {
+  description: "Your changes have been saved to disk.",
+});
+
+// Custom duration (ms), 0 to disable auto-close
+toast.error("Connection lost", {
+  duration: 0,
+  description: "Please check your network.",
+});
+
+// With callbacks
+toast.success("Uploaded", {
+  onClose: () => console.log("Toast closed"),
+  onAutoClose: () => console.log("Toast auto-closed"),
+});
+
+// Dismiss
+const id = toast("Processing...", { duration: 0 });
+// later...
+toast.dismiss(id);
+
+// Dismiss all
+toast.dismiss();`}
+/>
+
+## Custom Icons
+
+By default, toasts display Unicode text symbols (✓ ✕ ⚠ ℹ) as fallback icons. Pass the `icons` prop on `<Toaster>` to provide custom icons for each toast type and the close button.
+
+<Source
+  language="tsx"
+  dark
+  code={`// React
+<Toaster icons={{
+  success: <CheckIcon />,
+  error: <XCircleIcon />,
+  warning: <AlertIcon />,
+  info: <InfoIcon />,
+  close: <XIcon />,
+}} />
+
+// Vue — icons are functions returning VNodes
+<Toaster :icons="{
+  success: () => h(CheckIcon),
+  error: () => h(XCircleIcon),
+  close: () => h(XIcon),
+}" />`}
+/>
+
+## createToastStore
+
+Factory function that creates an isolated toast store instance. Each instance has its own toast list and `toast` API, so multiple `<Toaster />` components can operate independently.
+
+Useful for Storybook, micro-frontends, or anywhere you need isolated toast containers.
+
+<Source
+  language="ts"
+  dark
+  code={`import { createToastStore } from "venomous-ui/core/helpers";
+
+// Create an isolated instance
+const { store, toast } = createToastStore({ maxCount: 3 });
+
+// Pass store to Toaster
+<Toaster store={store} placement="top-end" />
+
+// Use the bound toast API — only appears in this Toaster
+toast.success("Saved!");`}
+/>
+
+<StoryDocsTable
+  headers={["Option", "Type", "Default", "Description"]}
+  rows={[["maxCount", "number", "5", "Maximum toasts shown simultaneously"]]}
+/>
+
+<StoryDocsTable
+  headers={["Return", "Type", "Description"]}
+  rows={[
+    ["store", "TToastStore", "The toast store instance to pass to Toaster"],
+    ["toast", "TToastFunction", "Imperative toast API bound to this store"],
+  ]}
+/>

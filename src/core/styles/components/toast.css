@@ -1,0 +1,260 @@
+/**
+ * Toast / Toaster Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-toast-radius: border radius (default: --VENOMOUSUI-radius-lg)
+ * --venomous-toast-bg: background color (default: --VENOMOUSUI-bg-primary)
+ * --venomous-toast-shadow: box shadow (default: --VENOMOUSUI-shadow-lg)
+ * --venomous-toast-width: toast width (default: 360px)
+ */
+
+/* ==================================================
+   Toaster Container
+   ================================================== */
+
+.venomous-toaster {
+  position: fixed;
+  z-index: var(--VENOMOUSUI-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--VENOMOUSUI-spacing-sm);
+  padding: var(--VENOMOUSUI-spacing-lg);
+  margin: 0;
+  pointer-events: none;
+  list-style: none;
+}
+
+/* Placement variants */
+.venomous-toaster--top {
+  top: 0;
+  right: 0;
+  left: 0;
+  align-items: center;
+}
+
+.venomous-toaster--top-start {
+  top: 0;
+  left: 0;
+  align-items: flex-start;
+}
+
+.venomous-toaster--top-end {
+  top: 0;
+  right: 0;
+  align-items: flex-end;
+}
+
+.venomous-toaster--bottom {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.venomous-toaster--bottom-start {
+  bottom: 0;
+  left: 0;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+
+.venomous-toaster--bottom-end {
+  right: 0;
+  bottom: 0;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+/* ==================================================
+   Toast Item
+   ================================================== */
+
+.venomous-toast {
+  /* Customizable component variables */
+  --venomous-toast-radius: var(--VENOMOUSUI-radius-lg);
+  --venomous-toast-bg: var(--VENOMOUSUI-bg-primary);
+  --venomous-toast-shadow: var(--VENOMOUSUI-shadow-lg);
+  --venomous-toast-width: 360px;
+
+  display: flex;
+  gap: var(--VENOMOUSUI-spacing-sm);
+  align-items: flex-start;
+  width: var(--venomous-toast-width);
+  max-width: calc(100vw - var(--VENOMOUSUI-spacing-lg) * 2);
+  padding: var(--VENOMOUSUI-spacing-md) var(--VENOMOUSUI-spacing-lg);
+  pointer-events: auto;
+  outline: 1px solid var(--VENOMOUSUI-border-color);
+  outline-offset: -1px;
+  background-color: var(--venomous-toast-bg);
+  border-radius: var(--venomous-toast-radius);
+  box-shadow: var(--venomous-toast-shadow);
+}
+
+/* ==================================================
+   Type Variants — left border indicator
+   ================================================== */
+
+.venomous-toast--success {
+  border-left: 3px solid var(--VENOMOUSUI-color-success);
+}
+
+.venomous-toast--error {
+  border-left: 3px solid var(--VENOMOUSUI-color-error);
+}
+
+.venomous-toast--warning {
+  border-left: 3px solid var(--VENOMOUSUI-color-warning);
+}
+
+.venomous-toast--info {
+  border-left: 3px solid var(--VENOMOUSUI-color-info);
+}
+
+/* ==================================================
+   Internal Structure
+   ================================================== */
+
+.venomous-toast__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.venomous-toast__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.venomous-toast__title {
+  margin: 0;
+  font-size: var(--VENOMOUSUI-font-size-sm);
+  font-weight: var(--VENOMOUSUI-font-weight-medium);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+.venomous-toast__description {
+  margin: var(--VENOMOUSUI-spacing-xs) 0 0;
+  font-size: var(--VENOMOUSUI-font-size-sm);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  color: var(--VENOMOUSUI-text-secondary);
+}
+
+/* ==================================================
+   Icon Colors
+   ================================================== */
+
+.venomous-toast--success .venomous-toast__icon {
+  color: var(--VENOMOUSUI-color-success);
+}
+
+.venomous-toast--error .venomous-toast__icon {
+  color: var(--VENOMOUSUI-color-error);
+}
+
+.venomous-toast--warning .venomous-toast__icon {
+  color: var(--VENOMOUSUI-color-warning);
+}
+
+.venomous-toast--info .venomous-toast__icon {
+  color: var(--VENOMOUSUI-color-info);
+}
+
+/* ==================================================
+   Close Button
+   ================================================== */
+
+.venomous-toast__close {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: var(--VENOMOUSUI-text-secondary);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--VENOMOUSUI-radius-sm);
+  transition:
+    background-color var(--VENOMOUSUI-duration-fast),
+    color var(--VENOMOUSUI-duration-fast);
+}
+
+.venomous-toast__close:hover {
+  color: var(--VENOMOUSUI-text-primary);
+  background-color: var(--VENOMOUSUI-bg-secondary);
+}
+
+.venomous-toast__close:focus-visible {
+  outline: 2px solid var(--VENOMOUSUI-color-theme);
+  outline-offset: 2px;
+}
+
+/* ==================================================
+   Animations — Enter
+   ================================================== */
+
+.venomous-toaster--top .venomous-toast,
+.venomous-toaster--top-start .venomous-toast,
+.venomous-toaster--top-end .venomous-toast {
+  animation: venomous-toast-in-top var(--VENOMOUSUI-duration-normal) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-toaster--bottom .venomous-toast,
+.venomous-toaster--bottom-start .venomous-toast,
+.venomous-toaster--bottom-end .venomous-toast {
+  animation: venomous-toast-in-bottom var(--VENOMOUSUI-duration-normal) var(--VENOMOUSUI-easing-default);
+}
+
+/* ==================================================
+   Animations — Exit
+   ================================================== */
+
+.venomous-toast.venomous-toast--closing {
+  animation: venomous-toast-out var(--VENOMOUSUI-duration-normal) var(--VENOMOUSUI-easing-default) forwards;
+}
+
+/* ==================================================
+   Keyframes
+   ================================================== */
+
+@keyframes venomous-toast-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes venomous-toast-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes venomous-toast-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}

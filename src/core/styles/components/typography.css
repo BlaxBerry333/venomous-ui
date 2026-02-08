@@ -1,0 +1,224 @@
+/**
+ * Typography Utility Classes
+ * Venomous UI
+ *
+ * Pure CSS utility classes for typography styling.
+ * Use these classes directly on native HTML elements.
+ */
+
+/*
+==================================================
+Title Classes
+==================================================
+*/
+.venomous-title {
+  margin: 0;
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-weight: var(--VENOMOUSUI-font-weight-bold);
+  line-height: var(--VENOMOUSUI-line-height-tight);
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+.venomous-title--1 {
+  font-size: var(--VENOMOUSUI-font-size-3xl);
+  letter-spacing: var(--VENOMOUSUI-letter-spacing-tight);
+}
+
+.venomous-title--2 {
+  font-size: var(--VENOMOUSUI-font-size-2xl);
+  letter-spacing: var(--VENOMOUSUI-letter-spacing-tight);
+}
+
+.venomous-title--3 {
+  font-size: var(--VENOMOUSUI-font-size-xl);
+}
+
+.venomous-title--4 {
+  font-size: var(--VENOMOUSUI-font-size-lg);
+}
+
+.venomous-title--5 {
+  font-size: var(--VENOMOUSUI-font-size-md);
+}
+
+.venomous-title--6 {
+  font-size: var(--VENOMOUSUI-font-size-sm);
+}
+
+/*
+==================================================
+Text Classes
+==================================================
+*/
+.venomous-text {
+  margin: 0;
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-weight: var(--VENOMOUSUI-font-weight-normal);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+.venomous-text--xs {
+  font-size: var(--VENOMOUSUI-font-size-xs);
+}
+
+.venomous-text--sm {
+  font-size: var(--VENOMOUSUI-font-size-sm);
+}
+
+.venomous-text--md {
+  font-size: var(--VENOMOUSUI-font-size-md);
+}
+
+.venomous-text--lg {
+  font-size: var(--VENOMOUSUI-font-size-lg);
+}
+
+/*
+==================================================
+Monospace Text
+==================================================
+*/
+.venomous-text--mono {
+  font-family: var(--VENOMOUSUI-font-family-mono);
+}
+
+/*
+==================================================
+Text Colors
+==================================================
+*/
+.venomous-text--primary {
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+.venomous-text--secondary {
+  color: var(--VENOMOUSUI-text-secondary);
+}
+
+.venomous-text--tertiary {
+  color: var(--VENOMOUSUI-text-tertiary);
+}
+
+.venomous-text--theme {
+  color: var(--VENOMOUSUI-color-theme);
+}
+
+.venomous-text--success {
+  color: var(--VENOMOUSUI-color-success);
+}
+
+.venomous-text--warning {
+  color: var(--VENOMOUSUI-color-warning);
+}
+
+.venomous-text--error {
+  color: var(--VENOMOUSUI-color-error);
+}
+
+.venomous-text--info {
+  color: var(--VENOMOUSUI-color-info);
+}
+
+/*
+==================================================
+Font Weights
+==================================================
+*/
+.venomous-font--normal {
+  font-weight: var(--VENOMOUSUI-font-weight-normal);
+}
+
+.venomous-font--medium {
+  font-weight: var(--VENOMOUSUI-font-weight-medium);
+}
+
+.venomous-font--semibold {
+  font-weight: var(--VENOMOUSUI-font-weight-semibold);
+}
+
+.venomous-font--bold {
+  font-weight: var(--VENOMOUSUI-font-weight-bold);
+}
+
+/*
+==================================================
+Text Alignment
+==================================================
+*/
+.venomous-text--left {
+  text-align: left;
+}
+
+.venomous-text--center {
+  text-align: center;
+}
+
+.venomous-text--right {
+  text-align: right;
+}
+
+.venomous-text--justify {
+  text-align: justify;
+}
+
+/*
+==================================================
+Single Line Ellipsis
+==================================================
+*/
+.venomous-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+==================================================
+Multi-line Ellipsis (Line Clamp)
+
+Usage:
+  class="venomous-line-clamp" style="--line-clamp: 3"
+  or use preset classes like venomous-line-clamp--2
+==================================================
+*/
+.venomous-line-clamp {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--line-clamp, 2);
+  line-clamp: var(--line-clamp, 2);
+}
+
+.venomous-line-clamp--2 {
+  --line-clamp: 2;
+}
+
+.venomous-line-clamp--3 {
+  --line-clamp: 3;
+}
+
+.venomous-line-clamp--4 {
+  --line-clamp: 4;
+}
+
+.venomous-line-clamp--5 {
+  --line-clamp: 5;
+}
+
+/*
+==================================================
+Line Height Utilities
+==================================================
+*/
+.venomous-leading--tight {
+  line-height: var(--VENOMOUSUI-line-height-tight);
+}
+
+.venomous-leading--normal {
+  line-height: var(--VENOMOUSUI-line-height-normal);
+}
+
+.venomous-leading--relaxed {
+  line-height: var(--VENOMOUSUI-line-height-relaxed);
+}
