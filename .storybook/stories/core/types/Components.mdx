@@ -1,0 +1,224 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTable } from "../../../components";
+
+<Meta title="Core/Types/Components" />
+
+# Component Types
+
+Base props types shared between React and Vue component implementations. These types define the common interface for each component.
+
+All types use the `T` prefix for easy identification in code.
+
+## TButtonBaseProps
+
+Base props shared between React and Vue Button components.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TButtonBaseProps } from "venomous-ui/core";
+
+interface TButtonBaseProps {
+/** Button size \*/
+size?: TSize;
+/** Button variant _/
+variant?: TVariant;
+/\*\* Color scheme _/
+colorScheme?: TColorScheme;
+/** Whether the button is disabled \*/
+disabled?: boolean;
+/** Whether the button takes full width _/
+fullWidth?: boolean;
+/\*\* Additional CSS class names _/
+className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["size", "TSize", '"md"', "Button size"],
+    ["variant", "TVariant", '"solid"', "Visual style variant"],
+    ["colorScheme", "TColorScheme", '"theme"', "Color scheme"],
+    ["disabled", "boolean", "false", "Disables the button"],
+    ["fullWidth", "boolean", "false", "Makes button full width"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TCardBaseProps
+
+Base props for Card component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TCardBaseProps, TCardVariant } from "venomous-ui/core";
+
+type TCardVariant = "elevated" | "outline" | "filled";
+
+interface TCardBaseProps {
+/** Card variant style \*/
+variant?: TCardVariant;
+/** Enable hover effect for clickable cards _/
+clickable?: boolean;
+/\*\* Additional CSS class names _/
+className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["variant", "TCardVariant", '"elevated"', "Card visual style"],
+    ["clickable", "boolean", "false", "Enable hover effect"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TModalBaseProps
+
+Base props for Modal component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TModalBaseProps, TModalSize } from "venomous-ui/core";
+
+type TModalSize = "sm" | "md" | "lg" | "xl" | "full";
+
+interface TModalBaseProps {
+/** Whether the modal is open \*/
+open: boolean;
+/** Modal size _/
+size?: TModalSize;
+/\*\* Close modal when clicking the backdrop _/
+closeOnBackdrop?: boolean;
+/** Close modal when pressing ESC key \*/
+closeOnEsc?: boolean;
+/** Additional CSS class names \*/
+className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["open", "boolean", "-", "Whether the modal is open (required)"],
+    ["size", "TModalSize", '"md"', "Modal size"],
+    ["closeOnBackdrop", "boolean", "true", "Close on backdrop click"],
+    ["closeOnEsc", "boolean", "true", "Close on ESC key"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TPortalBaseProps
+
+Base props for Portal component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TPortalBaseProps } from "venomous-ui/core";
+
+interface TPortalBaseProps {
+/\*_ Disable portal and render inline _/
+disabled?: boolean;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[["disabled", "boolean", "false", "Disable portal rendering"]]}
+/>
+
+## TTabsBaseProps
+
+Base props for Tabs root component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TTabsBaseProps, TTabsVariant, TOrientation, TTabsUnmountStrategy } from "venomous-ui/core";
+
+type TOrientation = "horizontal" | "vertical";
+type TTabsVariant = "line" | "pill";
+type TTabsUnmountStrategy = "keepMounted" | "unmountOnHide";
+
+interface TTabsBaseProps {
+/** Default active tab value (uncontrolled mode) \*/
+defaultValue?: string;
+/** Current active tab value (controlled mode) \*/
+value?: string;
+/** Tabs orientation \*/
+orientation?: TOrientation;
+/** Visual variant \*/
+variant?: TTabsVariant;
+/\*\* Panel unmount strategy \*/
+unmountStrategy?: TTabsUnmountStrategy;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["defaultValue", "string", "-", "Default active tab (uncontrolled)"],
+    ["value", "string", "-", "Current active tab (controlled)"],
+    ["orientation", "TOrientation", '"horizontal"', "Tabs orientation"],
+    ["variant", "TTabsVariant", '"line"', "Visual style variant"],
+    ["unmountStrategy", "TTabsUnmountStrategy", '"keepMounted"', "Panel unmount strategy"],
+  ]}
+/>
+
+## TTabsTabBaseProps
+
+Base props for Tabs.Tab component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TTabsTabBaseProps } from "venomous-ui/core";
+
+interface TTabsTabBaseProps {
+/** Unique value to identify this tab \*/
+value: string;
+/** Whether the tab is disabled \*/
+disabled?: boolean;
+/\*\* Additional CSS class names \*/
+className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["value", "string", "-", "Unique tab identifier (required)"],
+    ["disabled", "boolean", "false", "Disables the tab"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>
+
+## TTabsPanelBaseProps
+
+Base props for Tabs.Panel component.
+
+<Source
+  language="ts"
+  dark
+  code={`import type { TTabsPanelBaseProps } from "venomous-ui/core";
+
+interface TTabsPanelBaseProps {
+/** Value of the corresponding tab \*/
+value: string;
+/** Additional CSS class names \*/
+className?: string;
+}`}
+/>
+
+<StoryDocsTable
+  headers={["Prop", "Type", "Default", "Description"]}
+  rows={[
+    ["value", "string", "-", "Corresponding tab value (required)"],
+    ["className", "string", "-", "Additional CSS classes"],
+  ]}
+/>

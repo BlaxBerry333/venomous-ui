@@ -1,0 +1,102 @@
+/**
+ * Spacing Utility Classes
+ * Venomous UI
+ *
+ * CSS utility classes for gap spacing.
+ * Uses design system spacing tokens.
+ */
+
+/*
+==================================================
+Gap (Works for both Flex and Grid)
+==================================================
+*/
+.venomous-gap-0 {
+  gap: 0;
+}
+
+.venomous-gap-xs {
+  gap: var(--VENOMOUSUI-spacing-xs);
+}
+
+.venomous-gap-sm {
+  gap: var(--VENOMOUSUI-spacing-sm);
+}
+
+.venomous-gap-md {
+  gap: var(--VENOMOUSUI-spacing-md);
+}
+
+.venomous-gap-lg {
+  gap: var(--VENOMOUSUI-spacing-lg);
+}
+
+.venomous-gap-xl {
+  gap: var(--VENOMOUSUI-spacing-xl);
+}
+
+.venomous-gap-2xl {
+  gap: var(--VENOMOUSUI-spacing-2xl);
+}
+
+.venomous-gap-3xl {
+  gap: var(--VENOMOUSUI-spacing-3xl);
+}
+
+/*
+==================================================
+Gap X (Column Gap)
+==================================================
+*/
+.venomous-gap-x-0 {
+  column-gap: 0;
+}
+
+.venomous-gap-x-xs {
+  column-gap: var(--VENOMOUSUI-spacing-xs);
+}
+
+.venomous-gap-x-sm {
+  column-gap: var(--VENOMOUSUI-spacing-sm);
+}
+
+.venomous-gap-x-md {
+  column-gap: var(--VENOMOUSUI-spacing-md);
+}
+
+.venomous-gap-x-lg {
+  column-gap: var(--VENOMOUSUI-spacing-lg);
+}
+
+.venomous-gap-x-xl {
+  column-gap: var(--VENOMOUSUI-spacing-xl);
+}
+
+/*
+==================================================
+Gap Y (Row Gap)
+==================================================
+*/
+.venomous-gap-y-0 {
+  row-gap: 0;
+}
+
+.venomous-gap-y-xs {
+  row-gap: var(--VENOMOUSUI-spacing-xs);
+}
+
+.venomous-gap-y-sm {
+  row-gap: var(--VENOMOUSUI-spacing-sm);
+}
+
+.venomous-gap-y-md {
+  row-gap: var(--VENOMOUSUI-spacing-md);
+}
+
+.venomous-gap-y-lg {
+  row-gap: var(--VENOMOUSUI-spacing-lg);
+}
+
+.venomous-gap-y-xl {
+  row-gap: var(--VENOMOUSUI-spacing-xl);
+}

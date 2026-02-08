@@ -1,0 +1,21 @@
+# ====================================================================================================
+# Ignore
+# ====================================================================================================
+*.html linguist-vendored=true
+*.css linguist-vendored=true
+*.less linguist-vendored=true
+*.sass linguist-vendored=true
+*.scss linguist-vendored=true
+*.mjs linguist-vendored=true
+*.cjs linguist-detectable=false
+
+
+# ====================================================================================================
+# Ensure
+# ====================================================================================================
+*.mdx linguist-detectable=true
+**/*.mdx linguist-detectable=true
+*.sh linguist-language=Shell linguist-detectable=true
+**/*.sh linguist-language=Shell linguist-detectable=true
+*.vue linguist-detectable=true
+**/*.vue linguist-detectable=true

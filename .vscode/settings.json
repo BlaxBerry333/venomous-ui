@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "[javascript][typescript][javascriptreact][typescriptreact][json][css][less][scss][html][markdown][mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "material-icon-theme.folders.associations": { },
+  "material-icon-theme.files.associations": {
+    "vite.config.core.ts": "vite",
+    "vite.config.react.ts": "vite",
+    "vite.config.vue.ts": "vite",
+    "tsconfig.core.json": "tsconfig",
+    "tsconfig.react.json": "tsconfig",
+    "tsconfig.vue.json": "tsconfig"
+  }
+}

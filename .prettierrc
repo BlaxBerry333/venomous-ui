@@ -1,0 +1,6 @@
+{
+  "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-organize-attributes"],
+
+  "printWidth": 120,
+  "singleQuote": false
+}

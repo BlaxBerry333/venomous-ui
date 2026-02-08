@@ -1,0 +1,51 @@
+/**
+ * CSS Reset + Theme Colors
+ * Venomous UI
+ *
+ * A minimal, non-intrusive reset that includes dark/light mode color switching.
+ * Import this once at the root of your application.
+ *
+ * This reset is intentionally minimal to avoid conflicts with existing styles.
+ * Only box-sizing and theme colors are applied globally.
+ */
+
+@import "./variables/index.css";
+
+/*
+==================================================
+Box Sizing (Safe - widely accepted best practice)
+==================================================
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+==================================================
+Root Theme Colors
+Apply to :root so CSS variables are available globally.
+Body colors enable automatic dark/light switching.
+==================================================
+*/
+body {
+  color: var(--VENOMOUSUI-text-primary);
+  background-color: var(--VENOMOUSUI-bg-primary);
+}
+
+/*
+==================================================
+Reduced Motion (Accessibility - safe to include)
+==================================================
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

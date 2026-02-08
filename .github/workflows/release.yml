@@ -1,0 +1,80 @@
+name: Build and Deploy to Release Branch
+
+on:
+  # Trigger on push to main branch
+  push:
+    branches:
+      - main
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all frameworks
+        run: |
+          npm run clean:dist
+          npm run build:react
+          npm run build:vue
+
+      - name: Get version from package.json
+        id: pkg
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Create release package.json
+        run: |
+          node -e "
+            const fs = require('fs');
+            const pkg = require('./package.json');
+            const releasePkg = {
+              name: pkg.name,
+              version: pkg.version,
+              description: pkg.description,
+              author: pkg.author,
+              license: pkg.license,
+              type: pkg.type,
+              sideEffects: pkg.sideEffects,
+              exports: pkg.exports,
+              dependencies: pkg.dependencies,
+              peerDependencies: pkg.peerDependencies,
+              peerDependenciesMeta: pkg.peerDependenciesMeta
+            };
+            fs.writeFileSync('release-package.json', JSON.stringify(releasePkg, null, 2));
+          "
+
+      - name: Prepare release directory
+        run: |
+          mkdir -p release-build
+          cp -r dist release-build/
+          cp release-package.json release-build/package.json
+          [ -f README.md ] && cp README.md release-build/ || true
+          [ -f LICENSE ] && cp LICENSE release-build/ || true
+
+      - name: Deploy to release branch
+        run: |
+          cd release-build
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "release: v${{ steps.pkg.outputs.version }}"
+          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:release

@@ -1,0 +1,365 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTable } from "../../../components";
+import { CSS_CLASSES } from "../../../../src/core/constants";
+
+<Meta title="Core/CSS/Classes" />
+
+# CSS Classes
+
+Venomous UI provides `CSS_CLASSES` constant object for type-safe CSS class name usage.
+
+<StoryDocsTable
+  headers={["Constant", "Purpose", "Example Value"]}
+  rows={[["`CSS_CLASSES`", "HTML class names for components", `\`"${CSS_CLASSES.button.root}"\``]]}
+/>
+
+## Naming Convention
+
+All CSS classes follow a predictable BEM-like pattern:
+
+<Source
+  language="css"
+  dark
+  code={`/* Block */
+.venomous-button { }
+
+/_ Modifier - variant _/
+.venomous-button--solid { }
+.venomous-button--outline { }
+
+/_ Modifier - size _/
+.venomous-button--sm { }
+.venomous-button--lg { }
+
+/_ Modifier - state _/
+.venomous-button--disabled { }
+
+/_ Element (for compound components) _/
+.venomous-card**header { }
+.venomous-card**body { }`}
+/>
+
+This makes it easy to:
+
+- Find styles in DevTools
+- Write targeted overrides
+- Understand component structure at a glance
+
+## Usage
+
+<Source
+  language="ts"
+  dark
+  code={`import { CSS_CLASSES } from "venomous-ui/core";
+
+// Access button classes
+const buttonClass = CSS_CLASSES.button.root; // "${CSS_CLASSES.button.root}"
+const smallButton = CSS_CLASSES.button.sizes.sm; // "${CSS_CLASSES.button.sizes.sm}"`}
+/>
+
+## Button Classes
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["button.root", CSS_CLASSES.button.root, "`CSS_CLASSES.button.root`"],
+    ["button.sizes.sm", CSS_CLASSES.button.sizes.sm, "`CSS_CLASSES.button.sizes.sm`"],
+    ["button.sizes.md", CSS_CLASSES.button.sizes.md, "`CSS_CLASSES.button.sizes.md`"],
+    ["button.sizes.lg", CSS_CLASSES.button.sizes.lg, "`CSS_CLASSES.button.sizes.lg`"],
+    ["button.variants.solid", CSS_CLASSES.button.variants.solid, "`CSS_CLASSES.button.variants.solid`"],
+    ["button.variants.outline", CSS_CLASSES.button.variants.outline, "`CSS_CLASSES.button.variants.outline`"],
+    ["button.variants.ghost", CSS_CLASSES.button.variants.ghost, "`CSS_CLASSES.button.variants.ghost`"],
+    ["button.variants.link", CSS_CLASSES.button.variants.link, "`CSS_CLASSES.button.variants.link`"],
+    ["button.colors.theme", CSS_CLASSES.button.colors.theme, "`CSS_CLASSES.button.colors.theme`"],
+    ["button.colors.success", CSS_CLASSES.button.colors.success, "`CSS_CLASSES.button.colors.success`"],
+    ["button.colors.warning", CSS_CLASSES.button.colors.warning, "`CSS_CLASSES.button.colors.warning`"],
+    ["button.colors.error", CSS_CLASSES.button.colors.error, "`CSS_CLASSES.button.colors.error`"],
+    ["button.colors.info", CSS_CLASSES.button.colors.info, "`CSS_CLASSES.button.colors.info`"],
+    ["button.states.disabled", CSS_CLASSES.button.states.disabled, "`CSS_CLASSES.button.states.disabled`"],
+    ["button.states.loading", CSS_CLASSES.button.states.loading, "`CSS_CLASSES.button.states.loading`"],
+    ["button.states.fullWidth", CSS_CLASSES.button.states.fullWidth, "`CSS_CLASSES.button.states.fullWidth`"],
+  ]}
+/>
+
+## Card Classes
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["card.root", CSS_CLASSES.card.root, "`CSS_CLASSES.card.root`"],
+    ["card.variants.elevated", CSS_CLASSES.card.variants.elevated, "`CSS_CLASSES.card.variants.elevated`"],
+    ["card.variants.outline", CSS_CLASSES.card.variants.outline, "`CSS_CLASSES.card.variants.outline`"],
+    ["card.variants.filled", CSS_CLASSES.card.variants.filled, "`CSS_CLASSES.card.variants.filled`"],
+    ["card.states.clickable", CSS_CLASSES.card.states.clickable, "`CSS_CLASSES.card.states.clickable`"],
+  ]}
+/>
+
+## Modal Classes
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["modal.backdrop", CSS_CLASSES.modal.backdrop, "`CSS_CLASSES.modal.backdrop`"],
+    ["modal.backdropClosing", CSS_CLASSES.modal.backdropClosing, "`CSS_CLASSES.modal.backdropClosing`"],
+    ["modal.root", CSS_CLASSES.modal.root, "`CSS_CLASSES.modal.root`"],
+    ["modal.closing", CSS_CLASSES.modal.closing, "`CSS_CLASSES.modal.closing`"],
+    ["modal.header", CSS_CLASSES.modal.header, "`CSS_CLASSES.modal.header`"],
+    ["modal.title", CSS_CLASSES.modal.title, "`CSS_CLASSES.modal.title`"],
+    ["modal.body", CSS_CLASSES.modal.body, "`CSS_CLASSES.modal.body`"],
+    ["modal.footer", CSS_CLASSES.modal.footer, "`CSS_CLASSES.modal.footer`"],
+    ["modal.close", CSS_CLASSES.modal.close, "`CSS_CLASSES.modal.close`"],
+    ["modal.sizes.sm", CSS_CLASSES.modal.sizes.sm, "`CSS_CLASSES.modal.sizes.sm`"],
+    ["modal.sizes.md", CSS_CLASSES.modal.sizes.md, "`CSS_CLASSES.modal.sizes.md`"],
+    ["modal.sizes.lg", CSS_CLASSES.modal.sizes.lg, "`CSS_CLASSES.modal.sizes.lg`"],
+    ["modal.sizes.xl", CSS_CLASSES.modal.sizes.xl, "`CSS_CLASSES.modal.sizes.xl`"],
+    ["modal.sizes.full", CSS_CLASSES.modal.sizes.full, "`CSS_CLASSES.modal.sizes.full`"],
+  ]}
+/>
+
+## Tabs Classes
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["tabs.root", CSS_CLASSES.tabs.root, "`CSS_CLASSES.tabs.root`"],
+    [
+      "tabs.orientations.horizontal",
+      CSS_CLASSES.tabs.orientations.horizontal,
+      "`CSS_CLASSES.tabs.orientations.horizontal`",
+    ],
+    ["tabs.orientations.vertical", CSS_CLASSES.tabs.orientations.vertical, "`CSS_CLASSES.tabs.orientations.vertical`"],
+    ["tabs.variants.line", CSS_CLASSES.tabs.variants.line, "`CSS_CLASSES.tabs.variants.line`"],
+    ["tabs.variants.pill", CSS_CLASSES.tabs.variants.pill, "`CSS_CLASSES.tabs.variants.pill`"],
+    ["tabs.list", CSS_CLASSES.tabs.list, "`CSS_CLASSES.tabs.list`"],
+    ["tabs.tab", CSS_CLASSES.tabs.tab, "`CSS_CLASSES.tabs.tab`"],
+    ["tabs.tabStates.active", CSS_CLASSES.tabs.tabStates.active, "`CSS_CLASSES.tabs.tabStates.active`"],
+    ["tabs.tabStates.disabled", CSS_CLASSES.tabs.tabStates.disabled, "`CSS_CLASSES.tabs.tabStates.disabled`"],
+    ["tabs.panel", CSS_CLASSES.tabs.panel, "`CSS_CLASSES.tabs.panel`"],
+  ]}
+/>
+
+## Typography Utility Classes
+
+Typography utilities are pure CSS classes for styling text without components.
+
+### Title Classes
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["typography.title", CSS_CLASSES.typography.title, "`CSS_CLASSES.typography.title`"],
+    ["typography.titleSizes[1]", CSS_CLASSES.typography.titleSizes[1], "`CSS_CLASSES.typography.titleSizes[1]`"],
+    ["typography.titleSizes[2]", CSS_CLASSES.typography.titleSizes[2], "`CSS_CLASSES.typography.titleSizes[2]`"],
+    ["typography.titleSizes[3]", CSS_CLASSES.typography.titleSizes[3], "`CSS_CLASSES.typography.titleSizes[3]`"],
+    ["typography.titleSizes[4]", CSS_CLASSES.typography.titleSizes[4], "`CSS_CLASSES.typography.titleSizes[4]`"],
+    ["typography.titleSizes[5]", CSS_CLASSES.typography.titleSizes[5], "`CSS_CLASSES.typography.titleSizes[5]`"],
+    ["typography.titleSizes[6]", CSS_CLASSES.typography.titleSizes[6], "`CSS_CLASSES.typography.titleSizes[6]`"],
+  ]}
+/>
+
+### Text Classes
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["typography.text", CSS_CLASSES.typography.text, "`CSS_CLASSES.typography.text`"],
+    ["typography.textSizes.xs", CSS_CLASSES.typography.textSizes.xs, "`CSS_CLASSES.typography.textSizes.xs`"],
+    ["typography.textSizes.sm", CSS_CLASSES.typography.textSizes.sm, "`CSS_CLASSES.typography.textSizes.sm`"],
+    ["typography.textSizes.md", CSS_CLASSES.typography.textSizes.md, "`CSS_CLASSES.typography.textSizes.md`"],
+    ["typography.textSizes.lg", CSS_CLASSES.typography.textSizes.lg, "`CSS_CLASSES.typography.textSizes.lg`"],
+    ["typography.mono", CSS_CLASSES.typography.mono, "`CSS_CLASSES.typography.mono`"],
+  ]}
+/>
+
+### Text Colors
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    [
+      "typography.textColors.primary",
+      CSS_CLASSES.typography.textColors.primary,
+      "`CSS_CLASSES.typography.textColors.primary`",
+    ],
+    [
+      "typography.textColors.secondary",
+      CSS_CLASSES.typography.textColors.secondary,
+      "`CSS_CLASSES.typography.textColors.secondary`",
+    ],
+    [
+      "typography.textColors.tertiary",
+      CSS_CLASSES.typography.textColors.tertiary,
+      "`CSS_CLASSES.typography.textColors.tertiary`",
+    ],
+    [
+      "typography.textColors.theme",
+      CSS_CLASSES.typography.textColors.theme,
+      "`CSS_CLASSES.typography.textColors.theme`",
+    ],
+    [
+      "typography.textColors.success",
+      CSS_CLASSES.typography.textColors.success,
+      "`CSS_CLASSES.typography.textColors.success`",
+    ],
+    [
+      "typography.textColors.warning",
+      CSS_CLASSES.typography.textColors.warning,
+      "`CSS_CLASSES.typography.textColors.warning`",
+    ],
+    [
+      "typography.textColors.error",
+      CSS_CLASSES.typography.textColors.error,
+      "`CSS_CLASSES.typography.textColors.error`",
+    ],
+    ["typography.textColors.info", CSS_CLASSES.typography.textColors.info, "`CSS_CLASSES.typography.textColors.info`"],
+  ]}
+/>
+
+### Font Weights
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    [
+      "typography.fontWeights.normal",
+      CSS_CLASSES.typography.fontWeights.normal,
+      "`CSS_CLASSES.typography.fontWeights.normal`",
+    ],
+    [
+      "typography.fontWeights.medium",
+      CSS_CLASSES.typography.fontWeights.medium,
+      "`CSS_CLASSES.typography.fontWeights.medium`",
+    ],
+    [
+      "typography.fontWeights.semibold",
+      CSS_CLASSES.typography.fontWeights.semibold,
+      "`CSS_CLASSES.typography.fontWeights.semibold`",
+    ],
+    [
+      "typography.fontWeights.bold",
+      CSS_CLASSES.typography.fontWeights.bold,
+      "`CSS_CLASSES.typography.fontWeights.bold`",
+    ],
+  ]}
+/>
+
+### Text Alignment
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["typography.alignments.left", CSS_CLASSES.typography.alignments.left, "`CSS_CLASSES.typography.alignments.left`"],
+    [
+      "typography.alignments.center",
+      CSS_CLASSES.typography.alignments.center,
+      "`CSS_CLASSES.typography.alignments.center`",
+    ],
+    [
+      "typography.alignments.right",
+      CSS_CLASSES.typography.alignments.right,
+      "`CSS_CLASSES.typography.alignments.right`",
+    ],
+    [
+      "typography.alignments.justify",
+      CSS_CLASSES.typography.alignments.justify,
+      "`CSS_CLASSES.typography.alignments.justify`",
+    ],
+  ]}
+/>
+
+### Text Truncation
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["typography.ellipsis", CSS_CLASSES.typography.ellipsis, "`CSS_CLASSES.typography.ellipsis`"],
+    ["typography.lineClamp", CSS_CLASSES.typography.lineClamp, "`CSS_CLASSES.typography.lineClamp`"],
+    [
+      "typography.lineClampPresets[2]",
+      CSS_CLASSES.typography.lineClampPresets[2],
+      "`CSS_CLASSES.typography.lineClampPresets[2]`",
+    ],
+    [
+      "typography.lineClampPresets[3]",
+      CSS_CLASSES.typography.lineClampPresets[3],
+      "`CSS_CLASSES.typography.lineClampPresets[3]`",
+    ],
+    [
+      "typography.lineClampPresets[4]",
+      CSS_CLASSES.typography.lineClampPresets[4],
+      "`CSS_CLASSES.typography.lineClampPresets[4]`",
+    ],
+    [
+      "typography.lineClampPresets[5]",
+      CSS_CLASSES.typography.lineClampPresets[5],
+      "`CSS_CLASSES.typography.lineClampPresets[5]`",
+    ],
+  ]}
+/>
+
+### Line Heights
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    [
+      "typography.lineHeights.tight",
+      CSS_CLASSES.typography.lineHeights.tight,
+      "`CSS_CLASSES.typography.lineHeights.tight`",
+    ],
+    [
+      "typography.lineHeights.normal",
+      CSS_CLASSES.typography.lineHeights.normal,
+      "`CSS_CLASSES.typography.lineHeights.normal`",
+    ],
+    [
+      "typography.lineHeights.relaxed",
+      CSS_CLASSES.typography.lineHeights.relaxed,
+      "`CSS_CLASSES.typography.lineHeights.relaxed`",
+    ],
+  ]}
+/>
+
+## Spacing Utility Classes
+
+Gap utilities for flexbox and grid layouts, using design system spacing tokens.
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["spacing.gap[0]", CSS_CLASSES.spacing.gap[0], "`CSS_CLASSES.spacing.gap[0]`"],
+    ["spacing.gap.xs", CSS_CLASSES.spacing.gap.xs, "`CSS_CLASSES.spacing.gap.xs`"],
+    ["spacing.gap.sm", CSS_CLASSES.spacing.gap.sm, "`CSS_CLASSES.spacing.gap.sm`"],
+    ["spacing.gap.md", CSS_CLASSES.spacing.gap.md, "`CSS_CLASSES.spacing.gap.md`"],
+    ["spacing.gap.lg", CSS_CLASSES.spacing.gap.lg, "`CSS_CLASSES.spacing.gap.lg`"],
+    ["spacing.gap.xl", CSS_CLASSES.spacing.gap.xl, "`CSS_CLASSES.spacing.gap.xl`"],
+    ["spacing.gap['2xl']", CSS_CLASSES.spacing.gap["2xl"], "`CSS_CLASSES.spacing.gap['2xl']`"],
+    ["spacing.gap['3xl']", CSS_CLASSES.spacing.gap["3xl"], "`CSS_CLASSES.spacing.gap['3xl']`"],
+  ]}
+/>
+
+### Column Gap (gap-x)
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["spacing.gapX.xs", CSS_CLASSES.spacing.gapX.xs, "`CSS_CLASSES.spacing.gapX.xs`"],
+    ["spacing.gapX.sm", CSS_CLASSES.spacing.gapX.sm, "`CSS_CLASSES.spacing.gapX.sm`"],
+    ["spacing.gapX.md", CSS_CLASSES.spacing.gapX.md, "`CSS_CLASSES.spacing.gapX.md`"],
+    ["spacing.gapX.lg", CSS_CLASSES.spacing.gapX.lg, "`CSS_CLASSES.spacing.gapX.lg`"],
+    ["spacing.gapX.xl", CSS_CLASSES.spacing.gapX.xl, "`CSS_CLASSES.spacing.gapX.xl`"],
+  ]}
+/>
+
+### Row Gap (gap-y)
+
+<StoryDocsTable
+  headers={["Property Path", "CSS Class", "Usage"]}
+  rows={[
+    ["spacing.gapY.xs", CSS_CLASSES.spacing.gapY.xs, "`CSS_CLASSES.spacing.gapY.xs`"],
+    ["spacing.gapY.sm", CSS_CLASSES.spacing.gapY.sm, "`CSS_CLASSES.spacing.gapY.sm`"],
+    ["spacing.gapY.md", CSS_CLASSES.spacing.gapY.md, "`CSS_CLASSES.spacing.gapY.md`"],
+    ["spacing.gapY.lg", CSS_CLASSES.spacing.gapY.lg, "`CSS_CLASSES.spacing.gapY.lg`"],
+    ["spacing.gapY.xl", CSS_CLASSES.spacing.gapY.xl, "`CSS_CLASSES.spacing.gapY.xl`"],
+  ]}
+/>

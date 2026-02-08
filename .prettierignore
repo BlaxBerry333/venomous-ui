@@ -1,0 +1,22 @@
+# Build outputs
+dist/
+
+# IDE
+.vscode/*
+
+# Test
+coverage/
+
+# Cache
+*.cache
+.eslintcache
+.prettiercache
+
+# Storybook
+storybook-static/
+.storybook/docs/**/*.mdx
+
+# AI
+CLAUDE.md
+.claude/
+_*.md
