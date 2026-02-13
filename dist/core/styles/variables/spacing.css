@@ -1,0 +1,33 @@
+/**
+ * Spacing Design Tokens
+ * Venomous UI
+ */
+
+:root {
+  /*
+  ==================================================
+  Spacing
+  ==================================================
+  */
+  --VENOMOUSUI-spacing-xs: 4px;
+  --VENOMOUSUI-spacing-sm: 8px;
+  --VENOMOUSUI-spacing-md: 12px;
+  --VENOMOUSUI-spacing-lg: 16px;
+  --VENOMOUSUI-spacing-xl: 24px;
+  --VENOMOUSUI-spacing-2xl: 32px;
+  --VENOMOUSUI-spacing-3xl: 48px;
+  --VENOMOUSUI-spacing-4xl: 64px;
+
+  /*
+  ==================================================
+  Border Radius
+  ==================================================
+  */
+  --VENOMOUSUI-radius-none: 0;
+  --VENOMOUSUI-radius-sm: 4px;
+  --VENOMOUSUI-radius-md: 6px;
+  --VENOMOUSUI-radius-lg: 8px;
+  --VENOMOUSUI-radius-xl: 12px;
+  --VENOMOUSUI-radius-2xl: 16px;
+  --VENOMOUSUI-radius-full: 9999px;
+}

@@ -1,0 +1,58 @@
+/**
+ * Effects Design Tokens (Shadows, Transitions, Z-Index)
+ * Venomous UI
+ */
+
+:root {
+  /*
+  ==================================================
+  Box Shadow
+  ==================================================
+  */
+  --VENOMOUSUI-shadow-none: none;
+  --VENOMOUSUI-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  --VENOMOUSUI-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  --VENOMOUSUI-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  --VENOMOUSUI-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 8px 10px -6px rgb(0 0 0 / 10%);
+
+  /*
+  ==================================================
+  Transition Duration
+  ==================================================
+  */
+  --VENOMOUSUI-duration-fast: 150ms;
+  --VENOMOUSUI-duration-normal: 200ms;
+  --VENOMOUSUI-duration-slow: 300ms;
+
+  /*
+  ==================================================
+  Transition Timing
+  ==================================================
+  */
+  --VENOMOUSUI-easing-default: ease;
+  --VENOMOUSUI-easing-in: ease-in;
+  --VENOMOUSUI-easing-out: ease-out;
+  --VENOMOUSUI-easing-in-out: ease-in-out;
+
+  /*
+  ==================================================
+  Z-Index
+  ==================================================
+  */
+  --VENOMOUSUI-z-hide: -1;
+  --VENOMOUSUI-z-base: 0;
+  --VENOMOUSUI-z-dropdown: 1000;
+  --VENOMOUSUI-z-sticky: 1100;
+  --VENOMOUSUI-z-modal: 1200;
+  --VENOMOUSUI-z-popover: 1300;
+  --VENOMOUSUI-z-tooltip: 1400;
+  --VENOMOUSUI-z-toast: 1500;
+
+  /*
+  ==================================================
+  Opacity
+  ==================================================
+  */
+  --VENOMOUSUI-opacity-disabled: 0.5;
+  --VENOMOUSUI-opacity-overlay: 0.5;
+}

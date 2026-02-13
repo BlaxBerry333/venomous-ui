@@ -1,0 +1,53 @@
+/**
+ * Card Component Styles
+ * Venomous UI
+ */
+
+.venomous-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--VENOMOUSUI-bg-primary);
+  border-radius: var(--VENOMOUSUI-radius-lg);
+}
+
+/*
+==================================================
+Variants
+==================================================
+*/
+.venomous-card--elevated {
+  box-shadow: var(--VENOMOUSUI-shadow-md);
+}
+
+.venomous-card--outline {
+  border: 1px solid var(--VENOMOUSUI-border-color);
+}
+
+.venomous-card--filled {
+  background-color: var(--VENOMOUSUI-bg-secondary);
+}
+
+/*
+==================================================
+Clickable State
+==================================================
+*/
+.venomous-card--clickable {
+  cursor: pointer;
+  transition:
+    box-shadow var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default),
+    transform var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-card--clickable:hover {
+  box-shadow: var(--VENOMOUSUI-shadow-lg);
+}
+
+.venomous-card--clickable:active {
+  transform: scale(0.98);
+}
+
+.venomous-card--clickable:focus-visible {
+  outline: 2px solid var(--VENOMOUSUI-color-theme);
+  outline-offset: 2px;
+}

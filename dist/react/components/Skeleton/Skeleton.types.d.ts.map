@@ -1,0 +1,1 @@
+{"version":3,"file":"Skeleton.types.d.ts","sourceRoot":"","sources":["../../../../src/react/components/Skeleton/Skeleton.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,kBAAkB,EAAE,MAAM,cAAc,CAAC;AACvD,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,OAAO,CAAC;AAE5C,MAAM,WAAW,cACf,SAAQ,kBAAkB,EAAE,IAAI,CAAC,cAAc,CAAC,eAAe,CAAC,EAAE,MAAM,kBAAkB,CAAC;CAAG"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"CheckboxGroup.types.d.ts","sourceRoot":"","sources":["../../../../src/vue/components/CheckboxGroup/CheckboxGroup.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,uBAAuB,EAAE,MAAM,cAAc,CAAC;AAE5D,MAAM,WAAW,mBAAoB,SAAQ,uBAAuB;IAClE,gCAAgC;IAChC,UAAU,CAAC,EAAE,CAAC,MAAM,GAAG,MAAM,CAAC,EAAE,CAAC;CAClC"}
