@@ -31,23 +31,9 @@ const meta: Meta<typeof Drawer> = {
   parameters: {
     docs: {
       description: {
-        component: `
-Drawer is a panel that slides in from the edge of the screen.
+        component: `Drawer is a panel that slides in from the edge of the screen.
 
-Two usage modes:
-1. **Simple mode**: Use \`title\` and \`footer\` props for quick setup
-2. **Custom mode**: Pass children directly for full control
-
-Features:
-- Four placements (left, right, top, bottom)
-- ESC key to close
-- Click backdrop to close
-- Body scroll lock when open
-- Focus trap and focus restoration
-- Multiple sizes (sm, md, lg, xl, full)
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
     },
   },
@@ -219,12 +205,12 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { Icon } from "@iconify/react";
-import { Drawer, Button } from "venomous-ui/react";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/drawer.css";
 import "venomous-ui/core/styles/components/button.css";
+import { useState } from "react";
+import { Icon } from "@iconify/react";
+import { Drawer, Button } from "venomous-ui/react";
 
 export default function Demo() {
   const [open, setOpen] = useState(false);

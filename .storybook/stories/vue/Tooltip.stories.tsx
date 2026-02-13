@@ -16,18 +16,9 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: `
-Tooltip displays helpful text when hovering over or focusing on an element.
+        component: `Tooltip displays helpful text when hovering over or focusing on an element.
 
-Features:
-- Appears on hover and focus (keyboard accessible)
-- Four placements (top, bottom, left, right)
-- Configurable delay
-- Arrow pointing to trigger element
-- Supports both \`content\` prop and \`#content\` slot for custom content
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
     },
   },
@@ -121,10 +112,10 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Tooltip, Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/tooltip.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Tooltip, Button } from "venomous-ui/vue";
 </script>
 
 <template>

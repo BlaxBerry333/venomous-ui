@@ -15,17 +15,9 @@ const meta: Meta<typeof Tooltip> = {
   parameters: {
     docs: {
       description: {
-        component: `
-Tooltip displays helpful text when hovering over or focusing on an element.
+        component: `Tooltip displays helpful text when hovering over or focusing on an element.
 
-Features:
-- Appears on hover and focus (keyboard accessible)
-- Four placements (top, bottom, left, right)
-- Configurable delay
-- Arrow pointing to trigger element
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
     },
   },
@@ -124,10 +116,10 @@ export const Default: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Tooltip, Button } from "venomous-ui/react";
-import "venomous-ui/core/styles/variables/index.css";
+        code: `import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/tooltip.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Tooltip, Button } from "venomous-ui/react";
 
 export default function Demo() {
   return (

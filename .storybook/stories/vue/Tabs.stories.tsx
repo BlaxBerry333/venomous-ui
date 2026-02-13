@@ -18,29 +18,47 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: `
-Tabs is a compound component for organizing content into tabbed sections.
+        component: `Tabs organizes content into tabbed sections. A compound component with Tabs, List, Tab, and Panel.
 
-**Compound Components:**
-- \`Tabs\` - Root container with provide/inject context
-- \`TabsList\` - Container for tab triggers
-- \`TabsTab\` - Individual tab trigger button
-- \`TabsPanel\` - Content panel for each tab
-
-**Features:**
-- Keyboard navigation (Arrow keys, Home, End)
-- Roving tabindex for proper focus management
-- Controlled and uncontrolled modes
-- Two variants: line, pill
-- Horizontal and vertical orientations
-
-**Panel Unmount Strategies:**
-- \`keepMounted\` (default): All panels stay in DOM, preserves form state
-- \`unmountOnHide\`: Unmount when hidden, memory optimal
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
+      subcomponents: [
+        {
+          name: "<TabsList>",
+          argTypes: {
+            className: {
+              name: "className",
+              description: "Additional CSS class names",
+              table: { type: { summary: "string" }, defaultValue: { summary: '""' } },
+            },
+          },
+        },
+        {
+          name: "<TabsTab>",
+          argTypes: {
+            value: {
+              name: "value",
+              description: "Unique value identifying this tab",
+              table: { type: { summary: "string" } },
+            },
+            disabled: {
+              name: "disabled",
+              description: "Whether the tab is disabled",
+              table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
+            },
+          },
+        },
+        {
+          name: "<TabsPanel>",
+          argTypes: {
+            value: {
+              name: "value",
+              description: "Value of the corresponding tab",
+              table: { type: { summary: "string" } },
+            },
+          },
+        },
+      ],
     },
   },
   argTypes: {
@@ -195,9 +213,9 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Tabs, TabsList, TabsTab, TabsPanel } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/tabs.css";
+import { Tabs, TabsList, TabsTab, TabsPanel } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -509,8 +527,8 @@ export const Controlled: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
 import { Tabs, TabsList, TabsTab, TabsPanel } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const activeTab = ref("tab1");
 </script>

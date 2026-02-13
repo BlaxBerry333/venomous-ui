@@ -31,18 +31,9 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: `
-FormField is a smart layout container that wraps form controls with labels, error messages, and tooltips. It auto-injects id and aria props to form controls for accessibility.
+        component: `FormField wraps form controls with labels, error messages, and tooltips. Auto-injects accessibility attributes.
 
-**Features:**
-- Auto-generates unique IDs for form controls
-- Auto-injects \`aria-describedby\` for error messages
-- Auto-injects \`aria-invalid\` for error states
-- Supports vertical and horizontal layouts
-- Control position for horizontal layouts (checkbox/switch at start or end)
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
     },
   },
@@ -142,11 +133,11 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
-import { FormField, Input } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/form-field.css";
 import "venomous-ui/core/styles/components/input.css";
+import { FormField, Input } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const email = ref("");
 </script>
@@ -651,9 +642,9 @@ export const ControlledForm: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref, reactive } from "vue";
 import { FormField, Input, Select, RadioGroup, Textarea, Checkbox, Button } from "venomous-ui/vue";
 import { Icon } from "@iconify/vue";
+import { ref, reactive } from "vue";
 
 const form = reactive({
   email: "",

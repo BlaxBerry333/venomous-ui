@@ -170,6 +170,20 @@ describe("Switch", () => {
     });
   });
 
+  // Label prop
+  describe("label prop", () => {
+    it("renders label text when provided", () => {
+      render(<Switch label="Enable notifications" />);
+      expect(screen.getByText("Enable notifications")).toBeInTheDocument();
+      expect(screen.getByText("Enable notifications")).toHaveClass(classes.label);
+    });
+
+    it("does not render label element when not provided", () => {
+      render(<Switch />);
+      expect(document.querySelector(`.${classes.label}`)).toBeNull();
+    });
+  });
+
   // Keyboard accessibility
   describe("keyboard accessibility", () => {
     it("can be toggled with space key", async () => {

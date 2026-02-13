@@ -15,6 +15,7 @@ coverage/
 # Storybook
 storybook-static/
 .storybook/docs/**/*.mdx
+.storybook/stories/**/*.mdx
 
 # AI
 CLAUDE.md

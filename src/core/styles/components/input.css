@@ -8,7 +8,7 @@
  */
 
 .venomous-input-wrapper {
-  --_input-border: var(--VENOMOUSUI-border-primary);
+  --_input-border: var(--VENOMOUSUI-border-color);
   --_input-bg: var(--VENOMOUSUI-bg-primary);
 
   position: relative;

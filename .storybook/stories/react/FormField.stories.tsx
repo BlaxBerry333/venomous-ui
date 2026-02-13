@@ -30,18 +30,9 @@ const meta: Meta<typeof FormField> = {
   parameters: {
     docs: {
       description: {
-        component: `
-FormField is a smart layout container that wraps form controls with labels, error messages, and tooltips. It auto-injects id and aria props to form controls for accessibility.
+        component: `FormField wraps form controls with labels, error messages, and tooltips. Auto-injects accessibility attributes.
 
-**Features:**
-- Auto-generates unique IDs for form controls
-- Auto-injects \`aria-describedby\` for error messages
-- Auto-injects \`aria-invalid\` for error states
-- Supports vertical and horizontal layouts
-- Control position for horizontal layouts (checkbox/switch at start or end)
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
     },
   },
@@ -143,11 +134,11 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { FormField, Input } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/form-field.css";
 import "venomous-ui/core/styles/components/input.css";
+import { useState } from "react";
+import { FormField, Input } from "venomous-ui/react/components";
 
 export default function Demo() {
   const [value, setValue] = useState("");

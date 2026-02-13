@@ -1,10 +1,18 @@
 import vue from "@vitejs/plugin-vue";
 import { globSync } from "glob";
 import path from "path";
+import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    visualizer({
+      filename: ".cache/analyze/stats-vue.html",
+      open: false,
+      gzipSize: true,
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "../src"),

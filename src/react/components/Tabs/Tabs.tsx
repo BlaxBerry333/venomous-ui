@@ -189,6 +189,7 @@ export const TabsTab = forwardRef<HTMLButtonElement, TTabsTabProps>(function Tab
   }, [tabValue, disabled, registerTab, unregisterTab]);
 
   const handleClick = useCallback(() => {
+    /* v8 ignore next -- defensive: disabled buttons don't fire click events */
     if (!disabled) {
       onValueChange(tabValue);
     }

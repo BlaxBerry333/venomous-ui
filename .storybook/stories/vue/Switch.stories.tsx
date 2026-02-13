@@ -75,10 +75,10 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
-import { Switch } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/switch.css";
+import { Switch } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const enabled = ref(false);
 </script>
@@ -109,9 +109,9 @@ export const Sizes: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Switch } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/switch.css";
+import { Switch } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -143,9 +143,9 @@ export const States: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Switch } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/switch.css";
+import { Switch } from "venomous-ui/vue";
 </script>
 
 <template>

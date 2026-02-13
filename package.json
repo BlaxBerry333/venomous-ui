@@ -30,6 +30,9 @@
     "./core/styles/reset.css": "./dist/core/styles/reset.css",
     "./core/styles/variables/index.css": "./dist/core/styles/variables/index.css",
     "./core/styles/components/index.css": "./dist/core/styles/components/index.css",
+    "./core/styles/components/avatar.css": "./dist/core/styles/components/avatar.css",
+    "./core/styles/components/badge.css": "./dist/core/styles/components/badge.css",
+    "./core/styles/components/breadcrumb.css": "./dist/core/styles/components/breadcrumb.css",
     "./core/styles/components/button.css": "./dist/core/styles/components/button.css",
     "./core/styles/components/card.css": "./dist/core/styles/components/card.css",
     "./core/styles/components/checkbox.css": "./dist/core/styles/components/checkbox.css",
@@ -41,16 +44,29 @@
     "./core/styles/components/popover.css": "./dist/core/styles/components/popover.css",
     "./core/styles/components/radio.css": "./dist/core/styles/components/radio.css",
     "./core/styles/components/select.css": "./dist/core/styles/components/select.css",
+    "./core/styles/components/skeleton.css": "./dist/core/styles/components/skeleton.css",
+    "./core/styles/components/spacing.css": "./dist/core/styles/components/spacing.css",
     "./core/styles/components/switch.css": "./dist/core/styles/components/switch.css",
+    "./core/styles/components/tabs.css": "./dist/core/styles/components/tabs.css",
     "./core/styles/components/textarea.css": "./dist/core/styles/components/textarea.css",
+    "./core/styles/components/toast.css": "./dist/core/styles/components/toast.css",
     "./core/styles/components/tooltip.css": "./dist/core/styles/components/tooltip.css",
+    "./core/styles/components/typography.css": "./dist/core/styles/components/typography.css",
     "./react/components": {
       "types": "./dist/react/components/index.d.ts",
       "import": "./dist/react/components/index.mjs"
     },
+    "./react/hooks": {
+      "types": "./dist/react/hooks/index.d.ts",
+      "import": "./dist/react/hooks/index.mjs"
+    },
     "./vue/components": {
       "types": "./dist/vue/components/index.d.ts",
       "import": "./dist/vue/components/index.mjs"
+    },
+    "./vue/composables": {
+      "types": "./dist/vue/composables/index.d.ts",
+      "import": "./dist/vue/composables/index.mjs"
     }
   },
   "peerDependencies": {
@@ -83,6 +99,7 @@
   "devDependencies": {
     "@iconify/react": "^5.2.0",
     "@iconify/vue": "^5.0.0",
+    "@storybook/addon-a11y": "^8.6.15",
     "@storybook/addon-essentials": "^8.6.15",
     "@storybook/addon-interactions": "^8.6.15",
     "@storybook/blocks": "^8.6.15",
@@ -94,6 +111,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@testing-library/vue": "^8.1.0",
     "@types/node": "^22.14.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
@@ -101,6 +119,7 @@
     "@vitejs/plugin-vue": "^6.0.2",
     "@vitest/coverage-v8": "^4.0.9",
     "@vitest/ui": "^4.0.9",
+    "@vue/test-utils": "^2.4.6",
     "concurrently": "^9.2.1",
     "cspell": "^9.4.0",
     "eslint": "^9.21.0",

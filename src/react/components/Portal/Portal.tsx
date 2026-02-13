@@ -9,7 +9,7 @@ import type { TPortalProps } from "./Portal.types";
  */
 export function Portal({ children, container, containerRef, disabled = false }: TPortalProps) {
   // SSR safety check - only render portal on client
-  /* istanbul ignore next -- @preserve SSR environment cannot be simulated in jsdom */
+  /* v8 ignore next -- @preserve SSR environment cannot be simulated in jsdom */
   if (typeof document === "undefined") {
     return null;
   }

@@ -13,7 +13,7 @@ const meta: Meta<typeof Input> = {
     docs: {
       description: {
         component: `
-Input is a text field for user input. Supports prefix/suffix slots for icons or addons.
+Input is a text field for user input.
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -126,9 +126,9 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { Input } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/input.css";
+import { Input } from "venomous-ui/react/components";
 
 export default function Demo() {
   return <Input placeholder="Enter text..." />;

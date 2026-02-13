@@ -8,7 +8,7 @@
  */
 
 .venomous-textarea {
-  --_textarea-border: var(--VENOMOUSUI-border-primary);
+  --_textarea-border: var(--VENOMOUSUI-border-color);
   --_textarea-bg: var(--VENOMOUSUI-bg-primary);
 
   display: block;

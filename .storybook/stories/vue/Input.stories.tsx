@@ -14,7 +14,7 @@ const meta: Meta = {
     docs: {
       description: {
         component: `
-Input is a text field for user input. Supports prefix/suffix slots for icons or addons.
+Input is a text field for user input.
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -98,9 +98,9 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Input } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/input.css";
+import { Input } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -129,9 +129,9 @@ export const Sizes: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Input } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/input.css";
+import { Input } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -163,9 +163,9 @@ export const Types: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Input } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/input.css";
+import { Input } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -204,9 +204,9 @@ export const WithPrefixSuffix: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Input } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/input.css";
+import { Input } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -248,9 +248,9 @@ export const States: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Input } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/input.css";
+import { Input } from "venomous-ui/vue";
 </script>
 
 <template>

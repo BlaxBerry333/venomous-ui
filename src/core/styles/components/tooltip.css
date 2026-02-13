@@ -88,6 +88,22 @@ Arrow
 
 /*
 ==================================================
+Dark Theme
+==================================================
+*/
+[data-theme="dark"] .venomous-tooltip,
+.dark .venomous-tooltip {
+  color: var(--VENOMOUSUI-color-gray-900);
+  background-color: var(--VENOMOUSUI-color-gray-200);
+}
+
+[data-theme="dark"] .venomous-tooltip__arrow,
+.dark .venomous-tooltip__arrow {
+  background-color: var(--VENOMOUSUI-color-gray-200);
+}
+
+/*
+==================================================
 Animation
 ==================================================
 */

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
 import type { TTabsUnmountStrategy, TTabsVariant } from "@/core/types";
-import { Tabs } from "@/react/components/Tabs";
+import { Tabs, TabsList, TabsPanel, TabsTab } from "@/react/components/Tabs";
 import { TABS_ORIENTATION_OPTIONS, TABS_UNMOUNT_STRATEGY_OPTIONS, TABS_VARIANT_OPTIONS } from "../constants";
 
 import "@/core/styles/components/tabs.css";
@@ -14,29 +14,15 @@ const meta: Meta<typeof Tabs> = {
   parameters: {
     docs: {
       description: {
-        component: `
-Tabs is a compound component for organizing content into tabbed sections.
+        component: `Tabs organizes content into tabbed sections. A compound component with Tabs, List, Tab, and Panel.
 
-**Compound Components:**
-- \`Tabs\` - Root container with context provider
-- \`Tabs.List\` - Container for tab triggers
-- \`Tabs.Tab\` - Individual tab trigger button
-- \`Tabs.Panel\` - Content panel for each tab
-
-**Features:**
-- Keyboard navigation (Arrow keys, Home, End)
-- Roving tabindex for proper focus management
-- Controlled and uncontrolled modes
-- Two variants: line, pill
-- Horizontal and vertical orientations
-
-**Panel Unmount Strategies:**
-- \`keepMounted\` (default): All panels stay in DOM, preserves form state
-- \`unmountOnHide\`: Unmount when hidden, memory optimal
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
+      subcomponents: [
+        { name: "<Tabs.List>", component: TabsList },
+        { name: "<Tabs.Tab>", component: TabsTab },
+        { name: "<Tabs.Panel>", component: TabsPanel },
+      ],
     },
   },
   argTypes: {
@@ -155,9 +141,9 @@ export const Default: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Tabs } from "venomous-ui/react";
-import "venomous-ui/core/styles/variables/index.css";
+        code: `import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/tabs.css";
+import { Tabs } from "venomous-ui/react";
 
 export default function Demo() {
   return (

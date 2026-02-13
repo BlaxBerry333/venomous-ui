@@ -14,7 +14,7 @@ const meta: Meta<typeof Checkbox> = {
     docs: {
       description: {
         component: `
-Checkbox allows users to select one or more options. Supports native appearance by default, with optional custom icons.
+Checkbox allows users to select one or more options.
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -97,10 +97,10 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { Checkbox } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/checkbox.css";
+import { useState } from "react";
+import { Checkbox } from "venomous-ui/react/components";
 
 export default function Demo() {
   const [checked, setChecked] = useState(false);

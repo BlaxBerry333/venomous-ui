@@ -41,6 +41,7 @@ export const CSS_VAR_NAMES = {
   zModal: `${CSS_VAR_PREFIX}-z-modal`,
   zPopover: `${CSS_VAR_PREFIX}-z-popover`,
   zTooltip: `${CSS_VAR_PREFIX}-z-tooltip`,
+  zToast: `${CSS_VAR_PREFIX}-z-toast`,
 } as const;
 
 export type CSSVarName = (typeof CSS_VAR_NAMES)[keyof typeof CSS_VAR_NAMES];
@@ -154,6 +155,7 @@ export const CSS_VARS = {
   zModal: `var(${CSS_VAR_PREFIX}-z-modal)`,
   zPopover: `var(${CSS_VAR_PREFIX}-z-popover)`,
   zTooltip: `var(${CSS_VAR_PREFIX}-z-tooltip)`,
+  zToast: `var(${CSS_VAR_PREFIX}-z-toast)`,
   opacityDisabled: `var(${CSS_VAR_PREFIX}-opacity-disabled)`,
   opacityOverlay: `var(${CSS_VAR_PREFIX}-opacity-overlay)`,
 } as const;

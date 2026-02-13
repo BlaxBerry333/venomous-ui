@@ -9,7 +9,9 @@ import type { TDrawerPlacement, TDrawerSize } from "@/core/types/drawer";
 import type { TFormSize, TInputType, TTextareaResize } from "@/core/types/form";
 import type { TModalSize } from "@/core/types/modal";
 import type { TPopoverPlacement, TPopoverTrigger } from "@/core/types/popover";
+import type { TSkeletonAnimation, TSkeletonVariant } from "@/core/types/skeleton";
 import type { TTabsUnmountStrategy, TTabsVariant } from "@/core/types/tabs";
+import type { TToastPlacement, TToastType } from "@/core/types/toast";
 import type { TTooltipPlacement } from "@/core/types/tooltip";
 
 /** Button size options */
@@ -62,6 +64,34 @@ export const TEXTAREA_RESIZE_OPTIONS: TTextareaResize[] = ["none", "vertical", "
 
 /** Orientation options */
 export const ORIENTATION_OPTIONS: TOrientation[] = ["horizontal", "vertical"];
+
+/** Skeleton variant options */
+export const SKELETON_VARIANT_OPTIONS: TSkeletonVariant[] = ["rect", "circle", "text"];
+
+/** Skeleton animation options */
+export const SKELETON_ANIMATION_OPTIONS: TSkeletonAnimation[] = ["pulse", "wave"];
+
+/** Avatar size options */
+export const AVATAR_SIZE_OPTIONS: TSize[] = ["sm", "md", "lg"];
+
+/** Avatar shape options */
+export const AVATAR_SHAPE_OPTIONS: ("circle" | "square")[] = ["circle", "square"];
+
+/** Badge color scheme options */
+export const BADGE_COLOR_SCHEME_OPTIONS: TColorScheme[] = ["theme", "success", "warning", "error", "info"];
+
+/** Toast type options */
+export const TOAST_TYPE_OPTIONS: TToastType[] = ["success", "error", "warning", "info"];
+
+/** Toast placement options */
+export const TOAST_PLACEMENT_OPTIONS: TToastPlacement[] = [
+  "top",
+  "top-start",
+  "top-end",
+  "bottom",
+  "bottom-start",
+  "bottom-end",
+];
 
 /**
  * Demo data for stories

@@ -14,12 +14,27 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: `
-Select is a custom dropdown component for choosing a single option from a list. It provides a consistent cross-browser appearance and supports keyboard navigation.
+        component: `Select is a dropdown for choosing a single option from a list.
 
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
+      subcomponents: [
+        {
+          name: "<SelectOption>",
+          argTypes: {
+            value: {
+              name: "value",
+              description: "Option value",
+              table: { type: { summary: "string | number" } },
+            },
+            disabled: {
+              name: "disabled",
+              description: "Whether the option is disabled",
+              table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
+            },
+          },
+        },
+      ],
     },
   },
   argTypes: {
@@ -114,10 +129,10 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
-import { Select } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { Select } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const value = ref<string | number | undefined>();
 const options = [
@@ -157,9 +172,9 @@ export const Sizes: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Select } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { Select } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -191,10 +206,10 @@ export const WithValue: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
-import { Select } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { Select } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const value = ref("cherry");
 </script>
@@ -226,9 +241,9 @@ export const DisabledOptions: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Select } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { Select } from "venomous-ui/vue";
 
 const options = [
   { value: "apple", label: "Apple" },
@@ -266,9 +281,9 @@ export const States: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Select } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { Select } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -301,10 +316,10 @@ export const CustomDropdownIcon: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Select } from "venomous-ui/vue";
-import { Icon } from "@iconify/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { Select } from "venomous-ui/vue";
+import { Icon } from "@iconify/vue";
 </script>
 
 <template>
@@ -380,10 +395,10 @@ When the default slot is provided, the \`options\` prop is ignored.
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
-import { Select, SelectOption } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { Select, SelectOption } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const value = ref<string | number | undefined>();
 const options = [

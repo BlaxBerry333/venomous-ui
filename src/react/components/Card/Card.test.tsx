@@ -238,5 +238,19 @@ describe("Card", () => {
       );
       expect(screen.getByTestId("card")).toHaveAttribute("aria-label", "Interactive card");
     });
+
+    it("passes onClick to non-clickable card (no keyboard trigger)", async () => {
+      const user = userEvent.setup();
+      const handleClick = vi.fn();
+
+      render(
+        <Card onClick={handleClick} data-testid="card">
+          Not clickable
+        </Card>,
+      );
+
+      await user.click(screen.getByTestId("card"));
+      expect(handleClick).toHaveBeenCalledTimes(1);
+    });
   });
 });

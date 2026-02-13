@@ -17,19 +17,9 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: `
-Popover displays rich content in a floating panel anchored to a trigger element.
+        component: `Popover displays rich content in a floating panel anchored to a trigger element.
 
-Features:
-- Click or hover trigger modes
-- Four placements (top, bottom, left, right)
-- ESC key to close
-- Click outside to close
-- v-model support for controlled mode
-- Arrow pointing to trigger element
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
     },
   },
@@ -164,10 +154,10 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Popover, Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/popover.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Popover, Button } from "venomous-ui/vue";
 </script>
 
 <template>

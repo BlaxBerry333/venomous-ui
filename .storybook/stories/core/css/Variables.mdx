@@ -24,7 +24,7 @@ Venomous UI provides constants for type-safe CSS variable usage:
     {
       label: "React",
       language: "tsx",
-      code: `import { CSS_VARS } from "venomous-ui/core";
+      code: `import { CSS_VARS } from "venomous-ui/core/constants";
 
 // Use in inline styles
 
@@ -40,7 +40,7 @@ Venomous UI provides constants for type-safe CSS variable usage:
       label: "Vue",
       language: "html",
       code: `<script setup lang="ts">
-import { CSS_VARS } from "venomous-ui/core";
+import { CSS_VARS } from "venomous-ui/core/constants";
 </script>
 
 <template>
@@ -58,12 +58,12 @@ import { CSS_VARS } from "venomous-ui/core";
 
 ## CSS_VAR_NAMES Usage
 
-Use `CSS_VAR_NAMES` with `getCssVar()` to get the computed numeric value of a CSS variable at runtime:
+Use `CSS_VAR_NAMES` with [`getCssVar()`](?path=/docs/core-helpers-helpers--docs#getcssvar) helper function to get the computed numeric value of a CSS variable at runtime:
 
 <Source
   language="tsx"
   dark
-  code={`import { CSS_VAR_NAMES } from "venomous-ui/core";
+  code={`import { CSS_VAR_NAMES } from "venomous-ui/core/constants";
 import { getCssVar } from "venomous-ui/core/helpers";
 
 // Get spacing value as number (e.g., 8)

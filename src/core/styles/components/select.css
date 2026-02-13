@@ -12,7 +12,7 @@ Trigger
 ==================================================
 */
 .venomous-select__trigger {
-  --_select-border: var(--VENOMOUSUI-border-primary);
+  --_select-border: var(--VENOMOUSUI-border-color);
 
   display: flex;
   gap: var(--VENOMOUSUI-spacing-sm);

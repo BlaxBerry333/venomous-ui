@@ -13,17 +13,7 @@ const meta: Meta<typeof Portal> = {
   parameters: {
     docs: {
       description: {
-        component: `
-Portal renders its children into a DOM node outside the parent component hierarchy.
-
-This is useful for:
-- Modals and dialogs
-- Tooltips and popovers
-- Dropdowns and menus
-- Any content that needs to escape overflow:hidden containers
-
-**Note:** Portal is typically used internally by Modal, Tooltip, and similar components.
-        `,
+        component: "Portal renders children into a DOM node outside the parent component hierarchy.",
       },
     },
   },

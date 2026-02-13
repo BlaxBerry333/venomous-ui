@@ -41,6 +41,7 @@ export const COMPONENT_NAMES = {
   FormField: `${PREFIX}.FormField`,
 
   // Data Display
+  Skeleton: `${PREFIX}.Skeleton`,
   Avatar: `${PREFIX}.Avatar`,
   Badge: `${PREFIX}.Badge`,
   List: `${PREFIX}.List`,

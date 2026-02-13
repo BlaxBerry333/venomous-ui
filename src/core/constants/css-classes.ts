@@ -19,6 +19,50 @@ const CLASS_PREFIX = "venomous" as const;
  */
 
 export const CSS_CLASSES = {
+  // Avatar
+  avatar: {
+    root: `${CLASS_PREFIX}-avatar`,
+    sizes: {
+      sm: `${CLASS_PREFIX}-avatar--sm`,
+      md: `${CLASS_PREFIX}-avatar--md`,
+      lg: `${CLASS_PREFIX}-avatar--lg`,
+    },
+    shapes: {
+      circle: `${CLASS_PREFIX}-avatar--circle`,
+      square: `${CLASS_PREFIX}-avatar--square`,
+    },
+    image: `${CLASS_PREFIX}-avatar__image`,
+    text: `${CLASS_PREFIX}-avatar__text`,
+    icon: `${CLASS_PREFIX}-avatar__icon`,
+  },
+
+  // Badge
+  badge: {
+    wrapper: `${CLASS_PREFIX}-badge-wrapper`,
+    root: `${CLASS_PREFIX}-badge`,
+    dot: `${CLASS_PREFIX}-badge--dot`,
+    colors: {
+      theme: `${CLASS_PREFIX}-badge--theme`,
+      success: `${CLASS_PREFIX}-badge--success`,
+      warning: `${CLASS_PREFIX}-badge--warning`,
+      error: `${CLASS_PREFIX}-badge--error`,
+      info: `${CLASS_PREFIX}-badge--info`,
+    },
+  },
+
+  // Breadcrumb
+  breadcrumb: {
+    root: `${CLASS_PREFIX}-breadcrumb`,
+    list: `${CLASS_PREFIX}-breadcrumb__list`,
+    item: `${CLASS_PREFIX}-breadcrumb__item`,
+    separator: `${CLASS_PREFIX}-breadcrumb__separator`,
+    link: `${CLASS_PREFIX}-breadcrumb__link`,
+    text: `${CLASS_PREFIX}-breadcrumb__text`,
+    textCurrent: `${CLASS_PREFIX}-breadcrumb__text--current`,
+    ellipsis: `${CLASS_PREFIX}-breadcrumb__ellipsis`,
+    itemDisabled: `${CLASS_PREFIX}-breadcrumb__item--disabled`,
+  },
+
   // Button
   button: {
     root: `${CLASS_PREFIX}-button`,
@@ -298,6 +342,19 @@ export const CSS_CLASSES = {
     },
   },
 
+  // Skeleton
+  skeleton: {
+    root: `${CLASS_PREFIX}-skeleton`,
+    variants: {
+      circle: `${CLASS_PREFIX}-skeleton--circle`,
+      text: `${CLASS_PREFIX}-skeleton--text`,
+    },
+    animations: {
+      pulse: `${CLASS_PREFIX}-skeleton--pulse`,
+      wave: `${CLASS_PREFIX}-skeleton--wave`,
+    },
+  },
+
   // Tabs
   tabs: {
     root: `${CLASS_PREFIX}-tabs`,
@@ -316,6 +373,32 @@ export const CSS_CLASSES = {
       disabled: `${CLASS_PREFIX}-tabs__tab--disabled`,
     },
     panel: `${CLASS_PREFIX}-tabs__panel`,
+  },
+
+  // Toast
+  toast: {
+    container: `${CLASS_PREFIX}-toaster`,
+    placements: {
+      "top-start": `${CLASS_PREFIX}-toaster--top-start`,
+      top: `${CLASS_PREFIX}-toaster--top`,
+      "top-end": `${CLASS_PREFIX}-toaster--top-end`,
+      "bottom-start": `${CLASS_PREFIX}-toaster--bottom-start`,
+      bottom: `${CLASS_PREFIX}-toaster--bottom`,
+      "bottom-end": `${CLASS_PREFIX}-toaster--bottom-end`,
+    },
+    root: `${CLASS_PREFIX}-toast`,
+    closing: `${CLASS_PREFIX}-toast--closing`,
+    types: {
+      success: `${CLASS_PREFIX}-toast--success`,
+      error: `${CLASS_PREFIX}-toast--error`,
+      warning: `${CLASS_PREFIX}-toast--warning`,
+      info: `${CLASS_PREFIX}-toast--info`,
+    },
+    icon: `${CLASS_PREFIX}-toast__icon`,
+    content: `${CLASS_PREFIX}-toast__content`,
+    title: `${CLASS_PREFIX}-toast__title`,
+    description: `${CLASS_PREFIX}-toast__description`,
+    close: `${CLASS_PREFIX}-toast__close`,
   },
 
   // Typography (utility classes)

@@ -90,9 +90,9 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Button } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -121,9 +121,9 @@ export const Sizes: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Button } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -161,9 +161,9 @@ export const Variants: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Button } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -227,9 +227,9 @@ export const ColorSchemes: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Button } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -273,9 +273,9 @@ export const Disabled: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Button } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -301,9 +301,9 @@ export const FullWidth: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Button } from "venomous-ui/vue";
 </script>
 
 <template>

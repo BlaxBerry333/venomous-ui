@@ -1,6 +1,7 @@
 import { copyFileSync, mkdirSync } from "fs";
 import { globSync } from "glob";
 import path from "path";
+import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 
 // Plugin to copy CSS files to dist
@@ -20,7 +21,14 @@ function copyCssPlugin() {
 }
 
 export default defineConfig({
-  plugins: [copyCssPlugin()],
+  plugins: [
+    copyCssPlugin(),
+    visualizer({
+      filename: ".cache/analyze/stats-core.html",
+      open: false,
+      gzipSize: true,
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "../src"),

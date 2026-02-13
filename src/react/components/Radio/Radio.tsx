@@ -28,18 +28,7 @@ const classes = CSS_CLASSES.radio;
  * ```
  */
 export const Radio = forwardRef<HTMLInputElement, TRadioProps>(function Radio(
-  {
-    size = "md",
-    checked = false,
-    disabled = false,
-    name,
-    value,
-    label,
-    checkedIcon,
-    uncheckedIcon,
-    className = "",
-    ...rest
-  },
+  { size = "md", checked, disabled = false, name, value, label, checkedIcon, uncheckedIcon, className = "", ...rest },
   ref,
 ) {
   const isCustomMode = Boolean(checkedIcon || uncheckedIcon);

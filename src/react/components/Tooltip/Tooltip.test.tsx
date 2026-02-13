@@ -145,12 +145,8 @@ describe("Tooltip", () => {
       );
 
       await user.hover(screen.getByRole("button"));
-      act(() => {
-        vi.advanceTimersByTime(200);
-      });
-
-      // Run rAF to trigger position calculation
       await act(async () => {
+        vi.advanceTimersByTime(200);
         await vi.advanceTimersToNextTimerAsync();
       });
 
@@ -167,12 +163,8 @@ describe("Tooltip", () => {
       );
 
       await user.hover(screen.getByRole("button"));
-      act(() => {
-        vi.advanceTimersByTime(200);
-      });
-
-      // Run rAF to trigger position calculation
       await act(async () => {
+        vi.advanceTimersByTime(200);
         await vi.advanceTimersToNextTimerAsync();
       });
 
@@ -189,12 +181,8 @@ describe("Tooltip", () => {
       );
 
       await user.hover(screen.getByRole("button"));
-      act(() => {
-        vi.advanceTimersByTime(200);
-      });
-
-      // Run rAF to trigger position calculation
       await act(async () => {
+        vi.advanceTimersByTime(200);
         await vi.advanceTimersToNextTimerAsync();
       });
 
@@ -211,12 +199,8 @@ describe("Tooltip", () => {
       );
 
       await user.hover(screen.getByRole("button"));
-      act(() => {
-        vi.advanceTimersByTime(200);
-      });
-
-      // Run rAF to trigger position calculation
       await act(async () => {
+        vi.advanceTimersByTime(200);
         await vi.advanceTimersToNextTimerAsync();
       });
 

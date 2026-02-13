@@ -13,7 +13,7 @@ const meta: Meta<typeof Textarea> = {
     docs: {
       description: {
         component: `
-Textarea is a multi-line text input field. Supports auto-resize and configurable resize behavior.
+Textarea is a multi-line text input field.
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -111,9 +111,9 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { Textarea } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/textarea.css";
+import { Textarea } from "venomous-ui/react/components";
 
 export default function Demo() {
   return <Textarea placeholder="Enter description..." />;

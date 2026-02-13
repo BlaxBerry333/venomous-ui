@@ -14,7 +14,7 @@ const meta: Meta = {
     docs: {
       description: {
         component: `
-Checkbox allows users to select one or more options. Supports native appearance by default, with optional custom icons via slots.
+Checkbox allows users to select one or more options.
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -79,10 +79,10 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
-import { Checkbox } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/checkbox.css";
+import { Checkbox } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const checked = ref(false);
 </script>
@@ -113,9 +113,9 @@ export const Sizes: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Checkbox } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/checkbox.css";
+import { Checkbox } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -147,9 +147,9 @@ export const States: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Checkbox } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/checkbox.css";
+import { Checkbox } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -184,10 +184,10 @@ export const CustomIcons: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Checkbox } from "venomous-ui/vue";
-import { Icon } from "@iconify/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/checkbox.css";
+import { Checkbox } from "venomous-ui/vue";
+import { Icon } from "@iconify/vue";
 </script>
 
 <template>

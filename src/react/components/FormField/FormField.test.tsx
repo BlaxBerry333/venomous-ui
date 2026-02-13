@@ -375,4 +375,36 @@ describe("FormField", () => {
       expect(switchInput).not.toHaveAttribute("error");
     });
   });
+
+  // Tooltip
+  describe("tooltip prop", () => {
+    it("renders tooltip when both tooltip and tooltipIcon are provided", () => {
+      render(
+        <FormField label="Email" tooltip="Enter your email" tooltipIcon={<span data-testid="tip-icon">?</span>}>
+          <Input />
+        </FormField>,
+      );
+
+      expect(screen.getByTestId("tip-icon")).toBeInTheDocument();
+      expect(screen.getByTestId("tip-icon").closest(`.${classes.tooltipTrigger}`)).toBeInTheDocument();
+    });
+
+    it("does not render tooltip when only tooltip is provided without tooltipIcon", () => {
+      render(
+        <FormField label="Email" tooltip="Enter your email">
+          <Input />
+        </FormField>,
+      );
+
+      expect(document.querySelector(`.${classes.tooltipTrigger}`)).toBeNull();
+    });
+  });
+
+  // Non-element children
+  describe("non-element children", () => {
+    it("renders plain text children without cloning", () => {
+      render(<FormField label="Field">plain text</FormField>);
+      expect(screen.getByText("plain text")).toBeInTheDocument();
+    });
+  });
 });

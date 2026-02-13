@@ -14,7 +14,7 @@ const meta: Meta<typeof RadioGroup> = {
     docs: {
       description: {
         component: `
-RadioGroup is a container for managing a group of radio buttons with shared state. It provides a simplified API using an options array.
+RadioGroup is a managed group of radio buttons for selecting a single option from multiple choices.
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -84,10 +84,10 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { RadioGroup } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/radio.css";
+import { useState } from "react";
+import { RadioGroup } from "venomous-ui/react/components";
 
 const options = [
   { value: "apple", label: "Apple" },

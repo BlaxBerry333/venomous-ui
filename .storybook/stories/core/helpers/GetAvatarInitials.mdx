@@ -1,0 +1,43 @@
+import { Meta, Source } from "@storybook/blocks";
+import { StoryDocsTable } from "../../../components";
+
+<Meta title="Core/Helpers/getAvatarInitials" />
+
+# getAvatarInitials
+
+Extracts uppercase initials from a name string. Used by the Avatar component for text fallback display.
+
+<StoryDocsTable
+  headers={["Parameter", "Type", "Default", "Description"]}
+  rows={[
+    ["`name`", "`string`", "—", "The name to extract initials from"],
+    ["`maxLength`", "`number`", "`2`", "Maximum number of characters to return"],
+  ]}
+/>
+
+### Behavior by maxLength
+
+<StoryDocsTable
+  headers={["maxLength", "Input", "Output", "Rule"]}
+  rows={[
+    ["1", '"John Doe"', '"J"', "First character only"],
+    ["2 (default)", '"John Doe"', '"JD"', "First + last word's first character"],
+    ["2", '"Alice"', '"A"', "Single word returns one character"],
+    ["2", '"John Michael Doe"', '"JD"', "First + last word (middle skipped)"],
+    ["3", '"John Michael Doe"', '"JMD"', "First 3 words' initials"],
+  ]}
+/>
+
+<Source
+  language="tsx"
+  dark
+  code={`import { getAvatarInitials } from "venomous-ui/core/helpers";
+
+getAvatarInitials("John Doe"); // "JD"
+getAvatarInitials("Alice"); // "A"
+getAvatarInitials("John Michael Doe"); // "JD"
+
+// Custom maxLength
+getAvatarInitials("John Doe", 1); // "J"
+getAvatarInitials("John Michael Doe", 3); // "JMD"`}
+/>

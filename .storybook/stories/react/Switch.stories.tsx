@@ -14,7 +14,7 @@ const meta: Meta<typeof Switch> = {
     docs: {
       description: {
         component: `
-Switch is a toggle control for binary choices. Similar to a checkbox but with a more explicit on/off visual design.
+Switch is a toggle control for binary states (on/off).
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -80,10 +80,10 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { Switch } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/switch.css";
+import { useState } from "react";
+import { Switch } from "venomous-ui/react/components";
 
 export default function Demo() {
   const [checked, setChecked] = useState(false);

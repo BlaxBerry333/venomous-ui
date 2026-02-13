@@ -15,7 +15,7 @@ const meta: Meta<typeof CheckboxGroup> = {
     docs: {
       description: {
         component: `
-CheckboxGroup is a container for managing multiple checkboxes with shared state. It provides a simplified API using an options array and manages the selected values as an array.
+CheckboxGroup is a managed group of checkboxes for selecting multiple options.
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -84,10 +84,10 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { CheckboxGroup } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/checkbox.css";
+import { useState } from "react";
+import { CheckboxGroup } from "venomous-ui/react/components";
 
 const options = [
   { value: "apple", label: "Apple" },
@@ -304,10 +304,10 @@ export const SelectAll: Story = {
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { Checkbox, CheckboxGroup } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/checkbox.css";
+import { useState } from "react";
+import { Checkbox, CheckboxGroup } from "venomous-ui/react/components";
 
 const options = [
   { value: "apple", label: "Apple" },

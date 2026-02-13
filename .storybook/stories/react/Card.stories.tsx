@@ -14,13 +14,9 @@ const meta: Meta<typeof Card> = {
   parameters: {
     docs: {
       description: {
-        component: `
-Card is a styled container with variant styles and optional clickable behavior.
+        component: `Card is a styled container with variant styles and optional clickable behavior.
 
-Card is a pure container - you have full control over the internal layout.
-
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
     },
   },
@@ -83,10 +79,10 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { Card, Button } from "venomous-ui/react";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/card.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Card, Button } from "venomous-ui/react";
 
 export default function Demo() {
   return (

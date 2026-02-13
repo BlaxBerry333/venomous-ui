@@ -51,6 +51,9 @@ describe("Popover", () => {
       );
 
       await user.click(screen.getByRole("button", { name: "Click me" }));
+      await act(async () => {
+        await vi.advanceTimersToNextTimerAsync();
+      });
 
       expect(screen.getByRole("dialog")).toBeInTheDocument();
       expect(screen.getByText("Popover content")).toBeInTheDocument();
@@ -386,6 +389,9 @@ describe("Popover", () => {
       expect(trigger).toHaveAttribute("aria-expanded", "false");
 
       await user.click(trigger);
+      await act(async () => {
+        await vi.advanceTimersToNextTimerAsync();
+      });
 
       expect(trigger).toHaveAttribute("aria-expanded", "true");
       expect(trigger).toHaveAttribute("aria-controls");
@@ -401,6 +407,9 @@ describe("Popover", () => {
       );
 
       await user.click(screen.getByRole("button"));
+      await act(async () => {
+        await vi.advanceTimersToNextTimerAsync();
+      });
 
       expect(screen.getByRole("dialog")).toBeInTheDocument();
     });
@@ -418,6 +427,9 @@ describe("Popover", () => {
       );
 
       await user.click(screen.getByRole("button"));
+      await act(async () => {
+        await vi.advanceTimersToNextTimerAsync();
+      });
 
       const arrow = document.querySelector(`.${classes.arrow}`);
       expect(arrow).toBeInTheDocument();
@@ -436,6 +448,9 @@ describe("Popover", () => {
       );
 
       await user.click(screen.getByRole("button"));
+      await act(async () => {
+        await vi.advanceTimersToNextTimerAsync();
+      });
 
       expect(screen.getByRole("dialog")).toHaveClass("custom-popover");
     });
@@ -454,6 +469,9 @@ describe("Popover", () => {
       );
 
       await user.click(screen.getByRole("button"));
+      await act(async () => {
+        await vi.advanceTimersToNextTimerAsync();
+      });
       expect(handleClick).toHaveBeenCalled();
     });
   });
@@ -478,6 +496,9 @@ describe("Popover", () => {
       );
 
       await user.click(screen.getByRole("button"));
+      await act(async () => {
+        await vi.advanceTimersToNextTimerAsync();
+      });
 
       expect(refCallback).toHaveBeenCalled();
       expect(refCallback.mock.calls[0][0]).toBeInstanceOf(HTMLButtonElement);
@@ -508,6 +529,9 @@ describe("Popover", () => {
       render(<TestComponent />);
 
       await user.click(screen.getByRole("button"));
+      await act(async () => {
+        await vi.advanceTimersToNextTimerAsync();
+      });
 
       expect(screen.getByTestId("ref-check")).toHaveTextContent("has-ref");
     });

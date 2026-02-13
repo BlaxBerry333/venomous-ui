@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
-import { Select } from "@/react/components/Select";
+import { Select, SelectOption } from "@/react/components/Select";
 import { FORM_SIZE_OPTIONS, FRUIT_OPTIONS_EXTENDED, FRUIT_OPTIONS_EXTENDED_WITH_DISABLED } from "../constants";
 
 import "@/core/styles/components/select.css";
@@ -13,12 +13,11 @@ const meta: Meta<typeof Select> = {
   parameters: {
     docs: {
       description: {
-        component: `
-Select is a custom dropdown component for choosing a single option from a list. It provides a consistent cross-browser appearance and supports keyboard navigation.
+        component: `Select is a dropdown for choosing a single option from a list.
 
-**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
-        `,
+**CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.`,
       },
+      subcomponents: [{ name: "<Select.Option>", component: SelectOption }],
     },
   },
   argTypes: {
@@ -144,10 +143,10 @@ export const Default: Story = {
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { Select } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { useState } from "react";
+import { Select } from "venomous-ui/react/components";
 
 const options = [
   { value: "apple", label: "Apple" },
@@ -353,10 +352,10 @@ When children are provided, the \`options\` prop is ignored.
       source: {
         code: `"use client";
 
-import { useState } from "react";
-import { Select } from "venomous-ui/react/components";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/select.css";
+import { useState } from "react";
+import { Select } from "venomous-ui/react/components";
 
 const options = [
   { value: "apple", label: "Apple" },

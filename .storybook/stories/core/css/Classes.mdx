@@ -1,365 +1,350 @@
 import { Meta, Source } from "@storybook/blocks";
 import { StoryDocsTable } from "../../../components";
-import { CSS_CLASSES } from "../../../../src/core/constants";
 
 <Meta title="Core/CSS/Classes" />
 
 # CSS Classes
 
-Venomous UI provides `CSS_CLASSES` constant object for type-safe CSS class name usage.
-
-<StoryDocsTable
-  headers={["Constant", "Purpose", "Example Value"]}
-  rows={[["`CSS_CLASSES`", "HTML class names for components", `\`"${CSS_CLASSES.button.root}"\``]]}
-/>
-
-## Naming Convention
-
-All CSS classes follow a predictable BEM-like pattern:
+Venomous UI uses a consistent BEM-like naming convention for all CSS classes:
 
 <Source
   language="css"
   dark
-  code={`/* Block */
+  code={`/* Block — component root */
 .venomous-button { }
 
-/_ Modifier - variant _/
+/_ Modifier — variant / size / state _/
 .venomous-button--solid { }
-.venomous-button--outline { }
-
-/_ Modifier - size _/
 .venomous-button--sm { }
-.venomous-button--lg { }
-
-/_ Modifier - state _/
 .venomous-button--disabled { }
 
-/_ Element (for compound components) _/
+/_ Element — sub-part of a compound component _/
 .venomous-card**header { }
 .venomous-card**body { }`}
 />
 
-This makes it easy to:
-
-- Find styles in DevTools
-- Write targeted overrides
-- Understand component structure at a glance
-
-## Usage
+All class names are available via the `CSS_CLASSES` constant for type-safe usage:
 
 <Source
   language="ts"
   dark
-  code={`import { CSS_CLASSES } from "venomous-ui/core";
+  code={`import { CSS_CLASSES } from "venomous-ui/core/constants";
 
-// Access button classes
-const buttonClass = CSS_CLASSES.button.root; // "${CSS_CLASSES.button.root}"
-const smallButton = CSS_CLASSES.button.sizes.sm; // "${CSS_CLASSES.button.sizes.sm}"`}
+// Example
+const cls = CSS_CLASSES.button.root; // "venomous-button"
+const size = CSS_CLASSES.button.sizes.sm; // "venomous-button--sm"`}
 />
 
-## Button Classes
+---
+
+## Avatar
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["button.root", CSS_CLASSES.button.root, "`CSS_CLASSES.button.root`"],
-    ["button.sizes.sm", CSS_CLASSES.button.sizes.sm, "`CSS_CLASSES.button.sizes.sm`"],
-    ["button.sizes.md", CSS_CLASSES.button.sizes.md, "`CSS_CLASSES.button.sizes.md`"],
-    ["button.sizes.lg", CSS_CLASSES.button.sizes.lg, "`CSS_CLASSES.button.sizes.lg`"],
-    ["button.variants.solid", CSS_CLASSES.button.variants.solid, "`CSS_CLASSES.button.variants.solid`"],
-    ["button.variants.outline", CSS_CLASSES.button.variants.outline, "`CSS_CLASSES.button.variants.outline`"],
-    ["button.variants.ghost", CSS_CLASSES.button.variants.ghost, "`CSS_CLASSES.button.variants.ghost`"],
-    ["button.variants.link", CSS_CLASSES.button.variants.link, "`CSS_CLASSES.button.variants.link`"],
-    ["button.colors.theme", CSS_CLASSES.button.colors.theme, "`CSS_CLASSES.button.colors.theme`"],
-    ["button.colors.success", CSS_CLASSES.button.colors.success, "`CSS_CLASSES.button.colors.success`"],
-    ["button.colors.warning", CSS_CLASSES.button.colors.warning, "`CSS_CLASSES.button.colors.warning`"],
-    ["button.colors.error", CSS_CLASSES.button.colors.error, "`CSS_CLASSES.button.colors.error`"],
-    ["button.colors.info", CSS_CLASSES.button.colors.info, "`CSS_CLASSES.button.colors.info`"],
-    ["button.states.disabled", CSS_CLASSES.button.states.disabled, "`CSS_CLASSES.button.states.disabled`"],
-    ["button.states.loading", CSS_CLASSES.button.states.loading, "`CSS_CLASSES.button.states.loading`"],
-    ["button.states.fullWidth", CSS_CLASSES.button.states.fullWidth, "`CSS_CLASSES.button.states.fullWidth`"],
+    ["`venomous-avatar`", "Root element (inline-flex container)"],
+    ["`venomous-avatar--sm`", "Small size (32px)"],
+    ["`venomous-avatar--md`", "Medium size (40px, default)"],
+    ["`venomous-avatar--lg`", "Large size (48px)"],
+    ["`venomous-avatar--circle`", "Circle shape (default)"],
+    ["`venomous-avatar--square`", "Square shape with rounded corners"],
+    ["`venomous-avatar__image`", "Image element (object-fit: cover)"],
+    ["`venomous-avatar__text`", "Text initials element"],
+    ["`venomous-avatar__icon`", "Icon container (60% of avatar size)"],
   ]}
 />
 
-## Card Classes
+## Badge
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["card.root", CSS_CLASSES.card.root, "`CSS_CLASSES.card.root`"],
-    ["card.variants.elevated", CSS_CLASSES.card.variants.elevated, "`CSS_CLASSES.card.variants.elevated`"],
-    ["card.variants.outline", CSS_CLASSES.card.variants.outline, "`CSS_CLASSES.card.variants.outline`"],
-    ["card.variants.filled", CSS_CLASSES.card.variants.filled, "`CSS_CLASSES.card.variants.filled`"],
-    ["card.states.clickable", CSS_CLASSES.card.states.clickable, "`CSS_CLASSES.card.states.clickable`"],
+    ["`venomous-badge-wrapper`", "Wrapper container (relative positioning)"],
+    ["`venomous-badge`", "Badge indicator element"],
+    ["`venomous-badge--dot`", "Dot mode (8px circle, no content)"],
+    ["`venomous-badge--theme`", "Theme color"],
+    ["`venomous-badge--success`", "Success color"],
+    ["`venomous-badge--warning`", "Warning color"],
+    ["`venomous-badge--error`", "Error color (default)"],
+    ["`venomous-badge--info`", "Info color"],
   ]}
 />
 
-## Modal Classes
+## Breadcrumb
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["modal.backdrop", CSS_CLASSES.modal.backdrop, "`CSS_CLASSES.modal.backdrop`"],
-    ["modal.backdropClosing", CSS_CLASSES.modal.backdropClosing, "`CSS_CLASSES.modal.backdropClosing`"],
-    ["modal.root", CSS_CLASSES.modal.root, "`CSS_CLASSES.modal.root`"],
-    ["modal.closing", CSS_CLASSES.modal.closing, "`CSS_CLASSES.modal.closing`"],
-    ["modal.header", CSS_CLASSES.modal.header, "`CSS_CLASSES.modal.header`"],
-    ["modal.title", CSS_CLASSES.modal.title, "`CSS_CLASSES.modal.title`"],
-    ["modal.body", CSS_CLASSES.modal.body, "`CSS_CLASSES.modal.body`"],
-    ["modal.footer", CSS_CLASSES.modal.footer, "`CSS_CLASSES.modal.footer`"],
-    ["modal.close", CSS_CLASSES.modal.close, "`CSS_CLASSES.modal.close`"],
-    ["modal.sizes.sm", CSS_CLASSES.modal.sizes.sm, "`CSS_CLASSES.modal.sizes.sm`"],
-    ["modal.sizes.md", CSS_CLASSES.modal.sizes.md, "`CSS_CLASSES.modal.sizes.md`"],
-    ["modal.sizes.lg", CSS_CLASSES.modal.sizes.lg, "`CSS_CLASSES.modal.sizes.lg`"],
-    ["modal.sizes.xl", CSS_CLASSES.modal.sizes.xl, "`CSS_CLASSES.modal.sizes.xl`"],
-    ["modal.sizes.full", CSS_CLASSES.modal.sizes.full, "`CSS_CLASSES.modal.sizes.full`"],
+    ["`venomous-breadcrumb`", "Root nav container"],
+    ["`venomous-breadcrumb__list`", "Ordered list (`<ol>`)"],
+    ["`venomous-breadcrumb__item`", "List item (`<li>`)"],
+    ["`venomous-breadcrumb__separator`", "Separator between items (`aria-hidden`)"],
+    ["`venomous-breadcrumb__link`", "Link element (`<a>`)"],
+    ["`venomous-breadcrumb__text`", "Text element (`<span>`)"],
+    ["`venomous-breadcrumb__text--current`", "Current page text (with `aria-current`)"],
+    ["`venomous-breadcrumb__ellipsis`", "Ellipsis placeholder"],
+    ["`venomous-breadcrumb__item--disabled`", "Disabled item (cursor + reduced opacity)"],
   ]}
 />
 
-## Tabs Classes
+## Button
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["tabs.root", CSS_CLASSES.tabs.root, "`CSS_CLASSES.tabs.root`"],
-    [
-      "tabs.orientations.horizontal",
-      CSS_CLASSES.tabs.orientations.horizontal,
-      "`CSS_CLASSES.tabs.orientations.horizontal`",
-    ],
-    ["tabs.orientations.vertical", CSS_CLASSES.tabs.orientations.vertical, "`CSS_CLASSES.tabs.orientations.vertical`"],
-    ["tabs.variants.line", CSS_CLASSES.tabs.variants.line, "`CSS_CLASSES.tabs.variants.line`"],
-    ["tabs.variants.pill", CSS_CLASSES.tabs.variants.pill, "`CSS_CLASSES.tabs.variants.pill`"],
-    ["tabs.list", CSS_CLASSES.tabs.list, "`CSS_CLASSES.tabs.list`"],
-    ["tabs.tab", CSS_CLASSES.tabs.tab, "`CSS_CLASSES.tabs.tab`"],
-    ["tabs.tabStates.active", CSS_CLASSES.tabs.tabStates.active, "`CSS_CLASSES.tabs.tabStates.active`"],
-    ["tabs.tabStates.disabled", CSS_CLASSES.tabs.tabStates.disabled, "`CSS_CLASSES.tabs.tabStates.disabled`"],
-    ["tabs.panel", CSS_CLASSES.tabs.panel, "`CSS_CLASSES.tabs.panel`"],
+    ["`venomous-button`", "Base button style"],
+    ["`venomous-button--sm`", "Small size"],
+    ["`venomous-button--md`", "Medium size (default)"],
+    ["`venomous-button--lg`", "Large size"],
+    ["`venomous-button--solid`", "Solid variant (default)"],
+    ["`venomous-button--outline`", "Outline variant"],
+    ["`venomous-button--ghost`", "Ghost variant"],
+    ["`venomous-button--link`", "Link variant"],
+    ["`venomous-button--theme`", "Theme color (default)"],
+    ["`venomous-button--success`", "Success color"],
+    ["`venomous-button--warning`", "Warning color"],
+    ["`venomous-button--error`", "Error color"],
+    ["`venomous-button--info`", "Info color"],
+    ["`venomous-button--disabled`", "Disabled state"],
+    ["`venomous-button--loading`", "Loading state"],
+    ["`venomous-button--full`", "Full width"],
   ]}
 />
 
-## Typography Utility Classes
-
-Typography utilities are pure CSS classes for styling text without components.
-
-### Title Classes
+## Card
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["typography.title", CSS_CLASSES.typography.title, "`CSS_CLASSES.typography.title`"],
-    ["typography.titleSizes[1]", CSS_CLASSES.typography.titleSizes[1], "`CSS_CLASSES.typography.titleSizes[1]`"],
-    ["typography.titleSizes[2]", CSS_CLASSES.typography.titleSizes[2], "`CSS_CLASSES.typography.titleSizes[2]`"],
-    ["typography.titleSizes[3]", CSS_CLASSES.typography.titleSizes[3], "`CSS_CLASSES.typography.titleSizes[3]`"],
-    ["typography.titleSizes[4]", CSS_CLASSES.typography.titleSizes[4], "`CSS_CLASSES.typography.titleSizes[4]`"],
-    ["typography.titleSizes[5]", CSS_CLASSES.typography.titleSizes[5], "`CSS_CLASSES.typography.titleSizes[5]`"],
-    ["typography.titleSizes[6]", CSS_CLASSES.typography.titleSizes[6], "`CSS_CLASSES.typography.titleSizes[6]`"],
+    ["`venomous-card`", "Base card style"],
+    ["`venomous-card--elevated`", "Elevated variant with shadow (default)"],
+    ["`venomous-card--outline`", "Outline variant with border"],
+    ["`venomous-card--filled`", "Filled variant with background"],
+    ["`venomous-card--clickable`", "Clickable state with hover effect"],
   ]}
 />
 
-### Text Classes
+## Modal
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["typography.text", CSS_CLASSES.typography.text, "`CSS_CLASSES.typography.text`"],
-    ["typography.textSizes.xs", CSS_CLASSES.typography.textSizes.xs, "`CSS_CLASSES.typography.textSizes.xs`"],
-    ["typography.textSizes.sm", CSS_CLASSES.typography.textSizes.sm, "`CSS_CLASSES.typography.textSizes.sm`"],
-    ["typography.textSizes.md", CSS_CLASSES.typography.textSizes.md, "`CSS_CLASSES.typography.textSizes.md`"],
-    ["typography.textSizes.lg", CSS_CLASSES.typography.textSizes.lg, "`CSS_CLASSES.typography.textSizes.lg`"],
-    ["typography.mono", CSS_CLASSES.typography.mono, "`CSS_CLASSES.typography.mono`"],
+    ["`venomous-modal-backdrop`", "Backdrop overlay"],
+    ["`venomous-modal-backdrop--closing`", "Backdrop closing animation"],
+    ["`venomous-modal`", "Modal container"],
+    ["`venomous-modal--closing`", "Modal closing animation"],
+    ["`venomous-modal__header`", "Header area"],
+    ["`venomous-modal__title`", "Title text"],
+    ["`venomous-modal__body`", "Body content area"],
+    ["`venomous-modal__footer`", "Footer area"],
+    ["`venomous-modal__close`", "Close button"],
+    ["`venomous-modal--sm`", "Small size"],
+    ["`venomous-modal--md`", "Medium size (default)"],
+    ["`venomous-modal--lg`", "Large size"],
+    ["`venomous-modal--xl`", "Extra large size"],
+    ["`venomous-modal--full`", "Full screen"],
+  ]}
+/>
+
+## Skeleton
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-skeleton`", "Base skeleton style (rect variant by default)"],
+    ["`venomous-skeleton--circle`", "Circle variant"],
+    ["`venomous-skeleton--text`", "Text line variant"],
+    ["`venomous-skeleton--pulse`", "Pulse animation (default)"],
+    ["`venomous-skeleton--wave`", "Wave shimmer animation"],
+  ]}
+/>
+
+## Toast
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-toaster`", "Toaster container (fixed position)"],
+    ["`venomous-toaster--top`", "Top center placement"],
+    ["`venomous-toaster--top-start`", "Top left placement"],
+    ["`venomous-toaster--top-end`", "Top right placement"],
+    ["`venomous-toaster--bottom`", "Bottom center placement"],
+    ["`venomous-toaster--bottom-start`", "Bottom left placement"],
+    ["`venomous-toaster--bottom-end`", "Bottom right placement"],
+    ["`venomous-toast`", "Single toast item"],
+    ["`venomous-toast--success`", "Success type (green left border)"],
+    ["`venomous-toast--error`", "Error type (red left border)"],
+    ["`venomous-toast--warning`", "Warning type (yellow left border)"],
+    ["`venomous-toast--info`", "Info type (blue left border)"],
+    ["`venomous-toast--closing`", "Closing animation state"],
+    ["`venomous-toast__icon`", "Type icon container"],
+    ["`venomous-toast__content`", "Content wrapper (title + description)"],
+    ["`venomous-toast__title`", "Title text"],
+    ["`venomous-toast__description`", "Description text"],
+    ["`venomous-toast__close`", "Close button"],
+  ]}
+/>
+
+## Tabs
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-tabs`", "Tabs root container"],
+    ["`venomous-tabs--horizontal`", "Horizontal orientation (default)"],
+    ["`venomous-tabs--vertical`", "Vertical orientation"],
+    ["`venomous-tabs--line`", "Line variant (default)"],
+    ["`venomous-tabs--pill`", "Pill variant"],
+    ["`venomous-tabs__list`", "Tab list container"],
+    ["`venomous-tabs__tab`", "Individual tab"],
+    ["`venomous-tabs__tab--active`", "Active tab state"],
+    ["`venomous-tabs__tab--disabled`", "Disabled tab state"],
+    ["`venomous-tabs__panel`", "Tab panel content"],
+  ]}
+/>
+
+## Typography
+
+Text styling utility classes that can be used independently without components.
+
+### Titles
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-title`", "Base title style"],
+    ["`venomous-title--1`", "Heading level 1 (largest)"],
+    ["`venomous-title--2`", "Heading level 2"],
+    ["`venomous-title--3`", "Heading level 3"],
+    ["`venomous-title--4`", "Heading level 4"],
+    ["`venomous-title--5`", "Heading level 5"],
+    ["`venomous-title--6`", "Heading level 6 (smallest)"],
+  ]}
+/>
+
+### Text Sizes
+
+<StoryDocsTable
+  headers={["CSS Class", "Description"]}
+  rows={[
+    ["`venomous-text`", "Base text style"],
+    ["`venomous-text--xs`", "Extra small text"],
+    ["`venomous-text--sm`", "Small text"],
+    ["`venomous-text--md`", "Medium text (default)"],
+    ["`venomous-text--lg`", "Large text"],
+    ["`venomous-text--mono`", "Monospace font"],
   ]}
 />
 
 ### Text Colors
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    [
-      "typography.textColors.primary",
-      CSS_CLASSES.typography.textColors.primary,
-      "`CSS_CLASSES.typography.textColors.primary`",
-    ],
-    [
-      "typography.textColors.secondary",
-      CSS_CLASSES.typography.textColors.secondary,
-      "`CSS_CLASSES.typography.textColors.secondary`",
-    ],
-    [
-      "typography.textColors.tertiary",
-      CSS_CLASSES.typography.textColors.tertiary,
-      "`CSS_CLASSES.typography.textColors.tertiary`",
-    ],
-    [
-      "typography.textColors.theme",
-      CSS_CLASSES.typography.textColors.theme,
-      "`CSS_CLASSES.typography.textColors.theme`",
-    ],
-    [
-      "typography.textColors.success",
-      CSS_CLASSES.typography.textColors.success,
-      "`CSS_CLASSES.typography.textColors.success`",
-    ],
-    [
-      "typography.textColors.warning",
-      CSS_CLASSES.typography.textColors.warning,
-      "`CSS_CLASSES.typography.textColors.warning`",
-    ],
-    [
-      "typography.textColors.error",
-      CSS_CLASSES.typography.textColors.error,
-      "`CSS_CLASSES.typography.textColors.error`",
-    ],
-    ["typography.textColors.info", CSS_CLASSES.typography.textColors.info, "`CSS_CLASSES.typography.textColors.info`"],
+    ["`venomous-text--primary`", "Primary text color"],
+    ["`venomous-text--secondary`", "Secondary text color"],
+    ["`venomous-text--tertiary`", "Tertiary text color"],
+    ["`venomous-text--theme`", "Theme color"],
+    ["`venomous-text--success`", "Success color"],
+    ["`venomous-text--warning`", "Warning color"],
+    ["`venomous-text--error`", "Error color"],
+    ["`venomous-text--info`", "Info color"],
   ]}
 />
 
 ### Font Weights
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    [
-      "typography.fontWeights.normal",
-      CSS_CLASSES.typography.fontWeights.normal,
-      "`CSS_CLASSES.typography.fontWeights.normal`",
-    ],
-    [
-      "typography.fontWeights.medium",
-      CSS_CLASSES.typography.fontWeights.medium,
-      "`CSS_CLASSES.typography.fontWeights.medium`",
-    ],
-    [
-      "typography.fontWeights.semibold",
-      CSS_CLASSES.typography.fontWeights.semibold,
-      "`CSS_CLASSES.typography.fontWeights.semibold`",
-    ],
-    [
-      "typography.fontWeights.bold",
-      CSS_CLASSES.typography.fontWeights.bold,
-      "`CSS_CLASSES.typography.fontWeights.bold`",
-    ],
+    ["`venomous-font--normal`", "Normal weight (400)"],
+    ["`venomous-font--medium`", "Medium weight (500)"],
+    ["`venomous-font--semibold`", "Semibold weight (600)"],
+    ["`venomous-font--bold`", "Bold weight (700)"],
   ]}
 />
 
 ### Text Alignment
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["typography.alignments.left", CSS_CLASSES.typography.alignments.left, "`CSS_CLASSES.typography.alignments.left`"],
-    [
-      "typography.alignments.center",
-      CSS_CLASSES.typography.alignments.center,
-      "`CSS_CLASSES.typography.alignments.center`",
-    ],
-    [
-      "typography.alignments.right",
-      CSS_CLASSES.typography.alignments.right,
-      "`CSS_CLASSES.typography.alignments.right`",
-    ],
-    [
-      "typography.alignments.justify",
-      CSS_CLASSES.typography.alignments.justify,
-      "`CSS_CLASSES.typography.alignments.justify`",
-    ],
+    ["`venomous-text--left`", "Left aligned"],
+    ["`venomous-text--center`", "Center aligned"],
+    ["`venomous-text--right`", "Right aligned"],
+    ["`venomous-text--justify`", "Justified"],
   ]}
 />
 
 ### Text Truncation
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["typography.ellipsis", CSS_CLASSES.typography.ellipsis, "`CSS_CLASSES.typography.ellipsis`"],
-    ["typography.lineClamp", CSS_CLASSES.typography.lineClamp, "`CSS_CLASSES.typography.lineClamp`"],
-    [
-      "typography.lineClampPresets[2]",
-      CSS_CLASSES.typography.lineClampPresets[2],
-      "`CSS_CLASSES.typography.lineClampPresets[2]`",
-    ],
-    [
-      "typography.lineClampPresets[3]",
-      CSS_CLASSES.typography.lineClampPresets[3],
-      "`CSS_CLASSES.typography.lineClampPresets[3]`",
-    ],
-    [
-      "typography.lineClampPresets[4]",
-      CSS_CLASSES.typography.lineClampPresets[4],
-      "`CSS_CLASSES.typography.lineClampPresets[4]`",
-    ],
-    [
-      "typography.lineClampPresets[5]",
-      CSS_CLASSES.typography.lineClampPresets[5],
-      "`CSS_CLASSES.typography.lineClampPresets[5]`",
-    ],
+    ["`venomous-ellipsis`", "Single line truncation with ellipsis"],
+    ["`venomous-line-clamp`", "Base class for multi-line truncation"],
+    ["`venomous-line-clamp--2`", "Clamp to 2 lines"],
+    ["`venomous-line-clamp--3`", "Clamp to 3 lines"],
+    ["`venomous-line-clamp--4`", "Clamp to 4 lines"],
+    ["`venomous-line-clamp--5`", "Clamp to 5 lines"],
   ]}
 />
 
 ### Line Heights
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    [
-      "typography.lineHeights.tight",
-      CSS_CLASSES.typography.lineHeights.tight,
-      "`CSS_CLASSES.typography.lineHeights.tight`",
-    ],
-    [
-      "typography.lineHeights.normal",
-      CSS_CLASSES.typography.lineHeights.normal,
-      "`CSS_CLASSES.typography.lineHeights.normal`",
-    ],
-    [
-      "typography.lineHeights.relaxed",
-      CSS_CLASSES.typography.lineHeights.relaxed,
-      "`CSS_CLASSES.typography.lineHeights.relaxed`",
-    ],
+    ["`venomous-leading--tight`", "Tight line height"],
+    ["`venomous-leading--normal`", "Normal line height"],
+    ["`venomous-leading--relaxed`", "Relaxed line height"],
   ]}
 />
 
-## Spacing Utility Classes
+## Spacing
 
-Gap utilities for flexbox and grid layouts, using design system spacing tokens.
+Gap utility classes for flexbox and grid layouts, using design system spacing tokens.
+
+### Gap (All Directions)
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["spacing.gap[0]", CSS_CLASSES.spacing.gap[0], "`CSS_CLASSES.spacing.gap[0]`"],
-    ["spacing.gap.xs", CSS_CLASSES.spacing.gap.xs, "`CSS_CLASSES.spacing.gap.xs`"],
-    ["spacing.gap.sm", CSS_CLASSES.spacing.gap.sm, "`CSS_CLASSES.spacing.gap.sm`"],
-    ["spacing.gap.md", CSS_CLASSES.spacing.gap.md, "`CSS_CLASSES.spacing.gap.md`"],
-    ["spacing.gap.lg", CSS_CLASSES.spacing.gap.lg, "`CSS_CLASSES.spacing.gap.lg`"],
-    ["spacing.gap.xl", CSS_CLASSES.spacing.gap.xl, "`CSS_CLASSES.spacing.gap.xl`"],
-    ["spacing.gap['2xl']", CSS_CLASSES.spacing.gap["2xl"], "`CSS_CLASSES.spacing.gap['2xl']`"],
-    ["spacing.gap['3xl']", CSS_CLASSES.spacing.gap["3xl"], "`CSS_CLASSES.spacing.gap['3xl']`"],
+    ["`venomous-gap-0`", "No gap"],
+    ["`venomous-gap-xs`", "Extra small gap"],
+    ["`venomous-gap-sm`", "Small gap"],
+    ["`venomous-gap-md`", "Medium gap"],
+    ["`venomous-gap-lg`", "Large gap"],
+    ["`venomous-gap-xl`", "Extra large gap"],
+    ["`venomous-gap-2xl`", "2x large gap"],
+    ["`venomous-gap-3xl`", "3x large gap"],
   ]}
 />
 
 ### Column Gap (gap-x)
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["spacing.gapX.xs", CSS_CLASSES.spacing.gapX.xs, "`CSS_CLASSES.spacing.gapX.xs`"],
-    ["spacing.gapX.sm", CSS_CLASSES.spacing.gapX.sm, "`CSS_CLASSES.spacing.gapX.sm`"],
-    ["spacing.gapX.md", CSS_CLASSES.spacing.gapX.md, "`CSS_CLASSES.spacing.gapX.md`"],
-    ["spacing.gapX.lg", CSS_CLASSES.spacing.gapX.lg, "`CSS_CLASSES.spacing.gapX.lg`"],
-    ["spacing.gapX.xl", CSS_CLASSES.spacing.gapX.xl, "`CSS_CLASSES.spacing.gapX.xl`"],
+    ["`venomous-gap-x-0`", "No column gap"],
+    ["`venomous-gap-x-xs`", "Extra small column gap"],
+    ["`venomous-gap-x-sm`", "Small column gap"],
+    ["`venomous-gap-x-md`", "Medium column gap"],
+    ["`venomous-gap-x-lg`", "Large column gap"],
+    ["`venomous-gap-x-xl`", "Extra large column gap"],
   ]}
 />
 
 ### Row Gap (gap-y)
 
 <StoryDocsTable
-  headers={["Property Path", "CSS Class", "Usage"]}
+  headers={["CSS Class", "Description"]}
   rows={[
-    ["spacing.gapY.xs", CSS_CLASSES.spacing.gapY.xs, "`CSS_CLASSES.spacing.gapY.xs`"],
-    ["spacing.gapY.sm", CSS_CLASSES.spacing.gapY.sm, "`CSS_CLASSES.spacing.gapY.sm`"],
-    ["spacing.gapY.md", CSS_CLASSES.spacing.gapY.md, "`CSS_CLASSES.spacing.gapY.md`"],
-    ["spacing.gapY.lg", CSS_CLASSES.spacing.gapY.lg, "`CSS_CLASSES.spacing.gapY.lg`"],
-    ["spacing.gapY.xl", CSS_CLASSES.spacing.gapY.xl, "`CSS_CLASSES.spacing.gapY.xl`"],
+    ["`venomous-gap-y-0`", "No row gap"],
+    ["`venomous-gap-y-xs`", "Extra small row gap"],
+    ["`venomous-gap-y-sm`", "Small row gap"],
+    ["`venomous-gap-y-md`", "Medium row gap"],
+    ["`venomous-gap-y-lg`", "Large row gap"],
+    ["`venomous-gap-y-xl`", "Extra large row gap"],
   ]}
 />

@@ -14,17 +14,7 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: `
-Portal renders its children into a DOM node outside the parent component hierarchy.
-
-This is useful for:
-- Modals and dialogs
-- Tooltips and popovers
-- Dropdowns and menus
-- Any content that needs to escape overflow:hidden containers
-
-**Note:** Portal is typically used internally by Modal, Tooltip, and similar components. Vue's Portal wraps the native \`<Teleport>\` component.
-        `,
+        component: "Portal renders children into a DOM node outside the parent component hierarchy.",
       },
     },
   },
@@ -113,8 +103,8 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
 import { Portal } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const show = ref(false);
 </script>

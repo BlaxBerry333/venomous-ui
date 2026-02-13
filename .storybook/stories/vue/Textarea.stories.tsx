@@ -13,7 +13,7 @@ const meta: Meta = {
     docs: {
       description: {
         component: `
-Textarea is a multi-line text input field. Supports auto-resize and various resize behaviors.
+Textarea is a multi-line text input field.
 
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
@@ -109,9 +109,9 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Textarea } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/textarea.css";
+import { Textarea } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -140,9 +140,9 @@ export const Sizes: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Textarea } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/textarea.css";
+import { Textarea } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -174,9 +174,9 @@ export const ResizeBehavior: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Textarea } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/textarea.css";
+import { Textarea } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -209,9 +209,9 @@ export const AutoResize: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Textarea } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/textarea.css";
+import { Textarea } from "venomous-ui/vue";
 </script>
 
 <template>
@@ -244,9 +244,9 @@ export const States: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { Textarea } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/textarea.css";
+import { Textarea } from "venomous-ui/vue";
 </script>
 
 <template>

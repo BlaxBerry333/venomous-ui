@@ -36,17 +36,6 @@ const meta: Meta = {
         component: `
 Modal is a dialog overlay that requires user interaction.
 
-Two usage modes:
-1. **Simple mode**: Use \`title\` prop and \`footer\` slot for quick setup
-2. **Custom mode**: Use default slot directly for full control
-
-Features:
-- ESC key to close
-- Click backdrop to close
-- Body scroll lock when open
-- Focus trap and focus restoration
-- Multiple sizes (sm, md, lg, xl, full)
-
 **CSS Reference:** See [CSS Classes](?path=/docs/core-css-classes--docs) and [CSS Variables](?path=/docs/core-css-variables--docs) for styling options.
         `,
       },
@@ -201,12 +190,12 @@ export const Default: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
-import { Icon } from "@iconify/vue";
-import { Modal, Button } from "venomous-ui/vue";
 import "venomous-ui/core/styles/variables/index.css";
 import "venomous-ui/core/styles/components/modal.css";
 import "venomous-ui/core/styles/components/button.css";
+import { Modal, Button } from "venomous-ui/vue";
+import { Icon } from "@iconify/vue";
+import { ref } from "vue";
 
 const open = ref(false);
 </script>
@@ -277,8 +266,8 @@ export const CustomMode: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
 import { Modal, Button } from "venomous-ui/vue";
+import { ref } from "vue";
 
 const open = ref(false);
 </script>
@@ -480,9 +469,9 @@ export const CustomCloseIcon: Story = {
       source: {
         language: "html",
         code: `<script setup lang="ts">
-import { ref } from "vue";
-import { Icon } from "@iconify/vue";
 import { Modal, Button } from "venomous-ui/vue";
+import { Icon } from "@iconify/vue";
+import { ref } from "vue";
 
 const open = ref(false);
 </script>

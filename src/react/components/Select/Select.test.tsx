@@ -370,6 +370,23 @@ describe("Select", () => {
       expect(options[0]).toHaveClass(classes.optionStates.highlighted);
     });
 
+    it("does not select when no option is highlighted on Enter", async () => {
+      const user = userEvent.setup();
+      const handleChange = vi.fn();
+      render(<Select options={mockOptions} onChange={handleChange} />);
+
+      // Open dropdown by clicking (highlightedIndex stays at -1)
+      await user.click(screen.getByRole("button"));
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
+
+      // Press Enter without highlighting any option
+      await user.keyboard("{Enter}");
+
+      expect(handleChange).not.toHaveBeenCalled();
+      // Dropdown should still be open
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
+    });
+
     it("does not select disabled option on Enter", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
@@ -591,6 +608,68 @@ describe("Select", () => {
       expect(Select.Option.displayName).toBe("Select.Option");
     });
 
+    it("opens dropdown with ArrowDown in custom mode without highlighting", async () => {
+      const user = userEvent.setup();
+      render(
+        <Select placeholder="Select a fruit">
+          <Select.Option value="apple">Apple</Select.Option>
+          <Select.Option value="banana">Banana</Select.Option>
+        </Select>,
+      );
+
+      screen.getByRole("button").focus();
+      await user.keyboard("{ArrowDown}");
+
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
+      // In custom mode, no option should be highlighted via index
+      const options = screen.getAllByRole("option");
+      options.forEach((opt) => {
+        expect(opt).not.toHaveClass(classes.optionStates.highlighted);
+      });
+    });
+
+    it("opens dropdown with ArrowUp in custom mode", async () => {
+      const user = userEvent.setup();
+      render(
+        <Select placeholder="Select a fruit">
+          <Select.Option value="apple">Apple</Select.Option>
+        </Select>,
+      );
+
+      screen.getByRole("button").focus();
+      await user.keyboard("{ArrowUp}");
+
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
+    });
+
+    it("opens dropdown with Enter in custom mode", async () => {
+      const user = userEvent.setup();
+      render(
+        <Select placeholder="Select a fruit">
+          <Select.Option value="apple">Apple</Select.Option>
+        </Select>,
+      );
+
+      screen.getByRole("button").focus();
+      await user.keyboard("{Enter}");
+
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
+    });
+
+    it("opens dropdown with Space in custom mode", async () => {
+      const user = userEvent.setup();
+      render(
+        <Select placeholder="Select a fruit">
+          <Select.Option value="apple">Apple</Select.Option>
+        </Select>,
+      );
+
+      screen.getByRole("button").focus();
+      await user.keyboard(" ");
+
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
+    });
+
     it("closes dropdown on Tab key in custom mode", async () => {
       const user = userEvent.setup();
       render(
@@ -607,6 +686,27 @@ describe("Select", () => {
       await waitFor(() => {
         expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
       });
+    });
+
+    it("ignores arrow keys when open in custom mode", async () => {
+      const user = userEvent.setup();
+      render(
+        <Select placeholder="Select a fruit">
+          <Select.Option value="apple">Apple</Select.Option>
+          <Select.Option value="banana">Banana</Select.Option>
+        </Select>,
+      );
+
+      await user.click(screen.getByRole("button"));
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
+
+      // Arrow keys should not do anything in custom mode (no crash, dropdown stays open)
+      await user.keyboard("{ArrowDown}");
+      await user.keyboard("{ArrowUp}");
+      await user.keyboard("{Enter}");
+      await user.keyboard(" ");
+
+      expect(screen.getByRole("listbox")).toBeInTheDocument();
     });
 
     it("throws error when Select.Option is used outside Select", () => {

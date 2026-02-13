@@ -54,6 +54,10 @@
     "dsznajder",
     "unhover",
     "vnode",
-    "unpassed"
+    "unpassed",
+    "frontends",
+    "labelledby",
+    "haspopup",
+    "describedby"
   ]
 }

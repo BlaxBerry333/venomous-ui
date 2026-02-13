@@ -34,7 +34,7 @@ export function calculateFloatingPosition(
         top: top + height / 2,
         left: left + width + gap,
       };
-    /* istanbul ignore next -- @preserve TypeScript ensures valid placement */
+    /* v8 ignore next -- @preserve TypeScript ensures valid placement */
     default:
       return {
         top: 0,

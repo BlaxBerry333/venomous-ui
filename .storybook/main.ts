@@ -47,7 +47,12 @@ const config: StorybookConfig = {
 
     return config;
   },
-  addons: ["@storybook/addon-essentials", "@storybook/addon-interactions", "storybook-dark-mode"],
+  addons: [
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "@storybook/addon-a11y",
+    "storybook-dark-mode",
+  ],
 };
 
 export default config;

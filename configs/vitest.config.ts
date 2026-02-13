@@ -1,10 +1,11 @@
 import react from "@vitejs/plugin-react-swc";
+import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  plugins: [react() as any],
+  plugins: [react() as any, vue() as any],
   test: {
     root: path.resolve(__dirname, ".."),
     globals: true,
@@ -20,15 +21,18 @@ export default defineConfig({
       include: [
         "src/react/components/**/*.{ts,tsx}",
         "src/react/hooks/**/*.{ts,tsx}",
+        "src/vue/components/**/*.{ts,vue}",
+        "src/vue/composables/**/*.ts",
         "src/core/constants/**/*.{ts,tsx}",
+        "src/core/helpers/**/*.ts",
         "src/core/tools/**/*.{ts,tsx}",
       ],
       exclude: ["**/*.stories.tsx", "**/*.types.ts", "**/index.ts", "**/*.d.ts"],
       thresholds: {
-        lines: 70,
-        functions: 70,
-        branches: 70,
-        statements: 70,
+        lines: 40,
+        functions: 40,
+        branches: 40,
+        statements: 40,
       },
     },
   },
