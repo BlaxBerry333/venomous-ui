@@ -1,0 +1,124 @@
+/**
+ * Textarea Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-textarea-radius: border radius (default: --VENOMOUSUI-radius-md)
+ * --venomous-textarea-border-color: border color (default: --VENOMOUSUI-border-color)
+ * --venomous-textarea-bg: background color (default: --VENOMOUSUI-bg-primary)
+ *
+ * Internal CSS variables (used for state switching):
+ * --_textarea-border, --_textarea-bg
+ */
+
+.venomous-textarea {
+  /* Customizable component variables */
+  --venomous-textarea-radius: var(--VENOMOUSUI-radius-md);
+  --venomous-textarea-border-color: var(--VENOMOUSUI-border-color);
+  --venomous-textarea-bg: var(--VENOMOUSUI-bg-primary);
+
+  /* Internal variables for state switching */
+  --_textarea-border: var(--venomous-textarea-border-color);
+  --_textarea-bg: var(--venomous-textarea-bg);
+
+  display: block;
+  width: 100%;
+  min-height: 80px;
+  padding: var(--VENOMOUSUI-spacing-sm) var(--VENOMOUSUI-spacing-md);
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+  line-height: var(--VENOMOUSUI-line-height-relaxed);
+  color: var(--VENOMOUSUI-text-primary);
+  resize: vertical;
+  outline: 1px solid var(--_textarea-border);
+  outline-offset: -1px;
+  background-color: var(--_textarea-bg);
+  border: none;
+  border-radius: var(--venomous-textarea-radius);
+  transition: outline-color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-textarea::placeholder {
+  color: var(--VENOMOUSUI-text-tertiary);
+}
+
+.venomous-textarea:focus {
+  outline: 2px solid var(--VENOMOUSUI-color-theme);
+  outline-offset: -2px;
+}
+
+/*
+==================================================
+Sizes
+==================================================
+*/
+.venomous-textarea--sm {
+  padding: var(--VENOMOUSUI-spacing-xs) var(--VENOMOUSUI-spacing-sm);
+  font-size: var(--VENOMOUSUI-font-size-xs);
+}
+
+.venomous-textarea--md {
+  padding: var(--VENOMOUSUI-spacing-sm) var(--VENOMOUSUI-spacing-md);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+}
+
+.venomous-textarea--lg {
+  padding: var(--VENOMOUSUI-spacing-md) var(--VENOMOUSUI-spacing-lg);
+  font-size: var(--VENOMOUSUI-font-size-md);
+}
+
+/*
+==================================================
+Resize Variants
+==================================================
+*/
+.venomous-textarea--resize-none {
+  resize: none;
+}
+
+.venomous-textarea--resize-vertical {
+  resize: vertical;
+}
+
+.venomous-textarea--resize-horizontal {
+  resize: horizontal;
+}
+
+.venomous-textarea--resize-both {
+  resize: both;
+}
+
+/*
+==================================================
+States
+==================================================
+*/
+.venomous-textarea--error {
+  --_textarea-border: var(--VENOMOUSUI-color-error);
+
+  color: var(--VENOMOUSUI-color-error);
+}
+
+.venomous-textarea--error::placeholder {
+  color: var(--VENOMOUSUI-color-error-muted);
+}
+
+.venomous-textarea--error:focus {
+  outline: 2px solid var(--VENOMOUSUI-color-error);
+  outline-offset: -2px;
+}
+
+.venomous-textarea--disabled {
+  cursor: not-allowed;
+  opacity: var(--VENOMOUSUI-opacity-disabled);
+}
+
+.venomous-textarea--readonly {
+  cursor: default;
+  background-color: var(--VENOMOUSUI-bg-secondary);
+}
+
+.venomous-textarea--readonly:focus {
+  outline: 1px solid var(--_textarea-border);
+  outline-offset: -1px;
+}

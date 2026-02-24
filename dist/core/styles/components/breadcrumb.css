@@ -1,0 +1,90 @@
+/**
+ * Breadcrumb Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-breadcrumb-color: link text color (default: --VENOMOUSUI-text-secondary)
+ * --venomous-breadcrumb-hover-color: link hover color (default: --VENOMOUSUI-color-theme)
+ *
+ * Navigation breadcrumb with customizable separator.
+ * Separator is rendered via CSS ::before pseudo-element using a CSS variable.
+ */
+
+/* Root - nav element */
+.venomous-breadcrumb {
+  /* Customizable component variables */
+  --venomous-breadcrumb-color: var(--VENOMOUSUI-text-secondary);
+  --venomous-breadcrumb-hover-color: var(--VENOMOUSUI-color-theme);
+
+  font-size: var(--VENOMOUSUI-font-size-sm);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+}
+
+/* List - ol element */
+.venomous-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Item - li element */
+.venomous-breadcrumb__item {
+  display: flex;
+  align-items: center;
+}
+
+/* Separator — real DOM node inserted by Breadcrumb root */
+.venomous-breadcrumb__separator {
+  display: flex;
+  align-items: center;
+  margin: 0 var(--VENOMOUSUI-spacing-xs);
+  color: var(--VENOMOUSUI-text-tertiary);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Link */
+.venomous-breadcrumb__link {
+  color: var(--venomous-breadcrumb-color);
+  text-decoration: none;
+  transition: color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-breadcrumb__link:hover {
+  color: var(--venomous-breadcrumb-hover-color);
+  text-decoration: underline;
+}
+
+/* Text (non-link or current page) */
+.venomous-breadcrumb__text {
+  color: var(--VENOMOUSUI-text-secondary);
+}
+
+.venomous-breadcrumb__text--current {
+  font-weight: var(--VENOMOUSUI-font-weight-medium);
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+/* Ellipsis */
+.venomous-breadcrumb__ellipsis {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  color: var(--VENOMOUSUI-text-tertiary);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.venomous-breadcrumb__ellipsis:hover {
+  color: var(--VENOMOUSUI-text-secondary);
+}
+
+/* Disabled item */
+.venomous-breadcrumb__item--disabled {
+  cursor: not-allowed;
+  opacity: var(--VENOMOUSUI-opacity-disabled);
+}

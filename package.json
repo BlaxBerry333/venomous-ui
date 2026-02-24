@@ -1,0 +1,95 @@
+{
+  "name": "venomous-ui",
+  "version": "0.1.0",
+  "description": "A lightweight UI component library that supports multiple front-end frameworks.",
+  "author": "BlaxBerry",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./core/constants": {
+      "types": "./dist/core/constants/index.d.ts",
+      "import": "./dist/core/constants/index.mjs"
+    },
+    "./core/helpers": {
+      "types": "./dist/core/helpers/index.d.ts",
+      "import": "./dist/core/helpers/index.mjs"
+    },
+    "./core/design-tokens": {
+      "types": "./dist/core/design-tokens/index.d.ts",
+      "import": "./dist/core/design-tokens/index.mjs"
+    },
+    "./core/types": {
+      "types": "./dist/core/types/index.d.ts",
+      "import": "./dist/core/types/index.mjs"
+    },
+    "./core/styles/reset.css": "./dist/core/styles/reset.css",
+    "./core/styles/variables/index.css": "./dist/core/styles/variables/index.css",
+    "./core/styles/components/index.css": "./dist/core/styles/components/index.css",
+    "./core/styles/components/avatar.css": "./dist/core/styles/components/avatar.css",
+    "./core/styles/components/badge.css": "./dist/core/styles/components/badge.css",
+    "./core/styles/components/breadcrumb.css": "./dist/core/styles/components/breadcrumb.css",
+    "./core/styles/components/button.css": "./dist/core/styles/components/button.css",
+    "./core/styles/components/card.css": "./dist/core/styles/components/card.css",
+    "./core/styles/components/checkbox.css": "./dist/core/styles/components/checkbox.css",
+    "./core/styles/components/checkbox-group.css": "./dist/core/styles/components/checkbox-group.css",
+    "./core/styles/components/drawer.css": "./dist/core/styles/components/drawer.css",
+    "./core/styles/components/form-field.css": "./dist/core/styles/components/form-field.css",
+    "./core/styles/components/input.css": "./dist/core/styles/components/input.css",
+    "./core/styles/components/modal.css": "./dist/core/styles/components/modal.css",
+    "./core/styles/components/popover.css": "./dist/core/styles/components/popover.css",
+    "./core/styles/components/radio.css": "./dist/core/styles/components/radio.css",
+    "./core/styles/components/select.css": "./dist/core/styles/components/select.css",
+    "./core/styles/components/skeleton.css": "./dist/core/styles/components/skeleton.css",
+    "./core/styles/components/spacing.css": "./dist/core/styles/components/spacing.css",
+    "./core/styles/components/switch.css": "./dist/core/styles/components/switch.css",
+    "./core/styles/components/tabs.css": "./dist/core/styles/components/tabs.css",
+    "./core/styles/components/textarea.css": "./dist/core/styles/components/textarea.css",
+    "./core/styles/components/toast.css": "./dist/core/styles/components/toast.css",
+    "./core/styles/components/tooltip.css": "./dist/core/styles/components/tooltip.css",
+    "./core/styles/components/typography.css": "./dist/core/styles/components/typography.css",
+    "./react/components": {
+      "types": "./dist/react/components/index.d.ts",
+      "import": "./dist/react/components/index.mjs"
+    },
+    "./react/hooks": {
+      "types": "./dist/react/hooks/index.d.ts",
+      "import": "./dist/react/hooks/index.mjs"
+    },
+    "./vue/components": {
+      "types": "./dist/vue/components/index.d.ts",
+      "import": "./dist/vue/components/index.mjs"
+    },
+    "./vue/composables": {
+      "types": "./dist/vue/composables/index.d.ts",
+      "import": "./dist/vue/composables/index.mjs"
+    }
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "peerDependencies": {
+    "@iconify/react": "^5.0.0",
+    "@iconify/vue": "^5.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "vue": ">=3.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@iconify/react": {
+      "optional": true
+    },
+    "@iconify/vue": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
+  }
+}

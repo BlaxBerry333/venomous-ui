@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/vue/components/Breadcrumb/index.ts"],"names":[],"mappings":"AAAA,YAAY,EAAE,wBAAwB,EAAE,oBAAoB,EAAE,gBAAgB,EAAE,MAAM,oBAAoB,CAAC;AAC3G,OAAO,EAAE,OAAO,IAAI,UAAU,EAAE,MAAM,kBAAkB,CAAC;AACzD,OAAO,EAAE,OAAO,IAAI,kBAAkB,EAAE,MAAM,0BAA0B,CAAC;AACzE,OAAO,EAAE,OAAO,IAAI,cAAc,EAAE,MAAM,sBAAsB,CAAC"}

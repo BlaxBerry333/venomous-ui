@@ -1,0 +1,145 @@
+/**
+ * Popover Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-popover-radius: border radius (default: --VENOMOUSUI-radius-lg)
+ * --venomous-popover-bg: background color (default: --VENOMOUSUI-bg-primary)
+ * --venomous-popover-shadow: box shadow (default: --VENOMOUSUI-shadow-lg)
+ * --venomous-popover-padding: content padding (default: --VENOMOUSUI-spacing-md)
+ * --venomous-popover-border-color: border color (default: --VENOMOUSUI-border-color)
+ */
+
+/*
+==================================================
+Popover Root
+==================================================
+*/
+.venomous-popover {
+  /* Customizable component variables */
+  --venomous-popover-radius: var(--VENOMOUSUI-radius-lg);
+  --venomous-popover-bg: var(--VENOMOUSUI-bg-primary);
+  --venomous-popover-shadow: var(--VENOMOUSUI-shadow-lg);
+  --venomous-popover-padding: var(--VENOMOUSUI-spacing-md);
+  --venomous-popover-border-color: var(--VENOMOUSUI-border-color);
+
+  position: fixed;
+  z-index: var(--VENOMOUSUI-z-popover);
+  min-width: 120px;
+  max-width: 320px;
+  padding: var(--venomous-popover-padding);
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  color: var(--VENOMOUSUI-text-primary);
+  background-color: var(--venomous-popover-bg);
+  border: 1px solid var(--venomous-popover-border-color);
+  border-radius: var(--venomous-popover-radius);
+  box-shadow: var(--venomous-popover-shadow);
+  animation: venomous-popover-fade-in var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+/*
+==================================================
+Placement Adjustments
+==================================================
+*/
+.venomous-popover--top {
+  transform: translateX(-50%);
+}
+
+.venomous-popover--bottom {
+  transform: translateX(-50%);
+}
+
+.venomous-popover--left {
+  transform: translateY(-50%);
+}
+
+.venomous-popover--right {
+  transform: translateY(-50%);
+}
+
+/*
+==================================================
+Arrow
+==================================================
+*/
+.venomous-popover__arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--venomous-popover-bg);
+  border: 1px solid var(--venomous-popover-border-color);
+  transform: rotate(45deg);
+}
+
+/* Top placement: arrow at bottom */
+.venomous-popover--top .venomous-popover__arrow {
+  bottom: -5px;
+  left: 50%;
+  margin-left: -4px;
+  border-top: none;
+  border-left: none;
+}
+
+/* Bottom placement: arrow at top */
+.venomous-popover--bottom .venomous-popover__arrow {
+  top: -5px;
+  left: 50%;
+  margin-left: -4px;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* Left placement: arrow at right */
+.venomous-popover--left .venomous-popover__arrow {
+  top: 50%;
+  right: -5px;
+  margin-top: -4px;
+  border-bottom: none;
+  border-left: none;
+}
+
+/* Right placement: arrow at left */
+.venomous-popover--right .venomous-popover__arrow {
+  top: 50%;
+  left: -5px;
+  margin-top: -4px;
+  border-top: none;
+  border-right: none;
+}
+
+/*
+==================================================
+Animation
+==================================================
+*/
+@keyframes venomous-popover-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.venomous-popover--left,
+.venomous-popover--right {
+  animation-name: venomous-popover-fade-in-horizontal;
+}
+
+@keyframes venomous-popover-fade-in-horizontal {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}

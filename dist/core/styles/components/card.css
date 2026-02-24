@@ -1,0 +1,67 @@
+/**
+ * Card Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-card-radius: border radius (default: --VENOMOUSUI-radius-lg)
+ * --venomous-card-bg: background color (default: --VENOMOUSUI-bg-primary)
+ * --venomous-card-shadow: box shadow (default: none)
+ * --venomous-card-border-color: border color (default: transparent)
+ */
+
+.venomous-card {
+  /* Customizable component variables */
+  --venomous-card-radius: var(--VENOMOUSUI-radius-lg);
+  --venomous-card-bg: var(--VENOMOUSUI-bg-primary);
+  --venomous-card-shadow: none;
+  --venomous-card-border-color: transparent;
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--venomous-card-bg);
+  border: 1px solid var(--venomous-card-border-color);
+  border-radius: var(--venomous-card-radius);
+  box-shadow: var(--venomous-card-shadow);
+}
+
+/*
+==================================================
+Variants
+==================================================
+*/
+.venomous-card--elevated {
+  --venomous-card-shadow: var(--VENOMOUSUI-shadow-md);
+}
+
+.venomous-card--outline {
+  --venomous-card-border-color: var(--VENOMOUSUI-border-color);
+}
+
+.venomous-card--filled {
+  --venomous-card-bg: var(--VENOMOUSUI-bg-secondary);
+}
+
+/*
+==================================================
+Clickable State
+==================================================
+*/
+.venomous-card--clickable {
+  cursor: pointer;
+  transition:
+    box-shadow var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default),
+    transform var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-card--clickable:hover {
+  --venomous-card-shadow: var(--VENOMOUSUI-shadow-lg);
+}
+
+.venomous-card--clickable:active {
+  transform: scale(0.98);
+}
+
+.venomous-card--clickable:focus-visible {
+  outline: 2px solid var(--VENOMOUSUI-color-theme);
+  outline-offset: 2px;
+}

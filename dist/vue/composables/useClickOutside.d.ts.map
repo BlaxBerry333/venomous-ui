@@ -1,0 +1,1 @@
+{"version":3,"file":"useClickOutside.d.ts","sourceRoot":"","sources":["../../../src/vue/composables/useClickOutside.ts"],"names":[],"mappings":"AAAA,OAAO,EAAsB,KAAK,GAAG,EAAE,MAAM,KAAK,CAAC;AAEnD;;;;;;;GAOG;AAEH,wBAAgB,eAAe,CAC7B,IAAI,EAAE,GAAG,CAAC,WAAW,GAAG,IAAI,GAAG,SAAS,CAAC,EAAE,EAC3C,cAAc,EAAE,MAAM,IAAI,EAC1B,OAAO,EAAE,MAAM,OAAO,GACrB,IAAI,CA4BN"}

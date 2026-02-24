@@ -1,0 +1,83 @@
+/**
+ * Avatar Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-avatar-radius: border radius (default: --VENOMOUSUI-radius-full)
+ * --venomous-avatar-bg: fallback background color (default: --VENOMOUSUI-text-tertiary)
+ * --venomous-avatar-color: fallback text/icon color (default: --VENOMOUSUI-text-inverse)
+ */
+
+/* Root element */
+.venomous-avatar {
+  /* Customizable component variables */
+  --venomous-avatar-radius: var(--VENOMOUSUI-radius-full);
+  --venomous-avatar-bg: var(--VENOMOUSUI-text-tertiary);
+  --venomous-avatar-color: var(--VENOMOUSUI-text-inverse);
+
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  vertical-align: middle;
+  color: var(--venomous-avatar-color);
+  user-select: none;
+  background-color: var(--venomous-avatar-bg);
+}
+
+/* Sizes */
+.venomous-avatar--sm {
+  width: 32px;
+  height: 32px;
+  font-size: var(--VENOMOUSUI-font-size-xs);
+}
+
+.venomous-avatar--md {
+  width: 40px;
+  height: 40px;
+  font-size: var(--VENOMOUSUI-font-size-sm);
+}
+
+.venomous-avatar--lg {
+  width: 48px;
+  height: 48px;
+  font-size: var(--VENOMOUSUI-font-size-md);
+}
+
+/* Shapes */
+.venomous-avatar--circle {
+  border-radius: var(--venomous-avatar-radius);
+}
+
+.venomous-avatar--square {
+  border-radius: var(--VENOMOUSUI-radius-md);
+}
+
+/* Image */
+.venomous-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text */
+.venomous-avatar__text {
+  font-weight: var(--VENOMOUSUI-font-weight-medium);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Icon */
+.venomous-avatar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 60%;
+}
+
+.venomous-avatar__icon > svg {
+  width: 100%;
+  height: 100%;
+}

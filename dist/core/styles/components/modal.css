@@ -1,0 +1,230 @@
+/**
+ * Modal Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-modal-radius: border radius (default: --VENOMOUSUI-radius-lg)
+ * --venomous-modal-bg: background color (default: --VENOMOUSUI-bg-primary)
+ * --venomous-modal-shadow: box shadow (default: --VENOMOUSUI-shadow-xl)
+ * --venomous-modal-padding: content padding (default: --VENOMOUSUI-spacing-lg)
+ */
+
+/*
+==================================================
+Backdrop
+==================================================
+*/
+.venomous-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--VENOMOUSUI-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--VENOMOUSUI-spacing-lg);
+  background-color: rgb(0 0 0 / var(--VENOMOUSUI-opacity-overlay));
+  animation: venomous-fade-in var(--VENOMOUSUI-duration-normal) var(--VENOMOUSUI-easing-default);
+}
+
+/*
+==================================================
+Modal Root
+==================================================
+*/
+.venomous-modal {
+  /* Customizable component variables */
+  --venomous-modal-radius: var(--VENOMOUSUI-radius-lg);
+  --venomous-modal-bg: var(--VENOMOUSUI-bg-primary);
+  --venomous-modal-shadow: var(--VENOMOUSUI-shadow-xl);
+  --venomous-modal-padding: var(--VENOMOUSUI-spacing-lg);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  max-height: calc(100vh - var(--VENOMOUSUI-spacing-2xl) * 2);
+  overflow: hidden;
+  background-color: var(--venomous-modal-bg);
+  border-radius: var(--venomous-modal-radius);
+  box-shadow: var(--venomous-modal-shadow);
+  animation: venomous-scale-in var(--VENOMOUSUI-duration-normal) var(--VENOMOUSUI-easing-default);
+}
+
+/*
+==================================================
+Modal Sizes
+==================================================
+*/
+.venomous-modal--sm {
+  max-width: 400px;
+}
+
+.venomous-modal--md {
+  max-width: 500px;
+}
+
+.venomous-modal--lg {
+  max-width: 700px;
+}
+
+.venomous-modal--xl {
+  max-width: 900px;
+}
+
+.venomous-modal--full {
+  max-width: calc(100vw - var(--VENOMOUSUI-spacing-2xl) * 2);
+  max-height: calc(100vh - var(--VENOMOUSUI-spacing-2xl) * 2);
+}
+
+/*
+==================================================
+Header
+==================================================
+*/
+.venomous-modal__header {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--VENOMOUSUI-spacing-md);
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--venomous-modal-padding);
+  padding-bottom: 0;
+}
+
+/*
+==================================================
+Title
+==================================================
+*/
+.venomous-modal__title {
+  flex: 1;
+  margin: 0;
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-size: var(--VENOMOUSUI-font-size-lg);
+  font-weight: var(--VENOMOUSUI-font-weight-semibold);
+  line-height: var(--VENOMOUSUI-line-height-tight);
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+/*
+==================================================
+Body
+==================================================
+*/
+.venomous-modal__body {
+  flex: 1;
+  padding: var(--venomous-modal-padding);
+  overflow-y: auto;
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+/*
+==================================================
+Footer
+==================================================
+*/
+.venomous-modal__footer {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--VENOMOUSUI-spacing-sm);
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--venomous-modal-padding);
+  padding-top: 0;
+}
+
+/*
+==================================================
+Close Button
+==================================================
+*/
+.venomous-modal__close {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--VENOMOUSUI-text-secondary);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--VENOMOUSUI-radius-md);
+  transition:
+    background-color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default),
+    color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-modal__close:hover {
+  color: var(--VENOMOUSUI-text-primary);
+  background-color: var(--VENOMOUSUI-bg-secondary);
+}
+
+.venomous-modal__close:focus-visible {
+  outline: 2px solid var(--VENOMOUSUI-color-theme);
+  outline-offset: 2px;
+}
+
+/*
+==================================================
+Closing State
+==================================================
+*/
+.venomous-modal-backdrop--closing {
+  animation: venomous-fade-out var(--VENOMOUSUI-duration-normal) var(--VENOMOUSUI-easing-default) forwards;
+}
+
+.venomous-modal--closing {
+  animation: venomous-scale-out var(--VENOMOUSUI-duration-normal) var(--VENOMOUSUI-easing-default) forwards;
+}
+
+/*
+==================================================
+Animations
+==================================================
+*/
+@keyframes venomous-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes venomous-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes venomous-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes venomous-scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}

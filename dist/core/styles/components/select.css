@@ -1,0 +1,206 @@
+/**
+ * Select Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables (on .venomous-select__trigger):
+ * --venomous-select-radius: border radius (default: --VENOMOUSUI-radius-md)
+ * --venomous-select-border-color: border color (default: --VENOMOUSUI-border-color)
+ *
+ * Internal CSS variables (used for state switching):
+ * --_select-border
+ */
+
+/*
+==================================================
+Trigger
+==================================================
+*/
+.venomous-select__trigger {
+  /* Customizable component variables */
+  --venomous-select-radius: var(--VENOMOUSUI-radius-md);
+  --venomous-select-border-color: var(--VENOMOUSUI-border-color);
+
+  /* Internal variables for state switching */
+  --_select-border: var(--venomous-select-border-color);
+
+  display: flex;
+  gap: var(--VENOMOUSUI-spacing-sm);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  color: var(--VENOMOUSUI-text-primary);
+  text-align: left;
+  cursor: pointer;
+  outline: 1px solid var(--_select-border);
+  outline-offset: -1px;
+  background-color: var(--VENOMOUSUI-bg-primary);
+  border: none;
+  border-radius: var(--venomous-select-radius);
+  transition: outline-color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-select__trigger:focus {
+  outline: 2px solid var(--VENOMOUSUI-color-theme);
+  outline-offset: -2px;
+}
+
+.venomous-select__value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.venomous-select__placeholder {
+  color: var(--VENOMOUSUI-text-tertiary);
+}
+
+.venomous-select__icon {
+  flex-shrink: 0;
+  color: var(--VENOMOUSUI-text-secondary);
+  transition: transform var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-select--open .venomous-select__icon {
+  transform: rotate(180deg);
+}
+
+/*
+==================================================
+Sizes
+==================================================
+*/
+.venomous-select--sm .venomous-select__trigger {
+  height: 32px;
+  padding: 0 var(--VENOMOUSUI-spacing-sm);
+  font-size: var(--VENOMOUSUI-font-size-xs);
+}
+
+.venomous-select--md .venomous-select__trigger {
+  height: 40px;
+  padding: 0 var(--VENOMOUSUI-spacing-md);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+}
+
+.venomous-select--lg .venomous-select__trigger {
+  height: 48px;
+  padding: 0 var(--VENOMOUSUI-spacing-lg);
+  font-size: var(--VENOMOUSUI-font-size-md);
+}
+
+/*
+==================================================
+Dropdown
+==================================================
+*/
+.venomous-select__dropdown {
+  position: fixed;
+  z-index: var(--VENOMOUSUI-z-popover);
+  min-width: 120px;
+  padding: var(--VENOMOUSUI-spacing-xs) 0;
+  overflow: auto;
+  background-color: var(--VENOMOUSUI-bg-primary);
+  border: 1px solid var(--VENOMOUSUI-border-color);
+  border-radius: var(--VENOMOUSUI-radius-md);
+  box-shadow: var(--VENOMOUSUI-shadow-lg);
+  animation: venomous-select-fade-in var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+@keyframes venomous-select-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+==================================================
+Option
+==================================================
+*/
+.venomous-select__option {
+  display: flex;
+  gap: var(--VENOMOUSUI-spacing-sm);
+  align-items: center;
+  padding: var(--VENOMOUSUI-spacing-sm) var(--VENOMOUSUI-spacing-md);
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  color: var(--VENOMOUSUI-text-primary);
+  cursor: pointer;
+  transition: background-color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-select__option-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.venomous-select__option:hover,
+.venomous-select__option--highlighted {
+  background-color: var(--VENOMOUSUI-bg-secondary);
+}
+
+.venomous-select__option--selected {
+  color: var(--VENOMOUSUI-color-theme);
+  background-color: var(--VENOMOUSUI-color-theme-muted);
+}
+
+.venomous-select__option--disabled {
+  cursor: not-allowed;
+  opacity: var(--VENOMOUSUI-opacity-disabled);
+}
+
+.venomous-select__option-icon {
+  flex-shrink: 0;
+  color: var(--VENOMOUSUI-color-theme);
+}
+
+/*
+==================================================
+States
+==================================================
+*/
+.venomous-select--disabled {
+  cursor: not-allowed;
+  opacity: var(--VENOMOUSUI-opacity-disabled);
+}
+
+.venomous-select--disabled .venomous-select__trigger {
+  cursor: not-allowed;
+}
+
+.venomous-select--readonly .venomous-select__trigger {
+  cursor: default;
+  background-color: var(--VENOMOUSUI-bg-secondary);
+}
+
+.venomous-select--error .venomous-select__trigger {
+  --_select-border: var(--VENOMOUSUI-color-error);
+
+  color: var(--VENOMOUSUI-color-error);
+}
+
+.venomous-select--error .venomous-select__placeholder {
+  color: var(--VENOMOUSUI-color-error-muted);
+}
+
+.venomous-select--readonly .venomous-select__trigger:focus {
+  outline: 1px solid var(--_select-border);
+  outline-offset: -1px;
+}
+
+.venomous-select--error .venomous-select__trigger:focus {
+  outline: 2px solid var(--VENOMOUSUI-color-error);
+  outline-offset: -2px;
+}

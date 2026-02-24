@@ -1,0 +1,182 @@
+/**
+ * Tabs Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables (on .venomous-tabs__tab):
+ * --venomous-tabs-color: active tab color (default: --VENOMOUSUI-color-theme)
+ */
+
+/* stylelint-disable no-descending-specificity */
+
+/* ========================================
+ * Root Container
+ * ======================================== */
+
+.venomous-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.venomous-tabs--vertical {
+  flex-direction: row;
+}
+
+/* ========================================
+ * Tab List
+ * ======================================== */
+
+.venomous-tabs__list {
+  display: flex;
+  gap: var(--VENOMOUSUI-spacing-xs);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Horizontal orientation */
+.venomous-tabs--horizontal .venomous-tabs__list {
+  flex-direction: row;
+  border-bottom: 1px solid var(--VENOMOUSUI-border-color);
+}
+
+/* Vertical orientation */
+.venomous-tabs--vertical .venomous-tabs__list {
+  flex-shrink: 0;
+  flex-direction: column;
+  border-right: 1px solid var(--VENOMOUSUI-border-color);
+  border-bottom: none;
+}
+
+/* ========================================
+ * Tab Button - Base
+ * ======================================== */
+
+.venomous-tabs__tab {
+  /* Customizable component variables */
+  --venomous-tabs-color: var(--VENOMOUSUI-color-theme);
+
+  position: relative;
+  display: inline-flex;
+  gap: var(--VENOMOUSUI-spacing-xs);
+  align-items: center;
+  justify-content: center;
+  padding: var(--VENOMOUSUI-spacing-sm) var(--VENOMOUSUI-spacing-md);
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+  font-weight: var(--VENOMOUSUI-font-weight-medium);
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  color: var(--VENOMOUSUI-text-secondary);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  border: none;
+  transition:
+    color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default),
+    background-color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+/* Active state - theme color takes priority over hover */
+.venomous-tabs__tab--active {
+  color: var(--venomous-tabs-color);
+}
+
+/* Hover state - only for non-active, non-disabled tabs */
+.venomous-tabs__tab:hover:not(:disabled, .venomous-tabs__tab--disabled, .venomous-tabs__tab--active) {
+  color: var(--VENOMOUSUI-text-primary);
+}
+
+.venomous-tabs__tab:focus-visible {
+  outline: 2px solid var(--venomous-tabs-color);
+  outline-offset: -2px;
+}
+
+/* Disabled state - use opacity like Button */
+.venomous-tabs__tab:disabled,
+.venomous-tabs__tab--disabled {
+  cursor: not-allowed;
+  opacity: var(--VENOMOUSUI-opacity-disabled);
+}
+
+/* ========================================
+ * Line Variant
+ * ======================================== */
+
+.venomous-tabs--line .venomous-tabs__tab {
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+}
+
+.venomous-tabs--line .venomous-tabs__tab--active {
+  border-bottom-color: var(--venomous-tabs-color);
+}
+
+/* Vertical line variant */
+.venomous-tabs--vertical.venomous-tabs--line .venomous-tabs__tab {
+  margin-right: -1px;
+  margin-bottom: 0;
+  border-right: 2px solid transparent;
+  border-bottom: none;
+}
+
+.venomous-tabs--vertical.venomous-tabs--line .venomous-tabs__tab--active {
+  border-right-color: var(--venomous-tabs-color);
+}
+
+/* ========================================
+ * Pill Variant (capsule/chip style)
+ * ======================================== */
+
+.venomous-tabs--pill .venomous-tabs__list {
+  gap: var(--VENOMOUSUI-spacing-xs);
+  border-bottom: none;
+}
+
+.venomous-tabs--pill .venomous-tabs__tab {
+  padding: var(--VENOMOUSUI-spacing-sm) var(--VENOMOUSUI-spacing-md);
+  border: 1px solid var(--VENOMOUSUI-border-color);
+  border-radius: var(--VENOMOUSUI-radius-full);
+}
+
+/* Pill hover - only for non-active, non-disabled tabs */
+.venomous-tabs--pill
+  .venomous-tabs__tab:hover:not(:disabled, .venomous-tabs__tab--disabled, .venomous-tabs__tab--active) {
+  background: var(--VENOMOUSUI-bg-secondary);
+  border-color: var(--VENOMOUSUI-border-color-hover);
+}
+
+/* Pill active - theme color border and text */
+.venomous-tabs--pill .venomous-tabs__tab--active {
+  color: var(--venomous-tabs-color);
+  background: var(--VENOMOUSUI-color-theme-muted);
+  border-color: var(--venomous-tabs-color);
+}
+
+/* Pill active hover */
+.venomous-tabs--pill .venomous-tabs__tab--active:hover:not(:disabled, .venomous-tabs__tab--disabled) {
+  background: var(--VENOMOUSUI-color-theme-muted);
+}
+
+/* Vertical pill variant */
+.venomous-tabs--vertical.venomous-tabs--pill .venomous-tabs__list {
+  border-right: none;
+}
+
+/* ========================================
+ * Tab Panel
+ * ======================================== */
+
+.venomous-tabs__panel {
+  padding: var(--VENOMOUSUI-spacing-md);
+}
+
+.venomous-tabs__panel[hidden] {
+  display: none;
+}
+
+/* Vertical panel */
+.venomous-tabs--vertical .venomous-tabs__panel {
+  flex: 1;
+}

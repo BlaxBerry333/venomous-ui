@@ -1,0 +1,19 @@
+/**
+ * CheckboxGroup Component Styles
+ * Venomous UI
+ */
+
+.venomous-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.venomous-checkbox-group--horizontal {
+  flex-direction: row;
+  gap: var(--VENOMOUSUI-spacing-lg);
+}
+
+.venomous-checkbox-group--vertical {
+  flex-direction: column;
+  gap: var(--VENOMOUSUI-spacing-sm);
+}

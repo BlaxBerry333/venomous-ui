@@ -1,0 +1,171 @@
+/**
+ * Input Component Styles
+ * Venomous UI
+ *
+ * Customizable CSS variables:
+ * --venomous-input-radius: border radius (default: --VENOMOUSUI-radius-md)
+ * --venomous-input-border-color: border color (default: --VENOMOUSUI-border-color)
+ * --venomous-input-bg: background color (default: --VENOMOUSUI-bg-primary)
+ *
+ * Internal CSS variables (used for state switching):
+ * --_input-border, --_input-bg
+ */
+
+.venomous-input-wrapper {
+  /* Customizable component variables */
+  --venomous-input-radius: var(--VENOMOUSUI-radius-md);
+  --venomous-input-border-color: var(--VENOMOUSUI-border-color);
+  --venomous-input-bg: var(--VENOMOUSUI-bg-primary);
+
+  /* Internal variables for state switching */
+  --_input-border: var(--venomous-input-border-color);
+  --_input-bg: var(--venomous-input-bg);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  outline: 1px solid var(--_input-border);
+  outline-offset: -1px;
+  background-color: var(--_input-bg);
+  border: none;
+  border-radius: var(--venomous-input-radius);
+  transition: outline-color var(--VENOMOUSUI-duration-fast) var(--VENOMOUSUI-easing-default);
+}
+
+.venomous-input-wrapper:focus-within {
+  outline: 2px solid var(--VENOMOUSUI-color-theme);
+  outline-offset: -2px;
+}
+
+.venomous-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  font-family: var(--VENOMOUSUI-font-family-sans);
+  font-size: inherit;
+  line-height: var(--VENOMOUSUI-line-height-normal);
+  color: var(--VENOMOUSUI-text-primary);
+  outline: none;
+  background: transparent;
+  border: none;
+}
+
+.venomous-input::placeholder {
+  color: var(--VENOMOUSUI-text-tertiary);
+}
+
+.venomous-input::-webkit-outer-spin-button,
+.venomous-input::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.venomous-input[type="number"] {
+  appearance: textfield;
+}
+
+/*
+==================================================
+Prefix & Suffix
+==================================================
+*/
+.venomous-input__prefix,
+.venomous-input__suffix {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--VENOMOUSUI-text-secondary);
+}
+
+/*
+==================================================
+Sizes
+==================================================
+*/
+.venomous-input--sm {
+  height: 32px;
+  padding: 0 var(--VENOMOUSUI-spacing-sm);
+  font-size: var(--VENOMOUSUI-font-size-xs);
+}
+
+.venomous-input--sm .venomous-input__prefix {
+  margin-right: var(--VENOMOUSUI-spacing-xs);
+}
+
+.venomous-input--sm .venomous-input__suffix {
+  margin-left: var(--VENOMOUSUI-spacing-xs);
+}
+
+.venomous-input--md {
+  height: 40px;
+  padding: 0 var(--VENOMOUSUI-spacing-md);
+  font-size: var(--VENOMOUSUI-font-size-sm);
+}
+
+.venomous-input--md .venomous-input__prefix {
+  margin-right: var(--VENOMOUSUI-spacing-sm);
+}
+
+.venomous-input--md .venomous-input__suffix {
+  margin-left: var(--VENOMOUSUI-spacing-sm);
+}
+
+.venomous-input--lg {
+  height: 48px;
+  padding: 0 var(--VENOMOUSUI-spacing-lg);
+  font-size: var(--VENOMOUSUI-font-size-md);
+}
+
+.venomous-input--lg .venomous-input__prefix {
+  margin-right: var(--VENOMOUSUI-spacing-sm);
+}
+
+.venomous-input--lg .venomous-input__suffix {
+  margin-left: var(--VENOMOUSUI-spacing-sm);
+}
+
+/*
+==================================================
+States
+==================================================
+*/
+.venomous-input--error {
+  --_input-border: var(--VENOMOUSUI-color-error);
+}
+
+.venomous-input--error .venomous-input {
+  color: var(--VENOMOUSUI-color-error);
+}
+
+.venomous-input--error .venomous-input::placeholder {
+  color: var(--VENOMOUSUI-color-error-muted);
+}
+
+.venomous-input--error:focus-within {
+  outline: 2px solid var(--VENOMOUSUI-color-error);
+  outline-offset: -2px;
+}
+
+.venomous-input--disabled {
+  cursor: not-allowed;
+  opacity: var(--VENOMOUSUI-opacity-disabled);
+}
+
+.venomous-input--disabled .venomous-input {
+  cursor: not-allowed;
+}
+
+.venomous-input--readonly {
+  background-color: var(--VENOMOUSUI-bg-secondary);
+}
+
+.venomous-input--readonly:focus-within {
+  outline: 1px solid var(--_input-border);
+  outline-offset: -1px;
+}
+
+.venomous-input--readonly .venomous-input {
+  cursor: default;
+}
