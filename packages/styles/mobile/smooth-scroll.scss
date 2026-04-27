@@ -1,0 +1,11 @@
+// iOS WebView / Safari 启用平滑动量滚动，并控制弹性边界
+// 桌面浏览器不受影响
+
+html,
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  overscroll-behavior-y: none;
+}

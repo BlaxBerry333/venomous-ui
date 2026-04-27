@@ -1,0 +1,13 @@
+// 层级 token
+// 起点 9000 避开业界主流 z-index 密集区，max 9999 留给用户兜底
+
+:root {
+  --venomous-z-index-1: 9000;
+  --venomous-z-index-2: 9100;
+  --venomous-z-index-3: 9200;
+  --venomous-z-index-4: 9300;
+  --venomous-z-index-5: 9400;
+  --venomous-z-index-6: 9500;
+
+  --venomous-z-index-max: 9999;
+}

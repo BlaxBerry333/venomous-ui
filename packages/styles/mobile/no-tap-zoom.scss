@@ -1,0 +1,8 @@
+// 防止 iOS Safari 输入聚焦时页面自动放大。
+// iOS 触发缩放的阈值是 input 字号 < 16px，统一拉到 16px 即可阻止。
+
+input,
+select,
+textarea {
+  font-size: 16px;
+}

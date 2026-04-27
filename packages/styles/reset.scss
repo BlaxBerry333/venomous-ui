@@ -1,0 +1,107 @@
+// 基础 reset：消除浏览器默认差异，给 headless 组件一个干净起点。
+// 不接 token、不做视觉决策（背景/字体/链接样式等交给 tokens 或组件层）。
+// 用户主动引入：@import 'venomous-ui/styles/reset.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+}
+
+// 标题/段落 margin 归零，间距交给上层
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+figure,
+dl,
+dd {
+  margin: 0;
+}
+
+// 列表归零
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// 表单控件字体/颜色继承
+button,
+input,
+select,
+textarea,
+optgroup {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+// 去除 iOS Safari 按钮默认渐变 / 圆角
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  background-image: none;
+}
+
+// 去除 iOS 输入框 / 下拉默认外观，方便组件层定制
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+// search 框去除 Safari 圆角胶囊及内置清除按钮
+[type='search'] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type='search']::-webkit-search-decoration,
+[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+// number 框去除 Safari/Chrome 旋钮
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// 媒体元素改 block，消除 inline 基线间隙
+img,
+svg,
+video,
+canvas,
+audio,
+iframe {
+  display: block;
+}
+
+// 禁用元素统一 cursor
+[disabled] {
+  cursor: not-allowed;
+}
+
+// 强制隐藏（避免被 display: flex 等覆盖）
+[hidden] {
+  display: none !important;
+}

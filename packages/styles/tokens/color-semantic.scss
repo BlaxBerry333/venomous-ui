@@ -1,0 +1,23 @@
+// L2 Semantic 语义色
+// 依赖 color-primitive 中定义的 --venomous-{color}-{...} 变量；
+// 单独引此文件，需先引 color-primitive，否则 var() 解析失败。
+
+:root {
+  --venomous-color-bg-surface: var(--venomous-gray-50);
+  --venomous-color-bg-subtle: var(--venomous-gray-100);
+  --venomous-color-bg-overlay: rgba(17, 24, 39, 0.5);
+  --venomous-color-fg-default: var(--venomous-gray-900);
+  --venomous-color-fg-muted: var(--venomous-gray-600);
+  --venomous-color-fg-subtle: var(--venomous-gray-400);
+  --venomous-color-fg-on-action: #ffffff;
+  --venomous-color-border-default: var(--venomous-gray-200);
+  --venomous-color-border-strong: var(--venomous-gray-400);
+  --venomous-color-action-primary: var(--venomous-blue-600);
+  --venomous-color-action-primary-hover: var(--venomous-blue-700);
+  --venomous-color-action-primary-active: var(--venomous-blue-800);
+  --venomous-color-danger: var(--venomous-red-600);
+  --venomous-color-danger-hover: var(--venomous-red-700);
+  --venomous-color-success: var(--venomous-green-600);
+  --venomous-color-warning: var(--venomous-yellow-500);
+  --venomous-color-focus-ring: var(--venomous-blue-500);
+}

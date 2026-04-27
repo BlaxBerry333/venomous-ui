@@ -1,0 +1,30 @@
+.claude
+__ai__/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+
+# Tooling cache (eslint / stylelint / prettier / cspell / tsc incremental)
+.cache/
+
+# Logs & coverage
+*.log
+npm-debug.log*
+coverage/
+
+# OS
+.DS_Store
+
+# Editor
+.idea/
+*.swp
+*.swo
+
+# husky auto-generated helper (shim)
+.husky/_
+
+# npm pack tarballs
+*.tgz

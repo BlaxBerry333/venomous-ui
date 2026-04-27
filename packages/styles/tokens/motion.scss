@@ -1,0 +1,11 @@
+// 动效 token
+
+:root {
+  --venomous-motion-duration-1: 120ms;
+  --venomous-motion-duration-2: 200ms;
+  --venomous-motion-duration-3: 320ms;
+
+  --venomous-motion-easing-1: cubic-bezier(0.2, 0, 0, 1);
+  --venomous-motion-easing-2: cubic-bezier(0, 0, 0, 1);
+  --venomous-motion-easing-3: cubic-bezier(0.3, 0, 1, 1);
+}

@@ -1,0 +1,25 @@
+// iOS 刘海屏 / 全面屏 safe-area 工具类
+// 需要在 <meta name="viewport" content="..., viewport-fit=cover"> 配合下生效
+
+.venomous-safe-area-inset {
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+}
+
+.venomous-safe-area-inset-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.venomous-safe-area-inset-right {
+  padding-right: env(safe-area-inset-right);
+}
+
+.venomous-safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.venomous-safe-area-inset-left {
+  padding-left: env(safe-area-inset-left);
+}

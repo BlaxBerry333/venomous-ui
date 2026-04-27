@@ -1,0 +1,161 @@
+{
+  "name": "venomous-ui",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Multi-framework headless component library (Headless Core + Adapter), distributed via GitHub branch.",
+  "license": "MIT",
+  "author": "BlaxBerry333",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlaxBerry333/venomous-ui.git"
+  },
+  "homepage": "https://github.com/BlaxBerry333/venomous-ui",
+  "bugs": {
+    "url": "https://github.com/BlaxBerry333/venomous-ui/issues"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.18.0"
+  },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "exports": {
+    "./styles/reset.css": "./dist/styles/reset.css",
+    "./styles/tokens/*.css": "./dist/styles/tokens/*.css",
+    "./styles/presets/*.css": "./dist/styles/presets/*.css",
+    "./styles/mobile/*.css": "./dist/styles/mobile/*.css",
+    "./styles/a11y/*.css": "./dist/styles/a11y/*.css",
+    "./utils/helpers": {
+      "types": "./dist/utils/helpers/index.d.ts",
+      "import": "./dist/utils/helpers/index.js"
+    },
+    "./utils/helpers/*": {
+      "types": "./dist/utils/helpers/*.d.ts",
+      "import": "./dist/utils/helpers/*.js"
+    },
+    "./react/components": {
+      "types": "./dist/react/components/index.d.ts",
+      "import": "./dist/react/components/index.js"
+    },
+    "./react/components/*": {
+      "types": "./dist/react/components/*/index.d.ts",
+      "import": "./dist/react/components/*/index.js"
+    },
+    "./react/hooks": {
+      "types": "./dist/react/hooks/index.d.ts",
+      "import": "./dist/react/hooks/index.js"
+    },
+    "./react/hooks/*": {
+      "types": "./dist/react/hooks/*.d.ts",
+      "import": "./dist/react/hooks/*.js"
+    },
+    "./vue/components": {
+      "types": "./dist/vue/components/index.d.ts",
+      "import": "./dist/vue/components/index.js"
+    },
+    "./vue/components/*": {
+      "types": "./dist/vue/components/*/index.d.ts",
+      "import": "./dist/vue/components/*/index.js"
+    },
+    "./vue/composables": {
+      "types": "./dist/vue/composables/index.d.ts",
+      "import": "./dist/vue/composables/index.js"
+    },
+    "./vue/composables/*": {
+      "types": "./dist/vue/composables/*.d.ts",
+      "import": "./dist/vue/composables/*.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "react": ">=18.0.0 || >=19.0.0",
+    "react-dom": ">=18.0.0 || >=19.0.0",
+    "vue": ">=3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^25.6.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "concurrently": "^9.2.1",
+    "cspell": "^10.0.0",
+    "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
+    "happy-dom": "^20.9.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.83.0",
+    "stylelint": "^17.9.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "tinyglobby": "^0.2.16",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.0",
+    "vite": "^8.0.10",
+    "vite-plugin-dts": "^4.4.0",
+    "vitest": "^4.1.5"
+  },
+  "scripts": {
+    "check:eslint": "eslint --config configs/eslint.config.mjs --cache --cache-location .cache/eslint .",
+    "check:typescript": "tsc --noEmit --incremental --tsBuildInfoFile .cache/tsbuildinfo -p tsconfig.json",
+    "check:stylelint": "stylelint --config configs/stylelint.config.mjs --ignore-path configs/.stylelintignore --cache --cache-location .cache/stylelint \"packages/**/*.scss\"",
+    "check:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --cache --cache-location .cache/prettier --check .",
+    "check:spell": "cspell --config configs/cspell.json --no-progress --gitignore --cache --cache-location .cache/cspell \"**/*.{ts,tsx,mjs,cjs,md,scss}\"",
+    "check": "concurrently -g --kill-others-on-fail -n eslint,ts,stylelint,prettier,spell -c blue,cyan,magenta,yellow,green \"npm:check:eslint\" \"npm:check:typescript\" \"npm:check:stylelint\" \"npm:check:prettier\" \"npm:check:spell\"",
+    "fix:eslint": "eslint --config configs/eslint.config.mjs --fix .",
+    "fix:stylelint": "stylelint --config configs/stylelint.config.mjs --ignore-path configs/.stylelintignore --fix \"packages/**/*.scss\"",
+    "fix:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write .",
+    "fix": "npm run fix:eslint && npm run fix:stylelint && npm run fix:prettier",
+    "format:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write .",
+    "format:stylelint": "stylelint --config configs/stylelint.config.mjs --ignore-path configs/.stylelintignore --fix \"packages/**/*.scss\"",
+    "format": "npm run format:prettier && npm run format:stylelint",
+    "test": "vitest run --config configs/vitest.config.ts",
+    "test:watch": "vitest --config configs/vitest.config.ts",
+    "build:styles": "vite build --config configs/vite.config.styles.ts",
+    "build:utils": "vite build --config configs/vite.config.utils.ts",
+    "build:react": "vite build --config configs/vite.config.react.ts",
+    "build:vue": "vite build --config configs/vite.config.vue.ts",
+    "build": "rm -rf dist && npm run build:styles && npm run build:utils && npm run build:react && npm run build:vue",
+    "rm:deps": "rm -rf node_modules package-lock.json",
+    "rm:cache": "rm -rf .cache",
+    "rm": "npm run rm:deps && npm run rm:cache",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,mjs,cjs,md,scss}": [
+      "cspell --config configs/cspell.json --no-progress --no-must-find-files"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --config configs/eslint.config.mjs --fix",
+      "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write"
+    ],
+    "*.scss": [
+      "stylelint --config configs/stylelint.config.mjs --ignore-path configs/.stylelintignore --fix",
+      "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write"
+    ],
+    "*.{md,json}": [
+      "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write"
+    ]
+  }
+}

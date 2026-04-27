@@ -1,0 +1,14 @@
+{
+  "unwantedRecommendations": [],
+
+  "recommendations": [
+    "PKief.material-icon-theme",
+    "Stephen-Hamilton-C.black-plus-material",
+    "streetsidesoftware.code-spell-checker",
+    "wayou.vscode-todo-highlight",
+    "esbenp.prettier-vscode",
+    "unifiedjs.vscode-mdx",
+    "dsznajder.es7-react-js-snippets",
+    "Vue.volar"
+  ]
+}

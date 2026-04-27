@@ -1,0 +1,8 @@
+# GitHub linguist —— 排除非主语言，避免污染语言条统计
+
+*.js     linguist-detectable=false
+*.mjs    linguist-detectable=false
+*.cjs    linguist-detectable=false
+*.json   linguist-detectable=false
+*.md     linguist-detectable=false
+*.mdx    linguist-detectable=false

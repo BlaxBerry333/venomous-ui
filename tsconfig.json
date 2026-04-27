@@ -1,0 +1,12 @@
+{
+  "extends": "./configs/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@utils/*": ["./packages/utils/*"],
+      "@react/*": ["./packages/react/*"],
+      "@vue/*": ["./packages/vue/*"]
+    }
+  },
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "configs/**/*.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
+}

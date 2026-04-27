@@ -1,0 +1,29 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  "eslint.options": {
+    "overrideConfigFile": "configs/eslint.config.mjs"
+  },
+
+  "prettier.configPath": "configs/prettier.config.mjs",
+  "prettier.ignorePath": "configs/.prettierignore",
+
+  "cSpell.import": ["configs/cspell.json"],
+
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+
+  "[typescript][typescriptreact][javascript][json][scss][markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "material-icon-theme.files.associations": {
+    "vite.config.react.ts": "vite",
+    "vite.config.styles.ts": "vite",
+    "vite.config.utils.ts": "vite",
+    "vite.config.vue.ts": "vite"
+  }
+}

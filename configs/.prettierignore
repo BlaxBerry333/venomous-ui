@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+pnpm-lock.yaml
+package-lock.json
+.claude
+.husky
+__ai__
+LICENSE
