@@ -1,0 +1,11 @@
+// Storybook preview iframe 专用底色 —— 让 story canvas 跟随 globals.theme。
+// 这里只在 .storybook/preview.tsx 中 import，污染范围限于 storybook。
+
+html,
+body {
+  background: var(--venomous-color-bg-surface);
+  color: var(--venomous-color-fg-default);
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}

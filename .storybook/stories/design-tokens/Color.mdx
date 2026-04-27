@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { useTranslation } from '../../i18n/useTranslation';
+import { ColorSwatch, DataTable } from '../../components';
+
+<Meta title="Design Tokens/Color" />
+
+# {useTranslation('design_tokens.color')}
+
+<DataTable
+  columns={[
+    { key: 'name', header: 'Name' },
+    { key: 'value', header: 'Value' },
+    { key: 'preview', header: 'Preview', width: 60 },
+  ]}
+  rows={[
+    {
+      name: <code>--venomous-color-bg-surface</code>,
+      value: <code>gray-50 / gray-900 (dark)</code>,
+      preview: <ColorSwatch value="var(--venomous-color-bg-surface)" />,
+    },
+    {
+      name: <code>--venomous-color-fg-default</code>,
+      value: <code>gray-900 / gray-50 (dark)</code>,
+      preview: <ColorSwatch value="var(--venomous-color-fg-default)" />,
+    },
+    {
+      name: <code>--venomous-color-action-primary</code>,
+      value: <code>blue-600 / blue-500 (dark)</code>,
+      preview: <ColorSwatch value="var(--venomous-color-action-primary)" />,
+    },
+    {
+      name: <code>--venomous-color-danger</code>,
+      value: <code>red-600 / red-500 (dark)</code>,
+      preview: <ColorSwatch value="var(--venomous-color-danger)" />,
+    },
+  ]}
+/>

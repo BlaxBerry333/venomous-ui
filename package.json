@@ -92,10 +92,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/react-vite": "^10.3.5",
     "@testing-library/react": "^16.3.2",
     "@types/node": "^25.6.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-vue": "^6.0.6",
     "concurrently": "^9.2.1",
     "cspell": "^10.0.0",
     "eslint": "^10.2.1",
@@ -107,6 +111,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.83.0",
+    "storybook": "^10.3.5",
     "stylelint": "^17.9.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "tinyglobby": "^0.2.16",
@@ -114,7 +119,8 @@
     "typescript-eslint": "^8.59.0",
     "vite": "^8.0.10",
     "vite-plugin-dts": "^4.4.0",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.5",
+    "vue": "^3.5.33"
   },
   "scripts": {
     "check:eslint": "eslint --config configs/eslint.config.mjs --cache --cache-location .cache/eslint .",
@@ -137,6 +143,10 @@
     "build:react": "vite build --config configs/vite.config.react.ts",
     "build:vue": "vite build --config configs/vite.config.vue.ts",
     "build": "rm -rf dist && npm run build:styles && npm run build:utils && npm run build:react && npm run build:vue",
+    "dev": "storybook dev -p 6006",
+    "dev:storybook": "storybook dev -p 6006",
+    "build:storybook": "storybook build -o storybook-static",
+    "preview:storybook": "npx --yes serve storybook-static -p 6006",
     "rm:deps": "rm -rf node_modules package-lock.json",
     "rm:cache": "rm -rf .cache",
     "rm": "npm run rm:deps && npm run rm:cache",

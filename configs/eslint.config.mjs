@@ -14,7 +14,15 @@ import prettier from 'eslint-config-prettier';
 
 export default tseslint.config(
   {
-    ignores: ['node_modules', 'dist', 'coverage', 'pnpm-lock.yaml', '**/*.d.ts'],
+    ignores: [
+      'node_modules',
+      'dist',
+      'storybook-static',
+      '.cache',
+      'coverage',
+      'pnpm-lock.yaml',
+      '**/*.d.ts',
+    ],
   },
 
   js.configs.recommended,

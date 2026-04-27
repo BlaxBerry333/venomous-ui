@@ -7,6 +7,13 @@
       "@vue/*": ["./packages/vue/*"]
     }
   },
-  "include": ["packages/**/*.ts", "packages/**/*.tsx", "configs/**/*.ts"],
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "configs/**/*.ts",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    ".storybook/**/*.d.ts"
+  ],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
 }

@@ -1,144 +1,33 @@
 # venomous-ui
 
-本项目主要提供 headless 组件与内置样式
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.18-brightgreen.svg)](https://nodejs.org/)
+[![Storybook](https://img.shields.io/badge/Storybook-Live%20Demo-FF4785?logo=storybook&logoColor=white)](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome)
 
-## 用法
+`venomous-ui` is a headless UI library that ships behavior, accessibility, and keyboard interaction for common interactive primitives — but not styles. The same component logic runs on both React and Vue from a shared core.
 
-### 模式 A —— 只用 headless 组件
+Pick how much of it you want:
 
-<details>
-  <summary>
-    <strong>React</strong>
-  </summary>
+- **Components only** — bring your own CSS.
+- **Components + built-in styles** — opt into the bundled SCSS for a working look out of the box.
+- **Styles only** — skip the components, write your own markup, and apply the bundled class names.
 
-```tsx
-import { Tabs } from 'venomous-ui/react/components';
+## Documentation
 
-export default function Demo() {
-  return (
-    <Tabs>
-      <TabTitle>A</TabTitle>
-      <TabTitle>B</TabTitle>
+Hosted on GitHub Pages:
 
-      <TabPanel>AA</TabPanel>
-      <TabPanel>BB</TabPanel>
-    </Tabs>
-  );
-}
+- [English](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome)
+- [中文](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome&globals=locale:zh)
+- [日本語](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome&globals=locale:ja)
+
+## Installation
+
+Not published to npm yet — install directly from GitHub:
+
+```bash
+npm install github:BlaxBerry333/venomous-ui#release
 ```
 
-</details>
+## License
 
-<details>
- <summary>
-    <strong>Vue</strong>
-  </summary>
-
-```html
-<script setup lang="ts">
-  import { Tabs } from 'venomous-ui/vue/components';
-</script>
-
-<template>
-  <Tabs>
-    <TabTitle>A</TabTitle>
-    <TabTitle>B</TabTitle>
-
-    <TabPanel>AA</TabPanel>
-    <TabPanel>BB</TabPanel>
-  </Tabs>
-</template>
-```
-
-</details>
-
----
-
-### 模式 B —— 使用 headless 组件 + 内置样式
-
-<details>
- <summary>
-    <strong>React</strong>
-  </summary>
-
-```tsx
-import { Tabs } from 'venomous-ui/react/components';
-import 'venomous-ui/styles/reset.css';
-import 'venomous-ui/styles/components/tabs.css';
-
-export default function Demo() {
-  return (
-    <Tabs>
-      <TabTitle>A</TabTitle>
-      <TabTitle>B</TabTitle>
-
-      <TabPanel>AA</TabPanel>
-      <TabPanel>BB</TabPanel>
-    </Tabs>
-  );
-}
-```
-
-</details>
-
-<details>
- <summary>
-    <strong>Vue</strong>
-  </summary>
-
-```html
-<script setup lang="ts">
-  import { Tabs } from 'venomous-ui/vue/components';
-  import 'venomous-ui/styles/reset.css';
-  import 'venomous-ui/styles/components/tabs.css';
-</script>
-
-<template>
-  <Tabs>
-    <TabTitle>A</TabTitle>
-    <TabTitle>B</TabTitle>
-
-    <TabPanel>AA</TabPanel>
-    <TabPanel>BB</TabPanel>
-  </Tabs>
-</template>
-
-<style scoped>
-  .venomous__Tabs {
-    /* ... */
-  }
-
-  .venomous__TabTitle {
-    /* ... */
-  }
-
-  .venomous__TabPanel {
-    /* ... */
-  }
-</style>
-```
-
-</details>
-
----
-
-### 模式 C —— 只用内置样式
-
-<details>
- <summary>
-    <strong>Astro</strong>
-  </summary>
-
-```html
----
-import 'venomous-ui/styles/reset.css';
-import 'venomous-ui/styles/components/tabs.css';
----
-
-<div className="venomous__Tabs">
-  <div className="venomous__TabTitle">...</div>
-  <div className="venomous__TabPanel">...</div>
-</div>
-```
-
-</details>
+MIT

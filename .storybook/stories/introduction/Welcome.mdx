@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { useTranslation } from '../../i18n/useTranslation';
+import { CodeBlockGroup } from '../../components';
+
+<Meta title="Introduction" name="Welcome" />
+
+# {useTranslation('introduction.title')}
+
+<p>{useTranslation('introduction.description.a')}</p>
+
+<p>{useTranslation('introduction.description.b')}</p>
+
+<br />
+
+## {useTranslation('introduction.motivation.title')}
+
+<p>{useTranslation('introduction.motivation.body')}</p>
+
+<br />
+
+## {useTranslation('introduction.installation.title')}
+
+<p>{useTranslation('introduction.installation.body')}</p>
+
+<CodeBlockGroup
+  tabs={[
+    { title: 'npm', lang: 'bash', code: 'npm install github:BlaxBerry333/venomous-ui#release' },
+    { title: 'yarn', lang: 'bash', code: 'yarn add github:BlaxBerry333/venomous-ui#release' },
+    { title: 'pnpm', lang: 'bash', code: 'pnpm add github:BlaxBerry333/venomous-ui#release' },
+  ]}
+/>
