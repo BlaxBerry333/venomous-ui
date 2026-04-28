@@ -1,0 +1,22 @@
+import { useTranslation } from '../../../i18n/useTranslation';
+import { DataTable, DesignTokenValue } from '../../../components';
+import { Z_INDEX } from '@utils/tokens';
+
+# {useTranslation('design-tokens.z-index.title')}
+
+<br />
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value') },
+  ]}
+  rows={Object.values(Z_INDEX).map((token) => ({
+    name: <code>{token}</code>,
+    value: (
+      <code>
+        <DesignTokenValue token={token} />
+      </code>
+    ),
+  }))}
+/>

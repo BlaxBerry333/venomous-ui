@@ -1,0 +1,41 @@
+/**
+ * 调色板 + 特殊原色
+ * 这是项目的全部颜色 token；语义切换 / 主题切换交给 classnames/theme.scss 提供 selector。
+ */
+
+:root {
+  // ================ Blue ================
+  --venomous-blue-100: #dbeafe;
+  --venomous-blue-300: #93c5fd;
+  --venomous-blue-500: #3b82f6;
+  --venomous-blue-700: #1d4ed8;
+  --venomous-blue-900: #1e3a8a;
+
+  // ================ Red ================
+  --venomous-red-100: #fee2e2;
+  --venomous-red-300: #fca5a5;
+  --venomous-red-500: #ef4444;
+  --venomous-red-700: #b91c1c;
+  --venomous-red-900: #7f1d1d;
+
+  // ================ Green ================
+  --venomous-green-100: #dcfce7;
+  --venomous-green-300: #86efac;
+  --venomous-green-500: #22c55e;
+  --venomous-green-700: #15803d;
+  --venomous-green-900: #14532d;
+
+  // ================ Yellow ================
+  --venomous-yellow-100: #fef9c3;
+  --venomous-yellow-300: #fde047;
+  --venomous-yellow-500: #eab308;
+  --venomous-yellow-700: #a16207;
+  --venomous-yellow-900: #713f12;
+
+  // ================ Gray ================
+  --venomous-gray-100: #f3f4f6;
+  --venomous-gray-300: #d1d5db;
+  --venomous-gray-500: #6b7280;
+  --venomous-gray-700: #374151;
+  --venomous-gray-900: #111827;
+}

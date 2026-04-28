@@ -24,9 +24,7 @@
   "exports": {
     "./styles/reset.css": "./dist/styles/reset.css",
     "./styles/tokens/*.css": "./dist/styles/tokens/*.css",
-    "./styles/presets/*.css": "./dist/styles/presets/*.css",
-    "./styles/mobile/*.css": "./dist/styles/mobile/*.css",
-    "./styles/a11y/*.css": "./dist/styles/a11y/*.css",
+    "./styles/classnames/*.css": "./dist/styles/classnames/*.css",
     "./utils/helpers": {
       "types": "./dist/utils/helpers/index.d.ts",
       "import": "./dist/utils/helpers/index.js"
@@ -34,6 +32,22 @@
     "./utils/helpers/*": {
       "types": "./dist/utils/helpers/*.d.ts",
       "import": "./dist/utils/helpers/*.js"
+    },
+    "./utils/tokens": {
+      "types": "./dist/utils/tokens/index.d.ts",
+      "import": "./dist/utils/tokens/index.js"
+    },
+    "./utils/tokens/*": {
+      "types": "./dist/utils/tokens/*.d.ts",
+      "import": "./dist/utils/tokens/*.js"
+    },
+    "./utils/classnames": {
+      "types": "./dist/utils/classnames/index.d.ts",
+      "import": "./dist/utils/classnames/index.js"
+    },
+    "./utils/classnames/*": {
+      "types": "./dist/utils/classnames/*.d.ts",
+      "import": "./dist/utils/classnames/*.js"
     },
     "./react/components": {
       "types": "./dist/react/components/index.d.ts",
@@ -128,7 +142,9 @@
     "check:stylelint": "stylelint --config configs/stylelint.config.mjs --ignore-path configs/.stylelintignore --cache --cache-location .cache/stylelint \"packages/**/*.scss\"",
     "check:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --cache --cache-location .cache/prettier --check .",
     "check:spell": "cspell --config configs/cspell.json --no-progress --gitignore --cache --cache-location .cache/cspell \"**/*.{ts,tsx,mjs,cjs,md,scss}\"",
-    "check": "concurrently -g --kill-others-on-fail -n eslint,ts,stylelint,prettier,spell -c blue,cyan,magenta,yellow,green \"npm:check:eslint\" \"npm:check:typescript\" \"npm:check:stylelint\" \"npm:check:prettier\" \"npm:check:spell\"",
+    "check:design-tokens": "node scripts/check-tokens.mjs",
+    "check:classnames": "node scripts/check-classnames.mjs",
+    "check": "concurrently -g --kill-others-on-fail -n tsc,eslint,prettier,spell,stylelint,design-tokens,classnames -c gray,blue,cyan,green,yellow,red,magenta \"npm:check:typescript\" \"npm:check:eslint\" \"npm:check:prettier\" \"npm:check:spell\" \"npm:check:stylelint\" \"npm:check:design-tokens\" \"npm:check:classnames\"",
     "fix:eslint": "eslint --config configs/eslint.config.mjs --fix .",
     "fix:stylelint": "stylelint --config configs/stylelint.config.mjs --ignore-path configs/.stylelintignore --fix \"packages/**/*.scss\"",
     "fix:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write .",

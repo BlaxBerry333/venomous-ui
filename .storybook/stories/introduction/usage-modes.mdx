@@ -1,0 +1,47 @@
+import { useTranslation } from '../../i18n/useTranslation';
+import { CodeBlockGroup } from '../../components';
+import {
+  MODE_A_REACT,
+  MODE_A_VUE,
+  MODE_B_REACT,
+  MODE_B_VUE,
+  MODE_C_ASTRO,
+} from '../__data__/usage-modes';
+
+# {useTranslation('introduction.usage-modes.title')}
+
+<p>{useTranslation('introduction.usage-modes.body')}</p>
+
+<br />
+
+## {useTranslation('introduction.usage-modes.mode-a.title')}
+
+<p>{useTranslation('introduction.usage-modes.mode-a.body')}</p>
+
+<CodeBlockGroup
+  tabs={[
+    { title: 'React', lang: 'tsx', code: MODE_A_REACT },
+    { title: 'Vue', lang: 'html', code: MODE_A_VUE },
+  ]}
+/>
+
+<br />
+
+## {useTranslation('introduction.usage-modes.mode-b.title')}
+
+<p>{useTranslation('introduction.usage-modes.mode-b.body')}</p>
+
+<CodeBlockGroup
+  tabs={[
+    { title: 'React', lang: 'tsx', code: MODE_B_REACT },
+    { title: 'Vue', lang: 'html', code: MODE_B_VUE },
+  ]}
+/>
+
+<br />
+
+## {useTranslation('introduction.usage-modes.mode-c.title')}
+
+<p>{useTranslation('introduction.usage-modes.mode-c.body')}</p>
+
+<CodeBlockGroup tabs={[{ title: 'Astro', lang: 'html', code: MODE_C_ASTRO }]} />

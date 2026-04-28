@@ -4,10 +4,8 @@ defineProps<{ label: string }>();
 
 <template>
   <div
-    class="venomous__typography-title"
+    class="venomous--text--default venomous--bg--default"
     :style="{
-      color: 'var(--venomous-color-fg-default)',
-      background: 'var(--venomous-color-bg-surface)',
       padding: '16px',
       borderRadius: '8px',
     }"

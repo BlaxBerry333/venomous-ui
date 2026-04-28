@@ -20,23 +20,9 @@ import {
   type I18nKey,
   type Locale,
 } from './i18n';
+import { SIDEBAR_LABEL_KEYS } from './i18n/sidebar';
 import { readGlobalFromUrl, subscribeGlobal } from './lib/globals';
 import { DEFAULT_THEME, narrowTheme, themeMap, THEME_KEY, type Theme } from './lib/theme';
-
-// 仅翻译顶层分组与文档节点；组件名（PascalCase）/ hooks / composables（camelCase）作为
-// 跨语言代码标识符不翻译。未命中 name 自动 fallback 原文。
-const SIDEBAR_LABEL_KEYS: Record<string, I18nKey> = {
-  Introduction: 'sidebar.introduction',
-  'Design Tokens': 'sidebar.design_tokens',
-  Presets: 'sidebar.presets',
-  React: 'sidebar.react',
-  Vue: 'sidebar.vue',
-  Welcome: 'sidebar.welcome',
-  'Usage Modes': 'sidebar.usage_modes',
-  Color: 'sidebar.color',
-  Typography: 'sidebar.typography',
-  Components: 'sidebar.components',
-};
 
 let currentLocale: Locale = readGlobalFromUrl(LOCALE_KEY, narrowLocale, DEFAULT_LOCALE);
 let currentTheme: Theme = readGlobalFromUrl(THEME_KEY, narrowTheme, DEFAULT_THEME);

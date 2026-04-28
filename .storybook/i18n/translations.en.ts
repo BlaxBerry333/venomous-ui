@@ -1,6 +1,6 @@
 export const en = {
   introduction: {
-    title: 'venomous-ui',
+    title: 'Introduction',
     description: {
       a: 'Headless UI for React and Vue, sharing one core.',
       b: 'Behavior comes built in; styles are optional. Use the components, use them with the built-in CSS, or just take the CSS — your call.',
@@ -13,43 +13,83 @@ export const en = {
       title: 'Installation',
       body: 'Install via npm and import from per-framework entry points.',
     },
-    usage_modes: {
+    'usage-modes': {
       title: 'Usage Modes',
       body: 'venomous-ui supports three usage modes — pick whichever fits your project.',
-      mode_a: {
+      'mode-a': {
         title: 'Mode A — components only',
         body: 'Bring your own styles. Headless components ship with behavior only.',
       },
-      mode_b: {
+      'mode-b': {
         title: 'Mode B — components + built-in styles',
         body: 'Use the components together with the built-in CSS.',
       },
-      mode_c: {
+      'mode-c': {
         title: 'Mode C — styles only',
         body: 'Write your own markup and apply the built-in class names.',
       },
     },
   },
-  design_tokens: {
-    title: 'Design Tokens',
-    color: 'Color',
-    typography: 'Typography',
-    spacing: 'Spacing',
-    radius: 'Radius',
-    shadow: 'Shadow',
-    motion: 'Motion',
-    z_index: 'Z-Index',
+  overview: {
+    title: 'Overview',
   },
-  sidebar: {
-    introduction: 'Introduction',
-    design_tokens: 'Design Tokens',
-    presets: 'Presets',
-    react: 'React',
-    vue: 'Vue',
-    welcome: 'Welcome',
-    usage_modes: 'Usage Modes',
-    color: 'Color',
-    typography: 'Typography',
-    components: 'Components',
+  styles: {
+    title: 'Styles',
+  },
+  'design-tokens': {
+    title: 'Design Tokens',
+    table: {
+      name: 'CSS Variable',
+      value: 'Value',
+      preview: 'Preview',
+    },
+    colors: {
+      title: 'Colors',
+    },
+    font: {
+      title: 'Font',
+    },
+    motion: {
+      title: 'Motion',
+    },
+    radius: {
+      title: 'Radius',
+    },
+    shadow: {
+      title: 'Shadow',
+    },
+    'z-index': {
+      title: 'Z-Index',
+    },
+  },
+  classnames: {
+    title: 'Classnames',
+    table: {
+      name: 'Class Name',
+      value: 'Value',
+      preview: 'Preview',
+    },
+    semantic: {
+      title: 'Semantic',
+    },
+    theme: {
+      title: 'Theme',
+    },
+    typography: {
+      title: 'Typography',
+      ellipsis: 'Ellipsis',
+    },
+  },
+  react: {
+    title: 'React',
+    components: {
+      title: 'Components',
+    },
+  },
+  vue: {
+    title: 'Vue',
+    components: {
+      title: 'Components',
+    },
   },
 } as const;

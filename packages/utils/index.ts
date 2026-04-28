@@ -3,4 +3,6 @@
  */
 
 export * from './helpers';
+export * from './tokens';
+export * from './classnames';
 export * from './types';

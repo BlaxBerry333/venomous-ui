@@ -1,0 +1,31 @@
+import { useTranslation } from '../../../i18n/useTranslation';
+import { DataTable, DesignTokenValue, PreviewBlock } from '../../../components';
+import { cssVar } from '@utils/helpers';
+import { RADIUS, COLORS } from '@utils/tokens';
+
+# {useTranslation('design-tokens.radius.title')}
+
+<br />
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview') },
+  ]}
+  rows={Object.values(RADIUS).map((token) => ({
+    name: <code>{token}</code>,
+    value: (
+      <code>
+        <DesignTokenValue token={token} />
+      </code>
+    ),
+    preview: (
+      <PreviewBlock
+        background={cssVar(COLORS.GRAY_500)}
+        borderRadius={cssVar(token)}
+        border="none"
+      />
+    ),
+  }))}
+/>

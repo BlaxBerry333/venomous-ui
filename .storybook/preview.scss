@@ -3,9 +3,18 @@
 
 html,
 body {
-  background: var(--venomous-color-bg-surface);
-  color: var(--venomous-color-fg-default);
+  background: var(--venomous-gray-100);
+  color: var(--venomous-gray-900);
   transition:
-    background-color 160ms ease,
-    color 160ms ease;
+    background-color var(--venomous-motion-duration-1) var(--venomous-motion-easing-1),
+    color var(--venomous-motion-duration-1) var(--venomous-motion-easing-1);
+}
+
+:root.dark,
+[data-theme='dark'] {
+  html,
+  body {
+    background: var(--venomous-gray-900);
+    color: var(--venomous-gray-100);
+  }
 }

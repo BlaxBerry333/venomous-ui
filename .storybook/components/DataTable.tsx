@@ -19,28 +19,33 @@ export interface DataTableProps<T extends Record<string, ReactNode>> {
 const STYLE_ID = 'venomous-data-table-style';
 
 const css = `
+.venomous-data-table-scroll {
+  width: 100% !important;
+  overflow-x: auto !important;
+  border: 1px solid var(--venomous-gray-300) !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+}
 .venomous-data-table {
   width: 100% !important;
+  min-width: max-content !important;
   border-collapse: separate !important;
   border-spacing: 0 !important;
-  border: 1px solid var(--venomous-color-border-default) !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  color: var(--venomous-color-fg-default) !important;
+  color: var(--venomous-gray-900) !important;
   background: transparent !important;
 }
 .venomous-data-table thead tr {
-  background: var(--venomous-color-bg-surface) !important;
+  background: var(--venomous-gray-100) !important;
 }
 .venomous-data-table tbody tr {
-  background: var(--venomous-color-bg-subtle) !important;
+  background: #fff !important;
 }
 .venomous-data-table th,
 .venomous-data-table td {
   padding: 10px 14px !important;
   border: 0 !important;
-  border-right: 1px solid var(--venomous-color-border-default) !important;
-  border-bottom: 1px solid var(--venomous-color-border-default) !important;
+  border-right: 1px solid var(--venomous-gray-300) !important;
+  border-bottom: 1px solid var(--venomous-gray-300) !important;
 }
 .venomous-data-table th:last-child,
 .venomous-data-table td:last-child {
@@ -53,11 +58,40 @@ const css = `
   text-align: left !important;
   font-weight: 600 !important;
   font-size: 13px !important;
-  color: var(--venomous-color-fg-muted) !important;
+  color: var(--venomous-gray-500) !important;
+  white-space: nowrap !important;
 }
 .venomous-data-table td {
   vertical-align: middle !important;
   font-size: 14px !important;
+}
+
+:root.dark .venomous-data-table-scroll,
+[data-theme='dark'] .venomous-data-table-scroll {
+  border-color: var(--venomous-gray-700) !important;
+}
+:root.dark .venomous-data-table,
+[data-theme='dark'] .venomous-data-table {
+  color: var(--venomous-gray-100) !important;
+}
+:root.dark .venomous-data-table thead tr,
+[data-theme='dark'] .venomous-data-table thead tr {
+  background: var(--venomous-gray-900) !important;
+}
+:root.dark .venomous-data-table tbody tr,
+[data-theme='dark'] .venomous-data-table tbody tr {
+  background: #000 !important;
+}
+:root.dark .venomous-data-table th,
+:root.dark .venomous-data-table td,
+[data-theme='dark'] .venomous-data-table th,
+[data-theme='dark'] .venomous-data-table td {
+  border-right-color: var(--venomous-gray-700) !important;
+  border-bottom-color: var(--venomous-gray-700) !important;
+}
+:root.dark .venomous-data-table th,
+[data-theme='dark'] .venomous-data-table th {
+  color: var(--venomous-gray-300) !important;
 }
 `;
 
@@ -77,26 +111,28 @@ export function DataTable<T extends Record<string, ReactNode>>({
   ensureStyle();
   return (
     <Unstyled>
-      <table className="venomous-data-table">
-        <thead>
-          <tr>
-            {columns.map((col) => (
-              <th key={col.key} style={col.width ? { width: col.width } : undefined}>
-                {col.header}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={i}>
+      <div className="venomous-data-table-scroll">
+        <table className="venomous-data-table">
+          <thead>
+            <tr>
               {columns.map((col) => (
-                <td key={col.key}>{row[col.key]}</td>
+                <th key={col.key} style={col.width ? { width: col.width } : undefined}>
+                  {col.header}
+                </th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map((row, i) => (
+              <tr key={i}>
+                {columns.map((col) => (
+                  <td key={col.key}>{row[col.key]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Unstyled>
   );
 }

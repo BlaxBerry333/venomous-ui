@@ -25,9 +25,6 @@ const path = (d: string) => React.createElement('path', { d, key: d });
 const circle = (cx: number, cy: number, r: number) =>
   React.createElement('circle', { cx, cy, r, key: `${cx}-${cy}-${r}` });
 
-const rect = (x: number, y: number, width: number, height: number, rx: number) =>
-  React.createElement('rect', { x, y, width, height, rx, key: `${x}-${y}` });
-
 const ellipse = (rx: number, ry: number, rotate?: number) =>
   React.createElement('ellipse', {
     cx: 12,
@@ -44,7 +41,7 @@ export const IconIntroduction = () =>
     path('M22 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z'),
   );
 
-export const IconTokens = () =>
+export const IconStyles = () =>
   svg(
     circle(13.5, 6.5, 2.5),
     circle(19, 14.5, 2.5),
@@ -53,18 +50,14 @@ export const IconTokens = () =>
     path('M12 2a10 10 0 1 0 10 10'),
   );
 
-export const IconPresets = () =>
-  svg(rect(3, 3, 7, 7, 1), rect(14, 3, 7, 7, 1), rect(3, 14, 7, 7, 1), rect(14, 14, 7, 7, 1));
-
 export const IconReact = () =>
   svg(circle(12, 12, 2), ellipse(10, 4), ellipse(10, 4, 60), ellipse(10, 4, 120));
 
 export const IconVue = () => svg(path('M2 4h5l5 8 5-8h5L12 22z'), path('M7 4l5 8 5-8'));
 
 export const sidebarRootIcons: Record<string, () => React.ReactElement> = {
-  Introduction: IconIntroduction,
-  'Design Tokens': IconTokens,
-  Presets: IconPresets,
-  React: IconReact,
-  Vue: IconVue,
+  introduction: IconIntroduction,
+  styles: IconStyles,
+  react: IconReact,
+  vue: IconVue,
 };

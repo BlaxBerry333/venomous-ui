@@ -1,6 +1,6 @@
-// 基础 reset：消除浏览器默认差异，给 headless 组件一个干净起点。
-// 不接 token、不做视觉决策（背景/字体/链接样式等交给 tokens 或组件层）。
-// 用户主动引入：@import 'venomous-ui/styles/reset.css';
+/**
+ * 基础 reset —— 消除浏览器默认差异，不接 token、不做视觉决策
+ */
 
 *,
 *::before,

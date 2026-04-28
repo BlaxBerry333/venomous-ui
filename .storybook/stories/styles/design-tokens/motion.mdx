@@ -1,0 +1,79 @@
+import { useTranslation } from '../../../i18n/useTranslation';
+import { DataTable, DesignTokenValue } from '../../../components';
+import { MOTION } from '@utils/tokens';
+
+# {useTranslation('design-tokens.motion.title')}
+
+<br />
+
+## Duration
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value') },
+  ]}
+  rows={[
+    {
+      name: <code>{MOTION.DURATION_1}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={MOTION.DURATION_1} />
+        </code>
+      ),
+    },
+    {
+      name: <code>{MOTION.DURATION_2}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={MOTION.DURATION_2} />
+        </code>
+      ),
+    },
+    {
+      name: <code>{MOTION.DURATION_3}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={MOTION.DURATION_3} />
+        </code>
+      ),
+    },
+  ]}
+/>
+
+<br />
+
+## Easing
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value') },
+  ]}
+  rows={[
+    {
+      name: <code>{MOTION.EASING_1}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={MOTION.EASING_1} />
+        </code>
+      ),
+    },
+    {
+      name: <code>{MOTION.EASING_2}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={MOTION.EASING_2} />
+        </code>
+      ),
+    },
+    {
+      name: <code>{MOTION.EASING_3}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={MOTION.EASING_3} />
+        </code>
+      ),
+    },
+  ]}
+/>

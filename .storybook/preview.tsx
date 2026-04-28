@@ -8,24 +8,19 @@ import { withTheme } from './lib';
 import { locales } from './i18n';
 
 // ============================================================
-// 全局样式注入 —— 仅 A/B/C 三种用法都共享的基础层（reset / tokens / presets）。
-// **不要在此 import** packages/styles/components/*.scss，
-// 否则会全局污染所有 story，使 Mode A（headless 无样式）story 看起来与 Mode B 无异。
-// 组件级 css 由各 story 自行 import：
-//   - Mode A（headless）：不 import 组件 css
-//   - Mode B（headless + styles）：在 story 内 import 该组件 scss
-//   - Mode C（class only）：同 Mode B
+// 全局样式注入 —— A/B/C 三种用法共享的基础层（reset / tokens / classnames）。
+// 组件级 css 由各 story 自行 import，避免污染 Mode A（headless 无样式）。
 // ============================================================
 import '../packages/styles/reset.scss';
-import '../packages/styles/tokens/color-primitive.scss';
-import '../packages/styles/tokens/color-semantic.scss';
+import '../packages/styles/tokens/colors.scss';
 import '../packages/styles/tokens/font.scss';
 import '../packages/styles/tokens/motion.scss';
 import '../packages/styles/tokens/radius.scss';
 import '../packages/styles/tokens/shadow.scss';
-import '../packages/styles/tokens/space.scss';
 import '../packages/styles/tokens/z-index.scss';
-import '../packages/styles/presets/typography.scss';
+import '../packages/styles/classnames/semantic.scss';
+import '../packages/styles/classnames/theme.scss';
+import '../packages/styles/classnames/typography.scss';
 import './preview.scss';
 
 const preview: Preview = {
@@ -70,18 +65,26 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        // 侧边栏显示顺序 ( story-id )
+        // 侧边栏的展示顺序
+        // 使用的是 story id ( stories 目录下的 MDX 的文件名 ）
         order: [
           // 1.
-          'Introduction',
+          'introduction',
+          ['overview', 'usage-modes'],
           // 2.
-          'Design Tokens',
+          'styles',
+          [
+            // 2.1
+            'design-tokens',
+            ['colors', 'font', 'radius', 'shadow', 'z-index', 'motion'],
+            // 2.2
+            'classnames',
+            ['semantic', 'theme', 'typography'],
+          ],
           // 3.
-          'Presets',
+          'react',
           // 4.
-          'React',
-          // 5.
-          'Vue',
+          'vue',
         ],
       },
     },

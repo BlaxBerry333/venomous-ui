@@ -9,7 +9,6 @@ import Smoke from './Smoke.vue';
 type Args = { label: string };
 
 const meta: Meta<Args> = {
-  title: 'Vue/Components/Smoke',
   args: { label: 'Hello from Vue' },
   render: (args) => <VueWrapper component={Smoke} props={args as Record<string, unknown>} />,
 };

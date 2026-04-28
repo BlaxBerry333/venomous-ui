@@ -6,10 +6,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const Smoke = ({ label }: { label: string }) => (
   <div
-    className="venomous__typography-title"
+    className="venomous--text--default venomous--bg--default"
     style={{
-      color: 'var(--venomous-color-fg-default)',
-      background: 'var(--venomous-color-bg-surface)',
       padding: 16,
       borderRadius: 8,
     }}
@@ -19,7 +17,6 @@ const Smoke = ({ label }: { label: string }) => (
 );
 
 const meta: Meta<typeof Smoke> = {
-  title: 'React/Components/Smoke',
   component: Smoke,
   args: { label: 'Hello from React' },
 };

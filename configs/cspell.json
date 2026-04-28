@@ -25,6 +25,7 @@
     "autoprefixer",
     "bigint",
     "chokidar",
+    "classnames",
     "codegen",
     "colocated",
     "composables",

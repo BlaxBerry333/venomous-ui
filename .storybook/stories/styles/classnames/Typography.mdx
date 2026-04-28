@@ -1,0 +1,25 @@
+import { TYPOGRAPHY } from '@utils/classnames';
+import { useTranslation } from '../../../i18n/useTranslation';
+import { DataTable } from '../../../components';
+import { SAMPLE_TEXT } from '../../__data__/sample-text';
+
+# {useTranslation('classnames.typography.title')}
+
+<br />
+
+## {useTranslation('classnames.typography.ellipsis')}
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('classnames.table.name'), width: 300 },
+    { key: 'preview', header: useTranslation('classnames.table.preview') },
+  ]}
+  rows={Object.values(TYPOGRAPHY).map((cls) => ({
+    name: <code>{cls}</code>,
+    preview: (
+      <div className={cls} style={{ maxWidth: 240 }}>
+        {SAMPLE_TEXT.VERY_LONG}
+      </div>
+    ),
+  }))}
+/>

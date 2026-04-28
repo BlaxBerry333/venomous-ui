@@ -1,6 +1,6 @@
 export const zh = {
   introduction: {
-    title: 'venomous-ui',
+    title: '简介',
     description: {
       a: '给 React 和 Vue 用的 headless UI 库，共用一套核心。',
       b: '行为这块都帮你写好了，样式爱用不用 —— 直接用组件、组件配内置样式、或者只拿样式，三选一。',
@@ -13,43 +13,83 @@ export const zh = {
       title: '安装',
       body: '通过 npm 安装，按框架从对应入口导入。',
     },
-    usage_modes: {
+    'usage-modes': {
       title: '使用模式',
       body: 'venomous-ui 支持三种使用模式 —— 按项目需求选用。',
-      mode_a: {
+      'mode-a': {
         title: '模式 A —— 仅 headless 组件',
         body: 'headless 组件不带内置样式，仅提供行为，由用户自定义样式。',
       },
-      mode_b: {
+      'mode-b': {
         title: '模式 B —— 组件 + 内置样式',
         body: '组件配合内置 CSS 一起使用。',
       },
-      mode_c: {
+      'mode-c': {
         title: '模式 C —— 仅样式',
         body: '不使用组件，自己写 markup 配内置 class 名即可。',
       },
     },
   },
-  design_tokens: {
-    title: '设计 Token',
-    color: '颜色',
-    typography: '字体',
-    spacing: '间距',
-    radius: '圆角',
-    shadow: '阴影',
-    motion: '动效',
-    z_index: '层级',
+  overview: {
+    title: '概览',
   },
-  sidebar: {
-    introduction: '简介',
-    design_tokens: '设计 Token',
-    presets: '样式预设',
-    react: 'React',
-    vue: 'Vue',
-    welcome: '欢迎',
-    usage_modes: '使用模式',
-    color: '颜色',
-    typography: '字体排印',
-    components: '组件',
+  styles: {
+    title: '内置样式',
+  },
+  'design-tokens': {
+    title: 'Design Tokens',
+    table: {
+      name: 'CSS 变量名',
+      value: '值',
+      preview: '预览',
+    },
+    colors: {
+      title: '颜色',
+    },
+    font: {
+      title: '字体',
+    },
+    motion: {
+      title: '动效',
+    },
+    radius: {
+      title: '圆角',
+    },
+    shadow: {
+      title: '阴影',
+    },
+    'z-index': {
+      title: '层级',
+    },
+  },
+  classnames: {
+    title: '内置类名',
+    table: {
+      name: '类名',
+      value: '值',
+      preview: '预览',
+    },
+    semantic: {
+      title: '语义',
+    },
+    theme: {
+      title: '主题',
+    },
+    typography: {
+      title: '字体排印',
+      ellipsis: '省略',
+    },
+  },
+  react: {
+    title: 'React',
+    components: {
+      title: '组件',
+    },
+  },
+  vue: {
+    title: 'Vue',
+    components: {
+      title: '组件',
+    },
   },
 } as const;

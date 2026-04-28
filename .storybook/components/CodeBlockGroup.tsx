@@ -28,28 +28,28 @@ const STYLE_ID = 'venomous-code-block-group-style';
 
 const css = `
 .venomous-code-block-group {
-  border: 1px solid var(--venomous-color-border-default) !important;
+  border: 1px solid var(--venomous-gray-300) !important;
   border-radius: 8px !important;
   overflow: hidden !important;
-  background: var(--venomous-color-bg-subtle) !important;
+  background: var(--venomous-gray-100) !important;
   margin: 1em 0 !important;
 }
 .venomous-code-block-group__tabs {
   display: flex !important;
   gap: 0 !important;
-  border-bottom: 1px solid var(--venomous-color-border-default) !important;
-  background: var(--venomous-color-bg-surface) !important;
+  border-bottom: 1px solid var(--venomous-gray-300) !important;
+  background: var(--venomous-gray-100) !important;
 }
 .venomous-code-block-group__tab {
   appearance: none !important;
   -webkit-appearance: none !important;
   background: transparent !important;
   border: 0 !important;
-  border-right: 1px solid var(--venomous-color-border-default) !important;
+  border-right: 1px solid var(--venomous-gray-300) !important;
   padding: 8px 14px !important;
   font-size: 13px !important;
   font-weight: 500 !important;
-  color: var(--venomous-color-fg-muted) !important;
+  color: var(--venomous-gray-500) !important;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -57,21 +57,21 @@ const css = `
   transition: color 120ms, background 120ms !important;
 }
 .venomous-code-block-group__tab:hover:not(:disabled) {
-  color: var(--venomous-color-fg-default) !important;
-  background: var(--venomous-color-bg-subtle) !important;
+  color: var(--venomous-gray-900) !important;
+  background: var(--venomous-gray-100) !important;
 }
 .venomous-code-block-group__tab[aria-selected='true'] {
-  color: var(--venomous-color-action-primary) !important;
-  background: var(--venomous-color-bg-subtle) !important;
-  box-shadow: inset 0 -2px 0 var(--venomous-color-action-primary) !important;
+  color: var(--venomous-blue-500) !important;
+  background: var(--venomous-gray-100) !important;
+  box-shadow: inset 0 -2px 0 var(--venomous-blue-500) !important;
 }
 .venomous-code-block-group__tab:disabled {
-  color: var(--venomous-color-fg-subtle) !important;
+  color: var(--venomous-gray-300) !important;
   cursor: not-allowed !important;
   opacity: 0.6 !important;
 }
 .venomous-code-block-group__panel {
-  background: var(--venomous-color-bg-subtle) !important;
+  background: var(--venomous-gray-100) !important;
 }
 .venomous-code-block-group__panel > * {
   margin: 0 !important;
@@ -82,6 +82,41 @@ const css = `
 .venomous-code-block-group__panel *:focus-visible {
   outline: none !important;
   box-shadow: none !important;
+}
+
+:root.dark .venomous-code-block-group,
+[data-theme='dark'] .venomous-code-block-group {
+  border-color: var(--venomous-gray-700) !important;
+  background: var(--venomous-gray-700) !important;
+}
+:root.dark .venomous-code-block-group__tabs,
+[data-theme='dark'] .venomous-code-block-group__tabs {
+  border-bottom-color: var(--venomous-gray-700) !important;
+  background: var(--venomous-gray-900) !important;
+}
+:root.dark .venomous-code-block-group__tab,
+[data-theme='dark'] .venomous-code-block-group__tab {
+  border-right-color: var(--venomous-gray-700) !important;
+  color: var(--venomous-gray-300) !important;
+}
+:root.dark .venomous-code-block-group__tab:hover:not(:disabled),
+[data-theme='dark'] .venomous-code-block-group__tab:hover:not(:disabled) {
+  color: var(--venomous-gray-100) !important;
+  background: var(--venomous-gray-700) !important;
+}
+:root.dark .venomous-code-block-group__tab[aria-selected='true'],
+[data-theme='dark'] .venomous-code-block-group__tab[aria-selected='true'] {
+  color: var(--venomous-blue-500) !important;
+  background: var(--venomous-gray-700) !important;
+  box-shadow: inset 0 -2px 0 var(--venomous-blue-500) !important;
+}
+:root.dark .venomous-code-block-group__tab:disabled,
+[data-theme='dark'] .venomous-code-block-group__tab:disabled {
+  color: var(--venomous-gray-500) !important;
+}
+:root.dark .venomous-code-block-group__panel,
+[data-theme='dark'] .venomous-code-block-group__panel {
+  background: var(--venomous-gray-700) !important;
 }
 `;
 

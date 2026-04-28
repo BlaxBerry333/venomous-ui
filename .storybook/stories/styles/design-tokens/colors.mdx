@@ -1,0 +1,301 @@
+import { useTranslation } from '../../../i18n/useTranslation';
+import { DataTable, DesignTokenValue, PreviewBlock } from '../../../components';
+import { cssVar } from '@utils/helpers';
+import { COLORS } from '@utils/tokens';
+
+# {useTranslation('design-tokens.colors.title')}
+
+<br />
+
+## Blue
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.BLUE_100}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.BLUE_100} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.BLUE_100)} />,
+    },
+    {
+      name: <code>{COLORS.BLUE_300}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.BLUE_300} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.BLUE_300)} />,
+    },
+    {
+      name: <code>{COLORS.BLUE_500}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.BLUE_500} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.BLUE_500)} />,
+    },
+    {
+      name: <code>{COLORS.BLUE_700}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.BLUE_700} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.BLUE_700)} />,
+    },
+    {
+      name: <code>{COLORS.BLUE_900}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.BLUE_900} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.BLUE_900)} />,
+    },
+  ]}
+/>
+
+<br />
+
+## Red
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.RED_100}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.RED_100} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.RED_100)} />,
+    },
+    {
+      name: <code>{COLORS.RED_300}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.RED_300} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.RED_300)} />,
+    },
+    {
+      name: <code>{COLORS.RED_500}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.RED_500} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.RED_500)} />,
+    },
+    {
+      name: <code>{COLORS.RED_700}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.RED_700} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.RED_700)} />,
+    },
+    {
+      name: <code>{COLORS.RED_900}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.RED_900} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.RED_900)} />,
+    },
+  ]}
+/>
+
+<br />
+
+## Green
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.GREEN_100}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GREEN_100} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GREEN_100)} />,
+    },
+    {
+      name: <code>{COLORS.GREEN_300}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GREEN_300} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GREEN_300)} />,
+    },
+    {
+      name: <code>{COLORS.GREEN_500}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GREEN_500} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GREEN_500)} />,
+    },
+    {
+      name: <code>{COLORS.GREEN_700}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GREEN_700} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GREEN_700)} />,
+    },
+    {
+      name: <code>{COLORS.GREEN_900}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GREEN_900} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GREEN_900)} />,
+    },
+  ]}
+/>
+
+<br />
+
+## Yellow
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.YELLOW_100}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.YELLOW_100} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.YELLOW_100)} />,
+    },
+    {
+      name: <code>{COLORS.YELLOW_300}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.YELLOW_300} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.YELLOW_300)} />,
+    },
+    {
+      name: <code>{COLORS.YELLOW_500}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.YELLOW_500} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.YELLOW_500)} />,
+    },
+    {
+      name: <code>{COLORS.YELLOW_700}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.YELLOW_700} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.YELLOW_700)} />,
+    },
+    {
+      name: <code>{COLORS.YELLOW_900}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.YELLOW_900} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.YELLOW_900)} />,
+    },
+  ]}
+/>
+
+<br />
+
+## Gray
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.GRAY_100}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GRAY_100} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_100)} />,
+    },
+    {
+      name: <code>{COLORS.GRAY_300}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GRAY_300} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_300)} />,
+    },
+    {
+      name: <code>{COLORS.GRAY_500}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GRAY_500} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_500)} />,
+    },
+    {
+      name: <code>{COLORS.GRAY_700}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GRAY_700} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_700)} />,
+    },
+    {
+      name: <code>{COLORS.GRAY_900}</code>,
+      value: (
+        <code>
+          <DesignTokenValue token={COLORS.GRAY_900} />
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_900)} />,
+    },
+  ]}
+/>

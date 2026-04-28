@@ -1,0 +1,18 @@
+/**
+ * 排版 className 集
+ */
+
+// 多行省略
+//   .venomous--ellipsis--1 /* 单行省略 */
+//   .venomous--ellipsis--3 /* 三行省略 */
+//   ...
+//   .venomous--ellipsis--5 /* 五行省略 */
+@for $i from 1 through 5 {
+  .venomous--ellipsis--#{$i} {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $i;
+    line-clamp: $i;
+    overflow: hidden;
+  }
+}

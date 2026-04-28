@@ -1,6 +1,6 @@
 export const ja = {
   introduction: {
-    title: 'venomous-ui',
+    title: 'はじめに',
     description: {
       a: 'React と Vue の両方で使える headless UI ライブラリ。コアは共通。',
       b: '振る舞いは作り込んでありますが、スタイルは任意。コンポーネントだけ、コンポーネント + 内蔵 CSS、CSS だけ —— 好きな使い方を選んでください。',
@@ -13,43 +13,83 @@ export const ja = {
       title: 'インストール',
       body: 'npm でインストールし、フレームワークごとのエントリーから import します。',
     },
-    usage_modes: {
+    'usage-modes': {
       title: '使用モード',
       body: 'venomous-ui は 3 つの使用モードをサポート —— プロジェクトに合わせて選択。',
-      mode_a: {
+      'mode-a': {
         title: 'モード A —— headless コンポーネントのみ',
         body: 'headless はビヘイビアのみ提供。スタイルは自前で用意してください。',
       },
-      mode_b: {
+      'mode-b': {
         title: 'モード B —— コンポーネント + 組み込みスタイル',
         body: 'コンポーネントと組み込み CSS を併用します。',
       },
-      mode_c: {
+      'mode-c': {
         title: 'モード C —— スタイルのみ',
         body: 'コンポーネントを使わず、マークアップを自前で書いて class 名を付けます。',
       },
     },
   },
-  design_tokens: {
-    title: 'デザイントークン',
-    color: 'カラー',
-    typography: 'タイポグラフィ',
-    spacing: 'スペーシング',
-    radius: '角丸',
-    shadow: 'シャドウ',
-    motion: 'モーション',
-    z_index: 'Z-Index',
+  overview: {
+    title: '概要',
   },
-  sidebar: {
-    introduction: 'はじめに',
-    design_tokens: 'デザイントークン',
-    presets: 'プリセット',
-    react: 'React',
-    vue: 'Vue',
-    welcome: 'ようこそ',
-    usage_modes: '使用モード',
-    color: 'カラー',
-    typography: 'タイポグラフィ',
-    components: 'コンポーネント',
+  styles: {
+    title: '組込スタイル',
+  },
+  'design-tokens': {
+    title: 'デザイントークン',
+    table: {
+      name: 'CSS 変数名',
+      value: '値',
+      preview: 'プレビュー',
+    },
+    colors: {
+      title: 'カラー',
+    },
+    font: {
+      title: 'フォント',
+    },
+    motion: {
+      title: 'モーション',
+    },
+    radius: {
+      title: '角丸',
+    },
+    shadow: {
+      title: 'シャドウ',
+    },
+    'z-index': {
+      title: 'Z-Index',
+    },
+  },
+  classnames: {
+    title: '組込クラス名',
+    table: {
+      name: 'クラス名',
+      value: '値',
+      preview: 'プレビュー',
+    },
+    semantic: {
+      title: 'セマンティック',
+    },
+    theme: {
+      title: 'テーマ',
+    },
+    typography: {
+      title: 'タイポグラフィ',
+      ellipsis: '省略',
+    },
+  },
+  react: {
+    title: 'React',
+    components: {
+      title: 'コンポーネント',
+    },
+  },
+  vue: {
+    title: 'Vue',
+    components: {
+      title: 'コンポーネント',
+    },
   },
 } as const;

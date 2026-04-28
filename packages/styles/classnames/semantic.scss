@@ -1,0 +1,19 @@
+/**
+ * 语义色 utility classes —— 单值，主题无关
+ */
+
+.venomous--semantic--danger {
+  color: var(--venomous-red-500);
+}
+
+.venomous--semantic--success {
+  color: var(--venomous-green-500);
+}
+
+.venomous--semantic--warning {
+  color: var(--venomous-yellow-500);
+}
+
+.venomous--semantic--neutral {
+  color: var(--venomous-gray-500);
+}

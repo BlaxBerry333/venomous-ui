@@ -1,0 +1,145 @@
+import { THEME } from '@utils/classnames';
+import { COLORS } from '@utils/tokens';
+import { cssVar } from '@utils/helpers';
+import { useTranslation } from '../../../i18n/useTranslation';
+import { DataTable, PreviewBlock } from '../../../components';
+
+# {useTranslation('classnames.theme.title')}
+
+<br />
+
+## Text
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: `${useTranslation('classnames.table.value')} ( Light / Dark )` },
+    { key: 'preview', header: useTranslation('classnames.table.preview') },
+  ]}
+  rows={[
+    {
+      name: <code>{THEME.TEXT_STRONG}</code>,
+      value: <code>#000 / #fff</code>,
+      preview: <PreviewBlock background="#000" />,
+    },
+    {
+      name: <code>{THEME.TEXT_DEFAULT}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_900} / {COLORS.GRAY_100}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_900)} />,
+    },
+    {
+      name: <code>{THEME.TEXT_WEAK}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_700} / {COLORS.GRAY_300}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_700)} />,
+    },
+    {
+      name: <code>{THEME.TEXT_SUBTLE}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_500} / {COLORS.GRAY_500}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_500)} />,
+    },
+  ]}
+/>
+
+<br />
+
+## Background
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: `${useTranslation('classnames.table.value')} ( Light / Dark )` },
+    { key: 'preview', header: useTranslation('classnames.table.preview') },
+  ]}
+  rows={[
+    {
+      name: <code>{THEME.BG_STRONG}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_300} / {COLORS.GRAY_700}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_300)} />,
+    },
+    {
+      name: <code>{THEME.BG_DEFAULT}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_100} / {COLORS.GRAY_900}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_100)} />,
+    },
+    {
+      name: <code>{THEME.BG_WEAK}</code>,
+      value: <code>#fff / {COLORS.GRAY_900}</code>,
+      preview: <PreviewBlock background="#fff" />,
+    },
+    {
+      name: <code>{THEME.BG_SUBTLE}</code>,
+      value: <code>#fff / #000</code>,
+      preview: <PreviewBlock background="#fff" />,
+    },
+  ]}
+/>
+
+<br />
+
+## Border
+
+<DataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: `${useTranslation('classnames.table.value')} ( Light / Dark )` },
+    { key: 'preview', header: useTranslation('classnames.table.preview') },
+  ]}
+  rows={[
+    {
+      name: <code>{THEME.BORDER_STRONG}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_700} / {COLORS.GRAY_300}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_700)} />,
+    },
+    {
+      name: <code>{THEME.BORDER_DEFAULT}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_500} / {COLORS.GRAY_500}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_500)} />,
+    },
+    {
+      name: <code>{THEME.BORDER_WEAK}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_300} / {COLORS.GRAY_700}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_300)} />,
+    },
+    {
+      name: <code>{THEME.BORDER_SUBTLE}</code>,
+      value: (
+        <code>
+          {COLORS.GRAY_100} / {COLORS.GRAY_900}
+        </code>
+      ),
+      preview: <PreviewBlock background={cssVar(COLORS.GRAY_100)} />,
+    },
+  ]}
+/>
