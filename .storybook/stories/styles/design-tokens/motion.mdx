@@ -1,6 +1,6 @@
 import { useTranslation } from '../../../i18n/useTranslation';
-import { DataTable, DesignTokenValue } from '../../../components';
-import { MOTION } from '@utils/tokens';
+import { StoryDataTable, StoryDesignTokenValue } from '../../__shared__';
+import { MOTION } from '@packages/utils/tokens';
 
 # {useTranslation('design-tokens.motion.title')}
 
@@ -8,7 +8,7 @@ import { MOTION } from '@utils/tokens';
 
 ## Duration
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
     { key: 'value', header: useTranslation('design-tokens.table.value') },
@@ -18,7 +18,7 @@ import { MOTION } from '@utils/tokens';
       name: <code>{MOTION.DURATION_1}</code>,
       value: (
         <code>
-          <DesignTokenValue token={MOTION.DURATION_1} />
+          <StoryDesignTokenValue token={MOTION.DURATION_1} />
         </code>
       ),
     },
@@ -26,7 +26,7 @@ import { MOTION } from '@utils/tokens';
       name: <code>{MOTION.DURATION_2}</code>,
       value: (
         <code>
-          <DesignTokenValue token={MOTION.DURATION_2} />
+          <StoryDesignTokenValue token={MOTION.DURATION_2} />
         </code>
       ),
     },
@@ -34,7 +34,7 @@ import { MOTION } from '@utils/tokens';
       name: <code>{MOTION.DURATION_3}</code>,
       value: (
         <code>
-          <DesignTokenValue token={MOTION.DURATION_3} />
+          <StoryDesignTokenValue token={MOTION.DURATION_3} />
         </code>
       ),
     },
@@ -45,7 +45,7 @@ import { MOTION } from '@utils/tokens';
 
 ## Easing
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
     { key: 'value', header: useTranslation('design-tokens.table.value') },
@@ -55,7 +55,7 @@ import { MOTION } from '@utils/tokens';
       name: <code>{MOTION.EASING_1}</code>,
       value: (
         <code>
-          <DesignTokenValue token={MOTION.EASING_1} />
+          <StoryDesignTokenValue token={MOTION.EASING_1} />
         </code>
       ),
     },
@@ -63,7 +63,7 @@ import { MOTION } from '@utils/tokens';
       name: <code>{MOTION.EASING_2}</code>,
       value: (
         <code>
-          <DesignTokenValue token={MOTION.EASING_2} />
+          <StoryDesignTokenValue token={MOTION.EASING_2} />
         </code>
       ),
     },
@@ -71,7 +71,7 @@ import { MOTION } from '@utils/tokens';
       name: <code>{MOTION.EASING_3}</code>,
       value: (
         <code>
-          <DesignTokenValue token={MOTION.EASING_3} />
+          <StoryDesignTokenValue token={MOTION.EASING_3} />
         </code>
       ),
     },

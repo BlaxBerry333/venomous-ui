@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { useTranslation } from '../../i18n/useTranslation';
-import { CodeBlockGroup } from '../../components';
+import { StoryCodeBlockGroup } from '../__shared__';
 
 <Meta name="Overview" />
 
@@ -22,7 +22,7 @@ import { CodeBlockGroup } from '../../components';
 
 <p>{useTranslation('introduction.installation.body')}</p>
 
-<CodeBlockGroup
+<StoryCodeBlockGroup
   tabs={[
     { title: 'npm', lang: 'bash', code: 'npm install github:BlaxBerry333/venomous-ui#release' },
     { title: 'yarn', lang: 'bash', code: 'yarn add github:BlaxBerry333/venomous-ui#release' },

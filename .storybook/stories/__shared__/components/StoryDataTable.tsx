@@ -1,18 +1,18 @@
 /**
- * @file DataTable —— docs 内通用列表渲染。
+ * @file StoryDataTable —— docs 内通用列表渲染。
  */
 
 import { Unstyled } from '@storybook/addon-docs/blocks';
 import type { ReactNode } from 'react';
 
-export interface DataTableColumn<T> {
+export interface StoryDataTableColumn<T> {
   key: keyof T & string;
   header: ReactNode;
   width?: string | number;
 }
 
-export interface DataTableProps<T extends Record<string, ReactNode>> {
-  columns: DataTableColumn<T>[];
+export interface StoryDataTableProps<T extends Record<string, ReactNode>> {
+  columns: StoryDataTableColumn<T>[];
   rows: T[];
 }
 
@@ -76,11 +76,11 @@ const css = `
 }
 :root.dark .venomous-data-table thead tr,
 [data-theme='dark'] .venomous-data-table thead tr {
-  background: var(--venomous-gray-900) !important;
+  background: var(--venomous-gray-700) !important;
 }
 :root.dark .venomous-data-table tbody tr,
 [data-theme='dark'] .venomous-data-table tbody tr {
-  background: #000 !important;
+  background: var(--venomous-gray-900) !important;
 }
 :root.dark .venomous-data-table th,
 :root.dark .venomous-data-table td,
@@ -104,10 +104,10 @@ function ensureStyle() {
   document.head.appendChild(el);
 }
 
-export function DataTable<T extends Record<string, ReactNode>>({
+export function StoryDataTable<T extends Record<string, ReactNode>>({
   columns,
   rows,
-}: DataTableProps<T>) {
+}: StoryDataTableProps<T>) {
   ensureStyle();
   return (
     <Unstyled>

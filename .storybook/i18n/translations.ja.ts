@@ -33,6 +33,9 @@ export const ja = {
   overview: {
     title: '概要',
   },
+  docs: {
+    title: 'ドキュメント',
+  },
   styles: {
     title: '組込スタイル',
   },
@@ -84,12 +87,34 @@ export const ja = {
     title: 'React',
     components: {
       title: 'コンポーネント',
+      button: {
+        title: 'Button',
+      },
     },
   },
   vue: {
     title: 'Vue',
     components: {
       title: 'コンポーネント',
+      button: {
+        title: 'Button',
+      },
+    },
+  },
+  sections: {
+    props: 'Props',
+    'basic-usage': '基本的な使い方',
+    headless: 'Headless',
+    styled: 'Styled',
+  },
+  table: {
+    name: '名前',
+    type: '型',
+    default: 'デフォルト',
+  },
+  components: {
+    button: {
+      description: 'フォーム送信やアクションのトリガーに使うクリック可能な要素。',
     },
   },
 } as const;

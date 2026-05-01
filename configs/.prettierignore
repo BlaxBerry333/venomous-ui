@@ -9,3 +9,7 @@ package-lock.json
 .husky
 __ai__
 LICENSE
+
+# mdx 一律不跑 prettier：文档内常嵌 template literal（React/Vue/Astro 代码片段），
+# prettier 会破坏代码缩进、并把 `---` frontmatter 误识别为 markdown 标题分隔符
+*.mdx

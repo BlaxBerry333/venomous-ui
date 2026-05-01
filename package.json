@@ -25,6 +25,7 @@
     "./styles/reset.css": "./dist/styles/reset.css",
     "./styles/tokens/*.css": "./dist/styles/tokens/*.css",
     "./styles/classnames/*.css": "./dist/styles/classnames/*.css",
+    "./styles/components/*.css": "./dist/styles/components/*.css",
     "./utils/helpers": {
       "types": "./dist/utils/helpers/index.d.ts",
       "import": "./dist/utils/helpers/index.js"

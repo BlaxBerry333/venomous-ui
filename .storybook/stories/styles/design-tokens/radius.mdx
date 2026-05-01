@@ -1,13 +1,13 @@
 import { useTranslation } from '../../../i18n/useTranslation';
-import { DataTable, DesignTokenValue, PreviewBlock } from '../../../components';
-import { cssVar } from '@utils/helpers';
-import { RADIUS, COLORS } from '@utils/tokens';
+import { StoryDataTable, StoryDesignTokenValue, StorySampleBlock } from '../../__shared__';
+import { cssVar } from '@packages/utils/helpers';
+import { RADIUS, COLORS } from '@packages/utils/tokens';
 
 # {useTranslation('design-tokens.radius.title')}
 
 <br />
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
     { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
@@ -17,11 +17,11 @@ import { RADIUS, COLORS } from '@utils/tokens';
     name: <code>{token}</code>,
     value: (
       <code>
-        <DesignTokenValue token={token} />
+        <StoryDesignTokenValue token={token} />
       </code>
     ),
     preview: (
-      <PreviewBlock
+      <StorySampleBlock
         background={cssVar(COLORS.GRAY_500)}
         borderRadius={cssVar(token)}
         border="none"

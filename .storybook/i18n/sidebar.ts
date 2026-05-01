@@ -20,6 +20,8 @@ export const SIDEBAR_LABEL_KEYS: Record<string, I18nKey> = {
   // leaf docs
   overview: 'overview.title',
   Overview: 'overview.title',
+  docs: 'docs.title',
+  Docs: 'docs.title',
   'usage-modes': 'introduction.usage-modes.title',
   colors: 'design-tokens.colors.title',
   font: 'design-tokens.font.title',
@@ -30,4 +32,5 @@ export const SIDEBAR_LABEL_KEYS: Record<string, I18nKey> = {
   semantic: 'classnames.semantic.title',
   theme: 'classnames.theme.title',
   typography: 'classnames.typography.title',
+  button: 'react.components.button.title',
 };

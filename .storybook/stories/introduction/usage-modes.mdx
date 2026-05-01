@@ -1,12 +1,83 @@
 import { useTranslation } from '../../i18n/useTranslation';
-import { CodeBlockGroup } from '../../components';
-import {
-  MODE_A_REACT,
-  MODE_A_VUE,
-  MODE_B_REACT,
-  MODE_B_VUE,
-  MODE_C_ASTRO,
-} from '../__data__/usage-modes';
+import { StoryCodeBlockGroup } from '../__shared__';
+
+export const MODE_A_REACT = `
+import { Tabs, TabTitle, TabPanel } from 'venomous-ui/react/components';
+
+export default function Demo() {
+  return (
+    <Tabs>
+      <TabTitle>A</TabTitle>
+      <TabTitle>B</TabTitle>
+
+      <TabPanel>AA</TabPanel>
+      <TabPanel>BB</TabPanel>
+    </Tabs>
+  );
+}`;
+
+export const MODE_A_VUE = `
+<script setup lang="ts">
+  import { Tabs, TabTitle, TabPanel } from 'venomous-ui/vue/components';
+</script>
+
+<template>
+  <Tabs>
+    <TabTitle>A</TabTitle>
+    <TabTitle>B</TabTitle>
+
+    <TabPanel>AA</TabPanel>
+    <TabPanel>BB</TabPanel>
+  </Tabs>
+</template>`;
+
+export const MODE_B_REACT = `
+import { Tabs, TabTitle, TabPanel } from 'venomous-ui/react/components';
+import 'venomous-ui/styles/reset.css';
+import 'venomous-ui/styles/components/tabs.css';
+
+export default function Demo() {
+  return (
+    <Tabs>
+      <TabTitle>A</TabTitle>
+      <TabTitle>B</TabTitle>
+
+      <TabPanel>AA</TabPanel>
+      <TabPanel>BB</TabPanel>
+    </Tabs>
+  );
+}`;
+
+export const MODE_B_VUE = `
+<script setup lang="ts">
+  import { Tabs, TabTitle, TabPanel } from 'venomous-ui/vue/components';
+  import 'venomous-ui/styles/reset.css';
+  import 'venomous-ui/styles/components/tabs.css';
+</script>
+
+<template>
+  <Tabs>
+    <TabTitle>A</TabTitle>
+    <TabTitle>B</TabTitle>
+
+    <TabPanel>AA</TabPanel>
+    <TabPanel>BB</TabPanel>
+  </Tabs>
+</template>`;
+
+export const MODE_C_ASTRO = `
+---
+import 'venomous-ui/styles/reset.css';
+import 'venomous-ui/styles/components/tabs.css';
+---
+
+<div class="venomous__Tabs">
+  <div class="venomous__TabTitle">A</div>
+  <div class="venomous__TabTitle">B</div>
+
+  <div class="venomous__TabPanel">AA</div>
+  <div class="venomous__TabPanel">BB</div>
+</div>`;
 
 # {useTranslation('introduction.usage-modes.title')}
 
@@ -18,7 +89,7 @@ import {
 
 <p>{useTranslation('introduction.usage-modes.mode-a.body')}</p>
 
-<CodeBlockGroup
+<StoryCodeBlockGroup
   tabs={[
     { title: 'React', lang: 'tsx', code: MODE_A_REACT },
     { title: 'Vue', lang: 'html', code: MODE_A_VUE },
@@ -31,7 +102,7 @@ import {
 
 <p>{useTranslation('introduction.usage-modes.mode-b.body')}</p>
 
-<CodeBlockGroup
+<StoryCodeBlockGroup
   tabs={[
     { title: 'React', lang: 'tsx', code: MODE_B_REACT },
     { title: 'Vue', lang: 'html', code: MODE_B_VUE },
@@ -44,4 +115,4 @@ import {
 
 <p>{useTranslation('introduction.usage-modes.mode-c.body')}</p>
 
-<CodeBlockGroup tabs={[{ title: 'Astro', lang: 'html', code: MODE_C_ASTRO }]} />
+<StoryCodeBlockGroup tabs={[{ title: 'Astro', lang: 'html', code: MODE_C_ASTRO }]} />

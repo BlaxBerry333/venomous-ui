@@ -33,6 +33,9 @@ export const zh = {
   overview: {
     title: '概览',
   },
+  docs: {
+    title: '文档',
+  },
   styles: {
     title: '内置样式',
   },
@@ -84,12 +87,34 @@ export const zh = {
     title: 'React',
     components: {
       title: '组件',
+      button: {
+        title: 'Button',
+      },
     },
   },
   vue: {
     title: 'Vue',
     components: {
       title: '组件',
+      button: {
+        title: 'Button',
+      },
+    },
+  },
+  sections: {
+    props: 'Props',
+    'basic-usage': '基础使用',
+    headless: 'Headless',
+    styled: 'Styled',
+  },
+  table: {
+    name: '名称',
+    type: '类型',
+    default: '默认值',
+  },
+  components: {
+    button: {
+      description: '可点击的触发器，用于提交表单或触发操作。',
     },
   },
 } as const;

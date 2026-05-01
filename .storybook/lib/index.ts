@@ -11,5 +11,4 @@ export {
   themeMap,
   type Theme,
 } from './theme';
-export { VueWrapper } from './vue-wrapper';
 export { withTheme } from './with-theme';

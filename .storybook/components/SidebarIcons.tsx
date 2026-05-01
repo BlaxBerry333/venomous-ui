@@ -55,7 +55,7 @@ export const IconReact = () =>
 
 export const IconVue = () => svg(path('M2 4h5l5 8 5-8h5L12 22z'), path('M7 4l5 8 5-8'));
 
-export const sidebarRootIcons: Record<string, () => React.ReactElement> = {
+export const SidebarIcons: Record<string, () => React.ReactElement> = {
   introduction: IconIntroduction,
   styles: IconStyles,
   react: IconReact,

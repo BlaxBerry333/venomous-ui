@@ -27,13 +27,12 @@ const config: StorybookConfig = {
     config.plugins = config.plugins ?? [];
     config.plugins.push(vue());
 
-    // 注意：alias key 与 package scope 冲突会拦截依赖（如 `@vue/runtime-dom`），
-    // 因此项目内别名仅暴露不与 npm scope 冲突的前缀。
+    // 注意：alias key 与 npm scope 冲突会拦截依赖（如单段 `@vue` 会撞 `@vue/runtime-dom`），
+    // 因此用两段路径形式 `@packages/*`，绝不会和 npm scope 重叠。
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {
       ...(config.resolve.alias as Record<string, string>),
-      '@utils': resolve(__dirname, '../packages/utils'),
-      '@styles': resolve(__dirname, '../packages/styles'),
+      '@packages': resolve(__dirname, '../packages'),
     };
 
     // 显式预构建 mdx 用到的子入口，否则 vite/rolldown 解析失败。

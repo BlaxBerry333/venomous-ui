@@ -33,6 +33,9 @@ export const en = {
   overview: {
     title: 'Overview',
   },
+  docs: {
+    title: 'Document',
+  },
   styles: {
     title: 'Styles',
   },
@@ -84,12 +87,35 @@ export const en = {
     title: 'React',
     components: {
       title: 'Components',
+      button: {
+        title: 'Button',
+      },
     },
   },
   vue: {
     title: 'Vue',
     components: {
       title: 'Components',
+      button: {
+        title: 'Button',
+      },
+    },
+  },
+  // 跨组件共享的章节标题与表格列名 —— 加新组件时无需重复定义
+  sections: {
+    props: 'Props',
+    'basic-usage': 'Basic Usage',
+    headless: 'Headless',
+    styled: 'Styled',
+  },
+  table: {
+    name: 'Name',
+    type: 'Type',
+    default: 'Default',
+  },
+  components: {
+    button: {
+      description: 'Clickable trigger for submitting forms or invoking actions.',
     },
   },
 } as const;

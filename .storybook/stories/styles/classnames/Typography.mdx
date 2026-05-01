@@ -1,7 +1,6 @@
-import { TYPOGRAPHY } from '@utils/classnames';
+import { TYPOGRAPHY } from '@packages/utils/classnames';
 import { useTranslation } from '../../../i18n/useTranslation';
-import { DataTable } from '../../../components';
-import { SAMPLE_TEXT } from '../../__data__/sample-text';
+import { StoryDataTable, SAMPLE_TEXT } from '../../__shared__';
 
 # {useTranslation('classnames.typography.title')}
 
@@ -9,7 +8,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
 
 ## {useTranslation('classnames.typography.ellipsis')}
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('classnames.table.name'), width: 300 },
     { key: 'preview', header: useTranslation('classnames.table.preview') },

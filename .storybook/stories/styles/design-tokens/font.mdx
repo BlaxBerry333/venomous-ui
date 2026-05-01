@@ -1,8 +1,7 @@
 import { useTranslation } from '../../../i18n/useTranslation';
-import { DataTable, DesignTokenValue } from '../../../components';
-import { cssVar } from '@utils/helpers';
-import { FONT } from '@utils/tokens';
-import { SAMPLE_TEXT } from '../../__data__/sample-text';
+import { StoryDataTable, StoryDesignTokenValue, SAMPLE_TEXT } from '../../__shared__';
+import { cssVar } from '@packages/utils/helpers';
+import { FONT } from '@packages/utils/tokens';
 
 # {useTranslation('design-tokens.font.title')}
 
@@ -10,7 +9,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
 
 ## Size
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
     { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
@@ -21,7 +20,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_1}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_1} />
+          <StoryDesignTokenValue token={FONT.SIZE_1} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_1) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -30,7 +29,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_2}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_2} />
+          <StoryDesignTokenValue token={FONT.SIZE_2} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_2) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -39,7 +38,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_3}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_3} />
+          <StoryDesignTokenValue token={FONT.SIZE_3} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_3) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -48,7 +47,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_4}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_4} />
+          <StoryDesignTokenValue token={FONT.SIZE_4} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_4) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -57,7 +56,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_5}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_5} />
+          <StoryDesignTokenValue token={FONT.SIZE_5} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_5) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -66,7 +65,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_6}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_6} />
+          <StoryDesignTokenValue token={FONT.SIZE_6} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_6) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -75,7 +74,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_7}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_7} />
+          <StoryDesignTokenValue token={FONT.SIZE_7} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_7) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -84,7 +83,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_8}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_8} />
+          <StoryDesignTokenValue token={FONT.SIZE_8} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_8) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -93,7 +92,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.SIZE_9}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.SIZE_9} />
+          <StoryDesignTokenValue token={FONT.SIZE_9} />
         </code>
       ),
       preview: <span style={{ fontSize: cssVar(FONT.SIZE_9) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -105,7 +104,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
 
 ## Weight
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
     { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
@@ -116,7 +115,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.WEIGHT_1}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.WEIGHT_1} />
+          <StoryDesignTokenValue token={FONT.WEIGHT_1} />
         </code>
       ),
       preview: <span style={{ fontWeight: cssVar(FONT.WEIGHT_1) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -125,7 +124,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.WEIGHT_2}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.WEIGHT_2} />
+          <StoryDesignTokenValue token={FONT.WEIGHT_2} />
         </code>
       ),
       preview: <span style={{ fontWeight: cssVar(FONT.WEIGHT_2) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -134,7 +133,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.WEIGHT_3}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.WEIGHT_3} />
+          <StoryDesignTokenValue token={FONT.WEIGHT_3} />
         </code>
       ),
       preview: <span style={{ fontWeight: cssVar(FONT.WEIGHT_3) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -143,7 +142,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.WEIGHT_4}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.WEIGHT_4} />
+          <StoryDesignTokenValue token={FONT.WEIGHT_4} />
         </code>
       ),
       preview: <span style={{ fontWeight: cssVar(FONT.WEIGHT_4) }}>{SAMPLE_TEXT.SHORT}</span>,
@@ -155,7 +154,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
 
 ## Line Height
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
     { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
@@ -166,7 +165,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.LINE_HEIGHT_1}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.LINE_HEIGHT_1} />
+          <StoryDesignTokenValue token={FONT.LINE_HEIGHT_1} />
         </code>
       ),
       preview: (
@@ -179,7 +178,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.LINE_HEIGHT_2}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.LINE_HEIGHT_2} />
+          <StoryDesignTokenValue token={FONT.LINE_HEIGHT_2} />
         </code>
       ),
       preview: (
@@ -192,7 +191,7 @@ import { SAMPLE_TEXT } from '../../__data__/sample-text';
       name: <code>{FONT.LINE_HEIGHT_3}</code>,
       value: (
         <code>
-          <DesignTokenValue token={FONT.LINE_HEIGHT_3} />
+          <StoryDesignTokenValue token={FONT.LINE_HEIGHT_3} />
         </code>
       ),
       preview: (

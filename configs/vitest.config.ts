@@ -10,9 +10,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   resolve: {
     alias: {
-      '@utils': fileURLToPath(new URL('../packages/utils', import.meta.url)),
-      '@react': fileURLToPath(new URL('../packages/react', import.meta.url)),
-      '@vue': fileURLToPath(new URL('../packages/vue', import.meta.url)),
+      '@packages': fileURLToPath(new URL('../packages', import.meta.url)),
     },
   },
   test: {

@@ -1,14 +1,14 @@
 import { useTranslation } from '../../../i18n/useTranslation';
-import { DataTable, DesignTokenValue, PreviewBlock } from '../../../components';
-import { cssVar } from '@utils/helpers';
-import { SHADOW } from '@utils/tokens';
-import { THEME } from '@utils/classnames';
+import { StoryDataTable, StoryDesignTokenValue, StorySampleBlock } from '../../__shared__';
+import { cssVar } from '@packages/utils/helpers';
+import { SHADOW } from '@packages/utils/tokens';
+import { THEME } from '@packages/utils/classnames';
 
 # {useTranslation('design-tokens.shadow.title')}
 
 <br />
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name') },
     { key: 'value', header: useTranslation('design-tokens.table.value') },
@@ -18,9 +18,9 @@ import { THEME } from '@utils/classnames';
     name: <code>{token}</code>,
     value: (
       <code>
-        <DesignTokenValue token={token} />
+        <StoryDesignTokenValue token={token} />
       </code>
     ),
-    preview: <PreviewBlock boxShadow={cssVar(token)} className={THEME.BG_DEFAULT} border="none" />,
+    preview: <StorySampleBlock boxShadow={cssVar(token)} className={THEME.BG_DEFAULT} border="none" />,
   }))}
 />

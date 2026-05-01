@@ -1,14 +1,14 @@
-import { SEMANTIC } from '@utils/classnames';
-import { COLORS } from '@utils/tokens';
-import { cssVar } from '@utils/helpers';
+import { SEMANTIC } from '@packages/utils/classnames';
+import { COLORS } from '@packages/utils/tokens';
+import { cssVar } from '@packages/utils/helpers';
 import { useTranslation } from '../../../i18n/useTranslation';
-import { DataTable, PreviewBlock } from '../../../components';
+import { StoryDataTable, StorySampleBlock } from '../../__shared__';
 
 # {useTranslation('classnames.semantic.title')}
 
 <br />
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
     { key: 'value', header: useTranslation('design-tokens.table.value'), width: 100 },
@@ -18,22 +18,22 @@ import { DataTable, PreviewBlock } from '../../../components';
     {
       name: <code>{SEMANTIC.SEMANTIC_DANGER}</code>,
       value: <code>{COLORS.RED_500}</code>,
-      preview: <PreviewBlock background={cssVar(COLORS.RED_500)} />,
+      preview: <StorySampleBlock background={cssVar(COLORS.RED_500)} />,
     },
     {
       name: <code>{SEMANTIC.SEMANTIC_SUCCESS}</code>,
       value: <code>{COLORS.GREEN_500}</code>,
-      preview: <PreviewBlock background={cssVar(COLORS.GREEN_500)} />,
+      preview: <StorySampleBlock background={cssVar(COLORS.GREEN_500)} />,
     },
     {
       name: <code>{SEMANTIC.SEMANTIC_WARNING}</code>,
       value: <code>{COLORS.YELLOW_500}</code>,
-      preview: <PreviewBlock background={cssVar(COLORS.YELLOW_500)} />,
+      preview: <StorySampleBlock background={cssVar(COLORS.YELLOW_500)} />,
     },
     {
       name: <code>{SEMANTIC.SEMANTIC_NEUTRAL}</code>,
       value: <code>{COLORS.GRAY_500}</code>,
-      preview: <PreviewBlock background={cssVar(COLORS.GRAY_500)} />,
+      preview: <StorySampleBlock background={cssVar(COLORS.GRAY_500)} />,
     },
   ]}
 />

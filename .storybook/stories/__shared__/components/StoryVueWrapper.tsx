@@ -1,5 +1,5 @@
 /**
- * @file VueWrapper —— 在 React-based Storybook 中挂载 Vue 组件。
+ * @file StoryVueWrapper —— 在 React-based Storybook 中挂载 Vue 组件。
  *
  * 用 reactive() 让 props 变化时不重新 mount，保留 Vue 实例状态。
  * Slot 用法：传 string 渲染默认 slot；传 { default: () => h(...) } 渲染具名/嵌套 slot。
@@ -11,13 +11,13 @@ import { createApp, h, reactive, type Component, type VNode } from 'vue';
 type SlotFunction = () => VNode | VNode[] | string;
 type SlotsObject = Record<string, SlotFunction>;
 
-interface VueWrapperProps {
+interface StoryVueWrapperProps {
   component: Component;
   props?: Record<string, unknown>;
   children?: string | SlotsObject;
 }
 
-export function VueWrapper({ component, props = {}, children }: VueWrapperProps) {
+export function StoryVueWrapper({ component, props = {}, children }: StoryVueWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<ReturnType<typeof createApp> | null>(null);
   const reactivePropsRef = useRef<Record<string, unknown> | null>(null);

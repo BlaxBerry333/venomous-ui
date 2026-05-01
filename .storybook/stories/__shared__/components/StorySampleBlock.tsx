@@ -1,11 +1,11 @@
 /**
- * @file PreviewBlock —— mdx 表格 preview 列里通用的方块容器。
+ * @file StorySampleBlock —— mdx 表格 preview 列里通用的方块容器。
  * 默认 50×50，带 1px 灰边和 radius-2 圆角，可被各 prop 覆盖。
  */
 
 import type { CSSProperties, ReactNode } from 'react';
 
-export function PreviewBlock({
+export function StorySampleBlock({
   width = 60,
   height = 60,
   background,

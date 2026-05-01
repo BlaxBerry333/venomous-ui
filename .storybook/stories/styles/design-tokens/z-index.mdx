@@ -1,12 +1,12 @@
 import { useTranslation } from '../../../i18n/useTranslation';
-import { DataTable, DesignTokenValue } from '../../../components';
-import { Z_INDEX } from '@utils/tokens';
+import { StoryDataTable, StoryDesignTokenValue } from '../../__shared__';
+import { Z_INDEX } from '@packages/utils/tokens';
 
 # {useTranslation('design-tokens.z-index.title')}
 
 <br />
 
-<DataTable
+<StoryDataTable
   columns={[
     { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
     { key: 'value', header: useTranslation('design-tokens.table.value') },
@@ -15,7 +15,7 @@ import { Z_INDEX } from '@utils/tokens';
     name: <code>{token}</code>,
     value: (
       <code>
-        <DesignTokenValue token={token} />
+        <StoryDesignTokenValue token={token} />
       </code>
     ),
   }))}

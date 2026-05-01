@@ -2,9 +2,7 @@
   "extends": "./configs/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@utils/*": ["./packages/utils/*"],
-      "@react/*": ["./packages/react/*"],
-      "@vue/*": ["./packages/vue/*"]
+      "@packages/*": ["./packages/*"]
     }
   },
   "include": [

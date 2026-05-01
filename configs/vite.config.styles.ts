@@ -10,10 +10,9 @@ const root = resolve(__dirname, '..');
 const src = resolve(root, 'packages/styles');
 
 const input = Object.fromEntries(
-  globSync(['reset.scss', 'tokens/*.scss', 'classnames/*.scss'], { cwd: src }).map((p) => [
-    p.replace(/\.scss$/, ''),
-    resolve(src, p),
-  ]),
+  globSync(['reset.scss', 'tokens/*.scss', 'classnames/*.scss', 'components/*.scss'], {
+    cwd: src,
+  }).map((p) => [p.replace(/\.scss$/, ''), resolve(src, p)]),
 );
 
 export default defineConfig({

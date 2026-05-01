@@ -7,6 +7,7 @@
 import { resolve } from 'node:path';
 import { globSync } from 'tinyglobby';
 import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 
 const root = resolve(__dirname, '..');
@@ -39,6 +40,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    vue(),
     dts({
       entryRoot: src,
       outDir: out,
