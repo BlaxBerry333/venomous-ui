@@ -7,8 +7,8 @@ body {
   // 否则原生 <button> / <input> 在 dark 下仍是浅色底，再叠加我们设的 body color 会出现
   // 「浅底浅字」对比度坏掉的问题。
   color-scheme: light;
-  background: var(--venomous-gray-100);
-  color: var(--venomous-gray-900);
+  background: var(--venomous-color-gray-100);
+  color: var(--venomous-color-gray-900);
   transition:
     background-color var(--venomous-motion-duration-1) var(--venomous-motion-easing-1),
     color var(--venomous-motion-duration-1) var(--venomous-motion-easing-1);
@@ -20,8 +20,8 @@ body {
 :root.dark,
 [data-theme='dark'] {
   color-scheme: dark;
-  background: var(--venomous-gray-900);
-  color: var(--venomous-gray-100);
+  background: var(--venomous-color-gray-900);
+  color: var(--venomous-color-gray-100);
 }
 
 :root.dark body,
@@ -29,6 +29,6 @@ body {
   // body 必须显式设 color-scheme: dark，否则 light 模式那条 `html, body { color-scheme: light }`
   // 仍然命中 body，user-agent 控件（button / input / scrollbar）就跟着走 light 配色。
   color-scheme: dark;
-  background: var(--venomous-gray-900);
-  color: var(--venomous-gray-100);
+  background: var(--venomous-color-gray-900);
+  color: var(--venomous-color-gray-100);
 }

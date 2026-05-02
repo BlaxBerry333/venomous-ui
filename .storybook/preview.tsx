@@ -4,7 +4,7 @@
 
 import type { Preview } from '@storybook/react-vite';
 import { DocsContainer } from './components';
-import { withTheme } from './lib';
+import { ACCENT_PRESETS, withAccent, withTheme } from './lib';
 import { locales } from './i18n';
 
 // ============================================================
@@ -18,13 +18,11 @@ import '../packages/styles/tokens/motion.scss';
 import '../packages/styles/tokens/radius.scss';
 import '../packages/styles/tokens/shadow.scss';
 import '../packages/styles/tokens/z-index.scss';
-import '../packages/styles/classnames/semantic.scss';
-import '../packages/styles/classnames/theme.scss';
 import '../packages/styles/classnames/typography.scss';
 import './preview.scss';
 
 const preview: Preview = {
-  decorators: [withTheme],
+  decorators: [withTheme, withAccent],
 
   globalTypes: {
     theme: {
@@ -37,6 +35,20 @@ const preview: Preview = {
           { value: 'light', title: 'Light', icon: 'sun' },
           { value: 'dark', title: 'Dark', icon: 'moon' },
         ],
+        dynamicTitle: true,
+      },
+    },
+    accent: {
+      name: 'Accent',
+      description: '主色预设（演示主题变量可被覆盖）',
+      defaultValue: 'default',
+      toolbar: {
+        icon: 'mirror',
+        items: Object.entries(ACCENT_PRESETS).map(([value, def]) => ({
+          value,
+          title: def.title,
+          right: def.rest,
+        })),
         dynamicTitle: true,
       },
     },
@@ -79,7 +91,7 @@ const preview: Preview = {
             ['colors', 'font', 'radius', 'shadow', 'z-index', 'motion'],
             // 2.2
             'classnames',
-            ['semantic', 'theme', 'typography'],
+            ['typography'],
           ],
           // 3.
           'react',

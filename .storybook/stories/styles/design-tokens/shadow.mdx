@@ -1,8 +1,7 @@
 import { useTranslation } from '../../../i18n/useTranslation';
 import { StoryDataTable, StoryDesignTokenValue, StorySampleBlock } from '../../__shared__';
 import { cssVar } from '@packages/utils/helpers';
-import { SHADOW } from '@packages/utils/tokens';
-import { THEME } from '@packages/utils/classnames';
+import { SHADOW, COLORS } from '@packages/utils/tokens';
 
 # {useTranslation('design-tokens.shadow.title')}
 
@@ -21,6 +20,12 @@ import { THEME } from '@packages/utils/classnames';
         <StoryDesignTokenValue token={token} />
       </code>
     ),
-    preview: <StorySampleBlock boxShadow={cssVar(token)} className={THEME.BG_DEFAULT} border="none" />,
+    preview: (
+      <StorySampleBlock
+        boxShadow={cssVar(token)}
+        background={cssVar(COLORS.BG_DEFAULT)}
+        border="none"
+      />
+    ),
   }))}
 />

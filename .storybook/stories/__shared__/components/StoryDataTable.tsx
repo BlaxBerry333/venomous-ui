@@ -22,7 +22,7 @@ const css = `
 .venomous-data-table-scroll {
   width: 100% !important;
   overflow-x: auto !important;
-  border: 1px solid var(--venomous-gray-300) !important;
+  border: 1px solid var(--venomous-color-gray-300) !important;
   border-radius: 8px !important;
   background: transparent !important;
 }
@@ -31,11 +31,11 @@ const css = `
   min-width: max-content !important;
   border-collapse: separate !important;
   border-spacing: 0 !important;
-  color: var(--venomous-gray-900) !important;
+  color: var(--venomous-color-gray-900) !important;
   background: transparent !important;
 }
 .venomous-data-table thead tr {
-  background: var(--venomous-gray-100) !important;
+  background: var(--venomous-color-gray-100) !important;
 }
 .venomous-data-table tbody tr {
   background: #fff !important;
@@ -44,8 +44,8 @@ const css = `
 .venomous-data-table td {
   padding: 10px 14px !important;
   border: 0 !important;
-  border-right: 1px solid var(--venomous-gray-300) !important;
-  border-bottom: 1px solid var(--venomous-gray-300) !important;
+  border-right: 1px solid var(--venomous-color-gray-300) !important;
+  border-bottom: 1px solid var(--venomous-color-gray-300) !important;
 }
 .venomous-data-table th:last-child,
 .venomous-data-table td:last-child {
@@ -58,7 +58,7 @@ const css = `
   text-align: left !important;
   font-weight: 600 !important;
   font-size: 13px !important;
-  color: var(--venomous-gray-500) !important;
+  color: var(--venomous-color-gray-500) !important;
   white-space: nowrap !important;
 }
 .venomous-data-table td {
@@ -68,30 +68,30 @@ const css = `
 
 :root.dark .venomous-data-table-scroll,
 [data-theme='dark'] .venomous-data-table-scroll {
-  border-color: var(--venomous-gray-700) !important;
+  border-color: var(--venomous-color-gray-700) !important;
 }
 :root.dark .venomous-data-table,
 [data-theme='dark'] .venomous-data-table {
-  color: var(--venomous-gray-100) !important;
+  color: var(--venomous-color-gray-100) !important;
 }
 :root.dark .venomous-data-table thead tr,
 [data-theme='dark'] .venomous-data-table thead tr {
-  background: var(--venomous-gray-700) !important;
+  background: var(--venomous-color-gray-700) !important;
 }
 :root.dark .venomous-data-table tbody tr,
 [data-theme='dark'] .venomous-data-table tbody tr {
-  background: var(--venomous-gray-900) !important;
+  background: var(--venomous-color-gray-900) !important;
 }
 :root.dark .venomous-data-table th,
 :root.dark .venomous-data-table td,
 [data-theme='dark'] .venomous-data-table th,
 [data-theme='dark'] .venomous-data-table td {
-  border-right-color: var(--venomous-gray-700) !important;
-  border-bottom-color: var(--venomous-gray-700) !important;
+  border-right-color: var(--venomous-color-gray-700) !important;
+  border-bottom-color: var(--venomous-color-gray-700) !important;
 }
 :root.dark .venomous-data-table th,
 [data-theme='dark'] .venomous-data-table th {
-  color: var(--venomous-gray-300) !important;
+  color: var(--venomous-color-gray-300) !important;
 }
 `;
 

@@ -29,8 +29,6 @@ export const SIDEBAR_LABEL_KEYS: Record<string, I18nKey> = {
   radius: 'design-tokens.radius.title',
   shadow: 'design-tokens.shadow.title',
   'z-index': 'design-tokens.z-index.title',
-  semantic: 'classnames.semantic.title',
-  theme: 'classnames.theme.title',
   typography: 'classnames.typography.title',
   button: 'react.components.button.title',
 };

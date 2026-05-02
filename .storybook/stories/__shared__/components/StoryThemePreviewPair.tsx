@@ -19,13 +19,13 @@ export function StoryThemePreviewPair({
         style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
       >
         <StorySampleBlock background={light} />
-        <span style={{ fontSize: 11, color: 'var(--venomous-gray-500)' }}>Light</span>
+        <span style={{ fontSize: 11, color: 'var(--venomous-color-gray-500)' }}>Light</span>
       </span>
       <span
         style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
       >
         <StorySampleBlock background={dark} />
-        <span style={{ fontSize: 11, color: 'var(--venomous-gray-500)' }}>Dark</span>
+        <span style={{ fontSize: 11, color: 'var(--venomous-color-gray-500)' }}>Dark</span>
       </span>
     </span>
   );

@@ -44,10 +44,13 @@ export const en = {
     table: {
       name: 'CSS Variable',
       value: 'Value',
+      'default-value': 'Default Value',
       preview: 'Preview',
     },
     colors: {
       title: 'Colors',
+      base: 'Base Colors',
+      theme: 'Theme Colors',
     },
     font: {
       title: 'Font',
@@ -71,12 +74,6 @@ export const en = {
       name: 'Class Name',
       value: 'Value',
       preview: 'Preview',
-    },
-    semantic: {
-      title: 'Semantic',
-    },
-    theme: {
-      title: 'Theme',
     },
     typography: {
       title: 'Typography',
@@ -112,6 +109,30 @@ export const en = {
     name: 'Name',
     type: 'Type',
     default: 'Default',
+    description: 'Description',
+  },
+  // 主题变量说明（design-tokens/colors.mdx 引用）
+  'theme-vars': {
+    primary: 'Brand primary color (rest state)',
+    'primary-hover': 'Primary on hover',
+    'primary-active': 'Primary on press / active',
+    'on-primary': 'Text / icon color on primary background',
+    danger: 'Destructive / error state',
+    success: 'Positive / success state',
+    warning: 'Caution / warning state',
+    neutral: 'Neutral / informational state',
+    'text-strong': 'Headings / emphasized text',
+    'text-default': 'Body text',
+    'text-weak': 'Secondary text',
+    'text-subtle': 'Hint / disabled text',
+    'bg-strong': 'Inset / pressed surfaces',
+    'bg-default': 'Page background',
+    'bg-weak': 'Card / panel surfaces',
+    'bg-subtle': 'Highest contrast surface (e.g. modal)',
+    'border-strong': 'Emphasized borders / dividers',
+    'border-default': 'Default borders',
+    'border-weak': 'Subtle dividers',
+    'border-subtle': 'Faintest separators',
   },
   components: {
     button: {

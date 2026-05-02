@@ -1,13 +1,42 @@
 import { useTranslation } from '../../../i18n/useTranslation';
-import { StoryDataTable, StoryDesignTokenValue, StorySampleBlock } from '../../__shared__';
+import {
+  StoryDataTable,
+  StoryDesignTokenValue,
+  StorySampleBlock,
+  StoryThemePreviewPair,
+} from '../../__shared__';
 import { cssVar } from '@packages/utils/helpers';
 import { COLORS } from '@packages/utils/tokens';
+
+export const codeStyle = {
+  display: 'inline-block',
+  padding: '3px 5px',
+  fontFamily:
+    'ui-monospace, Menlo, Monaco, "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Droid Sans Mono", "Courier New", monospace',
+  fontSize: '12px',
+  lineHeight: 1,
+  background: 'rgba(0, 0, 0, 0.04)',
+  border: '1px solid rgba(0, 0, 0, 0.08)',
+  borderRadius: 3,
+  color: 'inherit',
+};
+
+export const ValueCell = ({ light, dark }) => (
+  <span style={{ display: 'inline-flex', flexDirection: 'column', gap: 6, lineHeight: 1.6 }}>
+    <span><strong>Light:</strong> <code style={codeStyle}>{light}</code></span>
+    <span><strong>Dark:</strong> <code style={codeStyle}>{dark}</code></span>
+  </span>
+);
+
+export const SingleValueCell = ({ value }) => <code style={codeStyle}>{value}</code>;
 
 # {useTranslation('design-tokens.colors.title')}
 
 <br />
 
-## Blue
+## {useTranslation('design-tokens.colors.base')}
+
+### Blue
 
 <StoryDataTable
   columns={[
@@ -64,9 +93,7 @@ import { COLORS } from '@packages/utils/tokens';
   ]}
 />
 
-<br />
-
-## Red
+### Red
 
 <StoryDataTable
   columns={[
@@ -123,9 +150,7 @@ import { COLORS } from '@packages/utils/tokens';
   ]}
 />
 
-<br />
-
-## Green
+### Green
 
 <StoryDataTable
   columns={[
@@ -182,9 +207,7 @@ import { COLORS } from '@packages/utils/tokens';
   ]}
 />
 
-<br />
-
-## Yellow
+### Yellow
 
 <StoryDataTable
   columns={[
@@ -241,9 +264,7 @@ import { COLORS } from '@packages/utils/tokens';
   ]}
 />
 
-<br />
-
-## Gray
+### Gray
 
 <StoryDataTable
   columns={[
@@ -296,6 +317,195 @@ import { COLORS } from '@packages/utils/tokens';
         </code>
       ),
       preview: <StorySampleBlock background={cssVar(COLORS.GRAY_900)} />,
+    },
+  ]}
+/>
+
+<br />
+
+## {useTranslation('design-tokens.colors.theme')}
+
+### Primary Color
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.default-value'), width: 250 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview'), width: 150 },
+    { key: 'description', header: useTranslation('table.description') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.PRIMARY}</code>,
+      value: <SingleValueCell value={COLORS.BLUE_500} />,
+      description: useTranslation('theme-vars.primary'),
+      preview: <StorySampleBlock background={cssVar(COLORS.BLUE_500)} />,
+    },
+    {
+      name: <code>{COLORS.PRIMARY_HOVER}</code>,
+      value: <SingleValueCell value={COLORS.BLUE_700} />,
+      description: useTranslation('theme-vars.primary-hover'),
+      preview: <StorySampleBlock background={cssVar(COLORS.BLUE_700)} />,
+    },
+    {
+      name: <code>{COLORS.PRIMARY_ACTIVE}</code>,
+      value: <SingleValueCell value={COLORS.BLUE_900} />,
+      description: useTranslation('theme-vars.primary-active'),
+      preview: <StorySampleBlock background={cssVar(COLORS.BLUE_900)} />,
+    },
+    {
+      name: <code>{COLORS.ON_PRIMARY}</code>,
+      value: <SingleValueCell value="#fff" />,
+      description: useTranslation('theme-vars.on-primary'),
+      preview: <StorySampleBlock background="#fff" />,
+    },
+  ]}
+/>
+
+### Status
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.default-value'), width: 250 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview'), width: 150 },
+    { key: 'description', header: useTranslation('table.description') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.DANGER}</code>,
+      value: <SingleValueCell value={COLORS.RED_500} />,
+      description: useTranslation('theme-vars.danger'),
+      preview: <StorySampleBlock background={cssVar(COLORS.RED_500)} />,
+    },
+    {
+      name: <code>{COLORS.SUCCESS}</code>,
+      value: <SingleValueCell value={COLORS.GREEN_500} />,
+      description: useTranslation('theme-vars.success'),
+      preview: <StorySampleBlock background={cssVar(COLORS.GREEN_500)} />,
+    },
+    {
+      name: <code>{COLORS.WARNING}</code>,
+      value: <SingleValueCell value={COLORS.YELLOW_500} />,
+      description: useTranslation('theme-vars.warning'),
+      preview: <StorySampleBlock background={cssVar(COLORS.YELLOW_500)} />,
+    },
+    {
+      name: <code>{COLORS.NEUTRAL}</code>,
+      value: <SingleValueCell value={COLORS.GRAY_500} />,
+      description: useTranslation('theme-vars.neutral'),
+      preview: <StorySampleBlock background={cssVar(COLORS.GRAY_500)} />,
+    },
+  ]}
+/>
+
+### Text Color
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.default-value'), width: 250 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview'), width: 150 },
+    { key: 'description', header: useTranslation('table.description') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.TEXT_STRONG}</code>,
+      value: <ValueCell light="#000" dark="#fff" />,
+      description: useTranslation('theme-vars.text-strong'),
+      preview: <StoryThemePreviewPair light="#000" dark="#fff" />,
+    },
+    {
+      name: <code>{COLORS.TEXT_DEFAULT}</code>,
+      value: <ValueCell light={COLORS.GRAY_900} dark={COLORS.GRAY_100} />,
+      description: useTranslation('theme-vars.text-default'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_900)} dark={cssVar(COLORS.GRAY_100)} />,
+    },
+    {
+      name: <code>{COLORS.TEXT_WEAK}</code>,
+      value: <ValueCell light={COLORS.GRAY_700} dark={COLORS.GRAY_300} />,
+      description: useTranslation('theme-vars.text-weak'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_700)} dark={cssVar(COLORS.GRAY_300)} />,
+    },
+    {
+      name: <code>{COLORS.TEXT_SUBTLE}</code>,
+      value: <ValueCell light={COLORS.GRAY_500} dark={COLORS.GRAY_500} />,
+      description: useTranslation('theme-vars.text-subtle'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_500)} dark={cssVar(COLORS.GRAY_500)} />,
+    },
+  ]}
+/>
+
+### Background Color
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.default-value'), width: 250 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview'), width: 150 },
+    { key: 'description', header: useTranslation('table.description') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.BG_STRONG}</code>,
+      value: <ValueCell light={COLORS.GRAY_300} dark={COLORS.GRAY_700} />,
+      description: useTranslation('theme-vars.bg-strong'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_300)} dark={cssVar(COLORS.GRAY_700)} />,
+    },
+    {
+      name: <code>{COLORS.BG_DEFAULT}</code>,
+      value: <ValueCell light={COLORS.GRAY_100} dark={COLORS.GRAY_900} />,
+      description: useTranslation('theme-vars.bg-default'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_100)} dark={cssVar(COLORS.GRAY_900)} />,
+    },
+    {
+      name: <code>{COLORS.BG_WEAK}</code>,
+      value: <ValueCell light="#fff" dark={COLORS.GRAY_900} />,
+      description: useTranslation('theme-vars.bg-weak'),
+      preview: <StoryThemePreviewPair light="#fff" dark={cssVar(COLORS.GRAY_900)} />,
+    },
+    {
+      name: <code>{COLORS.BG_SUBTLE}</code>,
+      value: <ValueCell light="#fff" dark="#000" />,
+      description: useTranslation('theme-vars.bg-subtle'),
+      preview: <StoryThemePreviewPair light="#fff" dark="#000" />,
+    },
+  ]}
+/>
+
+### Border Color
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('design-tokens.table.name'), width: 300 },
+    { key: 'value', header: useTranslation('design-tokens.table.default-value'), width: 250 },
+    { key: 'preview', header: useTranslation('design-tokens.table.preview'), width: 150 },
+    { key: 'description', header: useTranslation('table.description') },
+  ]}
+  rows={[
+    {
+      name: <code>{COLORS.BORDER_STRONG}</code>,
+      value: <ValueCell light={COLORS.GRAY_700} dark={COLORS.GRAY_300} />,
+      description: useTranslation('theme-vars.border-strong'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_700)} dark={cssVar(COLORS.GRAY_300)} />,
+    },
+    {
+      name: <code>{COLORS.BORDER_DEFAULT}</code>,
+      value: <ValueCell light={COLORS.GRAY_500} dark={COLORS.GRAY_500} />,
+      description: useTranslation('theme-vars.border-default'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_500)} dark={cssVar(COLORS.GRAY_500)} />,
+    },
+    {
+      name: <code>{COLORS.BORDER_WEAK}</code>,
+      value: <ValueCell light={COLORS.GRAY_300} dark={COLORS.GRAY_700} />,
+      description: useTranslation('theme-vars.border-weak'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_300)} dark={cssVar(COLORS.GRAY_700)} />,
+    },
+    {
+      name: <code>{COLORS.BORDER_SUBTLE}</code>,
+      value: <ValueCell light={COLORS.GRAY_100} dark={COLORS.GRAY_900} />,
+      description: useTranslation('theme-vars.border-subtle'),
+      preview: <StoryThemePreviewPair light={cssVar(COLORS.GRAY_100)} dark={cssVar(COLORS.GRAY_900)} />,
     },
   ]}
 />

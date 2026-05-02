@@ -11,7 +11,7 @@ export function StorySampleBlock({
   background,
   boxShadow,
   borderRadius = 'var(--venomous-radius-2)',
-  border = '1px solid var(--venomous-gray-300)',
+  border = '1px solid var(--venomous-color-gray-300)',
   className,
   children,
 }: {

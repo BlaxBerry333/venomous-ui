@@ -6,8 +6,8 @@
  * @returns `var(--name)` 或 `var(--name,fallback)` 字符串，可直接赋给 style。
  *
  * @example
- * cssVar(COLORS.GRAY_100);              // "var(--venomous-gray-100)"
- * cssVar(COLORS.GRAY_100, '#fff');      // "var(--venomous-gray-100,#fff)"
+ * cssVar(COLORS.GRAY_100);              // "var(--venomous-color-gray-100)"
+ * cssVar(COLORS.GRAY_100, '#fff');      // "var(--venomous-color-gray-100,#fff)"
  */
 export function cssVar(name: string, fallback?: string): string {
   return fallback ? `var(${name},${fallback})` : `var(${name})`;

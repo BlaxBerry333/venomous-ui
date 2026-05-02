@@ -44,10 +44,13 @@ export const ja = {
     table: {
       name: 'CSS 変数名',
       value: '値',
+      'default-value': 'デフォルト値',
       preview: 'プレビュー',
     },
     colors: {
       title: 'カラー',
+      base: 'ベースカラー',
+      theme: 'テーマカラー',
     },
     font: {
       title: 'フォント',
@@ -71,12 +74,6 @@ export const ja = {
       name: 'クラス名',
       value: '値',
       preview: 'プレビュー',
-    },
-    semantic: {
-      title: 'セマンティック',
-    },
-    theme: {
-      title: 'テーマ',
     },
     typography: {
       title: 'タイポグラフィ',
@@ -111,6 +108,29 @@ export const ja = {
     name: '名前',
     type: '型',
     default: 'デフォルト',
+    description: '説明',
+  },
+  'theme-vars': {
+    primary: 'ブランドのメインカラー（デフォルト / 静止状態）',
+    'primary-hover': 'メインカラー - ホバー時',
+    'primary-active': 'メインカラー - 押下 / アクティブ時',
+    'on-primary': 'メインカラー背景上のテキスト / アイコン色',
+    danger: '危険 / エラー',
+    success: '成功 / ポジティブ',
+    warning: '警告 / 注意',
+    neutral: 'ニュートラル / 情報',
+    'text-strong': '見出し / 強調テキスト',
+    'text-default': '本文テキスト',
+    'text-weak': '補助テキスト',
+    'text-subtle': 'ヒント / 無効テキスト',
+    'bg-strong': '凹み / 強調サーフェス',
+    'bg-default': 'ページ背景',
+    'bg-weak': 'カード / パネルサーフェス',
+    'bg-subtle': '最高コントラスト面（モーダル内側など）',
+    'border-strong': '強調ボーダー / 区切り線',
+    'border-default': '既定ボーダー',
+    'border-weak': '弱い区切り線',
+    'border-subtle': '最も淡い区切り線',
   },
   components: {
     button: {

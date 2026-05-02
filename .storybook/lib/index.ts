@@ -12,3 +12,12 @@ export {
   type Theme,
 } from './theme';
 export { withTheme } from './with-theme';
+export {
+  ACCENT_KEY,
+  ACCENT_PRESETS,
+  applyAccent,
+  DEFAULT_ACCENT,
+  narrowAccent,
+  type Accent,
+} from './accent';
+export { withAccent } from './with-accent';

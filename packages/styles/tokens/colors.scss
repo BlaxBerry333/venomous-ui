@@ -1,41 +1,138 @@
 /**
- * 调色板 + 特殊原色
- * 这是项目的全部颜色 token；语义切换 / 主题切换交给 classnames/theme.scss 提供 selector。
+ * 颜色 token —— 调色板（base）+ 主题语义（theme）。
+ *
+ * - 第一段 :root 是调色板，所有具体色值的真相源。
+ * - 第二段 :root 是主题语义层，引用调色板，作为用户覆盖入口。
+ * - 第三段 :root.dark 是 dark 模式下的语义重映射。
+ * - 用户在自己的 :root 里覆盖第二段任意一项即可定制（无需修改组件源码）。
  */
 
+// ============== 调色板 ==============
 :root {
   // ================ Blue ================
-  --venomous-blue-100: #dbeafe;
-  --venomous-blue-300: #93c5fd;
-  --venomous-blue-500: #3b82f6;
-  --venomous-blue-700: #1d4ed8;
-  --venomous-blue-900: #1e3a8a;
+  --venomous-color-blue-100: #dbeafe;
+  --venomous-color-blue-300: #93c5fd;
+  --venomous-color-blue-500: #3b82f6;
+  --venomous-color-blue-700: #1d4ed8;
+  --venomous-color-blue-900: #1e3a8a;
 
   // ================ Red ================
-  --venomous-red-100: #fee2e2;
-  --venomous-red-300: #fca5a5;
-  --venomous-red-500: #ef4444;
-  --venomous-red-700: #b91c1c;
-  --venomous-red-900: #7f1d1d;
+  --venomous-color-red-100: #fee2e2;
+  --venomous-color-red-300: #fca5a5;
+  --venomous-color-red-500: #ef4444;
+  --venomous-color-red-700: #b91c1c;
+  --venomous-color-red-900: #7f1d1d;
 
   // ================ Green ================
-  --venomous-green-100: #dcfce7;
-  --venomous-green-300: #86efac;
-  --venomous-green-500: #22c55e;
-  --venomous-green-700: #15803d;
-  --venomous-green-900: #14532d;
+  --venomous-color-green-100: #dcfce7;
+  --venomous-color-green-300: #86efac;
+  --venomous-color-green-500: #22c55e;
+  --venomous-color-green-700: #15803d;
+  --venomous-color-green-900: #14532d;
 
   // ================ Yellow ================
-  --venomous-yellow-100: #fef9c3;
-  --venomous-yellow-300: #fde047;
-  --venomous-yellow-500: #eab308;
-  --venomous-yellow-700: #a16207;
-  --venomous-yellow-900: #713f12;
+  --venomous-color-yellow-100: #fef9c3;
+  --venomous-color-yellow-300: #fde047;
+  --venomous-color-yellow-500: #eab308;
+  --venomous-color-yellow-700: #a16207;
+  --venomous-color-yellow-900: #713f12;
 
   // ================ Gray ================
-  --venomous-gray-100: #f3f4f6;
-  --venomous-gray-300: #d1d5db;
-  --venomous-gray-500: #6b7280;
-  --venomous-gray-700: #374151;
-  --venomous-gray-900: #111827;
+  --venomous-color-gray-100: #f3f4f6;
+  --venomous-color-gray-300: #d1d5db;
+  --venomous-color-gray-500: #6b7280;
+  --venomous-color-gray-700: #374151;
+  --venomous-color-gray-900: #111827;
+}
+
+// ============== 主题语义 ==============
+:root {
+  // ============== 品牌主色 ==============
+  // 主色 - 默认 / 静止态
+  --venomous-color-primary: var(--venomous-color-blue-500);
+
+  // 主色 - 悬停态
+  --venomous-color-primary-hover: var(--venomous-color-blue-700);
+
+  // 主色 - 按下 / 激活态
+  --venomous-color-primary-active: var(--venomous-color-blue-900);
+
+  // 主色背景上的文字 / 图标色
+  --venomous-color-on-primary: #fff;
+
+  // ============== 状态色 ==============
+  // 危险 / 错误
+  --venomous-color-danger: var(--venomous-color-red-500);
+
+  // 成功 / 正向反馈
+  --venomous-color-success: var(--venomous-color-green-500);
+
+  // 警告 / 注意
+  --venomous-color-warning: var(--venomous-color-yellow-500);
+
+  // 中性 / 信息
+  --venomous-color-neutral: var(--venomous-color-gray-500);
+
+  // ============== 文本色 ==============
+  // 标题 / 强调文字
+  --venomous-color-text-strong: #000;
+
+  // 正文文字
+  --venomous-color-text-default: var(--venomous-color-gray-900);
+
+  // 次要文字
+  --venomous-color-text-weak: var(--venomous-color-gray-700);
+
+  // 提示 / 禁用文字
+  --venomous-color-text-subtle: var(--venomous-color-gray-500);
+
+  // ============== 背景色 ==============
+  // 凹陷 / 强调表面
+  --venomous-color-bg-strong: var(--venomous-color-gray-300);
+
+  // 页面背景
+  --venomous-color-bg-default: var(--venomous-color-gray-100);
+
+  // 卡片 / 面板表面
+  --venomous-color-bg-weak: #fff;
+
+  // 最高对比度表面（如弹窗内层）
+  --venomous-color-bg-subtle: #fff;
+
+  // ============== 边框色 ==============
+  // 强调边框 / 分割线
+  --venomous-color-border-strong: var(--venomous-color-gray-700);
+
+  // 默认边框
+  --venomous-color-border-default: var(--venomous-color-gray-500);
+
+  // 弱化分割线
+  --venomous-color-border-weak: var(--venomous-color-gray-300);
+
+  // 最浅分隔线
+  --venomous-color-border-subtle: var(--venomous-color-gray-100);
+}
+
+// ============== 主题语义（dark 重映射）==============
+:root.dark,
+[data-theme='dark'] {
+  // 主色族保持品牌色（不变）
+
+  // 文本：明暗反转
+  --venomous-color-text-strong: #fff;
+  --venomous-color-text-default: var(--venomous-color-gray-100);
+  --venomous-color-text-weak: var(--venomous-color-gray-300);
+  --venomous-color-text-subtle: var(--venomous-color-gray-500);
+
+  // 背景：明暗反转
+  --venomous-color-bg-strong: var(--venomous-color-gray-700);
+  --venomous-color-bg-default: var(--venomous-color-gray-900);
+  --venomous-color-bg-weak: var(--venomous-color-gray-900);
+  --venomous-color-bg-subtle: #000;
+
+  // 边框：明暗反转
+  --venomous-color-border-strong: var(--venomous-color-gray-300);
+  --venomous-color-border-default: var(--venomous-color-gray-500);
+  --venomous-color-border-weak: var(--venomous-color-gray-700);
+  --venomous-color-border-subtle: var(--venomous-color-gray-900);
 }

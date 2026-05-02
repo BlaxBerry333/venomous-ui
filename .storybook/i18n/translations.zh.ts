@@ -44,10 +44,13 @@ export const zh = {
     table: {
       name: 'CSS 变量名',
       value: '值',
+      'default-value': '默认值',
       preview: '预览',
     },
     colors: {
       title: '颜色',
+      base: '基础色',
+      theme: '主题色',
     },
     font: {
       title: '字体',
@@ -71,12 +74,6 @@ export const zh = {
       name: '类名',
       value: '值',
       preview: '预览',
-    },
-    semantic: {
-      title: '语义',
-    },
-    theme: {
-      title: '主题',
     },
     typography: {
       title: '字体排印',
@@ -111,6 +108,29 @@ export const zh = {
     name: '名称',
     type: '类型',
     default: '默认值',
+    description: '说明',
+  },
+  'theme-vars': {
+    primary: '品牌主色（默认 / 静止态）',
+    'primary-hover': '主色 - 悬停态',
+    'primary-active': '主色 - 按下 / 激活态',
+    'on-primary': '主色背景上的文字 / 图标色',
+    danger: '危险 / 错误',
+    success: '成功 / 正向反馈',
+    warning: '警告 / 注意',
+    neutral: '中性 / 信息',
+    'text-strong': '标题 / 强调文字',
+    'text-default': '正文文字',
+    'text-weak': '次要文字',
+    'text-subtle': '提示 / 禁用文字',
+    'bg-strong': '凹陷 / 强调表面',
+    'bg-default': '页面背景',
+    'bg-weak': '卡片 / 面板表面',
+    'bg-subtle': '最高对比度表面（如弹窗内层）',
+    'border-strong': '强调边框 / 分割线',
+    'border-default': '默认边框',
+    'border-weak': '弱化分割线',
+    'border-subtle': '最浅分隔线',
   },
   components: {
     button: {
