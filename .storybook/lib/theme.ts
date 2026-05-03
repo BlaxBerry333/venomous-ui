@@ -6,6 +6,7 @@
 
 import { themes, type ThemeVars } from 'storybook/theming';
 import { create } from 'storybook/theming/create';
+import { REPO_URL } from './repo';
 
 export type Theme = 'light' | 'dark';
 
@@ -16,7 +17,7 @@ export const storybookLightTheme: ThemeVars = create({
   ...themes.light,
   base: 'light',
   brandTitle: 'venomous-ui',
-  brandUrl: 'https://github.com/BlaxBerry333/venomous-ui',
+  brandUrl: REPO_URL,
   brandTarget: '_self',
 });
 
@@ -24,7 +25,7 @@ export const storybookDarkTheme: ThemeVars = create({
   ...themes.dark,
   base: 'dark',
   brandTitle: 'venomous-ui',
-  brandUrl: 'https://github.com/BlaxBerry333/venomous-ui',
+  brandUrl: REPO_URL,
   brandTarget: '_self',
 });
 

@@ -104,6 +104,7 @@ export const en = {
     'basic-usage': 'Basic Usage',
     headless: 'Headless',
     styled: 'Styled',
+    source: 'View source on GitHub',
   },
   table: {
     name: 'Name',

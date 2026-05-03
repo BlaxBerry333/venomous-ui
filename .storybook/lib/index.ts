@@ -21,3 +21,4 @@ export {
   type Accent,
 } from './accent';
 export { withAccent } from './with-accent';
+export { REPO_URL, sourceUrl } from './repo';

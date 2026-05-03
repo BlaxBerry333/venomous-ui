@@ -1,0 +1,68 @@
+/**
+ * Button 组件内置样式
+ * 配合 packages/{react,vue}/components/Button 使用
+ */
+
+// 组件名
+$button-component: 'Button';
+
+// 组件私有变量
+$button-spacing-base: 4px;
+$button-min-height: $button-spacing-base * 9;
+$button-padding-y: $button-spacing-base * 2;
+$button-padding-x: $button-spacing-base * 4;
+$button-gap: $button-spacing-base * 2;
+$button-border-width: 1px;
+$button-focus-ring-width: 3px;
+$button-opacity-disabled: 0.5;
+$button-opacity-loading: 0.7;
+
+// 组件选择器
+.venomous--#{$button-component} {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $button-gap;
+  min-height: $button-min-height;
+  padding: $button-padding-y $button-padding-x;
+  font: inherit;
+  font-weight: var(--venomous-font-weight-2);
+  color: var(--venomous-color-on-primary);
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background: var(--venomous-color-primary);
+  border: $button-border-width solid var(--venomous-color-primary);
+  border-radius: var(--venomous-radius-2);
+  outline: none;
+  box-shadow: 0 0 0 0 transparent;
+  cursor: pointer;
+  transition: var(--venomous-motion-duration-1) var(--venomous-motion-easing-1);
+  transition-property: background-color, border-color, box-shadow, opacity;
+
+  &:hover:not(:disabled, [data-loading]) {
+    background: var(--venomous-color-primary-hover);
+    border-color: var(--venomous-color-primary-hover);
+  }
+
+  &:active:not(:disabled, [data-loading]) {
+    background: var(--venomous-color-primary-active);
+    border-color: var(--venomous-color-primary-active);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 $button-focus-ring-width
+      color-mix(in srgb, var(--venomous-color-primary) 35%, transparent);
+  }
+
+  &:disabled {
+    opacity: $button-opacity-disabled;
+    cursor: not-allowed;
+  }
+
+  &[data-loading] {
+    opacity: $button-opacity-loading;
+    cursor: progress;
+  }
+}

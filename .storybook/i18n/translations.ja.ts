@@ -103,6 +103,7 @@ export const ja = {
     'basic-usage': '基本的な使い方',
     headless: 'Headless',
     styled: 'Styled',
+    source: 'GitHub でソースを見る',
   },
   table: {
     name: '名前',

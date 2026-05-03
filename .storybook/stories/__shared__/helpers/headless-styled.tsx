@@ -11,7 +11,7 @@ import { StoryScopedStyleDecorator } from '../components';
 export type WithHeadlessStyledMode<T> = T & { __mode__?: boolean };
 
 export const headlessStyledArgType = {
-  name: 'Styled',
+  name: 'Using Built-in Styles',
   control: { type: 'boolean' as const },
   table: { category: 'Headless/Styled' },
 };

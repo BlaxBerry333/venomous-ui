@@ -103,6 +103,7 @@ export const zh = {
     'basic-usage': '基础使用',
     headless: 'Headless',
     styled: 'Styled',
+    source: '在 GitHub 查看源码',
   },
   table: {
     name: '名称',

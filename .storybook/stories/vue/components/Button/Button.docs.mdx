@@ -1,0 +1,54 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { useTranslation } from '../../../../i18n/useTranslation';
+import { sourceUrl } from '../../../../lib';
+import { StoryDataTable } from '../../../__shared__';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} name="Docs" />
+
+# {useTranslation('vue.components.button.title')}
+
+<p>{useTranslation('components.button.description')}</p>
+
+<p><a href={sourceUrl('packages/vue/components/Button/Button.vue')} target="_blank" rel="noreferrer">{useTranslation('sections.source')} ↗</a></p>
+
+<br />
+
+## {useTranslation('sections.props')}
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('table.name'), width: 160 },
+    { key: 'type', header: useTranslation('table.type'), width: 280 },
+    { key: 'def', header: useTranslation('table.default') },
+  ]}
+  rows={[
+    {
+      name: <code>loading</code>,
+      type: <code>boolean</code>,
+      def: <code>false</code>,
+    },
+    {
+      name: <code>disabled</code>,
+      type: <code>boolean</code>,
+      def: <code>false</code>,
+    },
+    {
+      name: <code>type</code>,
+      type: <code>'button'|'submit'|'reset'</code>,
+      def: <code>'button'</code>,
+    },
+  ]}
+/>
+
+<br />
+
+## {useTranslation('sections.basic-usage')}
+
+### {useTranslation('sections.headless')}
+
+<Canvas of={ButtonStories.Headless} sourceState="hidden" />
+
+### {useTranslation('sections.styled')}
+
+<Canvas of={ButtonStories.Styled} sourceState="hidden" />
