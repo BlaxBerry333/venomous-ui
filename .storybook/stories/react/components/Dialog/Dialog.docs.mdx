@@ -1,5 +1,5 @@
 import { Meta, Canvas } from '@storybook/addon-docs/blocks';
-import { useTranslation } from '../../../../i18n/useTranslation';
+import { useTranslation, useTranslationList } from '../../../../i18n/useTranslation';
 import { sourceUrl } from '../../../../lib';
 import { StoryDataTable } from '../../../__shared__';
 import * as DialogStories from './Dialog.stories';
@@ -38,9 +38,7 @@ import * as DialogStories from './Dialog.stories';
 
 ### Custom Size Sample
 
-<p>{useTranslation('components.dialog.size-usage-description.a')}</p>
-
-<p>{useTranslation('components.dialog.size-usage-description.b')}</p>
+{useTranslationList('components.dialog.size-usage-description').map((t, i) => <p key={i}>{t}</p>)}
 
 <Canvas of={DialogStories.SizeUsage} sourceState="hidden" />
 
@@ -52,48 +50,57 @@ import * as DialogStories from './Dialog.stories';
   columns={[
     { key: 'name', header: useTranslation('table.name'), width: 200 },
     { key: 'type', header: useTranslation('table.type'), width: 280 },
-    { key: 'def', header: useTranslation('table.default') },
+    { key: 'def', header: useTranslation('table.default'), width: 120 },
+    { key: 'description', header: useTranslation('table.description') },
   ]}
   rows={[
     {
       name: <code>defaultOpen</code>,
       type: <code>boolean</code>,
       def: <code>false</code>,
+      description: useTranslation('components.dialog.props.defaultOpen'),
     },
     {
       name: <code>open</code>,
       type: <code>boolean</code>,
       def: <code>—</code>,
+      description: useTranslation('components.dialog.props.open'),
     },
     {
       name: <code>onOpenChange</code>,
       type: <code>(open: boolean) =&gt; void</code>,
       def: <code>—</code>,
+      description: useTranslation('components.dialog.props.onOpenChange'),
     },
     {
       name: <code>closeOnBackdropClick</code>,
       type: <code>boolean</code>,
       def: <code>true</code>,
+      description: useTranslation('components.dialog.props.closeOnBackdropClick'),
     },
     {
       name: <code>closeOnEsc</code>,
       type: <code>boolean</code>,
       def: <code>true</code>,
+      description: useTranslation('components.dialog.props.closeOnEsc'),
     },
     {
       name: <code>lockScroll</code>,
       type: <code>boolean</code>,
       def: <code>true</code>,
+      description: useTranslation('components.dialog.props.lockScroll'),
     },
     {
       name: <code>ariaLabel</code>,
       type: <code>string</code>,
       def: <code>—</code>,
+      description: useTranslation('components.dialog.props.ariaLabel'),
     },
     {
       name: <code>ariaLabelledBy</code>,
       type: <code>string</code>,
       def: <code>—</code>,
+      description: useTranslation('components.dialog.props.ariaLabelledBy'),
     },
   ]}
 />

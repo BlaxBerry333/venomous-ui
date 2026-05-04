@@ -16,6 +16,7 @@
     "Booleanish",
     "Combobox",
     "ECMA",
+    "Leaf",
     "Mealy",
     "Moore",
     "Tsconfig",

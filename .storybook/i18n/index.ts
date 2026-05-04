@@ -27,31 +27,52 @@ export function narrowLocale(value: unknown): Locale | null {
 
 type Dict = typeof en;
 
-type DotPath<T, P extends string = ''> = {
-  [K in keyof T & string]: T[K] extends object
-    ? DotPath<T[K], P extends '' ? K : `${P}.${K}`>
-    : P extends ''
+// 把 en 的字面量类型放宽为 schema 约束 —— zh / ja 用 satisfies 这个类型
+// 即可校验"key 结构一致"，但不要求字面量相等
+export type Schema<T> = {
+  [K in keyof T]: T[K] extends readonly string[]
+    ? readonly string[]
+    : T[K] extends string
+      ? string
+      : T[K] extends object
+        ? Schema<T[K]>
+        : never;
+};
+
+type DotPathByLeaf<T, L, P extends string = ''> = {
+  [K in keyof T & string]: T[K] extends L
+    ? P extends ''
       ? K
-      : `${P}.${K}`;
+      : `${P}.${K}`
+    : T[K] extends object
+      ? DotPathByLeaf<T[K], L, P extends '' ? K : `${P}.${K}`>
+      : never;
 }[keyof T & string];
 
-export type I18nKey = DotPath<Dict>;
+export type I18nKey = DotPathByLeaf<Dict, string>;
+export type I18nListKey = DotPathByLeaf<Dict, readonly string[]>;
 
 const dictionaries: Record<Locale, unknown> = { en, zh, ja };
 
-function lookup(dict: unknown, key: string): string {
+function lookup(dict: unknown, key: string): unknown {
   const parts = key.split('.');
   let cur: unknown = dict;
   for (const p of parts) {
     if (cur && typeof cur === 'object' && p in cur) {
       cur = (cur as Record<string, unknown>)[p];
     } else {
-      return key;
+      return undefined;
     }
   }
-  return typeof cur === 'string' ? cur : key;
+  return cur;
 }
 
 export function translate(locale: Locale, key: I18nKey): string {
-  return lookup(dictionaries[locale] ?? dictionaries.en, key);
+  const v = lookup(dictionaries[locale] ?? dictionaries.en, key);
+  return typeof v === 'string' ? v : key;
+}
+
+export function translateList(locale: Locale, key: I18nListKey): readonly string[] {
+  const v = lookup(dictionaries[locale] ?? dictionaries.en, key);
+  return Array.isArray(v) && v.every((x) => typeof x === 'string') ? (v as readonly string[]) : [];
 }

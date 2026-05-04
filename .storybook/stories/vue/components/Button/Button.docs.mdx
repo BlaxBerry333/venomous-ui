@@ -32,23 +32,27 @@ import * as ButtonStories from './Button.stories';
   columns={[
     { key: 'name', header: useTranslation('table.name'), width: 160 },
     { key: 'type', header: useTranslation('table.type'), width: 280 },
-    { key: 'def', header: useTranslation('table.default') },
+    { key: 'def', header: useTranslation('table.default'), width: 120 },
+    { key: 'description', header: useTranslation('table.description') },
   ]}
   rows={[
     {
       name: <code>loading</code>,
       type: <code>boolean</code>,
       def: <code>false</code>,
+      description: useTranslation('components.button.props.loading'),
     },
     {
       name: <code>disabled</code>,
       type: <code>boolean</code>,
       def: <code>false</code>,
+      description: useTranslation('components.button.props.disabled'),
     },
     {
       name: <code>type</code>,
       type: <code>'button'|'submit'|'reset'</code>,
       def: <code>'button'</code>,
+      description: useTranslation('components.button.props.type'),
     },
   ]}
 />

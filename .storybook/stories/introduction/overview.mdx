@@ -1,14 +1,12 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { useTranslation } from '../../i18n/useTranslation';
+import { useTranslation, useTranslationList } from '../../i18n/useTranslation';
 import { StoryCodeBlockGroup } from '../__shared__';
 
 <Meta name="Overview" />
 
 # venomous-ui
 
-<p>{useTranslation('introduction.description.a')}</p>
-
-<p>{useTranslation('introduction.description.b')}</p>
+{useTranslationList('introduction.description').map((t, i) => <p key={i}>{t}</p>)}
 
 <br />
 
