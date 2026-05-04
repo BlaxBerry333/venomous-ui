@@ -13,7 +13,7 @@ import buttonCss from '@packages/styles/components/Button.scss?inline';
 type Args = WithHeadlessStyledMode<React.ComponentProps<typeof Button>>;
 
 const meta: Meta<Args> = {
-  title: 'react/components/button',
+  title: 'react/components/Button',
   component: Button,
   parameters: { layout: 'centered' },
   args: {

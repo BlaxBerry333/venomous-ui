@@ -20,7 +20,7 @@ type Args = WithHeadlessStyledMode<{
 }>;
 
 const meta: Meta<Args> = {
-  title: 'vue/components/button',
+  title: 'vue/components/Button',
   parameters: { layout: 'centered' },
   args: {
     ...headlessStyledDefaultArgs,

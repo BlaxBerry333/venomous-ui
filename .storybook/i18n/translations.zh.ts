@@ -103,6 +103,10 @@ export const zh = {
     'basic-usage': '基础使用',
     headless: 'Headless',
     styled: 'Styled',
+    'headless-uncontrolled': 'Headless · 非受控',
+    'headless-controlled': 'Headless · 受控',
+    'styled-uncontrolled': 'Styled · 非受控',
+    'styled-controlled': 'Styled · 受控',
     source: '在 GitHub 查看源码',
   },
   table: {

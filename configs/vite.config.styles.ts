@@ -9,9 +9,11 @@ import { defineConfig } from 'vite';
 const root = resolve(__dirname, '..');
 const src = resolve(root, 'packages/styles');
 
+// `_*.scss` 是 SCSS partial 约定（仅供其他 SCSS @use，不作为独立产物对外暴露）。
 const input = Object.fromEntries(
   globSync(['reset.scss', 'tokens/*.scss', 'classnames/*.scss', 'components/*.scss'], {
     cwd: src,
+    ignore: ['**/_*.scss'],
   }).map((p) => [p.replace(/\.scss$/, ''), resolve(src, p)]),
 );
 

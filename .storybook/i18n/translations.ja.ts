@@ -103,6 +103,10 @@ export const ja = {
     'basic-usage': '基本的な使い方',
     headless: 'Headless',
     styled: 'Styled',
+    'headless-uncontrolled': 'Headless · 非制御',
+    'headless-controlled': 'Headless · 制御',
+    'styled-uncontrolled': 'Styled · 非制御',
+    'styled-controlled': 'Styled · 制御',
     source: 'GitHub でソースを見る',
   },
   table: {

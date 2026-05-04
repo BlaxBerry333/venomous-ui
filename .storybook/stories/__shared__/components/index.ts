@@ -11,5 +11,5 @@ export {
   type StoryDataTableProps,
 } from './StoryDataTable';
 export { StoryDesignTokenValue } from './StoryDesignTokenValue';
-export { StoryScopedStyleDecorator } from './StoryScopedStyleDecorator';
+export { StoryScopedStyleDecorator, type StyleBundle } from './StoryScopedStyleDecorator';
 export { StoryVueWrapper } from './StoryVueWrapper';

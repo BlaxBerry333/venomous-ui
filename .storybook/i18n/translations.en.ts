@@ -104,6 +104,10 @@ export const en = {
     'basic-usage': 'Basic Usage',
     headless: 'Headless',
     styled: 'Styled',
+    'headless-uncontrolled': 'Headless · Uncontrolled',
+    'headless-controlled': 'Headless · Controlled',
+    'styled-uncontrolled': 'Styled · Uncontrolled',
+    'styled-controlled': 'Styled · Controlled',
     source: 'View source on GitHub',
   },
   table: {
