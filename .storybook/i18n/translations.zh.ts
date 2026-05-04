@@ -87,6 +87,9 @@ export const zh = {
       button: {
         title: 'Button',
       },
+      dialog: {
+        title: 'Dialog',
+      },
     },
   },
   vue: {
@@ -96,11 +99,15 @@ export const zh = {
       button: {
         title: 'Button',
       },
+      dialog: {
+        title: 'Dialog',
+      },
     },
   },
   sections: {
     props: 'Props',
     'basic-usage': '基础使用',
+    'sample-usage': '进阶用法',
     headless: 'Headless',
     styled: 'Styled',
     'headless-uncontrolled': 'Headless · 非受控',
@@ -140,6 +147,14 @@ export const zh = {
   components: {
     button: {
       description: '可点击的触发器，用于提交表单或触发操作。',
+    },
+    dialog: {
+      description:
+        '基于浏览器原生 <dialog> 元素的模态弹窗 —— 焦点陷阱、背景 inert、Esc 关闭都开箱即用。',
+      'size-usage-description': {
+        a: '想自定义尺寸？直接传 inline style 覆盖默认值，或用自定义 className 配一条 CSS —— 两种都直接落到 <Dialog> 上即可。',
+        b: '注意：fullscreen 的 Dialog 会覆盖整个视口、没有 backdrop 可点，请自己接一个关闭按钮或让用户按 Esc 关闭。',
+      },
     },
   },
 } as const;

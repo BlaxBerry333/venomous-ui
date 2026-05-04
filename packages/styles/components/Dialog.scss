@@ -1,0 +1,122 @@
+/**
+ * Dialog 组件内置样式
+ * 配合 packages/{react,vue}/components/Dialog 使用
+ */
+
+// 组件名
+$dialog-component: 'Dialog';
+
+// 组件私有变量
+$dialog-spacing-base: 4px;
+$dialog-padding: $dialog-spacing-base * 6;
+$dialog-min-width: 320px;
+$dialog-max-width: min(560px, calc(100vw - #{$dialog-spacing-base * 8}));
+$dialog-max-height: calc(100vh - #{$dialog-spacing-base * 8});
+$dialog-border-width: 1px;
+$dialog-scale-from: 0.96;
+$dialog-overlay-opacity: 0.5;
+
+// 组件选择器
+.venomous--#{$dialog-component} {
+  // 重置原生 <dialog> 默认样式
+  margin: auto;
+  padding: $dialog-padding;
+  min-width: $dialog-min-width;
+  max-width: $dialog-max-width;
+  max-height: $dialog-max-height;
+  font: inherit;
+  color: var(--venomous-color-text-default);
+  background: var(--venomous-color-bg-weak);
+  border: $dialog-border-width solid var(--venomous-color-border-weak);
+  border-radius: var(--venomous-radius-3);
+  box-shadow: var(--venomous-shadow-4);
+  overflow: auto;
+  z-index: var(--venomous-z-index-2);
+
+  // 关闭态（dialog 未 :modal 时的隐藏 + 退场动画起点）
+  // 元素选择器收紧到 dialog：mode C 用户拿 <div class="venomous--Dialog"> 时不命中此规则，
+  // 不会被 opacity:0 锁死——div 没有 :modal 状态、无法 showModal()，本来也不该套这套
+  // overlay 动画语义，只继承基线版式（padding / border / max-width 等）即可。
+  &:where(dialog):not(:modal) {
+    opacity: 0;
+    transform: scale($dialog-scale-from);
+    transition:
+      opacity var(--venomous-motion-duration-1) var(--venomous-motion-easing-3),
+      transform var(--venomous-motion-duration-1) var(--venomous-motion-easing-3),
+      overlay var(--venomous-motion-duration-1) allow-discrete,
+      display var(--venomous-motion-duration-1) allow-discrete;
+  }
+
+  // 打开态（showModal() → :modal 伪类生效）
+  &:modal {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity var(--venomous-motion-duration-2) var(--venomous-motion-easing-1),
+      transform var(--venomous-motion-duration-2) var(--venomous-motion-easing-1),
+      overlay var(--venomous-motion-duration-2) allow-discrete,
+      display var(--venomous-motion-duration-2) allow-discrete;
+  }
+
+  // 入场起点：从 closed → :modal 切换瞬间生效
+  @starting-style {
+    &:modal {
+      opacity: 0;
+      transform: scale($dialog-scale-from);
+    }
+  }
+
+  // 原生 backdrop（::backdrop 伪元素，不是真实 DOM 节点）
+  &::backdrop {
+    background: rgba(0, 0, 0, $dialog-overlay-opacity);
+    opacity: 0;
+    transition:
+      opacity var(--venomous-motion-duration-1) var(--venomous-motion-easing-3),
+      overlay var(--venomous-motion-duration-1) allow-discrete,
+      display var(--venomous-motion-duration-1) allow-discrete;
+  }
+
+  &:modal::backdrop {
+    opacity: 1;
+    transition:
+      opacity var(--venomous-motion-duration-2) var(--venomous-motion-easing-1),
+      overlay var(--venomous-motion-duration-2) allow-discrete,
+      display var(--venomous-motion-duration-2) allow-discrete;
+  }
+
+  @starting-style {
+    &:modal::backdrop {
+      opacity: 0;
+    }
+  }
+
+  // BEM elements —— 仅样式占位，结构由消费方在 children 中自由组织
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $dialog-spacing-base * 2;
+    margin-bottom: $dialog-spacing-base * 4;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: var(--venomous-font-size-4);
+    font-weight: var(--venomous-font-weight-2);
+    color: var(--venomous-color-text-strong);
+    line-height: 1.4;
+  }
+
+  &__body {
+    color: var(--venomous-color-text-default);
+    line-height: 1.6;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $dialog-spacing-base * 2;
+    margin-top: $dialog-spacing-base * 6;
+  }
+}

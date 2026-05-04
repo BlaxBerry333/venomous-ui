@@ -9,3 +9,22 @@ export interface ComponentBaseButtonProps {
   /** 加载中：禁用交互并标记 aria-busy */
   loading?: boolean;
 }
+
+export interface ComponentBaseDialogProps {
+  /** 非受控初始开关，默认 false；与 open 互斥（同时给以 open 为准并 dev 警告） */
+  defaultOpen?: boolean;
+  /** 受控开关；省略走非受控（内部状态） */
+  open?: boolean;
+  /** 开关变更通知（受控/非受控都触发，用于消费方同步状态或埋点） */
+  onOpenChange?: (open: boolean) => void;
+  /** 点 backdrop 是否关闭，默认 true */
+  closeOnBackdropClick?: boolean;
+  /** Esc 是否关闭，默认 true */
+  closeOnEsc?: boolean;
+  /** 打开时是否锁 body 滚动，默认 true */
+  lockScroll?: boolean;
+  /** a11y label：与 ariaLabelledBy 二选一，皆缺给 dev 警告 */
+  ariaLabel?: string;
+  /** a11y label：与 ariaLabel 二选一 */
+  ariaLabelledBy?: string;
+}

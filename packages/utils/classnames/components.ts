@@ -4,5 +4,13 @@
  */
 
 export const COMPONENTS = {
+  // ============== Button ==============
   BUTTON: 'venomous--Button',
+
+  // ============== Dialog ==============
+  DIALOG: 'venomous--Dialog',
+  DIALOG_HEADER: 'venomous--Dialog__header',
+  DIALOG_TITLE: 'venomous--Dialog__title',
+  DIALOG_BODY: 'venomous--Dialog__body',
+  DIALOG_FOOTER: 'venomous--Dialog__footer',
 } as const;

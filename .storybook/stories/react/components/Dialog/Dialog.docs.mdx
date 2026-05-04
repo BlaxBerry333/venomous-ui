@@ -1,0 +1,99 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { useTranslation } from '../../../../i18n/useTranslation';
+import { sourceUrl } from '../../../../lib';
+import { StoryDataTable } from '../../../__shared__';
+import * as DialogStories from './Dialog.stories';
+
+<Meta of={DialogStories} name="Docs" />
+
+# {useTranslation('react.components.dialog.title')}
+
+<p>{useTranslation('components.dialog.description')}</p>
+
+<p><a href={sourceUrl('packages/react/components/Dialog/Dialog.tsx')} target="_blank" rel="noreferrer">{useTranslation('sections.source')} ↗</a></p>
+
+<br />
+
+## {useTranslation('sections.basic-usage')}
+
+### {useTranslation('sections.headless-uncontrolled')}
+
+<Canvas of={DialogStories.HeadlessUncontrolled} sourceState="hidden" />
+
+### {useTranslation('sections.headless-controlled')}
+
+<Canvas of={DialogStories.HeadlessControlled} sourceState="hidden" />
+
+### {useTranslation('sections.styled-uncontrolled')}
+
+<Canvas of={DialogStories.StyledUncontrolled} sourceState="hidden" />
+
+### {useTranslation('sections.styled-controlled')}
+
+<Canvas of={DialogStories.StyledControlled} sourceState="hidden" />
+
+<br />
+
+## {useTranslation('sections.sample-usage')}
+
+### Custom Size Sample
+
+<p>{useTranslation('components.dialog.size-usage-description.a')}</p>
+
+<p>{useTranslation('components.dialog.size-usage-description.b')}</p>
+
+<Canvas of={DialogStories.SizeUsage} sourceState="hidden" />
+
+<br />
+
+## {useTranslation('sections.props')}
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('table.name'), width: 200 },
+    { key: 'type', header: useTranslation('table.type'), width: 280 },
+    { key: 'def', header: useTranslation('table.default') },
+  ]}
+  rows={[
+    {
+      name: <code>defaultOpen</code>,
+      type: <code>boolean</code>,
+      def: <code>false</code>,
+    },
+    {
+      name: <code>open</code>,
+      type: <code>boolean</code>,
+      def: <code>—</code>,
+    },
+    {
+      name: <code>onOpenChange</code>,
+      type: <code>(open: boolean) =&gt; void</code>,
+      def: <code>—</code>,
+    },
+    {
+      name: <code>closeOnBackdropClick</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+    },
+    {
+      name: <code>closeOnEsc</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+    },
+    {
+      name: <code>lockScroll</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+    },
+    {
+      name: <code>ariaLabel</code>,
+      type: <code>string</code>,
+      def: <code>—</code>,
+    },
+    {
+      name: <code>ariaLabelledBy</code>,
+      type: <code>string</code>,
+      def: <code>—</code>,
+    },
+  ]}
+/>

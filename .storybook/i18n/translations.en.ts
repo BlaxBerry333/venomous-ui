@@ -87,6 +87,9 @@ export const en = {
       button: {
         title: 'Button',
       },
+      dialog: {
+        title: 'Dialog',
+      },
     },
   },
   vue: {
@@ -96,12 +99,16 @@ export const en = {
       button: {
         title: 'Button',
       },
+      dialog: {
+        title: 'Dialog',
+      },
     },
   },
   // 跨组件共享的章节标题与表格列名 —— 加新组件时无需重复定义
   sections: {
     props: 'Props',
     'basic-usage': 'Basic Usage',
+    'sample-usage': 'Sample Usage',
     headless: 'Headless',
     styled: 'Styled',
     'headless-uncontrolled': 'Headless · Uncontrolled',
@@ -142,6 +149,14 @@ export const en = {
   components: {
     button: {
       description: 'Clickable trigger for submitting forms or invoking actions.',
+    },
+    dialog: {
+      description:
+        'Modal dialog built on the native <dialog> element — focus trap, inert background, and Esc-to-close come for free.',
+      'size-usage-description': {
+        a: 'Need a custom size? Pass an inline style to override the defaults, or hand it your own className backed by a CSS rule — both land on <dialog> directly.',
+        b: 'Heads up: a fullscreen Dialog covers the whole viewport and leaves no backdrop to click — wire up your own close button or rely on Esc.',
+      },
     },
   },
 } as const;

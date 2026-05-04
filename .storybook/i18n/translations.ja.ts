@@ -87,6 +87,9 @@ export const ja = {
       button: {
         title: 'Button',
       },
+      dialog: {
+        title: 'Dialog',
+      },
     },
   },
   vue: {
@@ -96,11 +99,15 @@ export const ja = {
       button: {
         title: 'Button',
       },
+      dialog: {
+        title: 'Dialog',
+      },
     },
   },
   sections: {
     props: 'Props',
     'basic-usage': '基本的な使い方',
+    'sample-usage': '応用例',
     headless: 'Headless',
     styled: 'Styled',
     'headless-uncontrolled': 'Headless · 非制御',
@@ -140,6 +147,14 @@ export const ja = {
   components: {
     button: {
       description: 'フォーム送信やアクションのトリガーに使うクリック可能な要素。',
+    },
+    dialog: {
+      description:
+        'ネイティブ <dialog> 要素を基盤とするモーダル — フォーカストラップ / 背景 inert / Esc 閉じが標準で付属。',
+      'size-usage-description': {
+        a: 'サイズをカスタマイズしたい場合は、inline style でデフォルト値を上書きするか、独自の className に対応する CSS ルールを書いて <Dialog> に渡せば OK。',
+        b: '注意: fullscreen の Dialog はビューポート全体を覆うため backdrop をクリックして閉じられません。独自の閉じるボタンを用意するか、Esc キーで閉じてください。',
+      },
     },
   },
 } as const;

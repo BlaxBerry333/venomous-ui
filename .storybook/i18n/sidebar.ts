@@ -31,4 +31,5 @@ export const SIDEBAR_LABEL_KEYS: Record<string, I18nKey> = {
   'z-index': 'design-tokens.z-index.title',
   typography: 'classnames.typography.title',
   Button: 'react.components.button.title',
+  Dialog: 'react.components.dialog.title',
 };
