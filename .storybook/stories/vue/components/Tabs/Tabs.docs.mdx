@@ -1,0 +1,100 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { useTranslation, useTranslationList } from '../../../../i18n/useTranslation';
+import { sourceUrl } from '../../../../lib';
+import { StoryDataTable } from '../../../__shared__';
+import * as TabsStories from './Tabs.stories';
+
+<Meta of={TabsStories} name="Docs" />
+
+# {useTranslation('vue.components.tabs.title')}
+
+<p>{useTranslation('components.tabs.description')}</p>
+
+<p><a href={sourceUrl('packages/vue/composables/use-tabs.ts')} target="_blank" rel="noreferrer">{useTranslation('sections.source')} ↗</a></p>
+
+<br />
+
+## {useTranslation('sections.basic-usage')}
+
+### {useTranslation('sections.headless-uncontrolled')}
+
+<Canvas of={TabsStories.HeadlessUncontrolled} sourceState="hidden" />
+
+### {useTranslation('sections.headless-controlled')}
+
+<Canvas of={TabsStories.HeadlessControlled} sourceState="hidden" />
+
+### {useTranslation('sections.styled-uncontrolled')}
+
+<Canvas of={TabsStories.StyledUncontrolled} sourceState="hidden" />
+
+### {useTranslation('sections.styled-controlled')}
+
+<Canvas of={TabsStories.StyledControlled} sourceState="hidden" />
+
+<br />
+
+## {useTranslation('sections.sample-usage')}
+
+### Vertical Layout Sample
+
+{useTranslationList('components.tabs.vertical-usage-description').map((t, i) => <p key={i}>{t}</p>)}
+
+<Canvas of={TabsStories.VerticalUsage} sourceState="hidden" />
+
+### Keep Mounted Sample
+
+{useTranslationList('components.tabs.keep-mounted-description').map((t, i) => <p key={i}>{t}</p>)}
+
+<Canvas of={TabsStories.KeepMountedUsage} sourceState="hidden" />
+
+<br />
+
+## {useTranslation('sections.props')}
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('table.name'), width: 200 },
+    { key: 'type', header: useTranslation('table.type'), width: 280 },
+    { key: 'def', header: useTranslation('table.default'), width: 140 },
+    { key: 'description', header: useTranslation('table.description') },
+  ]}
+  rows={[
+    {
+      name: <code>defaultValue</code>,
+      type: <code>string</code>,
+      def: <code>—</code>,
+      description: useTranslation('components.tabs.props.defaultValue'),
+    },
+    {
+      name: <code>value</code>,
+      type: <code>string</code>,
+      def: <code>—</code>,
+      description: useTranslation('components.tabs.props.value'),
+    },
+    {
+      name: <code>onValueChange</code>,
+      type: <code>(value: string) =&gt; void</code>,
+      def: <code>—</code>,
+      description: useTranslation('components.tabs.props.onValueChange'),
+    },
+    {
+      name: <code>activationMode</code>,
+      type: <code>'automatic' | 'manual'</code>,
+      def: <code>'automatic'</code>,
+      description: useTranslation('components.tabs.props.activationMode'),
+    },
+    {
+      name: <code>loop</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+      description: useTranslation('components.tabs.props.loop'),
+    },
+    {
+      name: <code>TabPanel.keepMounted</code>,
+      type: <code>boolean</code>,
+      def: <code>false</code>,
+      description: useTranslation('components.tabs.props.keepMounted'),
+    },
+  ]}
+/>

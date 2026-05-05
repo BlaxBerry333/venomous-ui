@@ -9,6 +9,9 @@ export const componentsZh = {
       dialog: {
         title: 'Dialog',
       },
+      tabs: {
+        title: 'Tabs',
+      },
     },
   },
   vue: {
@@ -21,6 +24,9 @@ export const componentsZh = {
       dialog: {
         title: 'Dialog',
       },
+      tabs: {
+        title: 'Tabs',
+      },
     },
   },
   components: {
@@ -30,6 +36,27 @@ export const componentsZh = {
         loading: '异步进行中显示 spinner 并禁用交互。',
         disabled: '禁用按钮 —— 无法点击、聚焦、提交。',
         type: '原生 button 的 type 属性。表单内用 "submit"，其它场景用 "button"。',
+      },
+    },
+    tabs: {
+      description:
+        '在多个面板间切换的 headless tabs —— 键盘导航与 ARIA 语义开箱即用，DOM 与样式由你掌控。',
+      'vertical-usage-description': [
+        '垂直布局就是 CSS —— 没有 orientation prop。用 [role="tablist"] 选中内置 list 容器，自己写 flex-direction: column。',
+      ],
+      'keep-mounted-description': [
+        '给需要跨 tab 切换保住状态（表单输入 / 滚动 / 第三方 widget）的 <TabPanel> 单条加 keepMounted。默认 false。',
+        '注意：开启后即使隐藏 panel 也持续渲染——复杂面板（图表 / 编辑器）会有性能开销。',
+      ],
+      props: {
+        defaultValue: '非受控初始选中值 —— 仅挂载时读取一次，之后变化无效。',
+        value: '受控选中值。需配合 onValueChange 让消费方驱动 Tabs。',
+        onValueChange: '某个 tab 被选中时触发（点击 / 键盘激活 / setValue 命令式调用）。',
+        activationMode:
+          '"automatic"：移焦即切换（focus = 切 tab）。"manual"：需要 Enter / Space 才提交切换。',
+        loop: '导航越过首/末 tab 时是否回环到另一端。',
+        keepMounted:
+          '让本 panel 跨 tab 切换始终在 DOM（只切 hidden 属性）。默认 false。开启后即使隐藏也持续渲染。',
       },
     },
     dialog: {

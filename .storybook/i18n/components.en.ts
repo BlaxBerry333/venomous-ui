@@ -9,6 +9,9 @@ export const componentsEn = {
       dialog: {
         title: 'Dialog',
       },
+      tabs: {
+        title: 'Tabs',
+      },
     },
   },
   vue: {
@@ -21,6 +24,9 @@ export const componentsEn = {
       dialog: {
         title: 'Dialog',
       },
+      tabs: {
+        title: 'Tabs',
+      },
     },
   },
   components: {
@@ -30,6 +36,30 @@ export const componentsEn = {
         loading: 'Show a spinner and block interaction while async work is in flight.',
         disabled: 'Disable the button — no clicks, no focus, no submit.',
         type: 'Native button type. Use "submit" inside a <form>, "button" otherwise.',
+      },
+    },
+    tabs: {
+      description:
+        'Headless tabs for switching between panels — keyboard navigation and ARIA semantics come for free, you own the markup and styling.',
+      'vertical-usage-description': [
+        'Vertical layout is just CSS — no orientation prop. Target the built-in tablist via [role="tablist"] and apply flex-direction: column yourself.',
+      ],
+      'keep-mounted-description': [
+        'Set keepMounted on each <TabPanel> whose state must survive tab switches (form inputs, scroll, widgets). Default false.',
+        'Heads up: kept-mounted panels keep rendering even when hidden — heavy ones (charts, editors) cost performance.',
+      ],
+      props: {
+        defaultValue:
+          'Uncontrolled initial selected value — read once on mount, ignored thereafter.',
+        value:
+          'Controlled selected value. Pair with onValueChange to drive the tabs from your own state.',
+        onValueChange:
+          'Fires whenever a tab becomes selected (click, keyboard activation, programmatic setValue).',
+        activationMode:
+          '"automatic" selects on focus (move focus = switch). "manual" requires Enter/Space to commit.',
+        loop: 'Wrap focus to the other end when navigating past the first/last tab.',
+        keepMounted:
+          'Keep this panel mounted across tab switches (only the hidden attribute is toggled). Default false. Kept-mounted panels keep rendering even when hidden.',
       },
     },
     dialog: {

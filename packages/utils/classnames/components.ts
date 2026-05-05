@@ -13,4 +13,9 @@ export const COMPONENTS = {
   DIALOG_TITLE: 'venomous--Dialog__title',
   DIALOG_BODY: 'venomous--Dialog__body',
   DIALOG_FOOTER: 'venomous--Dialog__footer',
+
+  // ============== Tabs ==============
+  TABS: 'venomous--Tabs',
+  TABS_TITLE: 'venomous--Tabs__title',
+  TABS_PANEL: 'venomous--Tabs__panel',
 } as const;

@@ -28,3 +28,16 @@ export interface ComponentBaseDialogProps {
   /** a11y label：与 ariaLabel 二选一 */
   ariaLabelledBy?: string;
 }
+
+export interface ComponentBaseTabsOptions {
+  /** 非受控初始选中；与 value 互斥，同时给以 value 为准并 dev 警告 */
+  defaultValue?: string;
+  /** 受控选中；省略走非受控 */
+  value?: string;
+  /** 选中变更通知（受控/非受控都触发） */
+  onValueChange?: (value: string) => void;
+  /** automatic 移焦即切换 / manual Enter|Space 才切，默认 automatic */
+  activationMode?: 'automatic' | 'manual';
+  /** 末尾是否回环，默认 true */
+  loop?: boolean;
+}
