@@ -16,6 +16,8 @@ const config: StorybookConfig = {
 
   stories: ['./stories/**/*.mdx', './stories/**/*.stories.@(ts|tsx)'],
 
+  staticDirs: ['./static'],
+
   addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
 
   typescript: {

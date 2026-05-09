@@ -13,12 +13,17 @@ export type Theme = 'light' | 'dark';
 export const THEME_KEY = 'theme';
 export const DEFAULT_THEME: Theme = 'light';
 
+// brandImage 走 staticDirs（见 main.ts），由 storybook 拷到 storybook-static 根。
+// 用相对路径 `./xxx`（基于 index.html 当前目录），子路径部署也不会 404；
+// 写绝对 `/xxx` 在 GitHub Pages 等子路径下会指到域根，挂掉。
+// dark/light 各一份，主题切换时 manager.tsx 经 addons.setConfig({ theme }) 触发更换。
 export const storybookLightTheme: ThemeVars = create({
   ...themes.light,
   base: 'light',
   brandTitle: 'venomous-ui',
   brandUrl: REPO_URL,
   brandTarget: '_self',
+  brandImage: './logo-light.svg',
 });
 
 export const storybookDarkTheme: ThemeVars = create({
@@ -27,6 +32,7 @@ export const storybookDarkTheme: ThemeVars = create({
   brandTitle: 'venomous-ui',
   brandUrl: REPO_URL,
   brandTarget: '_self',
+  brandImage: './logo-dark.svg',
 });
 
 export const themeMap: Record<Theme, ThemeVars> = {
