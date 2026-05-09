@@ -6,12 +6,12 @@ import { Tabs, TabTitle, TabPanel } from 'venomous-ui/react/components';
 
 export default function Demo() {
   return (
-    <Tabs>
-      <TabTitle>A</TabTitle>
-      <TabTitle>B</TabTitle>
+    <Tabs defaultValue="overview">
+      <TabTitle value="overview">Overview</TabTitle>
+      <TabTitle value="usage">Usage</TabTitle>
 
-      <TabPanel>AA</TabPanel>
-      <TabPanel>BB</TabPanel>
+      <TabPanel value="overview">Overview content.</TabPanel>
+      <TabPanel value="usage">Usage content.</TabPanel>
     </Tabs>
   );
 }`;
@@ -22,28 +22,28 @@ export const MODE_A_VUE = `
 </script>
 
 <template>
-  <Tabs>
-    <TabTitle>A</TabTitle>
-    <TabTitle>B</TabTitle>
+  <Tabs default-value="overview" @value-change="(v) => console.log(v)">
+    <TabTitle value="overview">Overview</TabTitle>
+    <TabTitle value="usage">Usage</TabTitle>
 
-    <TabPanel>AA</TabPanel>
-    <TabPanel>BB</TabPanel>
+    <TabPanel value="overview">Overview content.</TabPanel>
+    <TabPanel value="usage">Usage content.</TabPanel>
   </Tabs>
 </template>`;
 
 export const MODE_B_REACT = `
 import { Tabs, TabTitle, TabPanel } from 'venomous-ui/react/components';
 import 'venomous-ui/styles/reset.css';
-import 'venomous-ui/styles/components/tabs.css';
+import 'venomous-ui/styles/components/Tabs.css';
 
 export default function Demo() {
   return (
-    <Tabs>
-      <TabTitle>A</TabTitle>
-      <TabTitle>B</TabTitle>
+    <Tabs defaultValue="overview">
+      <TabTitle value="overview">Overview</TabTitle>
+      <TabTitle value="usage">Usage</TabTitle>
 
-      <TabPanel>AA</TabPanel>
-      <TabPanel>BB</TabPanel>
+      <TabPanel value="overview">Overview content.</TabPanel>
+      <TabPanel value="usage">Usage content.</TabPanel>
     </Tabs>
   );
 }`;
@@ -52,32 +52,18 @@ export const MODE_B_VUE = `
 <script setup lang="ts">
   import { Tabs, TabTitle, TabPanel } from 'venomous-ui/vue/components';
   import 'venomous-ui/styles/reset.css';
-  import 'venomous-ui/styles/components/tabs.css';
+  import 'venomous-ui/styles/components/Tabs.css';
 </script>
 
 <template>
-  <Tabs>
-    <TabTitle>A</TabTitle>
-    <TabTitle>B</TabTitle>
+  <Tabs default-value="overview" @value-change="(v) => console.log(v)">
+    <TabTitle value="overview">Overview</TabTitle>
+    <TabTitle value="usage">Usage</TabTitle>
 
-    <TabPanel>AA</TabPanel>
-    <TabPanel>BB</TabPanel>
+    <TabPanel value="overview">Overview content.</TabPanel>
+    <TabPanel value="usage">Usage content.</TabPanel>
   </Tabs>
 </template>`;
-
-export const MODE_C_ASTRO = `
----
-import 'venomous-ui/styles/reset.css';
-import 'venomous-ui/styles/components/tabs.css';
----
-
-<div class="venomous__Tabs">
-  <div class="venomous__TabTitle">A</div>
-  <div class="venomous__TabTitle">B</div>
-
-  <div class="venomous__TabPanel">AA</div>
-  <div class="venomous__TabPanel">BB</div>
-</div>`;
 
 # {useTranslation('introduction.usage-modes.title')}
 
@@ -108,11 +94,3 @@ import 'venomous-ui/styles/components/tabs.css';
     { title: 'Vue', lang: 'html', code: MODE_B_VUE },
   ]}
 />
-
-<br />
-
-## {useTranslation('introduction.usage-modes.mode-c.title')}
-
-<p>{useTranslation('introduction.usage-modes.mode-c.body')}</p>
-
-<StoryCodeBlockGroup tabs={[{ title: 'Astro', lang: 'html', code: MODE_C_ASTRO }]} />

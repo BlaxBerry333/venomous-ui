@@ -15,7 +15,7 @@ export const commonZh = {
     },
     'usage-modes': {
       title: '使用模式',
-      body: 'venomous-ui 支持三种使用模式 —— 按项目需求选用。',
+      body: 'venomous-ui 支持两种使用模式 —— 按项目需求选用。',
       'mode-a': {
         title: '模式 A —— 仅 headless 组件',
         body: 'headless 组件不带内置样式，仅提供行为，由用户自定义样式。',
@@ -23,10 +23,6 @@ export const commonZh = {
       'mode-b': {
         title: '模式 B —— 组件 + 内置样式',
         body: '组件配合内置 CSS 一起使用。',
-      },
-      'mode-c': {
-        title: '模式 C —— 仅样式',
-        body: '不使用组件，自己写 markup 配内置 class 名即可。',
       },
     },
   },

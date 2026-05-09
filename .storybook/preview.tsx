@@ -8,7 +8,7 @@ import { ACCENT_PRESETS, withAccent, withTheme } from './lib';
 import { locales } from './i18n';
 
 // ============================================================
-// 全局样式注入 —— A/B/C 三种用法共享的基础层（reset / tokens / classnames）。
+// 全局样式注入 —— A/B 两种用法共享的基础层（reset / tokens / classnames）。
 // 组件级 css 由各 story 自行 import，避免污染 Mode A（headless 无样式）。
 // ============================================================
 import '../packages/styles/reset.scss';

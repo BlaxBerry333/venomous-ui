@@ -15,7 +15,7 @@ export const commonJa = {
     },
     'usage-modes': {
       title: '使用モード',
-      body: 'venomous-ui は 3 つの使用モードをサポート —— プロジェクトに合わせて選択。',
+      body: 'venomous-ui は 2 つの使用モードをサポート —— プロジェクトに合わせて選択。',
       'mode-a': {
         title: 'モード A —— headless コンポーネントのみ',
         body: 'headless はビヘイビアのみ提供。スタイルは自前で用意してください。',
@@ -23,10 +23,6 @@ export const commonJa = {
       'mode-b': {
         title: 'モード B —— コンポーネント + 組み込みスタイル',
         body: 'コンポーネントと組み込み CSS を併用します。',
-      },
-      'mode-c': {
-        title: 'モード C —— スタイルのみ',
-        body: 'コンポーネントを使わず、マークアップを自前で書いて class 名を付けます。',
       },
     },
   },

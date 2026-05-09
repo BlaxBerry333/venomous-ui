@@ -15,7 +15,7 @@ export const commonEn = {
     },
     'usage-modes': {
       title: 'Usage Modes',
-      body: 'venomous-ui supports three usage modes — pick whichever fits your project.',
+      body: 'venomous-ui supports two usage modes — pick whichever fits your project.',
       'mode-a': {
         title: 'Mode A — components only',
         body: 'Bring your own styles. Headless components ship with behavior only.',
@@ -23,10 +23,6 @@ export const commonEn = {
       'mode-b': {
         title: 'Mode B — components + built-in styles',
         body: 'Use the components together with the built-in CSS.',
-      },
-      'mode-c': {
-        title: 'Mode C — styles only',
-        body: 'Write your own markup and apply the built-in class names.',
       },
     },
   },
