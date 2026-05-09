@@ -9,6 +9,9 @@ export const componentsZh = {
       dialog: {
         title: 'Dialog',
       },
+      popover: {
+        title: 'Popover',
+      },
       tabs: {
         title: 'Tabs',
       },
@@ -23,6 +26,9 @@ export const componentsZh = {
       },
       dialog: {
         title: 'Dialog',
+      },
+      popover: {
+        title: 'Popover',
       },
       tabs: {
         title: 'Tabs',
@@ -56,7 +62,44 @@ export const componentsZh = {
           '"automatic"：移焦即切换（focus = 切 tab）。"manual"：需要 Enter / Space 才提交切换。',
         loop: '导航越过首/末 tab 时是否回环到另一端。',
         keepMounted:
-          '让本 panel 跨 tab 切换始终在 DOM（只切 hidden 属性）。默认 false。开启后即使隐藏也持续渲染。',
+          '让本 panel 跨 tab 切换始终在 DOM（只切 hidden 属性）。开启后即使隐藏也持续渲染。',
+      },
+    },
+    popover: {
+      description: '锚定在触发器上的 headless 浮层。',
+      'composition-note': '使用时需要组合：Popover、PopoverTrigger、PopoverContent 这三个组件。',
+      'trigger-note': '用于触发显示 PopoverContent 的容器。',
+      'positioning-note': [
+        '本组件不得已带了少量 inline style：定位走 CSS Anchor Positioning（Chrome 125+ / Safari 26+），靠 position-anchor / position-area 让浏览器在 layout 阶段原生让浮层跟随触发器，与触发器同帧 paint，零飘。',
+        '主流 Popover 库（Floating UI、Radix、Headless UI、Material UI、Ant Design）目前仍以 JS 计算位置为主，靠 scroll 事件 + getBoundingClientRect 重算。但 scroll 事件是浏览器 paint 后才异步派发的，浮层永远比触发器慢一帧——这就是「频繁滚动时浮层在飘」的根因。所以本库直接用浏览器原生的 anchor 定位，不支持的浏览器（Firefox）才回退到 JS rAF。',
+      ],
+      'placement-usage-description': [
+        'placement 选首选放置侧；引擎在视口空间不够时翻到对侧，并沿副轴贴边保留在视口内。最终位置写到 content 和 arrow 的 data-placement 上，便于 CSS 钩子。',
+      ],
+      props: {
+        defaultOpen: '非受控初始打开状态 —— 仅在挂载时读取一次，之后变化无效。',
+        open: '受控打开状态。需配合 onOpenChange 让消费方驱动 Popover。',
+        onOpenChange: 'Popover 想要打开或关闭时触发。第二个参数是 reason，便于消费方区分关闭来源。',
+        placement:
+          '首选放置位置。十二种可选：top / bottom / left / right + 可选 -start / -end 对齐。',
+        offset: '主轴上 content 与 trigger 的距离（px）。',
+        collisionPadding: '翻面 / 贴边时与视口边缘保留的最小留白（px）。',
+        flip: '首选侧空间不够时翻到对侧。',
+        shift: '沿副轴贴边以保持在视口内。',
+        closeOnOutsideClick:
+          '在 trigger 和 content 之外按下 pointerdown 时关闭（用 composedPath 判定，被 portal 抽走的子树也算 inside）。',
+        closeOnEsc: '按 Esc 关闭。多层嵌套时仅最顶层响应。',
+        closeOnScroll: '当 trigger 滚出视口时关闭。派生 Tooltip 等可按需开启。',
+        returnFocusOnClose: '打开时快照当前 focus 元素，关闭后归还。',
+        anchorEl:
+          '覆盖默认的 trigger 锚定。接受 HTMLElement 或虚拟元素（仅需 getBoundingClientRect）—— 给 ContextMenu / 鼠标坐标 / 选区锚定留口。',
+        ariaRole: '写到 content 上的 role。决定 trigger 上的 aria-haspopup。',
+        ariaLabel: 'role="dialog" 且无可见标题时的无障碍名。与 ariaLabelledBy 二选一。',
+        ariaLabelledBy: '指向作为标题的元素 ID（通常是标题节点）。与 ariaLabel 二选一。',
+        keepMounted: '关闭时保留 DOM（仅切 hidden 属性），不卸载。',
+        container: 'portal 挂载容器。传 HTMLElement 覆盖，传 null 则原地渲染（不开 portal）。',
+        matchTriggerWidth:
+          '开启后 content 的 min-width 与 trigger 同宽（select / combobox 风格）；内容更宽时仍可撑大，不会被截断。',
       },
     },
     dialog: {

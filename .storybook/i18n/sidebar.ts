@@ -32,5 +32,6 @@ export const SIDEBAR_LABEL_KEYS: Record<string, I18nKey> = {
   typography: 'classnames.typography.title',
   Button: 'react.components.button.title',
   Dialog: 'react.components.dialog.title',
+  Popover: 'react.components.popover.title',
   Tabs: 'react.components.tabs.title',
 };

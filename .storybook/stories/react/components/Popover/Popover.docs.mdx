@@ -1,0 +1,194 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { useTranslation, useTranslationList } from '../../../../i18n/useTranslation';
+import { sourceUrl } from '../../../../lib';
+import { StoryDataTable } from '../../../__shared__';
+import * as PopoverStories from './Popover.stories';
+
+<Meta of={PopoverStories} name="Docs" />
+
+# {useTranslation('react.components.popover.title')}
+
+<p>{useTranslation('components.popover.description')} {useTranslation('components.popover.composition-note')}</p>
+
+{useTranslationList('components.popover.positioning-note').map((t, i) => <p key={i}>{t}</p>)}
+
+<p><a href={sourceUrl('packages/react/components/Popover/Popover.tsx')} target="_blank" rel="noreferrer">{useTranslation('sections.source')} ↗</a></p>
+
+<br />
+
+## {useTranslation('sections.basic-usage')}
+
+### {useTranslation('sections.headless-uncontrolled')}
+
+<Canvas of={PopoverStories.HeadlessUncontrolled} sourceState="hidden" />
+
+### {useTranslation('sections.headless-controlled')}
+
+<Canvas of={PopoverStories.HeadlessControlled} sourceState="hidden" />
+
+### {useTranslation('sections.styled-uncontrolled')}
+
+<Canvas of={PopoverStories.StyledUncontrolled} sourceState="hidden" />
+
+### {useTranslation('sections.styled-controlled')}
+
+<Canvas of={PopoverStories.StyledControlled} sourceState="hidden" />
+
+<br />
+
+## {useTranslation('sections.sample-usage')}
+
+### Placement Sample
+
+{useTranslationList('components.popover.placement-usage-description').map((t, i) => <p key={i}>{t}</p>)}
+
+<Canvas of={PopoverStories.PlacementUsage} sourceState="hidden" />
+
+<br />
+
+## {useTranslation('sections.props')}
+
+### `<Popover>`
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('table.name'), width: 220 },
+    { key: 'type', header: useTranslation('table.type'), width: 320 },
+    { key: 'def', header: useTranslation('table.default'), width: 140 },
+    { key: 'description', header: useTranslation('table.description') },
+  ]}
+  rows={[
+    {
+      name: <code>defaultOpen</code>,
+      type: <code>boolean</code>,
+      def: <code>false</code>,
+      description: useTranslation('components.popover.props.defaultOpen'),
+    },
+    {
+      name: <code>open</code>,
+      type: <code>boolean</code>,
+      def: <code>—</code>,
+      description: useTranslation('components.popover.props.open'),
+    },
+    {
+      name: <code>onOpenChange</code>,
+      type: <code>(open: boolean, reason?: PopoverOpenChangeReason) =&gt; void</code>,
+      def: <code>—</code>,
+      description: useTranslation('components.popover.props.onOpenChange'),
+    },
+    {
+      name: <code>placement</code>,
+      type: <code>ComponentBasePlacement</code>,
+      def: <code>'bottom'</code>,
+      description: useTranslation('components.popover.props.placement'),
+    },
+    {
+      name: <code>offset</code>,
+      type: <code>number</code>,
+      def: <code>8</code>,
+      description: useTranslation('components.popover.props.offset'),
+    },
+    {
+      name: <code>collisionPadding</code>,
+      type: <code>number</code>,
+      def: <code>8</code>,
+      description: useTranslation('components.popover.props.collisionPadding'),
+    },
+    {
+      name: <code>flip</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+      description: useTranslation('components.popover.props.flip'),
+    },
+    {
+      name: <code>shift</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+      description: useTranslation('components.popover.props.shift'),
+    },
+    {
+      name: <code>closeOnOutsideClick</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+      description: useTranslation('components.popover.props.closeOnOutsideClick'),
+    },
+    {
+      name: <code>closeOnEsc</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+      description: useTranslation('components.popover.props.closeOnEsc'),
+    },
+    {
+      name: <code>closeOnScroll</code>,
+      type: <code>boolean</code>,
+      def: <code>false</code>,
+      description: useTranslation('components.popover.props.closeOnScroll'),
+    },
+    {
+      name: <code>returnFocusOnClose</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+      description: useTranslation('components.popover.props.returnFocusOnClose'),
+    },
+    {
+      name: <code>anchorEl</code>,
+      type: <code>HTMLElement | VirtualElement | null</code>,
+      def: <code>—</code>,
+      description: useTranslation('components.popover.props.anchorEl'),
+    },
+    {
+      name: <code>ariaRole</code>,
+      type: <code>'dialog'|'tooltip'|'menu'|'listbox'|'grid'|'tree'</code>,
+      def: <code>'dialog'</code>,
+      description: useTranslation('components.popover.props.ariaRole'),
+    },
+    {
+      name: <code>ariaLabel</code>,
+      type: <code>string</code>,
+      def: <code>—</code>,
+      description: useTranslation('components.popover.props.ariaLabel'),
+    },
+    {
+      name: <code>ariaLabelledBy</code>,
+      type: <code>string</code>,
+      def: <code>—</code>,
+      description: useTranslation('components.popover.props.ariaLabelledBy'),
+    },
+  ]}
+/>
+
+### `<PopoverTrigger>`
+
+<p>{useTranslation('components.popover.trigger-note')}</p>
+
+### `<PopoverContent>`
+
+<StoryDataTable
+  columns={[
+    { key: 'name', header: useTranslation('table.name'), width: 220 },
+    { key: 'type', header: useTranslation('table.type'), width: 320 },
+    { key: 'def', header: useTranslation('table.default'), width: 140 },
+    { key: 'description', header: useTranslation('table.description') },
+  ]}
+  rows={[
+    {
+      name: <code>keepMounted</code>,
+      type: <code>boolean</code>,
+      def: <code>false</code>,
+      description: useTranslation('components.popover.props.keepMounted'),
+    },
+    {
+      name: <code>container</code>,
+      type: <code>HTMLElement | null</code>,
+      def: <code>document.body</code>,
+      description: useTranslation('components.popover.props.container'),
+    },
+    {
+      name: <code>matchTriggerWidth</code>,
+      type: <code>boolean</code>,
+      def: <code>true</code>,
+      description: useTranslation('components.popover.props.matchTriggerWidth'),
+    },
+  ]}
+/>
+

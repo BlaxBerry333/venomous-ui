@@ -9,6 +9,9 @@ export const componentsEn = {
       dialog: {
         title: 'Dialog',
       },
+      popover: {
+        title: 'Popover',
+      },
       tabs: {
         title: 'Tabs',
       },
@@ -23,6 +26,9 @@ export const componentsEn = {
       },
       dialog: {
         title: 'Dialog',
+      },
+      popover: {
+        title: 'Popover',
       },
       tabs: {
         title: 'Tabs',
@@ -59,7 +65,52 @@ export const componentsEn = {
           '"automatic" selects on focus (move focus = switch). "manual" requires Enter/Space to commit.',
         loop: 'Wrap focus to the other end when navigating past the first/last tab.',
         keepMounted:
-          'Keep this panel mounted across tab switches (only the hidden attribute is toggled). Default false. Kept-mounted panels keep rendering even when hidden.',
+          'Keep this panel mounted across tab switches (only the hidden attribute is toggled). Kept-mounted panels keep rendering even when hidden.',
+      },
+    },
+    popover: {
+      description: 'Headless floating layer anchored to a trigger.',
+      'composition-note': 'Use Popover, PopoverTrigger and PopoverContent together.',
+      'trigger-note': 'Container that triggers the PopoverContent.',
+      'positioning-note': [
+        'This component unavoidably ships a small amount of inline style: positioning uses CSS Anchor Positioning (Chrome 125+ / Safari 26+) via position-anchor / position-area, letting the browser keep the floater glued to the trigger during layout — both paint in the same frame, zero drift.',
+        'Mainstream popover libraries (Floating UI, Radix, Headless UI, Material UI, Ant Design) still compute positions in JS, recomputing on scroll events via getBoundingClientRect. But scroll events fire after the browser paints — the floater always trails the trigger by one frame, which is exactly the drift you see when scrolling fast. This library instead uses the browser-native anchor mechanism; only browsers without it (Firefox) fall back to a JS rAF loop.',
+      ],
+      'placement-usage-description': [
+        'placement picks the preferred side; the engine flips to the opposite side and shifts along the cross axis to stay in the viewport. The resolved value is reflected as data-placement on content + arrow for CSS hooks.',
+      ],
+      props: {
+        defaultOpen: 'Uncontrolled initial open state — read once on mount, ignored thereafter.',
+        open: 'Controlled open state. Pair with onOpenChange to drive the popover from your own state.',
+        onOpenChange:
+          'Fires whenever the popover wants to open or close. Receives a reason so consumers can distinguish close sources.',
+        placement:
+          'Preferred placement. Twelve options: top / bottom / left / right + optional -start / -end alignment.',
+        offset: 'Distance from trigger along the main axis (px).',
+        collisionPadding:
+          'Minimum gap kept from the viewport edges when flipping or shifting (px).',
+        flip: 'Flip to the opposite side when the preferred side does not fit.',
+        shift: 'Shift along the cross axis to stay inside the viewport.',
+        closeOnOutsideClick:
+          'Close on pointerdown outside the trigger and content (composedPath aware so portal subtrees count as inside).',
+        closeOnEsc: 'Close on Escape. With nested popovers only the topmost one closes.',
+        closeOnScroll:
+          'Close when the trigger scrolls out of viewport. Derived components like Tooltip can opt in.',
+        returnFocusOnClose:
+          'Snapshot the focused element when opening and restore focus when closing.',
+        anchorEl:
+          'Override the default trigger anchor. Accepts an HTMLElement or a virtual element ({ getBoundingClientRect }) — used by ContextMenu / mouse-coordinate anchoring.',
+        ariaRole: 'role written on content. Determines aria-haspopup on the trigger.',
+        ariaLabel:
+          'Accessible name when role="dialog" and there is no visible heading. Use this or ariaLabelledBy.',
+        ariaLabelledBy:
+          'ID of the element that labels the popover (typically a heading). Use this or ariaLabel.',
+        keepMounted:
+          'Keep the DOM mounted when closed (toggling the hidden attribute) instead of unmounting.',
+        container:
+          'Portal mount target. Pass an HTMLElement to override, or null to render inline (no portal).',
+        matchTriggerWidth:
+          'When true, content min-width matches the trigger (select / combobox style); content can still grow wider if its own content demands it.',
       },
     },
     dialog: {

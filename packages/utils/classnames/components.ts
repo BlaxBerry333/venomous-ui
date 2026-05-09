@@ -18,4 +18,8 @@ export const COMPONENTS = {
   TABS: 'venomous--Tabs',
   TABS_TITLE: 'venomous--Tabs__title',
   TABS_PANEL: 'venomous--Tabs__panel',
+
+  // ============== Popover ==============
+  POPOVER_TRIGGER: 'venomous--Popover__trigger',
+  POPOVER_CONTENT: 'venomous--Popover__content',
 } as const;
