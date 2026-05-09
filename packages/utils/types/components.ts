@@ -66,6 +66,37 @@ export type PopoverOpenChangeReason =
   | 'scroll'
   | 'imperative';
 
+/** 关闭来源；区分用户主动 vs 受控外部置 false */
+export type TooltipOpenChangeReason = 'hover' | 'unhover' | 'click' | 'esc-key' | 'imperative';
+
+export interface ComponentBaseTooltipProps {
+  /** 非受控初始开关，默认 false */
+  defaultOpen?: boolean;
+  /** 受控开关 */
+  open?: boolean;
+  onOpenChange?: (open: boolean, reason?: TooltipOpenChangeReason) => void;
+  /** 默认 'top' */
+  placement?: ComponentBasePlacement;
+  /** trigger 与 content 主轴间距（px），默认 6 */
+  offset?: number;
+  /** 视口边距（px），默认 8 */
+  collisionPadding?: number;
+  /** 空间不够翻面，默认 true */
+  flip?: boolean;
+  /** 副轴贴边保留视口内，默认 true */
+  shift?: boolean;
+  /** 打开延迟（ms），默认 200 */
+  openDelay?: number;
+  /** 关闭延迟（ms），默认 200 */
+  closeDelay?: number;
+  /** Esc 关闭，默认 true */
+  closeOnEsc?: boolean;
+  /** 触发方式，默认 'hover'。'hover' 含键盘聚焦（a11y 内置）；'click' 点击切换 */
+  trigger?: Extract<TooltipOpenChangeReason, 'hover' | 'click'>;
+  /** 禁用：所有触发路径都不打开，默认 false */
+  disabled?: boolean;
+}
+
 export interface ComponentBasePopoverProps {
   /** 非受控初始开关，默认 false */
   defaultOpen?: boolean;

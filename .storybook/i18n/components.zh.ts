@@ -15,6 +15,9 @@ export const componentsZh = {
       tabs: {
         title: 'Tabs',
       },
+      tooltip: {
+        title: 'Tooltip',
+      },
     },
   },
   vue: {
@@ -32,6 +35,9 @@ export const componentsZh = {
       },
       tabs: {
         title: 'Tabs',
+      },
+      tooltip: {
+        title: 'Tooltip',
       },
     },
   },
@@ -100,6 +106,34 @@ export const componentsZh = {
         container: 'portal 挂载容器。传 HTMLElement 覆盖，传 null 则原地渲染（不开 portal）。',
         matchTriggerWidth:
           '开启后 content 的 min-width 与 trigger 同宽（select / combobox 风格）；内容更宽时仍可撑大，不会被截断。',
+      },
+    },
+    tooltip: {
+      description: '锚定在触发器上的轻量提示 —— hover / click 触发。',
+      'composition-note': '使用时需要组合：Tooltip、TooltipTrigger、TooltipContent 这三个组件。',
+      'trigger-note': '用于触发显示 TooltipContent 的容器。',
+      'positioning-note': [
+        '与 Popover 共享相同的 anchor positioning 引擎：CSS Anchor Positioning（Chrome 125+ / Safari 26+）原生让浮层与触发器同帧 paint，零飘；不支持的浏览器（Firefox）回退到 JS rAF。',
+      ],
+      props: {
+        defaultOpen: '非受控初始打开状态 —— 仅在挂载时读取一次，之后变化无效。',
+        open: '受控打开状态。需配合 onOpenChange 让消费方驱动 Tooltip。',
+        onOpenChange:
+          'Tooltip 想要打开或关闭时触发。第二个参数是 reason（hover / unhover / click / esc-key / imperative）。',
+        placement:
+          '首选放置位置。十二种可选：top / bottom / left / right + 可选 -start / -end 对齐。',
+        offset: '主轴上 content 与 trigger 的距离（px）。',
+        collisionPadding: '翻面 / 贴边时与视口边缘保留的最小留白（px）。',
+        flip: '首选侧空间不够时翻到对侧。',
+        shift: '沿副轴贴边以保持在视口内。',
+        openDelay: 'hover 持续超过该时长（ms）才打开。click 模式不走此延迟。',
+        closeDelay: 'hover 离开后等待该时长（ms）再关闭。期间反向事件会清除句柄，避免误关。',
+        closeOnEsc: '按 Esc 关闭。Tooltip 不进 overlay-stack —— 与 Dialog / Popover 互不影响。',
+        trigger:
+          '触发方式，默认 "hover"。"hover" = 鼠标悬停 / 键盘聚焦显示（a11y 内置），离开自动关；"click" = 点击切换，必须点外部 / Esc 才关。',
+        disabled: '禁用：所有触发路径都不打开；切到 true 时立即关闭并清除待执行定时器。',
+        keepMounted: '关闭时保留 DOM（仅切 hidden 属性），不卸载。',
+        container: 'portal 挂载容器。传 HTMLElement 覆盖，传 null 则原地渲染（不开 portal）。',
       },
     },
     dialog: {

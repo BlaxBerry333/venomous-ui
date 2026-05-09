@@ -15,6 +15,9 @@ export const componentsJa = {
       tabs: {
         title: 'Tabs',
       },
+      tooltip: {
+        title: 'Tooltip',
+      },
     },
   },
   vue: {
@@ -32,6 +35,9 @@ export const componentsJa = {
       },
       tabs: {
         title: 'Tabs',
+      },
+      tooltip: {
+        title: 'Tooltip',
       },
     },
   },
@@ -107,6 +113,39 @@ export const componentsJa = {
           'portal のマウント先。HTMLElement を渡すと上書き、null でインラインレンダー（portal なし）。',
         matchTriggerWidth:
           'true で content の min-width を trigger と同じにします（select / combobox スタイル）。中身がより広ければ content はそのまま伸びます。',
+      },
+    },
+    tooltip: {
+      description: 'トリガーにアンカーされる軽量ヒント — hover / click でトリガー。',
+      'composition-note': 'Tooltip、TooltipTrigger、TooltipContent を組み合わせて使います。',
+      'trigger-note': 'TooltipContent の表示をトリガーするコンテナ。',
+      'positioning-note': [
+        'Popover と同じ anchor positioning エンジンを共有：CSS Anchor Positioning（Chrome 125+ / Safari 26+）でブラウザが layout 段階にフローターをトリガーへ追従させ、同一フレームで paint — ドリフトなし。未対応ブラウザ（Firefox）のみ JS rAF にフォールバック。',
+      ],
+      props: {
+        defaultOpen:
+          '非制御モードの初期開閉状態 — マウント時に 1 回だけ読み取り、その後の変更は無視されます。',
+        open: '制御モードの開閉状態。onOpenChange と組み合わせて消費側から駆動します。',
+        onOpenChange:
+          'Tooltip が開閉しようとするとき発火。第 2 引数の reason は hover / unhover / click / esc-key / imperative のいずれか。',
+        placement:
+          '優先する配置位置。top / bottom / left / right ＋ 任意の -start / -end の 12 種類。',
+        offset: 'メイン軸方向で content と trigger の距離（px）。',
+        collisionPadding: '反転 / シフト時に視口端から確保する最小余白（px）。',
+        flip: '優先側に収まらない場合、対側へ反転。',
+        shift: '副軸方向にシフトして視口内に収めます。',
+        openDelay: 'hover が継続して何 ms で開くか。click モードはこのディレイをスキップします。',
+        closeDelay:
+          'hover が外れて何 ms 待ってから閉じるか。期間中に逆方向のイベントが来ると保留中の close は破棄されます。',
+        closeOnEsc:
+          'Esc で閉じます。Tooltip は overlay-stack に乗らないため、Dialog / Popover を巻き込んで閉じることはありません。',
+        trigger:
+          'トリガーソース。デフォルト "hover"。"hover" = ポインタ hover ／キーボード focus で表示（a11y 込み）、離れると自動で閉じる；"click" = クリックでトグル、外部クリック / Esc でのみ閉じる。',
+        disabled:
+          'すべてのトリガーパスを無効化。true 切替時は即座に閉じ、保留中の timer もクリアします。',
+        keepMounted: '閉じた状態でも DOM を保持（hidden 属性のみ切替）。',
+        container:
+          'portal のマウント先。HTMLElement を渡すと上書き、null でインラインレンダー（portal なし）。',
       },
     },
     dialog: {

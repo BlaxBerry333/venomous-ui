@@ -22,4 +22,8 @@ export const COMPONENTS = {
   // ============== Popover ==============
   POPOVER_TRIGGER: 'venomous--Popover__trigger',
   POPOVER_CONTENT: 'venomous--Popover__content',
+
+  // ============== Tooltip ==============
+  TOOLTIP_TRIGGER: 'venomous--Tooltip__trigger',
+  TOOLTIP_CONTENT: 'venomous--Tooltip__content',
 } as const;

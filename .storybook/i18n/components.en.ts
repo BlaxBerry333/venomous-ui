@@ -15,6 +15,9 @@ export const componentsEn = {
       tabs: {
         title: 'Tabs',
       },
+      tooltip: {
+        title: 'Tooltip',
+      },
     },
   },
   vue: {
@@ -32,6 +35,9 @@ export const componentsEn = {
       },
       tabs: {
         title: 'Tabs',
+      },
+      tooltip: {
+        title: 'Tooltip',
       },
     },
   },
@@ -111,6 +117,41 @@ export const componentsEn = {
           'Portal mount target. Pass an HTMLElement to override, or null to render inline (no portal).',
         matchTriggerWidth:
           'When true, content min-width matches the trigger (select / combobox style); content can still grow wider if its own content demands it.',
+      },
+    },
+    tooltip: {
+      description: 'Lightweight hint anchored to a trigger — hover / click driven.',
+      'composition-note': 'Use Tooltip, TooltipTrigger and TooltipContent together.',
+      'trigger-note': 'Container that triggers the TooltipContent.',
+      'positioning-note': [
+        'Shares the same anchor-positioning engine as Popover: CSS Anchor Positioning (Chrome 125+ / Safari 26+) keeps the floater in sync with the trigger during layout — no drift. Browsers without it (Firefox) fall back to a JS rAF loop.',
+      ],
+      props: {
+        defaultOpen: 'Uncontrolled initial open state — read once on mount, ignored thereafter.',
+        open: 'Controlled open state. Pair with onOpenChange to drive the tooltip from your own state.',
+        onOpenChange:
+          'Fires whenever the tooltip wants to open or close. Receives a reason (hover / unhover / click / esc-key / imperative).',
+        placement:
+          'Preferred placement. Twelve options: top / bottom / left / right + optional -start / -end alignment.',
+        offset: 'Distance from trigger along the main axis (px).',
+        collisionPadding:
+          'Minimum gap kept from the viewport edges when flipping or shifting (px).',
+        flip: 'Flip to the opposite side when the preferred side does not fit.',
+        shift: 'Shift along the cross axis to stay inside the viewport.',
+        openDelay:
+          'How long (ms) hover must persist before opening. Click trigger bypasses this delay.',
+        closeDelay:
+          'How long (ms) to wait after hover leaves before closing. Reverse events within the window clear the pending close.',
+        closeOnEsc:
+          'Close on Escape. Tooltip is not on the overlay-stack — closing here does not affect any open Dialog / Popover.',
+        trigger:
+          'Trigger source, default "hover". "hover" = pointer hover or keyboard focus (a11y baked in), auto-closes on leave; "click" = toggle by click, only closes on outside click or Esc.',
+        disabled:
+          'Disabled: no trigger path opens. Switching to true closes immediately and clears any pending timer.',
+        keepMounted:
+          'Keep the DOM mounted when closed (toggling the hidden attribute) instead of unmounting.',
+        container:
+          'Portal mount target. Pass an HTMLElement to override, or null to render inline (no portal).',
       },
     },
     dialog: {
