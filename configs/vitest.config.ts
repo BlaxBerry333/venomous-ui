@@ -20,7 +20,11 @@ export default defineConfig({
     globals: false,
     coverage: {
       provider: 'v8',
-      include: ['packages/utils/helpers/**/*.ts'],
+      include: [
+        'packages/utils/helpers/**/*.ts',
+        'packages/utils/classnames/**/*.ts',
+        'packages/utils/tokens/**/*.ts',
+      ],
       exclude: ['**/index.ts', '**/*.d.ts'],
       reporter: ['text', 'html'],
       thresholds: {
