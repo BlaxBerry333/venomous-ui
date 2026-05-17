@@ -9,9 +9,11 @@
     "packages/**/*.ts",
     "packages/**/*.tsx",
     "configs/**/*.ts",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
     ".storybook/**/*.d.ts"
   ],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
+  "exclude": ["node_modules", "dist"]
 }

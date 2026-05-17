@@ -1,7 +1,8 @@
 /**
- * @file Vitest 配置 —— 测试模板。
+ * @file Vitest 配置。
  *
- * 当前无业务测试，待真实测试落地后扩展（参考 conventions.md §4 测试策略）。
+ * coverage.include 按"已覆盖"模块增量扩张：写一批测试就把对应源码纳入统计，
+ * 避免未测模块拖低阈值；阈值常驻 100，强制新增模块同步补测。
  */
 
 import { fileURLToPath, URL } from 'node:url';
@@ -15,7 +16,14 @@ export default defineConfig({
   },
   test: {
     environment: 'happy-dom',
-    include: ['packages/**/__tests__/**/*.test.ts', 'packages/**/__tests__/**/*.test.tsx'],
+    include: ['tests/**/*.test.ts', 'tests/**/*.test.tsx'],
     globals: false,
+    coverage: {
+      provider: 'v8',
+      // 各模块的测试逐批落地后再纳入 include；常驻 thresholds 100 强制新模块同步补测。
+      include: [],
+      exclude: ['**/index.ts', '**/*.d.ts'],
+      reporter: ['text', 'html'],
+    },
   },
 });
