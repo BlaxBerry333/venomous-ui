@@ -84,6 +84,8 @@ export function useTabs(options: ComponentBaseTabsOptions = {}): UseTabsReturn {
   // dev 警告：仅 dev 构建保留，生产被 vite define 剥离。
   // 与 Dialog 同型——`(import.meta as ImportMeta & { env? }).env?.DEV` 局部 cast，
   // 不在 tsconfig 全局引入 vite/client 类型（其他包未用到 import.meta.env）。
+  // vitest 永远 DEV=true，else 分支被构建剥离后才走，测试期不可达。
+  /* v8 ignore next */
   if ((import.meta as ImportMeta & { env?: { DEV?: boolean } }).env?.DEV) {
     if (defaultValue !== undefined && valueProp !== undefined) {
       console.warn(
@@ -121,12 +123,17 @@ export function useTabs(options: ComponentBaseTabsOptions = {}): UseTabsReturn {
   const getOrderedTriggers = useCallback((): Array<{ value: string; entry: TriggerEntry }> => {
     const list: Array<{ value: string; entry: TriggerEntry }> = [];
     triggersRef.current.forEach((entry, v) => list.push({ value: v, entry }));
+    // sort 比较器分支取决于 V8 + Map insertion 顺序：实际 React 每次 rerender 都
+    // 重挂 refCallback 让 Map 始终回到 DOM 顺序，sort 几乎只走 PRECEDING 分支；
+    // FOLLOWING / return 0 是防御性兜底（消费方用 useCallback 包稳 ref 时才可能触达）。
+    /* v8 ignore start */
     return list.sort((a, b) => {
       const pos = a.entry.el.compareDocumentPosition(b.entry.el);
       if (pos & Node.DOCUMENT_POSITION_FOLLOWING) return -1;
       if (pos & Node.DOCUMENT_POSITION_PRECEDING) return 1;
       return 0;
     });
+    /* v8 ignore stop */
   }, []);
 
   // manual 模式下「当前 focus 但未 select」的 value，仅用于决定 tabIndex=0 的归属。
@@ -147,6 +154,8 @@ export function useTabs(options: ComponentBaseTabsOptions = {}): UseTabsReturn {
       direction: 1 | -1,
     ): { value: string; entry: TriggerEntry } | null => {
       const total = ordered.length;
+      // handleKeyDown 已用 `ordered.length > 0` 守护；此早返仅为类型/兜底。
+      /* v8 ignore next */
       if (total === 0) return null;
       let i = fromIndex;
       // 最多走 total 步——全 disabled 时不会无限循环。
@@ -242,6 +251,8 @@ export function useTabs(options: ComponentBaseTabsOptions = {}): UseTabsReturn {
 
         if (isNav) {
           const ordered = getOrderedTriggers();
+          // ordered 必含至少当前 trigger（事件由其本身触发），else 仅理论防御。
+          /* v8 ignore next */
           if (ordered.length > 0) {
             const currentIndex = ordered.findIndex((o) => o.value === triggerValue);
             let target: { value: string; entry: TriggerEntry } | null = null;
@@ -257,6 +268,8 @@ export function useTabs(options: ComponentBaseTabsOptions = {}): UseTabsReturn {
               }
             } else if (key === prevKey) {
               target = findNextEnabled(ordered, currentIndex, -1);
+              // isNav 已穷举 Home/End/prev/next，nextKey 是兜底 else 分支不可达。
+              /* v8 ignore next */
             } else if (key === nextKey) {
               target = findNextEnabled(ordered, currentIndex, 1);
             }

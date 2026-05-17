@@ -18,12 +18,20 @@ export default defineConfig({
     environment: 'happy-dom',
     include: ['tests/**/*.test.ts', 'tests/**/*.test.tsx'],
     globals: false,
+    setupFiles: [
+      fileURLToPath(new URL('../tests/__setup__/rtl-cleanup.ts', import.meta.url)),
+      fileURLToPath(new URL('../tests/__setup__/dom-shims.ts', import.meta.url)),
+    ],
     coverage: {
       provider: 'v8',
       include: [
         'packages/utils/helpers/**/*.ts',
         'packages/utils/classnames/**/*.ts',
         'packages/utils/tokens/**/*.ts',
+        'packages/react/hooks/use-tabs.ts',
+        'packages/react/hooks/use-isomorphic-layout-effect.ts',
+        'packages/react/hooks/use-tooltip.ts',
+        'packages/react/hooks/use-popover.ts',
       ],
       exclude: ['**/index.ts', '**/*.d.ts'],
       reporter: ['text', 'html'],
