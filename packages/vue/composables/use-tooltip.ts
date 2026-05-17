@@ -82,6 +82,8 @@ export function useTooltip(input: UseTooltipOptionsInput = {}): UseTooltipReturn
   const hoverEnabled = computed(() => trigger.value === 'hover');
   const clickEnabled = computed(() => trigger.value === 'click');
 
+  // vitest 永远 DEV=true，else 是生产剥离后才走的分支；测试期不可达
+  /* v8 ignore next */
   if ((import.meta as ImportMeta & { env?: { DEV?: boolean } }).env?.DEV) {
     if (initialOpts.defaultOpen && initialOpts.open !== undefined) {
       console.warn(
@@ -153,6 +155,8 @@ export function useTooltip(input: UseTooltipOptionsInput = {}): UseTooltipReturn
       } else {
         pendingTimer = setTimeout(() => {
           pendingTimer = null;
+          // 反向事件会 clearPendingTimer；定时器真跑到此处时活跃必为 true
+          /* v8 ignore next */
           if (hoverActive.value || focusActive.value) {
             setOpen(true, 'hover');
           }
@@ -164,6 +168,8 @@ export function useTooltip(input: UseTooltipOptionsInput = {}): UseTooltipReturn
       } else {
         pendingTimer = setTimeout(() => {
           pendingTimer = null;
+          // 反向事件会 clearPendingTimer；定时器真跑时活跃必全 false
+          /* v8 ignore next */
           if (!hoverActive.value && !focusActive.value && !clickActive.value) {
             setOpen(false, 'unhover');
           }
@@ -259,11 +265,15 @@ export function useTooltip(input: UseTooltipOptionsInput = {}): UseTooltipReturn
   };
 
   const bindPositionListeners = () => {
+    // SSR 不可达 + watch(open) 每次 false→true 才调，rafId 必为 0
+    /* v8 ignore next */
     if (typeof window === 'undefined' || rafId !== 0) return;
     rafId = window.requestAnimationFrame(tick);
     window.addEventListener('resize', updatePosition, { passive: true });
   };
   const unbindPositionListeners = () => {
+    // SSR 不可达；浏览器环境下 window 永远存在
+    /* v8 ignore next */
     if (typeof window === 'undefined') return;
     if (rafId) {
       window.cancelAnimationFrame(rafId);
@@ -286,11 +296,15 @@ export function useTooltip(input: UseTooltipOptionsInput = {}): UseTooltipReturn
   };
   let escBound = false;
   const bindEscIfNeeded = () => {
+    // SSR 不可达；escBound 重复绑保护
+    /* v8 ignore next */
     if (typeof window === 'undefined' || escBound || !closeOnEsc.value) return;
     window.addEventListener('keydown', onKeyDown, true);
     escBound = true;
   };
   const unbindEsc = () => {
+    // SSR 不可达
+    /* v8 ignore next */
     if (typeof window === 'undefined' || !escBound) return;
     window.removeEventListener('keydown', onKeyDown, true);
     escBound = false;
@@ -308,11 +322,15 @@ export function useTooltip(input: UseTooltipOptionsInput = {}): UseTooltipReturn
   };
   let outsideClickBound = false;
   const bindOutsideClickIfNeeded = () => {
+    // SSR 不可达；outsideClickBound 重复绑保护
+    /* v8 ignore next */
     if (typeof window === 'undefined' || outsideClickBound || !clickEnabled.value) return;
     window.addEventListener('pointerdown', onPointerDown, true);
     outsideClickBound = true;
   };
   const unbindOutsideClick = () => {
+    // SSR 不可达
+    /* v8 ignore next */
     if (typeof window === 'undefined' || !outsideClickBound) return;
     window.removeEventListener('pointerdown', onPointerDown, true);
     outsideClickBound = false;

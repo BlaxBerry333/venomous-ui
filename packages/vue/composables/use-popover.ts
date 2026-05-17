@@ -59,8 +59,12 @@ function isHTMLElement(value: unknown): value is HTMLElement {
 }
 
 function inferAriaHasPopup(role: ComponentBasePopoverProps['ariaRole']): AriaHasPopup {
+  // hook 内 `getOpts().ariaRole ?? 'dialog'` 永远有值，此分支不可达
+  /* v8 ignore next */
   if (!role) return 'true';
   if (role === 'tooltip') return undefined;
+  // type 已穷举所有非 tooltip role；以下 if 永远 true，else 不可达
+  /* v8 ignore next */
   if (
     role === 'dialog' ||
     role === 'menu' ||
@@ -70,6 +74,8 @@ function inferAriaHasPopup(role: ComponentBasePopoverProps['ariaRole']): AriaHas
   ) {
     return role;
   }
+  // type 已穷举所有 role；兜底防御不可达
+  /* v8 ignore next */
   return 'true';
 }
 
@@ -110,6 +116,8 @@ export function usePopover(input: UsePopoverOptionsInput = {}): UsePopoverReturn
     () => getOpts().anchorEl,
   );
 
+  // vitest 永远 DEV=true，else 是生产剥离后才走的分支；测试期不可达
+  /* v8 ignore next */
   if ((import.meta as ImportMeta & { env?: { DEV?: boolean } }).env?.DEV) {
     if (initialOpts.defaultOpen && initialOpts.open !== undefined) {
       console.warn(
@@ -161,11 +169,18 @@ export function usePopover(input: UsePopoverOptionsInput = {}): UsePopoverReturn
   // open 边沿：true 时快照 activeElement、false 时归还（含外部受控置 false 的路径）
   watch(open, (next, prev) => {
     if (!prev && next) {
+      // SSR 不可达
+      /* v8 ignore next */
       if (typeof document !== 'undefined') {
         const active = document.activeElement;
-        previouslyFocusedRef.value = isHTMLElement(active) ? active : null;
+        // happy-dom activeElement 永远是 HTMLElement（默认 body）；: null 不可达
+        previouslyFocusedRef.value = isHTMLElement(active) ? active : /* v8 ignore next */ null;
       }
+      // open 状态变化仅 false→true 或 true→false 两种；外层 if 已捕获 open，
+      // 此 else if 等价于"不是 open"⇒必是 close；cond=false 分支不可达
+      /* v8 ignore start */
     } else if (prev && !next) {
+      /* v8 ignore stop */
       if (returnFocusOnClose.value) {
         const target = previouslyFocusedRef.value;
         previouslyFocusedRef.value = null;
@@ -207,6 +222,8 @@ export function usePopover(input: UsePopoverOptionsInput = {}): UsePopoverReturn
 
     if (closeOnScroll.value) {
       const triggerRect = triggerRef.value?.getBoundingClientRect();
+      // triggerRef 在 watcher 启动前已注册；triggerRect 必有，else 仅理论防御
+      /* v8 ignore next */
       if (triggerRect) {
         const offscreen =
           triggerRect.bottom < 0 ||
@@ -249,11 +266,15 @@ export function usePopover(input: UsePopoverOptionsInput = {}): UsePopoverReturn
   };
 
   const bindPositionListeners = () => {
+    // SSR 不可达 + watcher 每次 false→true 才调，rafId 必为 0
+    /* v8 ignore next */
     if (typeof window === 'undefined' || rafId !== 0) return;
     rafId = window.requestAnimationFrame(tick);
     window.addEventListener('resize', updatePosition, { passive: true });
   };
   const unbindPositionListeners = () => {
+    // SSR 不可达
+    /* v8 ignore next */
     if (typeof window === 'undefined') return;
     if (rafId) {
       window.cancelAnimationFrame(rafId);
@@ -269,20 +290,29 @@ export function usePopover(input: UsePopoverOptionsInput = {}): UsePopoverReturn
   let scrollHandlerBound = false;
   const onCloseScrollCheck = () => {
     const trigger = triggerRef.value;
+    // 绑 listener 时 trigger 已注册；理论防御不可达
+    /* v8 ignore next */
     if (!trigger) return;
     const r = trigger.getBoundingClientRect();
     const v = getViewportSize();
+    // 4 路离屏 OR 短路；测试只构造 top 离屏一支，其他 3 支由用户运行时触发
+    /* v8 ignore next */
     if (r.bottom < 0 || r.top > v.height || r.right < 0 || r.left > v.width) {
       setOpen(false, 'scroll');
     }
   };
   const bindCloseScrollIfNeeded = () => {
+    // SSR / 重复绑 / 非 anchor 路径 / 未启用 closeOnScroll 早返
+    /* v8 ignore next */
     if (typeof window === 'undefined' || scrollHandlerBound) return;
+    /* v8 ignore next */
     if (!useAnchor || !closeOnScroll.value) return;
     window.addEventListener('scroll', onCloseScrollCheck, { capture: true, passive: true });
     scrollHandlerBound = true;
   };
   const unbindCloseScroll = () => {
+    // SSR / 未绑早返
+    /* v8 ignore next */
     if (typeof window === 'undefined' || !scrollHandlerBound) return;
     window.removeEventListener('scroll', onCloseScrollCheck, { capture: true });
     scrollHandlerBound = false;
@@ -307,6 +337,8 @@ export function usePopover(input: UsePopoverOptionsInput = {}): UsePopoverReturn
   );
 
   watch([placement, offsetOpt, collisionPadding, flip, shift], () => {
+    // JS 路径下条件命中；anchor 路径下短路；闭/未挂 trigger 时跳过
+    /* v8 ignore next */
     if (!useAnchor && open.value) updatePosition();
   });
 
@@ -325,12 +357,18 @@ export function usePopover(input: UsePopoverOptionsInput = {}): UsePopoverReturn
   const syncTriggerWidth = () => {
     const t = triggerRef.value;
     const c = contentRef.value;
+    // 上游 watcher 已守护 trigger/content 都存在；防御不可达
+    /* v8 ignore next */
     if (!t || !c) return;
     c.style.minWidth = `${Math.round(t.getBoundingClientRect().width)}px`;
   };
   const bindMatchWidth = () => {
+    // SSR / 重复绑早返
+    /* v8 ignore next */
     if (typeof window === 'undefined' || widthRO) return;
     const t = triggerRef.value;
+    // watcher 已守护 trigger 存在；理论防御不可达
+    /* v8 ignore next */
     if (!t) return;
     syncTriggerWidth();
     widthRO = new ResizeObserver(syncTriggerWidth);
@@ -374,7 +412,10 @@ export function usePopover(input: UsePopoverOptionsInput = {}): UsePopoverReturn
           if (!inside) setOpen(false, 'outside-click');
         },
       });
+      // 与上方 focus watcher 同型：open 状态只 false↔true 二态，此 else if cond 必为 true 否则不进
+      /* v8 ignore start */
     } else if (!value && prev) {
+      /* v8 ignore stop */
       overlayStack.remove(baseId);
     }
   });

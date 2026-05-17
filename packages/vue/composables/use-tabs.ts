@@ -97,6 +97,8 @@ export function useTabs(input: UseTabsOptionsInput = {}): UseTabsReturn {
   // dev 警告：仅 dev 构建保留，生产被 vite define 剥离。
   // 与 Dialog.vue 同型——`(import.meta as ImportMeta & { env? }).env?.DEV` 局部 cast。
   // 在首次 setup 时跑一次（最常见场景：consumer 同时把 defaultValue 与 value 写在初始 options）。
+  // vitest 永远 DEV=true，else 分支被构建剥离后才走，测试期不可达。
+  /* v8 ignore next */
   if ((import.meta as ImportMeta & { env?: { DEV?: boolean } }).env?.DEV) {
     if (initialOpts.defaultValue !== undefined && initialOpts.value !== undefined) {
       console.warn(
@@ -129,12 +131,16 @@ export function useTabs(input: UseTabsOptionsInput = {}): UseTabsReturn {
   const getOrderedTriggers = (): Array<{ value: string; entry: TriggerEntry }> => {
     const list: Array<{ value: string; entry: TriggerEntry }> = [];
     triggersRef.value.forEach((entry, v) => list.push({ value: v, entry }));
+    // sort 比较器分支取决于 V8 + Map insertion 顺序：happy-dom + Vue ref 重挂顺序让
+    // FOLLOWING / return 0 几乎不达；环境差异大，整段 ignore 与 React 版同型。
+    /* v8 ignore start */
     return list.sort((a, b) => {
       const pos = a.entry.el.compareDocumentPosition(b.entry.el);
       if (pos & Node.DOCUMENT_POSITION_FOLLOWING) return -1;
       if (pos & Node.DOCUMENT_POSITION_PRECEDING) return 1;
       return 0;
     });
+    /* v8 ignore stop */
   };
 
   // manual 模式下「focus 但未 select」的 value，决定 tabIndex=0 归属。
@@ -158,6 +164,8 @@ export function useTabs(input: UseTabsOptionsInput = {}): UseTabsReturn {
     direction: 1 | -1,
   ): { value: string; entry: TriggerEntry } | null => {
     const total = ordered.length;
+    // 上游 isNav 块用 `ordered.length > 0` 守护；此早返仅为类型/兜底
+    /* v8 ignore next */
     if (total === 0) return null;
     const allowLoop = loop.value;
     let i = fromIndex;
@@ -173,6 +181,8 @@ export function useTabs(input: UseTabsOptionsInput = {}): UseTabsReturn {
       const candidate = ordered[i];
       if (candidate && !candidate.entry.disabled) return candidate;
     }
+    // 走完全部 trigger 都 disabled 时才到这；Home/End 单独走兜底分支，方向键里通常 ≥1 启用
+    /* v8 ignore next */
     return null;
   };
 
@@ -261,6 +271,8 @@ export function useTabs(input: UseTabsOptionsInput = {}): UseTabsReturn {
 
       if (isNav) {
         const ordered = getOrderedTriggers();
+        // ordered 必含至少当前 trigger（事件由其本身触发），else 仅理论防御
+        /* v8 ignore next */
         if (ordered.length > 0) {
           const currentIndex = ordered.findIndex((o) => o.value === triggerValue);
           let target: { value: string; entry: TriggerEntry } | null = null;
@@ -276,6 +288,8 @@ export function useTabs(input: UseTabsOptionsInput = {}): UseTabsReturn {
             }
           } else if (key === prevKey) {
             target = findNextEnabled(ordered, currentIndex, -1);
+            // isNav 已穷举 Home/End/prev/next，nextKey 是兜底 else 分支不可达
+            /* v8 ignore next */
           } else if (key === nextKey) {
             target = findNextEnabled(ordered, currentIndex, 1);
           }

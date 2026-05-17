@@ -6,9 +6,11 @@
  */
 
 import { fileURLToPath, URL } from 'node:url';
+import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
+  plugins: [vue()],
   resolve: {
     alias: {
       '@packages': fileURLToPath(new URL('../packages', import.meta.url)),
@@ -32,6 +34,9 @@ export default defineConfig({
         'packages/react/hooks/use-isomorphic-layout-effect.ts',
         'packages/react/hooks/use-tooltip.ts',
         'packages/react/hooks/use-popover.ts',
+        'packages/vue/composables/use-tabs.ts',
+        'packages/vue/composables/use-tooltip.ts',
+        'packages/vue/composables/use-popover.ts',
       ],
       exclude: ['**/index.ts', '**/*.d.ts'],
       reporter: ['text', 'html'],
