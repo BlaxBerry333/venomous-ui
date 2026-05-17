@@ -36,6 +36,8 @@ export const Dialog = forwardRef<DialogHandle, DialogProps>(function Dialog(
 
   // dev 警告：仅 dev 构建保留，生产被 vite define 剥离。
   // 局部 cast 避免在 tsconfig 全局引入 vite/client 类型（其他包未用到 import.meta.env）。
+  // vitest 永远 DEV=true，else 不可达
+  /* v8 ignore next */
   if ((import.meta as ImportMeta & { env?: { DEV?: boolean } }).env?.DEV) {
     if (defaultOpen && openProp !== undefined) {
       // 受控/非受控冲突：受控优先，提示开发者去掉 defaultOpen
@@ -66,6 +68,8 @@ export const Dialog = forwardRef<DialogHandle, DialogProps>(function Dialog(
   // 多发一次 onOpenChange(false)。卸载清理交给下面独立 effect。
   useEffect(() => {
     const el = dialogRef.current;
+    // effect 在 mount 后跑，ref 已 assign；防御不可达
+    /* v8 ignore next */
     if (!el) return;
     if (open && !el.open) el.showModal();
     else if (!open && el.open) el.close();
@@ -77,6 +81,8 @@ export const Dialog = forwardRef<DialogHandle, DialogProps>(function Dialog(
   useEffect(() => {
     return () => {
       const el = dialogRef.current;
+      // happy-dom 下卸载顺序可能让 ref 已 null；浏览器一般非 null。两路都可能
+      /* v8 ignore next */
       if (el?.open) el.close();
     };
   }, []);

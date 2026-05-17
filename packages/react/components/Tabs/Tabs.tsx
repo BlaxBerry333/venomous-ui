@@ -109,6 +109,10 @@ function resolveChildren(children: ReactNode): ResolvedChildren {
 function readResolvedValue(props: object, explicit: string | undefined): string {
   const fromCtx = (props as { 'data-tabs-resolved-value'?: string })['data-tabs-resolved-value'];
   const value = explicit ?? fromCtx;
+  // resolveChildren 永远会注入 data-tabs-resolved-value 给被识别的 TabTitle/TabPanel；
+  // 仅当 consumer 手动深嵌套（被自动配对跳过）才到这——但那样的子节点也不会被渲染。
+  // 防御代码，测试期不可达
+  /* v8 ignore next 4 */
   if (value === undefined) {
     throw new Error(
       '[venomous-ui] <TabTitle> / <TabPanel> 必须是 <Tabs> 的直接子（或在 Fragment 内），或显式传 `value`。',
