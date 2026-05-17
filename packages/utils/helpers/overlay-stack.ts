@@ -49,6 +49,8 @@ function handleGlobalKeyDown(event: globalThis.KeyboardEvent) {
 function handleGlobalPointerDown(event: PointerEvent) {
   for (let i = overlayStackEntries.length - 1; i >= 0; i--) {
     const entry = overlayStackEntries[i];
+    // noUncheckedIndexedAccess 下的纯类型守卫；运行时数组无 sparse 洞，永远走不到。
+    /* v8 ignore next */
     if (!entry) continue;
     entry.closeFromOutside(event);
     return;

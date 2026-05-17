@@ -20,10 +20,15 @@ export default defineConfig({
     globals: false,
     coverage: {
       provider: 'v8',
-      // 各模块的测试逐批落地后再纳入 include；常驻 thresholds 100 强制新模块同步补测。
-      include: [],
+      include: ['packages/utils/helpers/**/*.ts'],
       exclude: ['**/index.ts', '**/*.d.ts'],
       reporter: ['text', 'html'],
+      thresholds: {
+        lines: 100,
+        functions: 100,
+        branches: 100,
+        statements: 100,
+      },
     },
   },
 });
