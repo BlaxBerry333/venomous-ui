@@ -52,6 +52,8 @@ const open = computed(() =>
 
 // dev 警告：仅 dev 构建保留，生产被 vite define 剥离。
 // 局部 cast 避免在 tsconfig 全局引入 vite/client 类型（其他包未用到 import.meta.env）。
+// vitest 永远 DEV=true，else 不可达
+/* v8 ignore next */
 if ((import.meta as ImportMeta & { env?: { DEV?: boolean } }).env?.DEV) {
   if (props.defaultOpen && attrs.open !== undefined) {
     // 受控/非受控冲突：受控优先，提示开发者去掉 defaultOpen
@@ -83,6 +85,8 @@ const setOpen = (next: boolean) => {
 // flush:'post' 仍保留：后续 open 变化时确保 DOM patch 完再 show/close。
 const syncDialogToOpen = (value: boolean) => {
   const el = dialogRef.value;
+  // onMounted/watch 跑时 ref 已就位；防御不可达
+  /* v8 ignore next */
   if (!el) return;
   if (value && !el.open) el.showModal();
   else if (!value && el.open) el.close();

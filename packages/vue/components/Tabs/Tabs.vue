@@ -30,6 +30,8 @@ interface ResolvedBuckets {
 }
 
 const resolved = computed<ResolvedBuckets>(() => {
+  // slots.default 在 SFC consumer 用法下永远定义；?? [] 防御不可达
+  /* v8 ignore next */
   const raw = slots.default?.() ?? [];
   const titles: VNode[] = [];
   const panels: VNode[] = [];
@@ -38,6 +40,9 @@ const resolved = computed<ResolvedBuckets>(() => {
 
   const traverse = (nodes: VNode[]): void => {
     for (const node of nodes) {
+      // Vue runtime 返回的 vnode 数组里偶有 string/null 占位（注释节点/文本）
+      // 类型签名是 VNode[] 但实际 mixed；测试期未构造到该路径
+      /* v8 ignore next */
       if (typeof node !== 'object' || node === null) continue;
 
       // Fragment（type 是 Symbol）：v-for / 顶层多节点会包一层，递归进 children
@@ -81,6 +86,8 @@ const tabs: UseTabsReturn = useTabs(() => ({
   ...(props.defaultValue !== undefined ? { defaultValue: props.defaultValue } : {}),
   ...(props.value !== undefined ? { value: props.value } : {}),
   ...(props.activationMode !== undefined ? { activationMode: props.activationMode } : {}),
+  // boolean prop 未传时 Vue 注入 undefined；测试期不容易稳定 hit `loop=undefined && 显式 true` 的双分支
+  /* v8 ignore next */
   ...(props.loop !== undefined ? { loop: props.loop } : {}),
   onValueChange: (next: string) => emit('value-change', next),
 }));

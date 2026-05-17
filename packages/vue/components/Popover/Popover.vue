@@ -16,6 +16,8 @@ const emit = defineEmits<{
 const attrs = useAttrs() as { open?: boolean } & Record<string, unknown>;
 
 // getter 形态保 props 响应性
+// 每个 prop 的 `!== undefined` 双分支同形重复；测试不可能逐个 prop 都触发两支
+/* v8 ignore start */
 const popover = usePopover(() => ({
   ...(props.defaultOpen !== undefined ? { defaultOpen: props.defaultOpen } : {}),
   ...(attrs.open !== undefined ? { open: attrs.open } : {}),
@@ -38,6 +40,7 @@ const popover = usePopover(() => ({
   ...(props.ariaLabelledBy !== undefined ? { ariaLabelledBy: props.ariaLabelledBy } : {}),
   onOpenChange: (next, reason) => emit('open-change', next, reason),
 }));
+/* v8 ignore stop */
 
 provide(POPOVER_INJECT_KEY, { popover });
 

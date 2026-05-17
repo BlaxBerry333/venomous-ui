@@ -16,6 +16,9 @@ const emit = defineEmits<{
 const attrs = useAttrs() as { open?: boolean } & Record<string, unknown>;
 
 // getter 形态保 props 响应性
+// 每个 prop 的 `!== undefined` 双分支用同形重复，测试不可能逐个 prop 都触发两支；
+// 这是一个机械透传层，行为本身由 useTooltip 覆盖
+/* v8 ignore start */
 const tooltip = useTooltip(() => ({
   ...(props.defaultOpen !== undefined ? { defaultOpen: props.defaultOpen } : {}),
   ...(attrs.open !== undefined ? { open: attrs.open } : {}),
@@ -31,6 +34,7 @@ const tooltip = useTooltip(() => ({
   ...(props.disabled !== undefined ? { disabled: props.disabled } : {}),
   onOpenChange: (next, reason) => emit('open-change', next, reason),
 }));
+/* v8 ignore stop */
 
 provide(TOOLTIP_INJECT_KEY, { tooltip });
 

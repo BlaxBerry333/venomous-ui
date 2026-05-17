@@ -20,6 +20,8 @@ const attrs = useAttrs() as {
 
 const resolvedValue = computed<string>(() => {
   const v = props.value ?? attrs['data-tabs-resolved-value'];
+  // Tabs 预扫总注入 data-tabs-resolved-value 给被识别的 TabPanel；防御不可达
+  /* v8 ignore next 4 */
   if (v === undefined) {
     throw new Error(
       '[venomous-ui] <TabPanel> 必须是 <Tabs> 的直接子（或在 v-for / Fragment 内），或显式传 `value`。',

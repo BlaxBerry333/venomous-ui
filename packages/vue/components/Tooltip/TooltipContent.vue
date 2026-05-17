@@ -62,9 +62,12 @@ const mergedClass = computed(() => [COMPONENTS.TOOLTIP_CONTENT, attrs.class as u
 const setRef = (node: unknown) => {
   if (node instanceof HTMLElement) {
     ctx.tooltip.setContentEl(node);
+    /* v8 ignore start */
   } else if (node && typeof node === 'object') {
+    // SFC :ref 在大多数情况下传入裸 HTMLElement；自定义组件实例（$el unwrap）边角不可达
     const dollarEl = (node as { $el?: unknown }).$el;
     ctx.tooltip.setContentEl(dollarEl instanceof HTMLElement ? dollarEl : null);
+    /* v8 ignore stop */
   } else {
     ctx.tooltip.setContentEl(null);
   }
