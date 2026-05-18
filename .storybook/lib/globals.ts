@@ -7,6 +7,7 @@
 
 import type { ChannelLike } from 'storybook/internal/channels';
 
+export const SET_GLOBALS = 'setGlobals';
 export const GLOBALS_UPDATED = 'globalsUpdated';
 
 export type Narrow<T> = (value: unknown) => T | null;
@@ -30,7 +31,7 @@ export function readGlobalFromUrl<T>(key: string, narrow: Narrow<T>, fallback: T
   return narrow(raw) ?? fallback;
 }
 
-/** 非 React 订阅 globalsUpdated，返回卸载函数。 */
+/** 非 React 订阅 globals。SET_GLOBALS 是 docs iframe 启动时收到的初值，必须一起监听。 */
 export function subscribeGlobal<T>(
   channel: ChannelLike,
   key: string,
@@ -43,5 +44,9 @@ export function subscribeGlobal<T>(
     if (next !== null) handler(next);
   };
   channel.on(GLOBALS_UPDATED, listener);
-  return () => channel.off(GLOBALS_UPDATED, listener);
+  channel.on(SET_GLOBALS, listener);
+  return () => {
+    channel.off(GLOBALS_UPDATED, listener);
+    channel.off(SET_GLOBALS, listener);
+  };
 }
