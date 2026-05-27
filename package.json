@@ -178,7 +178,7 @@
       "cspell --config configs/cspell.json --no-progress --no-must-find-files"
     ],
     "*.{ts,tsx}": [
-      "eslint --config configs/eslint.config.mjs --fix",
+      "env NODE_OPTIONS=--max-old-space-size=4096 eslint --config configs/eslint.config.mjs --fix",
       "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write"
     ],
     "*.scss": [

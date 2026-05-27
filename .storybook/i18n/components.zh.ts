@@ -12,6 +12,9 @@ export const componentsZh = {
       popover: {
         title: 'Popover',
       },
+      portal: {
+        title: 'Portal',
+      },
       tabs: {
         title: 'Tabs',
       },
@@ -32,6 +35,9 @@ export const componentsZh = {
       },
       popover: {
         title: 'Popover',
+      },
+      portal: {
+        title: 'Portal',
       },
       tabs: {
         title: 'Tabs',
@@ -134,6 +140,17 @@ export const componentsZh = {
         disabled: '禁用：所有触发路径都不打开；切到 true 时立即关闭并清除待执行定时器。',
         keepMounted: '关闭时保留 DOM（仅切 hidden 属性），不卸载。',
         container: 'portal 挂载容器。传 HTMLElement 覆盖，传 null 则原地渲染（不开 portal）。',
+      },
+    },
+    portal: {
+      description:
+        '把 children 渲染到 DOM 的别处（默认 <body> 末尾），但跟 React / Vue 组件树的连接不断 —— context、事件、ref 照常工作。Portal 自身没有 DOM 节点、没有样式。',
+      'why-note': [
+        '浮层不走 portal 时常见两类故障：被滚动 / overflow-hidden 的祖先视觉裁剪、以及被祖先的 stacking context（transform / filter / will-change）锁在底下盖不住兄弟节点。这两种情况提高 z-index 都无解 —— 是结构性约束。',
+      ],
+      props: {
+        container:
+          '渲染目标。传 HTMLElement 直接渲染到该元素。传函数 (() => HTMLElement | null) 时仅 client 阶段调用 —— 适合目标延迟挂载、或目标在 Shadow DOM / iframe 内的场景。传字符串作为 CSS selector，走 document.querySelector 解析；解析不到时 fallback 到 document.body。传 null 完全关闭 portal，children 原地保留。默认 document.body。',
       },
     },
     dialog: {

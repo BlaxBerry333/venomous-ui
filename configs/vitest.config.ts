@@ -1,8 +1,8 @@
 /**
  * @file Vitest 配置。
  *
- * coverage.include 按"已覆盖"模块增量扩张：写一批测试就把对应源码纳入统计，
- * 避免未测模块拖低阈值；阈值常驻 100，强制新增模块同步补测。
+ * coverage.include 通配 packages 全量源码，新增模块默认计入阈值，
+ * 没测就红 CI；阈值常驻 100，强制新模块同步补测。纯类型文件走 exclude 豁免。
  */
 
 import { fileURLToPath, URL } from 'node:url';
@@ -26,40 +26,8 @@ export default defineConfig({
     ],
     coverage: {
       provider: 'v8',
-      include: [
-        'packages/utils/helpers/**/*.ts',
-        'packages/utils/classnames/**/*.ts',
-        'packages/utils/tokens/**/*.ts',
-        'packages/react/hooks/use-tabs.ts',
-        'packages/react/hooks/use-isomorphic-layout-effect.ts',
-        'packages/react/hooks/use-tooltip.ts',
-        'packages/react/hooks/use-popover.ts',
-        'packages/vue/composables/use-tabs.ts',
-        'packages/vue/composables/use-tooltip.ts',
-        'packages/vue/composables/use-popover.ts',
-        'packages/react/components/Button/Button.tsx',
-        'packages/react/components/Tabs/Tabs.tsx',
-        'packages/react/components/Tooltip/Tooltip.tsx',
-        'packages/react/components/Tooltip/TooltipTrigger.tsx',
-        'packages/react/components/Tooltip/TooltipContent.tsx',
-        'packages/react/components/Popover/Popover.tsx',
-        'packages/react/components/Popover/PopoverTrigger.tsx',
-        'packages/react/components/Popover/PopoverContent.tsx',
-        'packages/react/components/Dialog/Dialog.tsx',
-        'packages/vue/components/Button/Button.vue',
-        'packages/vue/components/Tabs/Tabs.vue',
-        'packages/vue/components/Tabs/TabTitle.vue',
-        'packages/vue/components/Tabs/TabPanel.vue',
-        'packages/vue/components/Tabs/shared.ts',
-        'packages/vue/components/Tooltip/Tooltip.vue',
-        'packages/vue/components/Tooltip/TooltipTrigger.vue',
-        'packages/vue/components/Tooltip/TooltipContent.vue',
-        'packages/vue/components/Popover/Popover.vue',
-        'packages/vue/components/Popover/PopoverTrigger.vue',
-        'packages/vue/components/Popover/PopoverContent.vue',
-        'packages/vue/components/Dialog/Dialog.vue',
-      ],
-      exclude: ['**/index.ts', '**/*.d.ts'],
+      include: ['packages/**/*.{ts,tsx,vue}'],
+      exclude: ['**/index.ts', '**/*.type.ts', '**/*.d.ts', 'packages/utils/types/**'],
       reporter: ['text', 'html'],
       thresholds: {
         lines: 100,

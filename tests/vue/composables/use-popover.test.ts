@@ -28,12 +28,22 @@ function makeHarness(
   config: {
     triggerProps?: Record<string, unknown>;
     matchTriggerWidth?: boolean;
+    /** 跳过默认 ariaLabel 注入；仅 dev 警告测试需要 */
+    skipDefaultAriaLabel?: boolean;
   } = {},
 ): VueWrapper<Harness> {
+  const withDefaultAria = (o: UsePopoverOptions): UsePopoverOptions => {
+    if (config.skipDefaultAriaLabel) return o;
+    if (o.ariaLabel || o.ariaLabelledBy) return o;
+    if (o.ariaRole && o.ariaRole !== 'dialog') return o;
+    return { ariaLabel: 'x', ...o };
+  };
+  const resolvedOptions =
+    typeof options === 'function' ? () => withDefaultAria(options()) : withDefaultAria(options);
   const Comp = defineComponent({
     name: 'UsePopoverHarness',
     setup() {
-      const api = usePopover(options);
+      const api = usePopover(resolvedOptions);
       return { api };
     },
     mounted() {
@@ -599,7 +609,7 @@ describe('usePopover(Vue) — dev 警告', () => {
   });
 
   it('dialog 无 ariaLabel/labelledBy：警告', () => {
-    makeHarness({});
+    makeHarness({}, { skipDefaultAriaLabel: true });
     expect(
       warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes('accessible name')),
     ).toBe(true);

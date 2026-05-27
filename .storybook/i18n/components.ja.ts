@@ -12,6 +12,9 @@ export const componentsJa = {
       popover: {
         title: 'Popover',
       },
+      portal: {
+        title: 'Portal',
+      },
       tabs: {
         title: 'Tabs',
       },
@@ -32,6 +35,9 @@ export const componentsJa = {
       },
       popover: {
         title: 'Popover',
+      },
+      portal: {
+        title: 'Portal',
       },
       tabs: {
         title: 'Tabs',
@@ -146,6 +152,17 @@ export const componentsJa = {
         keepMounted: '閉じた状態でも DOM を保持（hidden 属性のみ切替）。',
         container:
           'portal のマウント先。HTMLElement を渡すと上書き、null でインラインレンダー（portal なし）。',
+      },
+    },
+    portal: {
+      description:
+        'children を DOM の別の場所（デフォルトは <body> の末尾）へレンダリングします。React / Vue ツリーとの接続は維持されたまま —— context / イベント / ref は通常通り動作。Portal 自身は DOM ノードもスタイルも持ちません。',
+      'why-note': [
+        'portal を使わないと、フローティング層は決まって 2 パターンで壊れます：スクロール / overflow: hidden の祖先によって視覚的にクリップされる、そして祖先が作る stacking context（transform / filter / will-change）に閉じ込められて兄弟要素より上に出せなくなる。z-index をいくら上げても解決しません —— 構造的な制約だからです。',
+      ],
+      props: {
+        container:
+          'レンダー先。HTMLElement を渡すとそこへ直接レンダー。関数 (() => HTMLElement | null) はクライアント側でのみ呼び出される —— ターゲットが後からマウントされる、または Shadow DOM / iframe 内にあるケースで有用。文字列は CSS セレクタとして document.querySelector で解決され、解決できない場合は document.body へフォールバック。null を渡すと portal を完全に無効化し、children はインラインのまま。デフォルトは document.body。',
       },
     },
     dialog: {

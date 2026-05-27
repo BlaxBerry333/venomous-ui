@@ -12,6 +12,9 @@ export const componentsEn = {
       popover: {
         title: 'Popover',
       },
+      portal: {
+        title: 'Portal',
+      },
       tabs: {
         title: 'Tabs',
       },
@@ -32,6 +35,9 @@ export const componentsEn = {
       },
       popover: {
         title: 'Popover',
+      },
+      portal: {
+        title: 'Portal',
       },
       tabs: {
         title: 'Tabs',
@@ -152,6 +158,17 @@ export const componentsEn = {
           'Keep the DOM mounted when closed (toggling the hidden attribute) instead of unmounting.',
         container:
           'Portal mount target. Pass an HTMLElement to override, or null to render inline (no portal).',
+      },
+    },
+    portal: {
+      description:
+        'Renders its children somewhere else in the DOM (default: end of <body>) while keeping them connected to the React / Vue tree — context, events and refs still work. Portal has no DOM or styles of its own.',
+      'why-note': [
+        'Floating layers fail in two specific ways without a portal: they get visually clipped by a scrolling / overflow-hidden ancestor, and they get pinned beneath sibling content because the ancestor created a new stacking context (transform / filter / will-change). Raising z-index does not help — the constraint is structural.',
+      ],
+      props: {
+        container:
+          'Where to render children. HTMLElement renders directly into it. Function (() => HTMLElement | null) is called client-side only — useful when the target is mounted later or lives in a Shadow DOM / iframe. String is a CSS selector resolved via document.querySelector; unresolvable selectors fall back to document.body. null opts out of portaling entirely — children stay inline. Defaults to document.body.',
       },
     },
     dialog: {

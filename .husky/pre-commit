@@ -8,7 +8,7 @@ echo ""
 
 # Run lint-staged
 echo "\033[1;33m▶ Running lint-staged...\033[0m"
-npx lint-staged
+npx lint-staged --concurrent 1
 
 if [ $? -ne 0 ]; then
   echo ""
