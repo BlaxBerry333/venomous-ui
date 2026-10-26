@@ -1,7 +1,7 @@
 // =====================================================================
 // themes/light — 默认主题；同时是几何 token 的"宿主"
 //
-// 一站式：用户 import 这一个文件即可拿到全部 token + 默认 light 配色。
+// 一站式：用户 import 这一个文件即可拿到全部 token + 默认 light 配色，并设置页面底色、文字色与字体。
 // 写在 :root 下 —— 无 data-theme attribute 时即生效。
 // =====================================================================
 
@@ -10,6 +10,11 @@
 
 :root {
   color-scheme: light;
+
+  // 页面底色 / 文字 / 字体跟随主题；dark 只覆盖 token，这里自动跟着变
+  font-family: var(--venomous-font-family-sans);
+  color: var(--venomous-color-fg);
+  background-color: var(--venomous-color-bg);
 
   @include g.venomous-tokens-geometry;
   @include c.venomous-colors-light;

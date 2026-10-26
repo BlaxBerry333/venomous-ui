@@ -27,8 +27,8 @@ export type { DialogHandle, DialogProps, DialogSectionProps, DialogTitleProps } 
 export { Portal } from './Portal';
 export type { PortalContainer, PortalProps } from './Portal';
 
-export { Tabs, TabPanel, TabTitle } from './Tabs';
-export type { TabPanelProps, TabsOptions, TabsProps, TabTitleProps } from './Tabs';
+export { TabList, TabPanel, Tabs, TabTitle } from './Tabs';
+export type { TabListProps, TabPanelProps, TabsOptions, TabsProps, TabTitleProps } from './Tabs';
 
 export { Popover, PopoverContent, PopoverTrigger } from './Popover';
 export type {

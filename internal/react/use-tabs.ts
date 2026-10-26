@@ -13,6 +13,7 @@ import {
 } from 'react';
 import { devWarn } from '@internal/dev';
 import type { TabsOptions } from '@packages/react/Tabs/Tabs.type';
+import { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect';
 
 /** ARIA tabs pattern 键盘语义里关心的所有按键 */
 type TabsArrowKey = 'ArrowLeft' | 'ArrowRight' | 'ArrowUp' | 'ArrowDown' | 'Home' | 'End';
@@ -103,6 +104,14 @@ export function useTabs(options: UseTabsOptions = {}): UseTabsReturn {
     return list.sort((a, b) =>
       a.entry.el.compareDocumentPosition(b.entry.el) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1,
     );
+  }, []);
+
+  // 非受控且没给 defaultValue：挂载后选中第一个未禁用的 trigger（子组件的 ref 回调此时已登记完）
+  useIsomorphicLayoutEffect(() => {
+    if (isControlled || uncontrolledValue !== undefined) return;
+    const first = getOrderedTriggers().find((t) => !t.entry.disabled);
+    if (first) setUncontrolledValue(first.value);
+    // 仅挂载时执行一次
   }, []);
 
   // manual 模式下「当前 focus 但未 select」的 value，仅用于决定 tabIndex=0 的归属。

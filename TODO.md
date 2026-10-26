@@ -150,8 +150,11 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 
 ## 4. 替换 GitHub
 
-- [ ] `npm run check` 和 `npm test` 全过
-- [ ] `npm run build` 后在空项目里装一次，确认样式、类型、SSR（Next.js App Router）正常
+- [x] `npm run check` 和 `npm test` 全过
+- [x] `npm run build` 后在空项目里装一次，确认样式、类型、SSR（Next.js App Router）正常：用 `npm pack` 装进 Next.js 16 空项目，构建、服务端预渲染、水合、交互均正常
+  - [x] Button 内部挂了 onClick 却没标 `'use client'`，在服务端组件里用会构建失败 → 补上，并加测试：用了 hooks 或事件处理的组件文件必须带该指令
+  - [x] Tabs 靠扫描 children 的组件类型配对，在服务端组件里传入的子元素类型是客户端引用，结果什么都不渲染 → 改为显式结构：`TabList` 包 `TabTitle`，`TabTitle` / `TabPanel` 用 `value` 配对
+  - [x] 主题只定义 token，不设置页面底色和文字色，切到亮色后页面仍是浏览器默认底色 → `light.css` 在 `:root` 上设置底色、文字色、字体
 - [ ] Storybook 文档更新，确认 GitHub Pages 部署流程能用
 - [ ] 加 remote，用本地历史覆盖 GitHub `main`（需要 force push，执行前单独确认）
 - [ ] 确认 `.github/workflows/release.yml` 能产出新的 `release` 分支

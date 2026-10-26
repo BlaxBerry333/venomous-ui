@@ -51,6 +51,12 @@ export function Page() {
 }
 ```
 
+## Notes
+
+- Each component imports its own CSS (`venomous-ui/styles/components/<Name>.css`), so a bundler that handles CSS imports is required (Next.js, Vite, webpack). In Jest, map `\.css$` to an empty module.
+- Components that use state or event handlers are marked `'use client'`; Card, Badge and Skeleton also work as plain server components.
+- Pass an explicit `defaultValue` to `Tabs` when rendering on the server, so the first panel is in the initial HTML.
+
 ## Documentation
 
 Component API and examples: [Storybook](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction-overview--docs)

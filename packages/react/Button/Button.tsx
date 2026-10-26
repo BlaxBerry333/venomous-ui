@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, type MouseEvent, type ReactNode } from 'react';
 import { mergeClassName } from '@internal/style';
 import '@packages/styles/components/Button.scss';
@@ -13,7 +15,7 @@ function hasContent(node: ReactNode): boolean {
  * Button — 基础按钮。
  *
  * 设计要点：
- * - server component 友好：纯 forwardRef，无 hooks，不需要 'use client'。
+ * - 'use client'：内部给 <button> 挂了 onClick（loading 时拦截点击），服务端组件不能直接渲染带事件处理的元素。
  * - state 用 `data-venomous-loading`（运行时变化）；variant / size 用 className（永久属性）。
  * - 样式自动副作用：import 'Button.scss'，用户无需手动 import 组件 CSS。
  * - 默认 type='button' —— 避免在 <form> 内意外提交。
