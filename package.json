@@ -104,7 +104,7 @@
     "test:watch": "vitest --config configs/vitest.config.ts",
     "build:styles": "vite build --config configs/vite.config.styles.ts",
     "build:react": "vite build --config configs/vite.config.react.ts",
-    "build": "rm -rf dist && npm run build:styles && npm run build:react",
+    "build": "rm -rf dist && npm run build:styles && npm run build:react && node scripts/check-dist-types.mjs",
     "dev": "storybook dev -p 6006",
     "dev:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build -o storybook-static",

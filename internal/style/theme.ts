@@ -2,9 +2,7 @@
  * @file 主题相关的共享常量与纯函数；useTheme 与 ThemeScript 共用，保证两边默认值和校验规则一致。
  */
 
-export type ColorScheme = 'light' | 'dark';
-
-export const DEFAULT_THEMES = ['light', 'dark'] as const satisfies readonly ColorScheme[];
+export const DEFAULT_THEMES = ['light', 'dark'] as const;
 export const DEFAULT_STORAGE_KEY = 'venomous-theme';
 /** 固定写在 <html> 上；themes/dark.scss 的选择器是 `:root[data-theme='dark']` */
 export const THEME_ATTRIBUTE = 'data-theme';

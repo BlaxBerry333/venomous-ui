@@ -55,6 +55,7 @@ export default tseslint.config(
   // 框架无关层不得依赖 React，给以后加其他框架适配留余地
   {
     files: [
+      'internal/dev/**/*.{ts,tsx}',
       'internal/dom/**/*.{ts,tsx}',
       'internal/style/**/*.{ts,tsx}',
       'packages/styles/**/*.ts',

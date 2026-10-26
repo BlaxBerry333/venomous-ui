@@ -107,15 +107,18 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 
 | 组件    | 旧代码                                         | 依赖                                             | 状态 |
 | ------- | ---------------------------------------------- | ------------------------------------------------ | ---- |
-| Portal  | `components/Portal/`                           | 无                                               | [ ]  |
-| Dialog  | `components/Dialog/`                           | scroll-lock                                      | [ ]  |
-| Tabs    | `components/Tabs/` + `hooks/use-tabs.ts`       | 无                                               | [ ]  |
+| Portal  | `components/Portal/`                           | 无                                               | [x]  |
+| Dialog  | `components/Dialog/`                           | scroll-lock                                      | [x]  |
+| Tabs    | `components/Tabs/` + `hooks/use-tabs.ts`       | 无                                               | [x]  |
 | Popover | `components/Popover/` + `hooks/use-popover.ts` | overlay-stack、floating、css-anchor、dom、Portal | [ ]  |
 | Tooltip | `components/Tooltip/` + `hooks/use-tooltip.ts` | floating、css-anchor、dom、Portal                | [ ]  |
 
 - [x] 搬交互组件前先解决 `'use client'` 被打包器去掉的问题 → 开 `preserveModules`
 - [ ] `use-tabs` / `use-popover` / `use-tooltip` 放 `internal/react/`，不对外导出
-- [ ] Dialog 补 header / title / body / footer 的结构和样式（旧版类名里有，组件里没有）
+- [x] Dialog 补 header / title / body / footer 的结构和样式；`DialogTitle` 自动成为对话框的无障碍名称
+- [x] Tabs 不传 `defaultValue` 时没有任何 tab 可被 Tab 键聚焦 → 默认选中第一个未禁用的 TabTitle
+- [x] 旧版 dev 警告用 `import.meta.env.DEV`，库构建时被替换成 false，用户永远看不到 → 改用 `process.env.NODE_ENV`（`internal/dev`）
+- [x] 公开类型若引用 `internal/`，d.ts 发布后解析失败 → 公开类型只在 `packages/react` 定义；`npm run build` 末尾用 `scripts/check-dist-types.mjs` 校验
 
 ## 3. 新增组件
 

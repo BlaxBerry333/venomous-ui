@@ -1,0 +1,73 @@
+// =====================================================================
+// venomous--Tabs
+//
+// BEM：
+//   .venomous--Tabs                        Block：根容器
+//   .venomous--Tabs__list                  Element：role=tablist，只包 TabTitle
+//   .venomous--Tabs__title                 Element：role=tab
+//   .venomous--Tabs__panel                 Element：role=tabpanel
+//
+// State 用 ARIA 属性：
+//   [aria-selected='true']                 选中
+//   [aria-disabled='true']                 禁用
+// =====================================================================
+
+.venomous--Tabs__list {
+  display: flex;
+  gap: var(--venomous-spacing-1);
+  border-bottom: 1px solid var(--venomous-color-border);
+}
+
+.venomous--Tabs__title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--venomous-spacing-2);
+
+  // 选中指示条压在 list 的底边上
+  margin-bottom: -1px;
+  padding: var(--venomous-spacing-2) var(--venomous-spacing-3);
+  font: inherit;
+  font-weight: var(--venomous-font-weight-medium);
+  color: var(--venomous-color-fg-muted);
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: var(--venomous-radius-md) var(--venomous-radius-md) 0 0;
+  transition:
+    color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard),
+    border-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+
+  &:hover:not([aria-selected='true'], [aria-disabled='true']) {
+    color: var(--venomous-color-fg);
+  }
+
+  &[aria-selected='true'] {
+    color: var(--venomous-color-accent);
+    border-bottom-color: var(--venomous-color-accent);
+  }
+
+  // 透明 outline 在 Windows 强制颜色模式下会被上色，焦点仍可见
+  &:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--venomous-shadow-focus);
+  }
+
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+.venomous--Tabs__panel {
+  padding-top: var(--venomous-spacing-4);
+
+  &:focus-visible {
+    outline: 2px solid transparent;
+    border-radius: var(--venomous-radius-md);
+    box-shadow: var(--venomous-shadow-focus);
+  }
+}

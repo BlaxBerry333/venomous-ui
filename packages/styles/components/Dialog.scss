@@ -1,0 +1,116 @@
+// =====================================================================
+// venomous--Dialog
+//
+// BEM：
+//   .venomous--Dialog                      Block：原生 <dialog>
+//   .venomous--Dialog__header              Element：标题行
+//   .venomous--Dialog__title               Element：标题（h2）
+//   .venomous--Dialog__body                Element：正文
+//   .venomous--Dialog__footer              Element：操作区，右对齐
+//
+// State：
+//   :modal                                 原生，showModal() 后生效
+//   ::backdrop                             原生遮罩
+// =====================================================================
+
+$dialog-scale-from: 0.96;
+
+.venomous--Dialog {
+  // 重置原生 <dialog> 默认样式
+  margin: auto;
+  padding: var(--venomous-spacing-6);
+  min-width: min(320px, calc(100vw - var(--venomous-spacing-8)));
+  max-width: min(560px, calc(100vw - var(--venomous-spacing-8)));
+  max-height: calc(100vh - var(--venomous-spacing-8));
+  overflow: auto;
+  font: inherit;
+  color: var(--venomous-color-fg);
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border);
+  border-radius: var(--venomous-radius-xl);
+  box-shadow: var(--venomous-shadow-xl);
+
+  // 关闭态：退场动画终点；display / overlay 用 allow-discrete 让动画播完再移出 top layer
+  &:not(:modal) {
+    opacity: 0;
+    transform: scale($dialog-scale-from);
+    transition:
+      opacity var(--venomous-motion-duration-fast) var(--venomous-motion-easing-in),
+      transform var(--venomous-motion-duration-fast) var(--venomous-motion-easing-in),
+      overlay var(--venomous-motion-duration-fast) allow-discrete,
+      display var(--venomous-motion-duration-fast) allow-discrete;
+  }
+
+  &:modal {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity var(--venomous-motion-duration-base) var(--venomous-motion-easing-out),
+      transform var(--venomous-motion-duration-base) var(--venomous-motion-easing-out),
+      overlay var(--venomous-motion-duration-base) allow-discrete,
+      display var(--venomous-motion-duration-base) allow-discrete;
+  }
+
+  @starting-style {
+    &:modal {
+      opacity: 0;
+      transform: scale($dialog-scale-from);
+    }
+  }
+
+  &::backdrop {
+    background-color: var(--venomous-color-bg-overlay);
+    opacity: 0;
+    transition:
+      opacity var(--venomous-motion-duration-fast) var(--venomous-motion-easing-in),
+      overlay var(--venomous-motion-duration-fast) allow-discrete,
+      display var(--venomous-motion-duration-fast) allow-discrete;
+  }
+
+  &:modal::backdrop {
+    opacity: 1;
+    transition:
+      opacity var(--venomous-motion-duration-base) var(--venomous-motion-easing-out),
+      overlay var(--venomous-motion-duration-base) allow-discrete,
+      display var(--venomous-motion-duration-base) allow-discrete;
+  }
+
+  @starting-style {
+    &:modal::backdrop {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &,
+    &::backdrop {
+      transition: none;
+    }
+  }
+}
+
+.venomous--Dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--venomous-spacing-2);
+  margin-bottom: var(--venomous-spacing-4);
+}
+
+.venomous--Dialog__title {
+  font-size: var(--venomous-font-size-lg);
+  font-weight: var(--venomous-font-weight-semibold);
+  line-height: var(--venomous-font-leading-tight);
+}
+
+.venomous--Dialog__body {
+  line-height: var(--venomous-font-leading-base);
+}
+
+.venomous--Dialog__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--venomous-spacing-2);
+  margin-top: var(--venomous-spacing-6);
+}

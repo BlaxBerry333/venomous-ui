@@ -13,10 +13,19 @@
  */
 
 export { useTheme } from './use-theme';
-export type { UseThemeOptions, UseThemeReturn } from './use-theme';
+export type { ColorScheme, UseThemeOptions, UseThemeReturn } from './use-theme';
 
 export { ThemeScript } from './ThemeScript';
 export type { ThemeScriptProps } from './ThemeScript';
 
 export { Button } from './Button';
 export type { ButtonProps, ButtonVariant, ButtonSize } from './Button';
+
+export { Dialog, DialogBody, DialogFooter, DialogHeader, DialogTitle } from './Dialog';
+export type { DialogHandle, DialogProps, DialogSectionProps, DialogTitleProps } from './Dialog';
+
+export { Portal } from './Portal';
+export type { PortalContainer, PortalProps } from './Portal';
+
+export { Tabs, TabPanel, TabTitle } from './Tabs';
+export type { TabPanelProps, TabsOptions, TabsProps, TabTitleProps } from './Tabs';

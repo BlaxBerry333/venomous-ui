@@ -78,7 +78,8 @@ export default defineConfig({
       include: [resolve(src, '**/*.ts'), resolve(src, '**/*.tsx'), resolve(root, 'types/*.d.ts')],
       rollupTypes: false,
       tsconfigPath: resolve(root, 'tsconfig.json'),
-      compilerOptions: { rootDir: src },
+      // 公开类型只在 packages/react 定义；internal 的实现会被 tsc 读到，rootDir 放宽到仓库根避免 TS6059
+      compilerOptions: { rootDir: root },
     }),
   ],
 });

@@ -20,13 +20,14 @@ import {
   DEFAULT_THEMES,
   THEME_ATTRIBUTE,
   normalizeTheme,
-  type ColorScheme,
 } from '@internal/style';
 
 /* ============================================================================
  * Types
  * ============================================================================
  */
+
+export type ColorScheme = 'light' | 'dark';
 
 export interface UseThemeOptions<T extends string = ColorScheme> {
   /** 可选主题列表；默认 `['light', 'dark']`。setTheme 入参受此约束 */
