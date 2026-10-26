@@ -1,0 +1,104 @@
+// =====================================================================
+// venomous--Drawer（叠加在 venomous--Dialog 上）
+//
+// BEM：
+//   .venomous--Drawer                      Block：原生 <dialog>，同时带 .venomous--Dialog
+//   .venomous--Drawer--left / right / top / bottom    Modifier：贴边方向
+//
+// 选择器写成 .venomous--Dialog.venomous--Drawer 提高优先级，不依赖与 Dialog.css 的引入顺序。
+// =====================================================================
+
+.venomous--Dialog.venomous--Drawer {
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  border-radius: 0;
+
+  // 退场 / 入场起点：滑到屏幕外
+  &:not(:modal) {
+    opacity: 1;
+  }
+
+  // 纵向排布：正文占满剩余高度并独立滚动，footer 贴底
+  &:modal {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .venomous--Dialog__body {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+  }
+}
+
+.venomous--Dialog.venomous--Drawer--left,
+.venomous--Dialog.venomous--Drawer--right {
+  width: min(400px, 100vw);
+  height: 100vh;
+  min-width: 0;
+}
+
+.venomous--Dialog.venomous--Drawer--top,
+.venomous--Dialog.venomous--Drawer--bottom {
+  width: 100vw;
+  max-height: min(80vh, 100vh);
+}
+
+.venomous--Dialog.venomous--Drawer--left {
+  inset: 0 auto 0 0;
+  border-width: 0 1px 0 0;
+
+  &:not(:modal) {
+    transform: translateX(-100%);
+  }
+}
+
+.venomous--Dialog.venomous--Drawer--right {
+  inset: 0 0 0 auto;
+  border-width: 0 0 0 1px;
+
+  &:not(:modal) {
+    transform: translateX(100%);
+  }
+}
+
+.venomous--Dialog.venomous--Drawer--top {
+  inset: 0 0 auto;
+  border-width: 0 0 1px;
+
+  &:not(:modal) {
+    transform: translateY(-100%);
+  }
+}
+
+.venomous--Dialog.venomous--Drawer--bottom {
+  inset: auto 0 0;
+  border-width: 1px 0 0;
+
+  &:not(:modal) {
+    transform: translateY(100%);
+  }
+}
+
+@starting-style {
+  .venomous--Dialog.venomous--Drawer--left:modal {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+
+  .venomous--Dialog.venomous--Drawer--right:modal {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+
+  .venomous--Dialog.venomous--Drawer--top:modal {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+
+  .venomous--Dialog.venomous--Drawer--bottom:modal {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+}

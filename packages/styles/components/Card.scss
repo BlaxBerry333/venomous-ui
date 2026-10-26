@@ -1,0 +1,51 @@
+// =====================================================================
+// venomous--Card
+//
+// BEM：
+//   .venomous--Card                        Block
+//   .venomous--Card__header / __title / __body / __footer    Element
+//   .venomous--Card--outlined / elevated   Modifier
+// =====================================================================
+
+.venomous--Card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--venomous-spacing-3);
+  padding: var(--venomous-spacing-5);
+  color: var(--venomous-color-fg);
+  background-color: var(--venomous-color-bg);
+  border-radius: var(--venomous-radius-lg);
+}
+
+.venomous--Card--outlined {
+  border: 1px solid var(--venomous-color-border);
+}
+
+.venomous--Card--elevated {
+  border: 1px solid transparent;
+  box-shadow: var(--venomous-shadow-md);
+}
+
+.venomous--Card__header {
+  display: flex;
+  gap: var(--venomous-spacing-2);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.venomous--Card__title {
+  font-size: var(--venomous-font-size-lg);
+  font-weight: var(--venomous-font-weight-semibold);
+  line-height: var(--venomous-font-leading-tight);
+}
+
+.venomous--Card__body {
+  line-height: var(--venomous-font-leading-base);
+}
+
+.venomous--Card__footer {
+  display: flex;
+  gap: var(--venomous-spacing-2);
+  align-items: center;
+  justify-content: flex-end;
+}

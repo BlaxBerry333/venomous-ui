@@ -4,3 +4,4 @@
 
 export * from './classnames';
 export * from './theme';
+export * from './initials';

@@ -1,0 +1,48 @@
+// =====================================================================
+// venomous--Avatar
+//
+// BEM：
+//   .venomous--Avatar                      Block：role=img
+//   .venomous--Avatar__image               Element
+//   .venomous--Avatar__initials            Element：图片缺省 / 失败时的首字母
+//   .venomous--Avatar--size-sm / md / lg   Modifier
+// =====================================================================
+
+.venomous--Avatar {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--venomous-avatar-size, 2.5rem);
+  height: var(--venomous-avatar-size, 2.5rem);
+  overflow: hidden;
+  font-weight: var(--venomous-font-weight-medium);
+  color: var(--venomous-color-accent-fg);
+  user-select: none;
+  background-color: var(--venomous-color-accent);
+  border-radius: var(--venomous-radius-full);
+}
+
+.venomous--Avatar--size-sm {
+  --venomous-avatar-size: 2rem;
+
+  font-size: var(--venomous-font-size-xs);
+}
+
+.venomous--Avatar--size-md {
+  --venomous-avatar-size: 2.5rem;
+
+  font-size: var(--venomous-font-size-sm);
+}
+
+.venomous--Avatar--size-lg {
+  --venomous-avatar-size: 3.5rem;
+
+  font-size: var(--venomous-font-size-lg);
+}
+
+.venomous--Avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

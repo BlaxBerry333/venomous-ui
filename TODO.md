@@ -130,23 +130,23 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 
 参考 GitHub 旧版的 API 和功能范围，实现按本仓库的标准来（受控/非受控、a11y、SSR）。
 
-| 优先级 | 组件               | 依赖 / 备注                         | 状态 |
-| ------ | ------------------ | ----------------------------------- | ---- |
-| 高     | Input              |                                     | [x]  |
-| 高     | Textarea           |                                     | [x]  |
-| 高     | Checkbox           |                                     | [x]  |
-| 高     | Switch             |                                     | [x]  |
-| 高     | Radio / RadioGroup | 方向键切换                          | [x]  |
-| 高     | FormField          | label / 描述 / 错误信息的 aria 关联 | [x]  |
-| 高     | Select             | Popover 底座 + listbox 键盘操作     | [x]  |
-| 高     | Toast              | 全局 store + `aria-live`            | [x]  |
-| 中     | CheckboxGroup      |                                     | [x]  |
-| 中     | Drawer             | 复用 Dialog                         | [ ]  |
-| 低     | Card               | 纯样式                              | [ ]  |
-| 低     | Badge              | 纯样式                              | [ ]  |
-| 低     | Avatar             | 图片失败回退为首字母                | [ ]  |
-| 低     | Skeleton           | 纯样式                              | [ ]  |
-| 低     | Breadcrumb         | 折叠省略                            | [ ]  |
+| 优先级 | 组件               | 依赖 / 备注                           | 状态 |
+| ------ | ------------------ | ------------------------------------- | ---- |
+| 高     | Input              |                                       | [x]  |
+| 高     | Textarea           |                                       | [x]  |
+| 高     | Checkbox           |                                       | [x]  |
+| 高     | Switch             |                                       | [x]  |
+| 高     | Radio / RadioGroup | 方向键切换                            | [x]  |
+| 高     | FormField          | label / 描述 / 错误信息的 aria 关联   | [x]  |
+| 高     | Select             | 原生 `<select>`（自绘下拉暂缓，见上） | [x]  |
+| 高     | Toast              | 全局 store + `aria-live`              | [x]  |
+| 中     | CheckboxGroup      |                                       | [x]  |
+| 中     | Drawer             | 复用 Dialog                           | [x]  |
+| 低     | Card               | 纯样式                                | [x]  |
+| 低     | Badge              | 纯样式                                | [x]  |
+| 低     | Avatar             | 图片失败回退为首字母                  | [x]  |
+| 低     | Skeleton           | 纯样式                                | [x]  |
+| 低     | Breadcrumb         | 折叠省略                              | [x]  |
 
 ## 4. 替换 GitHub
 
