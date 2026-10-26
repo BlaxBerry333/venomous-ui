@@ -54,19 +54,19 @@
 
 // ---- Size ----
 .venomous--Button--size-sm {
-  height: 28px;
+  min-height: 28px;
   padding: 0 var(--venomous-spacing-3);
   font-size: var(--venomous-font-size-sm);
 }
 
 .venomous--Button--size-md {
-  height: 36px;
+  min-height: 36px;
   padding: 0 var(--venomous-spacing-4);
   font-size: var(--venomous-font-size-base);
 }
 
 .venomous--Button--size-lg {
-  height: 44px;
+  min-height: 44px;
   padding: 0 var(--venomous-spacing-5);
   font-size: var(--venomous-font-size-lg);
 }

@@ -9,6 +9,8 @@
 @use '../tokens/colors-light' as c;
 
 :root {
+  color-scheme: light;
+
   @include g.venomous-tokens-geometry;
   @include c.venomous-colors-light;
 }

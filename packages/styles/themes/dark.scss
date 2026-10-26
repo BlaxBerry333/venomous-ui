@@ -7,6 +7,9 @@
 
 @use '../tokens/colors-dark' as c;
 
-[data-theme='dark'] {
+// :root 前缀把优先级提到 (0,2,0)，高于 light 的 :root，不依赖两份 CSS 的引入顺序
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
   @include c.venomous-colors-dark;
 }

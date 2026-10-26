@@ -49,14 +49,15 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
   --venomous-font-family-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
-  --venomous-font-size-xs: 12px;
-  --venomous-font-size-sm: 14px;
-  --venomous-font-size-base: 16px;
-  --venomous-font-size-lg: 18px;
-  --venomous-font-size-xl: 20px;
-  --venomous-font-size-2xl: 24px;
-  --venomous-font-size-3xl: 30px;
-  --venomous-font-size-4xl: 36px;
+  // rem：跟随用户浏览器字号设置（16px 基准下等于注释里的 px）
+  --venomous-font-size-xs: 0.75rem; // 12px
+  --venomous-font-size-sm: 0.875rem; // 14px
+  --venomous-font-size-base: 1rem; // 16px
+  --venomous-font-size-lg: 1.125rem; // 18px
+  --venomous-font-size-xl: 1.25rem; // 20px
+  --venomous-font-size-2xl: 1.5rem; // 24px
+  --venomous-font-size-3xl: 1.875rem; // 30px
+  --venomous-font-size-4xl: 2.25rem; // 36px
 
   --venomous-font-weight-regular: 400;
   --venomous-font-weight-medium: 500;

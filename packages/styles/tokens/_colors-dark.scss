@@ -1,8 +1,11 @@
 // =====================================================================
 // tokens/_colors-dark — dark 主题的颜色 + 阴影 token（mixin）
 //
-// 由 themes/dark.scss 在 [data-theme='dark'] 下 @include。
+// 由 themes/dark.scss 在 :root[data-theme='dark'] 下 @include。
 // 几何 token 不重复声明（CSS variable 继承 :root 的 light 声明）。
+//
+// 对比度约定（WCAG AA 4.5:1）：状态色与深色 bg、与 *-fg 的对比度都 ≥ 4.5，
+// 所以 dark 下状态色的 *-fg 一律用深色；hover 与 accent 一致，往更亮的方向走。
 // =====================================================================
 
 @use 'palette' as *;
@@ -26,8 +29,8 @@
   --venomous-color-accent-fg: #{$venomous-gray-950};
 
   --venomous-color-danger: #{$venomous-red-500};
-  --venomous-color-danger-hover: #{$venomous-red-600};
-  --venomous-color-danger-fg: #{$venomous-gray-50};
+  --venomous-color-danger-hover: #{$venomous-red-400};
+  --venomous-color-danger-fg: #{$venomous-gray-950};
 
   --venomous-color-success: #{$venomous-green-500};
   --venomous-color-success-fg: #{$venomous-gray-950};
@@ -36,7 +39,7 @@
   --venomous-color-warning-fg: #{$venomous-gray-950};
 
   --venomous-color-info: #{$venomous-blue-500};
-  --venomous-color-info-fg: #{$venomous-gray-50};
+  --venomous-color-info-fg: #{$venomous-gray-950};
 
   // --- shadows (dark 主题阴影更深 + 用纯黑) ---
   --venomous-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
@@ -45,5 +48,6 @@
   --venomous-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
   --venomous-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
   --venomous-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-  --venomous-shadow-focus: 0 0 0 3px rgba(168, 85, 247, 0.5);
+  --venomous-shadow-focus: 0 0 0 3px
+    color-mix(in srgb, var(--venomous-color-accent) 50%, transparent);
 }

@@ -41,20 +41,12 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 
 ### 主题与样式
 
-- [ ] dark 主题依赖 CSS 引入顺序：`:root` 和 `[data-theme='dark']` 优先级相同，先引 `dark.css` 再引 `light.css` 时暗色不生效 → 选择器改成 `:root[data-theme='dark']`
-- [ ] 没设 `color-scheme`，暗色下原生控件和滚动条仍是亮色 → light 加 `color-scheme: light`，dark 加 `color-scheme: dark`
-- [ ] `--venomous-shadow-focus` 写死紫色 rgba，用户改品牌色后焦点环还是紫色 → 基于 accent 生成（`color-mix()` 或单独的 focus-ring token）
-- [ ] 文字色对比度不到 WCAG AA（4.5:1）
-
-  | 主题  | 组合                      | 对比度 |
-  | ----- | ------------------------- | ------ |
-  | light | warning（yellow-600）+ fg | 2.81   |
-  | light | success（green-600）+ fg  | 3.16   |
-  | dark  | info（blue-500）+ fg      | 3.52   |
-  | dark  | danger（red-500）+ fg     | 3.61   |
-
-- [ ] 字号、间距全是 px，不跟随用户浏览器字号设置 → 考虑字号改 rem
-- [ ] `tokens.mdx` 的表格是手写的，改 SCSS 后容易不同步
+- [x] dark 主题依赖 CSS 引入顺序 → 选择器改成 `:root[data-theme='dark']`（代价：`data-theme` 只认 `<html>` 上的，不支持局部暗色）
+- [x] 没设 `color-scheme` → light / dark 各自声明
+- [x] `--venomous-shadow-focus` 写死紫色 → 用 `color-mix()` 基于 accent 生成
+- [x] 状态色对比度不到 WCAG AA → light 的 success / warning 改用 700 阶；dark 的状态色前景一律用深色，danger hover 改成更亮的 red-400。现在 light 下状态色对 bg 与对前景都 ≥ 4.5，dark 同理
+- [x] 字号全是 px → 字号 token 改 rem；Button 高度改 `min-height`，放大字号时不溢出
+- [ ] `tokens.mdx` 的表格是手写的，改 SCSS 后容易不同步（低优先，组件补齐后再考虑从 SCSS 生成）
 
 ### useTheme / ThemeScript
 

@@ -7,7 +7,7 @@
 // 色板选用：
 //   - gray   ← Tailwind v3 zinc（中性偏暖，对比平衡）
 //   - purple ← Tailwind v3 purple（默认 accent，呼应 venomous 命名）
-//   - red / green / yellow / blue ← 状态色，从 Tailwind 取常用 3 阶
+//   - red / green / yellow / blue ← 状态色，从 Tailwind 按需取阶
 // =====================================================================
 
 // --- Gray scale (Zinc) ---
@@ -37,6 +37,7 @@ $venomous-purple-900: #581c87;
 $venomous-purple-950: #3b0764;
 
 // --- Status colors ---
+$venomous-red-400: #f87171;
 $venomous-red-500: #ef4444;
 $venomous-red-600: #dc2626;
 $venomous-red-700: #b91c1c;
