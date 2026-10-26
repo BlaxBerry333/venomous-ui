@@ -1,0 +1,66 @@
+// =====================================================================
+// 文本输入类控件（Input / Textarea / Select）共用的外观；partial，不单独输出
+// =====================================================================
+
+@mixin venomous-field {
+  box-sizing: border-box;
+  width: 100%;
+  font: inherit;
+  font-size: var(--venomous-font-size-base);
+  line-height: var(--venomous-font-leading-base);
+  color: var(--venomous-color-fg);
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border-strong);
+  border-radius: var(--venomous-radius-md);
+  transition:
+    border-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard),
+    box-shadow var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+
+  &::placeholder {
+    color: var(--venomous-color-fg-muted);
+    opacity: 1;
+  }
+
+  &:hover:not(:disabled, :focus) {
+    border-color: var(--venomous-color-fg-muted);
+  }
+
+  // 透明 outline 在 Windows 强制颜色模式下会被上色，焦点仍可见
+  &:focus {
+    outline: 2px solid transparent;
+    border-color: var(--venomous-color-accent);
+    box-shadow: var(--venomous-shadow-focus);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--venomous-color-danger);
+  }
+
+  &[aria-invalid='true']:focus {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--venomous-color-danger) 40%, transparent);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+@mixin venomous-field-sizes($block) {
+  .#{$block}--size-sm {
+    min-height: 28px;
+    padding: 0 var(--venomous-spacing-2);
+    font-size: var(--venomous-font-size-sm);
+  }
+
+  .#{$block}--size-md {
+    min-height: 36px;
+    padding: 0 var(--venomous-spacing-3);
+  }
+
+  .#{$block}--size-lg {
+    min-height: 44px;
+    padding: 0 var(--venomous-spacing-4);
+    font-size: var(--venomous-font-size-lg);
+  }
+}

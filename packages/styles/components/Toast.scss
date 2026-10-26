@@ -1,0 +1,139 @@
+// =====================================================================
+// venomous--Toaster / venomous--Toast
+//
+// BEM：
+//   .venomous--Toaster                     Block：固定在视口角落的通知区（<section>）
+//   .venomous--Toaster__list               Element：<ol aria-live>
+//   .venomous--Toast                       Block：单条通知（<li>）
+//   .venomous--Toast__content / __title / __description / __close
+//   .venomous--Toast--info / success / warning / danger    Modifier：变体（左侧色条）
+//
+// State：
+//   [data-placement]（在 Toaster 上）
+// =====================================================================
+
+.venomous--Toaster {
+  position: fixed;
+  z-index: var(--venomous-z-toast);
+  width: min(360px, calc(100vw - var(--venomous-spacing-8)));
+  margin: var(--venomous-spacing-4);
+  pointer-events: none;
+
+  &[data-placement^='top'] {
+    top: 0;
+  }
+
+  &[data-placement^='bottom'] {
+    bottom: 0;
+  }
+
+  &[data-placement$='start'] {
+    left: 0;
+  }
+
+  &[data-placement$='end'] {
+    right: 0;
+  }
+
+  &[data-placement='top'],
+  &[data-placement='bottom'] {
+    left: 50%;
+    margin-inline: 0;
+    transform: translateX(-50%);
+  }
+}
+
+.venomous--Toaster__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--venomous-spacing-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  // 底部通知区：最新的贴近边缘
+  [data-placement^='bottom'] > & {
+    flex-direction: column-reverse;
+  }
+}
+
+.venomous--Toast {
+  --venomous-toast-accent: var(--venomous-color-info);
+
+  display: flex;
+  gap: var(--venomous-spacing-3);
+  align-items: flex-start;
+  padding: var(--venomous-spacing-3) var(--venomous-spacing-4);
+  color: var(--venomous-color-fg);
+  pointer-events: auto;
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border);
+  border-left: 4px solid var(--venomous-toast-accent);
+  border-radius: var(--venomous-radius-lg);
+  box-shadow: var(--venomous-shadow-lg);
+  transition:
+    opacity var(--venomous-motion-duration-base) var(--venomous-motion-easing-out),
+    transform var(--venomous-motion-duration-base) var(--venomous-motion-easing-out);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.venomous--Toast--success {
+  --venomous-toast-accent: var(--venomous-color-success);
+}
+
+.venomous--Toast--warning {
+  --venomous-toast-accent: var(--venomous-color-warning);
+}
+
+.venomous--Toast--danger {
+  --venomous-toast-accent: var(--venomous-color-danger);
+}
+
+.venomous--Toast__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.venomous--Toast__title {
+  font-weight: var(--venomous-font-weight-semibold);
+  line-height: var(--venomous-font-leading-tight);
+}
+
+.venomous--Toast__description {
+  margin-top: var(--venomous-spacing-1);
+  font-size: var(--venomous-font-size-sm);
+  color: var(--venomous-color-fg-muted);
+}
+
+.venomous--Toast__close {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: var(--venomous-font-size-lg);
+  line-height: 1;
+  color: var(--venomous-color-fg-muted);
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-radius: var(--venomous-radius-sm);
+
+  &:hover {
+    color: var(--venomous-color-fg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--venomous-shadow-focus);
+  }
+}

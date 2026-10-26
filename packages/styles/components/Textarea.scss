@@ -1,0 +1,35 @@
+// =====================================================================
+// venomous--Textarea
+//
+// BEM：
+//   .venomous--Textarea                    Block：原生 <textarea>
+//   .venomous--Textarea--resize-*          Modifier：none / vertical / horizontal / both
+//
+// State：
+//   [aria-invalid='true']  :disabled  :focus
+// =====================================================================
+
+@use 'field';
+
+.venomous--Textarea {
+  @include field.venomous-field;
+
+  display: block;
+  padding: var(--venomous-spacing-2) var(--venomous-spacing-3);
+}
+
+.venomous--Textarea--resize-none {
+  resize: none;
+}
+
+.venomous--Textarea--resize-vertical {
+  resize: vertical;
+}
+
+.venomous--Textarea--resize-horizontal {
+  resize: horizontal;
+}
+
+.venomous--Textarea--resize-both {
+  resize: both;
+}

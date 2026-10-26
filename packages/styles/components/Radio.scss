@@ -1,0 +1,65 @@
+// =====================================================================
+// venomous--Radio / venomous--RadioGroup
+//
+// BEM：
+//   .venomous--Radio                       Block：<label>
+//   .venomous--Radio__input                Element：原生 radio（视觉隐藏）
+//   .venomous--Radio__control              Element：圆形外观
+//   .venomous--Radio__label                Element：文字
+//   .venomous--RadioGroup                  Block：role=radiogroup
+//
+// State：
+//   :checked  :disabled（在 input 上）  [data-disabled]（在 label 上）
+//   [data-orientation]  [aria-invalid='true']（在 Group 上）
+// =====================================================================
+
+@use 'choice';
+
+.venomous--Radio {
+  @include choice.venomous-choice-root;
+}
+
+.venomous--Radio__input {
+  @include choice.venomous-choice-input;
+  @include choice.venomous-choice-focus('.venomous--Radio__control');
+}
+
+.venomous--Radio__control {
+  position: relative;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border-strong);
+  border-radius: var(--venomous-radius-full);
+  transition: border-color var(--venomous-motion-duration-fast)
+    var(--venomous-motion-easing-standard);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: auto;
+    content: '';
+    background-color: var(--venomous-color-accent);
+    border-radius: var(--venomous-radius-full);
+    transform: scale(0);
+    transition: transform var(--venomous-motion-duration-fast)
+      var(--venomous-motion-easing-standard);
+  }
+}
+
+.venomous--Radio__input:checked + .venomous--Radio__control {
+  border-color: var(--venomous-color-accent);
+
+  &::after {
+    transform: scale(1);
+  }
+}
+
+.venomous--RadioGroup[aria-invalid='true'] .venomous--Radio__control {
+  border-color: var(--venomous-color-danger);
+}
+
+@include choice.venomous-choice-group('venomous--Radio');

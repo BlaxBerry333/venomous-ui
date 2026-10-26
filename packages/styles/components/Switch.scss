@@ -1,0 +1,67 @@
+// =====================================================================
+// venomous--Switch
+//
+// BEM：
+//   .venomous--Switch                      Block：<label>
+//   .venomous--Switch__input               Element：原生 checkbox + role=switch（视觉隐藏）
+//   .venomous--Switch__track               Element：轨道
+//   .venomous--Switch__thumb               Element：滑块
+//   .venomous--Switch__label               Element：文字
+//   .venomous--Switch--size-sm / md        Modifier：尺寸
+//
+// State：
+//   :checked  :disabled（在 input 上）  [data-disabled]（在 label 上）
+// =====================================================================
+
+@use 'choice';
+
+.venomous--Switch {
+  @include choice.venomous-choice-root;
+
+  --venomous-switch-width: 2.25rem;
+  --venomous-switch-height: 1.25rem;
+}
+
+.venomous--Switch--size-sm {
+  --venomous-switch-width: 1.75rem;
+  --venomous-switch-height: 1rem;
+}
+
+.venomous--Switch__input {
+  @include choice.venomous-choice-input;
+  @include choice.venomous-choice-focus('.venomous--Switch__track');
+}
+
+.venomous--Switch__track {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: var(--venomous-switch-width);
+  height: var(--venomous-switch-height);
+  padding: 2px;
+  background-color: var(--venomous-color-border-strong);
+  border-radius: var(--venomous-radius-full);
+  transition: background-color var(--venomous-motion-duration-fast)
+    var(--venomous-motion-easing-standard);
+}
+
+.venomous--Switch__thumb {
+  width: calc(var(--venomous-switch-height) - 4px);
+  height: calc(var(--venomous-switch-height) - 4px);
+  background-color: var(--venomous-color-bg);
+  border-radius: var(--venomous-radius-full);
+  box-shadow: var(--venomous-shadow-sm);
+  transition: transform var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+}
+
+.venomous--Switch__input:checked + .venomous--Switch__track {
+  background-color: var(--venomous-color-accent);
+
+  .venomous--Switch__thumb {
+    transform: translateX(calc(var(--venomous-switch-width) - var(--venomous-switch-height)));
+  }
+}
+
+.venomous--Switch__input[aria-invalid='true'] + .venomous--Switch__track {
+  outline: 1px solid var(--venomous-color-danger);
+}

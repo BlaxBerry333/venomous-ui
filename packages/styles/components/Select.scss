@@ -1,0 +1,57 @@
+// =====================================================================
+// venomous--Select
+//
+// BEM：
+//   .venomous--Select                      Block：包裹层（放下拉箭头）
+//   .venomous--Select__field               Element：原生 <select>
+//   .venomous--Select__icon                Element：下拉箭头
+//   .venomous--Select--size-sm / md / lg   Modifier：尺寸，与 Button / Input 同高
+//
+// State：
+//   [aria-invalid='true']  :disabled  :focus（在 __field 上）  [data-disabled]（在 Block 上）
+// =====================================================================
+
+@use 'field';
+
+.venomous--Select {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+}
+
+.venomous--Select__field {
+  @include field.venomous-field;
+
+  appearance: none;
+  cursor: pointer;
+}
+
+.venomous--Select__icon {
+  position: absolute;
+  top: 50%;
+  right: var(--venomous-spacing-3);
+  width: 0.45rem;
+  height: 0.45rem;
+  pointer-events: none;
+  border: solid var(--venomous-color-fg-muted);
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-70%) rotate(45deg);
+}
+
+// 右侧给箭头留位置
+.venomous--Select--size-sm .venomous--Select__field {
+  min-height: 28px;
+  padding: 0 calc(var(--venomous-spacing-2) + 1rem) 0 var(--venomous-spacing-2);
+  font-size: var(--venomous-font-size-sm);
+}
+
+.venomous--Select--size-md .venomous--Select__field {
+  min-height: 36px;
+  padding: 0 calc(var(--venomous-spacing-3) + 1rem) 0 var(--venomous-spacing-3);
+}
+
+.venomous--Select--size-lg .venomous--Select__field {
+  min-height: 44px;
+  padding: 0 calc(var(--venomous-spacing-4) + 1rem) 0 var(--venomous-spacing-4);
+  font-size: var(--venomous-font-size-lg);
+}

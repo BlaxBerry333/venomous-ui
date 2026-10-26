@@ -1,0 +1,44 @@
+// =====================================================================
+// venomous--FormField
+//
+// BEM：
+//   .venomous--FormField                   Block：纵向排列 label / 控件 / 说明 / 错误
+//   .venomous--FormField__label            Element
+//   .venomous--FormField__required         Element：必填星号（aria-hidden，语义由控件的 required 表达）
+//   .venomous--FormField__description      Element
+//   .venomous--FormField__error            Element
+//
+// State：
+//   [data-invalid]  [data-disabled]
+// =====================================================================
+
+.venomous--FormField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--venomous-spacing-1);
+}
+
+.venomous--FormField__label {
+  font-size: var(--venomous-font-size-sm);
+  font-weight: var(--venomous-font-weight-medium);
+  color: var(--venomous-color-fg);
+
+  [data-disabled] > & {
+    color: var(--venomous-color-fg-muted);
+  }
+}
+
+.venomous--FormField__required {
+  margin-left: 0.25em;
+  color: var(--venomous-color-danger);
+}
+
+.venomous--FormField__description {
+  font-size: var(--venomous-font-size-sm);
+  color: var(--venomous-color-fg-muted);
+}
+
+.venomous--FormField__error {
+  font-size: var(--venomous-font-size-sm);
+  color: var(--venomous-color-danger);
+}

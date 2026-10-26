@@ -1,0 +1,56 @@
+// =====================================================================
+// 勾选类控件（Checkbox / Radio / Switch）共用的结构；partial，不单独输出
+//
+// <label .Block>
+//   <input .Block__input>            原生控件：视觉隐藏，保留焦点、键盘与表单行为
+//   <span .Block__control>           外观（Switch 是 __track）
+//   <span .Block__label>             文字
+// =====================================================================
+
+@mixin venomous-choice-root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--venomous-spacing-2);
+  font-size: var(--venomous-font-size-base);
+  line-height: var(--venomous-font-leading-base);
+  color: var(--venomous-color-fg);
+  cursor: pointer;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+@mixin venomous-choice-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// 键盘焦点画在外观元素上；透明 outline 让 Windows 强制颜色模式下仍可见
+@mixin venomous-choice-focus($visual) {
+  &:focus-visible + #{$visual} {
+    outline: 2px solid transparent;
+    box-shadow: var(--venomous-shadow-focus);
+  }
+}
+
+@mixin venomous-choice-group($block) {
+  .#{$block}Group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--venomous-spacing-2);
+
+    &[data-orientation='horizontal'] {
+      flex-flow: row wrap;
+      gap: var(--venomous-spacing-4);
+    }
+  }
+}

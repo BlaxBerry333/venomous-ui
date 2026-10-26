@@ -1,0 +1,18 @@
+// =====================================================================
+// venomous--Input
+//
+// BEM：
+//   .venomous--Input                       Block：原生 <input>
+//   .venomous--Input--size-sm / md / lg    Modifier：尺寸，与 Button 同高
+//
+// State：
+//   [aria-invalid='true']  :disabled  :focus
+// =====================================================================
+
+@use 'field';
+
+.venomous--Input {
+  @include field.venomous-field;
+}
+
+@include field.venomous-field-sizes('venomous--Input');

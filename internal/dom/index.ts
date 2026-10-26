@@ -7,3 +7,4 @@ export * from './dom';
 export * from './floating';
 export * from './overlay-stack';
 export * from './scroll-lock';
+export * from './toast-store';
