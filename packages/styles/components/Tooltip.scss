@@ -1,0 +1,29 @@
+// =====================================================================
+// venomous--Tooltip
+//
+// BEM：
+//   .venomous--Tooltip__trigger            Element：trigger（合并到子元素上，或包一层 span）
+//   .venomous--Tooltip__content            Element：提示气泡（popover="manual"，打开时在 top layer）
+//
+// State：
+//   [data-state='open' | 'closed']
+//   [data-placement]                       实际生效的位置
+// =====================================================================
+
+.venomous--Tooltip__content {
+  // 覆盖 [popover] 的 UA 样式；定位相关的 position / inset / margin 由组件内联写入
+  box-sizing: border-box;
+  max-width: min(320px, calc(100vw - var(--venomous-spacing-4)));
+  padding: var(--venomous-spacing-1) var(--venomous-spacing-2);
+  overflow: visible;
+  font-size: var(--venomous-font-size-sm);
+  line-height: var(--venomous-font-leading-tight);
+
+  // 反色气泡：深底浅字，light / dark 下都与页面背景区分开
+  color: var(--venomous-color-bg);
+  background-color: var(--venomous-color-fg);
+  border: 0;
+  border-radius: var(--venomous-radius-md);
+  box-shadow: var(--venomous-shadow-md);
+  z-index: var(--venomous-z-tooltip);
+}

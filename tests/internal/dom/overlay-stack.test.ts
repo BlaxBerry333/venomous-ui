@@ -13,8 +13,8 @@ afterEach(() => {
 describe('overlayStack', () => {
   it('ESC 仅栈顶 closeFromEsc 被调用；非 Escape 键忽略', async () => {
     const { overlayStack } = await freshModule();
-    const a = { id: 'a', closeFromEsc: vi.fn(), closeFromOutside: vi.fn() };
-    const b = { id: 'b', closeFromEsc: vi.fn(), closeFromOutside: vi.fn() };
+    const a = { id: 'a', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) };
+    const b = { id: 'b', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) };
     overlayStack.push(a);
     overlayStack.push(b);
 
@@ -22,9 +22,12 @@ describe('overlayStack', () => {
     expect(a.closeFromEsc).not.toHaveBeenCalled();
     expect(b.closeFromEsc).not.toHaveBeenCalled();
 
-    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    const esc = new KeyboardEvent('keydown', { key: 'Escape', cancelable: true });
+    window.dispatchEvent(esc);
     expect(a.closeFromEsc).not.toHaveBeenCalled();
     expect(b.closeFromEsc).toHaveBeenCalledTimes(1);
+    // 阻止浏览器把这次 Esc 再当作外层 <dialog> 的关闭请求
+    expect(esc.defaultPrevented).toBe(true);
 
     overlayStack.remove('a');
     overlayStack.remove('b');
@@ -33,7 +36,7 @@ describe('overlayStack', () => {
   it('栈空时 ESC 无副作用', async () => {
     const { overlayStack } = await freshModule();
     // 触发 bindGlobalListeners
-    const tmp = { id: 't', closeFromEsc: vi.fn(), closeFromOutside: vi.fn() };
+    const tmp = { id: 't', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) };
     overlayStack.push(tmp);
     overlayStack.remove('t');
     expect(() =>
@@ -43,8 +46,8 @@ describe('overlayStack', () => {
 
   it('pointerdown 仅栈顶 closeFromOutside 被调用且后续条目不被遍历', async () => {
     const { overlayStack } = await freshModule();
-    const a = { id: 'a', closeFromEsc: vi.fn(), closeFromOutside: vi.fn() };
-    const b = { id: 'b', closeFromEsc: vi.fn(), closeFromOutside: vi.fn() };
+    const a = { id: 'a', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) };
+    const b = { id: 'b', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) };
     overlayStack.push(a);
     overlayStack.push(b);
 
@@ -56,9 +59,24 @@ describe('overlayStack', () => {
     overlayStack.remove('b');
   });
 
+  it('pointerdown：栈顶返回 false 时继续交给下一层', async () => {
+    const { overlayStack } = await freshModule();
+    const a = { id: 'a', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) };
+    const b = { id: 'b', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => false) };
+    overlayStack.push(a);
+    overlayStack.push(b);
+
+    window.dispatchEvent(new PointerEvent('pointerdown'));
+    expect(b.closeFromOutside).toHaveBeenCalledTimes(1);
+    expect(a.closeFromOutside).toHaveBeenCalledTimes(1);
+
+    overlayStack.remove('a');
+    overlayStack.remove('b');
+  });
+
   it('remove 不存在 id 时不抛错，不影响其他条目', async () => {
     const { overlayStack } = await freshModule();
-    const a = { id: 'a', closeFromEsc: vi.fn(), closeFromOutside: vi.fn() };
+    const a = { id: 'a', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) };
     overlayStack.push(a);
     expect(() => overlayStack.remove('not-exist')).not.toThrow();
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
@@ -70,8 +88,8 @@ describe('overlayStack', () => {
     vi.resetModules();
     const spy = vi.spyOn(window, 'addEventListener');
     const { overlayStack } = await import('@internal/dom/overlay-stack');
-    overlayStack.push({ id: 'x', closeFromEsc: vi.fn(), closeFromOutside: vi.fn() });
-    overlayStack.push({ id: 'y', closeFromEsc: vi.fn(), closeFromOutside: vi.fn() });
+    overlayStack.push({ id: 'x', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) });
+    overlayStack.push({ id: 'y', closeFromEsc: vi.fn(), closeFromOutside: vi.fn(() => true) });
     const keydownCount = spy.mock.calls.filter((c) => c[0] === 'keydown').length;
     const pointerCount = spy.mock.calls.filter((c) => c[0] === 'pointerdown').length;
     expect(keydownCount).toBe(1);
@@ -85,7 +103,7 @@ describe('overlayStack', () => {
     vi.stubGlobal('window', undefined);
     const { overlayStack } = await import('@internal/dom/overlay-stack');
     expect(() =>
-      overlayStack.push({ id: 's', closeFromEsc: () => {}, closeFromOutside: () => {} }),
+      overlayStack.push({ id: 's', closeFromEsc: () => {}, closeFromOutside: () => true }),
     ).not.toThrow();
     overlayStack.remove('s');
   });

@@ -41,9 +41,11 @@ $dialog-scale-from: 0.96;
       display var(--venomous-motion-duration-fast) allow-discrete;
   }
 
+  // 打开后 transform 用 none 而不是 scale(1)：有 transform 的祖先会成为 fixed 定位的参照，
+  // 不支持 Popover API 的浏览器里 Dialog 内的浮层会因此定位错位
   &:modal {
     opacity: 1;
-    transform: scale(1);
+    transform: none;
     transition:
       opacity var(--venomous-motion-duration-base) var(--venomous-motion-easing-out),
       transform var(--venomous-motion-duration-base) var(--venomous-motion-easing-out),

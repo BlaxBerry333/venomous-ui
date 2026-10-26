@@ -9,12 +9,13 @@
 
 ## 已定的实现方式
 
-| 事项                           | 决定                                                                                                                                         | 理由                                                              |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| 组件样式怎么带给用户           | 构建时把组件里的 `import '...scss'` 改写成 `import 'venomous-ui/styles/components/<Name>.css'`（包自引用），组件 CSS 同时通过 `exports` 暴露 | 不新增依赖；用户 bundler 按 import 自动带上样式，也能手动按需引入 |
-| `'use client'`                 | React 产物开 `preserveModules`，一个源文件一个产物                                                                                           | 模块级指令自然保留，不需要额外插件；顺带按组件 tree-shake         |
-| 推送 GitHub                    | 只在本地提交，覆盖 GitHub 前单独确认                                                                                                         | force push 不可逆                                                 |
-| Storybook 多语言文档、品牌外观 | 暂不恢复，文档只做英文                                                                                                                       | 组件还没补齐，先把精力放在组件上；旧实现在 `00c7e2b` 里随时可取   |
+| 事项                                           | 决定                                                                                                                                         | 理由                                                                 |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| 组件样式怎么带给用户                           | 构建时把组件里的 `import '...scss'` 改写成 `import 'venomous-ui/styles/components/<Name>.css'`（包自引用），组件 CSS 同时通过 `exports` 暴露 | 不新增依赖；用户 bundler 按 import 自动带上样式，也能手动按需引入    |
+| `'use client'`                                 | React 产物开 `preserveModules`，一个源文件一个产物                                                                                           | 模块级指令自然保留，不需要额外插件；顺带按组件 tree-shake            |
+| 推送 GitHub                                    | 只在本地提交，覆盖 GitHub 前单独确认                                                                                                         | force push 不可逆                                                    |
+| Storybook 多语言文档、品牌外观                 | 暂不恢复，文档只做英文                                                                                                                       | 组件还没补齐，先把精力放在组件上；旧实现在 `00c7e2b` 里随时可取      |
+| 浮层的 `anchorEl`（虚拟锚点）、`closeOnScroll` | 暂不移植                                                                                                                                     | 目前没有组件用到（ContextMenu 才需要虚拟锚点），等有需要的组件时再加 |
 
 旧代码取法：
 
@@ -110,11 +111,15 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 | Portal  | `components/Portal/`                           | 无                                               | [x]  |
 | Dialog  | `components/Dialog/`                           | scroll-lock                                      | [x]  |
 | Tabs    | `components/Tabs/` + `hooks/use-tabs.ts`       | 无                                               | [x]  |
-| Popover | `components/Popover/` + `hooks/use-popover.ts` | overlay-stack、floating、css-anchor、dom、Portal | [ ]  |
-| Tooltip | `components/Tooltip/` + `hooks/use-tooltip.ts` | floating、css-anchor、dom、Portal                | [ ]  |
+| Popover | `components/Popover/` + `hooks/use-popover.ts` | overlay-stack、floating、css-anchor、dom、Portal | [x]  |
+| Tooltip | `components/Tooltip/` + `hooks/use-tooltip.ts` | floating、css-anchor、dom、Portal                | [x]  |
 
 - [x] 搬交互组件前先解决 `'use client'` 被打包器去掉的问题 → 开 `preserveModules`
-- [ ] `use-tabs` / `use-popover` / `use-tooltip` 放 `internal/react/`，不对外导出
+- [x] `use-tabs` 放 `internal/react/`；Popover / Tooltip 的状态直接写在组件里，定位抽成共用的 `internal/react/use-floating.ts`（旧版两个 hook 各写一遍）
+- [x] Popover / Tooltip 的 trigger 用 `div role=button` / `span` 包住子元素：子元素是按钮时成了嵌套交互元素，Tooltip 的 `aria-describedby` 也落在外层 span 上读屏器读不到 → trigger 属性直接合并到子元素（`internal/react/slot.ts`），文本才包一层
+- [x] 浮层内容 portal 到 body：在模态 Dialog 里打开时被设为 inert，看不见也点不了 → 内容渲染在 trigger 旁并用 Popover API 进入 top layer
+- [x] Esc 关浮层时没阻止默认行为，外层 Dialog 跟着关 → 全局浮层栈处理 Esc 时 `preventDefault`；hover 型 Tooltip 不拦截点外部，交给下层
+- [x] Tooltip 指针移到提示内容上就消失（不满足 WCAG 1.4.13）→ 内容区 hover 也算
 - [x] Dialog 补 header / title / body / footer 的结构和样式；`DialogTitle` 自动成为对话框的无障碍名称
 - [x] Tabs 不传 `defaultValue` 时没有任何 tab 可被 Tab 键聚焦 → 默认选中第一个未禁用的 TabTitle
 - [x] 旧版 dev 警告用 `import.meta.env.DEV`，库构建时被替换成 false，用户永远看不到 → 改用 `process.env.NODE_ENV`（`internal/dev`）

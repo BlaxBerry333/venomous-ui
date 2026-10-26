@@ -29,3 +29,20 @@ export type { PortalContainer, PortalProps } from './Portal';
 
 export { Tabs, TabPanel, TabTitle } from './Tabs';
 export type { TabPanelProps, TabsOptions, TabsProps, TabTitleProps } from './Tabs';
+
+export { Popover, PopoverContent, PopoverTrigger } from './Popover';
+export type {
+  Placement,
+  PopoverContentProps,
+  PopoverOpenChangeReason,
+  PopoverProps,
+  PopoverTriggerProps,
+} from './Popover';
+
+export { Tooltip, TooltipContent, TooltipTrigger } from './Tooltip';
+export type {
+  TooltipContentProps,
+  TooltipOpenChangeReason,
+  TooltipProps,
+  TooltipTriggerProps,
+} from './Tooltip';

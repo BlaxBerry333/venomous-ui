@@ -22,6 +22,11 @@ const config: StorybookConfig = {
       '@packages': resolve(root, 'packages'),
       '@internal': resolve(root, 'internal'),
     };
+    // 跑测试生成覆盖率报告时不触发 Storybook 整页刷新
+    config.server = {
+      ...config.server,
+      watch: { ...config.server?.watch, ignored: ['**/tests/__coverage__/**'] },
+    };
     return config;
   },
 };

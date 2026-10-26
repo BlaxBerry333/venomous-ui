@@ -1,0 +1,31 @@
+// =====================================================================
+// venomous--Popover
+//
+// BEM：
+//   .venomous--Popover__trigger            Element：trigger（合并到子元素上，或包一层 button）
+//   .venomous--Popover__content            Element：浮层面板（popover="manual"，打开时在 top layer）
+//
+// State：
+//   [data-state='open' | 'closed']
+//   [data-placement]                       实际生效的位置
+// =====================================================================
+
+.venomous--Popover__content {
+  // 覆盖 [popover] 的 UA 样式；定位相关的 position / inset / margin 由组件内联写入
+  box-sizing: border-box;
+  min-width: 8rem;
+  max-width: calc(100vw - var(--venomous-spacing-4));
+  padding: var(--venomous-spacing-3);
+  overflow: auto;
+  color: var(--venomous-color-fg);
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border);
+  border-radius: var(--venomous-radius-lg);
+  box-shadow: var(--venomous-shadow-lg);
+  z-index: var(--venomous-z-popover);
+
+  &:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--venomous-shadow-lg), var(--venomous-shadow-focus);
+  }
+}

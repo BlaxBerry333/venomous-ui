@@ -1,13 +1,18 @@
 /**
  * @file overlay 嵌套栈（模块单例） + 全局 ESC / pointer listener。
- *       Popover / Dialog / Drawer / Menu 等 overlay 组件复用，ESC 与 outside-click 仅栈顶响应。
+ *       Popover / Tooltip / Menu 等浮层复用：ESC 只交给栈顶，点外部从栈顶往下传到第一个"接住"的条目。
  */
 
-/** 嵌套栈条目；ESC / outside-click 仅栈顶响应 */
+/** 嵌套栈条目 */
 export interface OverlayStackEntry {
   id: string;
+  /** 栈顶时按 Esc 调用 */
   closeFromEsc: () => void;
-  closeFromOutside: (event: PointerEvent) => void;
+  /**
+   * 点击发生时从栈顶往下依次调用；返回 true 表示由本层处理（判定 inside / outside 并可能关闭），
+   * 不再传给下层；返回 false 表示本层不关心点外部（如 hover 型 tooltip），继续交给下一层。
+   */
+  closeFromOutside: (event: PointerEvent) => boolean;
 }
 
 const overlayStackEntries: OverlayStackEntry[] = [];
@@ -33,21 +38,24 @@ function bindGlobalListeners() {
 
 /**
  * 全局 ESC keydown 派发：仅栈顶 overlay 接收（多层嵌套时按 ESC 只关最内层）。
- * 不做 preventDefault —— 是否阻止默认行为由 closeFromEsc 内部决定。
+ * preventDefault：Esc 已被浮层消费，阻止浏览器再把它当作关闭请求关掉外层的原生 <dialog>。
  */
 function handleGlobalKeyDown(event: globalThis.KeyboardEvent) {
   if (event.key !== 'Escape') return;
   const top = overlayStackEntries[overlayStackEntries.length - 1];
   if (!top) return;
+  event.preventDefault();
   top.closeFromEsc();
 }
 
 /**
- * 全局 pointerdown 派发：仅栈顶 overlay 判断 inside / outside。
+ * 全局 pointerdown 派发：从栈顶往下，交给第一个接住的条目。
  * 嵌套场景"由内向外只关最近一层"自然成立 —— 内层先决定，外层不再被触发。
  */
 function handleGlobalPointerDown(event: PointerEvent) {
-  overlayStackEntries[overlayStackEntries.length - 1]?.closeFromOutside(event);
+  for (let i = overlayStackEntries.length - 1; i >= 0; i--) {
+    if (overlayStackEntries[i]!.closeFromOutside(event)) return;
+  }
 }
 
 export const overlayStack = {
