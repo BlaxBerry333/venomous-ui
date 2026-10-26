@@ -1,4 +1,5 @@
 import { forwardRef, type MouseEvent, type ReactNode } from 'react';
+import { mergeClassName } from '@internal/style';
 import '@packages/styles/components/Button.scss';
 import type { ButtonProps } from './Button.type';
 
@@ -35,9 +36,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   },
   ref,
 ) {
-  const classes = [BLOCK, `${BLOCK}--${variant}`, `${BLOCK}--size-${size}`, className]
-    .filter(Boolean)
-    .join(' ');
+  const classes = mergeClassName(
+    BLOCK,
+    `${BLOCK}--${variant}`,
+    `${BLOCK}--size-${size}`,
+    className,
+  );
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     if (loading) {

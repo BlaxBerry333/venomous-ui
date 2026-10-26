@@ -88,12 +88,12 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 | `packages/utils/helpers/classnames.ts`                 | `internal/style/classnames.ts`                   | `mergeClassName`                              |
 | `packages/react/hooks/use-isomorphic-layout-effect.ts` | `internal/react/use-isomorphic-layout-effect.ts` | SSR 安全的 layout effect                      |
 
-- [ ] 搬上表文件
-- [ ] 类型依赖：`floating.ts` 依赖 `ComponentBasePlacement`，`types/components.ts` 又依赖 `dom.ts` 的 `VirtualAnchorElement`，两者循环
-  - [ ] `ComponentBasePlacement` 放进 `internal/dom/floating.ts`，`VirtualAnchorElement` 留在 `internal/dom/dom.ts`
+- [x] 搬上表文件（`ComponentBasePlacement` 改名为 `internal/dom/floating.ts` 里的 `FloatingPlacement`；overlay-stack 的 pointer 派发简化为只交给栈顶）
+- [x] 类型依赖：`floating.ts` 依赖 `ComponentBasePlacement`，`types/components.ts` 又依赖 `dom.ts` 的 `VirtualAnchorElement`，两者循环
+  - [x] `ComponentBasePlacement` 放进 `internal/dom/floating.ts`，`VirtualAnchorElement` 留在 `internal/dom/dom.ts`
   - [ ] 旧 `packages/utils/types/components.ts` 里各组件的 base props，拆进各组件自己的 `*.type.ts`
-- [ ] 搬测试：`tests/utils/helpers/*` → `tests/internal/dom/*`，`tests/react/hooks/use-isomorphic-layout-effect.test.ts` → `tests/internal/react/`
-- [ ] ESLint 加依赖方向规则：`internal/dom`、`internal/style` 不得 import `react` / `react-dom`（给以后加 Vue 留余地；旧版的包边界规则已随重写删除）
+- [x] 搬测试：`tests/utils/helpers/*` → `tests/internal/dom/*`，`tests/react/hooks/use-isomorphic-layout-effect.test.ts` → `tests/internal/react/`
+- [x] ESLint 加依赖方向规则：`internal/dom`、`internal/style` 不得 import `react` / `react-dom`（给以后加 Vue 留余地；旧版的包边界规则已随重写删除）
 
 ## 2. 搬组件
 

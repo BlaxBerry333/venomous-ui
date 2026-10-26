@@ -52,6 +52,36 @@ export default tseslint.config(
     },
   },
 
+  // 框架无关层不得依赖 React，给以后加其他框架适配留余地
+  {
+    files: [
+      'internal/dom/**/*.{ts,tsx}',
+      'internal/style/**/*.{ts,tsx}',
+      'packages/styles/**/*.ts',
+    ],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            { name: 'react', message: '框架无关层不得依赖 react' },
+            { name: 'react-dom', message: '框架无关层不得依赖 react-dom' },
+          ],
+          patterns: [
+            {
+              group: ['@internal/react', '@internal/react/*'],
+              message: '框架无关层不得依赖 @internal/react',
+            },
+            {
+              group: ['@packages/react', '@packages/react/*'],
+              message: '框架无关层不得依赖 @packages/react',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
   // 测试文件：放宽 any
   {
     files: ['**/__tests__/**/*.{ts,tsx}', '**/*.test.{ts,tsx}'],
