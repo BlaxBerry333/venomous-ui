@@ -9,17 +9,24 @@
  * - 持久化、systemTheme 监听、跨 tab storage 监听、同 tab 跨实例同步都在 effect 内完成，
  *   server 期不触达 DOM。
  * - setTheme 接受 'system'，运行时按 prefers-color-scheme 解析成 resolvedTheme。
- * - attribute 只支持 data-*（不支持 class 模式 —— CSS 用 `[data-theme="dark"]` 选择器即可）。
+ * - 固定写 <html data-theme>，与 themes/dark.scss 的 `:root[data-theme='dark']` 对应。
+ *   自定义 themes 需要用户自己提供 `:root[data-theme='<name>']` 的 CSS。
+ * - storage 里的脏值（不在 themes 内）回落到 defaultTheme，不会原样写进 DOM。
  */
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  DEFAULT_STORAGE_KEY,
+  DEFAULT_THEMES,
+  THEME_ATTRIBUTE,
+  normalizeTheme,
+  type ColorScheme,
+} from '@internal/style';
 
 /* ============================================================================
  * Types
  * ============================================================================
  */
-
-type ColorScheme = 'light' | 'dark';
 
 export interface UseThemeOptions<T extends string = ColorScheme> {
   /** 可选主题列表；默认 `['light', 'dark']`。setTheme 入参受此约束 */
@@ -30,8 +37,6 @@ export interface UseThemeOptions<T extends string = ColorScheme> {
   enableSystem?: boolean;
   /** localStorage key；传 false 关闭持久化；默认 `'venomous-theme'` */
   storageKey?: string | false;
-  /** 写入哪个 DOM attribute；默认 `'data-theme'`，必须是 `data-*` */
-  attribute?: `data-${string}`;
 }
 
 export interface UseThemeReturn<T extends string = ColorScheme> {
@@ -50,21 +55,18 @@ export interface UseThemeReturn<T extends string = ColorScheme> {
 }
 
 /* ============================================================================
- * Defaults & helpers
+ * Helpers
  * ============================================================================
  */
 
-const DEFAULT_THEMES = ['light', 'dark'] as const;
-const DEFAULT_STORAGE_KEY = 'venomous-theme';
-const DEFAULT_ATTRIBUTE = 'data-theme' as const;
+const SYSTEM_DARK_QUERY = '(prefers-color-scheme: dark)';
 
 function getSystemColorScheme(): ColorScheme {
-  if (typeof window === 'undefined') return 'light';
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return window.matchMedia(SYSTEM_DARK_QUERY).matches ? 'dark' : 'light';
 }
 
 function readStoredTheme(storageKey: string | false): string | null {
-  if (storageKey === false || typeof window === 'undefined') return null;
+  if (storageKey === false) return null;
   try {
     return window.localStorage.getItem(storageKey);
   } catch {
@@ -72,8 +74,7 @@ function readStoredTheme(storageKey: string | false): string | null {
   }
 }
 
-function writeStoredTheme(storageKey: string | false, value: string): void {
-  if (storageKey === false || typeof window === 'undefined') return;
+function writeStoredTheme(storageKey: string, value: string): void {
   try {
     window.localStorage.setItem(storageKey, value);
   } catch {
@@ -81,16 +82,13 @@ function writeStoredTheme(storageKey: string | false, value: string): void {
   }
 }
 
-function applyToDom(attribute: string, value: string): void {
-  if (typeof document === 'undefined') return;
-  document.documentElement.setAttribute(attribute, value);
-}
-
 // 模块级 emitter：同 tab 多个 useTheme 实例 setTheme 时彼此通知。
 // （storage 事件只跨 tab 触发，同 tab 必须自己派发。）
-const themeChangeListeners = new Set<() => void>();
-function notifyThemeChange(): void {
-  for (const fn of themeChangeListeners) fn();
+// 直接传值而不是让监听方回读 storage：storage 不可用时回读拿到 null，会把刚设的主题覆盖回默认值。
+type ThemeChangeListener = (storageKey: string, value: string) => void;
+const themeChangeListeners = new Set<ThemeChangeListener>();
+function notifyThemeChange(storageKey: string, value: string): void {
+  for (const fn of themeChangeListeners) fn(storageKey, value);
 }
 
 /* ============================================================================
@@ -106,25 +104,31 @@ export function useTheme<T extends string = ColorScheme>(
     defaultTheme = 'system' as T | 'system',
     enableSystem = true,
     storageKey = DEFAULT_STORAGE_KEY,
-    attribute = DEFAULT_ATTRIBUTE,
   } = options;
 
   const [mounted, setMounted] = useState(false);
   const [theme, setThemeState] = useState<T | 'system' | undefined>(undefined);
   const [systemTheme, setSystemTheme] = useState<ColorScheme | undefined>(undefined);
 
+  // themes 常以内联数组传入，引用每次 render 都变；用内容做依赖，避免 effect 反复重订阅
+  const themesKey = themes.join('\n');
+  const normalize = useCallback(
+    (raw: string | null): T | 'system' =>
+      normalizeTheme(raw, { themes, enableSystem, defaultTheme }),
+    [themesKey, enableSystem, defaultTheme],
+  );
+
   // mount 时初始化
   useEffect(() => {
-    const stored = readStoredTheme(storageKey) as T | 'system' | null;
-    setThemeState(stored ?? defaultTheme);
+    setThemeState(normalize(readStoredTheme(storageKey)));
     if (enableSystem) setSystemTheme(getSystemColorScheme());
     setMounted(true);
-  }, [storageKey, defaultTheme, enableSystem]);
+  }, [normalize, storageKey, enableSystem]);
 
   // 监听系统偏好变化
   useEffect(() => {
-    if (!enableSystem || typeof window === 'undefined') return undefined;
-    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    if (!enableSystem) return undefined;
+    const mql = window.matchMedia(SYSTEM_DARK_QUERY);
     const handler = (e: MediaQueryListEvent): void => {
       setSystemTheme(e.matches ? 'dark' : 'light');
     };
@@ -132,30 +136,22 @@ export function useTheme<T extends string = ColorScheme>(
     return () => mql.removeEventListener('change', handler);
   }, [enableSystem]);
 
-  // 监听跨 tab storage 同步
-  useEffect(() => {
-    if (storageKey === false || typeof window === 'undefined') return undefined;
-    const handler = (e: StorageEvent): void => {
-      if (e.key !== storageKey) return;
-      const next = (e.newValue as T | 'system' | null) ?? defaultTheme;
-      setThemeState(next);
-    };
-    window.addEventListener('storage', handler);
-    return () => window.removeEventListener('storage', handler);
-  }, [storageKey, defaultTheme]);
-
-  // 监听同 tab 多实例同步（storage 事件不在同 tab 内触发，此处补）
+  // 监听跨 tab storage 同步 + 同 tab 多实例同步（storage 事件不在同 tab 内触发，此处补）
   useEffect(() => {
     if (storageKey === false) return undefined;
-    const listener = (): void => {
-      const stored = readStoredTheme(storageKey) as T | 'system' | null;
-      setThemeState(stored ?? defaultTheme);
+    const onStorage = (e: StorageEvent): void => {
+      if (e.key === storageKey) setThemeState(normalize(e.newValue));
     };
-    themeChangeListeners.add(listener);
+    const onChange: ThemeChangeListener = (key, value) => {
+      if (key === storageKey) setThemeState(normalize(value));
+    };
+    window.addEventListener('storage', onStorage);
+    themeChangeListeners.add(onChange);
     return () => {
-      themeChangeListeners.delete(listener);
+      window.removeEventListener('storage', onStorage);
+      themeChangeListeners.delete(onChange);
     };
-  }, [storageKey, defaultTheme]);
+  }, [storageKey, normalize]);
 
   // 'system' → resolve 成实际 color scheme
   const resolvedTheme = useMemo<T | undefined>(() => {
@@ -166,23 +162,23 @@ export function useTheme<T extends string = ColorScheme>(
 
   // resolvedTheme 变化时写 DOM
   useEffect(() => {
-    if (!mounted || resolvedTheme === undefined) return undefined;
-    applyToDom(attribute, resolvedTheme);
-    return undefined;
-  }, [mounted, resolvedTheme, attribute]);
+    if (resolvedTheme === undefined) return;
+    document.documentElement.setAttribute(THEME_ATTRIBUTE, resolvedTheme);
+  }, [resolvedTheme]);
 
   const setTheme = useCallback(
     (next: T | 'system'): void => {
       setThemeState(next);
+      if (storageKey === false) return;
       writeStoredTheme(storageKey, next);
-      notifyThemeChange();
+      notifyThemeChange(storageKey, next);
     },
     [storageKey],
   );
 
   const allThemes = useMemo<readonly (T | 'system')[]>(
-    () => (enableSystem ? (['system' as T | 'system', ...themes] as const) : themes),
-    [enableSystem, themes],
+    () => (enableSystem ? ['system' as const, ...themes] : themes),
+    [enableSystem, themesKey],
   );
 
   return {

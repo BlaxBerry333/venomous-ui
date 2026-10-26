@@ -14,7 +14,7 @@ export default tseslint.config(
       'dist',
       'storybook-static',
       '.cache',
-      'coverage',
+      '**/__coverage__',
       'pnpm-lock.yaml',
       '**/*.d.ts',
     ],

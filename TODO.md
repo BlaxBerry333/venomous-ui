@@ -30,7 +30,8 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 - [x] `configs/vitest.config.ts` 还在 import `@vitejs/plugin-vue`，但它已从依赖删除、`node_modules` 里也没有，配置加载即失败 → 删掉 vue 插件
 - [x] alias 只有 `@packages`，缺 `@internal`
 - [x] `coverage.include` 只含 `packages/**`，要加 `internal/**`；`exclude` 里的 `packages/utils/types/**` 已不存在，删掉
-- [ ] 覆盖率阈值 100%，`use-theme.ts` / `ThemeScript.tsx` 还没有测试，`npm test` 全量跑会因覆盖率失败 → 补这两个的测试
+- [x] 覆盖率阈值 100%，`use-theme.ts` / `ThemeScript.tsx` 还没有测试 → 已补，`npm test` 全量通过
+- [x] 覆盖率目录移到 `tests/__coverage__` 后，prettier / stylelint / eslint 的忽略规则还指向旧的 `coverage` → 已更新，`npm run check` 全量通过
 
 ### 构建
 
@@ -50,9 +51,10 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 
 ### useTheme / ThemeScript
 
-- [ ] Next.js 下 `ThemeScript` 在 hydrate 前改了 `<html data-theme>`，会出 hydration 警告 → overview 和 README 的示例里给 `<html>` 加 `suppressHydrationWarning`
-- [ ] `attribute` 和 `themes` 选项与 CSS 不配套：`dark.scss` 写死了 `[data-theme='dark']`，改 attribute 或加新主题后 CSS 不生效 → 删掉这两个选项，或在文档写清需要自己写对应 CSS
-- [ ] 从 localStorage 读到的值没按 `themes` 校验，脏值会原样写进 DOM
+- [x] Next.js 下 `ThemeScript` 在 hydrate 前改了 `<html data-theme>`，会出 hydration 警告 → overview 示例和组件注释里写明给 `<html>` 加 `suppressHydrationWarning`
+- [x] `attribute` 选项与 CSS 不配套 → 删掉，固定写 `data-theme`；`themes` 保留，注释写明自定义主题要自己提供 `:root[data-theme='<name>']` 的 CSS
+- [x] 从 localStorage 读到的值没按 `themes` 校验 → useTheme 和 ThemeScript 共用 `internal/style/theme.ts` 的校验，脏值回落到 defaultTheme
+- [x] localStorage 不可用时（如 Safari 禁用 cookie）`setTheme` 无效：同 tab 同步会回读 storage 拿到 null，把刚设的主题覆盖回默认值 → 同步时直接传值
 
 ### Button
 

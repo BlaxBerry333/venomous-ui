@@ -29,7 +29,8 @@ import 'venomous-ui/styles/themes/dark.css';
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    // ThemeScript sets data-theme on <html> before hydration
+    <html lang="en" suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
