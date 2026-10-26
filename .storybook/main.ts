@@ -1,12 +1,20 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import remarkGfm from 'remark-gfm';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 const config: StorybookConfig = {
   stories: ['./stories/**/*.mdx', './stories/**/*.stories.@(ts|tsx)'],
-  addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
+  addons: [
+    // MDX 默认不支持 GFM：不加 remark-gfm 时表格会被渲染成一行普通文字
+    {
+      name: '@storybook/addon-docs',
+      options: { mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } } },
+    },
+    '@storybook/addon-a11y',
+  ],
   framework: {
     name: '@storybook/react-vite',
     options: {},
