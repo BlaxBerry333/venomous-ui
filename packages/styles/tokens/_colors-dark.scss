@@ -1,0 +1,49 @@
+// =====================================================================
+// tokens/_colors-dark — dark 主题的颜色 + 阴影 token（mixin）
+//
+// 由 themes/dark.scss 在 [data-theme='dark'] 下 @include。
+// 几何 token 不重复声明（CSS variable 继承 :root 的 light 声明）。
+// =====================================================================
+
+@use 'palette' as *;
+
+@mixin venomous-colors-dark {
+  // --- colors ---
+  --venomous-color-bg: #{$venomous-gray-950};
+  --venomous-color-bg-elevated: #{$venomous-gray-900};
+  --venomous-color-bg-overlay: rgba(0, 0, 0, 0.7);
+
+  --venomous-color-fg: #{$venomous-gray-50};
+  --venomous-color-fg-muted: #{$venomous-gray-400};
+  --venomous-color-fg-subtle: #{$venomous-gray-600};
+
+  --venomous-color-border: #{$venomous-gray-800};
+  --venomous-color-border-strong: #{$venomous-gray-700};
+
+  --venomous-color-accent: #{$venomous-purple-500};
+  --venomous-color-accent-hover: #{$venomous-purple-400};
+  --venomous-color-accent-active: #{$venomous-purple-300};
+  --venomous-color-accent-fg: #{$venomous-gray-950};
+
+  --venomous-color-danger: #{$venomous-red-500};
+  --venomous-color-danger-hover: #{$venomous-red-600};
+  --venomous-color-danger-fg: #{$venomous-gray-50};
+
+  --venomous-color-success: #{$venomous-green-500};
+  --venomous-color-success-fg: #{$venomous-gray-950};
+
+  --venomous-color-warning: #{$venomous-yellow-500};
+  --venomous-color-warning-fg: #{$venomous-gray-950};
+
+  --venomous-color-info: #{$venomous-blue-500};
+  --venomous-color-info-fg: #{$venomous-gray-50};
+
+  // --- shadows (dark 主题阴影更深 + 用纯黑) ---
+  --venomous-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --venomous-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --venomous-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  --venomous-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --venomous-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  --venomous-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  --venomous-shadow-focus: 0 0 0 3px rgba(168, 85, 247, 0.5);
+}

@@ -1,0 +1,17 @@
+// =====================================================================
+// tokens — SCSS partial 集合；仅供 themes/ 内部 @use，**不输出独立 CSS、不对外暴露**。
+//
+// 文件清单（全部 `_*.scss` partial）：
+//   _palette.scss        — 原始色板 SCSS 变量（$venomous-gray-*, $venomous-purple-*, ...）
+//                          仅设计师 / themes 内部用，用户不可见
+//   _geometry.scss       — @mixin venomous-tokens-geometry —— 与主题无关的几何 token
+//                          (spacing / radius / motion / font / z-index)
+//   _colors-light.scss   — @mixin venomous-colors-light —— light 主题 color + shadow token
+//   _colors-dark.scss    — @mixin venomous-colors-dark  —— dark  主题 color + shadow token
+//
+// 两层抽象（设计系统最佳实践）：
+//   1. Palette  — 原料（具体色值，命名按色相 purple/gray/red…），**不对外**
+//   2. Semantic — 槽（命名按角色 accent/bg/fg/danger…），**对外**（用户可覆盖）
+//
+// 用户覆盖品牌色 → 覆盖 `--venomous-color-accent` 三件套（accent / hover / active）。
+// =====================================================================

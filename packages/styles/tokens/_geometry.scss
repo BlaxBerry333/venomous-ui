@@ -1,0 +1,82 @@
+// =====================================================================
+// tokens/_geometry — 与主题无关的几何 token（mixin 形式）
+//
+// 由 themes/light.scss 的 :root 块 @include；dark 不重复（CSS variable 继承）。
+// 包含：spacing / radius / motion / font / z-index
+// =====================================================================
+
+@mixin venomous-tokens-geometry {
+  // --- spacing (4px base scale) ---
+  --venomous-spacing-0: 0;
+  --venomous-spacing-1: 4px;
+  --venomous-spacing-2: 8px;
+  --venomous-spacing-3: 12px;
+  --venomous-spacing-4: 16px;
+  --venomous-spacing-5: 20px;
+  --venomous-spacing-6: 24px;
+  --venomous-spacing-8: 32px;
+  --venomous-spacing-10: 40px;
+  --venomous-spacing-12: 48px;
+  --venomous-spacing-16: 64px;
+
+  // --- radius ---
+  --venomous-radius-none: 0;
+  --venomous-radius-sm: 2px;
+  --venomous-radius-md: 4px;
+  --venomous-radius-lg: 8px;
+  --venomous-radius-xl: 12px;
+  --venomous-radius-2xl: 16px;
+  --venomous-radius-full: 9999px;
+
+  // --- motion ---
+  --venomous-motion-duration-instant: 0ms;
+  --venomous-motion-duration-fast: 150ms;
+  --venomous-motion-duration-base: 200ms;
+  --venomous-motion-duration-slow: 300ms;
+  --venomous-motion-duration-slower: 500ms;
+
+  --venomous-motion-easing-linear: linear;
+  --venomous-motion-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --venomous-motion-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --venomous-motion-easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --venomous-motion-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  // --- font ---
+  --venomous-font-family-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --venomous-font-family-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  --venomous-font-family-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+
+  --venomous-font-size-xs: 12px;
+  --venomous-font-size-sm: 14px;
+  --venomous-font-size-base: 16px;
+  --venomous-font-size-lg: 18px;
+  --venomous-font-size-xl: 20px;
+  --venomous-font-size-2xl: 24px;
+  --venomous-font-size-3xl: 30px;
+  --venomous-font-size-4xl: 36px;
+
+  --venomous-font-weight-regular: 400;
+  --venomous-font-weight-medium: 500;
+  --venomous-font-weight-semibold: 600;
+  --venomous-font-weight-bold: 700;
+
+  --venomous-font-leading-tight: 1.25;
+  --venomous-font-leading-base: 1.5;
+  --venomous-font-leading-relaxed: 1.75;
+
+  // --- z-index ---
+  --venomous-z-base: 0;
+  --venomous-z-raised: 10;
+  --venomous-z-dropdown: 100;
+  --venomous-z-sticky: 200;
+  --venomous-z-fixed: 300;
+  --venomous-z-overlay: 400;
+  --venomous-z-modal: 500;
+  --venomous-z-popover: 600;
+  --venomous-z-tooltip: 700;
+  --venomous-z-toast: 800;
+  --venomous-z-max: 9999;
+}

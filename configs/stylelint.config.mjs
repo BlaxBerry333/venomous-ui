@@ -30,5 +30,8 @@ export default {
 
     // 不强制合并 padding/margin shorthand（safe-area 等场景展开 4 个方向更可读）
     'declaration-block-no-redundant-longhand-properties': null,
+
+    // 文件头注释块用空的 `//` 行分段
+    'scss/comment-no-empty': null,
   },
 };

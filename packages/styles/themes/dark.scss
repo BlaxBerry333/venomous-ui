@@ -1,0 +1,12 @@
+// =====================================================================
+// themes/dark — dark 主题（仅覆盖 color + shadow）
+//
+// 几何 token 复用 light 的 :root 声明（CSS 变量继承机制）。
+// 切换方式：JS 写 <html data-theme="dark">，或用 useTheme hook 自动管理。
+// =====================================================================
+
+@use '../tokens/colors-dark' as c;
+
+[data-theme='dark'] {
+  @include c.venomous-colors-dark;
+}

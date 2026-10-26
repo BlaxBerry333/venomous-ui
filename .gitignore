@@ -14,7 +14,7 @@ storybook-static/
 # Logs & coverage
 *.log
 npm-debug.log*
-coverage/
+tests/__coverage__/
 
 # OS
 .DS_Store

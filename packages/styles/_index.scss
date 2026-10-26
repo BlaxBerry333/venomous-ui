@@ -1,0 +1,17 @@
+// =====================================================================
+// styles — 框架无关的样式资产；"一份设计方案"的物质载体。
+//
+// 子目录：
+//   reset.scss      — 极简全局重置（不依赖 token，可独立使用）
+//   tokens/         — SCSS partial 集合（palette + geometry mixin + colors-{light,dark} mixin），
+//                     仅供 themes/ 内部 @use，**不输出独立 CSS、不进 exports**
+//   themes/         — 编译输出主题 CSS（light 一站式所有 token；dark 仅覆盖 color/shadow）
+//   classnames/     — 全局 utility class（typography 等可选层）
+//   components/     — 每个对外组件对应一份 SCSS（被框架组件 import 触发副作用，
+//                     编译产物存在于 dist 但不通过 exports 暴露）
+//
+// package.json exports 实际暴露 3 类：reset.css / themes/*.css / classnames/*.css
+// （components/*.css 与 tokens/*.css 都不暴露 —— 见各子目录 _index.scss 说明）。
+//
+// 此文件为 partial（`_*.scss`），仅作说明，不输出独立 CSS。
+// =====================================================================

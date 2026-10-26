@@ -1,0 +1,51 @@
+// =====================================================================
+// tokens/_palette — 原始色板（SCSS 变量，仅设计师 / themes 内部使用）
+//
+// 不输出 CSS 变量；不向终端用户暴露。
+// 作用：themes/*.scss 用它给 --venomous-color-* 语义槽赋值时的"原料"。
+//
+// 色板选用：
+//   - gray   ← Tailwind v3 zinc（中性偏暖，对比平衡）
+//   - purple ← Tailwind v3 purple（默认 accent，呼应 venomous 命名）
+//   - red / green / yellow / blue ← 状态色，从 Tailwind 取常用 3 阶
+// =====================================================================
+
+// --- Gray scale (Zinc) ---
+$venomous-gray-50: #fafafa;
+$venomous-gray-100: #f4f4f5;
+$venomous-gray-200: #e4e4e7;
+$venomous-gray-300: #d4d4d8;
+$venomous-gray-400: #a1a1aa;
+$venomous-gray-500: #71717a;
+$venomous-gray-600: #52525b;
+$venomous-gray-700: #3f3f46;
+$venomous-gray-800: #27272a;
+$venomous-gray-900: #18181b;
+$venomous-gray-950: #09090b;
+
+// --- Accent: Purple ---
+$venomous-purple-50: #faf5ff;
+$venomous-purple-100: #f3e8ff;
+$venomous-purple-200: #e9d5ff;
+$venomous-purple-300: #d8b4fe;
+$venomous-purple-400: #c084fc;
+$venomous-purple-500: #a855f7;
+$venomous-purple-600: #9333ea;
+$venomous-purple-700: #7e22ce;
+$venomous-purple-800: #6b21a8;
+$venomous-purple-900: #581c87;
+$venomous-purple-950: #3b0764;
+
+// --- Status colors ---
+$venomous-red-500: #ef4444;
+$venomous-red-600: #dc2626;
+$venomous-red-700: #b91c1c;
+$venomous-green-500: #22c55e;
+$venomous-green-600: #16a34a;
+$venomous-green-700: #15803d;
+$venomous-yellow-500: #eab308;
+$venomous-yellow-600: #ca8a04;
+$venomous-yellow-700: #a16207;
+$venomous-blue-500: #3b82f6;
+$venomous-blue-600: #2563eb;
+$venomous-blue-700: #1d4ed8;

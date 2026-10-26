@@ -1,0 +1,10 @@
+// =====================================================================
+// styles/components — 每个对外组件对应一份 SCSS（与 packages/react/components 同名）。
+//
+// 命名约定：BEM 风 `.venomous--<Name>__<element>--<modifier>`。
+// 由对应框架组件文件顶部 `import '@packages/styles/components/<Name>.scss'`
+// 触发自动副作用导入，用户无需手动 import 组件 CSS。
+//
+// 编译产物 dist/styles/components/<Name>.css 存在但**不通过 exports 对外暴露**
+// （`package.json` 没有 `./styles/components/*.css` 这条），仅供组件 JS 副作用引用。
+// =====================================================================

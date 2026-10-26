@@ -1,29 +1,69 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { useTranslation, useTranslationList } from '../../i18n/useTranslation';
-import { StoryCodeBlockGroup } from '../__shared__';
 
-<Meta name="Overview" />
+<Meta title="Introduction/Overview" />
 
 # venomous-ui
 
-{useTranslationList('introduction.description').map((t, i) => <p key={i}>{t}</p>)}
+A multi-framework UI design system with a distinct visual language.
 
-<br />
+## Goals
 
-## {useTranslation('introduction.motivation.title')}
+- **One design, many frameworks.** React-first; Vue / others can be added later — the SCSS layer is framework-agnostic.
+- **No headless escape hatch.** Components ship with venomous styles by design; the look _is_ the point.
+- **SSR-ready.** All interactive components render correctly under Next.js / Remix / Astro.
 
-<p>{useTranslation('introduction.motivation.body')}</p>
+## Install
 
-<br />
+```sh
+npm install github:BlaxBerry333/venomous-ui#release
+```
 
-## {useTranslation('introduction.installation.title')}
+## Quick start (Next.js App Router)
 
-<p>{useTranslation('introduction.installation.body')}</p>
+```tsx
+// app/layout.tsx
+import { ThemeScript } from 'venomous-ui/react';
+import 'venomous-ui/styles/reset.css';
+import 'venomous-ui/styles/themes/light.css';
+import 'venomous-ui/styles/themes/dark.css';
 
-<StoryCodeBlockGroup
-  tabs={[
-    { title: 'npm', lang: 'bash', code: 'npm install github:BlaxBerry333/venomous-ui#release' },
-    { title: 'yarn', lang: 'bash', code: 'yarn add github:BlaxBerry333/venomous-ui#release' },
-    { title: 'pnpm', lang: 'bash', code: 'pnpm add github:BlaxBerry333/venomous-ui#release' },
-  ]}
-/>
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head>
+        <ThemeScript />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## Switching theme
+
+```tsx
+'use client';
+import { useTheme } from 'venomous-ui/react';
+
+function ThemeToggle() {
+  const { resolvedTheme, setTheme, mounted } = useTheme();
+  if (!mounted) return null;
+  return (
+    <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
+      {resolvedTheme === 'dark' ? '☀️' : '🌙'}
+    </button>
+  );
+}
+```
+
+## Customize brand color
+
+Override the semantic accent slot in your own CSS:
+
+```css
+:root {
+  --venomous-color-accent: #16a34a;
+  --venomous-color-accent-hover: #15803d;
+  --venomous-color-accent-active: #14532d;
+}
+```

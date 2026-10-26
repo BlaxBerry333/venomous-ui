@@ -1,0 +1,14 @@
+// =====================================================================
+// themes/light — 默认主题；同时是几何 token 的"宿主"
+//
+// 一站式：用户 import 这一个文件即可拿到全部 token + 默认 light 配色。
+// 写在 :root 下 —— 无 data-theme attribute 时即生效。
+// =====================================================================
+
+@use '../tokens/geometry' as g;
+@use '../tokens/colors-light' as c;
+
+:root {
+  @include g.venomous-tokens-geometry;
+  @include c.venomous-colors-light;
+}

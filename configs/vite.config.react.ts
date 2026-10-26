@@ -13,11 +13,17 @@ const root = resolve(__dirname, '..');
 const src = resolve(root, 'packages/react');
 const out = resolve(root, 'dist/react');
 
-const entry = Object.fromEntries(
-  globSync(['components/index.ts', 'components/*/index.ts', 'hooks/*.ts', 'hooks/*.tsx'], {
-    cwd: src,
-  }).map((p) => [p.replace(/\.tsx?$/, ''), resolve(src, p)]),
-);
+// entry：根 barrel + 每个组件子目录的 index。
+// 源码结构：packages/react/index.ts + packages/react/<Name>/index.ts
+// 产物结构：dist/react/index.js + dist/react/<Name>/index.js
+// （与 package.json exports 的 "./react" / "./react/*" 一一对齐）
+const entry = Object.fromEntries([
+  ['index', resolve(src, 'index.ts')],
+  ...globSync('*/index.ts', { cwd: src }).map((p) => {
+    const name = p.split('/')[0];
+    return [`${name}/index`, resolve(src, p)];
+  }),
+]);
 
 export default defineConfig({
   build: {
@@ -42,12 +48,7 @@ export default defineConfig({
     dts({
       entryRoot: src,
       outDir: out,
-      include: [
-        resolve(src, 'components/**/*.ts'),
-        resolve(src, 'components/**/*.tsx'),
-        resolve(src, 'hooks/**/*.ts'),
-      ],
-      exclude: [resolve(src, 'index.ts')],
+      include: [resolve(src, '**/*.ts'), resolve(src, '**/*.tsx')],
       rollupTypes: false,
       tsconfigPath: resolve(root, 'tsconfig.json'),
       compilerOptions: { rootDir: src },

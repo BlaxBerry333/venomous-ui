@@ -2,12 +2,15 @@
   "extends": "./configs/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@packages/*": ["./packages/*"]
+      "@packages/*": ["./packages/*"],
+      "@internal/*": ["./internal/*"]
     }
   },
   "include": [
     "packages/**/*.ts",
     "packages/**/*.tsx",
+    "internal/**/*.ts",
+    "internal/**/*.tsx",
     "configs/**/*.ts",
     "tests/**/*.ts",
     "tests/**/*.tsx",

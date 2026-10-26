@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
-  "description": "Multi-framework headless component library (Headless Core + Adapter), distributed via GitHub branch.",
+  "description": "",
   "license": "MIT",
   "author": "BlaxBerry333",
   "repository": {
@@ -22,66 +22,17 @@
     "**/*.scss"
   ],
   "exports": {
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./react/*": {
+      "types": "./dist/react/*/index.d.ts",
+      "import": "./dist/react/*/index.js"
+    },
     "./styles/reset.css": "./dist/styles/reset.css",
-    "./styles/tokens/*.css": "./dist/styles/tokens/*.css",
+    "./styles/themes/*.css": "./dist/styles/themes/*.css",
     "./styles/classnames/*.css": "./dist/styles/classnames/*.css",
-    "./styles/components/*.css": "./dist/styles/components/*.css",
-    "./utils/helpers": {
-      "types": "./dist/utils/helpers/index.d.ts",
-      "import": "./dist/utils/helpers/index.js"
-    },
-    "./utils/helpers/*": {
-      "types": "./dist/utils/helpers/*.d.ts",
-      "import": "./dist/utils/helpers/*.js"
-    },
-    "./utils/tokens": {
-      "types": "./dist/utils/tokens/index.d.ts",
-      "import": "./dist/utils/tokens/index.js"
-    },
-    "./utils/tokens/*": {
-      "types": "./dist/utils/tokens/*.d.ts",
-      "import": "./dist/utils/tokens/*.js"
-    },
-    "./utils/classnames": {
-      "types": "./dist/utils/classnames/index.d.ts",
-      "import": "./dist/utils/classnames/index.js"
-    },
-    "./utils/classnames/*": {
-      "types": "./dist/utils/classnames/*.d.ts",
-      "import": "./dist/utils/classnames/*.js"
-    },
-    "./react/components": {
-      "types": "./dist/react/components/index.d.ts",
-      "import": "./dist/react/components/index.js"
-    },
-    "./react/components/*": {
-      "types": "./dist/react/components/*/index.d.ts",
-      "import": "./dist/react/components/*/index.js"
-    },
-    "./react/hooks": {
-      "types": "./dist/react/hooks/index.d.ts",
-      "import": "./dist/react/hooks/index.js"
-    },
-    "./react/hooks/*": {
-      "types": "./dist/react/hooks/*.d.ts",
-      "import": "./dist/react/hooks/*.js"
-    },
-    "./vue/components": {
-      "types": "./dist/vue/components/index.d.ts",
-      "import": "./dist/vue/components/index.js"
-    },
-    "./vue/components/*": {
-      "types": "./dist/vue/components/*/index.d.ts",
-      "import": "./dist/vue/components/*/index.js"
-    },
-    "./vue/composables": {
-      "types": "./dist/vue/composables/index.d.ts",
-      "import": "./dist/vue/composables/index.js"
-    },
-    "./vue/composables/*": {
-      "types": "./dist/vue/composables/*.d.ts",
-      "import": "./dist/vue/composables/*.js"
-    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -91,17 +42,13 @@
   ],
   "peerDependencies": {
     "react": ">=18.0.0 || >=19.0.0",
-    "react-dom": ">=18.0.0 || >=19.0.0",
-    "vue": ">=3.5.0"
+    "react-dom": ">=18.0.0 || >=19.0.0"
   },
   "peerDependenciesMeta": {
     "react": {
       "optional": true
     },
     "react-dom": {
-      "optional": true
-    },
-    "vue": {
       "optional": true
     }
   },
@@ -114,10 +61,8 @@
     "@types/node": "^25.6.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-vue": "^6.0.6",
     "@vitest/coverage-v8": "^4.1.6",
     "@vitest/ui": "^4.1.6",
-    "@vue/test-utils": "^2.4.10",
     "concurrently": "^9.2.1",
     "cspell": "^10.0.0",
     "eslint": "^10.2.1",
@@ -137,8 +82,7 @@
     "typescript-eslint": "^8.59.0",
     "vite": "^8.0.10",
     "vite-plugin-dts": "^4.4.0",
-    "vitest": "^4.1.5",
-    "vue": "^3.5.33"
+    "vitest": "^4.1.5"
   },
   "scripts": {
     "check:eslint": "eslint --config configs/eslint.config.mjs --cache --cache-location .cache/eslint .",
@@ -146,9 +90,7 @@
     "check:stylelint": "stylelint --config configs/stylelint.config.mjs --ignore-path configs/.stylelintignore --cache --cache-location .cache/stylelint \"packages/**/*.scss\"",
     "check:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --cache --cache-location .cache/prettier --check .",
     "check:spell": "cspell --config configs/cspell.json --no-progress --gitignore --cache --cache-location .cache/cspell \"**/*.{ts,tsx,mjs,cjs,md,scss}\"",
-    "check:design-tokens": "node scripts/check-tokens.mjs",
-    "check:classnames": "node scripts/check-classnames.mjs",
-    "check": "concurrently -g --kill-others-on-fail -n tsc,eslint,prettier,spell,stylelint,design-tokens,classnames -c gray,blue,cyan,green,yellow,red,magenta \"npm:check:typescript\" \"npm:check:eslint\" \"npm:check:prettier\" \"npm:check:spell\" \"npm:check:stylelint\" \"npm:check:design-tokens\" \"npm:check:classnames\"",
+    "check": "concurrently -g --kill-others-on-fail -n tsc,eslint,prettier,spell,stylelint -c gray,blue,cyan,green,yellow \"npm:check:typescript\" \"npm:check:eslint\" \"npm:check:prettier\" \"npm:check:spell\" \"npm:check:stylelint\"",
     "fix:eslint": "eslint --config configs/eslint.config.mjs --fix .",
     "fix:stylelint": "stylelint --config configs/stylelint.config.mjs --ignore-path configs/.stylelintignore --fix \"packages/**/*.scss\"",
     "fix:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write .",
@@ -160,10 +102,8 @@
     "test:ui": "vitest --config configs/vitest.config.ts --coverage --ui",
     "test:watch": "vitest --config configs/vitest.config.ts",
     "build:styles": "vite build --config configs/vite.config.styles.ts",
-    "build:utils": "vite build --config configs/vite.config.utils.ts",
     "build:react": "vite build --config configs/vite.config.react.ts",
-    "build:vue": "vite build --config configs/vite.config.vue.ts",
-    "build": "rm -rf dist && npm run build:styles && npm run build:utils && npm run build:react && npm run build:vue",
+    "build": "rm -rf dist && npm run build:styles && npm run build:react",
     "dev": "storybook dev -p 6006",
     "dev:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build -o storybook-static",

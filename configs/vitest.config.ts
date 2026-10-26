@@ -6,14 +6,13 @@
  */
 
 import { fileURLToPath, URL } from 'node:url';
-import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  plugins: [vue()],
   resolve: {
     alias: {
       '@packages': fileURLToPath(new URL('../packages', import.meta.url)),
+      '@internal': fileURLToPath(new URL('../internal', import.meta.url)),
     },
   },
   test: {
@@ -26,8 +25,9 @@ export default defineConfig({
     ],
     coverage: {
       provider: 'v8',
-      include: ['packages/**/*.{ts,tsx,vue}'],
-      exclude: ['**/index.ts', '**/*.type.ts', '**/*.d.ts', 'packages/utils/types/**'],
+      reportsDirectory: 'tests/__coverage__',
+      include: ['packages/**/*.{ts,tsx}', 'internal/**/*.{ts,tsx}'],
+      exclude: ['**/index.ts', '**/*.type.ts', '**/*.d.ts'],
       reporter: ['text', 'html'],
       thresholds: {
         lines: 100,

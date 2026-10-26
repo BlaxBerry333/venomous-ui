@@ -1,0 +1,49 @@
+// =====================================================================
+// tokens/_colors-light — light 主题的颜色 + 阴影 token（mixin）
+//
+// 由 themes/light.scss 在 :root 下 @include。
+// 颜色取自 _palette；用户覆盖品牌色直接改 --venomous-color-* CSS 变量即可。
+// =====================================================================
+
+@use 'palette' as *;
+
+@mixin venomous-colors-light {
+  // --- colors ---
+  --venomous-color-bg: #{$venomous-gray-50};
+  --venomous-color-bg-elevated: #{$venomous-gray-100};
+  --venomous-color-bg-overlay: rgba(0, 0, 0, 0.5);
+
+  --venomous-color-fg: #{$venomous-gray-900};
+  --venomous-color-fg-muted: #{$venomous-gray-600};
+  --venomous-color-fg-subtle: #{$venomous-gray-400};
+
+  --venomous-color-border: #{$venomous-gray-200};
+  --venomous-color-border-strong: #{$venomous-gray-300};
+
+  --venomous-color-accent: #{$venomous-purple-600};
+  --venomous-color-accent-hover: #{$venomous-purple-700};
+  --venomous-color-accent-active: #{$venomous-purple-800};
+  --venomous-color-accent-fg: #{$venomous-gray-50};
+
+  --venomous-color-danger: #{$venomous-red-600};
+  --venomous-color-danger-hover: #{$venomous-red-700};
+  --venomous-color-danger-fg: #{$venomous-gray-50};
+
+  --venomous-color-success: #{$venomous-green-600};
+  --venomous-color-success-fg: #{$venomous-gray-50};
+
+  --venomous-color-warning: #{$venomous-yellow-600};
+  --venomous-color-warning-fg: #{$venomous-gray-50};
+
+  --venomous-color-info: #{$venomous-blue-600};
+  --venomous-color-info-fg: #{$venomous-gray-50};
+
+  // --- shadows ---
+  --venomous-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --venomous-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --venomous-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --venomous-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --venomous-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --venomous-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  --venomous-shadow-focus: 0 0 0 3px rgba(168, 85, 247, 0.4); // purple-500 alpha
+}

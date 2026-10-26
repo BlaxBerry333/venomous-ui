@@ -1,34 +1,19 @@
-// Storybook preview iframe 专用底色 —— 让 story canvas 跟随 globals.theme。
-// 这里只在 .storybook/preview.tsx 中 import，污染范围限于 storybook。
+// =====================================================================
+// preview.scss — Storybook canvas 全局补丁
+//
+// 让 canvas 背景 / 文字 / 字体跟随 venomous theme 切换；toolbar 切 theme 时
+// 整个 storybook 画布会平滑过渡，组件不必自带画布背景。
+// =====================================================================
 
-html,
 body {
-  // color-scheme 让浏览器把表单控件 / 滚动条等 user-agent 颜色跟随当前主题切换；
-  // 否则原生 <button> / <input> 在 dark 下仍是浅色底，再叠加我们设的 body color 会出现
-  // 「浅底浅字」对比度坏掉的问题。
-  color-scheme: light;
-  background: var(--venomous-color-gray-100);
-  color: var(--venomous-color-gray-900);
+  background-color: var(--venomous-color-bg);
+  color: var(--venomous-color-fg);
+  font-family: var(--venomous-font-family-sans);
   transition:
-    background-color var(--venomous-motion-duration-1) var(--venomous-motion-easing-1),
-    color var(--venomous-motion-duration-1) var(--venomous-motion-easing-1);
+    background-color var(--venomous-motion-duration-base) var(--venomous-motion-easing-standard),
+    color var(--venomous-motion-duration-base) var(--venomous-motion-easing-standard);
 }
 
-// :root.dark 本身就是 <html>，不能嵌套 `html, body`（产物 `:root.dark html` 永远不匹配，
-// 导致 <html> 元素在 dark 下没有规则生效，背景退回 user-agent 浅色，出现下方一大块
-// 「浅色漏出」。这里顶层选择器直接命中 <html>，配合 :root.dark body 覆盖 body。
-:root.dark,
-[data-theme='dark'] {
-  color-scheme: dark;
-  background: var(--venomous-color-gray-900);
-  color: var(--venomous-color-gray-100);
-}
-
-:root.dark body,
-[data-theme='dark'] body {
-  // body 必须显式设 color-scheme: dark，否则 light 模式那条 `html, body { color-scheme: light }`
-  // 仍然命中 body，user-agent 控件（button / input / scrollbar）就跟着走 light 配色。
-  color-scheme: dark;
-  background: var(--venomous-color-gray-900);
-  color: var(--venomous-color-gray-100);
+#storybook-root {
+  padding: 24px;
 }

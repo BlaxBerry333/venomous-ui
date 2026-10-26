@@ -10,8 +10,9 @@ const root = resolve(__dirname, '..');
 const src = resolve(root, 'packages/styles');
 
 // `_*.scss` 是 SCSS partial 约定（仅供其他 SCSS @use，不作为独立产物对外暴露）。
+// tokens/* 整体走 partial 路线 —— 由 themes/*.scss @use 后聚合输出，不在此 glob 中。
 const input = Object.fromEntries(
-  globSync(['reset.scss', 'tokens/*.scss', 'classnames/*.scss', 'components/*.scss'], {
+  globSync(['reset.scss', 'themes/*.scss', 'classnames/*.scss', 'components/*.scss'], {
     cwd: src,
     ignore: ['**/_*.scss'],
   }).map((p) => [p.replace(/\.scss$/, ''), resolve(src, p)]),
