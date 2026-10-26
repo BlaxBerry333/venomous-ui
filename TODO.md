@@ -155,6 +155,35 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
   - [x] Button 内部挂了 onClick 却没标 `'use client'`，在服务端组件里用会构建失败 → 补上，并加测试：用了 hooks 或事件处理的组件文件必须带该指令
   - [x] Tabs 靠扫描 children 的组件类型配对，在服务端组件里传入的子元素类型是客户端引用，结果什么都不渲染 → 改为显式结构：`TabList` 包 `TabTitle`，`TabTitle` / `TabPanel` 用 `value` 配对
   - [x] 主题只定义 token，不设置页面底色和文字色，切到亮色后页面仍是浏览器默认底色 → `light.css` 在 `:root` 上设置底色、文字色、字体
-- [ ] Storybook 文档更新，确认 GitHub Pages 部署流程能用
-- [ ] 加 remote，用本地历史覆盖 GitHub `main`（需要 force push，执行前单独确认）
-- [ ] 确认 `.github/workflows/release.yml` 能产出新的 `release` 分支
+- [x] Storybook 文档更新，确认 GitHub Pages 部署流程能用：部署成功，线上 38 个 story
+- [x] 加 remote，用本地历史覆盖 GitHub `main`：`9874c6c` → `5b30a66`（旧版仍可从 `9874c6c` 取回）
+- [x] 确认 `.github/workflows/release.yml` 能产出新的 `release` 分支：`4e3f0c1`；用 `npm install github:BlaxBerry333/venomous-ui#release` 装进 Next.js 项目可正常构建
+
+## 5. 下一步
+
+定位：不和 Radix / shadcn 比组件数量，卖点是「基于浏览器原生能力 + 自己的视觉风格」。
+
+### 验证（优先）
+
+- [ ] 用 VoiceOver 走一遍所有组件：名称、角色、状态是否读对；Dialog / Popover 打开关闭时焦点去向；Toast 是否播报
+- [ ] 在 Safari、Firefox 上抽查：Dialog 动画、Popover / Tooltip 定位（Anchor Positioning 与 JS 兜底两条路径）、top layer
+- [ ] 暗色主题逐个组件检查（目前只抽查了 Tabs、Toast、Popover）
+- [ ] 加视觉回归测试（Storybook 截图对比），改样式时不再只靠肉眼
+
+### 补组件
+
+| 优先级 | 组件                       | 备注                                                                            | 状态 |
+| ------ | -------------------------- | ------------------------------------------------------------------------------- | ---- |
+| 高     | DropdownMenu               | 复用 `useFloating` 与浮层栈；menu 键盘模型（方向键、输入跳转、Esc 归还焦点）    | [ ]  |
+| 高     | Accordion                  | 可考虑基于原生 `<details>`，注意动画与单开 / 多开                               | [ ]  |
+| 中     | Select（自绘） / Combobox  | listbox 键盘模型、输入过滤、active-descendant；见「已定的实现方式」里暂缓的理由 | [ ]  |
+| 中     | Slider                     | 原生 `input[type=range]` 加样式优先                                             | [ ]  |
+| 低     | ContextMenu                | 需要虚拟锚点（`anchorEl`），届时再加回                                          | [ ]  |
+| 低     | NavigationMenu、DatePicker | 复杂度高，等有明确需求                                                          | [ ]  |
+
+### 其他
+
+- [ ] RTL（从右往左的文字）支持：方向键语义、定位、样式的左右翻转
+- [ ] `tokens.mdx` 改为从 SCSS 生成（见第 0 段）
+- [ ] 需要时补回 Vue 适配：样式层与 `internal/dom`、`internal/style` 已不依赖 React
+- [ ] 需要时恢复文档的中文 / 日文版本（旧实现在 `00c7e2b`）
