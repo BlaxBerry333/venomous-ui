@@ -16,7 +16,8 @@
     "tests/**/*.tsx",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
-    ".storybook/**/*.d.ts"
+    ".storybook/**/*.d.ts",
+    "types/*.d.ts"
   ],
   "exclude": ["node_modules", "dist"]
 }

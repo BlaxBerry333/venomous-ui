@@ -28,11 +28,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # - name: Build all frameworks
-      #   run: |
-      #     npm run clean:dist
-      #     npm run build:react
-      #     npm run build:vue
+      - name: Build
+        run: npm run build
 
       - name: Get version from package.json
         id: pkg

@@ -33,6 +33,7 @@
     "./styles/reset.css": "./dist/styles/reset.css",
     "./styles/themes/*.css": "./dist/styles/themes/*.css",
     "./styles/classnames/*.css": "./dist/styles/classnames/*.css",
+    "./styles/components/*.css": "./dist/styles/components/*.css",
     "./package.json": "./package.json"
   },
   "files": [
