@@ -9,11 +9,12 @@
 
 ## 已定的实现方式
 
-| 事项                 | 决定                                                                                                                                         | 理由                                                              |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| 组件样式怎么带给用户 | 构建时把组件里的 `import '...scss'` 改写成 `import 'venomous-ui/styles/components/<Name>.css'`（包自引用），组件 CSS 同时通过 `exports` 暴露 | 不新增依赖；用户 bundler 按 import 自动带上样式，也能手动按需引入 |
-| `'use client'`       | React 产物开 `preserveModules`，一个源文件一个产物                                                                                           | 模块级指令自然保留，不需要额外插件；顺带按组件 tree-shake         |
-| 推送 GitHub          | 只在本地提交，覆盖 GitHub 前单独确认                                                                                                         | force push 不可逆                                                 |
+| 事项                           | 决定                                                                                                                                         | 理由                                                              |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| 组件样式怎么带给用户           | 构建时把组件里的 `import '...scss'` 改写成 `import 'venomous-ui/styles/components/<Name>.css'`（包自引用），组件 CSS 同时通过 `exports` 暴露 | 不新增依赖；用户 bundler 按 import 自动带上样式，也能手动按需引入 |
+| `'use client'`                 | React 产物开 `preserveModules`，一个源文件一个产物                                                                                           | 模块级指令自然保留，不需要额外插件；顺带按组件 tree-shake         |
+| 推送 GitHub                    | 只在本地提交，覆盖 GitHub 前单独确认                                                                                                         | force push 不可逆                                                 |
+| Storybook 多语言文档、品牌外观 | 暂不恢复，文档只做英文                                                                                                                       | 组件还没补齐，先把精力放在组件上；旧实现在 `00c7e2b` 里随时可取   |
 
 旧代码取法：
 
@@ -66,10 +67,12 @@ git show 00c7e2b:packages/utils/helpers/floating.ts
 
 ### 其他
 
-- [ ] `package.json` 的 `description` 是空的，补上
-- [ ] `README.md` 还写着 headless + 三种用法，改成新定位
-- [ ] Storybook 工具栏有语言切换，但 `.storybook/i18n/dict.ts` 没被任何地方使用，切了没反应 → 接上或先去掉切换按钮
-- [ ] `.vscode/settings.json` 还引用已删除的 `vite.config.utils.ts`
+- [x] `package.json` 的 `description` 是空的，补上
+- [x] `README.md` 还写着 headless + 三种用法，改成新定位（Storybook 链接也改成现有的 overview 页）
+- [x] Storybook 工具栏有语言切换，但 `.storybook/i18n/dict.ts` 没被任何地方使用 → 去掉切换按钮和 `dict.ts`，文档先只做英文
+- [x] `.vscode/settings.json` 还引用已删除的 `vite.config.utils.ts`
+- [x] Storybook 的 GitHub Pages 部署流程在重写里丢了（README 还链接着）→ 补回 `.github/workflows/deploy-storybook.yml`
+- [x] `.claude/CLAUDE.md` 要求写 story 前读已删除的 `STORY_TEMPLATE.md` → 改成以 `Button.stories.tsx` 为范本
 
 ## 1. 补底座 `internal/`
 

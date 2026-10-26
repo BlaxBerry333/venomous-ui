@@ -25,7 +25,6 @@
   },
   "material-icon-theme.files.associations": {
     "vite.config.react.ts": "vite",
-    "vite.config.styles.ts": "vite",
-    "vite.config.utils.ts": "vite"
+    "vite.config.styles.ts": "vite"
   }
 }

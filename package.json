@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
-  "description": "",
+  "description": "Styled React component library with light/dark themes and SSR support.",
   "license": "MIT",
   "author": "BlaxBerry333",
   "repository": {

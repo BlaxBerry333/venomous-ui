@@ -1,24 +1,15 @@
 # venomous-ui
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.18-brightgreen.svg)](https://nodejs.org/)
-[![Storybook](https://img.shields.io/badge/Storybook-Live%20Demo-FF4785?logo=storybook&logoColor=white)](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome)
+[![Storybook](https://img.shields.io/badge/Storybook-Live%20Demo-FF4785?logo=storybook&logoColor=white)](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction-overview--docs)
 
-`venomous-ui` is a headless UI library that ships behavior, accessibility, and keyboard interaction for common interactive primitives — but not styles. The same component logic runs on both React and Vue from a shared core.
+A styled React component library with its own visual language.
 
-Pick how much of it you want:
-
-- **Components only** — bring your own CSS.
-- **Components + built-in styles** — opt into the bundled SCSS for a working look out of the box.
-- **Styles only** — skip the components, write your own markup, and apply the bundled class names.
-
-## Documentation
-
-Hosted on GitHub Pages:
-
-- [English](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome)
-- [中文](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome&globals=locale:zh)
-- [日本語](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome&globals=locale:ja)
+- **Styled by design** — components ship with venomous styles; importing a component loads its CSS
+- **Light / dark themes** — switch with `useTheme`, no flash on load with `ThemeScript`
+- **Themeable** — override semantic CSS variables such as `--venomous-color-accent`
+- **SSR-ready** — works with Next.js App Router and other SSR frameworks
+- **Accessible** — keyboard interaction and ARIA semantics built in
 
 ## Installation
 
@@ -27,6 +18,42 @@ Not published to npm yet — install directly from GitHub:
 ```bash
 npm install github:BlaxBerry333/venomous-ui#release
 ```
+
+Requires React 18 or 19.
+
+## Quick start
+
+```tsx
+// app/layout.tsx (Next.js App Router)
+import { ThemeScript } from 'venomous-ui/react';
+import 'venomous-ui/styles/reset.css';
+import 'venomous-ui/styles/themes/light.css';
+import 'venomous-ui/styles/themes/dark.css';
+
+export default function RootLayout({ children }) {
+  return (
+    // ThemeScript sets data-theme on <html> before hydration
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+```tsx
+import { Button } from 'venomous-ui/react';
+
+export function Page() {
+  return <Button variant="primary">Click me</Button>;
+}
+```
+
+## Documentation
+
+Component API and examples: [Storybook](https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction-overview--docs)
 
 ## License
 

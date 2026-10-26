@@ -29,20 +29,6 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
-    locale: {
-      name: 'Locale',
-      description: 'Documentation language',
-      defaultValue: 'en',
-      toolbar: {
-        icon: 'globe',
-        items: [
-          { value: 'en', title: 'English' },
-          { value: 'zh', title: '简体中文' },
-          { value: 'ja', title: '日本語' },
-        ],
-        dynamicTitle: true,
-      },
-    },
   },
   decorators: [withTheme],
 };
