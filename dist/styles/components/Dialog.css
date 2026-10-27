@@ -1,0 +1,75 @@
+.venomous--Dialog {
+  margin: auto;
+  padding: var(--venomous-spacing-6);
+  min-width: min(320px, 100vw - var(--venomous-spacing-8));
+  max-width: min(560px, 100vw - var(--venomous-spacing-8));
+  max-height: calc(100vh - var(--venomous-spacing-8));
+  overflow: auto;
+  font: inherit;
+  color: var(--venomous-color-fg);
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border);
+  border-radius: var(--venomous-radius-xl);
+  box-shadow: var(--venomous-shadow-xl);
+}
+.venomous--Dialog:not(:modal) {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity var(--venomous-motion-duration-fast) var(--venomous-motion-easing-in), transform var(--venomous-motion-duration-fast) var(--venomous-motion-easing-in), overlay var(--venomous-motion-duration-fast) allow-discrete, display var(--venomous-motion-duration-fast) allow-discrete;
+}
+.venomous--Dialog:modal {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--venomous-motion-duration-base) var(--venomous-motion-easing-out), transform var(--venomous-motion-duration-base) var(--venomous-motion-easing-out), overlay var(--venomous-motion-duration-base) allow-discrete, display var(--venomous-motion-duration-base) allow-discrete;
+}
+@starting-style {
+  .venomous--Dialog:modal {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+.venomous--Dialog::backdrop {
+  background-color: var(--venomous-color-bg-overlay);
+  opacity: 0;
+  transition: opacity var(--venomous-motion-duration-fast) var(--venomous-motion-easing-in), overlay var(--venomous-motion-duration-fast) allow-discrete, display var(--venomous-motion-duration-fast) allow-discrete;
+}
+.venomous--Dialog:modal::backdrop {
+  opacity: 1;
+  transition: opacity var(--venomous-motion-duration-base) var(--venomous-motion-easing-out), overlay var(--venomous-motion-duration-base) allow-discrete, display var(--venomous-motion-duration-base) allow-discrete;
+}
+@starting-style {
+  .venomous--Dialog:modal::backdrop {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .venomous--Dialog, .venomous--Dialog::backdrop {
+    transition: none;
+  }
+}
+
+.venomous--Dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--venomous-spacing-2);
+  margin-bottom: var(--venomous-spacing-4);
+}
+
+.venomous--Dialog__title {
+  font-size: var(--venomous-font-size-lg);
+  font-weight: var(--venomous-font-weight-semibold);
+  line-height: var(--venomous-font-leading-tight);
+}
+
+.venomous--Dialog__body {
+  line-height: var(--venomous-font-leading-base);
+}
+
+.venomous--Dialog__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--venomous-spacing-2);
+  margin-top: var(--venomous-spacing-6);
+}

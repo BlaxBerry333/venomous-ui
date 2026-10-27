@@ -1,0 +1,32 @@
+:root[data-theme=dark] {
+  color-scheme: dark;
+  --venomous-color-bg: #09090b;
+  --venomous-color-bg-elevated: #18181b;
+  --venomous-color-bg-overlay: rgba(0, 0, 0, 0.7);
+  --venomous-color-fg: #fafafa;
+  --venomous-color-fg-muted: #a1a1aa;
+  --venomous-color-fg-subtle: #52525b;
+  --venomous-color-border: #27272a;
+  --venomous-color-border-strong: #3f3f46;
+  --venomous-color-accent: #a855f7;
+  --venomous-color-accent-hover: #c084fc;
+  --venomous-color-accent-active: #d8b4fe;
+  --venomous-color-accent-fg: #09090b;
+  --venomous-color-danger: #ef4444;
+  --venomous-color-danger-hover: #f87171;
+  --venomous-color-danger-fg: #09090b;
+  --venomous-color-success: #22c55e;
+  --venomous-color-success-fg: #09090b;
+  --venomous-color-warning: #eab308;
+  --venomous-color-warning-fg: #09090b;
+  --venomous-color-info: #3b82f6;
+  --venomous-color-info-fg: #09090b;
+  --venomous-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --venomous-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --venomous-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  --venomous-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --venomous-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  --venomous-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  --venomous-shadow-focus: 0 0 0 3px
+    color-mix(in srgb, var(--venomous-color-accent) 50%, transparent);
+}

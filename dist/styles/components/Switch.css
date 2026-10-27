@@ -1,0 +1,70 @@
+.venomous--Switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--venomous-spacing-2);
+  font-size: var(--venomous-font-size-base);
+  line-height: var(--venomous-font-leading-base);
+  color: var(--venomous-color-fg);
+  cursor: pointer;
+}
+.venomous--Switch[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.venomous--Switch {
+  --venomous-switch-width: 2.25rem;
+  --venomous-switch-height: 1.25rem;
+}
+
+.venomous--Switch--size-sm {
+  --venomous-switch-width: 1.75rem;
+  --venomous-switch-height: 1rem;
+}
+
+.venomous--Switch__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.venomous--Switch__input:focus-visible + .venomous--Switch__track {
+  outline: 2px solid transparent;
+  box-shadow: var(--venomous-shadow-focus);
+}
+
+.venomous--Switch__track {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: var(--venomous-switch-width);
+  height: var(--venomous-switch-height);
+  padding: 2px;
+  background-color: var(--venomous-color-border-strong);
+  border-radius: var(--venomous-radius-full);
+  transition: background-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+}
+
+.venomous--Switch__thumb {
+  width: calc(var(--venomous-switch-height) - 4px);
+  height: calc(var(--venomous-switch-height) - 4px);
+  background-color: var(--venomous-color-bg);
+  border-radius: var(--venomous-radius-full);
+  box-shadow: var(--venomous-shadow-sm);
+  transition: transform var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+}
+
+.venomous--Switch__input:checked + .venomous--Switch__track {
+  background-color: var(--venomous-color-accent);
+}
+.venomous--Switch__input:checked + .venomous--Switch__track .venomous--Switch__thumb {
+  transform: translateX(calc(var(--venomous-switch-width) - var(--venomous-switch-height)));
+}
+
+.venomous--Switch__input[aria-invalid=true] + .venomous--Switch__track {
+  outline: 1px solid var(--venomous-color-danger);
+}

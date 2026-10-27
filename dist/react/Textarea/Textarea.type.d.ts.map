@@ -1,0 +1,1 @@
+{"version":3,"file":"Textarea.type.d.ts","sourceRoot":"","sources":["../../../packages/react/Textarea/Textarea.type.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,sBAAsB,EAAE,MAAM,OAAO,CAAC;AAEpD,MAAM,WAAW,aAAc,SAAQ,sBAAsB,CAAC,mBAAmB,CAAC;IAChF,+BAA+B;IAC/B,MAAM,CAAC,EAAE,MAAM,GAAG,UAAU,GAAG,YAAY,GAAG,MAAM,CAAC;CACtD"}

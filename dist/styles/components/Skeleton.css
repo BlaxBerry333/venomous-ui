@@ -1,0 +1,34 @@
+.venomous--Skeleton {
+  display: block;
+  width: 100%;
+  background-color: var(--venomous-color-border);
+  border-radius: var(--venomous-radius-md);
+  animation: venomous-skeleton-pulse 1.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .venomous--Skeleton {
+    animation: none;
+  }
+}
+
+.venomous--Skeleton--text {
+  height: 1em;
+  margin: 0.25em 0;
+}
+
+.venomous--Skeleton--rect {
+  height: 2.5rem;
+}
+
+.venomous--Skeleton--circle {
+  width: 2.5rem;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: var(--venomous-radius-full);
+}
+
+@keyframes venomous-skeleton-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

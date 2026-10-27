@@ -1,0 +1,107 @@
+.venomous--Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--venomous-spacing-2);
+  font-family: inherit;
+  font-weight: var(--venomous-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--venomous-radius-md);
+  cursor: pointer;
+  transition: background-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard), color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard), border-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard), box-shadow var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+}
+.venomous--Button:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: var(--venomous-shadow-focus);
+}
+.venomous--Button:disabled, .venomous--Button[data-venomous-loading=true] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.venomous--Button--size-sm {
+  min-height: 28px;
+  padding: 0 var(--venomous-spacing-3);
+  font-size: var(--venomous-font-size-sm);
+}
+
+.venomous--Button--size-md {
+  min-height: 36px;
+  padding: 0 var(--venomous-spacing-4);
+  font-size: var(--venomous-font-size-base);
+}
+
+.venomous--Button--size-lg {
+  min-height: 44px;
+  padding: 0 var(--venomous-spacing-5);
+  font-size: var(--venomous-font-size-lg);
+}
+
+.venomous--Button--primary {
+  background-color: var(--venomous-color-accent);
+  color: var(--venomous-color-accent-fg);
+}
+
+.venomous--Button--primary:hover:not(:disabled, [data-venomous-loading=true]) {
+  background-color: var(--venomous-color-accent-hover);
+}
+
+.venomous--Button--primary:active:not(:disabled, [data-venomous-loading=true]) {
+  background-color: var(--venomous-color-accent-active);
+}
+
+.venomous--Button--secondary {
+  background-color: var(--venomous-color-bg-elevated);
+  color: var(--venomous-color-fg);
+  border-color: var(--venomous-color-border);
+}
+
+.venomous--Button--secondary:hover:not(:disabled, [data-venomous-loading=true]) {
+  border-color: var(--venomous-color-border-strong);
+}
+
+.venomous--Button--ghost {
+  background-color: transparent;
+  color: var(--venomous-color-fg);
+}
+
+.venomous--Button--ghost:hover:not(:disabled, [data-venomous-loading=true]) {
+  background-color: var(--venomous-color-bg-elevated);
+}
+
+.venomous--Button--danger {
+  background-color: var(--venomous-color-danger);
+  color: var(--venomous-color-danger-fg);
+}
+
+.venomous--Button--danger:hover:not(:disabled, [data-venomous-loading=true]) {
+  background-color: var(--venomous-color-danger-hover);
+}
+
+.venomous--Button__spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--venomous-radius-full);
+  animation: venomous-button-spin var(--venomous-motion-duration-slower) linear infinite;
+}
+
+@keyframes venomous-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.venomous--Button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.venomous--Button__label {
+  display: inline-block;
+}

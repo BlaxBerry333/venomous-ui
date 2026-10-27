@@ -1,0 +1,82 @@
+.venomous--Dialog.venomous--Drawer {
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  border-radius: 0;
+}
+.venomous--Dialog.venomous--Drawer:not(:modal) {
+  opacity: 1;
+}
+.venomous--Dialog.venomous--Drawer:modal {
+  display: flex;
+  flex-direction: column;
+}
+.venomous--Dialog.venomous--Drawer .venomous--Dialog__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.venomous--Dialog.venomous--Drawer--left,
+.venomous--Dialog.venomous--Drawer--right {
+  width: min(400px, 100vw);
+  height: 100vh;
+  min-width: 0;
+}
+
+.venomous--Dialog.venomous--Drawer--top,
+.venomous--Dialog.venomous--Drawer--bottom {
+  width: 100vw;
+  max-height: 80vh;
+}
+
+.venomous--Dialog.venomous--Drawer--left {
+  inset: 0 auto 0 0;
+  border-width: 0 1px 0 0;
+}
+.venomous--Dialog.venomous--Drawer--left:not(:modal) {
+  transform: translateX(-100%);
+}
+
+.venomous--Dialog.venomous--Drawer--right {
+  inset: 0 0 0 auto;
+  border-width: 0 0 0 1px;
+}
+.venomous--Dialog.venomous--Drawer--right:not(:modal) {
+  transform: translateX(100%);
+}
+
+.venomous--Dialog.venomous--Drawer--top {
+  inset: 0 0 auto;
+  border-width: 0 0 1px;
+}
+.venomous--Dialog.venomous--Drawer--top:not(:modal) {
+  transform: translateY(-100%);
+}
+
+.venomous--Dialog.venomous--Drawer--bottom {
+  inset: auto 0 0;
+  border-width: 1px 0 0;
+}
+.venomous--Dialog.venomous--Drawer--bottom:not(:modal) {
+  transform: translateY(100%);
+}
+
+@starting-style {
+  .venomous--Dialog.venomous--Drawer--left:modal {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  .venomous--Dialog.venomous--Drawer--right:modal {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+  .venomous--Dialog.venomous--Drawer--top:modal {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+  .venomous--Dialog.venomous--Drawer--bottom:modal {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+}

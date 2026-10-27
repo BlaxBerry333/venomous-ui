@@ -1,0 +1,82 @@
+.venomous--Checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--venomous-spacing-2);
+  font-size: var(--venomous-font-size-base);
+  line-height: var(--venomous-font-leading-base);
+  color: var(--venomous-color-fg);
+  cursor: pointer;
+}
+.venomous--Checkbox[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.venomous--Checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.venomous--Checkbox__input:focus-visible + .venomous--Checkbox__control {
+  outline: 2px solid transparent;
+  box-shadow: var(--venomous-shadow-focus);
+}
+
+.venomous--Checkbox__control {
+  position: relative;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border-strong);
+  border-radius: var(--venomous-radius-sm);
+  transition: background-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard), border-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+}
+.venomous--Checkbox__control::after {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  content: "";
+}
+
+.venomous--Checkbox__input:checked + .venomous--Checkbox__control,
+.venomous--Checkbox__input:indeterminate + .venomous--Checkbox__control {
+  background-color: var(--venomous-color-accent);
+  border-color: var(--venomous-color-accent);
+}
+
+.venomous--Checkbox__input:checked + .venomous--Checkbox__control::after {
+  width: 0.3rem;
+  height: 0.55rem;
+  border: solid var(--venomous-color-accent-fg);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+}
+
+.venomous--Checkbox__input:indeterminate + .venomous--Checkbox__control::after {
+  width: 0.5rem;
+  height: 2px;
+  background-color: var(--venomous-color-accent-fg);
+  border: 0;
+  transform: none;
+}
+
+.venomous--Checkbox__input[aria-invalid=true] + .venomous--Checkbox__control {
+  border-color: var(--venomous-color-danger);
+}
+
+.venomous--CheckboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--venomous-spacing-2);
+}
+.venomous--CheckboxGroup[data-orientation=horizontal] {
+  flex-flow: row wrap;
+  gap: var(--venomous-spacing-4);
+}

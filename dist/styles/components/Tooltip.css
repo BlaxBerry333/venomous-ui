@@ -1,0 +1,14 @@
+.venomous--Tooltip__content {
+  box-sizing: border-box;
+  max-width: min(320px, 100vw - var(--venomous-spacing-4));
+  padding: var(--venomous-spacing-1) var(--venomous-spacing-2);
+  overflow: visible;
+  font-size: var(--venomous-font-size-sm);
+  line-height: var(--venomous-font-leading-tight);
+  color: var(--venomous-color-bg);
+  background-color: var(--venomous-color-fg);
+  border: 0;
+  border-radius: var(--venomous-radius-md);
+  box-shadow: var(--venomous-shadow-md);
+  z-index: var(--venomous-z-tooltip);
+}

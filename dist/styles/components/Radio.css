@@ -1,0 +1,73 @@
+.venomous--Radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--venomous-spacing-2);
+  font-size: var(--venomous-font-size-base);
+  line-height: var(--venomous-font-leading-base);
+  color: var(--venomous-color-fg);
+  cursor: pointer;
+}
+.venomous--Radio[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.venomous--Radio__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.venomous--Radio__input:focus-visible + .venomous--Radio__control {
+  outline: 2px solid transparent;
+  box-shadow: var(--venomous-shadow-focus);
+}
+
+.venomous--Radio__control {
+  position: relative;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border-strong);
+  border-radius: var(--venomous-radius-full);
+  transition: border-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+}
+.venomous--Radio__control::after {
+  position: absolute;
+  inset: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: auto;
+  content: "";
+  background-color: var(--venomous-color-accent);
+  border-radius: var(--venomous-radius-full);
+  transform: scale(0);
+  transition: transform var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+}
+
+.venomous--Radio__input:checked + .venomous--Radio__control {
+  border-color: var(--venomous-color-accent);
+}
+.venomous--Radio__input:checked + .venomous--Radio__control::after {
+  transform: scale(1);
+}
+
+.venomous--RadioGroup[aria-invalid=true] .venomous--Radio__control {
+  border-color: var(--venomous-color-danger);
+}
+
+.venomous--RadioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--venomous-spacing-2);
+}
+.venomous--RadioGroup[data-orientation=horizontal] {
+  flex-flow: row wrap;
+  gap: var(--venomous-spacing-4);
+}

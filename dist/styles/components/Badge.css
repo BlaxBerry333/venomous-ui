@@ -1,0 +1,37 @@
+.venomous--Badge {
+  display: inline-flex;
+  gap: var(--venomous-spacing-1);
+  align-items: center;
+  padding: 0 var(--venomous-spacing-2);
+  font-size: var(--venomous-font-size-xs);
+  font-weight: var(--venomous-font-weight-medium);
+  line-height: 1.25rem;
+  white-space: nowrap;
+  border-radius: var(--venomous-radius-full);
+}
+
+.venomous--Badge--neutral {
+  color: var(--venomous-color-fg);
+  background-color: var(--venomous-color-bg-elevated);
+  box-shadow: inset 0 0 0 1px var(--venomous-color-border);
+}
+
+.venomous--Badge--accent {
+  color: var(--venomous-color-accent-fg);
+  background-color: var(--venomous-color-accent);
+}
+
+.venomous--Badge--success {
+  color: var(--venomous-color-success-fg);
+  background-color: var(--venomous-color-success);
+}
+
+.venomous--Badge--warning {
+  color: var(--venomous-color-warning-fg);
+  background-color: var(--venomous-color-warning);
+}
+
+.venomous--Badge--danger {
+  color: var(--venomous-color-danger-fg);
+  background-color: var(--venomous-color-danger);
+}

@@ -1,0 +1,29 @@
+.venomous--FormField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--venomous-spacing-1);
+}
+
+.venomous--FormField__label {
+  font-size: var(--venomous-font-size-sm);
+  font-weight: var(--venomous-font-weight-medium);
+  color: var(--venomous-color-fg);
+}
+[data-disabled] > .venomous--FormField__label {
+  color: var(--venomous-color-fg-muted);
+}
+
+.venomous--FormField__required {
+  margin-left: 0.25em;
+  color: var(--venomous-color-danger);
+}
+
+.venomous--FormField__description {
+  font-size: var(--venomous-font-size-sm);
+  color: var(--venomous-color-fg-muted);
+}
+
+.venomous--FormField__error {
+  font-size: var(--venomous-font-size-sm);
+  color: var(--venomous-color-danger);
+}

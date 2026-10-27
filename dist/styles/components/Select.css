@@ -1,0 +1,73 @@
+.venomous--Select {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+}
+
+.venomous--Select__field {
+  box-sizing: border-box;
+  width: 100%;
+  font: inherit;
+  font-size: var(--venomous-font-size-base);
+  line-height: var(--venomous-font-leading-base);
+  color: var(--venomous-color-fg);
+  background-color: var(--venomous-color-bg);
+  border: 1px solid var(--venomous-color-border-strong);
+  border-radius: var(--venomous-radius-md);
+  transition: border-color var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard), box-shadow var(--venomous-motion-duration-fast) var(--venomous-motion-easing-standard);
+}
+.venomous--Select__field::placeholder {
+  color: var(--venomous-color-fg-muted);
+  opacity: 1;
+}
+.venomous--Select__field:hover:not(:disabled, :focus) {
+  border-color: var(--venomous-color-fg-muted);
+}
+.venomous--Select__field:focus {
+  outline: 2px solid transparent;
+  border-color: var(--venomous-color-accent);
+  box-shadow: var(--venomous-shadow-focus);
+}
+.venomous--Select__field[aria-invalid=true] {
+  border-color: var(--venomous-color-danger);
+}
+.venomous--Select__field[aria-invalid=true]:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--venomous-color-danger) 40%, transparent);
+}
+.venomous--Select__field:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.venomous--Select__field {
+  appearance: none;
+  cursor: pointer;
+}
+
+.venomous--Select__icon {
+  position: absolute;
+  top: 50%;
+  right: var(--venomous-spacing-3);
+  width: 0.45rem;
+  height: 0.45rem;
+  pointer-events: none;
+  border: solid var(--venomous-color-fg-muted);
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.venomous--Select--size-sm .venomous--Select__field {
+  min-height: 28px;
+  padding: 0 calc(var(--venomous-spacing-2) + 1rem) 0 var(--venomous-spacing-2);
+  font-size: var(--venomous-font-size-sm);
+}
+
+.venomous--Select--size-md .venomous--Select__field {
+  min-height: 36px;
+  padding: 0 calc(var(--venomous-spacing-3) + 1rem) 0 var(--venomous-spacing-3);
+}
+
+.venomous--Select--size-lg .venomous--Select__field {
+  min-height: 44px;
+  padding: 0 calc(var(--venomous-spacing-4) + 1rem) 0 var(--venomous-spacing-4);
+  font-size: var(--venomous-font-size-lg);
+}

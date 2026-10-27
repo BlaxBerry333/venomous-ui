@@ -1,0 +1,1 @@
+{"version":3,"file":"Drawer.type.d.ts","sourceRoot":"","sources":["../../../packages/react/Drawer/Drawer.type.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,uBAAuB,CAAC;AAEzD,MAAM,MAAM,UAAU,GAAG,MAAM,GAAG,OAAO,GAAG,KAAK,GAAG,QAAQ,CAAC;AAE7D,MAAM,WAAW,WAAY,SAAQ,WAAW;IAC9C,wBAAwB;IACxB,IAAI,CAAC,EAAE,UAAU,CAAC;CACnB"}
